@@ -3,8 +3,8 @@
 
     <modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>no.nav.sykepenger.kontrakter</groupId>
-		<artifactId>sykepenger-kontrakter-root</artifactId>
+		<groupId>no.nav.foreldrepenger.kontrakter</groupId>
+		<artifactId>foreldrepenger-kontrakter-root</artifactId>
 		<version>${revision}${sha1}${changelist}</version>
 	</parent>
 	

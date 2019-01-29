@@ -2,14 +2,14 @@
 
     <modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>no.nav.sykepenger.kontrakter</groupId>
-		<artifactId>sykepenger-kontrakter-root</artifactId>
+		<groupId>no.nav.foreldrepenger.kontrakter</groupId>
+		<artifactId>foreldrepenger-kontrakter-root</artifactId>
 		<version>${revision}${sha1}${changelist}</version>
 	</parent>
 	
     <artifactId>fp-feed-v1</artifactId>
     <packaging>pom</packaging>
-    <name>Sykepenger kontrakt (SPSAK) - sp-feed</name>
+    <name>Foreldrepenger kontrakt (FPSAK) - fp-feed</name>
 
     <modules>
 	    <module>fp-feed-felles-tjenestespesifikasjon</module>

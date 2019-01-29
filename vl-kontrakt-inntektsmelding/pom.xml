@@ -4,12 +4,12 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>no.nav.sykepenger.kontrakter</groupId>
-		<artifactId>sykepenger-kontrakter-root</artifactId>
+		<groupId>no.nav.foreldrepenger.kontrakter</groupId>
+		<artifactId>foreldrepenger-kontrakter-root</artifactId>
 		<version>${revision}${sha1}${changelist}</version>
 	</parent>
 	<artifactId>inntektsmelding-v1</artifactId>
-	<name>Sykepenger kontrakt (SPSAK) - inntektsmelding</name>
+	<name>Foreldrepenger kontrakt (FPSAK) - inntektsmelding</name>
 	<packaging>jar</packaging>
 
 	<properties>

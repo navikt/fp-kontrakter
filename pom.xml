@@ -1,20 +1,21 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
-	<parent>
-		<groupId>no.nav</groupId>
-		<artifactId>spsak-root</artifactId>
-		<version>${revision}${sha1}${changelist}</version>
-	</parent>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>no.nav.sykepenger.kontrakter</groupId>
-	<artifactId>sykepenger-kontrakter-root</artifactId>
+	
+	<groupId>no.nav.foreldrepenger.kontrakter</groupId>
+	<artifactId>foreldrepenger-kontrakter-root</artifactId>
+	<version>${revision}${sha1}${changelist}</version>
 	<packaging>pom</packaging>
-	<name>(SPSAK) Kontrakter - Root</name>
+	<name>(FPSAK) Kontrakter - Root</name>
 
 	<properties>
+		<revision>5.0</revision>
+		<sha1></sha1>
+		<changelist>-SNAPSHOT</changelist>
+		<maven.javadoc.skip>true</maven.javadoc.skip>
+		<java.version>10</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.javadoc.skip>true</maven.javadoc.skip>
 	</properties>
 
@@ -22,7 +23,6 @@
 		<module>vl-kontrakt-fp-feed</module>
 		<module>vl-kontrakt-inntektsmelding</module>
 		<module>vl-kontrakt-soeknad</module>
-		<module>vl-kontrakt-sykepengersoeknad</module>
 	</modules>
 
 	<dependencyManagement>
@@ -61,17 +61,17 @@
 
 			<!-- Interne modul avhengigheter -->
 			<dependency>
-				<groupId>no.nav.sykepenger.kontrakter</groupId>
+				<groupId>no.nav.foreldrepenger.kontrakter</groupId>
 				<artifactId>fp-feed-v1</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>no.nav.sykepenger.kontrakter</groupId>
+				<groupId>no.nav.foreldrepenger.kontrakter</groupId>
 				<artifactId>inntektsmelding-v1</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>no.nav.sykepenger.kontrakter</groupId>
+				<groupId>no.nav.foreldrepenger.kontrakter</groupId>
 				<artifactId>soeknad-v1</artifactId>
 				<version>${project.version}</version>
 			</dependency>
@@ -96,6 +96,11 @@
 
 		<pluginManagement>
 			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>3.0.1</version>
+				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
@@ -133,11 +138,26 @@
 					<version>2.8.2</version>
 				</plugin>
 				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.22.0</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-failsafe-plugin</artifactId>
+					<version>2.22.0</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>3.1.0</version>
+				</plugin>
+				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>flatten-maven-plugin</artifactId>
 					<version>1.0.0</version>
 				</plugin>
-
+				
 				<plugin>
 					<groupId>org.jvnet.jaxb2.maven2</groupId>
 					<artifactId>maven-jaxb2-plugin</artifactId>
@@ -223,6 +243,34 @@
 				</executions>
 			</plugin>
 			<plugin>
+				<groupId>org.jboss.jandex</groupId>
+				<artifactId>jandex-maven-plugin</artifactId>
+				<version>1.0.5</version>
+				<executions>
+					<execution>
+						<id>make-index</id>
+						<goals>
+							<goal>jandex</goal>
+						</goals>
+						<configuration>
+							<!-- Nothing needed here for simple cases -->
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-deploy-plugin</artifactId>
 				<configuration>
@@ -245,5 +293,5 @@
 			<url>https://repo.adeo.no/nexus/content/repositories/m2snapshot</url>
 		</snapshotRepository>
 	</distributionManagement>
-
+	
 </project>
