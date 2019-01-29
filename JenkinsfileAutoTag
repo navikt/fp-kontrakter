@@ -1,0 +1,27 @@
+@Library('vl-jenkins')_
+
+import no.nav.jenkins.*
+
+node('DOCKER3') {
+    def tagName=''
+    maven = new maven()
+    stage('Checkout Tags') { // checkout only tags.
+        checkout scm
+        echo "Tag to be deployed $tagName"
+        maven.setVersion(maven.artifactId(), tagName)      
+   }
+   
+   stage('Build') {
+       configFileProvider(
+           [configFile(fileId: 'navMavenSettingsUtenProxy', variable: 'MAVEN_SETTINGS')]) {
+                //maven = new maven()
+				environment = new environment()
+                if(maven.javaVersion() != null) {
+                    environment.overrideJDK(maven.javaVersion())
+                }
+                // install byttes ut med deploy når alt er på plass 
+                sh "mvn -U -B -s $MAVEN_SETTINGS -Dfile.encoding=UTF-8 -Djava.security.egd=file:///dev/urandom -DinstallAtEnd=true -DdeployAtEnd=true clean install"
+           }   
+                
+    }
+}
