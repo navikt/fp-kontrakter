@@ -3,7 +3,9 @@
 import no.nav.jenkins.*
 
 node('DOCKER3') {
-    def tagName=''
+    Date date= new Date()
+    def tagName="1.0_" + date.format("YYYYMMDDHHmmss")
+    
     maven = new maven()
     stage('Checkout Tags') { // checkout only tags.
         checkout scm
@@ -14,8 +16,7 @@ node('DOCKER3') {
    stage('Build') {
        configFileProvider(
            [configFile(fileId: 'navMavenSettingsUtenProxy', variable: 'MAVEN_SETTINGS')]) {
-                //maven = new maven()
-				environment = new environment()
+		environment = new environment()
                 if(maven.javaVersion() != null) {
                     environment.overrideJDK(maven.javaVersion())
                 }
