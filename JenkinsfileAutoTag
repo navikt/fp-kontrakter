@@ -4,15 +4,18 @@ import no.nav.jenkins.*
 
 node('DOCKER3') {
     
-   stage('Build') {
+	maven = new maven()
+	stage('Build') {
        configFileProvider(
            [configFile(fileId: 'navMavenSettingsUtenProxy', variable: 'MAVEN_SETTINGS')]) {
-		environment = new environment()
+				
+				environment = new environment()
                 if(maven.javaVersion() != null) {
                     environment.overrideJDK(maven.javaVersion())
                 }
 				GIT_COMMIT_HASH = sh (script: "git log -n 1 --pretty=format:'%h'", returnStdout: true)
                 sh "mvn -U -B -s $MAVEN_SETTINGS -Dfile.encoding=UTF-8 -DinstallAtEnd=true -DdeployAtEnd=true -Dchangelist= -Dsha1=${GIT_COMMIT_HASH} clean deploy"
+				
            }   
                 
     }
