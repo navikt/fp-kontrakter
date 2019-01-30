@@ -3,16 +3,7 @@
 import no.nav.jenkins.*
 
 node('DOCKER3') {
-    Date date= new Date()
-    def tagName="5.0_" + date.format("YYYYMMDDHHmmss")
     
-    maven = new maven()
-    stage('Checkout Tags') { // checkout only tags.
-        checkout scm
-        echo "Tag to be deployed $tagName"
-        maven.setVersion(maven.artifactId(), tagName)      
-   }
-   
    stage('Build') {
        configFileProvider(
            [configFile(fileId: 'navMavenSettingsUtenProxy', variable: 'MAVEN_SETTINGS')]) {
@@ -20,8 +11,8 @@ node('DOCKER3') {
                 if(maven.javaVersion() != null) {
                     environment.overrideJDK(maven.javaVersion())
                 }
-                // install byttes ut med deploy når alt er på plass 
-                sh "mvn -U -B -s $MAVEN_SETTINGS -Dfile.encoding=UTF-8 -Djava.security.egd=file:///dev/urandom -DinstallAtEnd=true -DdeployAtEnd=true clean install"
+				GIT_COMMIT_HASH = sh (script: "git log -n 1 --pretty=format:'%h'", returnStdout: true)
+                sh "mvn -U -B -s $MAVEN_SETTINGS -Dfile.encoding=UTF-8 -DinstallAtEnd=true -DdeployAtEnd=true -Dchangelist= -Dsha1=${GIT_COMMIT_HASH} clean deploy"
            }   
                 
     }
