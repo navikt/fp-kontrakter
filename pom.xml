@@ -285,6 +285,7 @@
 	</build>
 
 	<distributionManagement>
+		<!--
 		<repository>
 			<id>m2internal</id>
 			<name>NAV Maven2 Internal Repository</name>
@@ -295,6 +296,16 @@
 			<name>NAV Maven2 Snapshot Repository</name>
 			<url>https://repo.adeo.no/nexus/content/repositories/m2snapshot</url>
 		</snapshotRepository>
+		-->
+        	<repository>
+            		<id>repo.adeo.no-releases</id>
+            		<url>https://repo.adeo.no/repository/maven-releases</url>
+        	</repository>
+        	<snapshotRepository>
+            		<id>repo.adeo.no-snapshots</id>
+            		<url>https://repo.adeo.no/repository/maven-snapshots</url>
+            		<uniqueVersion>false</uniqueVersion>
+        	</snapshotRepository>		
 	</distributionManagement>
 	
 </project>
