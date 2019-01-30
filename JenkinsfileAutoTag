@@ -14,7 +14,7 @@ node('DOCKER3') {
                     environment.overrideJDK(maven.javaVersion())
                 }
 				GIT_COMMIT_HASH = sh (script: "git log -n 1 --pretty=format:'%h'", returnStdout: true)
-                sh "mvn -U -B -s $MAVEN_SETTINGS -Dfile.encoding=UTF-8 -DinstallAtEnd=true -DdeployAtEnd=true -Dchangelist= -Dsha1=${GIT_COMMIT_HASH} clean deploy"
+                sh "mvn -U -B -s $MAVEN_SETTINGS -Dfile.encoding=UTF-8 -DinstallAtEnd=true -DdeployAtEnd=true -Dchangelist='' -Dsha1=$GIT_COMMIT_HASH clean deploy"
 				
            }   
                 
