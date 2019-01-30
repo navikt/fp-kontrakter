@@ -9,7 +9,7 @@
 		<version>${revision}${sha1}${changelist}</version>
 	</parent>
 	<artifactId>inntektsmelding-v1</artifactId>
-	<name>Foreldrepenger kontrakt (FPSAK) - inntektsmelding</name>
+	<name>(FPSAK) Kontrakter - inntektsmelding</name>
 	<packaging>jar</packaging>
 
 	<properties>

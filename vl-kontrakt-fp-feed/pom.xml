@@ -9,10 +9,10 @@
 	
     <artifactId>fp-feed-v1</artifactId>
     <packaging>pom</packaging>
-    <name>Foreldrepenger kontrakt (FPSAK) - fp-feed</name>
+    <name>(FPSAK) Kontrakter - Feed v1</name>
 
     <modules>
-	    <module>fp-feed-felles-tjenestespesifikasjon</module>
+	    <module>fp-feed-vedtak-tjenestespesifikasjon</module>
 	    <module>infotrygd-hendelser-feed</module>
      </modules>
 

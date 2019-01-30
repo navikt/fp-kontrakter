@@ -9,24 +9,23 @@ public enum Meldingstype {
     INFOTRYGD__OPPHOERT("OPPHOERT_v1", InfotrygdOpphoert.class),
     INFOTRYGD_ANNULLERT("ANNULLERT_v1", InfotrygdAnnullert.class);
 
-    private Class<? extends Innhold> meldingsDto;
+    private Class meldingsDto;
     private String type;
 
-    Meldingstype(String type, Class<? extends Innhold> meldingsDto) {
+    Meldingstype(String type, Class meldingsDto) {
         this.meldingsDto = meldingsDto;
         this.type = type;
     }
     
-    @SuppressWarnings("unchecked")
-    public <V extends Innhold> Class<V> getMeldingsDto() {
-        return (Class<V>) meldingsDto;
+    public Class getMeldingsDto() {
+        return meldingsDto;
     }
     
     public String getType() {
         return type;
     }
 
-    public static Meldingstype valueOf(Class<? extends Innhold> aClass) {
+    public static Meldingstype valueOf(Class aClass) {
         return Arrays.stream(values())
                 .filter(e-> e.getMeldingsDto().equals(aClass))
                 .findFirst().orElse(null);

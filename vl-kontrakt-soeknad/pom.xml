@@ -8,12 +8,17 @@
 		<version>${revision}${sha1}${changelist}</version>
 	</parent>
 	
-    <artifactId>soeknad-v1</artifactId>
-    <packaging>jar</packaging>
-    <name>Foreldrepenger kontrakt (FPSAK) - soeknad</name>
+    <artifactId>soeknad-pom</artifactId>
+    <packaging>pom</packaging>
+    <name>(FPSAK) Kontrakter - soeknad</name>
     
-    <dependencies>
-		
+	<modules>
+		<module>soeknad-v1</module>
+		<module>soeknad-v2</module>
+		<module>soeknad-v3</module>
+	</modules>
+	
+    <dependencies>	
 		<dependency>
             <groupId>org.glassfish.jaxb</groupId>
             <artifactId>jaxb-runtime</artifactId>
@@ -21,14 +26,12 @@
     </dependencies>
 
     <build>
-
         <plugins>
             <plugin>
                 <groupId>org.jvnet.jaxb2.maven2</groupId>
                 <artifactId>maven-jaxb2-plugin</artifactId>
             </plugin>
         </plugins>
-		
     </build>
 
 </project>

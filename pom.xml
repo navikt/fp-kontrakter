@@ -20,9 +20,12 @@
 	</properties>
 
 	<modules>
-		<module>vl-kontrakt-fp-feed</module>
-		<module>vl-kontrakt-inntektsmelding</module>
 		<module>vl-kontrakt-soeknad</module>
+		<module>vl-kontrakt-fordel</module>
+		<module>vl-kontrakt-inntektsmelding</module>
+		<module>vl-kontrakt-fp-feed</module>
+		<module>vl-kontrakt-abonnent</module>
+		<module>vl-kontrakt-behandlingsprosess-vedtak</module>
 	</modules>
 
 	<dependencyManagement>
