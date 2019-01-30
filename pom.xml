@@ -78,6 +78,31 @@
 				<artifactId>soeknad-v1</artifactId>
 				<version>${project.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>no.nav.foreldrepenger.kontrakter</groupId>
+				<artifactId>behandlingsprosess-vedtak-v1</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>no.nav.foreldrepenger.kontrakter</groupId>
+				<artifactId>behandlingsprosess-vedtak-v2</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>no.nav.foreldrepenger.kontrakter</groupId>
+				<artifactId>fordel-v1</artifactId>
+                <version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>no.nav.foreldrepenger.kontrakter</groupId>
+				<artifactId>fp-feed-vedtak-tjenestespesifikasjon</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>no.nav.foreldrepenger.kontrakter</groupId>
+				<artifactId>abonnent-v1</artifactId>
+				<version>${project.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
