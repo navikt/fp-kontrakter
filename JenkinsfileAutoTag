@@ -13,7 +13,6 @@ node('DOCKER3') {
     stage('Checkout Tags') { // checkout only tags.
         checkout scm
         echo "Tag to be deployed $tagName"
-        maven.setVersion(maven.artifactId(), tagName)      
 	}
    
 	stage('Build') {
