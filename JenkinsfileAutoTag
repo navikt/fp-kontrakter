@@ -6,7 +6,7 @@ node('DOCKER3') {
     Date date= new Date()
 	GIT_COMMIT_HASH = sh (script: "git log -n 1 --pretty=format:'%h'", returnStdout: true)
 	def revision = "5.0"
-	def changelist = "_" + date.format("YYYYMMDDHHmmss") + GIT_COMMIT_HASH
+	def changelist = "_" + date.format("YYYYMMDDHHmmss") + "_" + GIT_COMMIT_HASH
     def tagName=revision + changelist
     
     maven = new maven()
@@ -25,7 +25,7 @@ node('DOCKER3') {
                     environment.overrideJDK(maven.javaVersion())
                 }
 				
-                sh "mvn -U -B -s $MAVEN_SETTINGS -Dfile.encoding=UTF-8 -DinstallAtEnd=true -DdeployAtEnd=true -Drevision=$revision -Dchangelist=$changelist clean deploy"
+                sh "mvn -U -B -s $MAVEN_SETTINGS -Dfile.encoding=UTF-8 -DinstallAtEnd=true -DdeployAtEnd=true -Drevision=$tagName -Dchangelist= clean deploy"
 				
            }   
                 
