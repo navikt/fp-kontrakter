@@ -14,4 +14,19 @@
     <packaging>jar</packaging>
     <name>(FPSAK) Kontrakter - soeknad v3</name>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jvnet.jaxb2.maven2</groupId>
+                <artifactId>maven-jaxb2-plugin</artifactId>
+            </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<classifier combine.self="override">jaxb</classifier>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
