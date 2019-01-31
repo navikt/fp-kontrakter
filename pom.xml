@@ -82,6 +82,18 @@
 			</dependency>
 			<dependency>
 				<groupId>no.nav.foreldrepenger.kontrakter</groupId>
+				<artifactId>soeknad-v2</artifactId>
+				<classifier>jaxb</classifier>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>no.nav.foreldrepenger.kontrakter</groupId>
+				<artifactId>soeknad-v3</artifactId>
+				<classifier>jaxb</classifier>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>no.nav.foreldrepenger.kontrakter</groupId>
 				<artifactId>behandlingsprosess-vedtak-v1</artifactId>
 				<classifier>jaxb</classifier>
 				<version>${project.version}</version>
