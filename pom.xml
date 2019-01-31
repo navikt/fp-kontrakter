@@ -1,8 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	
+
 	<groupId>no.nav.foreldrepenger.kontrakter</groupId>
 	<artifactId>foreldrepenger-kontrakter-root</artifactId>
 	<version>${revision}${sha1}${changelist}</version>
@@ -44,10 +44,10 @@
 
 			<!-- eksterne avhengigheter -->
 			<dependency>
-                <groupId>org.glassfish.jaxb</groupId>
-                <artifactId>jaxb-runtime</artifactId>
-                <version>2.4.0-b180830.0438</version>
-            </dependency>
+				<groupId>org.glassfish.jaxb</groupId>
+				<artifactId>jaxb-runtime</artifactId>
+				<version>2.4.0-b180830.0438</version>
+			</dependency>
 			<dependency>
 				<groupId>javax.validation</groupId>
 				<artifactId>validation-api</artifactId>
@@ -55,12 +55,12 @@
 			</dependency>
 
 			<dependency>
-                <groupId>com.fasterxml.jackson</groupId>
-                <artifactId>jackson-bom</artifactId>
-                <version>2.9.7</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
+				<groupId>com.fasterxml.jackson</groupId>
+				<artifactId>jackson-bom</artifactId>
+				<version>2.9.7</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
 
 			<!-- Interne modul avhengigheter -->
 			<dependency>
@@ -71,27 +71,31 @@
 			<dependency>
 				<groupId>no.nav.foreldrepenger.kontrakter</groupId>
 				<artifactId>inntektsmelding-v1</artifactId>
+				<classifier>jaxb</classifier>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>no.nav.foreldrepenger.kontrakter</groupId>
 				<artifactId>soeknad-v1</artifactId>
+				<classifier>jaxb</classifier>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>no.nav.foreldrepenger.kontrakter</groupId>
 				<artifactId>behandlingsprosess-vedtak-v1</artifactId>
+				<classifier>jaxb</classifier>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>no.nav.foreldrepenger.kontrakter</groupId>
 				<artifactId>behandlingsprosess-vedtak-v2</artifactId>
+				<classifier>jaxb</classifier>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>no.nav.foreldrepenger.kontrakter</groupId>
 				<artifactId>fordel-v1</artifactId>
-                <version>${project.version}</version>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>no.nav.foreldrepenger.kontrakter</groupId>
@@ -185,7 +189,7 @@
 					<artifactId>flatten-maven-plugin</artifactId>
 					<version>1.0.0</version>
 				</plugin>
-				
+
 				<plugin>
 					<groupId>org.jvnet.jaxb2.maven2</groupId>
 					<artifactId>maven-jaxb2-plugin</artifactId>
@@ -305,20 +309,40 @@
 					<deployAtEnd>true</deployAtEnd>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<inherited>false</inherited>
+				<configuration>
+				    <runOnlyAtExecutionRoot>true</runOnlyAtExecutionRoot>
+					<descriptors>
+						<descriptor>src/assembly/xsd-assembly.xml</descriptor>
+					</descriptors>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 
 		</plugins>
 	</build>
 
 	<distributionManagement>
-        	<repository>
-            		<id>repo.adeo.no-releases</id>
-            		<url>https://repo.adeo.no/repository/maven-releases</url>
-        	</repository>
-        	<snapshotRepository>
-            		<id>repo.adeo.no-snapshots</id>
-            		<url>https://repo.adeo.no/repository/maven-snapshots</url>
-            		<uniqueVersion>false</uniqueVersion>
-        	</snapshotRepository>		
+		<repository>
+			<id>repo.adeo.no-releases</id>
+			<url>https://repo.adeo.no/repository/maven-releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>repo.adeo.no-snapshots</id>
+			<url>https://repo.adeo.no/repository/maven-snapshots</url>
+			<uniqueVersion>false</uniqueVersion>
+		</snapshotRepository>
 	</distributionManagement>
-	
+
 </project>
