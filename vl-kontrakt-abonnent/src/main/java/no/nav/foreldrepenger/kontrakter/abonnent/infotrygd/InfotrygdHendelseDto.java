@@ -11,7 +11,7 @@ import no.nav.foreldrepenger.kontrakter.abonnent.HendelseDto;
 
 /**
  * Dto for hendelser fra infotrygd.
- * For å bruke skal denne legges inn i HendelseWrapperDto gjennom HendelseWrapperDto.lagDto
+ * For å bruke skal denne legges inn i HendelseWrapperDto
  * Kan bygges med InfotrygdHendelseDtoBuilder
  */
 public class InfotrygdHendelseDto extends HendelseDto {
