@@ -190,6 +190,11 @@
 					<version>3.1.0</version>
 				</plugin>
 				<plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>3.1.1</version>
+                </plugin>
+				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>flatten-maven-plugin</artifactId>
 					<version>1.0.0</version>
@@ -214,16 +219,6 @@
 						</execution>
 					</executions>
 					<configuration>
-						<bindings>
-							<binding>
-								<fileset>
-									<directory>src/main/resources/</directory>
-									<includes>
-										<include>**/*.xjb</include>
-									</includes>
-								</fileset>
-							</binding>
-						</bindings>
 						<extension>true</extension>
 						<args>
 							<arg>-no-header</arg>
@@ -235,6 +230,9 @@
 						<schemaIncludes>
 							<include>**/*.xsd</include>
 						</schemaIncludes>
+                        <bindingIncludes>
+                            <include>**/*.xjb</include>
+                        </bindingIncludes>
 						<addGeneratedAnnotation>true</addGeneratedAnnotation>
 						<generatePackage>${xsd.packagename}</generatePackage>
 						<plugins>
@@ -319,7 +317,7 @@
 				<artifactId>maven-assembly-plugin</artifactId>
 				<inherited>false</inherited>
 				<configuration>
-				    <runOnlyAtExecutionRoot>true</runOnlyAtExecutionRoot>
+					<runOnlyAtExecutionRoot>true</runOnlyAtExecutionRoot>
 					<descriptors>
 						<descriptor>src/assembly/xsd-assembly.xml</descriptor>
 					</descriptors>

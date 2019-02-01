@@ -71,7 +71,7 @@ public class ParseSoeknadTest {
         LocalDate dato = LocalDate.now();
 
         Soeknad søknad = new Soeknad();
-        søknad.setMottattDato(convertToXMLGregorianCalendar(dato));
+        søknad.setMottattDato(dato);
 
 
         Bruker bruker = new Bruker();
@@ -102,8 +102,8 @@ public class ParseSoeknadTest {
         uttaksperiode.setOenskerSamtidigUttak(false);
         uttaksperiode.setMorsAktivitetIPerioden(mat);
         uttaksperiode.setType(utyp);
-        uttaksperiode.setFom(convertToXMLGregorianCalendar(dato.minusDays(10)));
-        uttaksperiode.setTom(convertToXMLGregorianCalendar(dato.plusDays(10)));
+        uttaksperiode.setFom(dato.minusDays(10));
+        uttaksperiode.setTom(dato.plusDays(10));
 
         Fordeling fordeling = new Fordeling();
         fordeling.setAnnenForelderErInformert(true);
@@ -119,7 +119,7 @@ public class ParseSoeknadTest {
 
         Foedsel relasjonTilBarnet = new Foedsel();
         relasjonTilBarnet.setAntallBarn(1);
-        relasjonTilBarnet.setFoedselsdato(convertToXMLGregorianCalendar(dato.minusDays(10)));
+        relasjonTilBarnet.setFoedselsdato(dato.minusDays(10));
         foreldrepenger.setRelasjonTilBarnet(relasjonTilBarnet);
 
         Medlemskap medlemskap = new Medlemskap();
@@ -127,8 +127,8 @@ public class ParseSoeknadTest {
         medlemskap.setBorINorgeNeste12Mnd(true);
         medlemskap.setINorgeVedFoedselstidspunkt(true);
         Periode periode = new Periode();
-        periode.setFom(convertToXMLGregorianCalendar(dato.minusYears(1)));
-        periode.setTom(convertToXMLGregorianCalendar(dato.plusYears(1)));
+        periode.setFom(dato.minusYears(1));
+        periode.setTom(dato.plusYears(1));
         OppholdNorge oppholdNorge = new OppholdNorge();
         oppholdNorge.setPeriode(periode);
         medlemskap.getOppholdNorge().add(oppholdNorge);
@@ -158,9 +158,5 @@ public class ParseSoeknadTest {
                 SøknadConstants.ADDITIONAL_CLASSES);
 
         assertThat(søknad).isEqualToComparingFieldByFieldRecursively(søknad2);
-    }
-
-    private XMLGregorianCalendar convertToXMLGregorianCalendar(LocalDate localDate) throws DatatypeConfigurationException {
-        return DatatypeFactory.newInstance().newXMLGregorianCalendar(localDate.toString());
     }
 }

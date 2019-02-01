@@ -3,8 +3,7 @@
 	xmlns:xs="http://www.w3.org/2001/XMLSchema" jaxb:extensionBindingPrefixes="xjc">
 
 	<jaxb:globalBindings>
-		<xjc:simple />
-		<xjc:javaType name="java.time.LocalDate" xmlType="xs:date" adapter="no.nav.foreldrepenger.vedtak.v1.DateAdapter" />
-		<xjc:javaType name="java.time.LocalDateTime" xmlType="xs:dateTime" adapter="no.nav.foreldrepenger.vedtak.v1.DateTimeAdapter" />
+		<xjc:javaType name="java.time.LocalDate" xmlType="xs:date" adapter="no.seres.xsd.nav.inntektsmelding_m.DateAdapter" />
+		<xjc:javaType name="java.time.LocalDateTime" xmlType="xs:dateTime" adapter="no.seres.xsd.nav.inntektsmelding_m.DateTimeAdapter" />
 	</jaxb:globalBindings>
 </jaxb:bindings>

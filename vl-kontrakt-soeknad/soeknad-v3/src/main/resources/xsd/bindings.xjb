@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<jaxb:bindings version="2.1" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+<jaxb:bindings version="2.0" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
                xmlns:xs="http://www.w3.org/2001/XMLSchema"
                xmlns:annox="http://annox.dev.java.net"
-               jaxb:extensionBindingPrefixes="inheritance annox">
-
+               xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+               jaxb:extensionBindingPrefixes="inheritance annox xjc">
+    
+    <jaxb:globalBindings>
+        <xjc:javaType name="java.time.LocalDate" xmlType="xs:date" adapter="no.nav.foreldrepenger.søknad.v3.DateAdapter" />
+        <xjc:javaType name="java.time.LocalDateTime" xmlType="xs:dateTime" adapter="no.nav.foreldrepenger.søknad.v3.DateTimeAdapter" />
+    </jaxb:globalBindings>
+    
+    
     <jaxb:bindings schemaLocation="./soeknad-v3.xsd" node="/xs:schema">
         <jaxb:bindings node="//xs:complexType[@name='Soeknad']">
             <annox:annotateClass>
