@@ -4,13 +4,10 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import no.nav.vedtak.sikkerhet.abac.AbacDataAttributter;
-import no.nav.vedtak.sikkerhet.abac.AbacDto;
-
-public class SaksnummerDto implements AbacDto{
+public class SaksnummerDto {
     @NotNull
     @Size(max = 30)
-    @Pattern(regexp = "^[a-zA-Z0-9_-]*$")
+    @Pattern(regexp = "^[a-zA-Z0-9_\\-]*$")
     private String saksnummer;
 
     public SaksnummerDto(String saksnummer) {
@@ -24,8 +21,4 @@ public class SaksnummerDto implements AbacDto{
         return saksnummer;
     }
 
-    @Override
-        public AbacDataAttributter abacAttributter() {
-            return AbacDataAttributter.opprett().leggTilSaksnummer(saksnummer);
-    }
 }

@@ -5,10 +5,7 @@ import javax.validation.Valid;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import no.nav.vedtak.sikkerhet.abac.AbacDataAttributter;
-import no.nav.vedtak.sikkerhet.abac.AbacDto;
-
-public class JournalpostKnyttningDto implements AbacDto {
+public class JournalpostKnyttningDto {
     @Valid
     @JsonProperty
     private SaksnummerDto saksnummerDto;
@@ -38,10 +35,4 @@ public class JournalpostKnyttningDto implements AbacDto {
         return journalpostIdDto.getJournalpostId();
     }
 
-    @Override
-    public AbacDataAttributter abacAttributter() {
-        AbacDataAttributter abacDataAttributter = saksnummerDto.abacAttributter();
-        abacDataAttributter.leggTil(journalpostIdDto.abacAttributter());
-        return abacDataAttributter;
-    }
 }

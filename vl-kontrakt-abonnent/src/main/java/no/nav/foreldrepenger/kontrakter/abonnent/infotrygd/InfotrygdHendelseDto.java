@@ -31,13 +31,13 @@ public class InfotrygdHendelseDto extends HendelseDto {
     private String aktørId;
 
     @NotNull
-    @Pattern(regexp = "^[a-zA-Z0-9_-]*$")
+    @Pattern(regexp = "^[a-zA-Z0-9_\\-]*$")
     @Size(min =2, max = 20)
     private String hendelsetype;
 
     @NotNull
     @Size(min = 2, max = 2)
-    @Pattern(regexp = "^[a-zA-Z0-9_-]*$")
+    @Pattern(regexp = "^[a-zA-Z0-9_\\-]*$")
     private String typeYtelse;
 
     @NotNull

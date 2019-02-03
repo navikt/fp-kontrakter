@@ -14,15 +14,9 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import no.nav.vedtak.sikkerhet.abac.AbacDataAttributter;
-import no.nav.vedtak.sikkerhet.abac.AbacDto;
-import no.nav.vedtak.util.InputValideringRegex;
-import no.nav.vedtak.util.StringUtils;
-
-public class JournalpostMottakDto implements AbacDto {
+public class JournalpostMottakDto {
 
     private static final int PAYLOAD_MAX_CHARS = 48000;
 
@@ -38,11 +32,11 @@ public class JournalpostMottakDto implements AbacDto {
 
     @NotNull
     @Size(max = 8)
-    @Pattern(regexp = InputValideringRegex.KODEVERK)
+    @Pattern(regexp = "^[a-zA-ZæøåÆØÅ_\\-0-9]*")
     private String behandlingstemaOffisiellKode;
 
     @Size(max = 8)
-    @Pattern(regexp = InputValideringRegex.KODEVERK)
+    @Pattern(regexp = "^[a-zA-ZæøåÆØÅ_\\-0-9]*")
     private String dokumentTypeIdOffisiellKode;
 
     private LocalDate forsendelseMottatt;
@@ -50,16 +44,16 @@ public class JournalpostMottakDto implements AbacDto {
     private LocalDateTime forsendelseMottattTidspunkt;
 
     @Size(max = 25)
-    @Pattern(regexp = InputValideringRegex.KODEVERK)
+    @Pattern(regexp = "^[a-zA-ZæøåÆØÅ_\\-0-9]*")
     private String dokumentKategoriOffisiellKode;
 
     @Size(max = 5)
     private String journalForendeEnhet;
 
     @JsonProperty("payloadXml")
-    @Pattern(regexp = InputValideringRegex.BASE64_RFC4648_URLSAFE_WITH_PADDING)
-    @Size(max = PAYLOAD_MAX_CHARS * 2) //Gir plass til 50% flere byte enn characters, det bør holde
-    private String base64EncodedPayloadXml;
+    @Pattern(regexp = "^[a-zA-Z0-9\\-_=]$")
+    @Size(max = PAYLOAD_MAX_CHARS * 2) // Gir plass til 50% flere byte enn characters, det bør holde
+    protected String base64EncodedPayloadXml;
 
     /**
      * Siden XML'en encodes før overføring må lengden på XML'en lagres som en separat property for å kunne valideres.
@@ -68,18 +62,20 @@ public class JournalpostMottakDto implements AbacDto {
     @JsonProperty("payloadLength")
     @Max(PAYLOAD_MAX_CHARS)
     @Min(1)
-    private Integer payloadLength;
+    protected Integer payloadLength;
 
-    public JournalpostMottakDto(String saksnummer, String journalpostId, String behandlingstemaOffisiellKode, String dokumentTypeIdOffisiellKode, LocalDateTime forsendelseMottattTidspunkt, String payloadXml) {
+    public JournalpostMottakDto(String saksnummer, String journalpostId, String behandlingstemaOffisiellKode, String dokumentTypeIdOffisiellKode,
+                                LocalDateTime forsendelseMottattTidspunkt, String payloadXml) {
         this.saksnummer = saksnummer;
         this.journalpostId = journalpostId;
         this.behandlingstemaOffisiellKode = behandlingstemaOffisiellKode;
         this.dokumentTypeIdOffisiellKode = dokumentTypeIdOffisiellKode;
         this.forsendelseMottatt = forsendelseMottattTidspunkt.toLocalDate();
         this.forsendelseMottattTidspunkt = forsendelseMottattTidspunkt;
-        if (!StringUtils.nullOrEmpty(payloadXml)) {
-            byte[] bytes = payloadXml.getBytes(Charset.forName("UTF-8"));
-            this.payloadLength = payloadXml.length();
+        String payload = null;
+        if (payloadXml != null && !(payload = payloadXml.trim()).isEmpty()) {
+            byte[] bytes = payload.getBytes(Charset.forName("UTF-8"));
+            this.payloadLength = payload.length();
             this.base64EncodedPayloadXml = Base64.getUrlEncoder().encodeToString(bytes);
         }
     }
@@ -92,8 +88,8 @@ public class JournalpostMottakDto implements AbacDto {
         return Optional.ofNullable(this.forsendelseId);
     }
 
-    protected JournalpostMottakDto() { 
-        //For Jackson
+    protected JournalpostMottakDto() {
+        // For Jackson
     }
 
     public String getSaksnummer() {
@@ -134,31 +130,6 @@ public class JournalpostMottakDto implements AbacDto {
 
     public void setJournalForendeEnhet(String journalForendeEnhet) {
         this.journalForendeEnhet = journalForendeEnhet;
-    }
-
-    @JsonIgnore
-    public Optional<String> getPayloadXml() {
-        return getPayloadValiderLengde(base64EncodedPayloadXml, payloadLength);
-    }
-
-    static Optional<String> getPayloadValiderLengde(String base64EncodedPayload, Integer deklarertLengde) {
-        if (base64EncodedPayload == null) {
-            return Optional.empty();
-        }
-        if (deklarertLengde == null) {
-            throw JournalpostMottakFeil.FACTORY.manglerPayloadLength().toException();
-        }
-        byte[] bytes = Base64.getUrlDecoder().decode(base64EncodedPayload);
-        String streng = new String(bytes, Charset.forName("UTF-8"));
-        if (streng.length() != deklarertLengde) {
-            throw JournalpostMottakFeil.FACTORY.feilPayloadLength(deklarertLengde, streng.length()).toException();
-        }
-        return Optional.of(streng);
-    }
-
-    @Override
-    public AbacDataAttributter abacAttributter() {
-        return AbacDataAttributter.opprett().leggTilSaksnummer(saksnummer);
     }
 
 }

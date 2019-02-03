@@ -11,12 +11,14 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import no.nav.vedtak.sikkerhet.abac.AbacDataAttributter;
-import no.nav.vedtak.sikkerhet.abac.AbacDto;
-import no.nav.vedtak.util.InputValideringRegex;
+public class VurderFagsystemDto {
 
-public class VurderFagsystemDto implements AbacDto {
+    private static final String BASIS_TEGN = "a-zA-ZæøåÆØÅ\\-0-9";
 
+    private static final String ALFABET_SAMISK = "AaÁáBbCcČčDdĐđEeFfGgHhIiJjKkLlMmNnŊŋOoPpRrSsŠšTtŦŧUuVvZzŽž";
+    private static final String AKSENTER_NORSKE = "éôèÉ";
+    private static final String AKSENTER_ANDRE_AKTUELLE = "öüäÖÜÄ";
+    
     @Digits(integer = 18, fraction = 0)
     private String journalpostId;
     @NotNull
@@ -26,7 +28,7 @@ public class VurderFagsystemDto implements AbacDto {
     private String aktørId;
     @NotNull
     @Size(max = 8)
-    @Pattern(regexp = InputValideringRegex.KODEVERK)
+    @Pattern(regexp = "^[" + BASIS_TEGN + "_]*$")
     private String behandlingstemaOffisiellKode;
 
     @Size(min = 1, max = 9)
@@ -35,11 +37,11 @@ public class VurderFagsystemDto implements AbacDto {
     private LocalDate barnFodselsdato;
     private LocalDate omsorgsovertakelsedato;
     @Size(max = 7) // Endring.length == 7
-    @Pattern(regexp = InputValideringRegex.NAVN)
+    @Pattern(regexp = "^[" + BASIS_TEGN + " .'" + ALFABET_SAMISK + AKSENTER_NORSKE + AKSENTER_ANDRE_AKTUELLE + "]*$")
     private String årsakInnsendingInntektsmelding;
 
     @Size(max = 30)
-    @Pattern(regexp = InputValideringRegex.KODEVERK)
+    @Pattern(regexp = "^[" + BASIS_TEGN + "_]*$")
     private String saksnummer;
 
     @Digits(integer = 19, fraction = 0)
@@ -56,11 +58,11 @@ public class VurderFagsystemDto implements AbacDto {
     private LocalDate startDatoForeldrepengerInntektsmelding;
 
     @Size(max = 8)
-    @Pattern(regexp = InputValideringRegex.KODEVERK)
+    @Pattern(regexp = "^[" + BASIS_TEGN + "_]*$")
     private String dokumentTypeIdOffisiellKode;
 
     @Size(max = 25)
-    @Pattern(regexp = InputValideringRegex.KODEVERK)
+    @Pattern(regexp = "^[" + BASIS_TEGN + "_]*$")
     private String dokumentKategoriOffisiellKode;
 
 
@@ -212,21 +214,6 @@ public class VurderFagsystemDto implements AbacDto {
 
     public void setStartDatoForeldrepengerInntektsmelding(LocalDate startDatoForeldrepengerInntektsmelding) {
         this.startDatoForeldrepengerInntektsmelding = startDatoForeldrepengerInntektsmelding;
-    }
-
-    @Override
-    public AbacDataAttributter abacAttributter() {
-        AbacDataAttributter abacDataAttributter = AbacDataAttributter.opprett()
-                .leggTilAktørId(aktørId);
-
-        if (journalpostId != null) {
-            abacDataAttributter.leggTilJournalPostId(journalpostId, false);
-        }
-
-        if (saksnummer != null) {
-            abacDataAttributter.leggTilSaksnummer(saksnummer);
-        }
-        return abacDataAttributter;
     }
 
 }

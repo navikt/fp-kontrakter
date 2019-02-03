@@ -8,10 +8,7 @@ import javax.validation.Valid;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import no.nav.vedtak.sikkerhet.abac.AbacDataAttributter;
-import no.nav.vedtak.sikkerhet.abac.AbacDto;
-
-public class BehandlendeFagsystemDto implements AbacDto {
+public class BehandlendeFagsystemDto {
     private boolean behandlesIVedtaksløsningen;
     private boolean sjekkMotInfotrygd;
     private boolean manuellVurdering;
@@ -83,8 +80,4 @@ public class BehandlendeFagsystemDto implements AbacDto {
         return Optional.empty();
     }
 
-    @Override
-    public AbacDataAttributter abacAttributter() {
-        return saksnummerDto.abacAttributter();
-    }
 }
