@@ -51,7 +51,7 @@ public class JournalpostMottakDto {
     private String journalForendeEnhet;
 
     @JsonProperty("payloadXml")
-    @Pattern(regexp = "^[a-zA-Z0-9\\-_=]$")
+    @Pattern(regexp = "^[a-zA-Z0-9\\-_=]*$")
     @Size(max = PAYLOAD_MAX_CHARS * 2) // Gir plass til 50% flere byte enn characters, det bør holde
     protected String base64EncodedPayloadXml;
 
