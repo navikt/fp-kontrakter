@@ -28,6 +28,8 @@
             <xsd:element name="ref_delytelse_id" type="felles:LongOpplysning" minOccurs="0"/>
             <xsd:element name="utbetales_til_id" type="felles:StringOpplysning" minOccurs="0"/>
             <xsd:element name="refunderes_id" type="felles:StringOpplysning" minOccurs="0"/>
+            <xsd:element name="kode_status_linje" type="felles:StringOpplysning" minOccurs="0"/>
+            <xsd:element name="status_fom" type="felles:DateOpplysning" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
 
