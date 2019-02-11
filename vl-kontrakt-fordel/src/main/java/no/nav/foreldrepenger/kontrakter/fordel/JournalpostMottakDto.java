@@ -48,6 +48,7 @@ public class JournalpostMottakDto {
     private String dokumentKategoriOffisiellKode;
 
     @Size(max = 5)
+    @Pattern(regexp = "^[a-zA-ZæøåÆØÅ_\\-0-9]*")
     private String journalForendeEnhet;
 
     @JsonProperty("payloadXml")
