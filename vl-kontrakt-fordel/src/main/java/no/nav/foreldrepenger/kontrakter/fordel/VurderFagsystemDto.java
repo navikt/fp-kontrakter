@@ -49,8 +49,10 @@ public class VurderFagsystemDto {
 
     @Pattern(regexp = "\\d{9}|\\d{13}")
     private String virksomhetsnummer;
+    @Digits(integer = 19, fraction = 0)
     private String arbeidsgiverAktørId;
 
+    @Pattern(regexp = "^[" + BASIS_TEGN + " .'" + ALFABET_SAMISK + AKSENTER_NORSKE + AKSENTER_ANDRE_AKTUELLE + "]*$")
     private String arbeidsforholdsid;
     // TODO PFP-57 Opprydding - Fjerne denne fra kontrakten
     private LocalDate forsendelseMottatt;
