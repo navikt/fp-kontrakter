@@ -17,13 +17,14 @@
 		<java.version>10</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.javadoc.skip>true</maven.javadoc.skip>
-	</properties>
+		<avro.version>1.8.2</avro.version></properties>
 
 	<modules>
 		<module>vl-kontrakt-soeknad</module>
 		<module>vl-kontrakt-fordel</module>
 		<module>vl-kontrakt-inntektsmelding</module>
 		<module>vl-kontrakt-fp-feed</module>
+		<module>vl-kontrakt-fp-tilkjent-ytelse</module>
 		<module>vl-kontrakt-abonnent</module>
 		<module>vl-kontrakt-behandlingsprosess-vedtak</module>
 	</modules>
@@ -61,6 +62,12 @@
 				<scope>import</scope>
 				<type>pom</type>
 			</dependency>
+			<dependency>
+				<groupId>org.apache.avro</groupId>
+				<artifactId>avro</artifactId>
+				<version>${avro.version}</version>
+			</dependency>
+
 
 			<!-- Interne modul avhengigheter -->
 			<dependency>
@@ -140,6 +147,12 @@
 
 		<pluginManagement>
 			<plugins>
+				<plugin>
+					<groupId>org.apache.avro</groupId>
+					<artifactId>avro-maven-plugin</artifactId>
+					<version>${avro.version}</version>
+				</plugin>
+
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-source-plugin</artifactId>
@@ -248,6 +261,7 @@
 							</plugin>
 						</plugins>
 					</configuration>
+
 				</plugin>
 			</plugins>
 		</pluginManagement>
