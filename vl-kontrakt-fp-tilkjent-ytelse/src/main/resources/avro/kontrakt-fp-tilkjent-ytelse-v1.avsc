@@ -1,0 +1,64 @@
+{
+  "namespace": "no.nav.foreldrepenger.kontrakter",
+  "name": "TilkjentYtelseV1",
+  "type": "record",
+  "doc": "Dette skjemaet inneholder tilkjent ytelse, også kjent som fordelt resultat.",
+  "fields":[
+    {"name":"aktoerId", "type":"long"},
+    {"name":"saksnummer", "type":"string", "doc":"Fagsakens saksnummer"},
+    {"name":"behandlingId", "type":"long","doc":"BehandlingId fra kildesystemet"},
+    {"name":"forrigeBehandlingId", "type":["null","long"], "doc":"For revurderinger peker dette feltet på forrige behandlingId fra kilkdesystemet"},
+    {"name":"ytelseType", "type":{
+      "name" : "YtelseType",
+      "type" : "enum",
+      "symbols" : ["FP", "ES", "SVP", "SP", "OOP"],
+      "doc" : "FP=foreldrepenger, ES=engangsstønad, SVP=svangerskapspenger, SP=sykepenger, OOP=pleiepenger"
+      }
+    },
+    {"name":"gjelderAdposjon", "type":"boolean", "doc":"Angir om saken gjelder adopsjon." },
+    {"name":"vedtakdato", "logicalType":"date", "type":"int"},
+    {"name":"ansvarligSaksbehandler", "type":"string"},
+    {"name":"ansvarligBeslutter", "type":"string"},
+    {"name":"tilkjentYtelsePerioder", "type":{
+      "type":"array",
+      "items": {
+        "name": "TilkjentYtelsePeriode",
+        "type": "record",
+        "fields": [
+          {"name": "fraOgMedDato", "logicalType": "date", "type":"int"},
+          {"name": "tilOgMedDato", "logicalType": "date", "type":"int"},
+          {"name": "andeler", "type":{
+            "type":"array",
+            "items": {
+              "name":"TilkjentYtelseAndel",
+              "type": "record",
+              "fields": [
+                {"name": "utbetalesTilBruker", "type":"boolean"},
+                {"name": "arbeidsgiverOrganisasjonsnummer", "type":["null","long"], "doc":"Org.nr for arbeidsgiver. Brukes for arbeidsgivers andel når arbeidsgiver er en organisasjon"},
+                {"name": "arbeidsgiverAktørId", "type":["null","long"], "doc":"AktørId for arbeidsgiver. Brukes for arbeidsgivers andel når arbeidsgiver er en privatperson"},
+                {"name": "inntektskategori", "type":["null",{
+                  "name" : "Inntektskategori",
+                  "type" : "enum",
+                  "symbols": ["ARBEIDSAVKLARINGSPENGER", "ARBEIDSTAKER", "ARBEIDSTAKER_UTEN_FERIEPENGER", "DAGMAMMA",
+                              "DAGPENGER","FISKER","FRILANSER","JORDBRUKER","SELVSTENDIG_NÆRINGSDRIVENDE","SJØMANN"]
+                }]},
+                {"name": "satsBeløp", "type": "long", "doc":"Sats-beløp i kroner"},
+                {"name": "satsType", "type": {
+                    "name":"SatsType",
+                    "type":"enum",
+                    "symbols":["DAGSATS", "ENGANGSUTBETALING"]
+                  }
+                },
+                {"name": "utbetalingsgrad", "type": "int"}
+              ]
+            },
+            "doc":"Fordeling ytelse mellom mottakere"
+          }}
+        ]
+      }
+    }}
+  ]
+}
+
+
+
