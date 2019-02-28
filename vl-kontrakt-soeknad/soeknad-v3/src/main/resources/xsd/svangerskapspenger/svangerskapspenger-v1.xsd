@@ -112,6 +112,7 @@
 		<xsd:sequence>
 			<xsd:element name="arbeidsforhold" type="sv:Arbeidsforhold"/>
 			<xsd:element name="behovForTilretteleggingFom" type="xsd:date"/>
+			<xsd:element name="vedlegg" type="xsd:IDREF" maxOccurs="unbounded"/>
 		</xsd:sequence>
 		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
@@ -152,7 +153,6 @@
 			<xsd:extension base="sv:Arbeidsforhold">
 				<xsd:sequence>
 					<xsd:element name="identifikator" type="xsd:string"/>
-					<xsd:element name="vedlegg" type="xsd:IDREF" maxOccurs="unbounded"/>
 				</xsd:sequence>
 				<xsd:anyAttribute processContents="lax"/>
 			</xsd:extension>
@@ -161,6 +161,7 @@
 	<xsd:complexType name="Virksomhet">
 		<xsd:complexContent>
 			<xsd:extension base="sv:Arbeidsgiver">
+				<xsd:sequence/>
 				<xsd:anyAttribute processContents="lax"/>
 			</xsd:extension>
 		</xsd:complexContent>
@@ -176,7 +177,6 @@
 				<xsd:sequence>
 					<xsd:element name="opplysningerOmRisikofaktorer" type="xsd:string"/>
 					<xsd:element name="opplysningerOmTilretteleggingstiltak" type="xsd:string"/>
-					<xsd:element name="vedlegg" type="xsd:IDREF" maxOccurs="unbounded"/>
 				</xsd:sequence>
 				<xsd:anyAttribute processContents="lax"/>
 			</xsd:extension>
@@ -188,7 +188,6 @@
 				<xsd:sequence>
 					<xsd:element name="opplysningerOmRisikofaktorer" type="xsd:string"/>
 					<xsd:element name="opplysningerOmTilretteleggingstiltak" type="xsd:string"/>
-					<xsd:element name="vedlegg" type="xsd:IDREF" maxOccurs="unbounded"/>
 				</xsd:sequence>
 				<xsd:anyAttribute processContents="lax"/>
 			</xsd:extension>
