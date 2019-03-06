@@ -4,6 +4,7 @@ import no.nav.vedtak.felles.xml.soeknad.endringssoeknad.v3.Endringssoeknad;
 import no.nav.vedtak.felles.xml.soeknad.engangsstoenad.v3.Engangsstønad;
 import no.nav.vedtak.felles.xml.soeknad.foreldrepenger.v3.Foreldrepenger;
 import no.nav.vedtak.felles.xml.soeknad.foreldrepenger.v3.ObjectFactory;
+import no.nav.vedtak.felles.xml.soeknad.svangerskapspenger.v1.Svangerskapspenger;
 
 public final class SøknadConstants {
     public static final String NAMESPACE = "urn:no:nav:vedtak:felles:xml:soeknad:v3";
@@ -12,9 +13,14 @@ public final class SøknadConstants {
     public static final String[] ADDITIONAL_XSD_LOCATION = new String[]{
             "xsd/foreldrepenger/foreldrepenger-v3.xsd",
             "xsd/endringssoeknad/endringssoeknad-v3.xsd",
-            "xsd/engangsstoenad/engangsstoenad-v3.xsd"};
+            "xsd/engangsstoenad/engangsstoenad-v3.xsd",
+            "xsd/svangerskapspenger/svangerskapspenger-v1.xsd"};
     public static final Class<?> JAXB_CLASS = no.nav.vedtak.felles.xml.soeknad.v3.Soeknad.class;
-    public static final Class<?>[] ADDITIONAL_CLASSES = {Foreldrepenger.class, Engangsstønad.class, Endringssoeknad.class, ObjectFactory.class, no.nav.vedtak.felles.xml.soeknad.endringssoeknad.v3.ObjectFactory.class, no.nav.vedtak.felles.xml.soeknad.engangsstoenad.v3.ObjectFactory.class};
+    public static final Class<?>[] ADDITIONAL_CLASSES = {Foreldrepenger.class, Engangsstønad.class, Endringssoeknad.class, Svangerskapspenger.class,
+            ObjectFactory.class,
+            no.nav.vedtak.felles.xml.soeknad.endringssoeknad.v3.ObjectFactory.class,
+            no.nav.vedtak.felles.xml.soeknad.engangsstoenad.v3.ObjectFactory.class,
+            no.nav.vedtak.felles.xml.soeknad.svangerskapspenger.v1.ObjectFactory.class};
 
     private SøknadConstants() {
     }
