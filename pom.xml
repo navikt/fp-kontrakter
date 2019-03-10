@@ -17,7 +17,7 @@
 		<java.version>10</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.javadoc.skip>true</maven.javadoc.skip>
-		<avro.version>1.8.2</avro.version></properties>
+    </properties>
 
 	<modules>
 		<module>vl-kontrakt-soeknad</module>
@@ -61,11 +61,6 @@
 				<version>2.9.7</version>
 				<scope>import</scope>
 				<type>pom</type>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.avro</groupId>
-				<artifactId>avro</artifactId>
-				<version>${avro.version}</version>
 			</dependency>
 
 
@@ -123,6 +118,11 @@
 			</dependency>
 			<dependency>
 				<groupId>no.nav.foreldrepenger.kontrakter</groupId>
+				<artifactId>fp-tilkjent-ytelse-v1</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>no.nav.foreldrepenger.kontrakter</groupId>
 				<artifactId>abonnent-v1</artifactId>
 				<version>${project.version}</version>
 			</dependency>
@@ -147,11 +147,6 @@
 
 		<pluginManagement>
 			<plugins>
-				<plugin>
-					<groupId>org.apache.avro</groupId>
-					<artifactId>avro-maven-plugin</artifactId>
-					<version>${avro.version}</version>
-				</plugin>
 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
