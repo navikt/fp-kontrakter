@@ -65,7 +65,7 @@ public class TilkjentYtelseV1 implements TilkjentYtelse {
         return this;
     }
 
-    public TilkjentYtelseV1 setErOpphørEtterSkjæringstidspunkt(boolean erOpphørEtterSkjæringstidspunkt) {
+    public TilkjentYtelseV1 setErOpphørEtterSkjæringstidspunkt(Boolean erOpphørEtterSkjæringstidspunkt) {
         this.erOpphørEtterSkjæringstidspunkt = erOpphørEtterSkjæringstidspunkt;
         return this;
     }
