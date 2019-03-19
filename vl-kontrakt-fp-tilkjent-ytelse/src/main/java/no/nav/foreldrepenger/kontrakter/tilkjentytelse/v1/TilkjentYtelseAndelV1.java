@@ -1,10 +1,12 @@
 package no.nav.foreldrepenger.kontrakter.tilkjentytelse.v1;
 
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.time.Year;
 import java.util.Optional;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -24,12 +26,14 @@ public class TilkjentYtelseAndelV1 {
     private String arbeidsgiverOrgNr;
 
     @Min(0)
-    @Max(Integer.MAX_VALUE)
-    private Long arbeidsgiverAktørId;
+    @Max(Long.MAX_VALUE)
+    @Digits(integer = 10, fraction = 0)
+    private String arbeidsgiverAktørId;
 
     @Min(0)
     @Max(100)
-    private Integer utbetalingsgrad;
+    @Digits(integer = 3, fraction = 2)
+    private BigDecimal utbetalingsgrad;
 
     @NotNull
     private Inntektskategori inntektskategori;
@@ -68,17 +72,17 @@ public class TilkjentYtelseAndelV1 {
         return andel;
     }
 
-    public static TilkjentYtelseAndelV1 tilPrivArbeidsgiver(Inntektskategori inntektskategori, long beløp, SatsType satsType, long arbeidsgiverAktørId) {
+    public static TilkjentYtelseAndelV1 tilPrivArbeidsgiver(Inntektskategori inntektskategori, long beløp, SatsType satsType, String arbeidsgiverAktørId) {
         TilkjentYtelseAndelV1 andel = new TilkjentYtelseAndelV1(inntektskategori, beløp, satsType);
         andel.arbeidsgiverAktørId = arbeidsgiverAktørId;
         return andel;
     }
 
-    public Integer getUtbetalingsgrad() {
+    public BigDecimal getUtbetalingsgrad() {
         return utbetalingsgrad;
     }
 
-    public TilkjentYtelseAndelV1 setUtbetalingsgrad(Integer utbetalingsgrad) {
+    public TilkjentYtelseAndelV1 setUtbetalingsgrad(BigDecimal utbetalingsgrad) {
         this.utbetalingsgrad = utbetalingsgrad;
         return this;
     }
@@ -106,7 +110,7 @@ public class TilkjentYtelseAndelV1 {
         return arbeidsgiverOrgNr;
     }
 
-    public Long getArbeidsgiverAktørId() {
+    public String getArbeidsgiverAktørId() {
         return arbeidsgiverAktørId;
     }
 
@@ -131,7 +135,7 @@ public class TilkjentYtelseAndelV1 {
         this.arbeidsgiverOrgNr = arbeidsgiverOrgNr;
     }
 
-    void setArbeidsgiverAktørId(Long arbeidsgiverAktørId) {
+    void setArbeidsgiverAktørId(String arbeidsgiverAktørId) {
         this.arbeidsgiverAktørId = arbeidsgiverAktørId;
     }
 
