@@ -1,120 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:felles="urn:no:nav:vedtak:felles:xml:soeknad:felles:v3"
-			xmlns:fp="urn:no:nav:vedtak:felles:xml:soeknad:foreldrepenger:v3"
-			xmlns:sv="urn:no:nav:vedtak:felles:xml:soeknad:svangerskapspenger:v1"
-			xmlns:kv="urn:no:nav:vedtak:felles:xml:soeknad:kodeverk:v3"
-			targetNamespace="urn:no:nav:vedtak:felles:xml:soeknad:svangerskapspenger:v1"
-			elementFormDefault="qualified">
-	<xsd:import namespace="urn:no:nav:vedtak:felles:xml:soeknad:felles:v3" schemaLocation="../felles/felles-v3.xsd"/>
-	<xsd:import namespace="urn:no:nav:vedtak:felles:xml:soeknad:foreldrepenger:v3" schemaLocation="../foreldrepenger/foreldrepenger-v3.xsd"/>
-	<xsd:import namespace="urn:no:nav:vedtak:felles:xml:soeknad:kodeverk:v3" schemaLocation="../kodeverk/kodeverk-v3.xsd"/>
-	<xsd:complexType name="Svangerskapspenger">
-		<xsd:annotation>
-			<xsd:documentation/>
-		</xsd:annotation>
-		<xsd:complexContent>
-			<xsd:extension base="felles:Ytelse">
-				<xsd:sequence>
-					<xsd:element name="termindato" type="xsd:date"/>
-					<xsd:element name="fødselsdato" type="xsd:date" minOccurs="0"/>
-					<xsd:element name="medlemskap" type="felles:Medlemskap"/>
-					<xsd:element name="opptjening" type="fp:Opptjening" minOccurs="0"/>
-					<xsd:element name="tilretteleggingListe" type="sv:TilretteleggingListe"/>
-				</xsd:sequence>
-				<xsd:anyAttribute processContents="lax"/>
-			</xsd:extension>
-		</xsd:complexContent>
-	</xsd:complexType>
-	<xsd:complexType name="TilretteleggingListe">
-		<xsd:sequence>
-			<xsd:element name="tilrettelegging" type="sv:Tilrettelegging" maxOccurs="unbounded"/>
-		</xsd:sequence>
-		<xsd:anyAttribute processContents="lax"/>
-	</xsd:complexType>
-	<xsd:complexType name="Tilrettelegging" abstract="true">
-		<xsd:sequence>
-			<xsd:element name="arbeidsforhold" type="sv:Arbeidsforhold" minOccurs="0"/>
-			<xsd:element name="behovForTilretteleggingFom" type="xsd:date"/>
-			<xsd:element name="vedlegg" type="xsd:IDREF" maxOccurs="unbounded"/>
-		</xsd:sequence>
-		<xsd:anyAttribute processContents="lax"/>
-	</xsd:complexType>
-	<xsd:complexType name="HelTilrettelegging">
-		<xsd:complexContent>
-			<xsd:extension base="sv:Tilrettelegging">
-				<xsd:sequence>
-					<xsd:element name="tilrettelagtArbeidFom" type="xsd:date"/>
-				</xsd:sequence>
-				<xsd:anyAttribute processContents="lax"/>
-			</xsd:extension>
-		</xsd:complexContent>
-	</xsd:complexType>
-	<xsd:complexType name="DelvisTilrettelegging">
-		<xsd:complexContent>
-			<xsd:extension base="sv:Tilrettelegging">
-				<xsd:sequence>
-					<xsd:element name="tilrettelagtArbeidFom" type="xsd:date"/>
-					<xsd:element name="stillingsprosent" type="xsd:decimal"/>
-				</xsd:sequence>
-				<xsd:anyAttribute processContents="lax"/>
-			</xsd:extension>
-		</xsd:complexContent>
-	</xsd:complexType>
-	<xsd:complexType name="IngenTilrettelegging">
-		<xsd:complexContent>
-			<xsd:extension base="sv:Tilrettelegging">
-				<xsd:sequence>
-					<xsd:element name="slutteArbeidFom" type="xsd:date"/>
-				</xsd:sequence>
-				<xsd:anyAttribute processContents="lax"/>
-			</xsd:extension>
-		</xsd:complexContent>
-	</xsd:complexType>
-	<xsd:complexType name="Arbeidsforhold" abstract="true"/>
-	<xsd:complexType name="Arbeidsgiver" abstract="true">
-		<xsd:complexContent>
-			<xsd:extension base="sv:Arbeidsforhold">
-				<xsd:sequence>
-					<xsd:element name="identifikator" type="xsd:string"/>
-				</xsd:sequence>
-				<xsd:anyAttribute processContents="lax"/>
-			</xsd:extension>
-		</xsd:complexContent>
-	</xsd:complexType>
-	<xsd:complexType name="Virksomhet">
-		<xsd:complexContent>
-			<xsd:extension base="sv:Arbeidsgiver">
-				<xsd:sequence/>
-				<xsd:anyAttribute processContents="lax"/>
-			</xsd:extension>
-		</xsd:complexContent>
-	</xsd:complexType>
-	<xsd:complexType name="PrivatArbeidsgiver">
-		<xsd:complexContent>
-			<xsd:extension base="sv:Arbeidsgiver"/>
-		</xsd:complexContent>
-	</xsd:complexType>
-	<xsd:complexType name="Frilanser">
-		<xsd:complexContent>
-			<xsd:extension base="sv:Arbeidsforhold">
-				<xsd:sequence>
-					<xsd:element name="opplysningerOmRisikofaktorer" type="xsd:string"/>
-					<xsd:element name="opplysningerOmTilretteleggingstiltak" type="xsd:string"/>
-				</xsd:sequence>
-				<xsd:anyAttribute processContents="lax"/>
-			</xsd:extension>
-		</xsd:complexContent>
-	</xsd:complexType>
-	<xsd:complexType name="SelvstendigNæringsdrivende">
-		<xsd:complexContent>
-			<xsd:extension base="sv:Arbeidsforhold">
-				<xsd:sequence>
-					<xsd:element name="opplysningerOmRisikofaktorer" type="xsd:string"/>
-					<xsd:element name="opplysningerOmTilretteleggingstiltak" type="xsd:string"/>
-				</xsd:sequence>
-				<xsd:anyAttribute processContents="lax"/>
-			</xsd:extension>
-		</xsd:complexContent>
-	</xsd:complexType>
-	<xsd:element name="svangerskapspenger" type="sv:Svangerskapspenger"/>
+            xmlns:fp="urn:no:nav:vedtak:felles:xml:soeknad:foreldrepenger:v3"
+            xmlns:sv="urn:no:nav:vedtak:felles:xml:soeknad:svangerskapspenger:v1"
+            targetNamespace="urn:no:nav:vedtak:felles:xml:soeknad:svangerskapspenger:v1"
+            elementFormDefault="qualified">
+    <xsd:import namespace="urn:no:nav:vedtak:felles:xml:soeknad:felles:v3" schemaLocation="../felles/felles-v3.xsd"/>
+    <xsd:import namespace="urn:no:nav:vedtak:felles:xml:soeknad:foreldrepenger:v3"
+                schemaLocation="../foreldrepenger/foreldrepenger-v3.xsd"/>
+    <xsd:import namespace="urn:no:nav:vedtak:felles:xml:soeknad:kodeverk:v3"
+                schemaLocation="../kodeverk/kodeverk-v3.xsd"/>
+    <xsd:complexType name="Svangerskapspenger">
+        <xsd:annotation>
+            <xsd:documentation/>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="felles:Ytelse">
+                <xsd:sequence>
+                    <xsd:element name="termindato" type="xsd:date"/>
+                    <xsd:element name="fødselsdato" type="xsd:date" minOccurs="0"/>
+                    <xsd:element name="medlemskap" type="felles:Medlemskap"/>
+                    <xsd:element name="opptjening" type="fp:Opptjening" minOccurs="0"/>
+                    <xsd:element name="tilretteleggingListe" type="sv:TilretteleggingListe"/>
+                </xsd:sequence>
+                <xsd:anyAttribute processContents="lax"/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="TilretteleggingListe">
+        <xsd:sequence>
+            <xsd:element name="tilrettelegging" type="sv:Tilrettelegging" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:anyAttribute processContents="lax"/>
+    </xsd:complexType>
+    <xsd:complexType name="Tilrettelegging">
+        <xsd:sequence>
+            <xsd:element name="helTilrettelegging" type="sv:HelTilrettelegging" minOccurs="0"/>
+            <xsd:element name="delvisTilrettelegging" type="sv:DelvisTilrettelegging" minOccurs="0"/>
+            <xsd:element name="ingenTilrettelegging" type="sv:IngenTilrettelegging" minOccurs="0"/>
+            <xsd:element name="arbeidsforhold" type="sv:Arbeidsforhold" minOccurs="0"/>
+            <xsd:element name="behovForTilretteleggingFom" type="xsd:date"/>
+            <xsd:element name="vedlegg" type="xsd:IDREF" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:anyAttribute processContents="lax"/>
+    </xsd:complexType>
+    <xsd:complexType name="HelTilrettelegging">
+        <xsd:sequence>
+            <xsd:element name="tilrettelagtArbeidFom" type="xsd:date"/>
+        </xsd:sequence>
+        <xsd:anyAttribute processContents="lax"/>
+    </xsd:complexType>
+    <xsd:complexType name="DelvisTilrettelegging">
+        <xsd:sequence>
+            <xsd:element name="tilrettelagtArbeidFom" type="xsd:date"/>
+            <xsd:element name="stillingsprosent" type="xsd:decimal"/>
+        </xsd:sequence>
+        <xsd:anyAttribute processContents="lax"/>
+    </xsd:complexType>
+    <xsd:complexType name="IngenTilrettelegging">
+        <xsd:sequence>
+            <xsd:element name="slutteArbeidFom" type="xsd:date"/>
+        </xsd:sequence>
+        <xsd:anyAttribute processContents="lax"/>
+    </xsd:complexType>
+    <xsd:complexType name="Arbeidsforhold" abstract="true"/>
+    <xsd:complexType name="Arbeidsgiver" abstract="true">
+        <xsd:complexContent>
+            <xsd:extension base="sv:Arbeidsforhold">
+                <xsd:sequence>
+                    <xsd:element name="identifikator" type="xsd:string"/>
+                </xsd:sequence>
+                <xsd:anyAttribute processContents="lax"/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="Virksomhet">
+        <xsd:complexContent>
+            <xsd:extension base="sv:Arbeidsgiver">
+                <xsd:sequence/>
+                <xsd:anyAttribute processContents="lax"/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="PrivatArbeidsgiver">
+        <xsd:complexContent>
+            <xsd:extension base="sv:Arbeidsgiver"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="Frilanser">
+        <xsd:complexContent>
+            <xsd:extension base="sv:Arbeidsforhold">
+                <xsd:sequence>
+                    <xsd:element name="opplysningerOmRisikofaktorer" type="xsd:string"/>
+                    <xsd:element name="opplysningerOmTilretteleggingstiltak" type="xsd:string"/>
+                </xsd:sequence>
+                <xsd:anyAttribute processContents="lax"/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="SelvstendigNæringsdrivende">
+        <xsd:complexContent>
+            <xsd:extension base="sv:Arbeidsforhold">
+                <xsd:sequence>
+                    <xsd:element name="opplysningerOmRisikofaktorer" type="xsd:string"/>
+                    <xsd:element name="opplysningerOmTilretteleggingstiltak" type="xsd:string"/>
+                </xsd:sequence>
+                <xsd:anyAttribute processContents="lax"/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="svangerskapspenger" type="sv:Svangerskapspenger"/>
 </xsd:schema>
