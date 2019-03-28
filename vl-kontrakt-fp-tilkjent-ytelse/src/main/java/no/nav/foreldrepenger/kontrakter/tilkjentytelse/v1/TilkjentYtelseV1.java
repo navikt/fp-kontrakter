@@ -98,7 +98,9 @@ public class TilkjentYtelseV1 implements TilkjentYtelse {
         FRILANSER,
         JORDBRUKER,
         SELVSTENDIG_NÆRINGSDRIVENDE,
-        SJØMANN;
+        SJØMANN,
+        IKKE_RELEVANT //brukes for engangstønad
+        ;
     }
 
     public enum SatsType {

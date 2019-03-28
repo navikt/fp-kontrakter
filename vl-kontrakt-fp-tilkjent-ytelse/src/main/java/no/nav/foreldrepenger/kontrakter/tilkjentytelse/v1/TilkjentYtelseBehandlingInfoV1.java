@@ -12,8 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class TilkjentYtelseBehandlingInfoV1 {
     @NotNull
-    @Min(0)
-    @Max(Integer.MAX_VALUE)
+    @Size(min = 13, max = 13)
+    @Pattern(regexp = "^\\d*$")
     @JsonProperty(value = "aktoerId", index = 0)
     private String aktørId;
     @NotNull
@@ -32,6 +32,7 @@ public class TilkjentYtelseBehandlingInfoV1 {
     @NotNull
     private LocalDate vedtaksdato;
     @NotNull
+    @Size(min = 1, max = 7)
     @Pattern(regexp = "^[A-Za-z0-9]*$")
     private String ansvarligSaksbehandler;
 
@@ -97,8 +98,8 @@ public class TilkjentYtelseBehandlingInfoV1 {
         return this;
     }
 
-    public TilkjentYtelseBehandlingInfoV1 setVedtaksdator(LocalDate vedtaksdator) {
-        this.vedtaksdato = vedtaksdator;
+    public TilkjentYtelseBehandlingInfoV1 setVedtaksdato(LocalDate vedtaksdato) {
+        this.vedtaksdato = vedtaksdato;
         return this;
     }
 
