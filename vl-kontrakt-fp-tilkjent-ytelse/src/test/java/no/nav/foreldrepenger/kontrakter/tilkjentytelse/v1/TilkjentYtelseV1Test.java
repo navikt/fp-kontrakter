@@ -36,16 +36,16 @@ public class TilkjentYtelseV1Test {
                 .setAktørId("90000123")
                 .setSaksnummer("2525253")
                 .setBehandlingId(100000123)
-                .setVedtaksdator(LocalDate.of(2019, 3, 10))
+                .setVedtaksdato(LocalDate.of(2019, 3, 10))
                 .setGjelderAdopsjon(false)
                 .setAnsvarligSaksbehandler("Z000001")
                 .setYtelseType(TilkjentYtelseV1.YtelseType.FORELDREPENGER);
         var andeler1 = new ArrayList<TilkjentYtelseAndelV1>();
         andeler1.add(TilkjentYtelseAndelV1.tilBruker(FRILANSER, 100L, DAGSATS));
-        andeler1.add(TilkjentYtelseAndelV1.tilOrgnrArbeidsgiver(ARBEIDSTAKER, 1000L, DAGSATS, "123123123"));
+        andeler1.add(TilkjentYtelseAndelV1.refusjon(ARBEIDSTAKER, 1000L, DAGSATS).medArbeidsgiverOrgNr("123123123"));
         var andeler2 = new ArrayList<TilkjentYtelseAndelV1>();
         andeler2.add(TilkjentYtelseAndelV1.tilBruker(FRILANSER, 135L, DAGSATS));
-        andeler2.add(TilkjentYtelseAndelV1.tilOrgnrArbeidsgiver(ARBEIDSTAKER, 1586L, DAGSATS, "123123123").medFeriepenger(Year.of(2018), 187));
+        andeler2.add(TilkjentYtelseAndelV1.refusjon(ARBEIDSTAKER, 1586L, DAGSATS).medArbeidsgiverOrgNr("123123123").medFeriepenger(Year.of(2018), 187));
 
         var perioder = new ArrayList<TilkjentYtelsePeriodeV1>();
         perioder.add(new TilkjentYtelsePeriodeV1(LocalDate.of(2018, 12, 24), LocalDate.of(2019, 2, 28), andeler1));
@@ -66,7 +66,7 @@ public class TilkjentYtelseV1Test {
                 .setAktørId("90000123")
                 .setSaksnummer("2525253")
                 .setBehandlingId(100000123)
-                .setVedtaksdator(LocalDate.of(2019, 3, 10))
+                .setVedtaksdato(LocalDate.of(2019, 3, 10))
                 .setGjelderAdopsjon(false)
                 .setAnsvarligSaksbehandler("Z000001")
                 .setYtelseType(TilkjentYtelseV1.YtelseType.FORELDREPENGER);

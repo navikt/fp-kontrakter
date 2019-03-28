@@ -25,9 +25,9 @@ public class TilkjentYtelseAndelV1 {
     @Pattern(regexp = "^\\d*$")
     private String arbeidsgiverOrgNr;
 
-    @Min(0)
-    @Max(Long.MAX_VALUE)
-    @Digits(integer = 10, fraction = 0)
+    @Size(min = 13, max = 13)
+    @Pattern(regexp = "^\\d*$")
+    @JsonProperty("arbeidsgiverAktoerId")
     private String arbeidsgiverAktørId;
 
     @Min(0)
@@ -66,16 +66,18 @@ public class TilkjentYtelseAndelV1 {
         return andel;
     }
 
-    public static TilkjentYtelseAndelV1 tilOrgnrArbeidsgiver(Inntektskategori inntektskategori, long beløp, SatsType satsType, String arbeidsgiverOrgNr) {
-        TilkjentYtelseAndelV1 andel = new TilkjentYtelseAndelV1(inntektskategori, beløp, satsType);
-        andel.arbeidsgiverOrgNr = arbeidsgiverOrgNr;
-        return andel;
+    public static TilkjentYtelseAndelV1 refusjon(Inntektskategori inntektskategori, long beløp, SatsType satsType) {
+        return new TilkjentYtelseAndelV1(inntektskategori, beløp, satsType);
     }
 
-    public static TilkjentYtelseAndelV1 tilPrivArbeidsgiver(Inntektskategori inntektskategori, long beløp, SatsType satsType, String arbeidsgiverAktørId) {
-        TilkjentYtelseAndelV1 andel = new TilkjentYtelseAndelV1(inntektskategori, beløp, satsType);
-        andel.arbeidsgiverAktørId = arbeidsgiverAktørId;
-        return andel;
+    public TilkjentYtelseAndelV1 medArbeidsgiverOrgNr(String arbeidsgiverOrgNr) {
+        this.arbeidsgiverOrgNr = arbeidsgiverOrgNr;
+        return this;
+    }
+
+    public TilkjentYtelseAndelV1 medArbeidsgiverAktørId(String arbeidsgiverAktørId) {
+        this.arbeidsgiverAktørId = arbeidsgiverAktørId;
+        return this;
     }
 
     public BigDecimal getUtbetalingsgrad() {
@@ -88,11 +90,11 @@ public class TilkjentYtelseAndelV1 {
     }
 
     public void kryssvalider() throws ParseException {
-        if (utbetalesTilBruker && arbeidsgiverAktørId != null) {
-            throw new ParseException("Inkonsistente data, utbetales til bruker kombinert med arbeidsgiverAktørId", 0);
+        if (utbetalesTilBruker && arbeidsgiverAktørId != null && inntektskategori != Inntektskategori.ARBEIDSTAKER) {
+            throw new ParseException("Inkonsistente data, utbetales til bruker kombinert med arbeidsgiverAktørId uten inntektskategori=arbeidstaker", 0);
         }
-        if (utbetalesTilBruker && arbeidsgiverOrgNr != null) {
-            throw new ParseException("Inkonsistente data, utbetales til bruker kombinert med arbeidsgiverOrgNr", 0);
+        if (utbetalesTilBruker && arbeidsgiverOrgNr != null && inntektskategori != Inntektskategori.ARBEIDSTAKER) {
+            throw new ParseException("Inkonsistente data, utbetales til bruker kombinert med arbeidsgiverOrgNr uten inntektskategori=arbeidstaker", 0);
         }
         if (arbeidsgiverAktørId != null && arbeidsgiverOrgNr != null) {
             throw new ParseException("Inkonsistente data, har både arbeidsgiverOrgNr og arbeidsgiverAktørId", 0);
