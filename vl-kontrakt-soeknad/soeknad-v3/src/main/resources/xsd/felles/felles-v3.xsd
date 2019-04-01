@@ -41,6 +41,7 @@
             <xsd:extension base="felles:SoekersRelasjonTilBarnet">
                 <xsd:sequence>
                     <xsd:element name="foedselsdato" type="xsd:date"/>
+                    <xsd:element name="termindato" type="xsd:date" minOccurs="0"/>
                 </xsd:sequence>
                 <xsd:anyAttribute processContents="lax"/>
             </xsd:extension>
