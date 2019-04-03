@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import no.nav.foreldrepenger.kontrakter.abonnent.infotrygd.InfotrygdHendelseDto;
 import no.nav.foreldrepenger.kontrakter.abonnent.tps.DødHendelseDto;
+import no.nav.foreldrepenger.kontrakter.abonnent.tps.DødfødselHendelseDto;
 import no.nav.foreldrepenger.kontrakter.abonnent.tps.FødselHendelseDto;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -17,6 +18,7 @@ import no.nav.foreldrepenger.kontrakter.abonnent.tps.FødselHendelseDto;
 @JsonSubTypes({
         @JsonSubTypes.Type(value = FødselHendelseDto.class, name = FødselHendelseDto.HENDELSE_TYPE),
         @JsonSubTypes.Type(value = DødHendelseDto.class, name = DødHendelseDto.HENDELSE_TYPE),
+        @JsonSubTypes.Type(value = DødfødselHendelseDto.class, name = DødfødselHendelseDto.HENDELSE_TYPE),
         @JsonSubTypes.Type(value = InfotrygdHendelseDto.class, name = InfotrygdHendelseDto.HENDELSE_TYPE)
 })
 public abstract class HendelseDto {
