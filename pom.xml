@@ -27,6 +27,7 @@
 		<module>vl-kontrakt-fp-tilkjent-ytelse</module>
 		<module>vl-kontrakt-abonnent</module>
 		<module>vl-kontrakt-behandlingsprosess-vedtak</module>
+		<module>vedtatt-ytelse</module>
 	</modules>
 
 	<dependencyManagement>
@@ -124,6 +125,11 @@
 			<dependency>
 				<groupId>no.nav.foreldrepenger.kontrakter</groupId>
 				<artifactId>abonnent-v1</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>no.nav.foreldrepenger.kontrakter</groupId>
+				<artifactId>vedtatt-ytelse</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 		</dependencies>
