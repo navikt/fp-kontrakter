@@ -2,11 +2,15 @@ package no.nav.vedtak.ytelse;
 
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Kodeverk {
 
     @NotNull
+    @JsonProperty("kodeverk")
     private String kodeverk;
     @NotNull
+    @JsonProperty("kode")
     private String kode;
 
     public Kodeverk() {

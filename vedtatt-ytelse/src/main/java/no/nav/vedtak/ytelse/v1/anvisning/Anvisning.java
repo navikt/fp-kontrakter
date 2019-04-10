@@ -1,21 +1,29 @@
 package no.nav.vedtak.ytelse.v1.anvisning;
 
-import java.math.BigDecimal;
-
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import no.nav.vedtak.ytelse.Desimaltall;
 import no.nav.vedtak.ytelse.Periode;
 
 public class Anvisning {
 
     @Valid
+    @JsonProperty("periode")
     private Periode periode;
+
     @NotNull
-    private BigDecimal beløp;
+    @JsonProperty("beløp")
+    private Desimaltall beløp;
+
     @NotNull
-    private BigDecimal dagsats;
-    private BigDecimal utbetalingsgrad;
+    @JsonProperty("dagsats")
+    private Desimaltall dagsats;
+
+    @JsonProperty("utbetalingsgrad")
+    private Desimaltall utbetalingsgrad;
 
     public Anvisning() {
     }
@@ -28,27 +36,27 @@ public class Anvisning {
         this.periode = periode;
     }
 
-    public BigDecimal getBeløp() {
+    public Desimaltall getBeløp() {
         return beløp;
     }
 
-    public void setBeløp(BigDecimal beløp) {
+    public void setBeløp(Desimaltall beløp) {
         this.beløp = beløp;
     }
 
-    public BigDecimal getDagsats() {
+    public Desimaltall getDagsats() {
         return dagsats;
     }
 
-    public void setDagsats(BigDecimal dagsats) {
+    public void setDagsats(Desimaltall dagsats) {
         this.dagsats = dagsats;
     }
 
-    public BigDecimal getUtbetalingsgrad() {
+    public Desimaltall getUtbetalingsgrad() {
         return utbetalingsgrad;
     }
 
-    public void setUtbetalingsgrad(BigDecimal utbetalingsgrad) {
+    public void setUtbetalingsgrad(Desimaltall utbetalingsgrad) {
         this.utbetalingsgrad = utbetalingsgrad;
     }
 }
