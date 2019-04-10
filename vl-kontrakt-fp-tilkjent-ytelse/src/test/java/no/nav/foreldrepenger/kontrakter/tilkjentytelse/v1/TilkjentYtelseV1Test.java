@@ -11,7 +11,7 @@ import java.time.LocalDate;
 import java.time.Year;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Optional;
+import java.util.List;
 
 import org.junit.Test;
 
@@ -45,7 +45,7 @@ public class TilkjentYtelseV1Test {
         andeler1.add(TilkjentYtelseAndelV1.refusjon(ARBEIDSTAKER, 1000L, DAGSATS).medArbeidsgiverOrgNr("123123123"));
         var andeler2 = new ArrayList<TilkjentYtelseAndelV1>();
         andeler2.add(TilkjentYtelseAndelV1.tilBruker(FRILANSER, 135L, DAGSATS));
-        andeler2.add(TilkjentYtelseAndelV1.refusjon(ARBEIDSTAKER, 1586L, DAGSATS).medArbeidsgiverOrgNr("123123123").medFeriepenger(Year.of(2018), 187));
+        andeler2.add(TilkjentYtelseAndelV1.refusjon(ARBEIDSTAKER, 1586L, DAGSATS).medArbeidsgiverOrgNr("123123123").leggTilFeriepenger(Year.of(2018), 187));
 
         var perioder = new ArrayList<TilkjentYtelsePeriodeV1>();
         perioder.add(new TilkjentYtelsePeriodeV1(LocalDate.of(2018, 12, 24), LocalDate.of(2019, 2, 28), andeler1));
@@ -57,7 +57,7 @@ public class TilkjentYtelseV1Test {
         String resultat = mapper.writeValueAsString(tilkjentYtelseV1);
 
         //hvis du endrer noe slik at denne testen feiler, har du gjort noe galt! Endringene du ønsker krever at du oppretter en ny versjon av TilkjentYtelse
-        assertThat(resultat).isEqualTo("{\"version\":\"1.0\",\"behandingsinfo\":{\"saksnummer\":\"2525253\",\"behandlingId\":100000123,\"ytelseType\":\"FORELDREPENGER\",\"gjelderAdopsjon\":false,\"vedtaksdato\":\"2019-03-10\",\"ansvarligSaksbehandler\":\"Z000001\",\"aktoerId\":\"90000123\"},\"perioder\":[{\"fom\":\"2018-12-24\",\"tom\":\"2019-02-28\",\"andeler\":[{\"utbetalesTilBruker\":true,\"inntektskategori\":\"FRILANSER\",\"satsType\":\"DAGSATS\",\"satsBeloep\":100},{\"utbetalesTilBruker\":false,\"arbeidsgiverOrgNr\":\"123123123\",\"inntektskategori\":\"ARBEIDSTAKER\",\"satsType\":\"DAGSATS\",\"satsBeloep\":1000}]},{\"fom\":\"2019-03-01\",\"tom\":\"2019-03-31\",\"andeler\":[{\"utbetalesTilBruker\":true,\"inntektskategori\":\"FRILANSER\",\"satsType\":\"DAGSATS\",\"satsBeloep\":135},{\"utbetalesTilBruker\":false,\"arbeidsgiverOrgNr\":\"123123123\",\"inntektskategori\":\"ARBEIDSTAKER\",\"satsType\":\"DAGSATS\",\"feriepenger\":{\"opptjeningsaar\":2018,\"beloep\":187},\"satsBeloep\":1586}]}],\"erOpphoer\":true,\"erOpphoerEtterSkjaeringTidspunkt\":false}");
+        assertThat(resultat).isEqualTo("{\"version\":\"1.0\",\"behandingsinfo\":{\"saksnummer\":\"2525253\",\"behandlingId\":100000123,\"ytelseType\":\"FORELDREPENGER\",\"gjelderAdopsjon\":false,\"vedtaksdato\":\"2019-03-10\",\"ansvarligSaksbehandler\":\"Z000001\",\"aktoerId\":\"90000123\"},\"perioder\":[{\"fom\":\"2018-12-24\",\"tom\":\"2019-02-28\",\"andeler\":[{\"utbetalesTilBruker\":true,\"inntektskategori\":\"FRILANSER\",\"satsType\":\"DAGSATS\",\"satsBeloep\":100},{\"utbetalesTilBruker\":false,\"arbeidsgiverOrgNr\":\"123123123\",\"inntektskategori\":\"ARBEIDSTAKER\",\"satsType\":\"DAGSATS\",\"satsBeloep\":1000}]},{\"fom\":\"2019-03-01\",\"tom\":\"2019-03-31\",\"andeler\":[{\"utbetalesTilBruker\":true,\"inntektskategori\":\"FRILANSER\",\"satsType\":\"DAGSATS\",\"satsBeloep\":135},{\"utbetalesTilBruker\":false,\"arbeidsgiverOrgNr\":\"123123123\",\"inntektskategori\":\"ARBEIDSTAKER\",\"satsType\":\"DAGSATS\",\"feriepenger\":[{\"opptjeningsaar\":2018,\"beloep\":187}],\"satsBeloep\":1586}]}],\"erOpphoer\":true,\"erOpphoerEtterSkjaeringTidspunkt\":false}");
     }
 
     @Test
@@ -71,7 +71,7 @@ public class TilkjentYtelseV1Test {
                 .setAnsvarligSaksbehandler("Z000001")
                 .setYtelseType(TilkjentYtelseV1.YtelseType.FORELDREPENGER);
         var andeler = new ArrayList<TilkjentYtelseAndelV1>();
-        andeler.add(TilkjentYtelseAndelV1.tilBruker(FRILANSER, 100L, DAGSATS).medFeriepenger(Year.of(2018), 12));
+        andeler.add(TilkjentYtelseAndelV1.tilBruker(FRILANSER, 100L, DAGSATS).leggTilFeriepenger(Year.of(2018), 12));
 
         var perioder = new ArrayList<TilkjentYtelsePeriodeV1>();
         perioder.add(new TilkjentYtelsePeriodeV1(LocalDate.of(2018, 12, 24), LocalDate.of(2019, 2, 28), andeler));
@@ -87,15 +87,15 @@ public class TilkjentYtelseV1Test {
 
         assertThat(ty.getEndringsdato()).isEqualTo(LocalDate.of(2018, 12, 27));
         TilkjentYtelseAndelV1 andel = ty.getPerioder().iterator().next().getAndeler().iterator().next();
-        Optional<TilkjentYtelseFeriepengerV1> feriepenger = andel.getFeriepenger();
-        assertThat(feriepenger).isPresent();
-        assertThat(feriepenger.get().getBeløp()).isEqualTo(12);
-        assertThat(feriepenger.get().getOpptjeningsår()).isEqualTo(2018);
+        List<TilkjentYtelseFeriepengerV1> feriepenger = andel.getFeriepenger();
+        assertThat(feriepenger).hasSize(1);
+        assertThat(feriepenger.get(0).getBeløp()).isEqualTo(12);
+        assertThat(feriepenger.get(0).getOpptjeningsår()).isEqualTo(2018);
     }
 
     @Test
     public void skal_deserialisere() throws IOException, ParseException {
-        TilkjentYtelse resultat = mapper.readValue("{\"version\":\"1.0\",\"behandingsinfo\":{\"saksnummer\":\"2525253\",\"behandlingId\":100000123,\"ytelseType\":\"FORELDREPENGER\",\"gjelderAdopsjon\":false,\"vedtaksdato\":\"2019-03-10\",\"ansvarligSaksbehandler\":\"Z000001\",\"aktoerId\":\"90000123\"},\"perioder\":[{\"fom\":\"2018-12-24\",\"tom\":\"2019-02-28\",\"andeler\":[{\"utbetalesTilBruker\":true,\"inntektskategori\":\"FRILANSER\",\"satsType\":\"DAGSATS\",\"satsBeloep\":100},{\"utbetalesTilBruker\":false,\"arbeidsgiverOrgNr\":\"123123123\",\"inntektskategori\":\"ARBEIDSTAKER\",\"satsType\":\"DAGSATS\",\"satsBeloep\":1000}]},{\"fom\":\"2019-03-01\",\"tom\":\"2019-03-31\",\"andeler\":[{\"utbetalesTilBruker\":true,\"inntektskategori\":\"FRILANSER\",\"satsType\":\"DAGSATS\",\"satsBeloep\":135},{\"utbetalesTilBruker\":false,\"arbeidsgiverOrgNr\":\"123123123\",\"inntektskategori\":\"ARBEIDSTAKER\",\"satsType\":\"DAGSATS\",\"feriepenger\":{\"opptjeningsaar\":2018,\"beloep\":187},\"satsBeloep\":1586}]}],\"erOpphoer\":true,\"erOpphoerEtterSkjaeringTidspunkt\":false}", TilkjentYtelse.class);
+        TilkjentYtelse resultat = mapper.readValue("{\"version\":\"1.0\",\"behandingsinfo\":{\"saksnummer\":\"2525253\",\"behandlingId\":100000123,\"ytelseType\":\"FORELDREPENGER\",\"gjelderAdopsjon\":false,\"vedtaksdato\":\"2019-03-10\",\"ansvarligSaksbehandler\":\"Z000001\",\"aktoerId\":\"90000123\"},\"perioder\":[{\"fom\":\"2018-12-24\",\"tom\":\"2019-02-28\",\"andeler\":[{\"utbetalesTilBruker\":true,\"inntektskategori\":\"FRILANSER\",\"satsType\":\"DAGSATS\",\"satsBeloep\":100},{\"utbetalesTilBruker\":false,\"arbeidsgiverOrgNr\":\"123123123\",\"inntektskategori\":\"ARBEIDSTAKER\",\"satsType\":\"DAGSATS\",\"satsBeloep\":1000}]},{\"fom\":\"2019-03-01\",\"tom\":\"2019-03-31\",\"andeler\":[{\"utbetalesTilBruker\":true,\"inntektskategori\":\"FRILANSER\",\"satsType\":\"DAGSATS\",\"satsBeloep\":135},{\"utbetalesTilBruker\":false,\"arbeidsgiverOrgNr\":\"123123123\",\"inntektskategori\":\"ARBEIDSTAKER\",\"satsType\":\"DAGSATS\",\"feriepenger\":[{\"opptjeningsaar\":2018,\"beloep\":187}],\"satsBeloep\":1586}]}],\"erOpphoer\":true,\"erOpphoerEtterSkjaeringTidspunkt\":false}", TilkjentYtelse.class);
 
         assertThat(resultat).isInstanceOf(TilkjentYtelseV1.class);
 
@@ -135,7 +135,6 @@ public class TilkjentYtelseV1Test {
     @Test(expected = InvalidTypeIdException.class)
     public void skal_ikke_deserialisere_ukjent_versjon() throws IOException {
         mapper.readValue("{\"version\":\"1000.0\",\"behandingsinfo\":{\"aktoerId\":90000123,\"saksnummer\":\"2525253\",\"behandlingId\":100000123,\"ytelseType\":\"FORELDREPENGER\",\"gjelderAdopsjon\":false,\"vedtaksdato\":\"2019-03-10\",\"ansvarligSaksbehandler\":\"Z000001\",\"ansvarligBeslutter\":\"Z222222\"},\"perioder\":[{\"fom\":\"2018-12-24\",\"tom\":\"2019-02-28\",\"andeler\":[{\"inntektskategori\":\"FRILANSER\",\"satsBeløp\":100,\"satsType\":\"DAGSATS\"},{\"arbeidsgiverOrgNr\":\"123123123\",\"inntektskategori\":\"ARBEIDSTAKER\",\"satsBeløp\":1000,\"satsType\":\"DAGSATS\"}]},{\"fom\":\"2019-03-01\",\"tom\":\"2019-03-31\",\"andeler\":[{\"inntektskategori\":\"FRILANSER\",\"satsBeløp\":135,\"satsType\":\"DAGSATS\"},{\"arbeidsgiverOrgNr\":\"123123123\",\"inntektskategori\":\"ARBEIDSTAKER\",\"satsBeløp\":1586,\"satsType\":\"DAGSATS\"}]}]}", TilkjentYtelse.class);
-
     }
 
     private static ObjectMapper getObjectMapper() {
