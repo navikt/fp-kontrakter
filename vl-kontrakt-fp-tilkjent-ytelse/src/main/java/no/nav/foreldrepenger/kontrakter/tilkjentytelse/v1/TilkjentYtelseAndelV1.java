@@ -3,7 +3,9 @@ package no.nav.foreldrepenger.kontrakter.tilkjentytelse.v1;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.time.Year;
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Digits;
@@ -48,7 +50,8 @@ public class TilkjentYtelseAndelV1 {
     private SatsType satsType;
 
     @Valid
-    private TilkjentYtelseFeriepengerV1 feriepenger;
+    @Size(max = 3) //det er mulig å strekke en periode over 3 år, som kan gi 3 feriepengegrunnlag for en periode
+    private List<TilkjentYtelseFeriepengerV1> feriepenger;
 
     TilkjentYtelseAndelV1() {
         //for jackson
@@ -153,15 +156,15 @@ public class TilkjentYtelseAndelV1 {
         this.satsType = satsType;
     }
 
-    public TilkjentYtelseAndelV1 medFeriepenger(Year år, long beløp) {
-        if (feriepenger != null) {
-            throw new IllegalArgumentException("Feriepenger er allerede lagt til");
+    public TilkjentYtelseAndelV1 leggTilFeriepenger(Year år, long beløp) {
+        if (feriepenger == null) {
+            feriepenger = new ArrayList<>();
         }
-        feriepenger = new TilkjentYtelseFeriepengerV1(år, beløp);
+        feriepenger.add(new TilkjentYtelseFeriepengerV1(år, beløp));
         return this;
     }
 
-    public Optional<TilkjentYtelseFeriepengerV1> getFeriepenger() {
-        return Optional.ofNullable(feriepenger);
+    public List<TilkjentYtelseFeriepengerV1> getFeriepenger() {
+        return feriepenger == null ? Collections.emptyList() : feriepenger;
     }
 }
