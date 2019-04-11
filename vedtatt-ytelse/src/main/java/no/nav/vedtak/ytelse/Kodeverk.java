@@ -13,10 +13,10 @@ public class Kodeverk {
     @JsonProperty("kode")
     private String kode;
 
-    public Kodeverk() {
+    protected Kodeverk() {
     }
 
-    public Kodeverk(String kodeverk, String kode) {
+    protected Kodeverk(String kodeverk, String kode) {
         this.kodeverk = kodeverk;
         this.kode = kode;
     }

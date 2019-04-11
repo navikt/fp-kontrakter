@@ -8,7 +8,6 @@ import javax.validation.constraints.Pattern;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import no.nav.vedtak.ytelse.Kodeverk;
 import no.nav.vedtak.ytelse.Periode;
 import no.nav.vedtak.ytelse.Ytelse;
 import no.nav.vedtak.ytelse.v1.anvisning.Anvisning;
@@ -18,7 +17,7 @@ public class YtelseV1 extends Ytelse {
     @NotNull
     @Valid
     @JsonProperty("type")
-    private Kodeverk type;
+    private YtelseType type;
 
     @Pattern(regexp = "^(-?[1-9]|[a-z0])[a-z0-9_:-]*$", flags = {Pattern.Flag.CASE_INSENSITIVE})
     @JsonProperty("saksnummer")
@@ -27,12 +26,12 @@ public class YtelseV1 extends Ytelse {
     @NotNull
     @Valid
     @JsonProperty("status")
-    private Kodeverk status;
+    private YtelseStatus status;
 
     @NotNull
     @Valid
     @JsonProperty("fagsystem")
-    private Kodeverk fagsystem;
+    private Fagsystem fagsystem;
 
     @NotNull
     @Valid
@@ -47,11 +46,11 @@ public class YtelseV1 extends Ytelse {
     public YtelseV1() {
     }
 
-    public Kodeverk getType() {
+    public YtelseType getType() {
         return type;
     }
 
-    public void setType(Kodeverk type) {
+    public void setType(YtelseType type) {
         this.type = type;
     }
 
@@ -63,19 +62,19 @@ public class YtelseV1 extends Ytelse {
         this.saksnummer = saksnummer;
     }
 
-    public Kodeverk getStatus() {
+    public YtelseStatus getStatus() {
         return status;
     }
 
-    public void setStatus(Kodeverk status) {
+    public void setStatus(YtelseStatus status) {
         this.status = status;
     }
 
-    public Kodeverk getFagsystem() {
+    public Fagsystem getFagsystem() {
         return fagsystem;
     }
 
-    public void setFagsystem(Kodeverk fagsystem) {
+    public void setFagsystem(Fagsystem fagsystem) {
         this.fagsystem = fagsystem;
     }
 
