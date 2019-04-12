@@ -8,11 +8,17 @@ import javax.validation.constraints.Pattern;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import no.nav.vedtak.ytelse.Aktør;
 import no.nav.vedtak.ytelse.Periode;
 import no.nav.vedtak.ytelse.Ytelse;
 import no.nav.vedtak.ytelse.v1.anvisning.Anvisning;
 
 public class YtelseV1 extends Ytelse {
+
+    @NotNull
+    @Valid
+    @JsonProperty("aktør")
+    private Aktør aktør;
 
     @NotNull
     @Valid
@@ -92,5 +98,13 @@ public class YtelseV1 extends Ytelse {
 
     public void setAnvist(List<Anvisning> anvist) {
         this.anvist = anvist;
+    }
+
+    public Aktør getAktør() {
+        return aktør;
+    }
+
+    public void setAktør(Aktør aktør) {
+        this.aktør = aktør;
     }
 }
