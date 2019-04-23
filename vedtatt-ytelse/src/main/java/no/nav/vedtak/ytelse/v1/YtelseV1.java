@@ -1,5 +1,6 @@
 package no.nav.vedtak.ytelse.v1;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -19,6 +20,11 @@ public class YtelseV1 extends Ytelse {
     @Valid
     @JsonProperty("aktør")
     private Aktør aktør;
+
+    @NotNull
+    @Valid
+    @JsonProperty("vedtattTidspunkt")
+    private LocalDateTime vedtattTidspunkt;
 
     @NotNull
     @Valid
@@ -106,5 +112,13 @@ public class YtelseV1 extends Ytelse {
 
     public void setAktør(Aktør aktør) {
         this.aktør = aktør;
+    }
+
+    public LocalDateTime getVedtattTidspunkt() {
+        return vedtattTidspunkt;
+    }
+
+    public void setVedtattTidspunkt(LocalDateTime vedtattTidspunkt) {
+        this.vedtattTidspunkt = vedtattTidspunkt;
     }
 }
