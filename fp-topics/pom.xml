@@ -31,7 +31,7 @@
 			</dependency>
             <dependency>
                 <groupId>no.nav.foreldrepenger.kontrakter.topics</groupId>
-                <artifactId>hendelse-vedtatt-ytelse</artifactId>
+                <artifactId>hendelser-vedtatt-ytelse</artifactId>
                 <version>${project.version}</version>
             </dependency>
 		</dependencies>
