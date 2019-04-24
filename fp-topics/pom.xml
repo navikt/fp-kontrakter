@@ -10,11 +10,28 @@
         <version>${revision}${sha1}${changelist}</version>
     </parent>
 
-    <name>(FPSAK) Kontrakter - Topics</name>
-    <description>Manifest for topics i familieområdet</description>
+    <name>FP-TOPICS :: Topics Pom</name>
+    <description>Rot for hendelse topics</description>
+	<groupId>no.nav.foreldrepenger.kontrakter.topics</groupId>
     <artifactId>fp-topics</artifactId>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
+	<modules>
+		<module>hendelser-behandlingsprosess</module>
+		
+		<module>manifest</module>
+	</modules>
+	
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>no.nav.foreldrepenger.kontrakter.topics</groupId>
+				<artifactId>fp-topics-behandlingsprosess</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			
+		</dependencies>
+	</dependencyManagement>
 
     <dependencies>
         <dependency>
