@@ -132,11 +132,6 @@
 				<artifactId>abonnent-v1</artifactId>
 				<version>${project.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>no.nav.foreldrepenger.kontrakter</groupId>
-				<artifactId>vedtatt-ytelse</artifactId>
-				<version>${project.version}</version>
-			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
