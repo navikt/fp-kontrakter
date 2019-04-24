@@ -27,7 +27,6 @@
 		<module>vl-kontrakt-fp-tilkjent-ytelse</module>
 		<module>vl-kontrakt-abonnent</module>
 		<module>vl-kontrakt-behandlingsprosess-vedtak</module>
-		<module>vedtatt-ytelse</module>
 		<module>fp-topics</module>
 	</modules>
 

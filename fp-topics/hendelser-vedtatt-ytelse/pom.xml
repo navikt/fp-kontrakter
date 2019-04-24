@@ -5,14 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>no.nav.foreldrepenger.kontrakter</groupId>
-        <artifactId>foreldrepenger-kontrakter-root</artifactId>
+        <groupId>no.nav.foreldrepenger.kontrakter.topics</groupId>
+        <artifactId>fp-topics</artifactId>
         <version>${revision}${sha1}${changelist}</version>
     </parent>
 
     <name>(FPSAK) Kontrakter - Vedtatt ytelse</name>
     <description>Kontrakt for utveksling av vedtatte ytelser</description>
-    <artifactId>vedtatt-ytelse</artifactId>
+    <artifactId>hendelse-vedtatt-ytelse</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>
