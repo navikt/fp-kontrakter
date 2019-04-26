@@ -30,4 +30,20 @@ public class Topic {
     public Serde getSerdeValue() {
         return serdeValue;
     }
+
+    /**
+     * Genererer clientId basert på standard definert på https://confluence.adeo.no/display/AURA/Kafka#Kafka-TopicogSikkerhetskonfigurasjon
+     * @return clientId
+     */
+    public String getProducerClientId() {
+        return "KP-" + topic;
+    }
+
+    /**
+     * Genererer clientId basert på standard definert på https://confluence.adeo.no/display/AURA/Kafka#Kafka-TopicogSikkerhetskonfigurasjon
+     * @return clientId
+     */
+    public String getConsumerClientId() {
+        return "KC-" + topic;
+    }
 }
