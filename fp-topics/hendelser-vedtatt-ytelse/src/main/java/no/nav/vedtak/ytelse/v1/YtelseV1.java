@@ -36,6 +36,11 @@ public class YtelseV1 extends Ytelse {
     private String saksnummer;
 
     @NotNull
+    @Pattern(regexp = "\\b[0-9a-f]{8}\\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\\b[0-9a-f]{12}\\b")
+    @JsonProperty("vedtakReferanse")
+    private String vedtakReferanse;
+
+    @NotNull
     @Valid
     @JsonProperty("status")
     private YtelseStatus status;
@@ -120,5 +125,13 @@ public class YtelseV1 extends Ytelse {
 
     public void setVedtattTidspunkt(LocalDateTime vedtattTidspunkt) {
         this.vedtattTidspunkt = vedtattTidspunkt;
+    }
+
+    public String getVedtakReferanse() {
+        return vedtakReferanse;
+    }
+
+    public void setVedtakReferanse(String vedtakReferanse) {
+        this.vedtakReferanse = vedtakReferanse;
     }
 }
