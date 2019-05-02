@@ -29,7 +29,8 @@
 		<module>vl-kontrakt-registerdata-callback</module>
 		<module>vl-kontrakt-behandlingsprosess-vedtak</module>
 		<module>fp-topics</module>
-	</modules>
+        <module>vl-kontrakt-iaygrunnlag</module>
+    </modules>
 
 	<dependencyManagement>
 		<dependencies>
@@ -131,6 +132,11 @@
 			<dependency>
 				<groupId>no.nav.foreldrepenger.kontrakter</groupId>
 				<artifactId>abonnent-v1</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>no.nav.foreldrepenger.kontrakter</groupId>
+				<artifactId>iaygrunnlag-v1</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
