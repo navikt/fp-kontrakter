@@ -135,7 +135,7 @@
 			</dependency>
 			<dependency>
 				<groupId>no.nav.foreldrepenger.kontrakter</groupId>
-				<artifactId>callback-v1</artifactId>
+				<artifactId>registerdata-callback-v1</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 		</dependencies>

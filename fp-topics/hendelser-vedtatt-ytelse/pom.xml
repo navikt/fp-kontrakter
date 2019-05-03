@@ -10,7 +10,7 @@
         <version>${revision}${sha1}${changelist}</version>
     </parent>
 
-    <name>(FPSAK) Kontrakter - Vedtatt ytelse</name>
+    <name>FP-TOPICS :: Vedtatt ytelse</name>
     <description>Kontrakt for utveksling av vedtatte ytelser</description>
     <artifactId>hendelse-vedtatt-ytelse</artifactId>
     <packaging>jar</packaging>
