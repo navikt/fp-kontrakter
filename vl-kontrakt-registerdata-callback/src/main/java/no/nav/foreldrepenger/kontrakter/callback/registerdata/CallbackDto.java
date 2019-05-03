@@ -1,42 +1,53 @@
 package no.nav.foreldrepenger.kontrakter.callback.registerdata;
 
+import java.time.LocalDateTime;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 /**
  * Metadata for callback
  * Inneholder:
- * - referanse: referanse til behandlingen
- * - grunnlagReferanse: resultatet av registerinnhenting, referanse til nytt grunnlag
- * - grunnlagType: Grunnlaget
+ * - opprettetTidspunkt: Tidspunktet hvor det oppdaterte grunnlaget ble commitet til database.
+ * - avsenderRef: avsenderRef til behandlingen
+ * - opprinneligGrunnlagRef: tilstand før registerinnhenting, referanse til opprinnelig grunnlag
+ * - oppdatertGrunnlagRef: resultatet av registerinnhenting, referanse til nytt grunnlag
+ * - grunnlagType: datastrukturen callbacket omhandler
  */
 public class CallbackDto {
 
     @NotNull
     @Valid
-    private ReferanseDto referanse;
+    private LocalDateTime opprettetTidspunkt;
+
+    @NotNull
+    @Valid
+    private ReferanseDto avsenderRef;
 
     @Valid
-    private ReferanseDto grunnlagReferanse;
+    private ReferanseDto opprinneligGrunnlagRef;
+
+    @Valid
+    private ReferanseDto oppdatertGrunnlagRef;
 
     @NotNull
     @Valid
     private Grunnlag grunnlagType;
 
-    public ReferanseDto getReferanse() {
-        return referanse;
+    public ReferanseDto getAvsenderRef() {
+        return avsenderRef;
     }
 
-    public void setReferanse(ReferanseDto referanse) {
-        this.referanse = referanse;
+    public void setAvsenderRef(ReferanseDto avsenderRef) {
+        this.avsenderRef = avsenderRef;
     }
 
-    public ReferanseDto getGrunnlagReferanse() {
-        return grunnlagReferanse;
+    public ReferanseDto getOppdatertGrunnlagRef() {
+        return oppdatertGrunnlagRef;
     }
 
-    public void setGrunnlagReferanse(ReferanseDto grunnlagReferanse) {
-        this.grunnlagReferanse = grunnlagReferanse;
+    public void setOppdatertGrunnlagRef(ReferanseDto oppdatertGrunnlagRef) {
+        this.oppdatertGrunnlagRef = oppdatertGrunnlagRef;
     }
 
     public Grunnlag getGrunnlagType() {
@@ -45,5 +56,21 @@ public class CallbackDto {
 
     public void setGrunnlagType(Grunnlag grunnlagType) {
         this.grunnlagType = grunnlagType;
+    }
+
+    public ReferanseDto getOpprinneligGrunnlagRef() {
+        return opprinneligGrunnlagRef;
+    }
+
+    public void setOpprinneligGrunnlagRef(ReferanseDto opprinneligGrunnlagRef) {
+        this.opprinneligGrunnlagRef = opprinneligGrunnlagRef;
+    }
+
+    public LocalDateTime getOpprettetTidspunkt() {
+        return opprettetTidspunkt;
+    }
+
+    public void setOpprettetTidspunkt(LocalDateTime opprettetTidspunkt) {
+        this.opprettetTidspunkt = opprettetTidspunkt;
     }
 }
