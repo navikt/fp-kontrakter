@@ -63,6 +63,7 @@ public class YtelseV1 extends Ytelse {
     public YtelseV1() {
     }
 
+    @Override
     public YtelseType getType() {
         return type;
     }
@@ -71,6 +72,7 @@ public class YtelseV1 extends Ytelse {
         this.type = type;
     }
 
+    @Override
     public String getSaksnummer() {
         return saksnummer;
     }
@@ -111,6 +113,7 @@ public class YtelseV1 extends Ytelse {
         this.anvist = anvist;
     }
 
+    @Override
     public Aktør getAktør() {
         return aktør;
     }
