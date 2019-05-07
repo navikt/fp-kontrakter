@@ -1,4 +1,4 @@
-package no.nav.vedtak.felles.integrasjon.kafka;
+package no.nav.vedtak.felles.dokumentbestilling;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
