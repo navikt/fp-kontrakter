@@ -1,9 +1,8 @@
 package no.nav.vedtak.felles.dokumentbestilling.v1;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
+import java.util.UUID;
+
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Null;
 import javax.validation.constraints.Pattern;
 
 import no.nav.vedtak.felles.dokumentbestilling.kodeverk.FagsakYtelseType;
@@ -15,9 +14,7 @@ public class DokumentbestillingV1 {
      * ID til Behandlingen i FPSAK det bestilles dokument for
      */
     @NotNull
-    @Min(0)
-    @Max(Long.MAX_VALUE)
-    private Long behandlingId;
+    private UUID behandlingUuid;
     /**
      * Kode for ytelsetypeES
      */
@@ -54,12 +51,12 @@ public class DokumentbestillingV1 {
      * Kode for hvem som har bestilt dokumentet, f.eks VL, default: VL
      */
 
-    public Long getBehandlingId() {
-        return behandlingId;
+    public UUID getBehandlingUuid() {
+        return behandlingUuid;
     }
 
-    public void setBehandlingId(Long behandlingId) {
-        this.behandlingId = behandlingId;
+    public void setBehandlingUuid(UUID behandlingUuid) {
+        this.behandlingUuid = behandlingUuid;
     }
 
     public FagsakYtelseType getYtelseType() {
