@@ -1,18 +1,31 @@
 package no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk;
 
-public class LandkoderDto {
+import javax.validation.constraints.Pattern;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+
+public class LandkoderDto extends Kodeverk {
+
+    static final String KODEVERK = "LANDKODER";
+
+    /** ISO 3-letter country codes. */
+    @JsonProperty(value = "kode", required = true, index = 1)
+    @Pattern(regexp = "^[A-Z]{3}$")
     private String kode;
-    private final String kodeverk = "LANDKODER";
 
     public LandkoderDto(String kode) {
+        super();
         this.kode = kode;
     }
 
+    @Override
     public String getKode() {
         return kode;
     }
 
+    @Override
     public String getKodeverk() {
-        return kodeverk;
+        return KODEVERK;
     }
 }

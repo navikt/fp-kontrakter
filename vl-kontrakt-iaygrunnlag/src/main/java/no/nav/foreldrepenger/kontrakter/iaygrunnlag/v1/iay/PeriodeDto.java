@@ -4,14 +4,35 @@ import java.time.LocalDate;
 
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+/** Periode med fom/tom dato. */
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(value = Include.ALWAYS)
 public class PeriodeDto {
 
+    @JsonProperty(value="fom")
     @NotNull
     private LocalDate fom;
+    
+    @JsonProperty(value="tom")
     @NotNull
     private LocalDate tom;
 
-    public PeriodeDto(LocalDate fom, LocalDate tom) {
+    @JsonCreator
+    public PeriodeDto(@JsonProperty(value="fom") LocalDate fom, @JsonProperty(value="tom") LocalDate tom) {
+        if (fom == null && tom == null) {
+            throw new IllegalArgumentException("Både fom og tom er null");
+        } else if (fom != null && tom != null) {
+            if (fom.isAfter(tom)) {
+                throw new IllegalArgumentException("Input data gir umulig periode (fom > tom): [" + fom + ", " + tom + "]");
+            }
+        }
         this.fom = fom;
         this.tom = tom;
     }
@@ -20,15 +41,8 @@ public class PeriodeDto {
         return fom;
     }
 
-    public void setFom(LocalDate fom) {
-        this.fom = fom;
-    }
-
     public LocalDate getTom() {
         return tom;
     }
 
-    public void setTom(LocalDate tom) {
-        this.tom = tom;
-    }
 }

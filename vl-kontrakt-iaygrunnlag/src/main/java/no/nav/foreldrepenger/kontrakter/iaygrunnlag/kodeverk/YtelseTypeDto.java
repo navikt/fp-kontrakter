@@ -1,19 +1,31 @@
 package no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk;
 
-public class YtelseTypeDto {
-    private String kode;
-    private String kodeverk;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
-    public YtelseTypeDto(String kode, String kodeverk) {
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+
+public class YtelseTypeDto extends Kodeverk {
+    static final String KODEVERK = "YTELSE_TYPE";
+
+    @JsonProperty(value = "kode", required = true, index = 1)
+    @Pattern(regexp = "^[\\p{L}\\p{N}_.-]+$")
+    @NotNull
+    private String kode;
+
+    public YtelseTypeDto(String kode) {
+        super();
         this.kode = kode;
-        this.kodeverk = kodeverk;
     }
 
+    @Override
     public String getKode() {
         return kode;
     }
 
+    @Override
     public String getKodeverk() {
-        return kodeverk;
+        return KODEVERK;
     }
 }

@@ -1,27 +1,30 @@
 package no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.Aktør;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ArbeidsgiverDto {
-    private String identifikator;
-    private ArbeidsgiverType type;
 
-    public ArbeidsgiverDto(String identifikator, ArbeidsgiverType type) {
-        this.identifikator = identifikator;
-        this.type = type;
+    @JsonProperty(value = "arbeidsgiver", required = true, index = 1)
+    @NotNull
+    @Valid
+    private Aktør arbeidsgiver;
+
+    protected ArbeidsgiverDto() {
+        // default ctor for deserialisering
     }
 
-    public String getIdentifikator() {
-        return identifikator;
+    public ArbeidsgiverDto(Aktør arbeidsgiver) {
+        this.arbeidsgiver = arbeidsgiver;
     }
 
-    public void setIdentifikator(String identifikator) {
-        this.identifikator = identifikator;
-    }
-
-    public ArbeidsgiverType getType() {
-        return type;
-    }
-
-    public void setType(ArbeidsgiverType type) {
-        this.type = type;
+    public Aktør getArbeidsgiver() {
+        return arbeidsgiver;
     }
 }

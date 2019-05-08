@@ -5,30 +5,93 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.validation.Valid;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.InntektsmeldingInnsendingsårsakDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.ArbeidsforholdRefDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.ArbeidsgiverDto;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(value = Include.NON_ABSENT, content = Include.NON_EMPTY)
 public class InntektsmeldingDto {
-    private List<GraderingDto> graderinger;
-    private List<NaturalYtelseDto> naturalytelser;
-    private List<UtsettelsePeriodeDto> utsettelsePerioder;
+    
+    @JsonProperty(value = "arbeidsgiver", required = true)
+    @Valid
+    @NotNull
     private ArbeidsgiverDto arbeidsgiver;
-    private ArbeidsforholdRefDto arbeidsforholdRef;
-    private LocalDate startDatoPermisjon;
-    private boolean naerRelasjon;
+
+    @JsonProperty(value = "mottattDokumentId", required = true)
+    @NotNull
     private Long mottattDokumentId;
-    private BigDecimal inntektBeløp;
-    private BigDecimal refusjonsBeløpPerMnd;
-    private LocalDate refusjonOpphører;
+    
+    @JsonProperty(value = "innsendingstidspunkt", required = true)
     private LocalDateTime innsendingstidspunkt;
+    
+    @JsonProperty(value = "graderinger")
+    @Valid
+    private List<GraderingDto> graderinger;
+    
+    @JsonProperty(value = "naturalytelser")
+    @Valid
+    private List<NaturalytelseDto> naturalytelser;
+    
+    @JsonProperty(value = "utsettelsePerioder")
+    @Valid
+    private List<UtsettelsePeriodeDto> utsettelsePerioder;
+    
+    @JsonProperty(value = "arbeidsforholdReferanse")
+    @Valid
+    private ArbeidsforholdRefDto arbeidsforholdRef;
+    
+    @JsonProperty(value = "startdatoPermisjon")
+    private LocalDate startdatoPermisjon;
+    
+    @JsonProperty(value = "erNærRelasjon")
+    private boolean erNærRelasjon;
+    
+    @JsonProperty("inntektBeløp")
+    @DecimalMin(value="0.00", message = "beløp må være >= 0.00")
+    @DecimalMax(value="1000000.00", message="beløp må være < 1000000.00")  // TODO: sane verdier
+    private BigDecimal inntektBeløp;
+    
+    @JsonProperty("refusjonsBeløpPerMnd")
+    @DecimalMin(value="0.00", message = "beløp må være >= 0.00")
+    @DecimalMax(value="1000000.00", message="beløp må være < 1000000.00")  // TODO: sane verdier
+    private BigDecimal refusjonsBeløpPerMnd;
+    
+    @JsonProperty(value = "kanalreferanse")
     private String kanalreferanse;
+    
+    @JsonProperty(value = "kildesystem")
     private String kildesystem;
-    private List<RefusjonDto> endringerRefusjon;
+    
+    @JsonProperty(value = "refusjonOpphører")
+    private LocalDate refusjonOpphører;
+    
+    @JsonProperty(value = "refusjonEndringer")
+    private List<RefusjonDto> refusjonEndringer;
+    
+    @JsonProperty(value = "innsendingsårsak")
     private InntektsmeldingInnsendingsårsakDto innsendingsårsak;
 
-    public InntektsmeldingDto() {
+    protected InntektsmeldingDto() {
     }
+
+    public InntektsmeldingDto(ArbeidsgiverDto arbeidsgiver, Long mottattDokumentId, LocalDateTime innsendingstidspunkt) {
+        this.arbeidsgiver = arbeidsgiver;
+        this.mottattDokumentId = mottattDokumentId;
+        this.innsendingstidspunkt = innsendingstidspunkt;
+    }
+
+
 
     public List<GraderingDto> getGraderinger() {
         return graderinger;
@@ -38,11 +101,11 @@ public class InntektsmeldingDto {
         this.graderinger = graderinger;
     }
 
-    public List<NaturalYtelseDto> getNaturalytelser() {
+    public List<NaturalytelseDto> getNaturalytelser() {
         return naturalytelser;
     }
 
-    public void setNaturalytelser(List<NaturalYtelseDto> naturalytelser) {
+    public void setNaturalytelser(List<NaturalytelseDto> naturalytelser) {
         this.naturalytelser = naturalytelser;
     }
 
@@ -58,10 +121,6 @@ public class InntektsmeldingDto {
         return arbeidsgiver;
     }
 
-    public void setArbeidsgiver(ArbeidsgiverDto arbeidsgiver) {
-        this.arbeidsgiver = arbeidsgiver;
-    }
-
     public ArbeidsforholdRefDto getArbeidsforholdRef() {
         return arbeidsforholdRef;
     }
@@ -71,27 +130,23 @@ public class InntektsmeldingDto {
     }
 
     public LocalDate getStartDatoPermisjon() {
-        return startDatoPermisjon;
+        return startdatoPermisjon;
     }
 
     public void setStartDatoPermisjon(LocalDate startDatoPermisjon) {
-        this.startDatoPermisjon = startDatoPermisjon;
+        this.startdatoPermisjon = startDatoPermisjon;
     }
 
     public boolean isNaerRelasjon() {
-        return naerRelasjon;
+        return erNærRelasjon;
     }
 
     public void setNaerRelasjon(boolean naerRelasjon) {
-        this.naerRelasjon = naerRelasjon;
+        this.erNærRelasjon = naerRelasjon;
     }
 
     public Long getMottattDokumentId() {
         return mottattDokumentId;
-    }
-
-    public void setMottattDokumentId(Long mottattDokumentId) {
-        this.mottattDokumentId = mottattDokumentId;
     }
 
     public BigDecimal getInntektBeløp() {
@@ -122,10 +177,6 @@ public class InntektsmeldingDto {
         return innsendingstidspunkt;
     }
 
-    public void setInnsendingstidspunkt(LocalDateTime innsendingstidspunkt) {
-        this.innsendingstidspunkt = innsendingstidspunkt;
-    }
-
     public String getKanalreferanse() {
         return kanalreferanse;
     }
@@ -143,11 +194,11 @@ public class InntektsmeldingDto {
     }
 
     public List<RefusjonDto> getEndringerRefusjon() {
-        return endringerRefusjon;
+        return refusjonEndringer;
     }
 
     public void setEndringerRefusjon(List<RefusjonDto> endringerRefusjon) {
-        this.endringerRefusjon = endringerRefusjon;
+        this.refusjonEndringer = endringerRefusjon;
     }
 
     public InntektsmeldingInnsendingsårsakDto getInnsendingsårsak() {

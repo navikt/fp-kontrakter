@@ -3,17 +3,16 @@ package no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk;
 import javax.validation.constraints.Pattern;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 
-@JsonTypeName(InntektsmeldingInnsendingsårsakDto.KODEVERK)
-public class InntektsmeldingInnsendingsårsakDto extends Kodeverk {
-    static final String KODEVERK = "INNTEKTSMELDING_INNSENDINGSAARSAK";
 
+public class NaturalytelseTypeDto extends Kodeverk {
+    
     @JsonProperty(value = "kode", required = true, index = 1)
     @Pattern(regexp = "^[\\p{L}\\p{N}_.-]+$")
     private String kode;
+    static final String KODEVERK = "NATURAL_YTELSE_TYPE";
 
-    public InntektsmeldingInnsendingsårsakDto(String kode) {
+    public NaturalytelseTypeDto(String kode) {
         super();
         this.kode = kode;
     }

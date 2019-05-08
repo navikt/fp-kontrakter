@@ -1,18 +1,30 @@
 package no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk;
 
-public class ArbeidTypeDto {
+import javax.validation.constraints.Pattern;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+
+public class ArbeidTypeDto extends Kodeverk {
+    @JsonProperty(value = "kode", required = true, index = 1)
+    
+    
+    @Pattern(regexp = "^[\\p{L}\\p{N}_.-]+$")
     private String kode;
-    private final String kodeverk = "ARBEID_TYPE";
+    static final String KODEVERK = "ARBEID_TYPE";
 
     public ArbeidTypeDto(String kode) {
+        super();
         this.kode = kode;
     }
 
+    @Override
     public String getKode() {
         return kode;
     }
 
+    @Override
     public String getKodeverk() {
-        return kodeverk;
+        return KODEVERK;
     }
 }

@@ -3,25 +3,78 @@ package no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.oppgittopptjening;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import javax.validation.Valid;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.VirksomhetTypeDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.Organisasjon;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.PeriodeDto;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(value = Include.ALWAYS, content = Include.NON_EMPTY)
 public class OppgittEgenNæringDto {
+    
+    @JsonProperty(value = "periode", required=true)
+    @Valid
+    @NotNull
     private PeriodeDto periode;
-    private String orgnr;
+    
+    @JsonProperty(value = "virksomhet")
+    @Valid
+    private Organisasjon virksomhet;
+    
+    @JsonProperty(value = "virksomhetType")
+    @Valid
     private VirksomhetTypeDto virksomhetTypeDto;
+    
+    @JsonProperty(value="regnskapsførerNavn")
+    @Pattern(regexp = "^[\\p{L}\\p{N}.- ]+$")
     private String regnskapsførerNavn;
+    
+    @JsonProperty(value="regnskapsførerTlf")
     private String regnskapsførerTlf;
+    
+    @JsonProperty(value="endringDato")
     private LocalDate endringDato;
-    private String begrunnelse;
-    private BigDecimal bruttoInntekt;
-    private boolean nyoppstartet;
-    private boolean varigEndring;
-    private boolean nærRelasjon;
-    private boolean nyIArbeidslivet;
+    
+    @JsonProperty(value="erVarigEndring")
+    private boolean erVarigEndring;
+    
+    @JsonProperty(value="endringBegrunnelse")
+    @Pattern(regexp = "^[\\p{L}\\p{N}_.- \\n\\t\\r]+$")
+    private String endringBegrunnelse;
+    
+    @JsonProperty(value = "utenlandskVirksomhet")
+    @Valid
     private OppgittUtenlandskVirksomhetDto oppgittUtenlandskVirksomhet;
+    
+    @JsonProperty("bruttoInntekt")
+    @DecimalMin(value="0.00", message = "beløp må være >= 0.00")
+    @DecimalMax(value="100000000.00", message="beløp må være < 100000000.00")  // TODO: sane verdier
+    private BigDecimal bruttoInntekt;
+    
+    @JsonProperty(value="erNyoppstartet")
+    private boolean nyoppstartet;
+    
+    @JsonProperty(value="erNærRelasjon")
+    private boolean nærRelasjon;
+    
+    @JsonProperty(value="erNyIArbeidslivet")
+    private boolean nyIArbeidslivet;
+    
+    protected OppgittEgenNæringDto() {
+    }
 
-    public OppgittEgenNæringDto() {
+    public OppgittEgenNæringDto(PeriodeDto periode) {
+        this.periode = periode;
     }
 
     public PeriodeDto getPeriode() {
@@ -32,12 +85,12 @@ public class OppgittEgenNæringDto {
         this.periode = periode;
     }
 
-    public String getOrgnr() {
-        return orgnr;
+    public Organisasjon getVirksomhet() {
+        return virksomhet;
     }
 
-    public void setOrgnr(String orgnr) {
-        this.orgnr = orgnr;
+    public void setVirksomhet(Organisasjon virksomhet) {
+        this.virksomhet = virksomhet;
     }
 
     public VirksomhetTypeDto getVirksomhetTypeDto() {
@@ -73,11 +126,11 @@ public class OppgittEgenNæringDto {
     }
 
     public String getBegrunnelse() {
-        return begrunnelse;
+        return endringBegrunnelse;
     }
 
     public void setBegrunnelse(String begrunnelse) {
-        this.begrunnelse = begrunnelse;
+        this.endringBegrunnelse = begrunnelse;
     }
 
     public BigDecimal getBruttoInntekt() {
@@ -97,11 +150,11 @@ public class OppgittEgenNæringDto {
     }
 
     public boolean isVarigEndring() {
-        return varigEndring;
+        return erVarigEndring;
     }
 
     public void setVarigEndring(boolean varigEndring) {
-        this.varigEndring = varigEndring;
+        this.erVarigEndring = varigEndring;
     }
 
     public boolean isNærRelasjon() {

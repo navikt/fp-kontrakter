@@ -1,12 +1,28 @@
 package no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.oppgittopptjening;
 
+import java.util.Collections;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(value = Include.NON_ABSENT, content = Include.ALWAYS)
 public class OppgittFrilansDto {
+    
+    @JsonProperty(value="harInntektFraFosterhjem")
     private boolean harInntektFraFosterhjem;
+    
+    @JsonProperty(value="erNyoppstartet")
     private boolean erNyoppstartet;
-    private boolean harNærRelasjon;
-    private List<OppgittFrilansoppdragDto> frilansoppdrag;
+    
+    @JsonProperty(value="erNærRelasjon")
+    private boolean erNærRelasjon;
+    
+    @JsonProperty(value="frilansoppdrag")
+    private List<OppgittFrilansoppdragDto> frilansoppdrag = Collections.emptyList();
 
     public OppgittFrilansDto() {
     }
@@ -28,11 +44,11 @@ public class OppgittFrilansDto {
     }
 
     public boolean isHarNærRelasjon() {
-        return harNærRelasjon;
+        return erNærRelasjon;
     }
 
     public void setHarNærRelasjon(boolean harNærRelasjon) {
-        this.harNærRelasjon = harNærRelasjon;
+        this.erNærRelasjon = harNærRelasjon;
     }
 
     public List<OppgittFrilansoppdragDto> getFrilansoppdrag() {

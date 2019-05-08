@@ -1,22 +1,38 @@
 package no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.arbeid;
 
+import java.util.Collections;
 import java.util.List;
 
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.AktørDto;
+import javax.validation.Valid;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.PersonIdent;
+
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(value = Include.ALWAYS, content = Include.ALWAYS)
 public class ArbeidDto {
 
-    private AktørDto aktør;
-    private List<YrkesaktivitetDto> yrkesaktiviteter;
+    @JsonProperty("aktør")
+    @Valid
+    private PersonIdent aktør;
+    
+    @JsonProperty("yrkesaktiviteter")
+    @Valid
+    private List<YrkesaktivitetDto> yrkesaktiviteter = Collections.emptyList();
 
-    public ArbeidDto() {
+    protected ArbeidDto() {
     }
 
-    public AktørDto getAktør() {
+    public PersonIdent getAktør() {
         return aktør;
     }
 
-    public void setAktør(AktørDto aktør) {
+    public void setAktør(PersonIdent aktør) {
         this.aktør = aktør;
     }
 

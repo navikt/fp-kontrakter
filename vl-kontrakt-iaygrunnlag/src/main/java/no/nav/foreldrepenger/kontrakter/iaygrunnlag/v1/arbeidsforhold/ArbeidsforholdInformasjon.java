@@ -1,10 +1,26 @@
 package no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.arbeidsforhold;
 
+import java.util.Collections;
 import java.util.List;
 
+import javax.validation.Valid;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(value = Include.NON_ABSENT, content = Include.NON_EMPTY)
 public class ArbeidsforholdInformasjon {
-    private List<ArbeidsforholdReferanseDto> referanser;
-    private List<ArbeidsforholdOverstyringDto> overstyringer;
+
+    @JsonProperty(value = "referanser")
+    @Valid
+    private List<ArbeidsforholdReferanseDto> referanser = Collections.emptyList();
+
+    @JsonProperty(value = "overstyringer")
+    @Valid
+    private List<ArbeidsforholdOverstyringDto> overstyringer = Collections.emptyList();
 
     public ArbeidsforholdInformasjon() {
     }
