@@ -19,6 +19,7 @@
 	<modules>
 		<module>hendelser-behandlingsprosess</module>
         <module>hendelser-vedtatt-ytelse</module>
+        <module>hendelser-historikk-innslag</module>
 		<module>manifest</module>
 	</modules>
 	
