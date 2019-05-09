@@ -2,6 +2,7 @@ package no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.arbeid;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 import javax.validation.Valid;
 
@@ -17,23 +18,24 @@ import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.PersonIdent;
 @JsonInclude(value = Include.ALWAYS, content = Include.ALWAYS)
 public class ArbeidDto {
 
-    @JsonProperty("aktør")
+    @JsonProperty("person")
     @Valid
-    private PersonIdent aktør;
+    private PersonIdent person;
     
     @JsonProperty("yrkesaktiviteter")
     @Valid
-    private List<YrkesaktivitetDto> yrkesaktiviteter = Collections.emptyList();
+    private List<YrkesaktivitetDto> yrkesaktiviteter;
 
     protected ArbeidDto() {
     }
-
-    public PersonIdent getAktør() {
-        return aktør;
+    
+    public ArbeidDto(PersonIdent person) {
+        Objects.requireNonNull(person, "person");
+        this.person = person;
     }
 
-    public void setAktør(PersonIdent aktør) {
-        this.aktør = aktør;
+    public PersonIdent getPerson() {
+        return person;
     }
 
     public List<YrkesaktivitetDto> getYrkesaktiviteter() {
@@ -42,5 +44,10 @@ public class ArbeidDto {
 
     public void setYrkesaktiviteter(List<YrkesaktivitetDto> yrkesaktiviteter) {
         this.yrkesaktiviteter = yrkesaktiviteter;
+    }
+    
+    public ArbeidDto medYrkesaktiviteter(List<YrkesaktivitetDto> yrkesaktiviteter) {
+        setYrkesaktiviteter(yrkesaktiviteter);
+        return this;
     }
 }

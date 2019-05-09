@@ -1,6 +1,8 @@
 package no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.inntekt;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 import javax.validation.Valid;
 
@@ -13,13 +15,13 @@ import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.PersonIdent;
 
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(value = Include.ALWAYS, content = Include.ALWAYS)
+@JsonInclude(value = Include.NON_ABSENT, content = Include.NON_EMPTY)
 public class InntekterDto {
 
     /** Bruker som har inntektene. */
-    @JsonProperty("aktør")
+    @JsonProperty("person")
     @Valid
-    private PersonIdent aktør;
+    private PersonIdent person;
 
     @JsonProperty("utbetalinger")
     @Valid
@@ -28,12 +30,13 @@ public class InntekterDto {
     public InntekterDto() {
     }
 
-    public InntekterDto(PersonIdent aktør) {
-        this.aktør = aktør;
+    public InntekterDto(PersonIdent person) {
+        Objects.requireNonNull(person, "person");
+        this.person = person;
     }
 
-    public PersonIdent getAktør() {
-        return aktør;
+    public PersonIdent getPerson() {
+        return person;
     }
 
     public List<UtbetalingDto> getUtbetalinger() {

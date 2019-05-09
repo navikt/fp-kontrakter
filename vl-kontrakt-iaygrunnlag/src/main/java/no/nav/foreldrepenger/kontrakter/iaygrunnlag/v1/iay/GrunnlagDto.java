@@ -1,5 +1,8 @@
 package no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay;
 
+import java.util.Objects;
+import java.util.UUID;
+
 import javax.validation.Valid;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -14,28 +17,33 @@ import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.UuidDto;
 @JsonInclude(value = Include.NON_ABSENT, content = Include.NON_EMPTY)
 public class GrunnlagDto {
     
-    @JsonProperty(value="referanse", required = true)
+    @JsonProperty(value="grunnlagReferanse", required = true)
     @Valid
-    private UuidDto referanse;
+    private UuidDto grunnlagReferanse;
     
-    @JsonProperty(value="register")
+    @JsonProperty(value="registerGrunnlag")
     @Valid
     private InntektArbeidYtelseAggregatDto register;
     
-    @JsonProperty(value="overstyrt")
+    @JsonProperty(value="overstyrtGrunnlag")
     @Valid
     private InntektArbeidYtelseAggregatDto overstyrt;
 
     protected GrunnlagDto() {
         // default ctor
     }
-
-    public UuidDto getReferanse() {
-        return referanse;
+    
+    public GrunnlagDto(UuidDto uuid) {
+        grunnlagReferanse = uuid;
+    }
+    
+    public GrunnlagDto(UUID uuid) {
+        Objects.requireNonNull(uuid, "uuid");
+        this.grunnlagReferanse = new UuidDto(uuid);
     }
 
-    public void setReferanse(UuidDto referanse) {
-        this.referanse = referanse;
+    public UuidDto getReferanse() {
+        return grunnlagReferanse;
     }
 
     public InntektArbeidYtelseAggregatDto getRegister() {
@@ -51,6 +59,18 @@ public class GrunnlagDto {
     }
 
     public void setOverstyrt(InntektArbeidYtelseAggregatDto overstyrt) {
+        Objects.requireNonNull(register, "Kan ikke sette overstyrt om register ikke er satt");
         this.overstyrt = overstyrt;
     }
+    
+    public GrunnlagDto medOverstyrt(InntektArbeidYtelseAggregatDto overstyrt) {
+        setOverstyrt(overstyrt);
+        return this;
+    }
+ 
+    public GrunnlagDto medRegister(InntektArbeidYtelseAggregatDto register) {
+        setRegister(register);
+        return this;
+    }
+
 }

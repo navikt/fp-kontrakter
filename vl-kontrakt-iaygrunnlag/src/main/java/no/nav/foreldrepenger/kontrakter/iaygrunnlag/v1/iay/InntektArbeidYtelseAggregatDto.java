@@ -41,10 +41,20 @@ public class InntektArbeidYtelseAggregatDto {
         this.arbeid = arbeid;
     }
 
+    public InntektArbeidYtelseAggregatDto medArbeid(List<ArbeidDto> arbeid) {
+        this.arbeid = arbeid;
+        return this;
+    }
+    
     public List<InntekterDto> getInntekt() {
         return inntekt;
     }
 
+    public InntektArbeidYtelseAggregatDto medInntekt(List<InntekterDto> inntekt) {
+        this.inntekt = inntekt;
+        return this;
+    }
+    
     public void setInntekt(List<InntekterDto> inntekt) {
         this.inntekt = inntekt;
     }
@@ -55,5 +65,10 @@ public class InntektArbeidYtelseAggregatDto {
 
     public void setYtelse(List<YtelserDto> ytelse) {
         this.ytelse = ytelse;
+    }
+    
+    public InntektArbeidYtelseAggregatDto medYtelse(List<YtelserDto> ytelse) {
+        this.ytelse = ytelse;
+        return this;
     }
 }

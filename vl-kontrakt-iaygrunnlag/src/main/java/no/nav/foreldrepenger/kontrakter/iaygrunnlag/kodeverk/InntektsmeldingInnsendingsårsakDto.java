@@ -1,7 +1,11 @@
 package no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk;
 
+import java.util.Objects;
+
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
@@ -11,10 +15,12 @@ public class InntektsmeldingInnsendingsårsakDto extends Kodeverk {
 
     @JsonProperty(value = "kode", required = true, index = 1)
     @Pattern(regexp = "^[\\p{L}\\p{N}_.-]+$")
+    @NotNull
     private String kode;
 
-    public InntektsmeldingInnsendingsårsakDto(String kode) {
-        super();
+    @JsonCreator
+    public InntektsmeldingInnsendingsårsakDto(@JsonProperty(value = "kode", required = true) String kode) {
+        Objects.requireNonNull(kode, "kode");
         this.kode = kode;
     }
 

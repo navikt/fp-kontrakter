@@ -21,7 +21,7 @@ public class ArbeidstakersArbeidsforholdDto {
     @JsonProperty(value="arbeidsforhold")
     @Valid
     @NotNull
-    private List<ArbeidsforholdDto> arbeidsforhold = Collections.emptyList();
+    private List<ArbeidsforholdDto> arbeidsforhold;
 
     public ArbeidstakersArbeidsforholdDto() {
     }

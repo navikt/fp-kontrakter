@@ -16,11 +16,11 @@ public class ArbeidsforholdInformasjon {
 
     @JsonProperty(value = "referanser")
     @Valid
-    private List<ArbeidsforholdReferanseDto> referanser = Collections.emptyList();
+    private List<ArbeidsforholdReferanseDto> referanser;
 
     @JsonProperty(value = "overstyringer")
     @Valid
-    private List<ArbeidsforholdOverstyringDto> overstyringer = Collections.emptyList();
+    private List<ArbeidsforholdOverstyringDto> overstyringer;
 
     public ArbeidsforholdInformasjon() {
     }

@@ -36,7 +36,7 @@ public class ArbeidsforholdDto {
 
     @JsonProperty("ansettelsePerioder")
     @Valid
-    private List<PeriodeDto> ansettelsesperiode = Collections.emptyList();
+    private List<PeriodeDto> ansettelsesperiode;
 
     protected ArbeidsforholdDto() {
     }

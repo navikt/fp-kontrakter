@@ -1,9 +1,10 @@
 package no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.arbeid;
 
-import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 import javax.validation.Valid;
+import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -12,50 +13,60 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.ArbeidTypeDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.Aktør;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.ArbeidsforholdRefDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.ArbeidsgiverDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.PeriodeDto;
 
-
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(value = Include.ALWAYS, content = Include.NON_EMPTY)
+@JsonInclude(value = Include.NON_ABSENT, content = Include.NON_EMPTY)
 public class YrkesaktivitetDto {
 
     @JsonProperty("arbeidsgiver")
     @Valid
-    private ArbeidsgiverDto arbeidsgiver;
-    
+    private Aktør arbeidsgiver;
+
     @JsonProperty("arbeidsforholdId")
     @Valid
     private ArbeidsforholdRefDto arbeidsforholdId;
-    
+
     @JsonProperty("arbeidType")
     @Valid
     @NotNull
-    private ArbeidTypeDto type;
-    
-    @JsonProperty("ansettelsePerioder")
+    private ArbeidTypeDto arbeidType;
+
+    @JsonProperty("ansettelsesPerioder")
     @Valid
-    private List<PeriodeDto> ansettelsePerioder  = Collections.emptyList();
-    
+    private List<PeriodeDto> ansettelsesPerioder;
+
     @JsonProperty("aktivitetsAvtaler")
     @Valid
-    private List<AktivitetsAvtaleDto> aktivitetsAvtaler = Collections.emptyList();
-    
+    private List<AktivitetsAvtaleDto> aktivitetsAvtaler;
+
     @JsonProperty("permisjoner")
     @Valid
-    private List<PermisjonDto> permisjoner = Collections.emptyList();
+    private List<PermisjonDto> permisjoner;
 
     protected YrkesaktivitetDto() {
         // default ctor
     }
 
-    public ArbeidsgiverDto getArbeidsgiver() {
-        return arbeidsgiver;
+    public YrkesaktivitetDto(Aktør arbeidsgiver, ArbeidTypeDto arbeidType) {
+        Objects.requireNonNull(arbeidsgiver, "arbeidsgiver");
+        Objects.requireNonNull(arbeidType, "arbeidType");
+        this.arbeidsgiver = arbeidsgiver;
+        this.arbeidType = arbeidType;
     }
 
-    public void setArbeidsgiver(ArbeidsgiverDto arbeidsgiver) {
-        this.arbeidsgiver = arbeidsgiver;
+    @AssertTrue(message = "Må ha minst en av ansettelsesPerioder, aktivitetsAvtaler eller permisjoner")
+    private boolean isOk() {
+        boolean ok = (ansettelsesPerioder != null && !ansettelsesPerioder.isEmpty())
+            || (aktivitetsAvtaler != null && !aktivitetsAvtaler.isEmpty())
+            || (permisjoner != null && !permisjoner.isEmpty());
+        return ok;
+    }
+
+    public Aktør getArbeidsgiver() {
+        return arbeidsgiver;
     }
 
     public ArbeidsforholdRefDto getArbeidsforholdId() {
@@ -67,19 +78,20 @@ public class YrkesaktivitetDto {
     }
 
     public ArbeidTypeDto getType() {
-        return type;
-    }
-
-    public void setType(ArbeidTypeDto type) {
-        this.type = type;
+        return arbeidType;
     }
 
     public List<PeriodeDto> getAnsettelsesperiode() {
-        return ansettelsePerioder;
+        return ansettelsesPerioder;
     }
 
     public void setAnsettelsesperiode(List<PeriodeDto> ansettelsesperiode) {
-        this.ansettelsePerioder = ansettelsesperiode;
+        this.ansettelsesPerioder = ansettelsesperiode;
+    }
+
+    public YrkesaktivitetDto medAnsettelsesperiode(List<PeriodeDto> ansettelsesperiode) {
+        this.ansettelsesPerioder = ansettelsesperiode;
+        return this;
     }
 
     public List<AktivitetsAvtaleDto> getAktivitetsAvtaler() {
@@ -90,11 +102,21 @@ public class YrkesaktivitetDto {
         this.aktivitetsAvtaler = aktivitetsAvtaler;
     }
 
+    public YrkesaktivitetDto medAktivitetsAvtaler(List<AktivitetsAvtaleDto> aktivitetsAvtaler) {
+        this.aktivitetsAvtaler = aktivitetsAvtaler;
+        return this;
+    }
+
     public List<PermisjonDto> getPermisjoner() {
         return permisjoner;
     }
 
     public void setPermisjoner(List<PermisjonDto> permisjoner) {
         this.permisjoner = permisjoner;
+    }
+
+    public YrkesaktivitetDto medPermisjoner(List<PermisjonDto> permisjoner) {
+        this.permisjoner = permisjoner;
+        return this;
     }
 }

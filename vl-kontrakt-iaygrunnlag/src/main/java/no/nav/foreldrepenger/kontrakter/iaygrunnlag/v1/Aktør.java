@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 /** Identifiserer en aktør (person, virksomhet). */
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property="type", defaultImpl = Void.class)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property="identType", defaultImpl = Void.class)
 @JsonSubTypes({
     @JsonSubTypes.Type(value = Organisasjon.class, name = Organisasjon.IDENT_TYPE),
     @JsonSubTypes.Type(value = AktørIdPersonident.class, name = AktørIdPersonident.IDENT_TYPE),

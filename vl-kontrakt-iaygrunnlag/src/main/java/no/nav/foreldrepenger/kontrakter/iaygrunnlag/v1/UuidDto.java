@@ -1,6 +1,7 @@
 package no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1;
 
 import java.util.Objects;
+import java.util.UUID;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -26,6 +27,11 @@ public class UuidDto {
     public UuidDto(String uuid) {
         Objects.requireNonNull(uuid, "uuid");
         this.uuid = uuid;
+    }
+
+    public UuidDto(UUID uuid) {
+        Objects.requireNonNull(uuid, "uuid");
+        this.uuid = uuid.toString();
     }
 
     public String getReferanse() {

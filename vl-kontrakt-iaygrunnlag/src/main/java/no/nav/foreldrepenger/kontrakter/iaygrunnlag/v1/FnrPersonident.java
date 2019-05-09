@@ -3,6 +3,7 @@ package no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -15,11 +16,11 @@ public class FnrPersonident extends PersonIdent {
     
     @JsonProperty(value = "ident", required = true, index = 1)
     @NotNull
-    @Pattern(regexp = "^\\d{11}+$")
+    @Pattern(regexp = "^\\d{11}+$", message = "fnr ha ikke gyldig verdi (11 siffer)")
     private String ident;
 
-    public FnrPersonident(String kode) {
-        super();
+    @JsonCreator
+    public FnrPersonident(@JsonProperty("kode") String kode) {
         this.ident = kode;
     }
 

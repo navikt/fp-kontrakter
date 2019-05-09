@@ -22,7 +22,7 @@ public class OppgittFrilansDto {
     private boolean erNærRelasjon;
     
     @JsonProperty(value="frilansoppdrag")
-    private List<OppgittFrilansoppdragDto> frilansoppdrag = Collections.emptyList();
+    private List<OppgittFrilansoppdragDto> frilansoppdrag;
 
     public OppgittFrilansDto() {
     }
