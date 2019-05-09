@@ -1,6 +1,7 @@
 package no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.ytelse;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -15,35 +16,34 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.ArbeidskategoriDto;
 
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = Include.NON_ABSENT, content = Include.NON_EMPTY)
 public class YtelseGrunnlagDto {
 
-    @JsonProperty(value="arbeidskategori")
+    @JsonProperty(value = "arbeidskategori")
     @Valid
     private ArbeidskategoriDto arbeidskategoriDto;
-    
-    @JsonProperty(value="opprinneligIdentDato")
+
+    @JsonProperty(value = "opprinneligIdentDato")
     @Valid
     private LocalDate opprinneligIdentDato;
-    
-    @JsonProperty(value="dekningsgradProsent")
-    @DecimalMin(value="0.00", message = "må være >= 0.00")
-    @DecimalMax(value="500.00", message="må være < 500.00") // TODO: mer sane verdier
+
+    @JsonProperty(value = "dekningsgradProsent")
+    @DecimalMin(value = "0.00", message = "må være >= 0.00")
+    @DecimalMax(value = "500.00", message = "må være < 500.00") // TODO: mer sane verdier
     private BigDecimal dekningsgradProsent;
-    
-    @JsonProperty(value="graderingProsent")
-    @DecimalMin(value="0.00", message = "må være >= 0.00")
-    @DecimalMax(value="500.00", message="må være < 500.00") // TODO: mer sane verdier
+
+    @JsonProperty(value = "graderingProsent")
+    @DecimalMin(value = "0.00", message = "må være >= 0.00")
+    @DecimalMax(value = "500.00", message = "må være < 500.00") // TODO: mer sane verdier
     private BigDecimal graderingProsent;
-    
-    @JsonProperty(value="inntektsgrunnlagProsent")
-    @DecimalMin(value="0.00", message = "må være >= 0.00")
-    @DecimalMax(value="500.00", message="må være < 500.00") // TODO: mer sane verdier
+
+    @JsonProperty(value = "inntektsgrunnlagProsent")
+    @DecimalMin(value = "0.00", message = "må være >= 0.00")
+    @DecimalMax(value = "500.00", message = "må være < 500.00") // TODO: mer sane verdier
     private BigDecimal inntektsgrunnlagProsent;
-    
-    @JsonProperty(value="fordeling")
+
+    @JsonProperty(value = "fordeling")
     @Valid
     private List<FordelingDto> fordeling;
 
@@ -58,6 +58,11 @@ public class YtelseGrunnlagDto {
         this.arbeidskategoriDto = arbeidskategoriDto;
     }
 
+    public YtelseGrunnlagDto medArbeidskategoriDto(ArbeidskategoriDto arbeidskategoriDto) {
+        setArbeidskategoriDto(arbeidskategoriDto);
+        return this;
+    }
+
     public LocalDate getOpprinneligIdentDato() {
         return opprinneligIdentDato;
     }
@@ -66,12 +71,27 @@ public class YtelseGrunnlagDto {
         this.opprinneligIdentDato = opprinneligIdentDato;
     }
 
+    public YtelseGrunnlagDto medOpprinneligIdentDato(LocalDate opprinneligIdentDato) {
+        setOpprinneligIdentDato(opprinneligIdentDato);
+        return this;
+    }
+
     public BigDecimal getDekningsgradProsent() {
         return dekningsgradProsent;
     }
 
     public void setDekningsgradProsent(BigDecimal dekningsgradProsent) {
-        this.dekningsgradProsent = dekningsgradProsent;
+        this.dekningsgradProsent = dekningsgradProsent == null ? null : dekningsgradProsent.setScale(2, RoundingMode.HALF_UP);
+    }
+
+    public YtelseGrunnlagDto medDekningsgradProsent(BigDecimal dekningsgradProsent) {
+        setDekningsgradProsent(dekningsgradProsent);
+        return this;
+    }
+
+    public YtelseGrunnlagDto medDekningsgradProsent(int dekningsgradProsent) {
+        setDekningsgradProsent(BigDecimal.valueOf(dekningsgradProsent));
+        return this;
     }
 
     public BigDecimal getGraderingProsent() {
@@ -79,7 +99,17 @@ public class YtelseGrunnlagDto {
     }
 
     public void setGraderingProsent(BigDecimal graderingProsent) {
-        this.graderingProsent = graderingProsent;
+        this.graderingProsent = graderingProsent == null ? null : graderingProsent.setScale(2, RoundingMode.HALF_UP);
+    }
+
+    public YtelseGrunnlagDto medGraderingProsent(BigDecimal graderingProsent) {
+        setGraderingProsent(graderingProsent);
+        return this;
+    }
+
+    public YtelseGrunnlagDto medGraderingProsent(int graderingProsent) {
+        setGraderingProsent(BigDecimal.valueOf(graderingProsent));
+        return this;
     }
 
     public BigDecimal getInntektsgrunnlagProsent() {
@@ -87,7 +117,17 @@ public class YtelseGrunnlagDto {
     }
 
     public void setInntektsgrunnlagProsent(BigDecimal inntektsgrunnlagProsent) {
-        this.inntektsgrunnlagProsent = inntektsgrunnlagProsent;
+        this.inntektsgrunnlagProsent = inntektsgrunnlagProsent == null ? null : inntektsgrunnlagProsent.setScale(2, RoundingMode.HALF_UP);
+    }
+
+    public YtelseGrunnlagDto medInntektsgrunnlagProsent(BigDecimal inntektsgrunnlagProsent) {
+        setInntektsgrunnlagProsent(inntektsgrunnlagProsent);
+        return this;
+    }
+
+    public YtelseGrunnlagDto medInntektsgrunnlagProsent(int inntektsgrunnlagProsent) {
+        setInntektsgrunnlagProsent(BigDecimal.valueOf(inntektsgrunnlagProsent));
+        return this;
     }
 
     public List<FordelingDto> getFordeling() {
@@ -96,5 +136,10 @@ public class YtelseGrunnlagDto {
 
     public void setFordeling(List<FordelingDto> fordeling) {
         this.fordeling = fordeling;
+    }
+
+    public YtelseGrunnlagDto medFordeling(List<FordelingDto> fordeling) {
+        setFordeling(fordeling);
+        return this;
     }
 }

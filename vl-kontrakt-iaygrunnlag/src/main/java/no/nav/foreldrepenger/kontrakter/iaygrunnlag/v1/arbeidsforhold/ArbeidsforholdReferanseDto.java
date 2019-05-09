@@ -8,8 +8,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.Aktør;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.ArbeidsforholdRefDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.ArbeidsgiverDto;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = Include.NON_ABSENT, content = Include.NON_EMPTY)
@@ -18,7 +18,7 @@ public class ArbeidsforholdReferanseDto {
     @JsonProperty(value = "arbeidsgiver", required = true)
     @Valid
     @NotNull
-    private ArbeidsgiverDto arbeidsgiver;
+    private Aktør arbeidsgiver;
 
     @JsonProperty("arbeidsforholdId")
     @Valid
@@ -28,13 +28,12 @@ public class ArbeidsforholdReferanseDto {
     protected ArbeidsforholdReferanseDto() {
     }
 
-    public ArbeidsforholdReferanseDto(ArbeidsgiverDto arbeidsgiver, ArbeidsforholdRefDto arbeidsforholdId) {
-        super();
+    public ArbeidsforholdReferanseDto(Aktør arbeidsgiver, ArbeidsforholdRefDto arbeidsforholdId) {
         this.arbeidsgiver = arbeidsgiver;
         this.arbeidsforholdId = arbeidsforholdId;
     }
 
-    public ArbeidsgiverDto getArbeidsgiver() {
+    public Aktør getArbeidsgiver() {
         return arbeidsgiver;
     }
 

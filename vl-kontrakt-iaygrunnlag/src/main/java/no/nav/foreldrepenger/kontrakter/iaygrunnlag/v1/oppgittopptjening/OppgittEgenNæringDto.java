@@ -1,7 +1,9 @@
 package no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.oppgittopptjening;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
+import java.util.Objects;
 
 import javax.validation.Valid;
 import javax.validation.constraints.DecimalMax;
@@ -11,78 +13,74 @@ import javax.validation.constraints.Pattern;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.VirksomhetTypeDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.Organisasjon;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.PeriodeDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.Periode;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = Include.ALWAYS, content = Include.NON_EMPTY)
 public class OppgittEgenNæringDto {
-    
-    @JsonProperty(value = "periode", required=true)
+
+    @JsonProperty(value = "periode", required = true)
     @Valid
     @NotNull
-    private PeriodeDto periode;
-    
+    private Periode periode;
+
     @JsonProperty(value = "virksomhet")
     @Valid
     private Organisasjon virksomhet;
-    
+
     @JsonProperty(value = "virksomhetType")
     @Valid
     private VirksomhetTypeDto virksomhetTypeDto;
-    
-    @JsonProperty(value="regnskapsførerNavn")
+
+    @JsonProperty(value = "regnskapsførerNavn")
     @Pattern(regexp = "^[\\p{L}\\p{N}.- ]+$")
     private String regnskapsførerNavn;
-    
-    @JsonProperty(value="regnskapsførerTlf")
+
+    @JsonProperty(value = "regnskapsførerTlf")
     private String regnskapsførerTlf;
-    
-    @JsonProperty(value="endringDato")
+
+    @JsonProperty(value = "endringDato")
     private LocalDate endringDato;
-    
-    @JsonProperty(value="erVarigEndring")
-    private boolean erVarigEndring;
-    
-    @JsonProperty(value="endringBegrunnelse")
-    @Pattern(regexp = "^[\\p{L}\\p{N}_.- \\n\\t\\r]+$")
+
+    @JsonProperty(value = "erVarigEndring")
+    private Boolean erVarigEndring;
+
+    @JsonProperty(value = "endringBegrunnelse")
     private String endringBegrunnelse;
-    
+
     @JsonProperty(value = "utenlandskVirksomhet")
     @Valid
     private OppgittUtenlandskVirksomhetDto oppgittUtenlandskVirksomhet;
-    
+
     @JsonProperty("bruttoInntekt")
-    @DecimalMin(value="0.00", message = "beløp må være >= 0.00")
-    @DecimalMax(value="100000000.00", message="beløp må være < 100000000.00")  // TODO: sane verdier
+    @DecimalMin(value = "0.00", message = "beløp må være >= 0.00")
+    @DecimalMax(value = "100000000.00", message = "beløp må være < 100000000.00") // TODO: sane verdier
     private BigDecimal bruttoInntekt;
-    
-    @JsonProperty(value="erNyoppstartet")
-    private boolean nyoppstartet;
-    
-    @JsonProperty(value="erNærRelasjon")
-    private boolean nærRelasjon;
-    
-    @JsonProperty(value="erNyIArbeidslivet")
-    private boolean nyIArbeidslivet;
-    
+
+    @JsonProperty(value = "erNyoppstartet")
+    private Boolean nyoppstartet;
+
+    @JsonProperty(value = "erNærRelasjon")
+    private Boolean nærRelasjon;
+
+    @JsonProperty(value = "erNyIArbeidslivet")
+    private Boolean nyIArbeidslivet;
+
     protected OppgittEgenNæringDto() {
     }
 
-    public OppgittEgenNæringDto(PeriodeDto periode) {
+    public OppgittEgenNæringDto(Periode periode) {
+        Objects.requireNonNull(periode, "periode");
         this.periode = periode;
     }
 
-    public PeriodeDto getPeriode() {
+    public Periode getPeriode() {
         return periode;
-    }
-
-    public void setPeriode(PeriodeDto periode) {
-        this.periode = periode;
     }
 
     public Organisasjon getVirksomhet() {
@@ -93,12 +91,22 @@ public class OppgittEgenNæringDto {
         this.virksomhet = virksomhet;
     }
 
+    public OppgittEgenNæringDto medVirksomhet(Organisasjon virksomhet) {
+        setVirksomhet(virksomhet);
+        return this;
+    }
+
     public VirksomhetTypeDto getVirksomhetTypeDto() {
         return virksomhetTypeDto;
     }
 
     public void setVirksomhetTypeDto(VirksomhetTypeDto virksomhetTypeDto) {
         this.virksomhetTypeDto = virksomhetTypeDto;
+    }
+
+    public OppgittEgenNæringDto medVirksomhetTypeDto(VirksomhetTypeDto virksomhetTypeDto) {
+        setVirksomhetTypeDto(virksomhetTypeDto);
+        return this;
     }
 
     public String getRegnskapsførerNavn() {
@@ -109,12 +117,22 @@ public class OppgittEgenNæringDto {
         this.regnskapsførerNavn = regnskapsførerNavn;
     }
 
+    public OppgittEgenNæringDto medRegnskapsførerNavn(String regnskapsførerNavn) {
+        setRegnskapsførerNavn(regnskapsførerNavn);
+        return this;
+    }
+
     public String getRegnskapsførerTlf() {
         return regnskapsførerTlf;
     }
 
     public void setRegnskapsførerTlf(String regnskapsførerTlf) {
         this.regnskapsførerTlf = regnskapsførerTlf;
+    }
+
+    public OppgittEgenNæringDto medRegnskapsførerTlf(String regnskapsførerTlf) {
+        setRegnskapsførerTlf(regnskapsførerTlf);
+        return this;
     }
 
     public LocalDate getEndringDato() {
@@ -125,6 +143,11 @@ public class OppgittEgenNæringDto {
         this.endringDato = endringDato;
     }
 
+    public OppgittEgenNæringDto medEndringDato(LocalDate endringDato) {
+        setEndringDato(endringDato);
+        return this;
+    }
+
     public String getBegrunnelse() {
         return endringBegrunnelse;
     }
@@ -133,12 +156,22 @@ public class OppgittEgenNæringDto {
         this.endringBegrunnelse = begrunnelse;
     }
 
+    public OppgittEgenNæringDto medBegrunnelse(String begrunnelse) {
+        setBegrunnelse(begrunnelse);
+        return this;
+    }
+
     public BigDecimal getBruttoInntekt() {
         return bruttoInntekt;
     }
 
     public void setBruttoInntekt(BigDecimal bruttoInntekt) {
-        this.bruttoInntekt = bruttoInntekt;
+        this.bruttoInntekt = bruttoInntekt == null ? null : bruttoInntekt.setScale(2, RoundingMode.HALF_UP);
+    }
+
+    public OppgittEgenNæringDto medBruttoInntekt(BigDecimal bruttoInntekt) {
+        setBruttoInntekt(bruttoInntekt);
+        return this;
     }
 
     public boolean isNyoppstartet() {
@@ -149,12 +182,22 @@ public class OppgittEgenNæringDto {
         this.nyoppstartet = nyoppstartet;
     }
 
+    public OppgittEgenNæringDto medNyoppstartet(boolean nyoppstartet) {
+        setNyoppstartet(nyoppstartet);
+        return this;
+    }
+
     public boolean isVarigEndring() {
         return erVarigEndring;
     }
 
     public void setVarigEndring(boolean varigEndring) {
         this.erVarigEndring = varigEndring;
+    }
+
+    public OppgittEgenNæringDto medVarigEndring(boolean varigEndring) {
+        setVarigEndring(varigEndring);
+        return this;
     }
 
     public boolean isNærRelasjon() {
@@ -165,6 +208,11 @@ public class OppgittEgenNæringDto {
         this.nærRelasjon = nærRelasjon;
     }
 
+    public OppgittEgenNæringDto medNærRelasjon(boolean nærRelasjon) {
+        setNærRelasjon(nærRelasjon);
+        return this;
+    }
+
     public boolean isNyIArbeidslivet() {
         return nyIArbeidslivet;
     }
@@ -173,11 +221,21 @@ public class OppgittEgenNæringDto {
         this.nyIArbeidslivet = nyIArbeidslivet;
     }
 
+    public OppgittEgenNæringDto medNyIArbeidslivet(boolean nyIArbeidslivet) {
+        setNyIArbeidslivet(nyIArbeidslivet);
+        return this;
+    }
+
     public OppgittUtenlandskVirksomhetDto getOppgittUtenlandskVirksomhet() {
         return oppgittUtenlandskVirksomhet;
     }
 
     public void setOppgittUtenlandskVirksomhet(OppgittUtenlandskVirksomhetDto oppgittUtenlandskVirksomhet) {
         this.oppgittUtenlandskVirksomhet = oppgittUtenlandskVirksomhet;
+    }
+
+    public OppgittEgenNæringDto medOppgittUtenlandskVirksomhet(OppgittUtenlandskVirksomhetDto oppgittUtenlandskVirksomhet) {
+        setOppgittUtenlandskVirksomhet(oppgittUtenlandskVirksomhet);
+        return this;
     }
 }

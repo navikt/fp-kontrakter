@@ -1,5 +1,7 @@
 package no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.inntektsmelding;
 
+import java.util.Objects;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
@@ -9,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.UtsettelseÅrsakDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.PeriodeDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.Periode;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = Include.ALWAYS, content = Include.ALWAYS)
@@ -18,7 +20,7 @@ public class UtsettelsePeriodeDto {
     @JsonProperty(value = "periode", required = true)
     @Valid
     @NotNull
-    private PeriodeDto periode;
+    private Periode periode;
     
     @JsonProperty(value = "utsettelseÅrsak")
     @Valid
@@ -27,11 +29,12 @@ public class UtsettelsePeriodeDto {
     public UtsettelsePeriodeDto() {
     }
     
-    public UtsettelsePeriodeDto(PeriodeDto periode) {
+    public UtsettelsePeriodeDto(Periode periode) {
+        Objects.requireNonNull(periode, "periode");
         this.periode = periode;
     }
 
-    public PeriodeDto getPeriode() {
+    public Periode getPeriode() {
         return periode;
     }
 

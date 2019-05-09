@@ -13,6 +13,16 @@ public class NaturalytelseTypeDto extends Kodeverk {
 
     static final String KODEVERK = "NATURAL_YTELSE_TYPE";
     
+    /** Eksempel konstant - Bil. */
+    public static final NaturalytelseTypeDto BIL = new NaturalytelseTypeDto("BIL");
+    
+    /** Eksempel konstant - Opsjoner. */
+    public static final NaturalytelseTypeDto OPSJONER = new NaturalytelseTypeDto("OPSJONER");
+    
+    /** Eksempel konstant - Elektronisk kommunikasjon (mobil, bredbånd, etc.). */
+    public static final NaturalytelseTypeDto ELEKTRISK_KOMMUNIKASJON = new NaturalytelseTypeDto("ELEKTRISK_KOMMUNIKASJON");
+    
+    
     @JsonProperty(value = "kode", required = true, index = 1)
     @Pattern(regexp = "^[\\p{L}\\p{N}_.-]+$")
     @NotNull

@@ -6,10 +6,8 @@ import javax.validation.constraints.Pattern;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.ArbeidsgiverDto;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = Include.NON_ABSENT, content = Include.NON_EMPTY)
@@ -23,13 +21,13 @@ public class ArbeidsforholdReferanse {
     @JsonProperty(value = "arbeidsgiver")
     @NotNull
     @Valid
-    private ArbeidsgiverDto arbeidsgiver;
+    private Aktør arbeidsgiver;
     
     @JsonProperty(value = "arbeidsforholdId")
     @Pattern(regexp = ".*")
     private String arbeidsforholdId;
 
-    public ArbeidsforholdReferanse(String referanse, ArbeidsgiverDto arbeidsgiver, String arbeidsforholdId) {
+    public ArbeidsforholdReferanse(String referanse, Aktør arbeidsgiver, String arbeidsforholdId) {
         this.uuid = new UuidDto(referanse);
         this.arbeidsgiver = arbeidsgiver;
         this.arbeidsforholdId = arbeidsforholdId;
@@ -43,12 +41,8 @@ public class ArbeidsforholdReferanse {
         this.uuid = referanse;
     }
 
-    public ArbeidsgiverDto getArbeidsgiver() {
+    public Aktør getArbeidsgiver() {
         return arbeidsgiver;
-    }
-
-    public void setArbeidsgiver(ArbeidsgiverDto arbeidsgiver) {
-        this.arbeidsgiver = arbeidsgiver;
     }
 
     public String getArbeidsforholdId() {

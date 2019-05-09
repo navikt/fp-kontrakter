@@ -33,6 +33,11 @@ public class OppgittUtenlandskVirksomhetDto {
         this.landkode = landkode;
         this.virksomhetNavn = virksomhetNavn;
     }
+    
+    public OppgittUtenlandskVirksomhetDto(String landkode, String virksomhetNavn) {
+        this.landkode = new LandkoderDto(landkode);
+        this.virksomhetNavn = virksomhetNavn;
+    }
 
     public LandkoderDto getLandkode() {
         return landkode;

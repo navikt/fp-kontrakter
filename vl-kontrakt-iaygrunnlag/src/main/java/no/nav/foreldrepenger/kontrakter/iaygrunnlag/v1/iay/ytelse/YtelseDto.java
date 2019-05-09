@@ -10,61 +10,58 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.FagsystemDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.RelatertYtelseTilstandDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.RelatertYtelseTypeDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.PeriodeDto;
-
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.Fagsystem;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.YtelseStatus;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.YtelseType;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.Periode;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = Include.NON_ABSENT, content = Include.NON_EMPTY)
 public class YtelseDto {
 
-    @JsonProperty(value="fagsystem", required=true)
+    @JsonProperty(value = "fagsystem", required = true)
     @Valid
     @NotNull
-    private FagsystemDto fagsystemDto;
-    
-    @JsonProperty(value="ytelseType", required=true)
+    private Fagsystem fagsystem;
+
+    @JsonProperty(value = "ytelseType", required = true)
     @Valid
     @NotNull
-    private RelatertYtelseTypeDto type;
-    
-    @JsonProperty(value="saksnummer", required=true)
+    private YtelseType type;
+
+    @JsonProperty(value = "saksnummer", required = true)
     @Valid
     @NotNull
     private String saksnummer;
-    
-    @JsonProperty(value="periode", required=true)
+
+    @JsonProperty(value = "periode", required = true)
     @Valid
     @NotNull
-    private PeriodeDto periode;
-    
-    @JsonProperty(value="status", required=true)
+    private Periode periode;
+
+    @JsonProperty(value = "status", required = true)
     @Valid
     @NotNull
-    private RelatertYtelseTilstandDto status;
-    
-    @JsonProperty(value="anvisninger")
+    private YtelseStatus status;
+
+    @JsonProperty(value = "anvisninger")
     @Valid
     private List<AnvisningDto> anvisninger;
-    
-    @JsonProperty(value="ytelseGrunnlag")
+
+    @JsonProperty(value = "ytelseGrunnlag")
     @Valid
     private YtelseGrunnlagDto grunnlag;
 
     protected YtelseDto() {
     }
-    
 
-    public YtelseDto(FagsystemDto fagsystemDto, RelatertYtelseTypeDto type, PeriodeDto periode, RelatertYtelseTilstandDto status, String saksnummer) {
-        this.fagsystemDto = fagsystemDto;
+    public YtelseDto(Fagsystem fagsystemDto, YtelseType type, Periode periode, YtelseStatus status, String saksnummer) {
+        this.fagsystem = fagsystemDto;
         this.type = type;
         this.periode = periode;
         this.status = status;
         this.saksnummer = saksnummer;
     }
-
 
     public List<AnvisningDto> getAnvisninger() {
         return anvisninger;
@@ -72,6 +69,11 @@ public class YtelseDto {
 
     public void setAnvisninger(List<AnvisningDto> anvisninger) {
         this.anvisninger = anvisninger;
+    }
+
+    public YtelseDto medAnvisninger(List<AnvisningDto> anvisninger) {
+        this.anvisninger = anvisninger;
+        return this;
     }
 
     public YtelseGrunnlagDto getGrunnlag() {
@@ -82,11 +84,16 @@ public class YtelseDto {
         this.grunnlag = grunnlag;
     }
 
-    public FagsystemDto getFagsystemDto() {
-        return fagsystemDto;
+    public YtelseDto medGrunnlag(YtelseGrunnlagDto grunnlag) {
+        this.grunnlag = grunnlag;
+        return this;
     }
 
-    public RelatertYtelseTypeDto getType() {
+    public Fagsystem getFagsystemDto() {
+        return fagsystem;
+    }
+
+    public YtelseType getType() {
         return type;
     }
 
@@ -94,11 +101,11 @@ public class YtelseDto {
         return saksnummer;
     }
 
-    public PeriodeDto getPeriode() {
+    public Periode getPeriode() {
         return periode;
     }
 
-    public RelatertYtelseTilstandDto getStatus() {
+    public YtelseStatus getStatus() {
         return status;
     }
 

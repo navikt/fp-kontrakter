@@ -1,10 +1,10 @@
 package no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.arbeid;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -15,7 +15,7 @@ import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.PersonIdent;
 
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(value = Include.ALWAYS, content = Include.ALWAYS)
+@JsonInclude(value = Include.NON_ABSENT, content = Include.ALWAYS)
 public class ArbeidDto {
 
     @JsonProperty("person")
@@ -23,6 +23,7 @@ public class ArbeidDto {
     private PersonIdent person;
     
     @JsonProperty("yrkesaktiviteter")
+    @NotNull
     @Valid
     private List<YrkesaktivitetDto> yrkesaktiviteter;
 

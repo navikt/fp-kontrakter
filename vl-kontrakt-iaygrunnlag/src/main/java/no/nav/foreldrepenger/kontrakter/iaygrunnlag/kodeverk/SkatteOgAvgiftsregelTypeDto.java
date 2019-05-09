@@ -8,9 +8,11 @@ import javax.validation.constraints.Pattern;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-
 public class SkatteOgAvgiftsregelTypeDto extends Kodeverk {
     static final String KODEVERK = "SKATTE_OG_AVGIFTSREGEL";
+
+    /** EKsempel konstant. Nettolønn. */
+    public static final SkatteOgAvgiftsregelTypeDto NETTOLØNN = new SkatteOgAvgiftsregelTypeDto("NETTOLØNN");
 
     @JsonProperty(value = "kode", required = true, index = 1)
     @Pattern(regexp = "^[\\p{L}\\p{N}_.-]+$")

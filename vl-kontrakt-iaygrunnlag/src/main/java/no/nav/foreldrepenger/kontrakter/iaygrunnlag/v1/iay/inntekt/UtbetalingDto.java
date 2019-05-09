@@ -3,6 +3,7 @@ package no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.inntekt;
 import java.util.List;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -10,39 +11,37 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.InntektsKildeDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.ArbeidsgiverDto;
-
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.Aktør;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = Include.ALWAYS, content = Include.ALWAYS)
 public class UtbetalingDto {
 
-    @JsonProperty("arbeidsgiver")
+    @JsonProperty(value = "arbeidsgiver", required = true)
+    @NotNull
     @Valid
-    private ArbeidsgiverDto utbetaler;
-    
-    @JsonProperty("inntektsKilde")
+    private Aktør arbeidsgiver;
+
+    @JsonProperty(value = "inntektsKilde", required = true)
+    @NotNull
     @Valid
     private InntektsKildeDto kilde;
-    
-    @JsonProperty("utbetalingsPoster")
+
+    @JsonProperty(value = "utbetalingsPoster", required = true)
+    @NotNull
     @Valid
     private List<UtbetalingsPostDto> poster;
 
     protected UtbetalingDto() {
         // default ctor
     }
-    
-    public UtbetalingDto(ArbeidsgiverDto utbetaler) {
-        this.utbetaler = utbetaler;
+
+    public UtbetalingDto(Aktør arbeidsgiver) {
+        this.arbeidsgiver = arbeidsgiver;
     }
 
-    public ArbeidsgiverDto getUtbetaler() {
-        return utbetaler;
-    }
-
-    public void setUtbetaler(ArbeidsgiverDto utbetaler) {
-        this.utbetaler = utbetaler;
+    public Aktør getUtbetaler() {
+        return arbeidsgiver;
     }
 
     public InntektsKildeDto getKilde() {
@@ -53,11 +52,26 @@ public class UtbetalingDto {
         this.kilde = kilde;
     }
 
+    public UtbetalingDto medKilde(InntektsKildeDto kilde) {
+        setKilde(kilde);
+        return this;
+    }
+    
+    public UtbetalingDto medKilde(String inntektsKilde) {
+        setKilde(new InntektsKildeDto(inntektsKilde));
+        return this;
+    }
+
     public List<UtbetalingsPostDto> getPoster() {
         return poster;
     }
 
     public void setPoster(List<UtbetalingsPostDto> poster) {
         this.poster = poster;
+    }
+
+    public UtbetalingDto medPoster(List<UtbetalingsPostDto> poster) {
+        setPoster(poster);
+        return this;
     }
 }

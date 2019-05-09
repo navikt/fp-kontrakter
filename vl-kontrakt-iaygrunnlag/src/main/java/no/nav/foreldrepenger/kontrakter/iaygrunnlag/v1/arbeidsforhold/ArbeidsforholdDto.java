@@ -1,6 +1,5 @@
 package no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.arbeidsforhold;
 
-import java.util.Collections;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -12,9 +11,9 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.ArbeidTypeDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.Aktør;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.ArbeidsforholdRefDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.ArbeidsgiverDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.PeriodeDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.Periode;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = Include.NON_ABSENT, content = Include.NON_EMPTY)
@@ -23,7 +22,7 @@ public class ArbeidsforholdDto {
     @JsonProperty(value = "arbeidsgiver", required = true)
     @Valid
     @NotNull
-    private ArbeidsgiverDto arbeidsgiver;
+    private Aktør arbeidsgiver;
 
     @JsonProperty(value = "arbeidType", required = true)
     @Valid
@@ -36,17 +35,17 @@ public class ArbeidsforholdDto {
 
     @JsonProperty("ansettelsePerioder")
     @Valid
-    private List<PeriodeDto> ansettelsesperiode;
+    private List<Periode> ansettelsesperiode;
 
     protected ArbeidsforholdDto() {
     }
 
-    public ArbeidsforholdDto(ArbeidsgiverDto arbeidsgiver, ArbeidTypeDto type) {
+    public ArbeidsforholdDto(Aktør arbeidsgiver, ArbeidTypeDto type) {
         this.arbeidsgiver = arbeidsgiver;
         this.type = type;
     }
 
-    public ArbeidsgiverDto getArbeidsgiver() {
+    public Aktør getArbeidsgiver() {
         return arbeidsgiver;
     }
 
@@ -62,11 +61,11 @@ public class ArbeidsforholdDto {
         return type;
     }
 
-    public List<PeriodeDto> getAnsettelsesperiode() {
+    public List<Periode> getAnsettelsesperiode() {
         return ansettelsesperiode;
     }
 
-    public void setAnsettelsesperiode(List<PeriodeDto> ansettelsesperiode) {
+    public void setAnsettelsesperiode(List<Periode> ansettelsesperiode) {
         this.ansettelsesperiode = ansettelsesperiode;
     }
 }

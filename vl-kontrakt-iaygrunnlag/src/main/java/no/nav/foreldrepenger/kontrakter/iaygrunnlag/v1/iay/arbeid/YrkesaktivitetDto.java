@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.ArbeidTypeDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.Aktør;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.ArbeidsforholdRefDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.PeriodeDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.Periode;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = Include.NON_ABSENT, content = Include.NON_EMPTY)
@@ -36,7 +36,7 @@ public class YrkesaktivitetDto {
 
     @JsonProperty("ansettelsesPerioder")
     @Valid
-    private List<PeriodeDto> ansettelsesPerioder;
+    private List<Periode> ansettelsesPerioder;
 
     @JsonProperty("aktivitetsAvtaler")
     @Valid
@@ -57,6 +57,13 @@ public class YrkesaktivitetDto {
         this.arbeidType = arbeidType;
     }
 
+    public YrkesaktivitetDto(Aktør arbeidsgiver, String arbeidType) {
+        Objects.requireNonNull(arbeidsgiver, "arbeidsgiver");
+        Objects.requireNonNull(arbeidType, "arbeidType");
+        this.arbeidsgiver = arbeidsgiver;
+        this.arbeidType = new ArbeidTypeDto(arbeidType);
+    }
+    
     @AssertTrue(message = "Må ha minst en av ansettelsesPerioder, aktivitetsAvtaler eller permisjoner")
     private boolean isOk() {
         boolean ok = (ansettelsesPerioder != null && !ansettelsesPerioder.isEmpty())
@@ -81,15 +88,15 @@ public class YrkesaktivitetDto {
         return arbeidType;
     }
 
-    public List<PeriodeDto> getAnsettelsesperiode() {
+    public List<Periode> getAnsettelsesperiode() {
         return ansettelsesPerioder;
     }
 
-    public void setAnsettelsesperiode(List<PeriodeDto> ansettelsesperiode) {
+    public void setAnsettelsesperiode(List<Periode> ansettelsesperiode) {
         this.ansettelsesPerioder = ansettelsesperiode;
     }
 
-    public YrkesaktivitetDto medAnsettelsesperiode(List<PeriodeDto> ansettelsesperiode) {
+    public YrkesaktivitetDto medAnsettelsesperiode(List<Periode> ansettelsesperiode) {
         this.ansettelsesPerioder = ansettelsesperiode;
         return this;
     }

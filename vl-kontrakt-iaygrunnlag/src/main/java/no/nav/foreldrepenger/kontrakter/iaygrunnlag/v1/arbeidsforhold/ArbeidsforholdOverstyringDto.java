@@ -15,9 +15,9 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.ArbeidsforholdHandlingTypeDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.Aktør;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.ArbeidsforholdRefDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.ArbeidsgiverDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.PeriodeDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.Periode;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = Include.NON_ABSENT, content = Include.NON_EMPTY)
@@ -26,7 +26,7 @@ public class ArbeidsforholdOverstyringDto {
     @JsonProperty(value = "arbeidsgiver", required = true)
     @Valid
     @NotNull
-    private ArbeidsgiverDto arbeidsgiver;
+    private Aktør arbeidsgiver;
     
     @JsonProperty(value = "arbeidsforholdReferanse")
     @Valid
@@ -42,7 +42,6 @@ public class ArbeidsforholdOverstyringDto {
     private ArbeidsforholdHandlingTypeDto handling;
     
     @JsonProperty(value = "overstyringBegrunnelse")
-    @Pattern(regexp = "^[\\p{L}\\p{N}_.- \\n\\t\\r]+$")
     private String begrunnelse;
     
     @JsonProperty(value = "navn")
@@ -57,24 +56,20 @@ public class ArbeidsforholdOverstyringDto {
     
     @JsonProperty(value = "overstyrtePerioder")
     @Valid
-    private List<PeriodeDto> arbeidsforholdOverstyrtePerioder;
+    private List<Periode> arbeidsforholdOverstyrtePerioder;
 
     protected ArbeidsforholdOverstyringDto() {
         // default ctor
     }
 
-    public ArbeidsforholdOverstyringDto(ArbeidsgiverDto arbeidsgiver, ArbeidsforholdRefDto arbeidsforholdRef) {
+    public ArbeidsforholdOverstyringDto(Aktør arbeidsgiver, ArbeidsforholdRefDto arbeidsforholdRef) {
         super();
         this.arbeidsgiver = arbeidsgiver;
         this.arbeidsforholdRef = arbeidsforholdRef;
     }
 
-    public ArbeidsgiverDto getArbeidsgiver() {
+    public Aktør getArbeidsgiver() {
         return arbeidsgiver;
-    }
-
-    public void setArbeidsgiver(ArbeidsgiverDto arbeidsgiver) {
-        this.arbeidsgiver = arbeidsgiver;
     }
 
     public ArbeidsforholdRefDto getArbeidsforholdRef() {
@@ -125,11 +120,11 @@ public class ArbeidsforholdOverstyringDto {
         this.stillingsprosent = stillingsprosent;
     }
 
-    public List<PeriodeDto> getArbeidsforholdOverstyrtePerioder() {
+    public List<Periode> getArbeidsforholdOverstyrtePerioder() {
         return arbeidsforholdOverstyrtePerioder;
     }
 
-    public void setArbeidsforholdOverstyrtePerioder(List<PeriodeDto> arbeidsforholdOverstyrtePerioder) {
+    public void setArbeidsforholdOverstyrtePerioder(List<Periode> arbeidsforholdOverstyrtePerioder) {
         this.arbeidsforholdOverstyrtePerioder = arbeidsforholdOverstyrtePerioder;
     }
 }

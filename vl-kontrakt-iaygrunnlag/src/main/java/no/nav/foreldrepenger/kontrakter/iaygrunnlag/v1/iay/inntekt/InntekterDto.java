@@ -1,10 +1,10 @@
 package no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.inntekt;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -12,7 +12,6 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.PersonIdent;
-
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = Include.NON_ABSENT, content = Include.NON_EMPTY)
@@ -24,6 +23,7 @@ public class InntekterDto {
     private PersonIdent person;
 
     @JsonProperty("utbetalinger")
+    @NotNull
     @Valid
     private List<UtbetalingDto> utbetalinger;
 
@@ -45,5 +45,10 @@ public class InntekterDto {
 
     public void setUtbetalinger(List<UtbetalingDto> utbetalinger) {
         this.utbetalinger = utbetalinger;
+    }
+
+    public InntekterDto medUtbetalinger(List<UtbetalingDto> utbetalinger) {
+        setUtbetalinger(utbetalinger);
+        return this;
     }
 }

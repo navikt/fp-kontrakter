@@ -48,6 +48,11 @@ public class OppgittOpptjeningDto {
         this.egenNæring = egenNæring;
     }
 
+    public OppgittOpptjeningDto medEgenNæring(List<OppgittEgenNæringDto> egenNæring) {
+        setEgenNæring(egenNæring);
+        return this;
+    }
+
     public List<OppgittAnnenAktivitetDto> getAnnenAktivitet() {
         return annenAktivitet;
     }
@@ -56,11 +61,21 @@ public class OppgittOpptjeningDto {
         this.annenAktivitet = annenAktivitet;
     }
 
+    public OppgittOpptjeningDto medAnnenAktivitet(List<OppgittAnnenAktivitetDto> annenAktivitet) {
+        setAnnenAktivitet(annenAktivitet);
+        return this;
+    }
+    
     public OppgittFrilansDto getFrilans() {
         return frilans;
     }
 
     public void setFrilans(OppgittFrilansDto frilans) {
         this.frilans = frilans;
+    }
+    
+    public OppgittOpptjeningDto medFrilans(OppgittFrilansDto frilans) {
+        setFrilans(frilans);
+        return this;
     }
 }

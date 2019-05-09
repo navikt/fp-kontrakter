@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.PermisjonsbeskrivelseTypeDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.PeriodeDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.Periode;
 
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -20,7 +20,7 @@ import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.PeriodeDto;
 public class PermisjonDto {
 
     @Valid
-    private PeriodeDto periode;
+    private Periode periode;
     
     @Valid
     private PermisjonsbeskrivelseTypeDto type;
@@ -35,11 +35,11 @@ public class PermisjonDto {
     public PermisjonDto() {
     }
 
-    public PeriodeDto getPeriode() {
+    public Periode getPeriode() {
         return periode;
     }
 
-    public void setPeriode(PeriodeDto periode) {
+    public void setPeriode(Periode periode) {
         this.periode = periode;
     }
 

@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = Include.ALWAYS)
-public class PeriodeDto {
+public class Periode {
 
     @JsonProperty(value="fom")
     @NotNull
@@ -25,7 +25,7 @@ public class PeriodeDto {
     private LocalDate tom;
 
     @JsonCreator
-    public PeriodeDto(@JsonProperty(value="fom") LocalDate fom, @JsonProperty(value="tom") LocalDate tom) {
+    public Periode(@JsonProperty(value="fom") LocalDate fom, @JsonProperty(value="tom") LocalDate tom) {
         if (fom == null && tom == null) {
             throw new IllegalArgumentException("Både fom og tom er null");
         } else if (fom != null && tom != null) {

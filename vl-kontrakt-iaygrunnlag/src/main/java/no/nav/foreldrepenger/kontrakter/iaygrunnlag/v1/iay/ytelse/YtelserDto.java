@@ -1,6 +1,5 @@
 package no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.ytelse;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 

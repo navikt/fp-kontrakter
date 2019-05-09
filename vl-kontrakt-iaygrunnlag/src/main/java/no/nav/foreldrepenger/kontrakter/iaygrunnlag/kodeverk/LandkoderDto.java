@@ -12,6 +12,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class LandkoderDto extends Kodeverk {
 
     static final String KODEVERK = "LANDKODER";
+    
+    /** Eksempel konstant. Norge. */
+    public static final LandkoderDto NORGE = new LandkoderDto("NOR");
+    public static final LandkoderDto SVERIGE = new LandkoderDto("SWE");
+    public static final LandkoderDto DANMARK = new LandkoderDto("DNK");
 
     /** ISO 3-letter country codes. */
     @JsonProperty(value = "kode", required = true, index = 1)
