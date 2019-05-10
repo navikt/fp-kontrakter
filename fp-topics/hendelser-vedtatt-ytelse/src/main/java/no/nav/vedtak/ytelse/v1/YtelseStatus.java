@@ -8,10 +8,9 @@ public class YtelseStatus extends Kodeverk {
     public static final YtelseStatus UNDER_BEHANDLING = new YtelseStatus("UBEH");
     public static final YtelseStatus LØPENDE = new YtelseStatus("LOP");
     public static final YtelseStatus AVSLUTTET = new YtelseStatus("AVSLU");
-    public static final YtelseStatus UDEFINERT = new YtelseStatus("-");
     private static final String DISCRIMINATOR = "YTELSE_STATUS";
 
-    private YtelseStatus(String kode) {
+    public YtelseStatus(String kode) {
         super(DISCRIMINATOR, kode);
     }
 

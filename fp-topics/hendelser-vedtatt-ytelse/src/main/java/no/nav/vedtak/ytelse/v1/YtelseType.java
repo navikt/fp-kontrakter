@@ -15,7 +15,7 @@ public class YtelseType extends Kodeverk {
     public static final YtelseType UDEFINERT = new YtelseType("-");
     private static final String DISCRIMINATOR = "FAGSAK_YTELSE_TYPE";
 
-    private YtelseType(String kode) {
+    public YtelseType(String kode) {
         super(DISCRIMINATOR, kode);
     }
 
