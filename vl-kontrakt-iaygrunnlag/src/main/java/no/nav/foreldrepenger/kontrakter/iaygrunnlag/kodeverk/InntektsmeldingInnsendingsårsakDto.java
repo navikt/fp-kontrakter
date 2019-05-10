@@ -17,7 +17,7 @@ public class InntektsmeldingInnsendingsårsakDto extends Kodeverk {
     public static final InntektsmeldingInnsendingsårsakDto ENDRING = new InntektsmeldingInnsendingsårsakDto("ENDRING");
     
     @JsonProperty(value = "kode", required = true, index = 1)
-    @Pattern(regexp = "^[\\p{L}\\p{N}_.-]+$")
+    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$")
     @NotNull
     private String kode;
 

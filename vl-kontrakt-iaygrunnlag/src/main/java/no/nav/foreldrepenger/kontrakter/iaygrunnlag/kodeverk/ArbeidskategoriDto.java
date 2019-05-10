@@ -21,7 +21,7 @@ public class ArbeidskategoriDto extends Kodeverk {
     public static final ArbeidskategoriDto JORDBRUKER = new ArbeidskategoriDto("JORDBRUKER");
 
     @JsonProperty(value = "kode", required = true, index = 1)
-    @Pattern(regexp = "^[\\p{L}\\p{N}_.-]+$")
+    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$")
     @NotNull
     private String kode;
 

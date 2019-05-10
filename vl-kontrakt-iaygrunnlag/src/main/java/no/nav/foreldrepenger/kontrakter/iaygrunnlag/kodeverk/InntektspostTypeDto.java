@@ -13,7 +13,7 @@ public class InntektspostTypeDto extends Kodeverk {
     static final String KODEVERK = "INNTEKTSPOST_TYPE";
 
     @JsonProperty(value = "kode", required = true, index = 1)
-    @Pattern(regexp = "^[\\p{L}\\p{N}_.-]+$")
+    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$")
     @NotNull
     private String kode;
 

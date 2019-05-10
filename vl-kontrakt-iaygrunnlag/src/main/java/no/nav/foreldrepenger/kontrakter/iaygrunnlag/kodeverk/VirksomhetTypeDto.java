@@ -13,8 +13,11 @@ public class VirksomhetTypeDto extends Kodeverk {
 
     static final String KODEVERK = "VIRKSOMHET_TYPE";
     
+    /** Eksempel konstant, Annen næringsvirksomhet. */
+    public static final VirksomhetTypeDto ANNEN = new VirksomhetTypeDto("ANNEN");
+    
     @JsonProperty(value = "kode", required = true, index = 1)
-    @Pattern(regexp = "^[\\p{L}\\p{N}_.-]+$")
+    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$")
     @NotNull
     private String kode;
 
@@ -34,3 +37,4 @@ public class VirksomhetTypeDto extends Kodeverk {
         return KODEVERK;
     }
 }
+

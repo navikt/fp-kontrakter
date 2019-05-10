@@ -23,7 +23,7 @@ public class YtelseStatus extends Kodeverk {
     public static final YtelseStatus AVSLUTTET = new YtelseStatus("AVSLU");
 
     @JsonProperty(value = "kode", required = true, index = 1)
-    @Pattern(regexp = "^[\\p{L}\\p{N}_.-]+$")
+    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$")
     @NotNull
     private String kode;
 

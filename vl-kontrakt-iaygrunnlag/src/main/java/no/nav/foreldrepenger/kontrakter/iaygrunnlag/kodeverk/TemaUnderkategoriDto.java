@@ -13,7 +13,7 @@ public class TemaUnderkategoriDto extends Kodeverk {
     static final String KODEVERK = "TEMA_UNDERKATEGORI";
 
     @JsonProperty(value = "kode", required = true, index = 1)
-    @Pattern(regexp = "^[\\p{L}\\p{N}_.-]+$")
+    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$")
     @NotNull
     private String kode;
 

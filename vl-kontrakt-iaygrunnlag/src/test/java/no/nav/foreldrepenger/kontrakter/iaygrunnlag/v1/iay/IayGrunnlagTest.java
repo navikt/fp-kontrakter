@@ -14,38 +14,50 @@ import org.junit.Test;
 import com.fasterxml.jackson.databind.ObjectReader;
 import com.fasterxml.jackson.databind.ObjectWriter;
 
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.ArbeidsforholdRefDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.FnrPersonident;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.IayGrunnlagJsonMapper;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.JournalpostId;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.Organisasjon;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.Periode;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.arbeid.v1.AktivitetsAvtaleDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.arbeid.v1.ArbeidDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.arbeid.v1.YrkesaktivitetDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.inntekt.v1.InntekterDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.inntekt.v1.UtbetalingDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.inntekt.v1.UtbetalingsPostDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.inntektsmelding.v1.GraderingDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.inntektsmelding.v1.InntektsmeldingDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.inntektsmelding.v1.InntektsmeldingerDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.inntektsmelding.v1.NaturalytelseDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.inntektsmelding.v1.RefusjonDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.inntektsmelding.v1.UtsettelsePeriodeDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.ArbeidTypeDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.ArbeidskategoriDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.Fagsystem;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.InntektPeriodeTypeDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.InntektsmeldingInnsendingsårsakDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.InntektspostTypeDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.LandkoderDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.NaturalytelseTypeDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.SkatteOgAvgiftsregelTypeDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.UtsettelseÅrsakDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.VirksomhetTypeDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.YtelseStatus;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.YtelseType;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.arbeid.AktivitetsAvtaleDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.arbeid.ArbeidDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.arbeid.YrkesaktivitetDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.inntekt.InntekterDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.inntekt.UtbetalingDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.inntekt.UtbetalingsPostDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.ytelse.AnvisningDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.ytelse.FordelingDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.ytelse.YtelseDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.ytelse.YtelseGrunnlagDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.ytelse.YtelserDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.inntektsmelding.GraderingDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.inntektsmelding.InntektsmeldingDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.inntektsmelding.InntektsmeldingerDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.inntektsmelding.NaturalytelseDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.inntektsmelding.RefusjonDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.inntektsmelding.UtsettelsePeriodeDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.oppgittopptjening.v1.OppgittArbeidsforholdDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.oppgittopptjening.v1.OppgittEgenNæringDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.oppgittopptjening.v1.OppgittFrilansDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.oppgittopptjening.v1.OppgittFrilansoppdragDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.oppgittopptjening.v1.OppgittOpptjeningDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.oppgittopptjening.v1.OppgittUtenlandskVirksomhetDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.GrunnlagDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.InntektArbeidYtelseAggregatDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.ytelse.v1.AnvisningDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.ytelse.v1.FordelingDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.ytelse.v1.YtelseDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.ytelse.v1.YtelseGrunnlagDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.ytelse.v1.YtelserDto;
 
 public class IayGrunnlagTest {
 
@@ -69,21 +81,23 @@ public class IayGrunnlagTest {
         GrunnlagDto grunnlag = new GrunnlagDto(fnr, uuid);
 
         grunnlag.medRegister(new InntektArbeidYtelseAggregatDto(tidspunkt)
-            .medArbeid(List.of(new ArbeidDto(fnr)
-                .medYrkesaktiviteter(List.of(
-                    new YrkesaktivitetDto(org, arbeidType)
-                        .medAktivitetsAvtaler(List.of(
-                            new AktivitetsAvtaleDto(periode)
-                                .medAntallTimer(40)
-                                .medStillingsprosent(50)))))))
-            .medInntekt(List.of(new InntekterDto(fnr)
-                .medUtbetalinger(List.of(
-                    new UtbetalingDto(org)
-                        .medKilde("ARBEID")
-                        .medPoster(List.of(
-                            new UtbetalingsPostDto(ytelseType, periode, new InntektspostTypeDto("LØNN"))
-                                .medBeløp(100)
-                                .medSkattAvgiftType(SkatteOgAvgiftsregelTypeDto.NETTOLØNN)))))))
+            .medArbeid(List.of(
+                new ArbeidDto(fnr)
+                    .medYrkesaktiviteter(List.of(
+                        new YrkesaktivitetDto(org, arbeidType)
+                            .medAktivitetsAvtaler(List.of(
+                                new AktivitetsAvtaleDto(periode)
+                                    .medAntallTimer(40)
+                                    .medStillingsprosent(50)))))))
+            .medInntekt(List.of(
+                new InntekterDto(fnr)
+                    .medUtbetalinger(List.of(
+                        new UtbetalingDto(org)
+                            .medKilde("ARBEID")
+                            .medPoster(List.of(
+                                new UtbetalingsPostDto(ytelseType, periode, new InntektspostTypeDto("LØNN"))
+                                    .medBeløp(100)
+                                    .medSkattAvgiftType(SkatteOgAvgiftsregelTypeDto.NETTOLØNN)))))))
             .medYtelse(List.of(
                 new YtelserDto(fnr)
                     .medYtelser(List.of(
@@ -115,9 +129,38 @@ public class IayGrunnlagTest {
                         .medNærRelasjon(false)
                         .medEndringerRefusjon(List.of(
                             new RefusjonDto(fom, 100)))
-                        .medGraderinger(List.of(new GraderingDto(periode, 50)))
-                        .medNaturalytelser(List.of(new NaturalytelseDto(periode, NaturalytelseTypeDto.ELEKTRISK_KOMMUNIKASJON, 100)))
-                        .medUtsettelsePerioder(List.of(new UtsettelsePeriodeDto(periode, UtsettelseÅrsakDto.LOVBESTEMT_FERIE)))))))
+                        .medGraderinger(List.of(
+                            new GraderingDto(periode, 50)))
+                        .medNaturalytelser(List.of(
+                            new NaturalytelseDto(periode, NaturalytelseTypeDto.ELEKTRISK_KOMMUNIKASJON, 100)))
+                        .medUtsettelsePerioder(List.of(
+                            new UtsettelsePeriodeDto(periode, UtsettelseÅrsakDto.LOVBESTEMT_FERIE)))))))
+            .medOppgittOpptjening(
+                new OppgittOpptjeningDto()
+                    .medArbeidsforhold(List.of(
+                        new OppgittArbeidsforholdDto(periode, ArbeidTypeDto.ORDINÆRT_ARBEIDSFORHOLD)
+                            .medErUtenlandskInntekt(true)
+                            .medUtenlandskVirksomhet(new OppgittUtenlandskVirksomhetDto(LandkoderDto.DANMARK, "GammelDansk"))))
+                    .medEgenNæring(List.of(
+                        new OppgittEgenNæringDto(periode)
+                            .medBegrunnelse("MinBegrunnelse")
+                            .medBruttoInntekt(10000)
+                            .medEndringDato(fom)
+                            .medNyIArbeidslivet(false)
+                            .medNyoppstartet(false)
+                            .medNærRelasjon(false)
+                            .medOppgittUtenlandskVirksomhet(new OppgittUtenlandskVirksomhetDto(LandkoderDto.SVERIGE, "DuGamleDuFria"))
+                            .medRegnskapsførerNavn("Regnskapsfører")
+                            .medRegnskapsførerTlf("+47902348732")
+                            .medVarigEndring(true)
+                            .medVirksomhet(org)
+                            .medVirksomhetTypeDto(VirksomhetTypeDto.ANNEN)))
+                    .medAnnenAktivitet(List.of())
+                    .medFrilans(new OppgittFrilansDto(List.of(
+                        new OppgittFrilansoppdragDto(periode, "MittOppdrag")))
+                            .medErNyoppstartet(false)
+                            .medHarInntektFraFosterhjem(false)
+                            .medHarNærRelasjon(false)))
 
         ;
 

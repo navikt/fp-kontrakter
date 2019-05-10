@@ -21,7 +21,7 @@ public class InntektPeriodeTypeDto extends Kodeverk {
     public static final InntektPeriodeTypeDto FASTSATT_ETTER_AVVIKHÅNDTERING = new InntektPeriodeTypeDto("X");
 
     @JsonProperty(value = "kode", required = true, index = 1)
-    @Pattern(regexp = "^[\\p{L}\\p{N}_.-]+$")
+    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$")
     @NotNull
     private String kode;
 

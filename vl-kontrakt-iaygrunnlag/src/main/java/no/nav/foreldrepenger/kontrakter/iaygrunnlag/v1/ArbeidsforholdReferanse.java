@@ -30,7 +30,7 @@ public class ArbeidsforholdReferanse {
     private Aktør arbeidsgiver;
     
     @JsonProperty(value = "arbeidsforholdId")
-    @Pattern(regexp = "^[\\p{L}\\p{N}:_.-]+$")
+    @Pattern(regexp = "^[\\p{L}\\p{N}:_\\.\\-]+$")
     private String arbeidsforholdId;
 
     public ArbeidsforholdReferanse(String referanse, Aktør arbeidsgiver) {

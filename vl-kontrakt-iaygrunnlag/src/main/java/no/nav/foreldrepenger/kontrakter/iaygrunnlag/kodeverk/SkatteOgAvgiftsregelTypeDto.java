@@ -15,7 +15,7 @@ public class SkatteOgAvgiftsregelTypeDto extends Kodeverk {
     public static final SkatteOgAvgiftsregelTypeDto NETTOLØNN = new SkatteOgAvgiftsregelTypeDto("NETTOLØNN");
 
     @JsonProperty(value = "kode", required = true, index = 1)
-    @Pattern(regexp = "^[\\p{L}\\p{N}_.-]+$")
+    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$")
     @NotNull
     private String kode;
 

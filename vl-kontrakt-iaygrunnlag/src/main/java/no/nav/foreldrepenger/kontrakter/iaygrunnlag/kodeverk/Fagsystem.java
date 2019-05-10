@@ -25,7 +25,7 @@ public class Fagsystem extends Kodeverk {
     public static final Fagsystem ARENA = new Fagsystem("ARENA");
 
     @JsonProperty(value = "kode", required = true, index = 1)
-    @Pattern(regexp = "^[\\p{L}\\p{N}_.-]+$")
+    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$")
     @NotNull
     private String kode;
     

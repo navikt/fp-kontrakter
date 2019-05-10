@@ -19,7 +19,7 @@ public class UtsettelseÅrsakDto extends Kodeverk {
     public static final UtsettelseÅrsakDto LOVBESTEMT_FERIE = new UtsettelseÅrsakDto("LOVBESTEMT_FERIE");
     
     @JsonProperty(value = "kode", required = true, index = 1)
-    @Pattern(regexp = "^[\\p{L}\\p{N}_.-]+$")
+    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$")
     @NotNull
     private String kode;
 

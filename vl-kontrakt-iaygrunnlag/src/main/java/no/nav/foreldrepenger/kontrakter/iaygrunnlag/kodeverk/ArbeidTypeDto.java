@@ -22,7 +22,7 @@ public class ArbeidTypeDto extends Kodeverk {
     public static ArbeidTypeDto UTENLANDSK_ARBEIDSFORHOLD = new ArbeidTypeDto("UTENLANDSK_ARBEIDSFORHOLD");
     
     @JsonProperty(value = "kode", required = true, index = 1)
-    @Pattern(regexp = "^[\\p{L}\\p{N}_.-]+$")
+    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$")
     @NotNull
     private String kode;
 

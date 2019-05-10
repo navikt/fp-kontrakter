@@ -16,8 +16,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 public class JournalpostId {
 
     @JsonValue
+    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$")
     @NotNull
-    @Pattern(regexp = "^[\\p{L}\\p{N}:_.-]+$")
     private String journalpostId;
 
     @JsonCreator
