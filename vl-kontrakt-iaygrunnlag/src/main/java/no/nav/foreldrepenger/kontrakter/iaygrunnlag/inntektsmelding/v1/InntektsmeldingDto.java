@@ -34,6 +34,7 @@ public class InntektsmeldingDto {
 
     @JsonProperty(value = "journalpostId", required = true)
     @NotNull
+    @Valid
     private JournalpostId journalpostId;
 
     @JsonProperty(value = "innsendingstidspunkt", required = true)

@@ -13,10 +13,9 @@ import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.Periode;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -42,6 +41,7 @@ public class AktivitetsAvtaleDto {
     private BigDecimal antallTimer;
     
     @JsonProperty("sistLønnsendring")
+    @Valid
     private LocalDate sistLønnsendring;
 
     protected AktivitetsAvtaleDto() {
@@ -66,6 +66,11 @@ public class AktivitetsAvtaleDto {
     
     public void setSistLønnsendring(LocalDate sistLønnsendring) {
         this.sistLønnsendring = sistLønnsendring;
+    }
+    
+    public AktivitetsAvtaleDto medSistLønnsendring(LocalDate sistLønnsendring) {
+        setSistLønnsendring(sistLønnsendring);
+        return this;
     }
 
     public Periode getPeriode() {

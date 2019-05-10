@@ -8,10 +8,16 @@ import javax.validation.constraints.Pattern;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-
 public class PermisjonsbeskrivelseTypeDto extends Kodeverk {
-    
+
     static final String KODEVERK = "PERMISJONSBESKRIVELSE_TYPE";
+
+    /** Eksempel konstant, PERMISJON */
+    public static final PermisjonsbeskrivelseTypeDto PERMISJON = new PermisjonsbeskrivelseTypeDto("PERMISJON");
+    /** Eksempel konstant, PERMITTERING */
+    public static final PermisjonsbeskrivelseTypeDto PERMITTERING = new PermisjonsbeskrivelseTypeDto("PERMITTERING");
+    /** Eksempel konstant, VANLIG */
+    public static final PermisjonsbeskrivelseTypeDto VANLIG = new PermisjonsbeskrivelseTypeDto("VANLIG");
 
     @JsonProperty(value = "kode", required = true, index = 1)
     @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$")

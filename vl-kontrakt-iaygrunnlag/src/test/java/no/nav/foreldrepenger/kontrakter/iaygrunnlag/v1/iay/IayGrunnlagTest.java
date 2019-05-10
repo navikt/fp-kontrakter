@@ -22,6 +22,7 @@ import no.nav.foreldrepenger.kontrakter.iaygrunnlag.Organisasjon;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.Periode;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.arbeid.v1.AktivitetsAvtaleDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.arbeid.v1.ArbeidDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.arbeid.v1.PermisjonDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.arbeid.v1.YrkesaktivitetDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.inntekt.v1.InntekterDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.inntekt.v1.UtbetalingDto;
@@ -40,6 +41,7 @@ import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.InntektsmeldingInns
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.InntektspostTypeDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.LandkoderDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.NaturalytelseTypeDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.PermisjonsbeskrivelseTypeDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.SkatteOgAvgiftsregelTypeDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.UtsettelseÅrsakDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.VirksomhetTypeDto;
@@ -85,8 +87,12 @@ public class IayGrunnlagTest {
                 new ArbeidDto(fnr)
                     .medYrkesaktiviteter(List.of(
                         new YrkesaktivitetDto(org, arbeidType)
+                            .medPermisjoner(List.of(new PermisjonDto(periode, PermisjonsbeskrivelseTypeDto.PERMISJON).medProsentsats(50)))
+                            .medAnsettelsesperiode(List.of(periode))
+                            .medArbeidsforholdId(new ArbeidsforholdRefDto("intern", "ekstern"))
                             .medAktivitetsAvtaler(List.of(
                                 new AktivitetsAvtaleDto(periode)
+                                    .medSistLønnsendring(fom)
                                     .medAntallTimer(40)
                                     .medStillingsprosent(50)))))))
             .medInntekt(List.of(
@@ -127,14 +133,10 @@ public class IayGrunnlagTest {
                         .medRefusjonsBeløpPerMnd(100)
                         .medStartDatoPermisjon(fom)
                         .medNærRelasjon(false)
-                        .medEndringerRefusjon(List.of(
-                            new RefusjonDto(fom, 100)))
-                        .medGraderinger(List.of(
-                            new GraderingDto(periode, 50)))
-                        .medNaturalytelser(List.of(
-                            new NaturalytelseDto(periode, NaturalytelseTypeDto.ELEKTRISK_KOMMUNIKASJON, 100)))
-                        .medUtsettelsePerioder(List.of(
-                            new UtsettelsePeriodeDto(periode, UtsettelseÅrsakDto.LOVBESTEMT_FERIE)))))))
+                        .medEndringerRefusjon(List.of(new RefusjonDto(fom, 100)))
+                        .medGraderinger(List.of(new GraderingDto(periode, 50)))
+                        .medNaturalytelser(List.of(new NaturalytelseDto(periode, NaturalytelseTypeDto.ELEKTRISK_KOMMUNIKASJON, 100)))
+                        .medUtsettelsePerioder(List.of(new UtsettelsePeriodeDto(periode, UtsettelseÅrsakDto.LOVBESTEMT_FERIE)))))))
             .medOppgittOpptjening(
                 new OppgittOpptjeningDto()
                     .medArbeidsforhold(List.of(

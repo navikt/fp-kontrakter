@@ -63,7 +63,7 @@ public class YrkesaktivitetDto {
         this.arbeidsgiver = arbeidsgiver;
         this.arbeidType = new ArbeidTypeDto(arbeidType);
     }
-    
+
     @AssertTrue(message = "Må ha minst en av ansettelsesPerioder, aktivitetsAvtaler eller permisjoner")
     private boolean isOk() {
         boolean ok = (ansettelsesPerioder != null && !ansettelsesPerioder.isEmpty())
@@ -82,6 +82,11 @@ public class YrkesaktivitetDto {
 
     public void setArbeidsforholdId(ArbeidsforholdRefDto arbeidsforholdId) {
         this.arbeidsforholdId = arbeidsforholdId;
+    }
+
+    public YrkesaktivitetDto medArbeidsforholdId(ArbeidsforholdRefDto arbeidsforholdId) {
+        setArbeidsforholdId(arbeidsforholdId);
+        return this;
     }
 
     public ArbeidTypeDto getType() {

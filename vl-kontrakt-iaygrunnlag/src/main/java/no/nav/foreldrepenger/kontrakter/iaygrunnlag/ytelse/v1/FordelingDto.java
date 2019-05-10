@@ -27,6 +27,7 @@ public class FordelingDto {
     private Aktør arbeidsgiver;
     
     @JsonProperty("beløp")
+    @Valid
     @DecimalMin(value="0.00", message = "beløp må være >= 0.00")
     @DecimalMax(value="100000000.00", message="beløp må være < 100000000.00")  // TODO: sane verdier
     private BigDecimal beløp;
