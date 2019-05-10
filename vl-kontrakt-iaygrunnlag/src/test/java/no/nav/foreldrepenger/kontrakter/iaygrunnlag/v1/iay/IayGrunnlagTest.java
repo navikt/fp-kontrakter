@@ -54,7 +54,8 @@ import no.nav.foreldrepenger.kontrakter.iaygrunnlag.oppgittopptjening.v1.Oppgitt
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.oppgittopptjening.v1.OppgittOpptjeningDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.oppgittopptjening.v1.OppgittUtenlandskVirksomhetDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.GrunnlagDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.InntektArbeidYtelseAggregatDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.InntektArbeidYtelseAggregatOverstyrtDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.InntektArbeidYtelseAggregatRegisterDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.ytelse.v1.AnvisningDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.ytelse.v1.FordelingDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.ytelse.v1.YtelseDto;
@@ -82,45 +83,60 @@ public class IayGrunnlagTest {
 
         GrunnlagDto grunnlag = new GrunnlagDto(fnr, uuid);
 
-        grunnlag.medRegister(new InntektArbeidYtelseAggregatDto(tidspunkt)
-            .medArbeid(List.of(
-                new ArbeidDto(fnr)
-                    .medYrkesaktiviteter(List.of(
-                        new YrkesaktivitetDto(org, arbeidType)
-                            .medPermisjoner(List.of(new PermisjonDto(periode, PermisjonsbeskrivelseTypeDto.PERMISJON).medProsentsats(50)))
-                            .medAnsettelsesperiode(List.of(periode))
-                            .medArbeidsforholdId(new ArbeidsforholdRefDto("intern", "ekstern"))
-                            .medAktivitetsAvtaler(List.of(
-                                new AktivitetsAvtaleDto(periode)
-                                    .medSistLønnsendring(fom)
-                                    .medAntallTimer(40)
-                                    .medStillingsprosent(50)))))))
-            .medInntekt(List.of(
-                new InntekterDto(fnr)
-                    .medUtbetalinger(List.of(
-                        new UtbetalingDto(org)
-                            .medKilde("ARBEID")
-                            .medPoster(List.of(
-                                new UtbetalingsPostDto(ytelseType, periode, new InntektspostTypeDto("LØNN"))
-                                    .medBeløp(100)
-                                    .medSkattAvgiftType(SkatteOgAvgiftsregelTypeDto.NETTOLØNN)))))))
-            .medYtelse(List.of(
-                new YtelserDto(fnr)
-                    .medYtelser(List.of(
-                        new YtelseDto(Fagsystem.FPSAK, ytelseType, periode, YtelseStatus.LØPENDE, "1234")
-                            .medGrunnlag(
-                                new YtelseGrunnlagDto()
-                                    .medArbeidskategoriDto(ArbeidskategoriDto.ARBEIDSTAKER)
-                                    .medOpprinneligIdentDato(fom)
-                                    .medDekningsgradProsent(100)
-                                    .medInntektsgrunnlagProsent(100)
-                                    .medGraderingProsent(100)
-                                    .medFordeling(List.of(new FordelingDto(org, InntektPeriodeTypeDto.PER_DAG, 100))))
-                            .medAnvisninger(List.of(
-                                new AnvisningDto(periode)
-                                    .medBeløp(100)
-                                    .medDagsats(100)
-                                    .medUtbetalingsgrad(100))))))))
+        grunnlag.medRegister(
+            new InntektArbeidYtelseAggregatRegisterDto(tidspunkt)
+                .medArbeid(List.of(
+                    new ArbeidDto(fnr)
+                        .medYrkesaktiviteter(List.of(
+                            new YrkesaktivitetDto(org, arbeidType)
+                                .medPermisjoner(List.of(new PermisjonDto(periode, PermisjonsbeskrivelseTypeDto.PERMISJON).medProsentsats(50)))
+                                .medAnsettelsesperiode(List.of(periode))
+                                .medArbeidsforholdId(new ArbeidsforholdRefDto("intern", "ekstern"))
+                                .medAktivitetsAvtaler(List.of(
+                                    new AktivitetsAvtaleDto(periode)
+                                        .medSistLønnsendring(fom)
+                                        .medAntallTimer(40)
+                                        .medStillingsprosent(50)))))))
+                .medInntekt(List.of(
+                    new InntekterDto(fnr)
+                        .medUtbetalinger(List.of(
+                            new UtbetalingDto(org)
+                                .medKilde("ARBEID")
+                                .medPoster(List.of(
+                                    new UtbetalingsPostDto(ytelseType, periode, new InntektspostTypeDto("LØNN"))
+                                        .medBeløp(100)
+                                        .medSkattAvgiftType(SkatteOgAvgiftsregelTypeDto.NETTOLØNN)))))))
+                .medYtelse(List.of(
+                    new YtelserDto(fnr)
+                        .medYtelser(List.of(
+                            new YtelseDto(Fagsystem.FPSAK, ytelseType, periode, YtelseStatus.LØPENDE, "1234")
+                                .medGrunnlag(
+                                    new YtelseGrunnlagDto()
+                                        .medArbeidskategoriDto(ArbeidskategoriDto.ARBEIDSTAKER)
+                                        .medOpprinneligIdentDato(fom)
+                                        .medDekningsgradProsent(100)
+                                        .medInntektsgrunnlagProsent(100)
+                                        .medGraderingProsent(100)
+                                        .medFordeling(List.of(new FordelingDto(org, InntektPeriodeTypeDto.PER_DAG, 100))))
+                                .medAnvisninger(List.of(
+                                    new AnvisningDto(periode)
+                                        .medBeløp(100)
+                                        .medDagsats(100)
+                                        .medUtbetalingsgrad(100))))))))
+            .medOverstyrt(
+                new InntektArbeidYtelseAggregatOverstyrtDto(tidspunkt)
+                    .medArbeid(List.of(
+                        new ArbeidDto(fnr)
+                            .medYrkesaktiviteter(List.of(
+                                new YrkesaktivitetDto(org, arbeidType)
+                                    .medPermisjoner(List.of(new PermisjonDto(periode, PermisjonsbeskrivelseTypeDto.PERMISJON).medProsentsats(50)))
+                                    .medAnsettelsesperiode(List.of(periode))
+                                    .medArbeidsforholdId(new ArbeidsforholdRefDto("intern", "ekstern"))
+                                    .medAktivitetsAvtaler(List.of(
+                                        new AktivitetsAvtaleDto(periode)
+                                            .medSistLønnsendring(fom)
+                                            .medAntallTimer(40)
+                                            .medStillingsprosent(30))))))))
             .medInntektsmeldinger(List.of(
                 new InntektsmeldingerDto().medInntektsmeldinger(List.of(
                     new InntektsmeldingDto(org, journalpostId, tidspunkt)
@@ -162,9 +178,7 @@ public class IayGrunnlagTest {
                         new OppgittFrilansoppdragDto(periode, "MittOppdrag")))
                             .medErNyoppstartet(false)
                             .medHarInntektFraFosterhjem(false)
-                            .medHarNærRelasjon(false)))
-
-        ;
+                            .medHarNærRelasjon(false)));
 
         String json = WRITER.writeValueAsString(grunnlag);
         System.out.println(json);

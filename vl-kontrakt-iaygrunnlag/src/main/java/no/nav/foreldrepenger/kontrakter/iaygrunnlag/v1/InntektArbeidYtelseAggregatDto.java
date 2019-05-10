@@ -1,8 +1,8 @@
 package no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1;
 
 import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.time.OffsetDateTime;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.Objects;
 
@@ -15,12 +15,10 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.arbeid.v1.ArbeidDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.inntekt.v1.InntekterDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.ytelse.v1.YtelserDto;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = Include.NON_ABSENT, content = Include.NON_EMPTY)
-public class InntektArbeidYtelseAggregatDto {
+public abstract class InntektArbeidYtelseAggregatDto<S extends InntektArbeidYtelseAggregatDto<S>> {
 
     @JsonProperty(value = "grunnlagTidspunkt", required = true)
     @Valid
@@ -30,14 +28,6 @@ public class InntektArbeidYtelseAggregatDto {
     @JsonProperty(value = "arbeid")
     @Valid
     private List<ArbeidDto> arbeid;
-
-    @JsonProperty(value = "inntekter")
-    @Valid
-    private List<InntekterDto> inntekt;
-
-    @JsonProperty(value = "ytelser")
-    @Valid
-    private List<YtelserDto> ytelser;
 
     protected InntektArbeidYtelseAggregatDto() {
         // default ctor
@@ -59,35 +49,10 @@ public class InntektArbeidYtelseAggregatDto {
         this.arbeid = arbeid;
     }
 
-    public InntektArbeidYtelseAggregatDto medArbeid(List<ArbeidDto> arbeid) {
+    @SuppressWarnings("unchecked")
+    public S medArbeid(List<ArbeidDto> arbeid) {
         this.arbeid = arbeid;
-        return this;
-    }
-
-    public List<InntekterDto> getInntekt() {
-        return inntekt;
-    }
-
-    public InntektArbeidYtelseAggregatDto medInntekt(List<InntekterDto> inntekt) {
-        this.inntekt = inntekt;
-        return this;
-    }
-
-    public void setInntekt(List<InntekterDto> inntekt) {
-        this.inntekt = inntekt;
-    }
-
-    public List<YtelserDto> getYtelse() {
-        return ytelser;
-    }
-
-    public void setYtelse(List<YtelserDto> ytelse) {
-        this.ytelser = ytelse;
-    }
-
-    public InntektArbeidYtelseAggregatDto medYtelse(List<YtelserDto> ytelse) {
-        this.ytelser = ytelse;
-        return this;
+        return (S) this;
     }
 
     @Override
@@ -97,14 +62,13 @@ public class InntektArbeidYtelseAggregatDto {
         } else if (obj == null || !(obj.getClass().equals(this.getClass()))) {
             return false;
         }
+        @SuppressWarnings("rawtypes")
         InntektArbeidYtelseAggregatDto other = (InntektArbeidYtelseAggregatDto) obj;
-        return Objects.equals(arbeid, other.arbeid)
-            && Objects.equals(inntekt, other.inntekt)
-            && Objects.equals(ytelser, other.ytelser);
+        return Objects.equals(arbeid, other.arbeid);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(arbeid, inntekt, ytelser);
+        return Objects.hash(arbeid);
     }
 }

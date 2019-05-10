@@ -1,7 +1,7 @@
 package no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1;
 
-import java.time.ZoneId;
 import java.time.OffsetDateTime;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
@@ -40,11 +40,11 @@ public class GrunnlagDto {
 
     @JsonProperty(value = "registerGrunnlag")
     @Valid
-    private InntektArbeidYtelseAggregatDto register;
+    private InntektArbeidYtelseAggregatRegisterDto register;
 
     @JsonProperty(value = "overstyrtGrunnlag")
     @Valid
-    private InntektArbeidYtelseAggregatDto overstyrt;
+    private InntektArbeidYtelseAggregatOverstyrtDto overstyrt;
 
     @JsonProperty(value = "inntektsmeldinger")
     @Valid
@@ -77,29 +77,29 @@ public class GrunnlagDto {
         return grunnlagReferanse;
     }
 
-    public InntektArbeidYtelseAggregatDto getRegister() {
+    public InntektArbeidYtelseAggregatRegisterDto getRegister() {
         return register;
     }
 
-    public void setRegister(InntektArbeidYtelseAggregatDto register) {
+    public void setRegister(InntektArbeidYtelseAggregatRegisterDto register) {
         this.register = register;
     }
 
-    public InntektArbeidYtelseAggregatDto getOverstyrt() {
+    public InntektArbeidYtelseAggregatOverstyrtDto getOverstyrt() {
         return overstyrt;
     }
 
-    public void setOverstyrt(InntektArbeidYtelseAggregatDto overstyrt) {
+    public void setOverstyrt(InntektArbeidYtelseAggregatOverstyrtDto overstyrt) {
         Objects.requireNonNull(register, "Kan ikke sette overstyrt om register ikke er satt");
         this.overstyrt = overstyrt;
     }
 
-    public GrunnlagDto medOverstyrt(InntektArbeidYtelseAggregatDto overstyrt) {
+    public GrunnlagDto medOverstyrt(InntektArbeidYtelseAggregatOverstyrtDto overstyrt) {
         setOverstyrt(overstyrt);
         return this;
     }
 
-    public GrunnlagDto medRegister(InntektArbeidYtelseAggregatDto register) {
+    public GrunnlagDto medRegister(InntektArbeidYtelseAggregatRegisterDto register) {
         setRegister(register);
         return this;
     }
