@@ -2,7 +2,7 @@ package no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.time.ZonedDateTime;
+import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Objects;
 
@@ -25,7 +25,7 @@ public class InntektArbeidYtelseAggregatDto {
     @JsonProperty(value = "grunnlagTidspunkt", required = true)
     @Valid
     @NotNull
-    private ZonedDateTime tidspunkt;
+    private OffsetDateTime tidspunkt;
 
     @JsonProperty(value = "arbeid")
     @Valid
@@ -44,10 +44,10 @@ public class InntektArbeidYtelseAggregatDto {
     }
 
     public InntektArbeidYtelseAggregatDto(LocalDateTime tidspunkt) {
-        this(tidspunkt.atZone(ZoneId.of("Europe/Oslo")));
+        this(tidspunkt.atZone(ZoneId.of("Europe/Oslo")).toOffsetDateTime());
     }
 
-    public InntektArbeidYtelseAggregatDto(ZonedDateTime tidspunkt) {
+    public InntektArbeidYtelseAggregatDto(OffsetDateTime tidspunkt) {
         this.tidspunkt = tidspunkt;
     }
 

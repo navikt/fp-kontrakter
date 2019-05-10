@@ -1,4 +1,4 @@
-package no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.arbeidsforhold;
+package no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.inntektsmelding;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -13,7 +13,7 @@ import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.ArbeidsforholdRefDto;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = Include.NON_ABSENT, content = Include.NON_EMPTY)
-public class ArbeidsforholdReferanseDto {
+public class InntektsmeldingSomIkkeKommerDto {
 
     @JsonProperty(value = "arbeidsgiver", required = true)
     @Valid
@@ -22,13 +22,16 @@ public class ArbeidsforholdReferanseDto {
 
     @JsonProperty("arbeidsforholdId")
     @Valid
-    @NotNull
     private ArbeidsforholdRefDto arbeidsforholdId;
 
-    protected ArbeidsforholdReferanseDto() {
+    protected InntektsmeldingSomIkkeKommerDto() {
     }
 
-    public ArbeidsforholdReferanseDto(Aktør arbeidsgiver, ArbeidsforholdRefDto arbeidsforholdId) {
+    public InntektsmeldingSomIkkeKommerDto(@Valid @NotNull Aktør arbeidsgiver) {
+        this(arbeidsgiver, null);
+    }
+
+    public InntektsmeldingSomIkkeKommerDto(@Valid @NotNull Aktør arbeidsgiver, @Valid ArbeidsforholdRefDto arbeidsforholdId) {
         this.arbeidsgiver = arbeidsgiver;
         this.arbeidsforholdId = arbeidsforholdId;
     }
@@ -37,7 +40,7 @@ public class ArbeidsforholdReferanseDto {
         return arbeidsgiver;
     }
 
-    public ArbeidsforholdRefDto getArbeidsforholdReferanse() {
+    public ArbeidsforholdRefDto getArbeidsforholdId() {
         return arbeidsforholdId;
     }
 

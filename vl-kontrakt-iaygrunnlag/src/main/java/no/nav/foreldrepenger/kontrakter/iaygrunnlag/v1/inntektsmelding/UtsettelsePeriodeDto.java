@@ -7,8 +7,8 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.UtsettelseÅrsakDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.Periode;
@@ -16,22 +16,27 @@ import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.Periode;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = Include.ALWAYS, content = Include.ALWAYS)
 public class UtsettelsePeriodeDto {
-    
+
     @JsonProperty(value = "periode", required = true)
     @Valid
     @NotNull
     private Periode periode;
-    
+
     @JsonProperty(value = "utsettelseÅrsak")
     @Valid
-    private UtsettelseÅrsakDto utsettelseÅrsakDto;
+    private UtsettelseÅrsakDto utsettelseÅrsak;
 
-    public UtsettelsePeriodeDto() {
+    protected UtsettelsePeriodeDto() {
     }
-    
+
     public UtsettelsePeriodeDto(Periode periode) {
+        this(periode, null);
+    }
+
+    public UtsettelsePeriodeDto(Periode periode, UtsettelseÅrsakDto utsettelseÅrsak) {
         Objects.requireNonNull(periode, "periode");
         this.periode = periode;
+        this.utsettelseÅrsak = utsettelseÅrsak;
     }
 
     public Periode getPeriode() {
@@ -39,15 +44,15 @@ public class UtsettelsePeriodeDto {
     }
 
     public UtsettelseÅrsakDto getUtsettelseÅrsakDto() {
-        return utsettelseÅrsakDto;
+        return utsettelseÅrsak;
     }
 
     public void setUtsettelseÅrsakDto(UtsettelseÅrsakDto utsettelseÅrsakDto) {
-        this.utsettelseÅrsakDto = utsettelseÅrsakDto;
+        this.utsettelseÅrsak = utsettelseÅrsakDto;
     }
-    
+
     public UtsettelsePeriodeDto medUtsettelseÅrsak(UtsettelseÅrsakDto utsettelseÅrsakDto) {
-        this.utsettelseÅrsakDto = utsettelseÅrsakDto;
+        this.utsettelseÅrsak = utsettelseÅrsakDto;
         return this;
     }
 }

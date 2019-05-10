@@ -1,4 +1,4 @@
-package no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1;
+package no.nav.foreldrepenger.kontrakter.iaygrunnlag;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;

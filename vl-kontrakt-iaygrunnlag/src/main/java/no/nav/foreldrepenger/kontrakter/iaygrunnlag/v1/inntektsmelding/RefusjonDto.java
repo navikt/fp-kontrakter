@@ -38,6 +38,10 @@ public class RefusjonDto {
         this.refusjonBeløpPerMnd = refusjonBeløpPerMnd == null ? null : refusjonBeløpPerMnd.setScale(2, RoundingMode.HALF_UP);
     }
 
+    public RefusjonDto(LocalDate fom, int refusjonBeløpPerMnd) {
+        this(fom, BigDecimal.valueOf(refusjonBeløpPerMnd));
+    }
+
     public BigDecimal getRefusjonsbeløpMnd() {
         return refusjonBeløpPerMnd;
     }

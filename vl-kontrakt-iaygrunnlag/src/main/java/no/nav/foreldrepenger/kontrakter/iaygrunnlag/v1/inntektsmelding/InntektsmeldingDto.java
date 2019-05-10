@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.time.ZoneId;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -16,8 +18,9 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.Aktør;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.JournalpostId;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.InntektsmeldingInnsendingsårsakDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.Aktør;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.ArbeidsforholdRefDto;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -29,12 +32,12 @@ public class InntektsmeldingDto {
     @NotNull
     private Aktør arbeidsgiver;
 
-    @JsonProperty(value = "mottattDokumentId", required = true)
+    @JsonProperty(value = "journalpostId", required = true)
     @NotNull
-    private Long mottattDokumentId;
+    private JournalpostId journalpostId;
 
     @JsonProperty(value = "innsendingstidspunkt", required = true)
-    private LocalDateTime innsendingstidspunkt;
+    private OffsetDateTime innsendingstidspunkt;
 
     @JsonProperty(value = "graderinger")
     @Valid
@@ -83,10 +86,10 @@ public class InntektsmeldingDto {
     @JsonProperty(value = "innsendingsårsak")
     private InntektsmeldingInnsendingsårsakDto innsendingsårsak;
 
-    public InntektsmeldingDto(Aktør arbeidsgiver, Long mottattDokumentId, LocalDateTime innsendingstidspunkt) {
+    public InntektsmeldingDto(Aktør arbeidsgiver, JournalpostId journalpostId, LocalDateTime innsendingstidspunkt) {
         this.arbeidsgiver = arbeidsgiver;
-        this.mottattDokumentId = mottattDokumentId;
-        this.innsendingstidspunkt = innsendingstidspunkt;
+        this.journalpostId = journalpostId;
+        this.innsendingstidspunkt = innsendingstidspunkt == null ? null : innsendingstidspunkt.atZone(ZoneId.of("Europe/Oslo")).toOffsetDateTime();
     }
 
     protected InntektsmeldingDto() {
@@ -108,7 +111,7 @@ public class InntektsmeldingDto {
         return graderinger;
     }
 
-    public LocalDateTime getInnsendingstidspunkt() {
+    public OffsetDateTime getInnsendingstidspunkt() {
         return innsendingstidspunkt;
     }
 
@@ -128,8 +131,8 @@ public class InntektsmeldingDto {
         return kildesystem;
     }
 
-    public Long getMottattDokumentId() {
-        return mottattDokumentId;
+    public JournalpostId getJournalpostId() {
+        return journalpostId;
     }
 
     public List<NaturalytelseDto> getNaturalytelser() {
@@ -201,8 +204,9 @@ public class InntektsmeldingDto {
         return this;
     }
 
-    public void medNærRelasjon(boolean naerRelasjon) {
+    public InntektsmeldingDto medNærRelasjon(boolean naerRelasjon) {
         setNærRelasjon(naerRelasjon);
+        return this;
     }
 
     public InntektsmeldingDto medRefusjonOpphører(LocalDate refusjonOpphører) {

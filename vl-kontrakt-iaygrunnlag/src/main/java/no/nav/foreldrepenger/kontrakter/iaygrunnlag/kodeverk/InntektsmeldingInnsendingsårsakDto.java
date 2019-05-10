@@ -13,6 +13,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 public class InntektsmeldingInnsendingsårsakDto extends Kodeverk {
     static final String KODEVERK = "INNTEKTSMELDING_INNSENDINGSAARSAK";
 
+    public static final InntektsmeldingInnsendingsårsakDto NY = new InntektsmeldingInnsendingsårsakDto("NY");
+    public static final InntektsmeldingInnsendingsårsakDto ENDRING = new InntektsmeldingInnsendingsårsakDto("ENDRING");
+    
     @JsonProperty(value = "kode", required = true, index = 1)
     @Pattern(regexp = "^[\\p{L}\\p{N}_.-]+$")
     @NotNull

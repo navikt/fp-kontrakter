@@ -48,6 +48,10 @@ public class NaturalytelseDto {
         this.beløpPerMnd = beløpPerMnd == null ? null : beløpPerMnd.setScale(2, RoundingMode.HALF_UP);
     }
 
+    public NaturalytelseDto(Periode periode, NaturalytelseTypeDto type, int beløpPerMnd) {
+        this(periode, type, BigDecimal.valueOf(beløpPerMnd));
+    }
+
     public Periode getPeriode() {
         return periode;
     }

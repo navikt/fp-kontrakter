@@ -14,6 +14,10 @@ public class UtsettelseÅrsakDto extends Kodeverk {
 
     static final String KODEVERK = "UTSETTELSE_AARSAK_TYPE";
     
+    public static final UtsettelseÅrsakDto ARBEID = new UtsettelseÅrsakDto("ARBEID");
+    public static final UtsettelseÅrsakDto SYKDOM = new UtsettelseÅrsakDto("SYKDOM");
+    public static final UtsettelseÅrsakDto LOVBESTEMT_FERIE = new UtsettelseÅrsakDto("LOVBESTEMT_FERIE");
+    
     @JsonProperty(value = "kode", required = true, index = 1)
     @Pattern(regexp = "^[\\p{L}\\p{N}_.-]+$")
     @NotNull

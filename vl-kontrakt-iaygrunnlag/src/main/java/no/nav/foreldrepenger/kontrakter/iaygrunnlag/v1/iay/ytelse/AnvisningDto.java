@@ -78,11 +78,11 @@ public class AnvisningDto {
     }
 
     public void setDagsats(BigDecimal dagsats) {
-        this.dagsats = dagsats;
+        this.dagsats =  dagsats == null ? null : dagsats.setScale(2, RoundingMode.HALF_UP);
     }
 
     public AnvisningDto medDagsats(BigDecimal dagsats) {
-        this.dagsats = dagsats;
+        setDagsats(dagsats);
         return this;
     }
 
@@ -95,7 +95,17 @@ public class AnvisningDto {
     }
 
     public void setUtbetalingsgrad(BigDecimal utbetalingsgrad) {
-        this.utbetalingsgrad = utbetalingsgrad;
+        this.utbetalingsgrad = utbetalingsgrad == null ? null : utbetalingsgrad.setScale(2, RoundingMode.HALF_UP);
+    }
+    
+    public AnvisningDto medUtbetalingsgrad(BigDecimal utbetalingsgrad) {
+        setUtbetalingsgrad(utbetalingsgrad);
+        return this;
+    }
+    
+    public AnvisningDto medUtbetalingsgrad(int utbetalingsgrad) {
+        setUtbetalingsgrad(BigDecimal.valueOf(utbetalingsgrad));
+        return this;
     }
 
 }

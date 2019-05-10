@@ -16,8 +16,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.Organisasjon;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.VirksomhetTypeDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.Organisasjon;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.Periode;
 
 @JsonIgnoreProperties(ignoreUnknown = true)

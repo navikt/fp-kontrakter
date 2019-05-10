@@ -1,4 +1,4 @@
-package no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1;
+package no.nav.foreldrepenger.kontrakter.iaygrunnlag;
 
 import java.util.Objects;
 import java.util.UUID;

@@ -1,7 +1,8 @@
 package no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay;
 
 import java.time.ZoneId;
-import java.time.ZonedDateTime;
+import java.time.OffsetDateTime;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -13,8 +14,9 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.PersonIdent;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.UuidDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.PersonIdent;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.UuidDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.inntektsmelding.InntektsmeldingerDto;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = Include.NON_ABSENT, content = Include.NON_EMPTY)
@@ -28,7 +30,7 @@ public class GrunnlagDto {
     @JsonProperty(value = "generertTidspunkt", required = true)
     @Valid
     @NotNull
-    private ZonedDateTime generertTidspunkt = ZonedDateTime.now(ZoneId.of("Europe/Oslo"));
+    private OffsetDateTime generertTidspunkt = OffsetDateTime.now(ZoneId.of("Europe/Oslo"));
 
     @JsonProperty("person")
     @Valid
@@ -42,6 +44,10 @@ public class GrunnlagDto {
     @JsonProperty(value = "overstyrtGrunnlag")
     @Valid
     private InntektArbeidYtelseAggregatDto overstyrt;
+
+    @JsonProperty(value = "inntektsmeldinger")
+    @Valid
+    private List<InntektsmeldingerDto> inntektsmeldinger;
 
     protected GrunnlagDto() {
         // default ctor
@@ -108,5 +114,10 @@ public class GrunnlagDto {
     @Override
     public int hashCode() {
         return Objects.hash(person, register, overstyrt);
+    }
+
+    public GrunnlagDto medInntektsmeldinger(List<InntektsmeldingerDto> inntektsmeldinger) {
+        this.inntektsmeldinger = inntektsmeldinger;
+        return this;
     }
 }

@@ -8,9 +8,14 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.Aktør;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.PersonIdent;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay.Periode;
 
-
+/**
+ * @deprecated FIXME trengs denne?
+ */
+@Deprecated
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = Include.NON_ABSENT, content = Include.NON_EMPTY)
 public class ArbeidsforholdForAktørIPeriodeDto {

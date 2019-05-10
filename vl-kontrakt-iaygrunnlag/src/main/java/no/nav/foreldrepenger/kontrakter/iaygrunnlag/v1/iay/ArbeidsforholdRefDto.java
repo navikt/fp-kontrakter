@@ -2,6 +2,7 @@ package no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.iay;
 
 import javax.validation.constraints.Pattern;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -16,7 +17,9 @@ public class ArbeidsforholdRefDto {
     @Pattern(regexp = "^[\\p{L}\\p{N}_.-]+$")
     private String eksternReferanse;
 
-    public ArbeidsforholdRefDto(String internReferanse, String eksternReferanse) {
+    @JsonCreator
+    public ArbeidsforholdRefDto(@JsonProperty(value = "internReferanse", required = true, index = 0) String internReferanse,
+                                @JsonProperty(value = "eksternReferanse", index = 1) String eksternReferanse) {
         this.internReferanse = internReferanse;
         this.eksternReferanse = eksternReferanse;
     }

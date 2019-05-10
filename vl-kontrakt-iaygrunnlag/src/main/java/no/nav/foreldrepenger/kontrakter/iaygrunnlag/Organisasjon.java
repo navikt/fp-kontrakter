@@ -1,4 +1,4 @@
-package no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1;
+package no.nav.foreldrepenger.kontrakter.iaygrunnlag;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -11,16 +11,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = Include.NON_ABSENT, content = Include.NON_EMPTY)
-public class FnrPersonident extends PersonIdent {
-    static final String IDENT_TYPE = "FNR";
+public class Organisasjon extends Aktør {
+    static final String IDENT_TYPE = "ORGNUMMER";
     
     @JsonProperty(value = "ident", required = true, index = 1)
     @NotNull
-    @Pattern(regexp = "^\\d{11}+$", message = "fnr ha ikke gyldig verdi (11 siffer)")
+    @Pattern(regexp = "^\\d{9}+$", message = "orgnr har ikke gyldig verdi (9 siffer)")
     private String ident;
 
     @JsonCreator
-    public FnrPersonident(@JsonProperty("kode") String kode) {
+    public Organisasjon(@JsonProperty("kode") String kode) {
         this.ident = kode;
     }
 

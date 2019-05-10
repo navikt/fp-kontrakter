@@ -1,5 +1,7 @@
 package no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1;
 
+import java.util.UUID;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -7,6 +9,10 @@ import javax.validation.constraints.Pattern;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.Aktør;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.UuidDto;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -24,10 +30,21 @@ public class ArbeidsforholdReferanse {
     private Aktør arbeidsgiver;
     
     @JsonProperty(value = "arbeidsforholdId")
-    @Pattern(regexp = ".*")
+    @Pattern(regexp = "^[\\p{L}\\p{N}:_.-]+$")
     private String arbeidsforholdId;
 
+    public ArbeidsforholdReferanse(String referanse, Aktør arbeidsgiver) {
+        this.uuid = new UuidDto(referanse);
+        this.arbeidsgiver = arbeidsgiver;
+    }
+    
     public ArbeidsforholdReferanse(String referanse, Aktør arbeidsgiver, String arbeidsforholdId) {
+        this.uuid = new UuidDto(referanse);
+        this.arbeidsgiver = arbeidsgiver;
+        this.arbeidsforholdId = arbeidsforholdId;
+    }
+
+    public ArbeidsforholdReferanse(UUID referanse, Aktør arbeidsgiver, String arbeidsforholdId) {
         this.uuid = new UuidDto(referanse);
         this.arbeidsgiver = arbeidsgiver;
         this.arbeidsforholdId = arbeidsforholdId;
@@ -35,10 +52,6 @@ public class ArbeidsforholdReferanse {
 
     public UuidDto getReferanse() {
         return uuid;
-    }
-
-    public void setReferanse(UuidDto referanse) {
-        this.uuid = referanse;
     }
 
     public Aktør getArbeidsgiver() {
@@ -49,7 +62,4 @@ public class ArbeidsforholdReferanse {
         return arbeidsforholdId;
     }
 
-    public void setArbeidsforholdId(String arbeidsforholdId) {
-        this.arbeidsforholdId = arbeidsforholdId;
-    }
 }

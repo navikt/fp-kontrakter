@@ -18,6 +18,11 @@ public class InntektsmeldingerDto {
     @NotNull
     @Valid
     private List<InntektsmeldingDto> inntektsmeldinger;
+    
+    
+    @JsonProperty(value = "inntektsmeldingerSomIkkeKommer")
+    @Valid
+    private List<InntektsmeldingSomIkkeKommerDto> inntektsmeldingerSomIkkeKommer;
 
     public InntektsmeldingerDto() {
         // default ctor
@@ -33,6 +38,15 @@ public class InntektsmeldingerDto {
     
     public InntektsmeldingerDto medInntektsmeldinger(List<InntektsmeldingDto> inntektsmeldinger) {
         setInntektsmeldinger(inntektsmeldinger);
+        return this;
+    }
+    
+    public void setInntektsmeldingerSomIkkeKommer(List<InntektsmeldingSomIkkeKommerDto> inntektsmeldingerSomIkkeKommer) {
+        this.inntektsmeldingerSomIkkeKommer = inntektsmeldingerSomIkkeKommer;
+    }
+    
+    public InntektsmeldingerDto medInntektsmeldingerSomIkkeKommer(List<InntektsmeldingSomIkkeKommerDto> inntektsmeldingerSomIkkeKommer) {
+        setInntektsmeldingerSomIkkeKommer(inntektsmeldingerSomIkkeKommer);
         return this;
     }
 }
