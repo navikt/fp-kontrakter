@@ -3,6 +3,7 @@ package no.nav.foreldrepenger.kontrakter.iaygrunnlag.inntektsmelding.v1;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -31,7 +32,9 @@ public class InntektsmeldingSomIkkeKommerDto {
         this(arbeidsgiver, null);
     }
 
-    public InntektsmeldingSomIkkeKommerDto(@Valid @NotNull Aktør arbeidsgiver, @Valid ArbeidsforholdRefDto arbeidsforholdId) {
+    @JsonCreator
+    public InntektsmeldingSomIkkeKommerDto(@JsonProperty(value = "arbeidsgiver", required = true) @Valid @NotNull Aktør arbeidsgiver,
+                                           @JsonProperty(value = "arbeidsforholdId") @Valid ArbeidsforholdRefDto arbeidsforholdId) {
         this.arbeidsgiver = arbeidsgiver;
         this.arbeidsforholdId = arbeidsforholdId;
     }

@@ -2,7 +2,6 @@ package no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1;
 
 import java.time.OffsetDateTime;
 import java.time.ZoneId;
-import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -48,7 +47,7 @@ public class InntektArbeidYtelseGrunnlagDto {
 
     @JsonProperty(value = "inntektsmeldinger")
     @Valid
-    private List<InntektsmeldingerDto> inntektsmeldinger;
+    private InntektsmeldingerDto inntektsmeldinger;
 
     /** Opptjening bruker har oppgitt selv. */
     @JsonProperty(value = "oppgittOpptjening")
@@ -89,6 +88,22 @@ public class InntektArbeidYtelseGrunnlagDto {
         return overstyrt;
     }
 
+    public InntektsmeldingerDto getInntektsmeldinger() {
+        return inntektsmeldinger;
+    }
+
+    public PersonIdent getPerson() {
+        return person;
+    }
+
+    public OffsetDateTime getGenerertTidspunkt() {
+        return generertTidspunkt;
+    }
+    
+    public OppgittOpptjeningDto getOppgittOpptjening() {
+        return oppgittOpptjening;
+    }
+
     public void setOverstyrt(InntektArbeidYtelseAggregatOverstyrtDto overstyrt) {
         Objects.requireNonNull(register, "Kan ikke sette overstyrt om register ikke er satt");
         this.overstyrt = overstyrt;
@@ -122,7 +137,7 @@ public class InntektArbeidYtelseGrunnlagDto {
         return Objects.hash(person, register, overstyrt);
     }
 
-    public InntektArbeidYtelseGrunnlagDto medInntektsmeldinger(List<InntektsmeldingerDto> inntektsmeldinger) {
+    public InntektArbeidYtelseGrunnlagDto medInntektsmeldinger(InntektsmeldingerDto inntektsmeldinger) {
         this.inntektsmeldinger = inntektsmeldinger;
         return this;
     }
@@ -134,6 +149,6 @@ public class InntektArbeidYtelseGrunnlagDto {
 
     public void setOppgittOpptjening(OppgittOpptjeningDto oppgittOpptjening) {
         this.oppgittOpptjening = oppgittOpptjening;
-        
+
     }
 }

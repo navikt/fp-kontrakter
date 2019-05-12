@@ -1,5 +1,6 @@
 package no.nav.foreldrepenger.kontrakter.iaygrunnlag.inntektsmelding.v1;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -18,8 +19,7 @@ public class InntektsmeldingerDto {
     @NotNull
     @Valid
     private List<InntektsmeldingDto> inntektsmeldinger;
-    
-    
+
     @JsonProperty(value = "inntektsmeldingerSomIkkeKommer")
     @Valid
     private List<InntektsmeldingSomIkkeKommerDto> inntektsmeldingerSomIkkeKommer;
@@ -29,22 +29,26 @@ public class InntektsmeldingerDto {
     }
 
     public List<InntektsmeldingDto> getInntektsmeldinger() {
-        return inntektsmeldinger;
+        return inntektsmeldinger == null ? Collections.emptyList() : inntektsmeldinger;
+    }
+
+    public List<InntektsmeldingSomIkkeKommerDto> getInntektsmeldingerSomIkkeKommer() {
+        return inntektsmeldingerSomIkkeKommer == null ? Collections.emptyList() : inntektsmeldingerSomIkkeKommer;
     }
 
     public void setInntektsmeldinger(List<InntektsmeldingDto> inntektsmeldinger) {
         this.inntektsmeldinger = inntektsmeldinger;
     }
-    
+
     public InntektsmeldingerDto medInntektsmeldinger(List<InntektsmeldingDto> inntektsmeldinger) {
         setInntektsmeldinger(inntektsmeldinger);
         return this;
     }
-    
+
     public void setInntektsmeldingerSomIkkeKommer(List<InntektsmeldingSomIkkeKommerDto> inntektsmeldingerSomIkkeKommer) {
         this.inntektsmeldingerSomIkkeKommer = inntektsmeldingerSomIkkeKommer;
     }
-    
+
     public InntektsmeldingerDto medInntektsmeldingerSomIkkeKommer(List<InntektsmeldingSomIkkeKommerDto> inntektsmeldingerSomIkkeKommer) {
         setInntektsmeldingerSomIkkeKommer(inntektsmeldingerSomIkkeKommer);
         return this;

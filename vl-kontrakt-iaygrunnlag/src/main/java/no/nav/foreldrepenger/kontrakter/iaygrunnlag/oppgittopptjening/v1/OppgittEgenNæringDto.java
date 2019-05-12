@@ -104,8 +104,15 @@ public class OppgittEgenNæringDto {
         this.virksomhetTypeDto = virksomhetTypeDto;
     }
 
-    public OppgittEgenNæringDto medVirksomhetTypeDto(VirksomhetType virksomhetTypeDto) {
-        setVirksomhetTypeDto(virksomhetTypeDto);
+    public OppgittEgenNæringDto medVirksomhetType(VirksomhetType virksomhetType) {
+        setVirksomhetTypeDto(virksomhetType);
+        return this;
+    }
+
+    public OppgittEgenNæringDto medVirksomhetType(String virksomhetType) {
+        if (virksomhetType != null) {
+            setVirksomhetTypeDto(new VirksomhetType(virksomhetType));
+        }
         return this;
     }
 
@@ -178,7 +185,7 @@ public class OppgittEgenNæringDto {
         setBruttoInntekt(BigDecimal.valueOf(bruttoInntekt));
         return this;
     }
-    
+
     public Boolean isNyoppstartet() {
         return nyoppstartet;
     }
