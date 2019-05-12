@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.Periode;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.UtsettelseÅrsakDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.UtsettelseÅrsakType;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = Include.ALWAYS, content = Include.ALWAYS)
@@ -24,7 +24,7 @@ public class UtsettelsePeriodeDto {
 
     @JsonProperty(value = "utsettelseÅrsak")
     @Valid
-    private UtsettelseÅrsakDto utsettelseÅrsak;
+    private UtsettelseÅrsakType utsettelseÅrsak;
 
     protected UtsettelsePeriodeDto() {
     }
@@ -33,7 +33,7 @@ public class UtsettelsePeriodeDto {
         this(periode, null);
     }
 
-    public UtsettelsePeriodeDto(Periode periode, UtsettelseÅrsakDto utsettelseÅrsak) {
+    public UtsettelsePeriodeDto(Periode periode, UtsettelseÅrsakType utsettelseÅrsak) {
         Objects.requireNonNull(periode, "periode");
         this.periode = periode;
         this.utsettelseÅrsak = utsettelseÅrsak;
@@ -43,15 +43,15 @@ public class UtsettelsePeriodeDto {
         return periode;
     }
 
-    public UtsettelseÅrsakDto getUtsettelseÅrsakDto() {
+    public UtsettelseÅrsakType getUtsettelseÅrsakDto() {
         return utsettelseÅrsak;
     }
 
-    public void setUtsettelseÅrsakDto(UtsettelseÅrsakDto utsettelseÅrsakDto) {
+    public void setUtsettelseÅrsakDto(UtsettelseÅrsakType utsettelseÅrsakDto) {
         this.utsettelseÅrsak = utsettelseÅrsakDto;
     }
 
-    public UtsettelsePeriodeDto medUtsettelseÅrsak(UtsettelseÅrsakDto utsettelseÅrsakDto) {
+    public UtsettelsePeriodeDto medUtsettelseÅrsak(UtsettelseÅrsakType utsettelseÅrsakDto) {
         this.utsettelseÅrsak = utsettelseÅrsakDto;
         return this;
     }

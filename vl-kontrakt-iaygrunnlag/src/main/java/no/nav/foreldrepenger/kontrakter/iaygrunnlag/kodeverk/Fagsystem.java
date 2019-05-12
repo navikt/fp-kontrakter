@@ -23,6 +23,12 @@ public class Fagsystem extends Kodeverk {
     
     /** Eksempel konstant - ARENA. */
     public static final Fagsystem ARENA = new Fagsystem("ARENA");
+    
+    /** Eksempel konstant - ABAKUS. */
+    public static final Fagsystem FPABAKUS = new Fagsystem("FPABAKUS");
+    
+    /** Eksempel konstant - AAREGISTERET. */
+    public static final Fagsystem AAREGISTERET= new Fagsystem("AAREGISTERET");
 
     @JsonProperty(value = "kode", required = true, index = 1)
     @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$")

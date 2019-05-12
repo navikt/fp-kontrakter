@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.Organisasjon;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.Periode;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.VirksomhetTypeDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.VirksomhetType;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = Include.ALWAYS, content = Include.NON_EMPTY)
@@ -35,7 +35,7 @@ public class OppgittEgenNæringDto {
 
     @JsonProperty(value = "virksomhetType")
     @Valid
-    private VirksomhetTypeDto virksomhetTypeDto;
+    private VirksomhetType virksomhetTypeDto;
 
     @JsonProperty(value = "regnskapsførerNavn")
     @Pattern(regexp = "^[\\p{L}\\p{N}\\.\\- ]+$")
@@ -96,15 +96,15 @@ public class OppgittEgenNæringDto {
         return this;
     }
 
-    public VirksomhetTypeDto getVirksomhetTypeDto() {
+    public VirksomhetType getVirksomhetTypeDto() {
         return virksomhetTypeDto;
     }
 
-    public void setVirksomhetTypeDto(VirksomhetTypeDto virksomhetTypeDto) {
+    public void setVirksomhetTypeDto(VirksomhetType virksomhetTypeDto) {
         this.virksomhetTypeDto = virksomhetTypeDto;
     }
 
-    public OppgittEgenNæringDto medVirksomhetTypeDto(VirksomhetTypeDto virksomhetTypeDto) {
+    public OppgittEgenNæringDto medVirksomhetTypeDto(VirksomhetType virksomhetTypeDto) {
         setVirksomhetTypeDto(virksomhetTypeDto);
         return this;
     }

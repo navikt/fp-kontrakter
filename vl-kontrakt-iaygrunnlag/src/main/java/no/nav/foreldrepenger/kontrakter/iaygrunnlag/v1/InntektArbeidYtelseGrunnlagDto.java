@@ -21,7 +21,7 @@ import no.nav.foreldrepenger.kontrakter.iaygrunnlag.oppgittopptjening.v1.Oppgitt
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = Include.NON_ABSENT, content = Include.NON_EMPTY)
-public class GrunnlagDto {
+public class InntektArbeidYtelseGrunnlagDto {
 
     @JsonProperty(value = "grunnlagReferanse", required = true)
     @Valid
@@ -55,18 +55,18 @@ public class GrunnlagDto {
     @Valid
     private OppgittOpptjeningDto oppgittOpptjening;
 
-    protected GrunnlagDto() {
+    protected InntektArbeidYtelseGrunnlagDto() {
         // default ctor
     }
 
-    public GrunnlagDto(PersonIdent person, UuidDto uuid) {
+    public InntektArbeidYtelseGrunnlagDto(PersonIdent person, UuidDto uuid) {
         Objects.requireNonNull(person, "person");
         Objects.requireNonNull(uuid, "uuid");
         this.person = person;
         this.grunnlagReferanse = uuid;
     }
 
-    public GrunnlagDto(PersonIdent person, UUID uuid) {
+    public InntektArbeidYtelseGrunnlagDto(PersonIdent person, UUID uuid) {
         Objects.requireNonNull(person, "person");
         Objects.requireNonNull(uuid, "uuid");
         this.person = person;
@@ -94,12 +94,12 @@ public class GrunnlagDto {
         this.overstyrt = overstyrt;
     }
 
-    public GrunnlagDto medOverstyrt(InntektArbeidYtelseAggregatOverstyrtDto overstyrt) {
+    public InntektArbeidYtelseGrunnlagDto medOverstyrt(InntektArbeidYtelseAggregatOverstyrtDto overstyrt) {
         setOverstyrt(overstyrt);
         return this;
     }
 
-    public GrunnlagDto medRegister(InntektArbeidYtelseAggregatRegisterDto register) {
+    public InntektArbeidYtelseGrunnlagDto medRegister(InntektArbeidYtelseAggregatRegisterDto register) {
         setRegister(register);
         return this;
     }
@@ -111,7 +111,7 @@ public class GrunnlagDto {
         } else if (obj == null || !(obj.getClass().equals(this.getClass()))) {
             return false;
         }
-        GrunnlagDto other = (GrunnlagDto) obj;
+        InntektArbeidYtelseGrunnlagDto other = (InntektArbeidYtelseGrunnlagDto) obj;
         return Objects.equals(person, other.person)
             && Objects.equals(register, other.register)
             && Objects.equals(overstyrt, other.overstyrt);
@@ -122,12 +122,12 @@ public class GrunnlagDto {
         return Objects.hash(person, register, overstyrt);
     }
 
-    public GrunnlagDto medInntektsmeldinger(List<InntektsmeldingerDto> inntektsmeldinger) {
+    public InntektArbeidYtelseGrunnlagDto medInntektsmeldinger(List<InntektsmeldingerDto> inntektsmeldinger) {
         this.inntektsmeldinger = inntektsmeldinger;
         return this;
     }
 
-    public GrunnlagDto medOppgittOpptjening(OppgittOpptjeningDto oppgittOpptjening) {
+    public InntektArbeidYtelseGrunnlagDto medOppgittOpptjening(OppgittOpptjeningDto oppgittOpptjening) {
         setOppgittOpptjening(oppgittOpptjening);
         return this;
     }

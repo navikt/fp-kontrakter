@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.Periode;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.PermisjonsbeskrivelseTypeDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.PermisjonsbeskrivelseType;
 
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -30,7 +30,7 @@ public class PermisjonDto {
     @JsonProperty(value="type", required = true)
     @NotNull
     @Valid
-    private PermisjonsbeskrivelseTypeDto type;
+    private PermisjonsbeskrivelseType type;
     
     /** Prosent sats med to desimaler - min 0.00 - 100.00. */
     @JsonProperty("prosentsats")
@@ -42,7 +42,7 @@ public class PermisjonDto {
     protected PermisjonDto() {
     }
 
-    public PermisjonDto(@NotNull @Valid Periode periode, @NotNull @Valid PermisjonsbeskrivelseTypeDto type) {
+    public PermisjonDto(@NotNull @Valid Periode periode, @NotNull @Valid PermisjonsbeskrivelseType type) {
         Objects.requireNonNull(periode, "periode");
         Objects.requireNonNull(type, "type");
         this.periode = periode;
@@ -53,7 +53,7 @@ public class PermisjonDto {
         return periode;
     }
 
-    public PermisjonsbeskrivelseTypeDto getType() {
+    public PermisjonsbeskrivelseType getType() {
         return type;
     }
 

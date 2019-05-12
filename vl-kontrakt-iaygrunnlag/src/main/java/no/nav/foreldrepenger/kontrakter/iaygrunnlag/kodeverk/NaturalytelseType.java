@@ -7,16 +7,21 @@ import javax.validation.constraints.Pattern;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 
-@JsonTypeName(UtsettelseÅrsakDto.KODEVERK)
-public class UtsettelseÅrsakDto extends Kodeverk {
 
-    static final String KODEVERK = "UTSETTELSE_AARSAK_TYPE";
+public class NaturalytelseType extends Kodeverk {
+
+    static final String KODEVERK = "NATURAL_YTELSE_TYPE";
     
-    public static final UtsettelseÅrsakDto ARBEID = new UtsettelseÅrsakDto("ARBEID");
-    public static final UtsettelseÅrsakDto SYKDOM = new UtsettelseÅrsakDto("SYKDOM");
-    public static final UtsettelseÅrsakDto LOVBESTEMT_FERIE = new UtsettelseÅrsakDto("LOVBESTEMT_FERIE");
+    /** Eksempel konstant - Bil. */
+    public static final NaturalytelseType BIL = new NaturalytelseType("BIL");
+    
+    /** Eksempel konstant - Opsjoner. */
+    public static final NaturalytelseType OPSJONER = new NaturalytelseType("OPSJONER");
+    
+    /** Eksempel konstant - Elektronisk kommunikasjon (mobil, bredbånd, etc.). */
+    public static final NaturalytelseType ELEKTRISK_KOMMUNIKASJON = new NaturalytelseType("ELEKTRISK_KOMMUNIKASJON");
+    
     
     @JsonProperty(value = "kode", required = true, index = 1)
     @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$")
@@ -24,7 +29,7 @@ public class UtsettelseÅrsakDto extends Kodeverk {
     private String kode;
 
     @JsonCreator
-    public UtsettelseÅrsakDto(@JsonProperty(value = "kode", required = true) String kode) {
+    public NaturalytelseType(@JsonProperty(value = "kode", required = true) String kode) {
         Objects.requireNonNull(kode, "kode");
         this.kode = kode;
     }

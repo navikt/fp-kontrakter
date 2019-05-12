@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AktørIdPersonident extends PersonIdent {
-    static final String IDENT_TYPE = "NAV-AKTØR-ID";
+    public static final String IDENT_TYPE = "AKTØRID";
     
     @JsonProperty(value = "ident", required = true, index = 1)
     @NotNull

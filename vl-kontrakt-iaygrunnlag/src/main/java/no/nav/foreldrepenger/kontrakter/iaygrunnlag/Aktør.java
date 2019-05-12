@@ -26,4 +26,8 @@ public abstract class Aktør {
     
     /** Type ident. (per ident fra subklasse). */
     public abstract String getIdentType();
+
+    public abstract boolean getErOrganisasjon();
+
+    public abstract boolean getErPerson();
 }

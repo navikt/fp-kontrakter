@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.Periode;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.ArbeidTypeDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.ArbeidType;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = Include.ALWAYS, content = Include.ALWAYS)
@@ -25,9 +25,9 @@ public class OppgittAnnenAktivitetDto {
     @JsonProperty(value = "arbeidType", required = true)
     @Valid
     @NotNull
-    private ArbeidTypeDto arbeidTypeDto;
+    private ArbeidType arbeidTypeDto;
 
-    public OppgittAnnenAktivitetDto(Periode periode, ArbeidTypeDto arbeidType) {
+    public OppgittAnnenAktivitetDto(Periode periode, ArbeidType arbeidType) {
         Objects.requireNonNull(periode, "periode");
         Objects.requireNonNull(arbeidType, "arbeidType");
         this.periode = periode;
@@ -38,7 +38,7 @@ public class OppgittAnnenAktivitetDto {
         return periode;
     }
 
-    public ArbeidTypeDto getArbeidTypeDto() {
+    public ArbeidType getArbeidTypeDto() {
         return arbeidTypeDto;
     }
 }

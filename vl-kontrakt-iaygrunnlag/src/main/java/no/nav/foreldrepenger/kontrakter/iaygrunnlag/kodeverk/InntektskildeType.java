@@ -8,15 +8,15 @@ import javax.validation.constraints.Pattern;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class InntektsKildeDto extends Kodeverk {
+public class InntektskildeType extends Kodeverk {
     static final String KODEVERK = "INNTEKTS_KILDE";
 
     /** Eksempel konstant- INNTEKT_BEREGNING. */
-    public static final InntektsKildeDto INNTEKT_BEREGNING = new InntektsKildeDto("INNTEKT_BEREGNING");
-    public static final InntektsKildeDto INNTEKT_OPPTJENING = new InntektsKildeDto("INNTEKT_OPPTJENING");
-    public static final InntektsKildeDto INNTEKT_SAMMENLIGNING = new InntektsKildeDto("INNTEKT_SAMMENLIGNING");
-    public static final InntektsKildeDto SIGRUN = new InntektsKildeDto("SIGRUN");
-    public static final InntektsKildeDto VANLIG = new InntektsKildeDto("VANLIG");
+    public static final InntektskildeType INNTEKT_BEREGNING = new InntektskildeType("INNTEKT_BEREGNING");
+    public static final InntektskildeType INNTEKT_OPPTJENING = new InntektskildeType("INNTEKT_OPPTJENING");
+    public static final InntektskildeType INNTEKT_SAMMENLIGNING = new InntektskildeType("INNTEKT_SAMMENLIGNING");
+    public static final InntektskildeType SIGRUN = new InntektskildeType("SIGRUN");
+    public static final InntektskildeType VANLIG = new InntektskildeType("VANLIG");
 
     @JsonProperty(value = "kode", required = true, index = 1)
     @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$")
@@ -24,7 +24,7 @@ public class InntektsKildeDto extends Kodeverk {
     private String kode;
 
     @JsonCreator
-    public InntektsKildeDto(@JsonProperty(value = "kode", required = true) String kode) {
+    public InntektskildeType(@JsonProperty(value = "kode", required = true) String kode) {
         Objects.requireNonNull(kode, "kode");
         this.kode = kode;
     }

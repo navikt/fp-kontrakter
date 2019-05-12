@@ -8,24 +8,19 @@ import javax.validation.constraints.Pattern;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+public class SkatteOgAvgiftsregelType extends Kodeverk {
+    static final String KODEVERK = "SKATTE_OG_AVGIFTSREGEL";
 
-public class LandkoderDto extends Kodeverk {
+    /** EKsempel konstant. Nettolønn. */
+    public static final SkatteOgAvgiftsregelType NETTOLØNN = new SkatteOgAvgiftsregelType("NETTOLØNN");
 
-    static final String KODEVERK = "LANDKODER";
-    
-    /** Eksempel konstant. Norge. */
-    public static final LandkoderDto NORGE = new LandkoderDto("NOR");
-    public static final LandkoderDto SVERIGE = new LandkoderDto("SWE");
-    public static final LandkoderDto DANMARK = new LandkoderDto("DNK");
-
-    /** ISO 3-letter country codes. */
     @JsonProperty(value = "kode", required = true, index = 1)
-    @Pattern(regexp = "^[A-Z]{3}$")
+    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$")
     @NotNull
     private String kode;
 
     @JsonCreator
-    public LandkoderDto(@JsonProperty(value = "kode", required = true) String kode) {
+    public SkatteOgAvgiftsregelType(@JsonProperty(value = "kode", required = true) String kode) {
         Objects.requireNonNull(kode, "kode");
         this.kode = kode;
     }

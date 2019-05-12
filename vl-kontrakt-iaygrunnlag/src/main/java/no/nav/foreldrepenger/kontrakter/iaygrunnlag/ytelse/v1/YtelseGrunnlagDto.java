@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.ArbeidskategoriDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.Arbeidskategori;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = Include.NON_ABSENT, content = Include.NON_EMPTY)
@@ -22,7 +22,7 @@ public class YtelseGrunnlagDto {
 
     @JsonProperty(value = "arbeidskategori")
     @Valid
-    private ArbeidskategoriDto arbeidskategoriDto;
+    private Arbeidskategori arbeidskategoriDto;
 
     @JsonProperty(value = "opprinneligIdentDato")
     @Valid
@@ -53,15 +53,15 @@ public class YtelseGrunnlagDto {
     public YtelseGrunnlagDto() {
     }
 
-    public ArbeidskategoriDto getArbeidskategoriDto() {
+    public Arbeidskategori getArbeidskategoriDto() {
         return arbeidskategoriDto;
     }
 
-    public void setArbeidskategoriDto(ArbeidskategoriDto arbeidskategoriDto) {
+    public void setArbeidskategoriDto(Arbeidskategori arbeidskategoriDto) {
         this.arbeidskategoriDto = arbeidskategoriDto;
     }
 
-    public YtelseGrunnlagDto medArbeidskategoriDto(ArbeidskategoriDto arbeidskategoriDto) {
+    public YtelseGrunnlagDto medArbeidskategoriDto(Arbeidskategori arbeidskategoriDto) {
         setArbeidskategoriDto(arbeidskategoriDto);
         return this;
     }

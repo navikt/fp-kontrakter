@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.Aktør;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.InntektPeriodeTypeDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.InntektPeriodeType;
 
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -36,16 +36,16 @@ public class FordelingDto {
     @JsonProperty("inntektPeriodeType")
     @Valid
     @NotNull
-    private InntektPeriodeTypeDto inntektPeriodeType;
+    private InntektPeriodeType inntektPeriodeType;
 
     protected FordelingDto() {
     }
     
-    public FordelingDto(Aktør arbeidsgiver, InntektPeriodeTypeDto inntektPeriodeType, int beløp) {
+    public FordelingDto(Aktør arbeidsgiver, InntektPeriodeType inntektPeriodeType, int beløp) {
         this(arbeidsgiver, inntektPeriodeType, BigDecimal.valueOf(beløp));
     }
     
-    public FordelingDto(Aktør arbeidsgiver, InntektPeriodeTypeDto inntektPeriodeType, BigDecimal beløp) {
+    public FordelingDto(Aktør arbeidsgiver, InntektPeriodeType inntektPeriodeType, BigDecimal beløp) {
         this.arbeidsgiver = arbeidsgiver;
         this.inntektPeriodeType = inntektPeriodeType;
         this.beløp = beløp==null?null:beløp.setScale(2, RoundingMode.HALF_UP);
@@ -59,7 +59,7 @@ public class FordelingDto {
         return beløp;
     }
 
-    public InntektPeriodeTypeDto getHyppighet() {
+    public InntektPeriodeType getHyppighet() {
         return inntektPeriodeType;
     }
 

@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.Aktør;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.ArbeidsforholdRefDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.Periode;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.ArbeidTypeDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.ArbeidType;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = Include.NON_ABSENT, content = Include.NON_EMPTY)
@@ -27,7 +27,7 @@ public class ArbeidsforholdDto {
     @JsonProperty(value = "arbeidType", required = true)
     @Valid
     @NotNull
-    private ArbeidTypeDto type;
+    private ArbeidType type;
 
     @JsonProperty("arbeidsforholdId")
     @Valid
@@ -40,7 +40,7 @@ public class ArbeidsforholdDto {
     protected ArbeidsforholdDto() {
     }
 
-    public ArbeidsforholdDto(Aktør arbeidsgiver, ArbeidTypeDto type) {
+    public ArbeidsforholdDto(Aktør arbeidsgiver, ArbeidType type) {
         this.arbeidsgiver = arbeidsgiver;
         this.type = type;
     }
@@ -57,7 +57,7 @@ public class ArbeidsforholdDto {
         this.arbeidsforholdId = arbeidsforholdId;
     }
 
-    public ArbeidTypeDto getType() {
+    public ArbeidType getType() {
         return type;
     }
 

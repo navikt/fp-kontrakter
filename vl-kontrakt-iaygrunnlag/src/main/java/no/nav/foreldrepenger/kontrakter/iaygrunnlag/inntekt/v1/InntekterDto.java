@@ -28,7 +28,8 @@ public class InntekterDto {
     @Valid
     private List<UtbetalingDto> utbetalinger;
 
-    public InntekterDto() {
+    protected InntekterDto() {
+        // default ctor
     }
 
     public InntekterDto(PersonIdent person) {

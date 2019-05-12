@@ -15,8 +15,8 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.Periode;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.InntektspostTypeDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.SkatteOgAvgiftsregelTypeDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.InntektspostType;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.SkatteOgAvgiftsregelType;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.YtelseType;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -26,11 +26,11 @@ public class UtbetalingsPostDto {
     @JsonProperty(value = "inntektspostType", required = true)
     @Valid
     @NotNull
-    private InntektspostTypeDto inntektspostType;
+    private InntektspostType inntektspostType;
 
     @JsonProperty("skattAvgiftType")
     @Valid
-    private SkatteOgAvgiftsregelTypeDto skattAvgiftType;
+    private SkatteOgAvgiftsregelType skattAvgiftType;
 
     @JsonProperty(value = "periode", required = true)
     @NotNull
@@ -51,7 +51,7 @@ public class UtbetalingsPostDto {
     protected UtbetalingsPostDto() {
     }
 
-    public UtbetalingsPostDto(YtelseType ytelseType, Periode periode, InntektspostTypeDto inntektspostType) {
+    public UtbetalingsPostDto(YtelseType ytelseType, Periode periode, InntektspostType inntektspostType) {
         Objects.requireNonNull(ytelseType, "ytelseType");
         Objects.requireNonNull(periode, "periode");
         Objects.requireNonNull(inntektspostType, "inntektspostType");
@@ -60,25 +60,25 @@ public class UtbetalingsPostDto {
         this.inntektspostType = inntektspostType;
     }
 
-    public InntektspostTypeDto getInntektspostType() {
+    public InntektspostType getInntektspostType() {
         return inntektspostType;
     }
 
-    public SkatteOgAvgiftsregelTypeDto getSkattAvgiftType() {
+    public SkatteOgAvgiftsregelType getSkattAvgiftType() {
         return skattAvgiftType;
     }
 
-    public void setSkattAvgiftType(SkatteOgAvgiftsregelTypeDto skattAvgiftType) {
+    public void setSkattAvgiftType(SkatteOgAvgiftsregelType skattAvgiftType) {
         this.skattAvgiftType = skattAvgiftType;
     }
 
-    public UtbetalingsPostDto medSkattAvgiftType(SkatteOgAvgiftsregelTypeDto skattAvgiftType) {
+    public UtbetalingsPostDto medSkattAvgiftType(SkatteOgAvgiftsregelType skattAvgiftType) {
         setSkattAvgiftType(skattAvgiftType);
         return this;
     }
 
     public UtbetalingsPostDto medSkattAvgiftType(String kode) {
-        setSkattAvgiftType(new SkatteOgAvgiftsregelTypeDto(kode));
+        setSkattAvgiftType(new SkatteOgAvgiftsregelType(kode));
         return this;
     }
 

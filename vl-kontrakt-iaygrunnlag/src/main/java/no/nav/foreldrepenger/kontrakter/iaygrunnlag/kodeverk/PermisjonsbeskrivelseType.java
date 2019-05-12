@@ -8,26 +8,24 @@ import javax.validation.constraints.Pattern;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+public class PermisjonsbeskrivelseType extends Kodeverk {
 
-public class ArbeidTypeDto extends Kodeverk {
-    static final String KODEVERK = "ARBEID_TYPE";
+    static final String KODEVERK = "PERMISJONSBESKRIVELSE_TYPE";
 
-    /** Eksempel konstant- ORDINÆRT_ARBEIDSFORHOLD. */
-    public static ArbeidTypeDto ORDINÆRT_ARBEIDSFORHOLD = new ArbeidTypeDto("ORDINÆRT_ARBEIDSFORHOLD");
-    
-    /** Eksempel konstant- FRILANSER arbeid. */
-    public static ArbeidTypeDto FRILANSER = new ArbeidTypeDto("FRILANSER");
-    
-    /** Eksempel konstant- UTENLANDSK_ARBEIDSFORHOLD arbeid. */
-    public static ArbeidTypeDto UTENLANDSK_ARBEIDSFORHOLD = new ArbeidTypeDto("UTENLANDSK_ARBEIDSFORHOLD");
-    
+    /** Eksempel konstant, PERMISJON */
+    public static final PermisjonsbeskrivelseType PERMISJON = new PermisjonsbeskrivelseType("PERMISJON");
+    /** Eksempel konstant, PERMITTERING */
+    public static final PermisjonsbeskrivelseType PERMITTERING = new PermisjonsbeskrivelseType("PERMITTERING");
+    /** Eksempel konstant, VANLIG */
+    public static final PermisjonsbeskrivelseType VANLIG = new PermisjonsbeskrivelseType("VANLIG");
+
     @JsonProperty(value = "kode", required = true, index = 1)
     @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$")
     @NotNull
     private String kode;
 
     @JsonCreator
-    public ArbeidTypeDto(@JsonProperty(value = "kode", required = true) String kode) {
+    public PermisjonsbeskrivelseType(@JsonProperty(value = "kode", required = true) String kode) {
         Objects.requireNonNull(kode, "kode");
         this.kode = kode;
     }

@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.Aktør;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.ArbeidsforholdRefDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.Periode;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.ArbeidTypeDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.ArbeidType;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = Include.NON_ABSENT, content = Include.NON_EMPTY)
@@ -32,7 +32,7 @@ public class YrkesaktivitetDto {
     @JsonProperty("arbeidType")
     @Valid
     @NotNull
-    private ArbeidTypeDto arbeidType;
+    private ArbeidType arbeidType;
 
     @JsonProperty("ansettelsesPerioder")
     @Valid
@@ -50,7 +50,7 @@ public class YrkesaktivitetDto {
         // default ctor
     }
 
-    public YrkesaktivitetDto(Aktør arbeidsgiver, ArbeidTypeDto arbeidType) {
+    public YrkesaktivitetDto(Aktør arbeidsgiver, ArbeidType arbeidType) {
         Objects.requireNonNull(arbeidsgiver, "arbeidsgiver");
         Objects.requireNonNull(arbeidType, "arbeidType");
         this.arbeidsgiver = arbeidsgiver;
@@ -61,7 +61,7 @@ public class YrkesaktivitetDto {
         Objects.requireNonNull(arbeidsgiver, "arbeidsgiver");
         Objects.requireNonNull(arbeidType, "arbeidType");
         this.arbeidsgiver = arbeidsgiver;
-        this.arbeidType = new ArbeidTypeDto(arbeidType);
+        this.arbeidType = new ArbeidType(arbeidType);
     }
 
     @AssertTrue(message = "Må ha minst en av ansettelsesPerioder, aktivitetsAvtaler eller permisjoner")
@@ -89,7 +89,7 @@ public class YrkesaktivitetDto {
         return this;
     }
 
-    public ArbeidTypeDto getType() {
+    public ArbeidType getType() {
         return arbeidType;
     }
 

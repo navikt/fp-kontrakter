@@ -8,8 +8,9 @@ import javax.validation.constraints.Pattern;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class ArbeidsforholdHandlingTypeDto extends Kodeverk {
-    static final String KODEVERK = "ARBEIDSFORHOLD_HANDLING_TYPE";
+
+public class InntektspostType extends Kodeverk {
+    static final String KODEVERK = "INNTEKTSPOST_TYPE";
 
     @JsonProperty(value = "kode", required = true, index = 1)
     @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$")
@@ -17,7 +18,7 @@ public class ArbeidsforholdHandlingTypeDto extends Kodeverk {
     private String kode;
 
     @JsonCreator
-    public ArbeidsforholdHandlingTypeDto(@JsonProperty(value = "kode", required = true)  String kode) {
+    public InntektspostType(@JsonProperty(value = "kode", required = true) String kode) {
         Objects.requireNonNull(kode, "kode");
         this.kode = kode;
     }
@@ -31,5 +32,4 @@ public class ArbeidsforholdHandlingTypeDto extends Kodeverk {
     public String getKodeverk() {
         return KODEVERK;
     }
-
 }

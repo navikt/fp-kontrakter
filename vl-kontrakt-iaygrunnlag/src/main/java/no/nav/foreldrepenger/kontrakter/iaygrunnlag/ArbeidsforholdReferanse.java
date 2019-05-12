@@ -1,4 +1,4 @@
-package no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1;
+package no.nav.foreldrepenger.kontrakter.iaygrunnlag;
 
 import java.util.UUID;
 
@@ -9,10 +9,6 @@ import javax.validation.constraints.Pattern;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.Aktør;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.UuidDto;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -32,6 +28,10 @@ public class ArbeidsforholdReferanse {
     @JsonProperty(value = "arbeidsforholdId")
     @Pattern(regexp = "^[\\p{L}\\p{N}:_\\.\\-]+$")
     private String arbeidsforholdId;
+    
+    protected ArbeidsforholdReferanse() {
+        // default ctor
+    }
 
     public ArbeidsforholdReferanse(String referanse, Aktør arbeidsgiver) {
         this.uuid = new UuidDto(referanse);

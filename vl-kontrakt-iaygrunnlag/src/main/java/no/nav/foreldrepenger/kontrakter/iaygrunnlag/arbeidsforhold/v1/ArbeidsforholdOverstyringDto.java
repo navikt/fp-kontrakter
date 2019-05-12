@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.Aktør;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.ArbeidsforholdRefDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.Periode;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.ArbeidsforholdHandlingTypeDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.ArbeidsforholdHandlingType;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = Include.NON_ABSENT, content = Include.NON_EMPTY)
@@ -39,7 +39,7 @@ public class ArbeidsforholdOverstyringDto {
     
     @JsonProperty(value = "arbeidsforholdHandlingType")
     @Valid
-    private ArbeidsforholdHandlingTypeDto handling;
+    private ArbeidsforholdHandlingType handling;
     
     @JsonProperty(value = "overstyringBegrunnelse")
     private String begrunnelse;
@@ -88,11 +88,11 @@ public class ArbeidsforholdOverstyringDto {
         this.nyArbeidsforholdRef = nyArbeidsforholdRef;
     }
 
-    public ArbeidsforholdHandlingTypeDto getHandling() {
+    public ArbeidsforholdHandlingType getHandling() {
         return handling;
     }
 
-    public void setHandling(ArbeidsforholdHandlingTypeDto handling) {
+    public void setHandling(ArbeidsforholdHandlingType handling) {
         this.handling = handling;
     }
 

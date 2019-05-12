@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = Include.NON_ABSENT, content = Include.NON_EMPTY)
 public class FnrPersonident extends PersonIdent {
-    static final String IDENT_TYPE = "FNR";
+    public static final String IDENT_TYPE = "FNR";
     
     @JsonProperty(value = "ident", required = true, index = 1)
     @NotNull

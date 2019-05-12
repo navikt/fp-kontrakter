@@ -9,20 +9,16 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
-public class VirksomhetTypeDto extends Kodeverk {
+public class TemaUnderkategori extends Kodeverk {
+    static final String KODEVERK = "TEMA_UNDERKATEGORI";
 
-    static final String KODEVERK = "VIRKSOMHET_TYPE";
-    
-    /** Eksempel konstant, Annen næringsvirksomhet. */
-    public static final VirksomhetTypeDto ANNEN = new VirksomhetTypeDto("ANNEN");
-    
     @JsonProperty(value = "kode", required = true, index = 1)
     @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$")
     @NotNull
     private String kode;
 
     @JsonCreator
-    public VirksomhetTypeDto(@JsonProperty(value = "kode", required = true) String kode) {
+    public TemaUnderkategori(@JsonProperty(value = "kode", required = true) String kode) {
         Objects.requireNonNull(kode, "kode");
         this.kode = kode;
     }
@@ -37,4 +33,3 @@ public class VirksomhetTypeDto extends Kodeverk {
         return KODEVERK;
     }
 }
-

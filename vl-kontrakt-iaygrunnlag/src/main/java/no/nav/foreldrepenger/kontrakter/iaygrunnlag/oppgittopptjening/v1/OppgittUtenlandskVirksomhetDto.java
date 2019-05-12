@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.LandkoderDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.Landkode;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = Include.NON_ABSENT, content = Include.NON_EMPTY)
@@ -18,7 +18,7 @@ public class OppgittUtenlandskVirksomhetDto {
     @JsonProperty(value = "landkode", required = true)
     @Valid
     @NotNull
-    private LandkoderDto landkode;
+    private Landkode landkode;
 
     @JsonProperty(value = "virksomhetNavn", required = true)
     @NotNull
@@ -29,17 +29,17 @@ public class OppgittUtenlandskVirksomhetDto {
         // default ctor
     }
 
-    public OppgittUtenlandskVirksomhetDto(LandkoderDto landkode, String virksomhetNavn) {
+    public OppgittUtenlandskVirksomhetDto(Landkode landkode, String virksomhetNavn) {
         this.landkode = landkode;
         this.virksomhetNavn = virksomhetNavn;
     }
     
     public OppgittUtenlandskVirksomhetDto(String landkode, String virksomhetNavn) {
-        this.landkode = new LandkoderDto(landkode);
+        this.landkode = new Landkode(landkode);
         this.virksomhetNavn = virksomhetNavn;
     }
 
-    public LandkoderDto getLandkode() {
+    public Landkode getLandkode() {
         return landkode;
     }
 

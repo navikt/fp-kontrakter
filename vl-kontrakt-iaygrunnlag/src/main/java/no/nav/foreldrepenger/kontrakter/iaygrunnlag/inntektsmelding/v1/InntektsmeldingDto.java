@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.Aktør;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.ArbeidsforholdRefDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.JournalpostId;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.InntektsmeldingInnsendingsårsakDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.InntektsmeldingInnsendingsårsakType;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = Include.NON_ABSENT, content = Include.NON_EMPTY)
@@ -85,7 +85,7 @@ public class InntektsmeldingDto {
     private List<RefusjonDto> refusjonEndringer;
 
     @JsonProperty(value = "innsendingsårsak")
-    private InntektsmeldingInnsendingsårsakDto innsendingsårsak;
+    private InntektsmeldingInnsendingsårsakType innsendingsårsak;
 
     public InntektsmeldingDto(Aktør arbeidsgiver, JournalpostId journalpostId, LocalDateTime innsendingstidspunkt) {
         this.arbeidsgiver = arbeidsgiver;
@@ -116,7 +116,7 @@ public class InntektsmeldingDto {
         return innsendingstidspunkt;
     }
 
-    public InntektsmeldingInnsendingsårsakDto getInnsendingsårsak() {
+    public InntektsmeldingInnsendingsårsakType getInnsendingsårsak() {
         return innsendingsårsak;
     }
 
@@ -175,7 +175,7 @@ public class InntektsmeldingDto {
         return this;
     }
 
-    public InntektsmeldingDto medInnsendingsårsak(InntektsmeldingInnsendingsårsakDto innsendingsårsak) {
+    public InntektsmeldingDto medInnsendingsårsak(InntektsmeldingInnsendingsårsakType innsendingsårsak) {
         setInnsendingsårsak(innsendingsårsak);
         return this;
     }
@@ -247,7 +247,7 @@ public class InntektsmeldingDto {
         this.graderinger = graderinger;
     }
 
-    public void setInnsendingsårsak(InntektsmeldingInnsendingsårsakDto innsendingsårsak) {
+    public void setInnsendingsårsak(InntektsmeldingInnsendingsårsakType innsendingsårsak) {
         this.innsendingsårsak = innsendingsårsak;
     }
 

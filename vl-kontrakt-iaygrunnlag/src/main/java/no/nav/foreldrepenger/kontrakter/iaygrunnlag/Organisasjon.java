@@ -33,4 +33,14 @@ public class Organisasjon extends Aktør {
     public String getIdentType() {
         return IDENT_TYPE;
     }
+    
+    @Override
+    public boolean getErOrganisasjon() {
+        return true;
+    }
+    
+    @Override
+    public boolean getErPerson() {
+        return false;
+    }
 }

@@ -33,18 +33,18 @@ import no.nav.foreldrepenger.kontrakter.iaygrunnlag.inntektsmelding.v1.Inntektsm
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.inntektsmelding.v1.NaturalytelseDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.inntektsmelding.v1.RefusjonDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.inntektsmelding.v1.UtsettelsePeriodeDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.ArbeidTypeDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.ArbeidskategoriDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.ArbeidType;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.Arbeidskategori;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.Fagsystem;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.InntektPeriodeTypeDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.InntektsmeldingInnsendingsårsakDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.InntektspostTypeDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.LandkoderDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.NaturalytelseTypeDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.PermisjonsbeskrivelseTypeDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.SkatteOgAvgiftsregelTypeDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.UtsettelseÅrsakDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.VirksomhetTypeDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.InntektPeriodeType;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.InntektsmeldingInnsendingsårsakType;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.InntektspostType;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.Landkode;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.NaturalytelseType;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.PermisjonsbeskrivelseType;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.SkatteOgAvgiftsregelType;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.UtsettelseÅrsakType;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.VirksomhetType;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.YtelseStatus;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.YtelseType;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.oppgittopptjening.v1.OppgittArbeidsforholdDto;
@@ -53,7 +53,7 @@ import no.nav.foreldrepenger.kontrakter.iaygrunnlag.oppgittopptjening.v1.Oppgitt
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.oppgittopptjening.v1.OppgittFrilansoppdragDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.oppgittopptjening.v1.OppgittOpptjeningDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.oppgittopptjening.v1.OppgittUtenlandskVirksomhetDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.GrunnlagDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.InntektArbeidYtelseGrunnlagDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.InntektArbeidYtelseAggregatOverstyrtDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.InntektArbeidYtelseAggregatRegisterDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.ytelse.v1.AnvisningDto;
@@ -72,7 +72,7 @@ public class IayGrunnlagTest {
     private final LocalDate tom = LocalDate.now();
     private final FnrPersonident fnr = new FnrPersonident("12341234123");
     private final Organisasjon org = new Organisasjon("022090422");
-    private final ArbeidTypeDto arbeidType = ArbeidTypeDto.ORDINÆRT_ARBEIDSFORHOLD;
+    private final ArbeidType arbeidType = ArbeidType.ORDINÆRT_ARBEIDSFORHOLD;
     private final Periode periode = new Periode(fom, tom);
     private final YtelseType ytelseType = YtelseType.FORELDREPENGER;
     private final LocalDateTime tidspunkt = LocalDateTime.now();
@@ -81,7 +81,7 @@ public class IayGrunnlagTest {
     @Test
     public void skal_generere_og_validere_roundtrip_mega_iaygrunnlag_json() throws Exception {
 
-        GrunnlagDto grunnlag = new GrunnlagDto(fnr, uuid);
+        InntektArbeidYtelseGrunnlagDto grunnlag = new InntektArbeidYtelseGrunnlagDto(fnr, uuid);
 
         grunnlag.medRegister(
             new InntektArbeidYtelseAggregatRegisterDto(tidspunkt)
@@ -89,9 +89,9 @@ public class IayGrunnlagTest {
                     new ArbeidDto(fnr)
                         .medYrkesaktiviteter(List.of(
                             new YrkesaktivitetDto(org, arbeidType)
-                                .medPermisjoner(List.of(new PermisjonDto(periode, PermisjonsbeskrivelseTypeDto.PERMISJON).medProsentsats(50)))
+                                .medPermisjoner(List.of(new PermisjonDto(periode, PermisjonsbeskrivelseType.PERMISJON).medProsentsats(50)))
                                 .medAnsettelsesperiode(List.of(periode))
-                                .medArbeidsforholdId(new ArbeidsforholdRefDto("intern", "ekstern"))
+                                .medArbeidsforholdId(new ArbeidsforholdRefDto("abakusRef", "aaregRef"))
                                 .medAktivitetsAvtaler(List.of(
                                     new AktivitetsAvtaleDto(periode)
                                         .medSistLønnsendring(fom)
@@ -103,21 +103,21 @@ public class IayGrunnlagTest {
                             new UtbetalingDto(org)
                                 .medKilde("ARBEID")
                                 .medPoster(List.of(
-                                    new UtbetalingsPostDto(ytelseType, periode, new InntektspostTypeDto("LØNN"))
+                                    new UtbetalingsPostDto(ytelseType, periode, new InntektspostType("LØNN"))
                                         .medBeløp(100)
-                                        .medSkattAvgiftType(SkatteOgAvgiftsregelTypeDto.NETTOLØNN)))))))
+                                        .medSkattAvgiftType(SkatteOgAvgiftsregelType.NETTOLØNN)))))))
                 .medYtelse(List.of(
                     new YtelserDto(fnr)
                         .medYtelser(List.of(
                             new YtelseDto(Fagsystem.FPSAK, ytelseType, periode, YtelseStatus.LØPENDE, "1234")
                                 .medGrunnlag(
                                     new YtelseGrunnlagDto()
-                                        .medArbeidskategoriDto(ArbeidskategoriDto.ARBEIDSTAKER)
+                                        .medArbeidskategoriDto(Arbeidskategori.ARBEIDSTAKER)
                                         .medOpprinneligIdentDato(fom)
                                         .medDekningsgradProsent(100)
                                         .medInntektsgrunnlagProsent(100)
                                         .medGraderingProsent(100)
-                                        .medFordeling(List.of(new FordelingDto(org, InntektPeriodeTypeDto.PER_DAG, 100))))
+                                        .medFordeling(List.of(new FordelingDto(org, InntektPeriodeType.PER_DAG, 100))))
                                 .medAnvisninger(List.of(
                                     new AnvisningDto(periode)
                                         .medBeløp(100)
@@ -129,7 +129,7 @@ public class IayGrunnlagTest {
                         new ArbeidDto(fnr)
                             .medYrkesaktiviteter(List.of(
                                 new YrkesaktivitetDto(org, arbeidType)
-                                    .medPermisjoner(List.of(new PermisjonDto(periode, PermisjonsbeskrivelseTypeDto.PERMISJON).medProsentsats(50)))
+                                    .medPermisjoner(List.of(new PermisjonDto(periode, PermisjonsbeskrivelseType.PERMISJON).medProsentsats(50)))
                                     .medAnsettelsesperiode(List.of(periode))
                                     .medArbeidsforholdId(new ArbeidsforholdRefDto("intern", "ekstern"))
                                     .medAktivitetsAvtaler(List.of(
@@ -141,7 +141,7 @@ public class IayGrunnlagTest {
                 new InntektsmeldingerDto().medInntektsmeldinger(List.of(
                     new InntektsmeldingDto(org, journalpostId, tidspunkt)
                         .medArbeidsforholdRef(new ArbeidsforholdRefDto("internRef", "eksternRef"))
-                        .medInnsendingsårsak(InntektsmeldingInnsendingsårsakDto.NY)
+                        .medInnsendingsårsak(InntektsmeldingInnsendingsårsakType.NY)
                         .medInntektBeløp(99999)
                         .medKanalreferanse("BBC")
                         .medKildesystem("TheSource")
@@ -151,14 +151,14 @@ public class IayGrunnlagTest {
                         .medNærRelasjon(false)
                         .medEndringerRefusjon(List.of(new RefusjonDto(fom, 100)))
                         .medGraderinger(List.of(new GraderingDto(periode, 50)))
-                        .medNaturalytelser(List.of(new NaturalytelseDto(periode, NaturalytelseTypeDto.ELEKTRISK_KOMMUNIKASJON, 100)))
-                        .medUtsettelsePerioder(List.of(new UtsettelsePeriodeDto(periode, UtsettelseÅrsakDto.LOVBESTEMT_FERIE)))))))
+                        .medNaturalytelser(List.of(new NaturalytelseDto(periode, NaturalytelseType.ELEKTRISK_KOMMUNIKASJON, 100)))
+                        .medUtsettelsePerioder(List.of(new UtsettelsePeriodeDto(periode, UtsettelseÅrsakType.LOVBESTEMT_FERIE)))))))
             .medOppgittOpptjening(
                 new OppgittOpptjeningDto()
                     .medArbeidsforhold(List.of(
-                        new OppgittArbeidsforholdDto(periode, ArbeidTypeDto.ORDINÆRT_ARBEIDSFORHOLD)
+                        new OppgittArbeidsforholdDto(periode, ArbeidType.ORDINÆRT_ARBEIDSFORHOLD)
                             .medErUtenlandskInntekt(true)
-                            .medUtenlandskVirksomhet(new OppgittUtenlandskVirksomhetDto(LandkoderDto.DANMARK, "GammelDansk"))))
+                            .medUtenlandskVirksomhet(new OppgittUtenlandskVirksomhetDto(Landkode.DANMARK, "GammelDansk"))))
                     .medEgenNæring(List.of(
                         new OppgittEgenNæringDto(periode)
                             .medBegrunnelse("MinBegrunnelse")
@@ -167,12 +167,12 @@ public class IayGrunnlagTest {
                             .medNyIArbeidslivet(false)
                             .medNyoppstartet(false)
                             .medNærRelasjon(false)
-                            .medOppgittUtenlandskVirksomhet(new OppgittUtenlandskVirksomhetDto(LandkoderDto.SVERIGE, "DuGamleDuFria"))
+                            .medOppgittUtenlandskVirksomhet(new OppgittUtenlandskVirksomhetDto(Landkode.SVERIGE, "DuGamleDuFria"))
                             .medRegnskapsførerNavn("Regnskapsfører")
                             .medRegnskapsførerTlf("+47902348732")
                             .medVarigEndring(true)
                             .medVirksomhet(org)
-                            .medVirksomhetTypeDto(VirksomhetTypeDto.ANNEN)))
+                            .medVirksomhetTypeDto(VirksomhetType.ANNEN)))
                     .medAnnenAktivitet(List.of())
                     .medFrilans(new OppgittFrilansDto(List.of(
                         new OppgittFrilansoppdragDto(periode, "MittOppdrag")))
@@ -183,13 +183,13 @@ public class IayGrunnlagTest {
         String json = WRITER.writeValueAsString(grunnlag);
         System.out.println(json);
 
-        GrunnlagDto roundTripped = READER.forType(GrunnlagDto.class).readValue(json);
+        InntektArbeidYtelseGrunnlagDto roundTripped = READER.forType(InntektArbeidYtelseGrunnlagDto.class).readValue(json);
 
         validateResult(roundTripped);
 
     }
 
-    private void validateResult(GrunnlagDto roundTripped) {
+    private void validateResult(InntektArbeidYtelseGrunnlagDto roundTripped) {
         assertThat(roundTripped).isNotNull();
         try (var factory = Validation.buildDefaultValidatorFactory()) {
             var validator = factory.getValidator();

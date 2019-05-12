@@ -8,17 +8,17 @@ import javax.validation.constraints.Pattern;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class ArbeidskategoriDto extends Kodeverk {
+public class Arbeidskategori extends Kodeverk {
     static final String KODEVERK = "ARBEIDSKATEGORI";
 
     /** Eksempel konstant - ARBEIDSTAKER. */
-    public static final ArbeidskategoriDto ARBEIDSTAKER = new ArbeidskategoriDto("ARBEIDSTAKER");
+    public static final Arbeidskategori ARBEIDSTAKER = new Arbeidskategori("ARBEIDSTAKER");
     /** Eksempel konstant - FRILANSER. */
-    public static final ArbeidskategoriDto FRILANSER = new ArbeidskategoriDto("FRILANSER");
+    public static final Arbeidskategori FRILANSER = new Arbeidskategori("FRILANSER");
     /** Eksempel konstant - DAGPENGER. */
-    public static final ArbeidskategoriDto DAGPENGER = new ArbeidskategoriDto("DAGPENGER");
+    public static final Arbeidskategori DAGPENGER = new Arbeidskategori("DAGPENGER");
     /** Eksempel konstant - JORDBRUKER. */
-    public static final ArbeidskategoriDto JORDBRUKER = new ArbeidskategoriDto("JORDBRUKER");
+    public static final Arbeidskategori JORDBRUKER = new Arbeidskategori("JORDBRUKER");
 
     @JsonProperty(value = "kode", required = true, index = 1)
     @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$")
@@ -26,7 +26,7 @@ public class ArbeidskategoriDto extends Kodeverk {
     private String kode;
 
     @JsonCreator
-    public ArbeidskategoriDto(@JsonProperty(value = "kode", required = true) String kode) {
+    public Arbeidskategori(@JsonProperty(value = "kode", required = true) String kode) {
         Objects.requireNonNull(kode, "kode");
         this.kode = kode;
     }
