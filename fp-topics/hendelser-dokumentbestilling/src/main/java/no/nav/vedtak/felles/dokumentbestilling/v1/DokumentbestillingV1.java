@@ -30,6 +30,14 @@ public class DokumentbestillingV1 {
     @Pattern(regexp = "[A-Z]{6}")
     private String dokumentMal;
 
+
+    /**
+     * Kode for hvem som har bestilt dokumentet, f.eks VL, default: VL
+     */
+    @NotNull
+    @Pattern(regexp = "[A-Z]{1,100}")
+    private String historikkAktør;
+
     /**
      * Tittel for fritekstbrev
      */
@@ -44,12 +52,8 @@ public class DokumentbestillingV1 {
      * Se RevurderingVarslingÅrsak.java i https://github.com/navikt/fp-formidling/
      * for verdier
      */
-    @Pattern(regexp = "[A-Z]{1,100}]")
+    @Pattern(regexp = "[A-Z]{1,100}")
     private String arsakskode;
-
-    /**
-     * Kode for hvem som har bestilt dokumentet, f.eks VL, default: VL
-     */
 
     public UUID getBehandlingUuid() {
         return behandlingUuid;
@@ -97,5 +101,13 @@ public class DokumentbestillingV1 {
 
     public void setArsakskode(String arsakskode) {
         this.arsakskode = arsakskode;
+    }
+
+    public String getHistorikkAktør() {
+        return historikkAktør;
+    }
+
+    public void setHistorikkAktør(String historikkAktør) {
+        this.historikkAktør = historikkAktør;
     }
 }
