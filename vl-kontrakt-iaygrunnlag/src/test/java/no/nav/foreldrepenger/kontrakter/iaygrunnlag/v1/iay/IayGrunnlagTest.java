@@ -29,6 +29,7 @@ import no.nav.foreldrepenger.kontrakter.iaygrunnlag.inntekt.v1.UtbetalingDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.inntekt.v1.UtbetalingsPostDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.inntektsmelding.v1.GraderingDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.inntektsmelding.v1.InntektsmeldingDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.inntektsmelding.v1.InntektsmeldingSomIkkeKommerDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.inntektsmelding.v1.InntektsmeldingerDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.inntektsmelding.v1.NaturalytelseDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.inntektsmelding.v1.RefusjonDto;
@@ -47,15 +48,16 @@ import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.UtsettelseÅrsakTyp
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.VirksomhetType;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.YtelseStatus;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.YtelseType;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.oppgittopptjening.v1.OppgittAnnenAktivitetDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.oppgittopptjening.v1.OppgittArbeidsforholdDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.oppgittopptjening.v1.OppgittEgenNæringDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.oppgittopptjening.v1.OppgittFrilansDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.oppgittopptjening.v1.OppgittFrilansoppdragDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.oppgittopptjening.v1.OppgittOpptjeningDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.oppgittopptjening.v1.OppgittUtenlandskVirksomhetDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.InntektArbeidYtelseGrunnlagDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.InntektArbeidYtelseAggregatOverstyrtDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.InntektArbeidYtelseAggregatRegisterDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.InntektArbeidYtelseGrunnlagDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.ytelse.v1.AnvisningDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.ytelse.v1.FordelingDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.ytelse.v1.YtelseDto;
@@ -137,7 +139,7 @@ public class IayGrunnlagTest {
                                             .medSistLønnsendring(fom)
                                             .medAntallTimer(40)
                                             .medStillingsprosent(30))))))))
-            .medInntektsmeldinger(List.of(
+            .medInntektsmeldinger(
                 new InntektsmeldingerDto().medInntektsmeldinger(List.of(
                     new InntektsmeldingDto(org, journalpostId, tidspunkt)
                         .medArbeidsforholdRef(new ArbeidsforholdRefDto("internRef", "eksternRef"))
@@ -152,7 +154,8 @@ public class IayGrunnlagTest {
                         .medEndringerRefusjon(List.of(new RefusjonDto(fom, 100)))
                         .medGraderinger(List.of(new GraderingDto(periode, 50)))
                         .medNaturalytelser(List.of(new NaturalytelseDto(periode, NaturalytelseType.ELEKTRISK_KOMMUNIKASJON, 100)))
-                        .medUtsettelsePerioder(List.of(new UtsettelsePeriodeDto(periode, UtsettelseÅrsakType.LOVBESTEMT_FERIE)))))))
+                        .medUtsettelsePerioder(List.of(new UtsettelsePeriodeDto(periode, UtsettelseÅrsakType.LOVBESTEMT_FERIE)))))
+                .medInntektsmeldingerSomIkkeKommer(List.of(new InntektsmeldingSomIkkeKommerDto(org, new ArbeidsforholdRefDto("intern", "ekstern")))))
             .medOppgittOpptjening(
                 new OppgittOpptjeningDto()
                     .medArbeidsforhold(List.of(
@@ -172,8 +175,8 @@ public class IayGrunnlagTest {
                             .medRegnskapsførerTlf("+47902348732")
                             .medVarigEndring(true)
                             .medVirksomhet(org)
-                            .medVirksomhetTypeDto(VirksomhetType.ANNEN)))
-                    .medAnnenAktivitet(List.of())
+                            .medVirksomhetType(VirksomhetType.ANNEN)))
+                    .medAnnenAktivitet(List.of(new OppgittAnnenAktivitetDto(periode, arbeidType)))
                     .medFrilans(new OppgittFrilansDto(List.of(
                         new OppgittFrilansoppdragDto(periode, "MittOppdrag")))
                             .medErNyoppstartet(false)

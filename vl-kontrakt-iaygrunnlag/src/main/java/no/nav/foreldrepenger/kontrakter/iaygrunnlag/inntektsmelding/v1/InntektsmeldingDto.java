@@ -90,7 +90,7 @@ public class InntektsmeldingDto {
     public InntektsmeldingDto(Aktør arbeidsgiver, JournalpostId journalpostId, LocalDateTime innsendingstidspunkt) {
         this.arbeidsgiver = arbeidsgiver;
         this.journalpostId = journalpostId;
-        this.innsendingstidspunkt = innsendingstidspunkt == null ? null : innsendingstidspunkt.atZone(ZoneId.of("Europe/Oslo")).toOffsetDateTime();
+        this.innsendingstidspunkt = innsendingstidspunkt == null ? null : innsendingstidspunkt.atZone(ZoneId.systemDefault()).toOffsetDateTime();
     }
 
     protected InntektsmeldingDto() {

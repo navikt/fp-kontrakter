@@ -9,6 +9,7 @@
 		<version>${revision}${sha1}${changelist}</version>
 	</parent>
 
+	<version>${revision}${sha1}${changelist}</version>
 	<artifactId>iaygrunnlag-v1</artifactId>
 	<packaging>jar</packaging>
 	<name>(FPSAK) Kontrakter - iaygrunnlag</name>
