@@ -21,8 +21,9 @@
         <module>hendelser-vedtatt-ytelse</module>
         <module>hendelser-historikk-innslag</module>
 		<module>manifest</module>
-	</modules>
-	
+        <module>hendelser-dokumentbestilling</module>
+    </modules>
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
