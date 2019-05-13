@@ -39,10 +39,6 @@ public class DokumentbestillingV1 {
     private String historikkAktør;
 
     /**
-     * Tittel for fritekstbrev
-     */
-    private String tittel;
-    /**
      * Fritekstfelt
      */
     private String fritekst;
@@ -77,14 +73,6 @@ public class DokumentbestillingV1 {
 
     public void setDokumentMal(String dokumentMal) {
         this.dokumentMal = dokumentMal;
-    }
-
-    public String getTittel() {
-        return tittel;
-    }
-
-    public void setTittel(String tittel) {
-        this.tittel = tittel;
     }
 
     public String getFritekst() {
