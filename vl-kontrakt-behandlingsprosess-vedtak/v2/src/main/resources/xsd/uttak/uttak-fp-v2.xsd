@@ -100,7 +100,7 @@
 			</xsd:element>
 			<xsd:element name="trekkdager" type="felles:DecimalOpplysning" minOccurs="0">
 				<xsd:annotation>
-					<xsd:documentation xml:lang="no">Antall virkedager som skal trekkes. Kan avvike fra antall virkedager i perioden.</xsd:documentation>
+					<xsd:documentation xml:lang="no">Antall virkedager som skal trekkes. Kan avvike fra antall virkedager i perioden. Representeres med et desimaltall med ett desimal</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
 			<xsd:element name="virksomhet" type="felles:StringOpplysning" minOccurs="0">
