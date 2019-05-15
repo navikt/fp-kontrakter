@@ -3,6 +3,7 @@ package no.nav.vedtak.ytelse;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
+import no.nav.vedtak.ytelse.v1.YtelseType;
 import no.nav.vedtak.ytelse.v1.YtelseV1;
 
 @JsonTypeInfo(
@@ -13,4 +14,9 @@ import no.nav.vedtak.ytelse.v1.YtelseV1;
 })
 public abstract class Ytelse {
 
+    public abstract YtelseType getType();
+
+    public abstract String getSaksnummer();
+
+    public abstract Aktør getAktør();
 }
