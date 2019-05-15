@@ -31,7 +31,8 @@
 		<module>vl-kontrakt-behandlingsprosess-vedtak</module>
 		<module>fp-topics</module>
 		<module>vl-kontrakt-iaygrunnlag</module>
-	</modules>
+        <module>vl-kontrakt-fp-formidling</module>
+    </modules>
 
 	<dependencyManagement>
 		<dependencies>
@@ -63,7 +64,7 @@
 				<artifactId>javax.el</artifactId>
 				<version>3.0.1-b11</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>com.fasterxml.jackson</groupId>
 				<artifactId>jackson-bom</artifactId>
