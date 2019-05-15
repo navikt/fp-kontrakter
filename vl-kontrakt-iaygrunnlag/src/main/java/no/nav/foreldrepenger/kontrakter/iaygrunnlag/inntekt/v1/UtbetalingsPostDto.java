@@ -9,6 +9,7 @@ import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -17,10 +18,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.Periode;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.InntektspostType;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.SkatteOgAvgiftsregelType;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.YtelseType;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.UtbetaltYtelseType;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = Include.NON_ABSENT, content = Include.NON_EMPTY)
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE, getterVisibility = JsonAutoDetect.Visibility.NONE, setterVisibility = JsonAutoDetect.Visibility.NONE, isGetterVisibility = JsonAutoDetect.Visibility.NONE, creatorVisibility = JsonAutoDetect.Visibility.NONE)
 public class UtbetalingsPostDto {
 
     @JsonProperty(value = "inntektspostType", required = true)
@@ -46,12 +48,12 @@ public class UtbetalingsPostDto {
     @JsonProperty(value = "ytelseType", required = true)
     @Valid
     @NotNull
-    private YtelseType ytelseType;
+    private UtbetaltYtelseType ytelseType;
 
     protected UtbetalingsPostDto() {
     }
 
-    public UtbetalingsPostDto(YtelseType ytelseType, Periode periode, InntektspostType inntektspostType) {
+    public UtbetalingsPostDto(UtbetaltYtelseType ytelseType, Periode periode, InntektspostType inntektspostType) {
         Objects.requireNonNull(ytelseType, "ytelseType");
         Objects.requireNonNull(periode, "periode");
         Objects.requireNonNull(inntektspostType, "inntektspostType");
@@ -104,7 +106,7 @@ public class UtbetalingsPostDto {
         return this;
     }
 
-    public YtelseType getYtelseType() {
+    public UtbetaltYtelseType getYtelseType() {
         return ytelseType;
     }
 

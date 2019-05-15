@@ -44,6 +44,7 @@ import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.Landkode;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.NaturalytelseType;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.PermisjonsbeskrivelseType;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.SkatteOgAvgiftsregelType;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.UtbetaltYtelseFraOffentligeType;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.UtsettelseÅrsakType;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.VirksomhetType;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.YtelseStatus;
@@ -77,6 +78,7 @@ public class IayGrunnlagTest {
     private final ArbeidType arbeidType = ArbeidType.ORDINÆRT_ARBEIDSFORHOLD;
     private final Periode periode = new Periode(fom, tom);
     private final YtelseType ytelseType = YtelseType.FORELDREPENGER;
+    private final UtbetaltYtelseFraOffentligeType utbetaltYtelse = new UtbetaltYtelseFraOffentligeType("-");
     private final LocalDateTime tidspunkt = LocalDateTime.now();
     private final JournalpostId journalpostId = new JournalpostId("ImajournalpostId");
 
@@ -105,7 +107,7 @@ public class IayGrunnlagTest {
                             new UtbetalingDto(org)
                                 .medKilde("ARBEID")
                                 .medPoster(List.of(
-                                    new UtbetalingsPostDto(ytelseType, periode, new InntektspostType("LØNN"))
+                                    new UtbetalingsPostDto(utbetaltYtelse, periode, new InntektspostType("LØNN"))
                                         .medBeløp(100)
                                         .medSkattAvgiftType(SkatteOgAvgiftsregelType.NETTOLØNN)))))))
                 .medYtelse(List.of(

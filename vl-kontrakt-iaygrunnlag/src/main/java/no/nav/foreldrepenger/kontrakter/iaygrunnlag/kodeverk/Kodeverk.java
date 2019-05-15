@@ -3,6 +3,7 @@ package no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk;
 import javax.validation.constraints.AssertTrue;
 
 import com.fasterxml.jackson.annotation.JacksonInject;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -30,7 +31,11 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
         @JsonSubTypes.Type(value = UtsettelseÅrsakType.class, name = TemaUnderkategori.KODEVERK),
         @JsonSubTypes.Type(value = VirksomhetType.class, name = VirksomhetType.KODEVERK),
         @JsonSubTypes.Type(value = YtelseType.class, name = YtelseType.KODEVERK),
+        @JsonSubTypes.Type(value = UtbetaltYtelseFraOffentligeType.class, name = UtbetaltYtelseFraOffentligeType.KODEVERK),
+        @JsonSubTypes.Type(value = UtbetaltPensjonTrygdType.class, name = UtbetaltPensjonTrygdType.KODEVERK),
+        @JsonSubTypes.Type(value = UtbetaltNæringsYtelseType.class, name = UtbetaltNæringsYtelseType.KODEVERK),
 })
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE, getterVisibility = JsonAutoDetect.Visibility.NONE, setterVisibility = JsonAutoDetect.Visibility.NONE, isGetterVisibility = JsonAutoDetect.Visibility.NONE, creatorVisibility = JsonAutoDetect.Visibility.NONE)
 public abstract class Kodeverk {
 
     @JacksonInject
@@ -40,10 +45,14 @@ public abstract class Kodeverk {
         // default ctor
     }
 
-    /** Kode for angitt kodeverk. Gyldige verdier og validering er per kodeverk klasse. */
+    /**
+     * Kode for angitt kodeverk. Gyldige verdier og validering er per kodeverk klasse.
+     */
     public abstract String getKode();
 
-    /** Kodeverk - må matche kodeverk property generert for klassen. */
+    /**
+     * Kodeverk - må matche kodeverk property generert for klassen.
+     */
     public abstract String getKodeverk();
 
     @AssertTrue

@@ -8,6 +8,7 @@ import java.util.UUID;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -20,6 +21,7 @@ import no.nav.foreldrepenger.kontrakter.iaygrunnlag.oppgittopptjening.v1.Oppgitt
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = Include.NON_ABSENT, content = Include.NON_EMPTY)
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE, getterVisibility = JsonAutoDetect.Visibility.NONE, setterVisibility = JsonAutoDetect.Visibility.NONE, isGetterVisibility = JsonAutoDetect.Visibility.NONE, creatorVisibility = JsonAutoDetect.Visibility.NONE)
 public class InntektArbeidYtelseGrunnlagDto {
 
     @JsonProperty(value = "grunnlagReferanse", required = true)
@@ -49,7 +51,9 @@ public class InntektArbeidYtelseGrunnlagDto {
     @Valid
     private InntektsmeldingerDto inntektsmeldinger;
 
-    /** Opptjening bruker har oppgitt selv. */
+    /**
+     * Opptjening bruker har oppgitt selv.
+     */
     @JsonProperty(value = "oppgittOpptjening")
     @Valid
     private OppgittOpptjeningDto oppgittOpptjening;
@@ -88,6 +92,11 @@ public class InntektArbeidYtelseGrunnlagDto {
         return overstyrt;
     }
 
+    public void setOverstyrt(InntektArbeidYtelseAggregatOverstyrtDto overstyrt) {
+        Objects.requireNonNull(register, "Kan ikke sette overstyrt om register ikke er satt");
+        this.overstyrt = overstyrt;
+    }
+
     public InntektsmeldingerDto getInntektsmeldinger() {
         return inntektsmeldinger;
     }
@@ -99,14 +108,14 @@ public class InntektArbeidYtelseGrunnlagDto {
     public OffsetDateTime getGenerertTidspunkt() {
         return generertTidspunkt;
     }
-    
+
     public OppgittOpptjeningDto getOppgittOpptjening() {
         return oppgittOpptjening;
     }
 
-    public void setOverstyrt(InntektArbeidYtelseAggregatOverstyrtDto overstyrt) {
-        Objects.requireNonNull(register, "Kan ikke sette overstyrt om register ikke er satt");
-        this.overstyrt = overstyrt;
+    public void setOppgittOpptjening(OppgittOpptjeningDto oppgittOpptjening) {
+        this.oppgittOpptjening = oppgittOpptjening;
+
     }
 
     public InntektArbeidYtelseGrunnlagDto medOverstyrt(InntektArbeidYtelseAggregatOverstyrtDto overstyrt) {
@@ -128,8 +137,8 @@ public class InntektArbeidYtelseGrunnlagDto {
         }
         InntektArbeidYtelseGrunnlagDto other = (InntektArbeidYtelseGrunnlagDto) obj;
         return Objects.equals(person, other.person)
-            && Objects.equals(register, other.register)
-            && Objects.equals(overstyrt, other.overstyrt);
+                && Objects.equals(register, other.register)
+                && Objects.equals(overstyrt, other.overstyrt);
     }
 
     @Override
@@ -145,10 +154,5 @@ public class InntektArbeidYtelseGrunnlagDto {
     public InntektArbeidYtelseGrunnlagDto medOppgittOpptjening(OppgittOpptjeningDto oppgittOpptjening) {
         setOppgittOpptjening(oppgittOpptjening);
         return this;
-    }
-
-    public void setOppgittOpptjening(OppgittOpptjeningDto oppgittOpptjening) {
-        this.oppgittOpptjening = oppgittOpptjening;
-
     }
 }
