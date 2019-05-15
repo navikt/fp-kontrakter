@@ -42,6 +42,7 @@ public final class JaxbHelper {
             return "";
         }
 
+        @SuppressWarnings({ "unchecked", "rawtypes" })
         @Override
         public Iterator getPrefixes(String namespaceURI) {
             return null;

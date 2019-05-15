@@ -9,15 +9,15 @@ public enum Meldingstype {
     INFOTRYGD__OPPHOERT("OPPHOERT_v1", InfotrygdOpphoert.class),
     INFOTRYGD_ANNULLERT("ANNULLERT_v1", InfotrygdAnnullert.class);
 
-    private Class meldingsDto;
+    private Class<?> meldingsDto;
     private String type;
 
-    Meldingstype(String type, Class meldingsDto) {
+    Meldingstype(String type, Class<?> meldingsDto) {
         this.meldingsDto = meldingsDto;
         this.type = type;
     }
     
-    public Class getMeldingsDto() {
+    public Class<?> getMeldingsDto() {
         return meldingsDto;
     }
     
@@ -25,7 +25,7 @@ public enum Meldingstype {
         return type;
     }
 
-    public static Meldingstype valueOf(Class aClass) {
+    public static Meldingstype valueOf(Class<?> aClass) {
         return Arrays.stream(values())
                 .filter(e-> e.getMeldingsDto().equals(aClass))
                 .findFirst().orElse(null);
