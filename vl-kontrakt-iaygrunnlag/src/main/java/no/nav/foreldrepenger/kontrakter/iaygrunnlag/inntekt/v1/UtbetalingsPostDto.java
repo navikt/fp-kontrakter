@@ -17,6 +17,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.Periode;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.InntektspostType;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.SkatteOgAvgiftsregelType;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.UtbetaltYtelseType;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.YtelseType;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -46,12 +47,12 @@ public class UtbetalingsPostDto {
     @JsonProperty(value = "ytelseType", required = true)
     @Valid
     @NotNull
-    private YtelseType ytelseType;
+    private UtbetaltYtelseType ytelseType;
 
     protected UtbetalingsPostDto() {
     }
 
-    public UtbetalingsPostDto(YtelseType ytelseType, Periode periode, InntektspostType inntektspostType) {
+    public UtbetalingsPostDto(UtbetaltYtelseType ytelseType, Periode periode, InntektspostType inntektspostType) {
         Objects.requireNonNull(ytelseType, "ytelseType");
         Objects.requireNonNull(periode, "periode");
         Objects.requireNonNull(inntektspostType, "inntektspostType");
@@ -104,7 +105,7 @@ public class UtbetalingsPostDto {
         return this;
     }
 
-    public YtelseType getYtelseType() {
+    public UtbetaltYtelseType getYtelseType() {
         return ytelseType;
     }
 

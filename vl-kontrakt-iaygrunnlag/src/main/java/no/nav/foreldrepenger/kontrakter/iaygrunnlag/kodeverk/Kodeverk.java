@@ -30,6 +30,9 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
         @JsonSubTypes.Type(value = UtsettelseÅrsakType.class, name = TemaUnderkategori.KODEVERK),
         @JsonSubTypes.Type(value = VirksomhetType.class, name = VirksomhetType.KODEVERK),
         @JsonSubTypes.Type(value = YtelseType.class, name = YtelseType.KODEVERK),
+        @JsonSubTypes.Type(value = UtbetaltYtelseFraOffentligeType.class, name = UtbetaltYtelseFraOffentligeType.KODEVERK),
+        @JsonSubTypes.Type(value = UtbetaltPensjonTrygdType.class, name = UtbetaltPensjonTrygdType.KODEVERK),
+        @JsonSubTypes.Type(value = UtbetaltNæringsYtelseType.class, name = UtbetaltNæringsYtelseType.KODEVERK),
 })
 public abstract class Kodeverk {
 
@@ -40,10 +43,14 @@ public abstract class Kodeverk {
         // default ctor
     }
 
-    /** Kode for angitt kodeverk. Gyldige verdier og validering er per kodeverk klasse. */
+    /**
+     * Kode for angitt kodeverk. Gyldige verdier og validering er per kodeverk klasse.
+     */
     public abstract String getKode();
 
-    /** Kodeverk - må matche kodeverk property generert for klassen. */
+    /**
+     * Kodeverk - må matche kodeverk property generert for klassen.
+     */
     public abstract String getKodeverk();
 
     @AssertTrue
