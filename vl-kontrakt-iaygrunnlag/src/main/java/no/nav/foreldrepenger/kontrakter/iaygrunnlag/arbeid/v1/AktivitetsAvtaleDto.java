@@ -5,7 +5,6 @@ import java.math.RoundingMode;
 import java.time.LocalDate;
 
 import javax.validation.Valid;
-import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
@@ -28,31 +27,29 @@ public class AktivitetsAvtaleDto {
     @Valid
     @NotNull
     private Periode periode;
-    
+
     @JsonProperty("stillingsprosent")
     @Valid
-    @DecimalMin(value="0.00", message = "stillingsprosent må være >= 0.00")
-    @DecimalMax(value="500.00", message = "stillingsprosent må være < 500.00") // suspekt å jobbe en måned i løpet av en uke, men så sier Aa-reg.
+    @DecimalMin(value = "0.00", message = "stillingsprosent må være >= 0.00")
+    @DecimalMax(value = "500.00", message = "stillingsprosent må være < 500.00")
+    // suspekt å jobbe en måned i løpet av en uke, men så sier Aa-reg.
     private BigDecimal stillingsprosent;
-    
-    /** Antall timer arbeidet (per uke). */
-    @JsonProperty("antallTimer")
-    @Valid
-    @DecimalMin(value="0.00", message = "antallTimer må være >= 0.00")
-    @DecimalMax(value="1900.00", message = "antallTimer må være < 1900") // suspekt å jobbe ett år i løpet av en uke, men så sier Aa-reg
-    private BigDecimal antallTimer;
-    
+
     @JsonProperty("sistLønnsendring")
     @Valid
     private LocalDate sistLønnsendring;
 
+    @JsonProperty("beskrivelse")
+    @Valid
+    private String beskrivelse;
+
     protected AktivitetsAvtaleDto() {
     }
-    
+
     public AktivitetsAvtaleDto(@Valid @NotNull Periode periode) {
         this.periode = periode;
     }
-    
+
     public AktivitetsAvtaleDto(LocalDate fom, LocalDate tom) {
         this(new Periode(fom, tom));
     }
@@ -60,16 +57,11 @@ public class AktivitetsAvtaleDto {
     public LocalDate getSistLønnsendring() {
         return sistLønnsendring;
     }
-    
-    @AssertTrue(message="Må ha minst en av stillingsprosent eller antallTimer")
-    private boolean isOk() {
-        return stillingsprosent!=null || antallTimer!=null;
-    }
-    
+
     public void setSistLønnsendring(LocalDate sistLønnsendring) {
         this.sistLønnsendring = sistLønnsendring;
     }
-    
+
     public AktivitetsAvtaleDto medSistLønnsendring(LocalDate sistLønnsendring) {
         setSistLønnsendring(sistLønnsendring);
         return this;
@@ -88,9 +80,9 @@ public class AktivitetsAvtaleDto {
     }
 
     public void setStillingsprosent(BigDecimal stillingsprosent) {
-        this.stillingsprosent = stillingsprosent==null?null:stillingsprosent.setScale(2, RoundingMode.HALF_UP);
+        this.stillingsprosent = stillingsprosent == null ? null : stillingsprosent.setScale(2, RoundingMode.HALF_UP);
     }
-    
+
     public AktivitetsAvtaleDto medStillingsprosent(BigDecimal stillingsprosent) {
         setStillingsprosent(stillingsprosent);
         return this;
@@ -101,23 +93,12 @@ public class AktivitetsAvtaleDto {
         return this;
     }
 
-
-    public BigDecimal getAntallTimer() {
-        return antallTimer;
+    public String getBeskrivelse() {
+        return beskrivelse;
     }
 
-    public void setAntallTimer(BigDecimal antallTimer) {
-        this.antallTimer = antallTimer==null?null:antallTimer.setScale(2, RoundingMode.HALF_UP);
-    }
-
-    public AktivitetsAvtaleDto medAntallTimer(BigDecimal antallTimer) {
-        setAntallTimer(antallTimer);
+    public AktivitetsAvtaleDto medBeskrivelse(String beskrivelse) {
+        this.beskrivelse = beskrivelse;
         return this;
     }
-    
-    public AktivitetsAvtaleDto medAntallTimer(long antallTimer) {
-        return medAntallTimer(BigDecimal.valueOf(antallTimer));
-    }
-    
-    
 }

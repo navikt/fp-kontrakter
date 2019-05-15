@@ -44,6 +44,7 @@ import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.Landkode;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.NaturalytelseType;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.PermisjonsbeskrivelseType;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.SkatteOgAvgiftsregelType;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.TemaUnderkategori;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.UtbetaltYtelseFraOffentligeType;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.UtsettelseÅrsakType;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.VirksomhetType;
@@ -96,10 +97,11 @@ public class IayGrunnlagTest {
                                 .medPermisjoner(List.of(new PermisjonDto(periode, PermisjonsbeskrivelseType.PERMISJON).medProsentsats(50)))
                                 .medAnsettelsesperiode(List.of(periode))
                                 .medArbeidsforholdId(new ArbeidsforholdRefDto("abakusRef", "aaregRef"))
+                                .medNavnArbeidsgiverUtland("UtenlandskArbeidsgiverAS")
                                 .medAktivitetsAvtaler(List.of(
                                     new AktivitetsAvtaleDto(periode)
                                         .medSistLønnsendring(fom)
-                                        .medAntallTimer(40)
+                                        .medBeskrivelse("beskrivelse")
                                         .medStillingsprosent(50)))))))
                 .medInntekt(List.of(
                     new InntekterDto(fnr)
@@ -114,6 +116,7 @@ public class IayGrunnlagTest {
                     new YtelserDto(fnr)
                         .medYtelser(List.of(
                             new YtelseDto(Fagsystem.FPSAK, ytelseType, periode, YtelseStatus.LØPENDE, "1234")
+                                .medTemaUnderkategori(TemaUnderkategori.FORELDREPENGER_FODSEL)
                                 .medGrunnlag(
                                     new YtelseGrunnlagDto()
                                         .medArbeidskategoriDto(Arbeidskategori.ARBEIDSTAKER)
@@ -139,7 +142,7 @@ public class IayGrunnlagTest {
                                     .medAktivitetsAvtaler(List.of(
                                         new AktivitetsAvtaleDto(periode)
                                             .medSistLønnsendring(fom)
-                                            .medAntallTimer(40)
+                                            .medBeskrivelse("beskrivelse")
                                             .medStillingsprosent(30))))))))
             .medInntektsmeldinger(
                 new InntektsmeldingerDto().medInntektsmeldinger(List.of(

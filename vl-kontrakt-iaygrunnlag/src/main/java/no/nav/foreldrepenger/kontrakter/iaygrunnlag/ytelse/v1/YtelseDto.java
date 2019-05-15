@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.Periode;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.Fagsystem;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.TemaUnderkategori;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.YtelseStatus;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.YtelseType;
 
@@ -27,7 +28,7 @@ public class YtelseDto {
     @JsonProperty(value = "ytelseType", required = true)
     @Valid
     @NotNull
-    private YtelseType type;
+    private YtelseType ytelseType;
 
     @JsonProperty(value = "saksnummer", required = true)
     @Valid
@@ -44,6 +45,11 @@ public class YtelseDto {
     @NotNull
     private YtelseStatus status;
 
+    @JsonProperty(value = "temaUnderkategori")
+    @Valid
+    private TemaUnderkategori temaUnderkategori;
+
+
     @JsonProperty(value = "anvisninger")
     @Valid
     private List<AnvisningDto> anvisninger;
@@ -55,9 +61,9 @@ public class YtelseDto {
     protected YtelseDto() {
     }
 
-    public YtelseDto(Fagsystem fagsystemDto, YtelseType type, Periode periode, YtelseStatus status, String saksnummer) {
+    public YtelseDto(Fagsystem fagsystemDto, YtelseType ytelseType, Periode periode, YtelseStatus status, String saksnummer) {
         this.fagsystem = fagsystemDto;
-        this.type = type;
+        this.ytelseType = ytelseType;
         this.periode = periode;
         this.status = status;
         this.saksnummer = saksnummer;
@@ -93,8 +99,8 @@ public class YtelseDto {
         return fagsystem;
     }
 
-    public YtelseType getType() {
-        return type;
+    public YtelseType getYtelseType() {
+        return ytelseType;
     }
 
     public String getSaksnummer() {
@@ -109,4 +115,12 @@ public class YtelseDto {
         return status;
     }
 
+    public TemaUnderkategori getTemaUnderkategori() {
+        return temaUnderkategori;
+    }
+
+    public YtelseDto medTemaUnderkategori(TemaUnderkategori temaUnderkategori) {
+        this.temaUnderkategori = temaUnderkategori;
+        return this;
+    }
 }

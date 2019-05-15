@@ -12,13 +12,13 @@ public class InntektPeriodeType extends Kodeverk {
 
     static final String KODEVERK = "INNTEKT_PERIODE_TYPE";
 
-    public static final InntektPeriodeType PER_ÅR = new InntektPeriodeType("Å");
-    public static final InntektPeriodeType PER_DAG = new InntektPeriodeType("D");
-    public static final InntektPeriodeType PER_MÅNED = new InntektPeriodeType("M");
-    public static final InntektPeriodeType PER_UKE = new InntektPeriodeType("U");
-    public static final InntektPeriodeType PER_14DAGER = new InntektPeriodeType("F");
-    public static final InntektPeriodeType PREMIEGRUNNLAG_OPPDRAGSGIVER = new InntektPeriodeType("Y");
-    public static final InntektPeriodeType FASTSATT_ETTER_AVVIKHÅNDTERING = new InntektPeriodeType("X");
+    public static final InntektPeriodeType PER_ÅR = new InntektPeriodeType("AARLG");
+    public static final InntektPeriodeType PER_DAG = new InntektPeriodeType("DAGLG");
+    public static final InntektPeriodeType PER_MÅNED = new InntektPeriodeType("MNDLG");
+    public static final InntektPeriodeType PER_UKE = new InntektPeriodeType("UKNLG");
+    public static final InntektPeriodeType PER_14DAGER = new InntektPeriodeType("14DLG");
+    public static final InntektPeriodeType PREMIEGRUNNLAG_OPPDRAGSGIVER = new InntektPeriodeType("PREMGR");
+    public static final InntektPeriodeType FASTSATT_ETTER_AVVIKHÅNDTERING = new InntektPeriodeType("INNFS");
 
     @JsonProperty(value = "kode", required = true, index = 1)
     @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$")
