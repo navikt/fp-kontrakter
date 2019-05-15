@@ -1,16 +1,19 @@
 package no.nav.historikk.v1;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import no.nav.historikk.HistorikkInnslag;
-import no.nav.historikk.kodeverk.HistorikkAktørEnum;
-import no.nav.historikk.kodeverk.BrukerKjønnEnum;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import no.nav.historikk.HistorikkInnslag;
+import no.nav.historikk.Saksnummer;
+import no.nav.historikk.kodeverk.BrukerKjønnEnum;
+import no.nav.historikk.kodeverk.HistorikkAktørEnum;
 
 public class HistorikkInnslagV1 extends HistorikkInnslag {
 
@@ -19,9 +22,7 @@ public class HistorikkInnslagV1 extends HistorikkInnslag {
     private UUID behandlingUuid;
 
     @NotNull
-    @Pattern(regexp = "^(-?[1-9]|[a-z0])[a-z0-9_:-]*$", flags = {Pattern.Flag.CASE_INSENSITIVE})
-    @JsonProperty("saksnummer")
-    private Long saksnummer;
+    private Saksnummer saksnummer;
 
     @NotNull
     @JsonProperty("aktør")
@@ -34,7 +35,7 @@ public class HistorikkInnslagV1 extends HistorikkInnslag {
      * For gyldige verdier
      */
     @NotNull
-    @Pattern(regexp = "[A-Z]{6}")
+    @Pattern(regexp = "[A-Z]{1,100}")
     private String historikkInnslagType;
 
     @NotNull
@@ -57,9 +58,13 @@ public class HistorikkInnslagV1 extends HistorikkInnslag {
     @JsonProperty
     private String avsender;
 
-    public String getAvsender() { return avsender; }
+    public String getAvsender() {
+        return avsender;
+    }
 
-    public UUID getBehandlingUuid() { return behandlingUuid; }
+    public UUID getBehandlingUuid() {
+        return behandlingUuid;
+    }
 
     public HistorikkAktørEnum getAktør() {
         return aktør;
@@ -77,7 +82,7 @@ public class HistorikkInnslagV1 extends HistorikkInnslag {
         return brukerKjønn;
     }
 
-    public Long getSaksnummer() {
+    public Saksnummer getSaksnummer() {
         return saksnummer;
     }
 
@@ -92,13 +97,13 @@ public class HistorikkInnslagV1 extends HistorikkInnslag {
             historikkinnslag = new HistorikkInnslagV1();
         }
 
-        public Builder medBehandlingId(UUID behandlingId) {
-            historikkinnslag.behandlingUuid = behandlingId;
+        public Builder medBehandlingUuid(UUID behandlingUuid) {
+            historikkinnslag.behandlingUuid = behandlingUuid;
             return this;
         }
 
-        public Builder medFagsakId(Long fagsakId) {
-            historikkinnslag.saksnummer = fagsakId;
+        public Builder medSaksnummer(Saksnummer Saksnummer) {
+            historikkinnslag.saksnummer = Saksnummer;
             return this;
         }
 

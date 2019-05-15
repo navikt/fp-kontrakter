@@ -1,5 +1,7 @@
 package no.nav.historikk;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import java.io.Serializable;
@@ -16,9 +18,11 @@ public class JournalpostId implements Serializable {
     private static final Pattern INVALID = Pattern.compile("[^" + CHARS + "]+", Pattern.DOTALL | Pattern.CASE_INSENSITIVE);
 
     @JsonValue
+    @JsonProperty(value = "journalpostId", required = true)
     private String journalpostId;
 
-    public JournalpostId(Long journalpostId) {
+    @JsonCreator
+    public JournalpostId(@JsonProperty(value = "journalpostId", required = true) Long journalpostId) {
         this.journalpostId = Long.toString(journalpostId);
     }
 
