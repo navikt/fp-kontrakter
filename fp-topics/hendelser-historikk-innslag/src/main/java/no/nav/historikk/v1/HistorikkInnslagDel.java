@@ -1,16 +1,18 @@
 package no.nav.historikk.v1;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
 public class HistorikkInnslagDel {
 
-    private Long id;
+    @NotNull
+    @Valid
+    @JsonProperty("historikkinnslagFelt")
     private List<HistorikkInnslagFelt> historikkinnslagFelt = new ArrayList<>();
-
-    public Long getId() {
-        return id;
-    }
 
     public List<HistorikkInnslagFelt> getHistorikkinnslagFelt() {
         return historikkinnslagFelt;
@@ -35,11 +37,6 @@ public class HistorikkInnslagDel {
 
         public Builder(HistorikkInnslagDel del) {
             kladd = del;
-        }
-
-        public Builder medId(Long id) {
-            kladd.id = id;
-            return this;
         }
 
         public Builder medHistorikkInnslagFelter(List<HistorikkInnslagFelt> historikkInnslagFelter) {

@@ -1,55 +1,88 @@
 package no.nav.historikk.v1;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import no.nav.historikk.HistorikkInnslag;
-import no.nav.historikk.kodeverk.HistorikkAktør;
-import no.nav.historikk.kodeverk.HistorikkInnslagType;
-import no.nav.historikk.kodeverk.NavBrukerKjønn;
+import no.nav.historikk.kodeverk.HistorikkAktørEnum;
+import no.nav.historikk.kodeverk.BrukerKjønnEnum;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+import java.util.UUID;
 
 public class HistorikkInnslagV1 extends HistorikkInnslag {
 
-    private Long id;
-    private Long behandlingId;
-    private Long fagsakId;
-    private HistorikkAktør aktør = HistorikkAktør.UDEFINERT;
-    private HistorikkInnslagType type = HistorikkInnslagType.UDEFINIERT;
+    @NotNull
+    @JsonProperty("behandlingUuid")
+    private UUID behandlingUuid;
+
+    @NotNull
+    @Pattern(regexp = "^(-?[1-9]|[a-z0])[a-z0-9_:-]*$", flags = {Pattern.Flag.CASE_INSENSITIVE})
+    @JsonProperty("saksnummer")
+    private Long saksnummer;
+
+    @NotNull
+    @JsonProperty("aktør")
+    private HistorikkAktørEnum aktør;
+
+    /**
+     * Kode for hvilket innslagtype som skal benyttes
+     * Obligatorisk
+     * Se i HistorikkInnslagType.java i fpsak
+     * For gyldige verdier
+     */
+    @NotNull
+    @Pattern(regexp = "[A-Z]{6}")
+    private String historikkInnslagType;
+
+    @NotNull
+    @JsonProperty("brukerKjønn")
+    private BrukerKjønnEnum brukerKjønn;
+
+    @NotNull
+    @Valid
+    @JsonProperty("dokumentLinker")
     private List<HistorikkInnslagDokumentLink> dokumentLinker = new ArrayList<>();
-    private List<HistorikkInnslagDel> historikkinnslagDeler = new ArrayList<>();
-    private NavBrukerKjønn kjoenn = NavBrukerKjønn.UDEFINERT;
 
-    public Long getId() {
-        return id;
+    @NotNull
+    @Valid
+    @JsonProperty("historikkInnslagDeler")
+    private List<HistorikkInnslagDel> historikkInnslagDeler = new ArrayList<>();
+
+
+    @NotNull
+    @Valid
+    @JsonProperty
+    private String avsender;
+
+    public String getAvsender() { return avsender; }
+
+    public UUID getBehandlingUuid() { return behandlingUuid; }
+
+    public HistorikkAktørEnum getAktør() {
+        return aktør;
     }
 
-    public Long getBehandlingId() {
-        return behandlingId;
-    }
-
-    public HistorikkAktør getAktør() {
-        return Objects.equals(HistorikkAktør.UDEFINERT, aktør) ? null : aktør;
-    }
-
-    public HistorikkInnslagType getType() {
-        return type;
+    public String getHistorikkInnslagType() {
+        return historikkInnslagType;
     }
 
     public List<HistorikkInnslagDokumentLink> getDokumentLinker() {
         return dokumentLinker;
     }
 
-    public NavBrukerKjønn getKjoenn() {
-        return kjoenn;
+    public BrukerKjønnEnum getBrukerKjoenn() {
+        return brukerKjønn;
     }
 
-    public Long getFagsakId() {
-        return fagsakId;
+    public Long getSaksnummer() {
+        return saksnummer;
     }
 
-    public List<HistorikkInnslagDel> getHistorikkinnslagDeler() {
-        return historikkinnslagDeler;
+    public List<HistorikkInnslagDel> getHistorikkInnslagDeler() {
+        return historikkInnslagDeler;
     }
 
     public static class Builder {
@@ -59,28 +92,33 @@ public class HistorikkInnslagV1 extends HistorikkInnslag {
             historikkinnslag = new HistorikkInnslagV1();
         }
 
-        public Builder medBehandlingId(Long behandlingId) {
-            historikkinnslag.behandlingId = behandlingId;
+        public Builder medBehandlingId(UUID behandlingId) {
+            historikkinnslag.behandlingUuid = behandlingId;
             return this;
         }
 
         public Builder medFagsakId(Long fagsakId) {
-            historikkinnslag.fagsakId = fagsakId;
+            historikkinnslag.saksnummer = fagsakId;
             return this;
         }
 
-        public Builder medAktør(HistorikkAktør historikkAktør) {
-            historikkinnslag.aktør = historikkAktør;
+        public Builder medAktør(HistorikkAktørEnum historikkAktørEnum) {
+            historikkinnslag.aktør = historikkAktørEnum;
             return this;
         }
 
-        public Builder medType(HistorikkInnslagType type) {
-            historikkinnslag.type = type;
+        public Builder medType(String type) {
+            historikkinnslag.historikkInnslagType = type;
             return this;
         }
 
-        public Builder medKjoenn(NavBrukerKjønn kjoenn) {
-            historikkinnslag.kjoenn = kjoenn;
+        public Builder medBrukerKjoenn(BrukerKjønnEnum kjoenn) {
+            historikkinnslag.brukerKjønn = kjoenn;
+            return this;
+        }
+
+        public Builder medAvsender(String avsender) {
+            historikkinnslag.avsender = avsender;
             return this;
         }
 
@@ -94,10 +132,10 @@ public class HistorikkInnslagV1 extends HistorikkInnslag {
         }
 
         public Builder medHistorikkInnslagDeler(List<HistorikkInnslagDel> historikkInnslagDeler) {
-            if (historikkinnslag.historikkinnslagDeler == null) {
-                historikkinnslag.historikkinnslagDeler = historikkInnslagDeler;
+            if (historikkinnslag.historikkInnslagDeler == null) {
+                historikkinnslag.historikkInnslagDeler = historikkInnslagDeler;
             } else if (historikkInnslagDeler != null) {
-                historikkinnslag.historikkinnslagDeler.addAll(historikkInnslagDeler);
+                historikkinnslag.historikkInnslagDeler.addAll(historikkInnslagDeler);
             }
             return this;
         }

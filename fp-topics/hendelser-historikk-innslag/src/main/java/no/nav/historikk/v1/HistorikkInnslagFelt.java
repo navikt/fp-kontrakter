@@ -1,33 +1,42 @@
 package no.nav.historikk.v1;
 
 
-import no.nav.historikk.kodeverk.HistorikkInnslagFeltType;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import no.nav.historikk.kodeverk.HistorikkInnslagFeltTypeEnum;
 import no.nav.historikk.kodeverk.Kodeverk;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 public class HistorikkInnslagFelt {
 
-    private Long id;
+    @NotNull
+    @Valid
+    @JsonProperty
+    private HistorikkInnslagFeltTypeEnum feltType;
 
-    private HistorikkInnslagFeltType feltType;
-
-    private String navn;
-
+    @JsonProperty
     private String navnVerdi;
+    @JsonProperty
+    private String navnFeltKode;
+    @JsonProperty
+    private String navnFeltKodeverk;
 
+    @JsonProperty
     private String fraVerdi;
-
-    private String tilVerdi;
-
+    @JsonProperty
     private String fraVerdiKode;
+    @JsonProperty
+    private String fraVerdiFeltKodeverk;
 
+    @JsonProperty
+    private String tilVerdi;
+    @JsonProperty
     private String tilVerdiKode;
+    @JsonProperty
+    private String tilVerdiFeltKodeverk;
 
-    private String klFraVerdi;
-
-    private String klTilVerdi;
-
-    private String klNavn;
-
+    @JsonProperty
     private Integer sekvensNr;
 
     protected HistorikkInnslagFelt() {
@@ -37,24 +46,20 @@ public class HistorikkInnslagFelt {
         return new Builder();
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public HistorikkInnslagFeltType getFeltType() {
+    public HistorikkInnslagFeltTypeEnum getFeltType() {
         return feltType;
     }
 
-    public String getNavn() {
-        return navn;
+    public String getNavnFeltKode() {
+        return navnFeltKode;
     }
 
     public String getNavnVerdi() {
         return navnVerdi;
     }
 
-    public String getKlNavn() {
-        return klNavn;
+    public String getNavnFeltKodeverk() {
+        return navnFeltKodeverk;
     }
 
     public String getFraVerdi() {
@@ -65,12 +70,12 @@ public class HistorikkInnslagFelt {
         return tilVerdi == null ? tilVerdiKode : tilVerdi;
     }
 
-    public String getKlFraVerdi() {
-        return klFraVerdi;
+    public String getFraVerdiFeltKodeverk() {
+        return fraVerdiFeltKodeverk;
     }
 
-    public String getKlTilVerdi() {
-        return klTilVerdi;
+    public String getTilVerdiFeltKodeverk() {
+        return tilVerdiFeltKodeverk;
     }
 
     public Integer getSekvensNr() {
@@ -84,13 +89,7 @@ public class HistorikkInnslagFelt {
             kladd = new HistorikkInnslagFelt();
         }
 
-        public Builder medId(Long id) {
-            kladd.id = id;
-            return this;
-        }
-
-
-        public Builder medFeltType(HistorikkInnslagFeltType feltType) {
+        public Builder medFeltType(HistorikkInnslagFeltTypeEnum feltType) {
             kladd.feltType = feltType;
             return this;
         }
@@ -100,9 +99,13 @@ public class HistorikkInnslagFelt {
             return this;
         }
 
-        public Builder medNavn(Kodeverk kodeliste) {
-            kladd.navn = kodeliste.getKode();
-            kladd.klNavn = kodeliste.getKodeverk();
+        public <K extends Kodeverk> Builder medNavnKode(K kodeliste) {
+            if (kodeliste != null) {
+                kladd.navnFeltKode = kodeliste.getKode();
+                kladd.navnFeltKodeverk = kodeliste.getKodeverk();
+            } else {
+                kladd.navnFeltKode = null;
+            }
             return this;
         }
 
@@ -111,10 +114,10 @@ public class HistorikkInnslagFelt {
             return this;
         }
 
-        public Builder medFraVerdi(Kodeverk fraVerdi) {
+        public <K extends Kodeverk> Builder medFraVerdiKode(K fraVerdi) {
             if (fraVerdi != null) {
                 kladd.fraVerdiKode = fraVerdi.getKode();
-                kladd.klFraVerdi = fraVerdi.getKodeverk();
+                kladd.fraVerdiFeltKodeverk = fraVerdi.getKodeverk();
             } else {
                 kladd.fraVerdiKode = null;
             }
@@ -126,10 +129,12 @@ public class HistorikkInnslagFelt {
             return this;
         }
 
-        public <K extends Kodeverk> Builder medTilVerdi(K tilVerdi) {
+        public <K extends Kodeverk> Builder medTilVerdiKode(K tilVerdi) {
             if (tilVerdi != null) {
                 kladd.tilVerdiKode = tilVerdi.getKode();
-                kladd.klTilVerdi = tilVerdi.getKodeverk();
+                kladd.tilVerdiFeltKodeverk = tilVerdi.getKodeverk();
+            } else {
+                kladd.tilVerdiKode = null;
             }
             return this;
         }

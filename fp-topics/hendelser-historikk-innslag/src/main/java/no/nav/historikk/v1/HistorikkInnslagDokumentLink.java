@@ -1,19 +1,29 @@
 package no.nav.historikk.v1;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import no.nav.historikk.JournalpostId;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 public class HistorikkInnslagDokumentLink {
 
-    private Long id;
+    @NotNull
+    @Valid
+    @JsonProperty
     private String linkTekst;
+
+    @NotNull
+    @Valid
+    @JsonProperty
     private JournalpostId journalpostId;
+
+    @NotNull
+    @Valid
+    @JsonProperty
     private String dokumentId;
 
-    public Long getId() { return id; }
-
-    public String getLinkTekst() {
-        return linkTekst;
-    }
+    public String getLinkTekst() { return linkTekst; }
 
     public JournalpostId getJournalpostId() {
         return journalpostId;
@@ -28,11 +38,6 @@ public class HistorikkInnslagDokumentLink {
 
         public Builder() {
             historikkinnslagDokumentLink = new HistorikkInnslagDokumentLink();
-        }
-
-        public Builder medId(Long id) {
-            historikkinnslagDokumentLink.id = id;
-            return this;
         }
 
         public Builder medLinkTekst(String linkTekst) {
