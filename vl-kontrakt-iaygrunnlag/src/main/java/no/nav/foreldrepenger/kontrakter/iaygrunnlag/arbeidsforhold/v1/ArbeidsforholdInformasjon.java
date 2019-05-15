@@ -1,6 +1,5 @@
 package no.nav.foreldrepenger.kontrakter.iaygrunnlag.arbeidsforhold.v1;
 
-import java.util.Collections;
 import java.util.List;
 
 import javax.validation.Valid;

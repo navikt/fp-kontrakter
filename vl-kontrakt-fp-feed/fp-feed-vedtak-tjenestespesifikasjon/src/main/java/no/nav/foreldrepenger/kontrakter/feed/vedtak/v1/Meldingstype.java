@@ -3,6 +3,7 @@ package no.nav.foreldrepenger.kontrakter.feed.vedtak.v1;
 
 import java.util.Arrays;
 
+@SuppressWarnings("rawtypes")
 public enum Meldingstype {
     FORELDREPENGER_INNVILGET("ForeldrepengerInnvilget_v1", ForeldrepengerInnvilget.class),
     FORELDREPENGER_ENDRET("ForeldrepengerEndret_v1", ForeldrepengerEndret.class),
@@ -16,6 +17,7 @@ public enum Meldingstype {
         this.type = type;
     }
     
+    @SuppressWarnings("unchecked")
     public <V extends Innhold> Class<V> getMeldingsDto() {
         return meldingsDto;
     }

@@ -4,6 +4,7 @@ import java.util.Objects;
 
 import org.apache.kafka.common.serialization.Serde;
 
+@SuppressWarnings("rawtypes")
 public class Topic {
 
     private final String topic;

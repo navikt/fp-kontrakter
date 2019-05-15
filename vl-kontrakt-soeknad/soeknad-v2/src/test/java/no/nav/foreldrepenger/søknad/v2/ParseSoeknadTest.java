@@ -11,11 +11,6 @@ import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 
 import javax.xml.bind.JAXBElement;
-import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.datatype.DatatypeFactory;
-import javax.xml.datatype.XMLGregorianCalendar;
-
-
 import org.junit.Test;
 
 import no.nav.foreldrepenger.søknad.util.JaxbHelper;
