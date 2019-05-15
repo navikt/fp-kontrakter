@@ -18,6 +18,10 @@ public final class TopicManifest {
      * Publiserer hendelser ved bestilling av dokument
      */
     public static final Topic DOKUMENT_HENDELSE = new Topic("privat-foreldrepenger-dokumentbestilling", Serdes.String(), Serdes.String());
+    /**
+     * Publiserer hendelser ved opprettelse av historikk innslag
+     */
+    public static final Topic HISTORIKK_HENDELSE = new Topic("privat-foreldrepenger-historikkinnslag", Serdes.String(), Serdes.String());
 
     private TopicManifest() {
     }

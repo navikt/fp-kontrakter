@@ -1,0 +1,18 @@
+package no.nav.historikk.kodeverk;
+
+
+public enum HistorikkInnslagFeltTypeEnum {
+    AARSAK,
+    BEGRUNNELSE,
+    HENDELSE,
+    RESULTAT,
+    OPPLYSNINGER,
+    ENDRET_FELT,
+    SKJERMLENKE,
+    GJELDENDE_FRA,
+    AKSJONSPUNKT_BEGRUNNELSE,
+    AKSJONSPUNKT_GODKJENT,
+    AKSJONSPUNKT_KODE,
+    AVKLART_SOEKNADSPERIODE,
+    ANGÅR_TEMA
+}
