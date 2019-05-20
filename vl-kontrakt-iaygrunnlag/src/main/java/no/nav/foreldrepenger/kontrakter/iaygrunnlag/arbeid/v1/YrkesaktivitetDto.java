@@ -48,6 +48,10 @@ public class YrkesaktivitetDto {
     @Valid
     private List<PermisjonDto> permisjoner;
 
+    @JsonProperty("navnArbeidsgiverUtland")
+    @Valid
+    private String navnArbeidsgiverUtland;
+
     protected YrkesaktivitetDto() {
         // default ctor
     }
@@ -131,6 +135,15 @@ public class YrkesaktivitetDto {
 
     public YrkesaktivitetDto medPermisjoner(List<PermisjonDto> permisjoner) {
         this.permisjoner = permisjoner;
+        return this;
+    }
+
+    public String getNavnArbeidsgiverUtland() {
+        return navnArbeidsgiverUtland;
+    }
+
+    public YrkesaktivitetDto medNavnArbeidsgiverUtland(String navnArbeidsgiverUtland) {
+        this.navnArbeidsgiverUtland = navnArbeidsgiverUtland;
         return this;
     }
 }

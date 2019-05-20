@@ -12,6 +12,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class TemaUnderkategori extends Kodeverk {
     static final String KODEVERK = "TEMA_UNDERKATEGORI";
 
+    /** Eksempelkonstanter TemaUnderkategori*/
+    public static final TemaUnderkategori FORELDREPENGER_FODSEL = new TemaUnderkategori("FØ");
+    public static final TemaUnderkategori FORELDREPENGER_ADOPSJON = new TemaUnderkategori("AP");
+    public static final TemaUnderkategori FORELDREPENGER_SVANGERSKAPSPENGER = new TemaUnderkategori("SV");
+
     @JsonProperty(value = "kode", required = true, index = 1)
     @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$")
     @NotNull
