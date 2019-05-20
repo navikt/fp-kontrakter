@@ -86,7 +86,7 @@ public class IayGrunnlagTest {
     @Test
     public void skal_generere_og_validere_roundtrip_mega_iaygrunnlag_json() throws Exception {
 
-        InntektArbeidYtelseGrunnlagDto grunnlag = new InntektArbeidYtelseGrunnlagDto(fnr, uuid);
+        InntektArbeidYtelseGrunnlagDto grunnlag = new InntektArbeidYtelseGrunnlagDto(fnr, uuid, uuid);
 
         grunnlag.medRegister(
             new InntektArbeidYtelseAggregatRegisterDto(tidspunkt)

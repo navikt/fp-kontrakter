@@ -10,7 +10,6 @@
     </parent>
 	
     <artifactId>soeknad-v3</artifactId>
-    <version>${revision}${sha1}${changelist}</version>
     <packaging>jar</packaging>
     <name>(FPSAK) Kontrakter - soeknad v3</name>
 

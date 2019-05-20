@@ -8,7 +8,6 @@
 	</parent>
 	
     <artifactId>abonnent-v1</artifactId>
-    <version>${revision}${sha1}${changelist}</version>
     <packaging>jar</packaging>
     <name>(FPSAK) Kontrakter - abonnent</name>
 	

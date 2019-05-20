@@ -9,7 +9,6 @@
     </parent>
 
     <artifactId>fp-tilkjent-ytelse-v1</artifactId>
-    <version>${revision}${sha1}${changelist}</version>
     <packaging>jar</packaging>
     <name>(FPSAK) Kontrakter - tilkjent ytelse</name>
 
