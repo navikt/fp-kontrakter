@@ -22,8 +22,8 @@ public class JournalpostId implements Serializable {
     private String journalpostId;
 
     @JsonCreator
-    public JournalpostId(@JsonProperty(value = "journalpostId", required = true) Long journalpostId) {
-        this.journalpostId = Long.toString(journalpostId);
+    public JournalpostId(@JsonProperty(value = "journalpostId", required = true) String journalpostId) {
+        this.journalpostId = journalpostId;
     }
 
     public String getVerdi() {
