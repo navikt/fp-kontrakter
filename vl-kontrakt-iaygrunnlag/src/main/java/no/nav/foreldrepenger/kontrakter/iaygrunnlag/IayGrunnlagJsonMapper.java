@@ -27,6 +27,7 @@ public class IayGrunnlagJsonMapper {
         objectMapper.setVisibility(PropertyAccessor.IS_GETTER, JsonAutoDetect.Visibility.NONE);
         objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
         objectMapper.setVisibility(PropertyAccessor.CREATOR, JsonAutoDetect.Visibility.ANY);
+        
         Std std = new InjectableValues.Std();
         std.addValue(KodeValidator.class, KodeValidator.HAPPY_VALIDATOR);
         objectMapper.setInjectableValues(std);

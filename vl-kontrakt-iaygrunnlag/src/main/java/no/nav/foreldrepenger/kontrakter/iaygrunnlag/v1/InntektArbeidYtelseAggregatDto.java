@@ -5,6 +5,7 @@ import java.time.OffsetDateTime;
 import java.time.ZoneId;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -15,6 +16,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.UuidDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.arbeid.v1.ArbeidDto;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -22,10 +24,15 @@ import no.nav.foreldrepenger.kontrakter.iaygrunnlag.arbeid.v1.ArbeidDto;
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE, getterVisibility = JsonAutoDetect.Visibility.NONE, setterVisibility = JsonAutoDetect.Visibility.NONE, isGetterVisibility = JsonAutoDetect.Visibility.NONE, creatorVisibility = JsonAutoDetect.Visibility.NONE)
 public abstract class InntektArbeidYtelseAggregatDto<S extends InntektArbeidYtelseAggregatDto<S>> {
 
-    @JsonProperty(value = "grunnlagTidspunkt", required = true)
+    @JsonProperty(value = "opprettetTidspunkt", required = true)
     @Valid
     @NotNull
-    private OffsetDateTime tidspunkt;
+    private OffsetDateTime opprettetTidspunkt;
+
+    /** Unik referanse for dette aggregatet. Kan benyttes f.eks. til å de-duplisere overførte data. */
+    @JsonProperty(value = "aggregatReferanse", required = true)
+    @Valid
+    private UuidDto aggregatReferanse;
 
     @JsonProperty(value = "arbeid")
     @Valid
@@ -35,12 +42,21 @@ public abstract class InntektArbeidYtelseAggregatDto<S extends InntektArbeidYtel
         // default ctor
     }
 
-    public InntektArbeidYtelseAggregatDto(LocalDateTime tidspunkt) {
-        this(tidspunkt.atZone(ZoneId.of("Europe/Oslo")).toOffsetDateTime());
+    public InntektArbeidYtelseAggregatDto(LocalDateTime tidspunkt, UuidDto aggregatReferanse) {
+        this(tidspunkt.atZone(ZoneId.of("Europe/Oslo")).toOffsetDateTime(), aggregatReferanse);
     }
 
-    public InntektArbeidYtelseAggregatDto(OffsetDateTime tidspunkt) {
-        this.tidspunkt = tidspunkt;
+    public InntektArbeidYtelseAggregatDto(OffsetDateTime tidspunkt, UuidDto aggregatReferanse) {
+        this.opprettetTidspunkt = tidspunkt;
+        this.aggregatReferanse = aggregatReferanse;
+    }
+
+    public InntektArbeidYtelseAggregatDto(OffsetDateTime tidspunkt, UUID aggregatReferanse) {
+        this(tidspunkt, new UuidDto(aggregatReferanse));
+    }
+
+    public InntektArbeidYtelseAggregatDto(LocalDateTime tidspunkt, UUID aggregatReferanse) {
+        this(tidspunkt.atZone(ZoneId.of("Europe/Oslo")).toOffsetDateTime(), aggregatReferanse);
     }
 
     public List<ArbeidDto> getArbeid() {

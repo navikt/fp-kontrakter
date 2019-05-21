@@ -48,10 +48,10 @@ public class InntektArbeidYtelseGrunnlagDto {
     @NotNull
     private UuidDto koblingReferanse;
 
-    @JsonProperty(value = "generertTidspunkt", required = true)
+    @JsonProperty(value = "grunnlagTidspunkt", required = true)
     @Valid
     @NotNull
-    private OffsetDateTime generertTidspunkt = OffsetDateTime.now(DEFAULT_ZONE);
+    private OffsetDateTime grunnlagTidspunkt = OffsetDateTime.now(DEFAULT_ZONE);
 
     @JsonProperty("person")
     @Valid
@@ -76,7 +76,7 @@ public class InntektArbeidYtelseGrunnlagDto {
     @JsonProperty(value = "oppgittOpptjening")
     @Valid
     private OppgittOpptjeningDto oppgittOpptjening;
-
+    
     protected InntektArbeidYtelseGrunnlagDto() {
         // default ctor
     }
@@ -132,8 +132,8 @@ public class InntektArbeidYtelseGrunnlagDto {
         return person;
     }
 
-    public OffsetDateTime getGenerertTidspunkt() {
-        return generertTidspunkt;
+    public OffsetDateTime getGrunnlagTidspunkt() {
+        return grunnlagTidspunkt;
     }
 
     public OppgittOpptjeningDto getOppgittOpptjening() {
