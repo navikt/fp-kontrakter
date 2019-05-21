@@ -60,6 +60,7 @@ import no.nav.foreldrepenger.kontrakter.iaygrunnlag.oppgittopptjening.v1.Oppgitt
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.InntektArbeidYtelseAggregatOverstyrtDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.InntektArbeidYtelseAggregatRegisterDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.InntektArbeidYtelseGrunnlagDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.InntektArbeidYtelseGrunnlagSakSnapshotDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.ytelse.v1.AnvisningDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.ytelse.v1.FordelingDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.ytelse.v1.YtelseDto;
@@ -86,10 +87,40 @@ public class IayGrunnlagTest {
     @Test
     public void skal_generere_og_validere_roundtrip_mega_iaygrunnlag_json() throws Exception {
 
-        InntektArbeidYtelseGrunnlagDto grunnlag = new InntektArbeidYtelseGrunnlagDto(fnr, uuid, uuid);
+        var grunnlag = byggInntektArbeidYtelseGrunnlag();
+
+        String json = WRITER.writeValueAsString(grunnlag);
+        System.out.println(json);
+
+        var roundTripped = READER.forType(InntektArbeidYtelseGrunnlagDto.class).readValue(json);
+
+        validateResult(roundTripped);
+
+    }
+
+    @Test
+    public void skal_generere_og_validere_roundtrip_mega_iaygrunnlag_snapshot_json() throws Exception {
+
+        var grunnlag = byggInntektArbeidYtelseGrunnlag();
+        var snapshot = new InntektArbeidYtelseGrunnlagSakSnapshotDto();
+
+        snapshot.leggTil(grunnlag, true);
+        snapshot.setSaksnummer("minsak");
+
+        String json = WRITER.writeValueAsString(snapshot);
+        System.out.println(json);
+
+        var roundTripped = READER.forType(InntektArbeidYtelseGrunnlagSakSnapshotDto.class).readValue(json);
+
+        validateResult(roundTripped);
+
+    }
+
+    private InntektArbeidYtelseGrunnlagDto byggInntektArbeidYtelseGrunnlag() {
+        var grunnlag = new InntektArbeidYtelseGrunnlagDto(fnr, uuid, uuid);
 
         grunnlag.medRegister(
-            new InntektArbeidYtelseAggregatRegisterDto(tidspunkt)
+            new InntektArbeidYtelseAggregatRegisterDto(tidspunkt, uuid)
                 .medArbeid(List.of(
                     new ArbeidDto(fnr)
                         .medYrkesaktiviteter(List.of(
@@ -131,7 +162,7 @@ public class IayGrunnlagTest {
                                         .medDagsats(100)
                                         .medUtbetalingsgrad(100))))))))
             .medOverstyrt(
-                new InntektArbeidYtelseAggregatOverstyrtDto(tidspunkt)
+                new InntektArbeidYtelseAggregatOverstyrtDto(tidspunkt, uuid)
                     .medArbeid(List.of(
                         new ArbeidDto(fnr)
                             .medYrkesaktiviteter(List.of(
@@ -160,7 +191,7 @@ public class IayGrunnlagTest {
                         .medGraderinger(List.of(new GraderingDto(periode, 50)))
                         .medNaturalytelser(List.of(new NaturalytelseDto(periode, NaturalytelseType.ELEKTRISK_KOMMUNIKASJON, 100)))
                         .medUtsettelsePerioder(List.of(new UtsettelsePeriodeDto(periode, UtsettelseÅrsakType.LOVBESTEMT_FERIE)))))
-                .medInntektsmeldingerSomIkkeKommer(List.of(new InntektsmeldingSomIkkeKommerDto(org, new ArbeidsforholdRefDto("intern", "ekstern")))))
+                    .medInntektsmeldingerSomIkkeKommer(List.of(new InntektsmeldingSomIkkeKommerDto(org, new ArbeidsforholdRefDto("intern", "ekstern")))))
             .medOppgittOpptjening(
                 new OppgittOpptjeningDto()
                     .medArbeidsforhold(List.of(
@@ -187,17 +218,10 @@ public class IayGrunnlagTest {
                             .medErNyoppstartet(false)
                             .medHarInntektFraFosterhjem(false)
                             .medHarNærRelasjon(false)));
-
-        String json = WRITER.writeValueAsString(grunnlag);
-        System.out.println(json);
-
-        InntektArbeidYtelseGrunnlagDto roundTripped = READER.forType(InntektArbeidYtelseGrunnlagDto.class).readValue(json);
-
-        validateResult(roundTripped);
-
+        return grunnlag;
     }
 
-    private void validateResult(InntektArbeidYtelseGrunnlagDto roundTripped) {
+    private void validateResult(Object roundTripped) {
         assertThat(roundTripped).isNotNull();
         try (var factory = Validation.buildDefaultValidatorFactory()) {
             var validator = factory.getValidator();
