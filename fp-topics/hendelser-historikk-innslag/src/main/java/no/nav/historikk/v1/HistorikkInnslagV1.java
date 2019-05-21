@@ -25,8 +25,8 @@ public class HistorikkInnslagV1 extends HistorikkInnslag {
     private Saksnummer saksnummer;
 
     @NotNull
-    @JsonProperty("aktør")
-    private HistorikkAktørEnum aktør;
+    @JsonProperty("historikkAktørType")
+    private HistorikkAktørEnum historikkAktørType;
 
     /**
      * Kode for hvilket innslagtype som skal benyttes
@@ -66,8 +66,8 @@ public class HistorikkInnslagV1 extends HistorikkInnslag {
         return behandlingUuid;
     }
 
-    public HistorikkAktørEnum getAktør() {
-        return aktør;
+    public HistorikkAktørEnum getHistorikkAktørType() {
+        return historikkAktørType;
     }
 
     public String getHistorikkInnslagType() {
@@ -107,8 +107,8 @@ public class HistorikkInnslagV1 extends HistorikkInnslag {
             return this;
         }
 
-        public Builder medAktør(HistorikkAktørEnum historikkAktørEnum) {
-            historikkinnslag.aktør = historikkAktørEnum;
+        public Builder medHistorikkAktørType(HistorikkAktørEnum historikkAktørType) {
+            historikkinnslag.historikkAktørType = historikkAktørType;
             return this;
         }
 
