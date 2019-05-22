@@ -41,5 +41,9 @@ public class UuidDto {
     public String getReferanse() {
         return uuid;
     }
+    
+    public UUID toUuidReferanse() {
+        return UUID.fromString(uuid);
+    }
 
 }

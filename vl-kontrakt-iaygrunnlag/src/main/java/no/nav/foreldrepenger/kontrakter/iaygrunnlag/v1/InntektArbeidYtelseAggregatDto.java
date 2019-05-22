@@ -30,9 +30,9 @@ public abstract class InntektArbeidYtelseAggregatDto<S extends InntektArbeidYtel
     private OffsetDateTime opprettetTidspunkt;
 
     /** Unik referanse for dette aggregatet. Kan benyttes f.eks. til å de-duplisere overførte data. */
-    @JsonProperty(value = "aggregatReferanse", required = true)
+    @JsonProperty(value = "eksternReferanse", required = true)
     @Valid
-    private UuidDto aggregatReferanse;
+    private UuidDto eksternReferanse;
 
     @JsonProperty(value = "arbeid")
     @Valid
@@ -42,25 +42,33 @@ public abstract class InntektArbeidYtelseAggregatDto<S extends InntektArbeidYtel
         // default ctor
     }
 
-    public InntektArbeidYtelseAggregatDto(LocalDateTime tidspunkt, UuidDto aggregatReferanse) {
-        this(tidspunkt.atZone(ZoneId.of("Europe/Oslo")).toOffsetDateTime(), aggregatReferanse);
+    public InntektArbeidYtelseAggregatDto(LocalDateTime tidspunkt, UuidDto eksternReferanse) {
+        this(tidspunkt.atZone(ZoneId.of("Europe/Oslo")).toOffsetDateTime(), eksternReferanse);
     }
 
-    public InntektArbeidYtelseAggregatDto(OffsetDateTime tidspunkt, UuidDto aggregatReferanse) {
+    public InntektArbeidYtelseAggregatDto(OffsetDateTime tidspunkt, UuidDto eksternReferanse) {
         this.opprettetTidspunkt = tidspunkt;
-        this.aggregatReferanse = aggregatReferanse;
+        this.eksternReferanse = eksternReferanse;
     }
 
-    public InntektArbeidYtelseAggregatDto(OffsetDateTime tidspunkt, UUID aggregatReferanse) {
-        this(tidspunkt, new UuidDto(aggregatReferanse));
+    public InntektArbeidYtelseAggregatDto(OffsetDateTime tidspunkt, UUID eksternReferanse) {
+        this(tidspunkt, new UuidDto(eksternReferanse));
     }
 
-    public InntektArbeidYtelseAggregatDto(LocalDateTime tidspunkt, UUID aggregatReferanse) {
-        this(tidspunkt.atZone(ZoneId.of("Europe/Oslo")).toOffsetDateTime(), aggregatReferanse);
+    public InntektArbeidYtelseAggregatDto(LocalDateTime tidspunkt, UUID eksternReferanse) {
+        this(tidspunkt.atZone(ZoneId.of("Europe/Oslo")).toOffsetDateTime(), eksternReferanse);
     }
 
     public List<ArbeidDto> getArbeid() {
         return arbeid;
+    }
+
+    public UUID getEksternReferanse() {
+        return eksternReferanse == null ? null : eksternReferanse.toUuidReferanse();
+    }
+    
+    public OffsetDateTime getOpprettetTidspunkt() {
+        return opprettetTidspunkt;
     }
 
     public void setArbeid(List<ArbeidDto> arbeid) {

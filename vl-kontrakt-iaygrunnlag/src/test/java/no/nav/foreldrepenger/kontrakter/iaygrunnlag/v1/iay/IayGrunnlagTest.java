@@ -4,6 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 import java.util.List;
 import java.util.UUID;
 
@@ -117,7 +119,9 @@ public class IayGrunnlagTest {
     }
 
     private InntektArbeidYtelseGrunnlagDto byggInntektArbeidYtelseGrunnlag() {
-        var grunnlag = new InntektArbeidYtelseGrunnlagDto(fnr, uuid, uuid);
+        OffsetDateTime offTidspunkt = tidspunkt.atZone(ZoneOffset.systemDefault()).toOffsetDateTime();
+        
+        var grunnlag = new InntektArbeidYtelseGrunnlagDto(fnr, offTidspunkt, uuid, uuid);
 
         grunnlag.medRegister(
             new InntektArbeidYtelseAggregatRegisterDto(tidspunkt, uuid)
@@ -193,7 +197,7 @@ public class IayGrunnlagTest {
                         .medUtsettelsePerioder(List.of(new UtsettelsePeriodeDto(periode, UtsettelseÅrsakType.LOVBESTEMT_FERIE)))))
                     .medInntektsmeldingerSomIkkeKommer(List.of(new InntektsmeldingSomIkkeKommerDto(org, new ArbeidsforholdRefDto("intern", "ekstern")))))
             .medOppgittOpptjening(
-                new OppgittOpptjeningDto()
+                new OppgittOpptjeningDto(uuid, offTidspunkt)
                     .medArbeidsforhold(List.of(
                         new OppgittArbeidsforholdDto(periode, ArbeidType.ORDINÆRT_ARBEIDSFORHOLD)
                             .medErUtenlandskInntekt(true)

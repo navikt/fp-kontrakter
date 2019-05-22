@@ -1,12 +1,15 @@
 package no.nav.foreldrepenger.kontrakter.iaygrunnlag.oppgittopptjening.v1;
 
+import java.time.OffsetDateTime;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 import javax.validation.Valid;
 import javax.validation.constraints.AssertTrue;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -40,7 +43,21 @@ public class OppgittOpptjeningDto {
     @Valid
     private UuidDto eksternReferanse;
 
-    public OppgittOpptjeningDto() {
+    @JsonProperty(value = "opprettetTidspunkt", required = true)
+    @Valid
+    private OffsetDateTime opprettetTidspunkt;
+
+    OppgittOpptjeningDto() {
+        // for Jackson
+    }
+
+    @JsonCreator
+    public OppgittOpptjeningDto(@JsonProperty(value = "eksternReferanse", required = true) @Valid UUID eksternReferanse,
+                                @JsonProperty(value = "opprettetTidspunkt", required = true) @Valid OffsetDateTime tidspunkt) {
+        Objects.requireNonNull(eksternReferanse, "eksternReferanse");
+        Objects.requireNonNull(tidspunkt, "tidspunkt");
+        this.eksternReferanse = new UuidDto(eksternReferanse);
+        this.opprettetTidspunkt = tidspunkt;
     }
 
     @AssertTrue(message = "Må oppgi minst en av arbeidsforhold, egenNæring, annenAktivitet eller frilans")
@@ -96,6 +113,10 @@ public class OppgittOpptjeningDto {
 
     public UuidDto getEksternReferanse() {
         return eksternReferanse;
+    }
+    
+    public OffsetDateTime getOpprettetTidspunkt() {
+        return opprettetTidspunkt;
     }
 
     public void setEksternReferanse(UuidDto eksternReferanse) {
