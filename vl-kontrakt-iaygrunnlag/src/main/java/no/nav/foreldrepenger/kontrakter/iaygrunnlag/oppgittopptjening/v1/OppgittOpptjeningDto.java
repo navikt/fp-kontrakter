@@ -1,6 +1,7 @@
 package no.nav.foreldrepenger.kontrakter.iaygrunnlag.oppgittopptjening.v1;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.validation.Valid;
 import javax.validation.constraints.AssertTrue;
@@ -10,6 +11,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.UuidDto;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = Include.NON_ABSENT, content = Include.NON_EMPTY)
@@ -31,6 +34,11 @@ public class OppgittOpptjeningDto {
     @JsonProperty(value = "frilans")
     @Valid
     private OppgittFrilansDto frilans;
+
+    /** Unik referanse for dette aggregatet. Kan benyttes f.eks. til å de-duplisere overførte data. */
+    @JsonProperty(value = "eksternReferanse", required = true)
+    @Valid
+    private UuidDto eksternReferanse;
 
     public OppgittOpptjeningDto() {
     }
@@ -84,6 +92,18 @@ public class OppgittOpptjeningDto {
 
     public OppgittFrilansDto getFrilans() {
         return frilans;
+    }
+
+    public UuidDto getEksternReferanse() {
+        return eksternReferanse;
+    }
+
+    public void setEksternReferanse(UuidDto eksternReferanse) {
+        this.eksternReferanse = eksternReferanse;
+    }
+
+    public void setEksternReferanse(UUID eksternReferanse) {
+        this.eksternReferanse = new UuidDto(eksternReferanse);
     }
 
     public void setFrilans(OppgittFrilansDto frilans) {
