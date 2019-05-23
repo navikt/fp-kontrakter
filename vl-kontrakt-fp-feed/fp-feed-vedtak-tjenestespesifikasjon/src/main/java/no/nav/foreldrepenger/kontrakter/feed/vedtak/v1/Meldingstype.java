@@ -7,7 +7,10 @@ import java.util.Arrays;
 public enum Meldingstype {
     FORELDREPENGER_INNVILGET("ForeldrepengerInnvilget_v1", ForeldrepengerInnvilget.class),
     FORELDREPENGER_ENDRET("ForeldrepengerEndret_v1", ForeldrepengerEndret.class),
-    FORELDREPENGER_OPPHOERT("ForeldrepengerOpphoert_v1", ForeldrepengerOpphoert.class);
+    FORELDREPENGER_OPPHOERT("ForeldrepengerOpphoert_v1", ForeldrepengerOpphoert.class),
+    SVANGERSKAPSPENGER_INNVILGET("SVPInnvilget_v1", SvangerskapspengerInnvilget.class),
+    SVANGERSKAPSPENGER_ENDRET("SVPEndret_v1", SvangerskapspengerEndret.class),
+    SVANGERSKAPSPENGER_OPPHOERT("SVPOpphoert_v1", SvangerskapspengerOpphoert.class);
 
     private Class meldingsDto;
     private String type;
