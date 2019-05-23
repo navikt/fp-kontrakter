@@ -181,7 +181,7 @@ public class IayGrunnlagTest {
                                             .medStillingsprosent(30))))))))
             .medInntektsmeldinger(
                 new InntektsmeldingerDto().medInntektsmeldinger(List.of(
-                    new InntektsmeldingDto(org, journalpostId, tidspunkt)
+                    new InntektsmeldingDto(org, journalpostId, tidspunkt, fom)
                         .medArbeidsforholdRef(new ArbeidsforholdRefDto("internRef", "eksternRef"))
                         .medInnsendingsårsak(InntektsmeldingInnsendingsårsakType.NY)
                         .medInntektBeløp(99999)
