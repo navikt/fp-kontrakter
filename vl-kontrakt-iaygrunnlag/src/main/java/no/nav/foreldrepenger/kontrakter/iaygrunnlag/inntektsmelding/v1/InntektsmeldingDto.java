@@ -155,6 +155,10 @@ public class InntektsmeldingDto {
         return kildesystem;
     }
 
+    public LocalDate getMottattDato() {
+        return mottattDato;
+    }
+    
     public List<NaturalytelseDto> getNaturalytelser() {
         return naturalytelser;
     }

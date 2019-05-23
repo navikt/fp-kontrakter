@@ -1,6 +1,8 @@
 package no.nav.foreldrepenger.kontrakter.iaygrunnlag.oppgittopptjening.v1;
 
+import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
@@ -58,6 +60,14 @@ public class OppgittOpptjeningDto {
         Objects.requireNonNull(tidspunkt, "tidspunkt");
         this.eksternReferanse = new UuidDto(eksternReferanse);
         this.opprettetTidspunkt = tidspunkt;
+    }
+    
+    public OppgittOpptjeningDto(@JsonProperty(value = "eksternReferanse", required = true) @Valid UUID eksternReferanse,
+                                @JsonProperty(value = "opprettetTidspunkt", required = true) @Valid LocalDateTime tidspunkt) {
+        Objects.requireNonNull(eksternReferanse, "eksternReferanse");
+        Objects.requireNonNull(tidspunkt, "tidspunkt");
+        this.eksternReferanse = new UuidDto(eksternReferanse);
+        this.opprettetTidspunkt = tidspunkt.atZone(ZoneId.systemDefault()).toOffsetDateTime();
     }
 
     @AssertTrue(message = "Må oppgi minst en av arbeidsforhold, egenNæring, annenAktivitet eller frilans")
