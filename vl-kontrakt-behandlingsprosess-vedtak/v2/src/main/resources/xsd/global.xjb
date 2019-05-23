@@ -120,6 +120,14 @@
         </jaxb:bindings>
     </jaxb:bindings>
 
+    <jaxb:bindings schemaLocation="./uttak/uttak-svp-v2.xsd" node="/xs:schema">
+        <jaxb:bindings node="//xs:complexType[@name='UttakSvangerskapspenger']">
+            <annox:annotateClass>
+                @javax.xml.bind.annotation.XmlRootElement
+            </annox:annotateClass>
+        </jaxb:bindings>
+    </jaxb:bindings>
+
     <jaxb:bindings schemaLocation="./personopplysninger/personopplysninger-dvh-es-v2.xsd" node="/xs:schema">
         <jaxb:bindings node="//xs:complexType[@name='PersonopplysningerDvhEngangsstoenad']">
             <annox:annotateClass>
