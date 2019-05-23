@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.time.ZoneId;
 import java.util.List;
+import java.util.Objects;
 
 import javax.validation.Valid;
 import javax.validation.constraints.DecimalMax;
@@ -40,7 +41,14 @@ public class InntektsmeldingDto {
     private JournalpostId journalpostId;
 
     @JsonProperty(value = "innsendingstidspunkt", required = true)
+    @NotNull
+    @Valid
     private OffsetDateTime innsendingstidspunkt;
+
+    @JsonProperty(value = "mottattDato", required = true)
+    @NotNull
+    @Valid
+    private LocalDate mottattDato;
 
     @JsonProperty(value = "graderinger")
     @Valid
@@ -77,6 +85,7 @@ public class InntektsmeldingDto {
     @JsonProperty(value = "kanalreferanse")
     private String kanalreferanse;
 
+    /** NB: tilsvarer avsendersystem i Inntektsmelding skjema. */
     @JsonProperty(value = "kildesystem")
     private String kildesystem;
 
@@ -86,16 +95,24 @@ public class InntektsmeldingDto {
     @JsonProperty(value = "refusjonEndringer")
     private List<RefusjonDto> refusjonEndringer;
 
-    @JsonProperty(value = "innsendingsårsak")
+    @JsonProperty(value = "innsendingsårsak", required = true)
+    @Valid
+    @NotNull
     private InntektsmeldingInnsendingsårsakType innsendingsårsak;
 
-    public InntektsmeldingDto(Aktør arbeidsgiver, JournalpostId journalpostId, LocalDateTime innsendingstidspunkt) {
+    public InntektsmeldingDto(Aktør arbeidsgiver, JournalpostId journalpostId, LocalDateTime innsendingstidspunkt, LocalDate mottattDato) {
+        Objects.requireNonNull(arbeidsgiver, "arbeidsgiver");
+        Objects.requireNonNull(journalpostId, "journalpostId");
+        Objects.requireNonNull(innsendingstidspunkt, "innsendingstidspunkt");
+        Objects.requireNonNull(mottattDato, "mottattDato");
         this.arbeidsgiver = arbeidsgiver;
         this.journalpostId = journalpostId;
-        this.innsendingstidspunkt = innsendingstidspunkt == null ? null : innsendingstidspunkt.atZone(ZoneId.systemDefault()).toOffsetDateTime();
+        this.mottattDato = mottattDato;
+        this.innsendingstidspunkt = innsendingstidspunkt.atZone(ZoneId.systemDefault()).toOffsetDateTime();
     }
 
     protected InntektsmeldingDto() {
+        // for jackson
     }
 
     public ArbeidsforholdRefDto getArbeidsforholdRef() {
@@ -126,16 +143,16 @@ public class InntektsmeldingDto {
         return inntektBeløp;
     }
 
+    public JournalpostId getJournalpostId() {
+        return journalpostId;
+    }
+
     public String getKanalreferanse() {
         return kanalreferanse;
     }
 
     public String getKildesystem() {
         return kildesystem;
-    }
-
-    public JournalpostId getJournalpostId() {
-        return journalpostId;
     }
 
     public List<NaturalytelseDto> getNaturalytelser() {
@@ -202,6 +219,11 @@ public class InntektsmeldingDto {
         return this;
     }
 
+    public InntektsmeldingDto medMottattDato(LocalDate mottattDato) {
+        setMottattDato(mottattDato);
+        return this;
+    }
+
     public InntektsmeldingDto medNaturalytelser(List<NaturalytelseDto> naturalytelser) {
         setNaturalytelser(naturalytelser);
         return this;
@@ -263,6 +285,10 @@ public class InntektsmeldingDto {
 
     public void setKildesystem(String kildesystem) {
         this.kildesystem = kildesystem;
+    }
+
+    public void setMottattDato(LocalDate mottattDato) {
+        this.mottattDato = mottattDato;
     }
 
     public void setNaturalytelser(List<NaturalytelseDto> naturalytelser) {
