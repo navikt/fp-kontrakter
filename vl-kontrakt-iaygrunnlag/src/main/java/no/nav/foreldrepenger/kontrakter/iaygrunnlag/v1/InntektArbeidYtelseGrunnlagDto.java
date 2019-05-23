@@ -1,5 +1,6 @@
 package no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1;
 
+import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.time.ZoneId;
 import java.util.Objects;
@@ -24,7 +25,7 @@ import no.nav.foreldrepenger.kontrakter.iaygrunnlag.oppgittopptjening.v1.Oppgitt
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE, getterVisibility = JsonAutoDetect.Visibility.NONE, setterVisibility = JsonAutoDetect.Visibility.NONE, isGetterVisibility = JsonAutoDetect.Visibility.NONE, creatorVisibility = JsonAutoDetect.Visibility.NONE)
 public class InntektArbeidYtelseGrunnlagDto {
 
-    private static final ZoneId DEFAULT_ZONE = ZoneId.of("Europe/Oslo");
+    private static final ZoneId DEFAULT_ZONE = ZoneId.systemDefault();
 
     /**
      * Unk referanse for grunnlaget. Hver versjon av grunnlaget vil få en ny grunnlagReferanse.
@@ -53,7 +54,7 @@ public class InntektArbeidYtelseGrunnlagDto {
     @NotNull
     private OffsetDateTime grunnlagTidspunkt = OffsetDateTime.now(DEFAULT_ZONE);
 
-    @JsonProperty("person")
+    @JsonProperty(value = "person", required = true)
     @Valid
     @NotNull
     private PersonIdent person;
@@ -76,27 +77,31 @@ public class InntektArbeidYtelseGrunnlagDto {
     @JsonProperty(value = "oppgittOpptjening")
     @Valid
     private OppgittOpptjeningDto oppgittOpptjening;
-    
+
     protected InntektArbeidYtelseGrunnlagDto() {
         // default ctor
     }
 
-    public InntektArbeidYtelseGrunnlagDto(PersonIdent person, UuidDto grunnlagReferanse, UuidDto koblingReferanse) {
+    public InntektArbeidYtelseGrunnlagDto(PersonIdent person, LocalDateTime grunnlagTidspunkt, UuidDto grunnlagReferanse, UuidDto koblingReferanse) {
         Objects.requireNonNull(person, "person");
+        Objects.requireNonNull(grunnlagTidspunkt, "grunnlagTidspunkt");
         Objects.requireNonNull(grunnlagReferanse, "grunnlagReferanse");
         Objects.requireNonNull(koblingReferanse, "koblingReferanse");
         this.koblingReferanse = koblingReferanse;
         this.person = person;
         this.grunnlagReferanse = grunnlagReferanse;
+        this.grunnlagTidspunkt = grunnlagTidspunkt.atZone(DEFAULT_ZONE).toOffsetDateTime();
     }
 
-    public InntektArbeidYtelseGrunnlagDto(PersonIdent person, UUID grunnlagReferanse, UUID koblingReferanse) {
+    public InntektArbeidYtelseGrunnlagDto(PersonIdent person, OffsetDateTime grunnlagTidspunkt, UUID grunnlagReferanse, UUID koblingReferanse) {
         Objects.requireNonNull(person, "person");
+        Objects.requireNonNull(grunnlagTidspunkt, "grunnlagTidspunkt");
         Objects.requireNonNull(grunnlagReferanse, "grunnlagReferanse");
         Objects.requireNonNull(koblingReferanse, "koblingReferanse");
         this.person = person;
         this.grunnlagReferanse = new UuidDto(grunnlagReferanse);
         this.koblingReferanse = new UuidDto(koblingReferanse);
+        this.grunnlagTidspunkt = grunnlagTidspunkt;
     }
 
     public String getGrunnlagReferanse() {

@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE, getterVisibility = JsonAutoDetect.Visibility.NONE, setterVisibility = JsonAutoDetect.Visibility.NONE, isGetterVisibility = JsonAutoDetect.Visibility.NONE, creatorVisibility = JsonAutoDetect.Visibility.NONE)
 public class InntektArbeidYtelseGrunnlagSakSnapshotDto {
 
-    private static final ZoneId DEFAULT_ZONE = ZoneId.of("Europe/Oslo");
+    private static final ZoneId DEFAULT_ZONE = ZoneId.systemDefault();
     
     /** Saksnummer alle grunnlag og koblinger er linket til. */
     @JsonProperty(value="saksnummer", required = true)
