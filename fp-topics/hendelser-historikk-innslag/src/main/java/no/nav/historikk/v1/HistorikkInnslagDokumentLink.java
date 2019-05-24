@@ -1,26 +1,32 @@
 package no.nav.historikk.v1;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import no.nav.historikk.JournalpostId;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(value = JsonInclude.Include.NON_ABSENT, content = JsonInclude.Include.NON_EMPTY)
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE, getterVisibility = JsonAutoDetect.Visibility.NONE, setterVisibility = JsonAutoDetect.Visibility.NONE, isGetterVisibility = JsonAutoDetect.Visibility.NONE, creatorVisibility = JsonAutoDetect.Visibility.NONE)
 public class HistorikkInnslagDokumentLink {
 
     @NotNull
     @Valid
-    @JsonProperty
+    @JsonProperty(required = true)
     private String linkTekst;
 
     @NotNull
     @Valid
-    @JsonProperty
+    @JsonProperty(required = true)
     private JournalpostId journalpostId;
 
     @NotNull
     @Valid
-    @JsonProperty
+    @JsonProperty(required = true)
     private String dokumentId;
 
     public String getLinkTekst() { return linkTekst; }

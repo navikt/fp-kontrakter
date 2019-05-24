@@ -2,11 +2,20 @@ package no.nav.vedtak.felles.dokumentbestilling.v1;
 
 import java.util.UUID;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import no.nav.vedtak.felles.dokumentbestilling.kodeverk.FagsakYtelseType;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(value = JsonInclude.Include.NON_ABSENT, content = JsonInclude.Include.NON_EMPTY)
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE, getterVisibility = JsonAutoDetect.Visibility.NONE, setterVisibility = JsonAutoDetect.Visibility.NONE, isGetterVisibility = JsonAutoDetect.Visibility.NONE, creatorVisibility = JsonAutoDetect.Visibility.NONE)
 public class DokumentbestillingV1 {
 
     // Obligatoriske felter
@@ -14,11 +23,21 @@ public class DokumentbestillingV1 {
      * ID til Behandlingen i FPSAK det bestilles dokument for
      */
     @NotNull
+    @JsonProperty(required = true)
     private UUID behandlingUuid;
+
+    /**
+     * Unik ID for dokumentbestilling for å håndtere duplikater
+     */
+    @NotNull
+    @JsonProperty(required = true)
+    private UUID dokumentbestillingUuid;
     /**
      * Kode for ytelsetypeES
      */
     @NotNull
+    @Valid
+    @JsonProperty(required = true)
     private FagsakYtelseType ytelseType;
     /**
      * Kode for hvilket dokument som er bestilt
@@ -28,6 +47,7 @@ public class DokumentbestillingV1 {
      */
     @NotNull
     @Pattern(regexp = "[A-Z]{6}")
+    @JsonProperty(required = true)
     private String dokumentMal;
 
 
@@ -36,11 +56,13 @@ public class DokumentbestillingV1 {
      */
     @NotNull
     @Pattern(regexp = "[A-Z]{1,100}")
+    @JsonProperty(required = true)
     private String historikkAktør;
 
     /**
      * Fritekstfelt
      */
+    @JsonProperty
     private String fritekst;
     /**
      * Kode for Årsak for Varsling av revudering
@@ -49,10 +71,19 @@ public class DokumentbestillingV1 {
      * for verdier
      */
     @Pattern(regexp = "[A-Z]{1,100}")
+    @JsonProperty
     private String arsakskode;
 
     public UUID getBehandlingUuid() {
         return behandlingUuid;
+    }
+
+    public UUID getDokumentbestillingUuid() {
+        return dokumentbestillingUuid;
+    }
+
+    public void setDokumentbestillingUuid(UUID dokumentbestillingUuid) {
+        this.dokumentbestillingUuid = dokumentbestillingUuid;
     }
 
     public void setBehandlingUuid(UUID behandlingUuid) {
