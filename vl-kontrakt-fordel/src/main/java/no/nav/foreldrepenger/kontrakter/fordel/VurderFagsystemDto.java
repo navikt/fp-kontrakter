@@ -13,7 +13,7 @@ import javax.validation.constraints.Size;
 
 public class VurderFagsystemDto {
 
-    private static final String BASIS_TEGN = "a-zA-ZæøåÆØÅ\\-0-9";
+    private static final String BASIS_TEGN = "a-zA-ZæøåÆØÅ_\\-0-9";
 
     private static final String ALFABET_SAMISK = "AaÁáBbCcČčDdĐđEeFfGgHhIiJjKkLlMmNnŊŋOoPpRrSsŠšTtŦŧUuVvZzŽž";
     private static final String AKSENTER_NORSKE = "éôèÉ";
@@ -28,7 +28,7 @@ public class VurderFagsystemDto {
     private String aktørId;
     @NotNull
     @Size(max = 8)
-    @Pattern(regexp = "^[" + BASIS_TEGN + "_]*$")
+    @Pattern(regexp = "^[" + BASIS_TEGN + "]*$")
     private String behandlingstemaOffisiellKode;
 
     @Size(min = 1, max = 9)
@@ -41,7 +41,7 @@ public class VurderFagsystemDto {
     private String årsakInnsendingInntektsmelding;
 
     @Size(max = 30)
-    @Pattern(regexp = "^[" + BASIS_TEGN + "_]*$")
+    @Pattern(regexp = "^[" + BASIS_TEGN + "]*$")
     private String saksnummer;
 
     @Digits(integer = 19, fraction = 0)
@@ -60,11 +60,11 @@ public class VurderFagsystemDto {
     private LocalDate startDatoForeldrepengerInntektsmelding;
 
     @Size(max = 8)
-    @Pattern(regexp = "^[" + BASIS_TEGN + "_]*$")
+    @Pattern(regexp = "^[" + BASIS_TEGN + "]*$")
     private String dokumentTypeIdOffisiellKode;
 
     @Size(max = 25)
-    @Pattern(regexp = "^[" + BASIS_TEGN + "_]*$")
+    @Pattern(regexp = "^[" + BASIS_TEGN + "]*$")
     private String dokumentKategoriOffisiellKode;
 
 
