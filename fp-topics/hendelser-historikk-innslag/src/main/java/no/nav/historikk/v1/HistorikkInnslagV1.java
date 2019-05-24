@@ -1,5 +1,6 @@
 package no.nav.historikk.v1;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -79,6 +80,11 @@ public class HistorikkInnslagV1 extends HistorikkInnslag {
     @JsonProperty(value = "avsender", required = true)
     private String avsender;
 
+    @NotNull
+    @Valid
+    @JsonProperty(value = "opprettetTidspunkt", required = true)
+    private LocalDateTime opprettetTidspunkt;
+
     public String getAvsender() {
         return avsender;
     }
@@ -117,6 +123,10 @@ public class HistorikkInnslagV1 extends HistorikkInnslag {
 
     public List<HistorikkInnslagDel> getHistorikkInnslagDeler() {
         return historikkInnslagDeler;
+    }
+
+    public LocalDateTime getOpprettetTidspunkt() {
+        return opprettetTidspunkt;
     }
 
     public static class Builder {
@@ -158,6 +168,11 @@ public class HistorikkInnslagV1 extends HistorikkInnslag {
 
         public Builder medAvsender(String avsender) {
             historikkinnslag.avsender = avsender;
+            return this;
+        }
+
+        public Builder medOpprettetTidspunkt(LocalDateTime opprettetTidspunkt) {
+            historikkinnslag.opprettetTidspunkt = opprettetTidspunkt;
             return this;
         }
 
