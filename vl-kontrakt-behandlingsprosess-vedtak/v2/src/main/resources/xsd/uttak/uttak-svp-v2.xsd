@@ -10,7 +10,8 @@
 		<xsd:complexContent>
 			<xsd:extension base="ut:Uttak">
 				<xsd:sequence>
-					<xsd:element name="foersteLovligeUttaksdag" type="felles:DateOpplysning" minOccurs="0"/>
+					<xsd:element name="foersteUttaksdato" type="felles:DateOpplysning" minOccurs="0"/>
+					<xsd:element name="sisteUttaksdato" type="felles:DateOpplysning" minOccurs="0"/>
 					<xsd:element name="uttaksResultatArbeidsforhold" type="ut:UttaksResultatArbeidsforhold" minOccurs="0" maxOccurs="unbounded"/>
 
 				</xsd:sequence>
