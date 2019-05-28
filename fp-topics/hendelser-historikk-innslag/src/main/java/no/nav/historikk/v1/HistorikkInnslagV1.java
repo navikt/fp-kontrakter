@@ -1,5 +1,6 @@
 package no.nav.historikk.v1;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -8,6 +9,9 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import no.nav.historikk.HistorikkInnslag;
@@ -15,17 +19,33 @@ import no.nav.historikk.Saksnummer;
 import no.nav.historikk.kodeverk.BrukerKjønnEnum;
 import no.nav.historikk.kodeverk.HistorikkAktørEnum;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(value = JsonInclude.Include.NON_ABSENT, content = JsonInclude.Include.NON_EMPTY)
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE, getterVisibility = JsonAutoDetect.Visibility.NONE, setterVisibility = JsonAutoDetect.Visibility.NONE, isGetterVisibility = JsonAutoDetect.Visibility.NONE, creatorVisibility = JsonAutoDetect.Visibility.NONE)
 public class HistorikkInnslagV1 extends HistorikkInnslag {
 
     @NotNull
-    @JsonProperty("behandlingUuid")
+    @Valid
+    @JsonProperty(value = "behandlingUuid", required = true)
     private UUID behandlingUuid;
 
+
+    /**
+     * Unik ID for dokumentbestilling for å håndtere duplikater
+     */
     @NotNull
+    @Valid
+    @JsonProperty(required = true)
+    private UUID historikkUuid;
+
+    @NotNull
+    @Valid
+    @JsonProperty(value = "saksnummer", required = true)
     private Saksnummer saksnummer;
 
     @NotNull
-    @JsonProperty("historikkAktørType")
+    @Valid
+    @JsonProperty(value = "historikkAktørType", required = true)
     private HistorikkAktørEnum historikkAktørType;
 
     /**
@@ -36,27 +56,34 @@ public class HistorikkInnslagV1 extends HistorikkInnslag {
      */
     @NotNull
     @Pattern(regexp = "[A-Z]{1,100}")
+    @JsonProperty(value = "historikkInnslagType", required = true)
     private String historikkInnslagType;
 
     @NotNull
-    @JsonProperty("brukerKjønn")
+    @Valid
+    @JsonProperty(value = "brukerKjønn", required = true)
     private BrukerKjønnEnum brukerKjønn;
 
     @NotNull
     @Valid
-    @JsonProperty("dokumentLinker")
+    @JsonProperty(value = "dokumentLinker", required = true)
     private List<HistorikkInnslagDokumentLink> dokumentLinker = new ArrayList<>();
 
     @NotNull
     @Valid
-    @JsonProperty("historikkInnslagDeler")
+    @JsonProperty(value = "historikkInnslagDeler", required = true)
     private List<HistorikkInnslagDel> historikkInnslagDeler = new ArrayList<>();
 
 
     @NotNull
     @Valid
-    @JsonProperty
+    @JsonProperty(value = "avsender", required = true)
     private String avsender;
+
+    @NotNull
+    @Valid
+    @JsonProperty(value = "opprettetTidspunkt", required = true)
+    private LocalDateTime opprettetTidspunkt;
 
     public String getAvsender() {
         return avsender;
@@ -64,6 +91,10 @@ public class HistorikkInnslagV1 extends HistorikkInnslag {
 
     public UUID getBehandlingUuid() {
         return behandlingUuid;
+    }
+
+    public UUID getHistorikkUuid() {
+        return historikkUuid;
     }
 
     public HistorikkAktørEnum getHistorikkAktørType() {
@@ -78,6 +109,10 @@ public class HistorikkInnslagV1 extends HistorikkInnslag {
         return dokumentLinker;
     }
 
+    public BrukerKjønnEnum getBrukerKjønn() {
+        return brukerKjønn;
+    }
+
     public BrukerKjønnEnum getBrukerKjoenn() {
         return brukerKjønn;
     }
@@ -90,6 +125,10 @@ public class HistorikkInnslagV1 extends HistorikkInnslag {
         return historikkInnslagDeler;
     }
 
+    public LocalDateTime getOpprettetTidspunkt() {
+        return opprettetTidspunkt;
+    }
+
     public static class Builder {
         private HistorikkInnslagV1 historikkinnslag;
 
@@ -99,6 +138,11 @@ public class HistorikkInnslagV1 extends HistorikkInnslag {
 
         public Builder medBehandlingUuid(UUID behandlingUuid) {
             historikkinnslag.behandlingUuid = behandlingUuid;
+            return this;
+        }
+
+        public Builder medHistorikkUuid(UUID historikkUuid) {
+            historikkinnslag.historikkUuid = historikkUuid;
             return this;
         }
 
@@ -124,6 +168,11 @@ public class HistorikkInnslagV1 extends HistorikkInnslag {
 
         public Builder medAvsender(String avsender) {
             historikkinnslag.avsender = avsender;
+            return this;
+        }
+
+        public Builder medOpprettetTidspunkt(LocalDateTime opprettetTidspunkt) {
+            historikkinnslag.opprettetTidspunkt = opprettetTidspunkt;
             return this;
         }
 
