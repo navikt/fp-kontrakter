@@ -13,64 +13,16 @@
 					<xsd:element name="foersteUttaksdato" type="felles:DateOpplysning" minOccurs="0"/>
 					<xsd:element name="sisteUttaksdato" type="felles:DateOpplysning" minOccurs="0"/>
 					<xsd:element name="uttaksResultatArbeidsforhold" type="ut:UttaksResultatArbeidsforhold" minOccurs="0" maxOccurs="unbounded"/>
-
+					<xsd:element name="tilrettelegging" type="ut:Tilrettelegging" minOccurs="0" maxOccurs="unbounded"/>
 				</xsd:sequence>
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
-	<xsd:complexType name="Stoenadskonto">
-		<xsd:annotation>
-			<xsd:documentation xml:lang="no">Beregnede stønadskontoer som angir maks antall dager man kan ta ut per konto.</xsd:documentation>
-		</xsd:annotation>
-		<xsd:sequence>
-			<xsd:element name="stoenadskontotype" type="felles:KodeverksOpplysning" minOccurs="0">
-				<xsd:annotation>
-					<xsd:documentation xml:lang="no">Stønadskontotype fra internt kodeverk: STOENADSKONTOTYPE</xsd:documentation>
-				</xsd:annotation>
-			</xsd:element>
-			<xsd:element name="maxdager" type="felles:IntOpplysning" minOccurs="0">
-				<xsd:annotation>
-					<xsd:documentation xml:lang="no">Max antall virkedager det er mulig å ta ut på denne stønadskontoen</xsd:documentation>
-				</xsd:annotation>
-			</xsd:element>
-		</xsd:sequence>
-	</xsd:complexType>
-	<xsd:complexType name="UttaksresultatPeriode">
-		<xsd:annotation>
-			<xsd:documentation>Uttaksresultatet inneholder både resultat av uttaksvilkårene og hvordan uttaket fordeler seg</xsd:documentation>
-		</xsd:annotation>
-		<xsd:sequence>
-			<xsd:element name="periode" type="felles:PeriodeOpplysning" minOccurs="0">
-				<xsd:annotation>
-					<xsd:documentation xml:lang="no">Fra-og-med og til-og-med dato for uttaksresultatperiode</xsd:documentation>
-				</xsd:annotation>
-			</xsd:element>
-			<xsd:element name="periodeResultatType" type="felles:KodeverksOpplysning" minOccurs="0">
-				<xsd:annotation>
-					<xsd:documentation xml:lang="no">Hvilket resultat uttaksperioden har fått</xsd:documentation>
-				</xsd:annotation>
-			</xsd:element>
-			<xsd:element name="perioderesultataarsak" type="felles:KodeverksOpplysning" minOccurs="0">
-				<xsd:annotation>
-					<xsd:documentation xml:lang="no">Årsak til resultat uttaksperioden har fått</xsd:documentation>
-				</xsd:annotation>
-			</xsd:element>
 
-		</xsd:sequence>
-	</xsd:complexType>
+
 	<xsd:complexType name="UttaksResultatArbeidsforhold">
 		<xsd:sequence>
 			<xsd:element name="uttaksresultatPerioder" type="ut:UttaksresultatPeriode" minOccurs="0" maxOccurs="unbounded"/>
-			<xsd:element name="trekkkonto" type="felles:KodeverksOpplysning" minOccurs="0">
-				<xsd:annotation>
-					<xsd:documentation xml:lang="no">Hvilken stønadskonto det skal trekkes fra.</xsd:documentation>
-				</xsd:annotation>
-			</xsd:element>
-			<xsd:element name="trekkdager" type="felles:DecimalOpplysning" minOccurs="0">
-				<xsd:annotation>
-					<xsd:documentation xml:lang="no">Antall virkedager som skal trekkes. Kan avvike fra antall virkedager i perioden. Representeres med et desimaltall med ett desimal</xsd:documentation>
-				</xsd:annotation>
-			</xsd:element>
 			<xsd:element name="virksomhet" type="felles:StringOpplysning" minOccurs="0">
 				<xsd:annotation>
 					<xsd:documentation xml:lang="no">Bedriftens unike identifikator i enhetsregisteret</xsd:documentation>
@@ -97,29 +49,86 @@
 				</xsd:annotation>
 			</xsd:element>
 			<xsd:element name="avslagaarsak" type="felles:KodeverksOpplysning" minOccurs="0"/>
-			<xsd:element name="fordelingPerioder" minOccurs="0">
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element name="fordelingPeriode" type="ut:FordelingPeriode" minOccurs="0" maxOccurs="unbounded"/>
-					</xsd:sequence>
-				</xsd:complexType>
-			</xsd:element>
 		</xsd:sequence>
 	</xsd:complexType>
-	<xsd:complexType name="FordelingPeriode">
+
+
+	<xsd:complexType name="UttaksresultatPeriode">
+		<xsd:annotation>
+			<xsd:documentation>Uttaksresultatet inneholder både resultat av uttaksvilkårene og hvordan uttaket fordeler seg</xsd:documentation>
+		</xsd:annotation>
 		<xsd:sequence>
-			<xsd:element name="periode" type="felles:PeriodeOpplysning" minOccurs="0"/>
-			<xsd:element name="periodetype" type="felles:KodeverksOpplysning" minOccurs="0">
+			<xsd:element name="periode" type="felles:PeriodeOpplysning" minOccurs="0">
 				<xsd:annotation>
-					<xsd:documentation xml:lang="no">Hva det er søkt om. Internt kodeverk UTTAK_PERIODE_TYPE</xsd:documentation>
+					<xsd:documentation xml:lang="no">Fra-og-med og til-og-med dato for uttaksresultatperiode</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
-			<xsd:element name="morsAktivitet" type="felles:KodeverksOpplysning" minOccurs="0">
+			<xsd:element name="periodeResultatType" type="felles:KodeverksOpplysning" minOccurs="0">
 				<xsd:annotation>
-					<xsd:documentation xml:lang="no">Hva mor skal gjøre i perioden (brukes ifbm aktivitetskrav)</xsd:documentation>
+					<xsd:documentation xml:lang="no">Hvilket resultat uttaksperioden har fått</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="perioderesultataarsak" type="felles:KodeverksOpplysning" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="no">Årsak til resultat uttaksperioden har fått</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
 		</xsd:sequence>
 	</xsd:complexType>
+
+	<xsd:complexType name="Tilrettelegging">
+		<xsd:annotation>
+			<xsd:documentation>Tilrettelegging inneholder ......</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="behovForTilretteleggingFom" type="felles:DateOpplysning" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="no">Dato for når tilrettelegging starter.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<xsd:element name="helTilretteleggingFom" type="felles:DateOpplysning" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="no">Dato for når hel tilrettelegging starter.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<xsd:element name="delvisTilretteleggingFom" type="felles:DateOpplysning" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="no">Dato for når delvis tilrettelegging starter.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<xsd:element name="stillingsprosent" type="felles:DecimalOpplysning" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="no">Dokumentasjon mangler</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<xsd:element name="slutteArbeidFom" type="felles:DateOpplysning" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="no">Dato for når arbeide skal avsluttes.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<xsd:element name="arbeidtype" type="felles:KodeverksOpplysning" minOccurs="0"/>
+			<xsd:element name="opplysningerOmRisikofaktorer" type="felles:StringOpplysning" minOccurs="0"/>
+			<xsd:element name="opplysningerOmTilretteleggingstiltak" type="felles:StringOpplysning" minOccurs="0"/>
+			<xsd:element name="begrunnelse" type="felles:StringOpplysning" minOccurs="0"/>
+			<xsd:element name="kopiertFraTidligereBehandling" type="felles:BooleanOpplysning"/>
+			<xsd:element name="virksomhet" type="felles:StringOpplysning" minOccurs="0"/>
+			<xsd:element name="arbeidsforholdid" type="felles:StringOpplysning" minOccurs="0"/>
+			<xsd:element name="erVirksomhet" type="felles:BooleanOpplysning"/>
+			<xsd:element name="mottattTidspunkt" type="felles:DateOpplysning" minOccurs="0">
+
+				<xsd:annotation>
+					<xsd:documentation xml:lang="no">Dokumentasjon mangler.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+		</xsd:sequence>
+	</xsd:complexType>
+
+
 	<xsd:element name="uttak" type="ut:UttakSvangerskapspenger"/>
 </xsd:schema>
