@@ -33,6 +33,11 @@ public class ArbeidsforholdInformasjon {
     public void setReferanser(List<ArbeidsforholdReferanseDto> referanser) {
         this.referanser = referanser;
     }
+    
+    public ArbeidsforholdInformasjon medReferanser(List<ArbeidsforholdReferanseDto> referanser) {
+        this.referanser = referanser;
+        return this;
+    }
 
     public List<ArbeidsforholdOverstyringDto> getOverstyringer() {
         return overstyringer;
@@ -41,4 +46,11 @@ public class ArbeidsforholdInformasjon {
     public void setOverstyringer(List<ArbeidsforholdOverstyringDto> overstyringer) {
         this.overstyringer = overstyringer;
     }
+    
+    public ArbeidsforholdInformasjon medOverstyringer(List<ArbeidsforholdOverstyringDto> overstyringer) {
+        this.overstyringer = overstyringer;
+        return this;
+    }
+    
+    
 }

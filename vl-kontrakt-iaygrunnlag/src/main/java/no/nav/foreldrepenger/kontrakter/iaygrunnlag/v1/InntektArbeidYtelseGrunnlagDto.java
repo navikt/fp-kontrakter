@@ -17,6 +17,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.PersonIdent;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.UuidDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.arbeidsforhold.v1.ArbeidsforholdInformasjon;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.inntektsmelding.v1.InntektsmeldingerDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.oppgittopptjening.v1.OppgittOpptjeningDto;
 
@@ -78,9 +79,9 @@ public class InntektArbeidYtelseGrunnlagDto {
     @Valid
     private OppgittOpptjeningDto oppgittOpptjening;
 
-    protected InntektArbeidYtelseGrunnlagDto() {
-        // default ctor
-    }
+    @JsonProperty(value = "arbeidsforholdInformasjon")
+    @Valid
+    private ArbeidsforholdInformasjon arbeidsforholdInformasjon;
 
     public InntektArbeidYtelseGrunnlagDto(PersonIdent person, LocalDateTime grunnlagTidspunkt, UuidDto grunnlagReferanse, UuidDto koblingReferanse) {
         Objects.requireNonNull(person, "person");
@@ -104,60 +105,8 @@ public class InntektArbeidYtelseGrunnlagDto {
         this.grunnlagTidspunkt = grunnlagTidspunkt;
     }
 
-    public String getGrunnlagReferanse() {
-        return grunnlagReferanse == null ? null : grunnlagReferanse.getReferanse();
-    }
-
-    public String getKoblingReferanse() {
-        return koblingReferanse == null ? null : koblingReferanse.getReferanse();
-    }
-
-    public InntektArbeidYtelseAggregatRegisterDto getRegister() {
-        return register;
-    }
-
-    public void setRegister(InntektArbeidYtelseAggregatRegisterDto register) {
-        this.register = register;
-    }
-
-    public InntektArbeidYtelseAggregatOverstyrtDto getOverstyrt() {
-        return overstyrt;
-    }
-
-    public void setOverstyrt(InntektArbeidYtelseAggregatOverstyrtDto overstyrt) {
-        Objects.requireNonNull(register, "Kan ikke sette overstyrt om register ikke er satt");
-        this.overstyrt = overstyrt;
-    }
-
-    public InntektsmeldingerDto getInntektsmeldinger() {
-        return inntektsmeldinger;
-    }
-
-    public PersonIdent getPerson() {
-        return person;
-    }
-
-    public OffsetDateTime getGrunnlagTidspunkt() {
-        return grunnlagTidspunkt;
-    }
-
-    public OppgittOpptjeningDto getOppgittOpptjening() {
-        return oppgittOpptjening;
-    }
-
-    public void setOppgittOpptjening(OppgittOpptjeningDto oppgittOpptjening) {
-        this.oppgittOpptjening = oppgittOpptjening;
-
-    }
-
-    public InntektArbeidYtelseGrunnlagDto medOverstyrt(InntektArbeidYtelseAggregatOverstyrtDto overstyrt) {
-        setOverstyrt(overstyrt);
-        return this;
-    }
-
-    public InntektArbeidYtelseGrunnlagDto medRegister(InntektArbeidYtelseAggregatRegisterDto register) {
-        setRegister(register);
-        return this;
+    protected InntektArbeidYtelseGrunnlagDto() {
+        // default ctor
     }
 
     @Override
@@ -173,9 +122,50 @@ public class InntektArbeidYtelseGrunnlagDto {
             && Objects.equals(overstyrt, other.overstyrt);
     }
 
+    public ArbeidsforholdInformasjon getArbeidsforholdInformasjon() {
+        return arbeidsforholdInformasjon;
+    }
+
+    public String getGrunnlagReferanse() {
+        return grunnlagReferanse == null ? null : grunnlagReferanse.getReferanse();
+    }
+
+    public OffsetDateTime getGrunnlagTidspunkt() {
+        return grunnlagTidspunkt;
+    }
+
+    public InntektsmeldingerDto getInntektsmeldinger() {
+        return inntektsmeldinger;
+    }
+    
+    public String getKoblingReferanse() {
+        return koblingReferanse == null ? null : koblingReferanse.getReferanse();
+    }
+
+    public OppgittOpptjeningDto getOppgittOpptjening() {
+        return oppgittOpptjening;
+    }
+
+    public InntektArbeidYtelseAggregatOverstyrtDto getOverstyrt() {
+        return overstyrt;
+    }
+
+    public PersonIdent getPerson() {
+        return person;
+    }
+
+    public InntektArbeidYtelseAggregatRegisterDto getRegister() {
+        return register;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(person, register, overstyrt);
+    }
+
+    public InntektArbeidYtelseGrunnlagDto medArbeidsforholdInformasjon(ArbeidsforholdInformasjon arbeidsforholdInformasjon) {
+        setArbeidsforholdInformasjon(arbeidsforholdInformasjon);
+        return this;
     }
 
     public InntektArbeidYtelseGrunnlagDto medInntektsmeldinger(InntektsmeldingerDto inntektsmeldinger) {
@@ -186,5 +176,33 @@ public class InntektArbeidYtelseGrunnlagDto {
     public InntektArbeidYtelseGrunnlagDto medOppgittOpptjening(OppgittOpptjeningDto oppgittOpptjening) {
         setOppgittOpptjening(oppgittOpptjening);
         return this;
+    }
+
+    public InntektArbeidYtelseGrunnlagDto medOverstyrt(InntektArbeidYtelseAggregatOverstyrtDto overstyrt) {
+        setOverstyrt(overstyrt);
+        return this;
+    }
+
+    public InntektArbeidYtelseGrunnlagDto medRegister(InntektArbeidYtelseAggregatRegisterDto register) {
+        setRegister(register);
+        return this;
+    }
+
+    public void setArbeidsforholdInformasjon(ArbeidsforholdInformasjon arbeidsforholdInformasjon) {
+        this.arbeidsforholdInformasjon = arbeidsforholdInformasjon;
+    }
+
+    public void setOppgittOpptjening(OppgittOpptjeningDto oppgittOpptjening) {
+        this.oppgittOpptjening = oppgittOpptjening;
+
+    }
+
+    public void setOverstyrt(InntektArbeidYtelseAggregatOverstyrtDto overstyrt) {
+        Objects.requireNonNull(register, "Kan ikke sette overstyrt om register ikke er satt");
+        this.overstyrt = overstyrt;
+    }
+
+    public void setRegister(InntektArbeidYtelseAggregatRegisterDto register) {
+        this.register = register;
     }
 }

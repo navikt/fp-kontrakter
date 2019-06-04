@@ -4,6 +4,7 @@ import java.util.Objects;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -16,6 +17,7 @@ public class SkatteOgAvgiftsregelType extends Kodeverk {
 
     @JsonProperty(value = "kode", required = true, index = 1)
     @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$")
+    @Size(min = 5, max = 100)
     @NotNull
     private String kode;
 

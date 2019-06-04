@@ -1,5 +1,7 @@
 package no.nav.foreldrepenger.kontrakter.iaygrunnlag;
 
+import java.util.Objects;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -57,6 +59,29 @@ public class ArbeidsforholdRefDto {
 
     public Fagsystem getEksternReferanseSystem() {
         return eksternReferanseSystem;
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "<abakusRef=" + getAbakusReferanse() + ", eksternRef=" + getEksternReferanse() +
+            " (" + getEksternReferanseSystem() + ")>";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this)
+            return true;
+        if (obj == null || obj.getClass() != this.getClass())
+            return false;
+        var other = getClass().cast(obj);
+        return Objects.equals(this.abakusReferanse, other.abakusReferanse)
+                && Objects.equals(this.eksternReferanse, other.eksternReferanse)
+                && Objects.equals(this.eksternReferanseSystem, other.eksternReferanseSystem);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(abakusReferanse, eksternReferanse, eksternReferanseSystem);
     }
 
 }
