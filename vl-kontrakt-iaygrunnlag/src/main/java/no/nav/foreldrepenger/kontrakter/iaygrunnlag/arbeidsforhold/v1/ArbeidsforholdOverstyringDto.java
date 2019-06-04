@@ -1,7 +1,9 @@
 package no.nav.foreldrepenger.kontrakter.iaygrunnlag.arbeidsforhold.v1;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 import javax.validation.constraints.DecimalMax;
@@ -24,41 +26,44 @@ import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.ArbeidsforholdHandl
 @JsonInclude(value = Include.NON_ABSENT, content = Include.NON_EMPTY)
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE, getterVisibility = JsonAutoDetect.Visibility.NONE, setterVisibility = JsonAutoDetect.Visibility.NONE, isGetterVisibility = JsonAutoDetect.Visibility.NONE, creatorVisibility = JsonAutoDetect.Visibility.NONE)
 public class ArbeidsforholdOverstyringDto {
-    
+
     @JsonProperty(value = "arbeidsgiver", required = true)
     @Valid
     @NotNull
     private Aktør arbeidsgiver;
-    
+
     @JsonProperty(value = "arbeidsforholdReferanse")
     @Valid
     @NotNull
     private ArbeidsforholdRefDto arbeidsforholdRef;
-    
+
     @JsonProperty(value = "nyArbeidsforholdReferanse")
     @Valid
     private ArbeidsforholdRefDto nyArbeidsforholdRef;
-    
-    @JsonProperty(value = "arbeidsforholdHandlingType")
+
+    @JsonProperty(value = "arbeidsforholdHandlingType", required = true)
     @Valid
     private ArbeidsforholdHandlingType handling;
-    
+
     @JsonProperty(value = "overstyringBegrunnelse")
     private String begrunnelse;
-    
-    @JsonProperty(value = "navn")
+
+    @JsonProperty(value = "arbeidsgiverNavn")
     @Pattern(regexp = "^[\\p{L}\\p{N}\\.\\- ]+$")
-    @NotNull
-    private String navn;
-    
+    private String arbeidsgiverNavn;
+
     @JsonProperty(value = "stillingsprosent")
-    @DecimalMin(value="0.00", message = "må være >= 0.00")
-    @DecimalMax(value="500.00", message="må være < 500.00") // TODO: mer sane verdier
+    @DecimalMin(value = "0.00", message = "må være >= 0.00")
+    @DecimalMax(value = "500.00", message = "må være < 500.00") // TODO: mer sane verdier
     private BigDecimal stillingsprosent;
-    
+
     @JsonProperty(value = "overstyrtePerioder")
     @Valid
     private List<Periode> arbeidsforholdOverstyrtePerioder;
+
+    @JsonProperty(value = "bekreftetPermisjon")
+    @Valid
+    private BekreftetPermisjon bekreftetPermisjon;
 
     protected ArbeidsforholdOverstyringDto() {
         // default ctor
@@ -76,10 +81,6 @@ public class ArbeidsforholdOverstyringDto {
 
     public ArbeidsforholdRefDto getArbeidsforholdRef() {
         return arbeidsforholdRef;
-    }
-
-    public void setArbeidsforholdRef(ArbeidsforholdRefDto arbeidsforholdRef) {
-        this.arbeidsforholdRef = arbeidsforholdRef;
     }
 
     public ArbeidsforholdRefDto getNyArbeidsforholdRef() {
@@ -106,12 +107,12 @@ public class ArbeidsforholdOverstyringDto {
         this.begrunnelse = begrunnelse;
     }
 
-    public String getNavn() {
-        return navn;
+    public String getAngittArbeidsgiverNavn() {
+        return arbeidsgiverNavn;
     }
 
     public void setNavn(String navn) {
-        this.navn = navn;
+        this.arbeidsgiverNavn = navn;
     }
 
     public BigDecimal getStillingsprosent() {
@@ -129,4 +130,57 @@ public class ArbeidsforholdOverstyringDto {
     public void setArbeidsforholdOverstyrtePerioder(List<Periode> arbeidsforholdOverstyrtePerioder) {
         this.arbeidsforholdOverstyrtePerioder = arbeidsforholdOverstyrtePerioder;
     }
+
+    public ArbeidsforholdOverstyringDto medArbeidsforholdOverstyrtePerioder(List<Periode> arbeidsforholdOverstyrtePerioder) {
+        setArbeidsforholdOverstyrtePerioder(arbeidsforholdOverstyrtePerioder);
+        return this;
+    }
+
+    public ArbeidsforholdOverstyringDto medBegrunnelse(String begrunnelse) {
+        setBegrunnelse(begrunnelse);
+        return this;
+    }
+
+    public ArbeidsforholdOverstyringDto medHandling(ArbeidsforholdHandlingType handling) {
+        setHandling(handling);
+        return this;
+    }
+
+    public ArbeidsforholdOverstyringDto medNavn(String navn) {
+        setNavn(navn);
+        return this;
+    }
+
+    public ArbeidsforholdOverstyringDto medNyArbeidsforholdRef(ArbeidsforholdRefDto nyArbeidsforholdRef) {
+        setNyArbeidsforholdRef(nyArbeidsforholdRef);
+        return this;
+    }
+
+    public ArbeidsforholdOverstyringDto medStillingsprosent(BigDecimal stillingsprosent) {
+        setStillingsprosent(stillingsprosent);
+        return this;
+    }
+
+    public ArbeidsforholdOverstyringDto medStillingsprosent(int stillingsprosent) {
+        setStillingsprosent(BigDecimal.valueOf(stillingsprosent));
+        return this;
+    }
+
+    public ArbeidsforholdOverstyringDto medBekreftetPermisjon(BekreftetPermisjon bekreftetPermisjon) {
+        this.bekreftetPermisjon = bekreftetPermisjon;
+        return this;
+    }
+
+    public ArbeidsforholdOverstyringDto medBekreftetPermisjon(LocalDate fom, LocalDate tom, boolean skalBrukes) {
+        if (fom == null && tom==null) {
+            return this;
+        } else {
+            return medBekreftetPermisjon(new BekreftetPermisjon(new Periode(fom, tom), skalBrukes));
+        }
+    }
+
+    public Optional<BekreftetPermisjon> getBekreftetPermisjon() {
+        return Optional.ofNullable(bekreftetPermisjon);
+    }
+
 }

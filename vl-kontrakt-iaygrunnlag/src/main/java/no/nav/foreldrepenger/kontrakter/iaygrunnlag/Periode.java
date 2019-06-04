@@ -1,6 +1,7 @@
 package no.nav.foreldrepenger.kontrakter.iaygrunnlag;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 import javax.validation.constraints.NotNull;
 
@@ -18,16 +19,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE, getterVisibility = JsonAutoDetect.Visibility.NONE, setterVisibility = JsonAutoDetect.Visibility.NONE, isGetterVisibility = JsonAutoDetect.Visibility.NONE, creatorVisibility = JsonAutoDetect.Visibility.NONE)
 public class Periode {
 
-    @JsonProperty(value="fom")
+    @JsonProperty(value = "fom")
     @NotNull
     private LocalDate fom;
-    
-    @JsonProperty(value="tom")
+
+    @JsonProperty(value = "tom")
     @NotNull
     private LocalDate tom;
 
     @JsonCreator
-    public Periode(@JsonProperty(value="fom") LocalDate fom, @JsonProperty(value="tom") LocalDate tom) {
+    public Periode(@JsonProperty(value = "fom") LocalDate fom, @JsonProperty(value = "tom") LocalDate tom) {
         if (fom == null && tom == null) {
             throw new IllegalArgumentException("Både fom og tom er null");
         } else if (fom != null && tom != null) {
@@ -45,6 +46,27 @@ public class Periode {
 
     public LocalDate getTom() {
         return tom;
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "<" + getFom() + ", " + getTom() + ">";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this)
+            return true;
+        if (obj == null || obj.getClass() != this.getClass())
+            return false;
+        var other = getClass().cast(obj);
+        return Objects.equals(this.getFom(), other.getFom())
+            && Objects.equals(this.getTom(), other.getTom());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getFom(), getTom());
     }
 
 }

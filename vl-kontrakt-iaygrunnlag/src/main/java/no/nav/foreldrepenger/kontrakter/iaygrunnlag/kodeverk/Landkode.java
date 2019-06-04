@@ -4,15 +4,15 @@ import java.util.Objects;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-
 public class Landkode extends Kodeverk {
 
     static final String KODEVERK = "LANDKODER";
-    
+
     /** Eksempel konstant. Norge. */
     public static final Landkode NORGE = new Landkode("NOR");
     public static final Landkode SVERIGE = new Landkode("SWE");
@@ -21,6 +21,7 @@ public class Landkode extends Kodeverk {
     /** ISO 3-letter country codes. */
     @JsonProperty(value = "kode", required = true, index = 1)
     @Pattern(regexp = "^[A-Z]{3}$")
+    @Size(min = 3, max = 3)
     @NotNull
     private String kode;
 

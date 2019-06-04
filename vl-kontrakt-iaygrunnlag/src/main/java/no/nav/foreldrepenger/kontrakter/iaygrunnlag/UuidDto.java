@@ -41,9 +41,30 @@ public class UuidDto {
     public String getReferanse() {
         return uuid;
     }
-    
+
     public UUID toUuidReferanse() {
         return UUID.fromString(uuid);
+    }
+
+    @Override
+    public String toString() {
+        return uuid;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this)
+            return true;
+        if (obj == null || obj.getClass() != this.getClass())
+            return false;
+        var other = getClass().cast(obj);
+        
+        return Objects.equals(this.uuid, other.uuid);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(uuid);
     }
 
 }

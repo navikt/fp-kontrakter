@@ -31,5 +31,23 @@ public class JournalpostId {
     public String getId() {
         return journalpostId;
     }
+    
+    @Override
+    public String toString() {
+        return journalpostId;
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if(obj==this)return true;
+        if(obj==null || obj.getClass() != this.getClass()) return false;
+        var other = getClass().cast(obj);
+        return Objects.equals(this.journalpostId, other.journalpostId);
+    }
+    
+    @Override
+    public int hashCode() {
+        return Objects.hash(journalpostId);
+    }
 
 }

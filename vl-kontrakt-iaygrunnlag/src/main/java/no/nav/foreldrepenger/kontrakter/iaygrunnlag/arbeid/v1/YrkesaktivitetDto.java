@@ -15,7 +15,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.Aktør;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.ArbeidsforholdRefDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.Periode;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.ArbeidType;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -35,10 +34,6 @@ public class YrkesaktivitetDto {
     @Valid
     @NotNull
     private ArbeidType arbeidType;
-
-    @JsonProperty("ansettelsesPerioder")
-    @Valid
-    private List<Periode> ansettelsesPerioder;
 
     @JsonProperty("aktivitetsAvtaler")
     @Valid
@@ -70,10 +65,9 @@ public class YrkesaktivitetDto {
         this.arbeidType = new ArbeidType(arbeidType);
     }
 
-    @AssertTrue(message = "Må ha minst en av ansettelsesPerioder, aktivitetsAvtaler eller permisjoner")
+    @AssertTrue(message = "Må ha minst en av aktivitetsAvtaler eller permisjoner")
     private boolean isOk() {
-        boolean ok = (ansettelsesPerioder != null && !ansettelsesPerioder.isEmpty())
-                || (aktivitetsAvtaler != null && !aktivitetsAvtaler.isEmpty())
+        boolean ok = (aktivitetsAvtaler != null && !aktivitetsAvtaler.isEmpty())
                 || (permisjoner != null && !permisjoner.isEmpty());
         return ok;
     }
@@ -97,19 +91,6 @@ public class YrkesaktivitetDto {
 
     public ArbeidType getType() {
         return arbeidType;
-    }
-
-    public List<Periode> getAnsettelsesperiode() {
-        return ansettelsesPerioder;
-    }
-
-    public void setAnsettelsesperiode(List<Periode> ansettelsesperiode) {
-        this.ansettelsesPerioder = ansettelsesperiode;
-    }
-
-    public YrkesaktivitetDto medAnsettelsesperiode(List<Periode> ansettelsesperiode) {
-        this.ansettelsesPerioder = ansettelsesperiode;
-        return this;
     }
 
     public List<AktivitetsAvtaleDto> getAktivitetsAvtaler() {

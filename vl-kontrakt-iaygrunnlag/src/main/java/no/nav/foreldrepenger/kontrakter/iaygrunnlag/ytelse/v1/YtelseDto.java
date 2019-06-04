@@ -1,10 +1,12 @@
 package no.nav.foreldrepenger.kontrakter.iaygrunnlag.ytelse.v1;
 
 import java.util.List;
+import java.util.Objects;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -49,7 +51,6 @@ public class YtelseDto {
     @Valid
     private TemaUnderkategori temaUnderkategori;
 
-
     @JsonProperty(value = "anvisninger")
     @Valid
     private List<AnvisningDto> anvisninger;
@@ -58,11 +59,18 @@ public class YtelseDto {
     @Valid
     private YtelseGrunnlagDto grunnlag;
 
-    protected YtelseDto() {
-    }
-
-    public YtelseDto(Fagsystem fagsystemDto, YtelseType ytelseType, Periode periode, YtelseStatus status, String saksnummer) {
-        this.fagsystem = fagsystemDto;
+    @JsonCreator
+    public YtelseDto(@JsonProperty(value = "fagsystem", required = true) @Valid @NotNull Fagsystem fagsystem,
+                     @JsonProperty(value = "ytelseType", required = true) @Valid @NotNull YtelseType ytelseType,
+                     @JsonProperty(value = "periode", required = true) @Valid @NotNull Periode periode,
+                     @JsonProperty(value = "status", required = true) @Valid @NotNull YtelseStatus status,
+                     @JsonProperty(value = "saksnummer", required = true) @Valid @NotNull String saksnummer) {
+        Objects.requireNonNull(fagsystem, "fagsystem");
+        Objects.requireNonNull(ytelseType, "ytelseType");
+        Objects.requireNonNull(periode, "periode");
+        Objects.requireNonNull(status, "status");
+        Objects.requireNonNull(saksnummer, "saksnummer");
+        this.fagsystem = fagsystem;
         this.ytelseType = ytelseType;
         this.periode = periode;
         this.status = status;

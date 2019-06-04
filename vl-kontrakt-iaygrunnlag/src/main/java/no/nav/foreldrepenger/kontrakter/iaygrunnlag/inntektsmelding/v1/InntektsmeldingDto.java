@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.time.ZoneId;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -124,11 +125,11 @@ public class InntektsmeldingDto {
     }
 
     public List<RefusjonDto> getEndringerRefusjon() {
-        return refusjonEndringer;
+        return refusjonEndringer == null ? Collections.emptyList() : List.copyOf(refusjonEndringer);
     }
 
     public List<GraderingDto> getGraderinger() {
-        return graderinger;
+        return graderinger == null ? Collections.emptyList() : List.copyOf(graderinger);
     }
 
     public OffsetDateTime getInnsendingstidspunkt() {
@@ -158,9 +159,9 @@ public class InntektsmeldingDto {
     public LocalDate getMottattDato() {
         return mottattDato;
     }
-    
+
     public List<NaturalytelseDto> getNaturalytelser() {
-        return naturalytelser;
+        return naturalytelser == null ? Collections.emptyList(): List.copyOf(naturalytelser);
     }
 
     public LocalDate getRefusjonOpphører() {
@@ -176,7 +177,7 @@ public class InntektsmeldingDto {
     }
 
     public List<UtsettelsePeriodeDto> getUtsettelsePerioder() {
-        return utsettelsePerioder;
+        return utsettelsePerioder == null ? Collections.emptyList() : List.copyOf(utsettelsePerioder);
     }
 
     public Boolean isNærRelasjon() {

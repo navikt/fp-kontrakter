@@ -4,6 +4,7 @@ import java.util.Objects;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,8 +23,10 @@ public class YtelseStatus extends Kodeverk {
     /** Eksempel konstant - Avsluttet ytelse. */
     public static final YtelseStatus AVSLUTTET = new YtelseStatus("AVSLU");
 
+    /** Status koder. Tolererer ikke unicode her (sikrer at ingen overfører gamle koder på grensesnittet). */
     @JsonProperty(value = "kode", required = true, index = 1)
-    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$")
+    @Pattern(regexp = "^[A-Z0-9\\.\\-]+$")
+    @Size(min=3, max=5)
     @NotNull
     private String kode;
 

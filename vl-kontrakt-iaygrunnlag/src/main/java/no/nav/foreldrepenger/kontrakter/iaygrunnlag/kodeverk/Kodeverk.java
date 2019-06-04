@@ -1,5 +1,7 @@
 package no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk;
 
+import java.util.Objects;
+
 import javax.validation.constraints.AssertTrue;
 
 import com.fasterxml.jackson.annotation.JacksonInject;
@@ -58,5 +60,23 @@ public abstract class Kodeverk {
     @AssertTrue
     private boolean isOk() {
         return kodeValidator.valider(getKodeverk(), getKode()) == null;
+    }
+    @Override
+    public String toString() {
+        return getKodeverk() +"<"+ getKode() + ">";
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if(obj==this)return true;
+        if(obj==null || obj.getClass() != this.getClass()) return false;
+        var other = getClass().cast(obj);
+        return Objects.equals(this.getKode(), other.getKode())
+                && Objects.equals(this.getKodeverk(), other.getKodeverk());
+    }
+    
+    @Override
+    public int hashCode() {
+        return Objects.hash(getKode(), getKodeverk());
     }
 }
