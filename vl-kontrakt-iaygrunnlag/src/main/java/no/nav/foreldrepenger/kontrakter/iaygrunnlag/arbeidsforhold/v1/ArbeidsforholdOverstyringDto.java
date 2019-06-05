@@ -21,6 +21,7 @@ import no.nav.foreldrepenger.kontrakter.iaygrunnlag.Aktør;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.ArbeidsforholdRefDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.Periode;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.ArbeidsforholdHandlingType;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.BekreftetPermisjonStatus;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = Include.NON_ABSENT, content = Include.NON_EMPTY)
@@ -171,11 +172,11 @@ public class ArbeidsforholdOverstyringDto {
         return this;
     }
 
-    public ArbeidsforholdOverstyringDto medBekreftetPermisjon(LocalDate fom, LocalDate tom, boolean skalBrukes) {
+    public ArbeidsforholdOverstyringDto medBekreftetPermisjon(LocalDate fom, LocalDate tom, BekreftetPermisjonStatus status) {
         if (fom == null && tom==null) {
             return this;
         } else {
-            return medBekreftetPermisjon(new BekreftetPermisjon(new Periode(fom, tom), skalBrukes));
+            return medBekreftetPermisjon(new BekreftetPermisjon(new Periode(fom, tom), status));
         }
     }
 

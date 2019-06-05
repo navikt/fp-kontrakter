@@ -41,6 +41,7 @@ import no.nav.foreldrepenger.kontrakter.iaygrunnlag.inntektsmelding.v1.Utsettels
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.ArbeidType;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.ArbeidsforholdHandlingType;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.Arbeidskategori;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.BekreftetPermisjonStatus;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.Fagsystem;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.InntektPeriodeType;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.InntektsmeldingInnsendingsårsakType;
@@ -175,7 +176,9 @@ public class IayGrunnlagTest {
                 .medBegrunnelse("en begrunnelse")
                 .medHandling(ArbeidsforholdHandlingType.BRUK_UTEN_INNTEKTSMELDING)
                 .medNavn("Mitt arbeisforhold")
-                .medStillingsprosent(100))));
+                .medStillingsprosent(100)
+                .medBekreftetPermisjon(fom, tom, BekreftetPermisjonStatus.BRUK_PERMISJON)
+                )));
 
         grunnlag.medOverstyrt(
             new InntektArbeidYtelseAggregatOverstyrtDto(tidspunkt, uuid)
