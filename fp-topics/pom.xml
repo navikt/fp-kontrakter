@@ -22,6 +22,7 @@
         <module>hendelser-historikk-innslag</module>
 		<module>manifest</module>
         <module>hendelser-dokumentbestilling</module>
+        <module>hendelser-kontroll-resultat</module>
     </modules>
 
 	<dependencyManagement>

@@ -22,6 +22,10 @@ public final class TopicManifest {
      * Publiserer hendelser ved opprettelse av historikk innslag
      */
     public static final Topic HISTORIKK_HENDELSE = new Topic("privat-foreldrepenger-historikkinnslag", Serdes.String(), Serdes.String());
+    /**
+     * Publiserer kontrollresultat av en behandling
+     */
+    public static final Topic KONTROLL_RESULTAT = new Topic("privat-foreldrepenger-kontroll-resultat", Serdes.String(), Serdes.String());
 
     private TopicManifest() {
     }
