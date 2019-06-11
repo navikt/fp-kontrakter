@@ -150,7 +150,8 @@ public class IayGrunnlagTest {
                             new UtbetalingDto(org)
                                 .medKilde("ARBEID")
                                 .medPoster(List.of(
-                                    new UtbetalingsPostDto(utbetaltYtelse, periode, new InntektspostType("LØNN"))
+                                    new UtbetalingsPostDto(periode, new InntektspostType("LØNN"))
+                                        .medUtbetaltYtelseType(utbetaltYtelse)
                                         .medBeløp(100)
                                         .medSkattAvgiftType(SkatteOgAvgiftsregelType.NETTOLØNN)))))))
                 .medYtelse(List.of(
