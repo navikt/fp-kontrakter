@@ -54,7 +54,6 @@ public class UtbetalingsPostDto {
     }
 
     public UtbetalingsPostDto(UtbetaltYtelseType ytelseType, Periode periode, InntektspostType inntektspostType) {
-        Objects.requireNonNull(ytelseType, "ytelseType");
         Objects.requireNonNull(periode, "periode");
         Objects.requireNonNull(inntektspostType, "inntektspostType");
         this.ytelseType = ytelseType;
@@ -73,7 +72,16 @@ public class UtbetalingsPostDto {
     public void setSkattAvgiftType(SkatteOgAvgiftsregelType skattAvgiftType) {
         this.skattAvgiftType = skattAvgiftType;
     }
+    
+    public void setUtbetaltYtelseType(UtbetaltYtelseType ytelseType) {
+        this.ytelseType = ytelseType;
+    }
 
+    public UtbetalingsPostDto medUtbetaltYtelseType(UtbetaltYtelseType ytelseType) {
+        setUtbetaltYtelseType(ytelseType);
+        return this;
+    }
+    
     public UtbetalingsPostDto medSkattAvgiftType(SkatteOgAvgiftsregelType skattAvgiftType) {
         setSkattAvgiftType(skattAvgiftType);
         return this;
