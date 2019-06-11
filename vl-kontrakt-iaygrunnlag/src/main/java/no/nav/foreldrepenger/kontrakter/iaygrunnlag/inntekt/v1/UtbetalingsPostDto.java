@@ -45,18 +45,16 @@ public class UtbetalingsPostDto {
     @DecimalMax(value = "1000000.00", message = "beløp må være < 1000000.00")
     private BigDecimal beløp;
 
-    @JsonProperty(value = "ytelseType", required = true)
+    @JsonProperty(value = "ytelseType")
     @Valid
-    @NotNull
     private UtbetaltYtelseType ytelseType;
 
     protected UtbetalingsPostDto() {
     }
 
-    public UtbetalingsPostDto(UtbetaltYtelseType ytelseType, Periode periode, InntektspostType inntektspostType) {
+    public UtbetalingsPostDto(Periode periode, InntektspostType inntektspostType) {
         Objects.requireNonNull(periode, "periode");
         Objects.requireNonNull(inntektspostType, "inntektspostType");
-        this.ytelseType = ytelseType;
         this.periode = periode;
         this.inntektspostType = inntektspostType;
     }
