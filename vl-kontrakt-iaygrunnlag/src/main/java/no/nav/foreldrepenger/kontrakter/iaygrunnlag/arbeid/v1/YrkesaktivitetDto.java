@@ -2,6 +2,7 @@ package no.nav.foreldrepenger.kontrakter.iaygrunnlag.arbeid.v1;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 import javax.validation.Valid;
 import javax.validation.constraints.AssertTrue;
@@ -51,18 +52,12 @@ public class YrkesaktivitetDto {
         // default ctor
     }
 
-    public YrkesaktivitetDto(Aktør arbeidsgiver, ArbeidType arbeidType) {
-        Objects.requireNonNull(arbeidsgiver, "arbeidsgiver");
-        Objects.requireNonNull(arbeidType, "arbeidType");
-        this.arbeidsgiver = arbeidsgiver;
-        this.arbeidType = arbeidType;
+    public YrkesaktivitetDto(ArbeidType arbeidType) {
+        this.arbeidType = Objects.requireNonNull(arbeidType, "arbeidType");
     }
 
-    public YrkesaktivitetDto(Aktør arbeidsgiver, String arbeidType) {
-        Objects.requireNonNull(arbeidsgiver, "arbeidsgiver");
-        Objects.requireNonNull(arbeidType, "arbeidType");
-        this.arbeidsgiver = arbeidsgiver;
-        this.arbeidType = new ArbeidType(arbeidType);
+    public YrkesaktivitetDto(String arbeidType) {
+        this(new ArbeidType(Objects.requireNonNull(arbeidType, "arbeidType")));
     }
 
     @AssertTrue(message = "Må ha minst en av aktivitetsAvtaler eller permisjoner")
@@ -72,8 +67,8 @@ public class YrkesaktivitetDto {
         return ok;
     }
 
-    public Aktør getArbeidsgiver() {
-        return arbeidsgiver;
+    public Optional<Aktør> getArbeidsgiver() {
+        return Optional.ofNullable(arbeidsgiver);
     }
 
     public ArbeidsforholdRefDto getArbeidsforholdId() {
@@ -125,6 +120,11 @@ public class YrkesaktivitetDto {
 
     public YrkesaktivitetDto medNavnArbeidsgiverUtland(String navnArbeidsgiverUtland) {
         this.navnArbeidsgiverUtland = navnArbeidsgiverUtland;
+        return this;
+    }
+
+    public YrkesaktivitetDto medArbeidsgiver(Aktør arbeidsgiver) {
+        this.arbeidsgiver = arbeidsgiver;
         return this;
     }
 }

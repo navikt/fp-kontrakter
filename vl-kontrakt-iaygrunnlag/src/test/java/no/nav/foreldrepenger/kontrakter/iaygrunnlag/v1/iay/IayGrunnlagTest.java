@@ -134,7 +134,8 @@ public class IayGrunnlagTest {
                 .medArbeid(List.of(
                     new ArbeidDto(fnr)
                         .medYrkesaktiviteter(List.of(
-                            new YrkesaktivitetDto(org, arbeidType)
+                            new YrkesaktivitetDto(arbeidType)
+                                .medArbeidsgiver(org)
                                 .medPermisjoner(List.of(new PermisjonDto(periode, PermisjonsbeskrivelseType.PERMISJON).medProsentsats(50)))
                                 .medArbeidsforholdId(arbeidsforholdId)
                                 .medNavnArbeidsgiverUtland("UtenlandskArbeidsgiverAS")
@@ -155,7 +156,8 @@ public class IayGrunnlagTest {
                 .medYtelse(List.of(
                     new YtelserDto(fnr)
                         .medYtelser(List.of(
-                            new YtelseDto(Fagsystem.FPSAK, ytelseType, periode, YtelseStatus.LØPENDE, "1234")
+                            new YtelseDto(Fagsystem.FPSAK, ytelseType, periode, YtelseStatus.LØPENDE)
+                                .medSaksnummer("1234")
                                 .medTemaUnderkategori(TemaUnderkategori.FORELDREPENGER_FODSEL)
                                 .medGrunnlag(
                                     new YtelseGrunnlagDto()
@@ -177,15 +179,15 @@ public class IayGrunnlagTest {
                 .medHandling(ArbeidsforholdHandlingType.BRUK_UTEN_INNTEKTSMELDING)
                 .medNavn("Mitt arbeisforhold")
                 .medStillingsprosent(100)
-                .medBekreftetPermisjon(fom, tom, BekreftetPermisjonStatus.BRUK_PERMISJON)
-                )));
+                .medBekreftetPermisjon(fom, tom, BekreftetPermisjonStatus.BRUK_PERMISJON))));
 
         grunnlag.medOverstyrt(
             new InntektArbeidYtelseAggregatOverstyrtDto(tidspunkt, uuid)
                 .medArbeid(List.of(
                     new ArbeidDto(fnr)
                         .medYrkesaktiviteter(List.of(
-                            new YrkesaktivitetDto(org, arbeidType)
+                            new YrkesaktivitetDto(arbeidType)
+                                .medArbeidsgiver(org)
                                 .medPermisjoner(List.of(new PermisjonDto(periode, PermisjonsbeskrivelseType.PERMISJON).medProsentsats(50)))
                                 .medArbeidsforholdId(new ArbeidsforholdRefDto(UUID.randomUUID().toString(), "ekstern"))
                                 .medAktivitetsAvtaler(List.of(

@@ -5,6 +5,7 @@ import java.util.Objects;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -32,10 +33,6 @@ public class YtelseDto {
     @NotNull
     private YtelseType ytelseType;
 
-    @JsonProperty(value = "saksnummer", required = true)
-    @Valid
-    @NotNull
-    private String saksnummer;
 
     @JsonProperty(value = "periode", required = true)
     @Valid
@@ -46,6 +43,11 @@ public class YtelseDto {
     @Valid
     @NotNull
     private YtelseStatus status;
+    
+    @JsonProperty(value = "saksnummer")
+    @Valid
+    @Pattern(regexp = "^[A-Za-z0-9_\\.\\-]+$")
+    private String saksnummer;
 
     @JsonProperty(value = "temaUnderkategori")
     @Valid
@@ -63,18 +65,15 @@ public class YtelseDto {
     public YtelseDto(@JsonProperty(value = "fagsystem", required = true) @Valid @NotNull Fagsystem fagsystem,
                      @JsonProperty(value = "ytelseType", required = true) @Valid @NotNull YtelseType ytelseType,
                      @JsonProperty(value = "periode", required = true) @Valid @NotNull Periode periode,
-                     @JsonProperty(value = "status", required = true) @Valid @NotNull YtelseStatus status,
-                     @JsonProperty(value = "saksnummer", required = true) @Valid @NotNull String saksnummer) {
+                     @JsonProperty(value = "status", required = true) @Valid @NotNull YtelseStatus status) {
         Objects.requireNonNull(fagsystem, "fagsystem");
         Objects.requireNonNull(ytelseType, "ytelseType");
         Objects.requireNonNull(periode, "periode");
         Objects.requireNonNull(status, "status");
-        Objects.requireNonNull(saksnummer, "saksnummer");
         this.fagsystem = fagsystem;
         this.ytelseType = ytelseType;
         this.periode = periode;
         this.status = status;
-        this.saksnummer = saksnummer;
     }
 
     public List<AnvisningDto> getAnvisninger() {
@@ -94,6 +93,10 @@ public class YtelseDto {
         return grunnlag;
     }
 
+    public void setSaksnummer(String saksnummer) {
+        this.saksnummer = saksnummer;
+    }
+    
     public void setGrunnlag(YtelseGrunnlagDto grunnlag) {
         this.grunnlag = grunnlag;
     }
@@ -129,6 +132,11 @@ public class YtelseDto {
 
     public YtelseDto medTemaUnderkategori(TemaUnderkategori temaUnderkategori) {
         this.temaUnderkategori = temaUnderkategori;
+        return this;
+    }
+    
+    public YtelseDto medSaksnummer(String saksnummer) {
+        setSaksnummer(saksnummer);
         return this;
     }
 }
