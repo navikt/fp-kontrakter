@@ -30,14 +30,14 @@ public class UtbetalingsPostDto {
     @NotNull
     private InntektspostType inntektspostType;
 
-    @JsonProperty("skattAvgiftType")
-    @Valid
-    private SkatteOgAvgiftsregelType skattAvgiftType;
-
     @JsonProperty(value = "periode", required = true)
     @NotNull
     @Valid
     private Periode periode;
+    
+    @JsonProperty("skattAvgiftType")
+    @Valid
+    private SkatteOgAvgiftsregelType skattAvgiftType;
 
     @JsonProperty("beløp")
     @Valid
@@ -45,6 +45,7 @@ public class UtbetalingsPostDto {
     @DecimalMax(value = "1000000.00", message = "beløp må være < 1000000.00")
     private BigDecimal beløp;
 
+    /** Satt dersom dette gjelder en ytelse, ellers ikke (henger sammen med {@link UtbetalingDto#getKilde()}) */
     @JsonProperty(value = "ytelseType")
     @Valid
     private UtbetaltYtelseType ytelseType;
@@ -114,6 +115,25 @@ public class UtbetalingsPostDto {
 
     public UtbetaltYtelseType getYtelseType() {
         return ytelseType;
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this)
+            return true;
+        if (obj == null || obj.getClass() != this.getClass())
+            return false;
+        var other = this.getClass().cast(obj);
+
+        return Objects.equals(inntektspostType, other.inntektspostType)
+            && Objects.equals(periode, other.periode)
+            && Objects.equals(ytelseType, other.ytelseType)
+            ;
+    }
+    
+    @Override
+    public int hashCode() {
+        return Objects.hash(inntektspostType, periode, ytelseType);
     }
 
 }

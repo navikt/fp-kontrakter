@@ -19,6 +19,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.Organisasjon;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.Periode;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.Landkode;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.VirksomhetType;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -244,8 +245,14 @@ public class OppgittEgenNæringDto {
         return oppgittUtenlandskVirksomhet;
     }
 
-    public void setOppgittUtenlandskVirksomhet(OppgittUtenlandskVirksomhetDto oppgittUtenlandskVirksomhet) {
-        this.oppgittUtenlandskVirksomhet = oppgittUtenlandskVirksomhet;
+    public void setOppgittUtenlandskVirksomhet(OppgittUtenlandskVirksomhetDto dto) {
+        if (dto == null
+            || (/* ignorer datakvalitet tull */ Landkode.NORGE.equals(dto.getLandkode()) && dto.getVirksomhetNavn() == null)) {
+            // skip
+            this.oppgittUtenlandskVirksomhet = null;
+        } else {
+            this.oppgittUtenlandskVirksomhet = dto;
+        }
     }
 
     public OppgittEgenNæringDto medOppgittUtenlandskVirksomhet(OppgittUtenlandskVirksomhetDto oppgittUtenlandskVirksomhet) {

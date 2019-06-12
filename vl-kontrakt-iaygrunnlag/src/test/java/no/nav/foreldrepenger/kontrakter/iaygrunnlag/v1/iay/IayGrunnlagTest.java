@@ -147,8 +147,8 @@ public class IayGrunnlagTest {
                 .medInntekt(List.of(
                     new InntekterDto(fnr)
                         .medUtbetalinger(List.of(
-                            new UtbetalingDto(org)
-                                .medKilde("ARBEID")
+                            new UtbetalingDto("ARBEID")
+                                .medArbeidsgiver(org)
                                 .medPoster(List.of(
                                     new UtbetalingsPostDto(periode, new InntektspostType("LØNN"))
                                         .medUtbetaltYtelseType(utbetaltYtelse)
