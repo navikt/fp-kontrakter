@@ -1,6 +1,7 @@
 package no.nav.foreldrepenger.kontrakter.iaygrunnlag.inntekt.v1;
 
 import java.util.List;
+import java.util.Objects;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -19,8 +20,8 @@ import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.InntektskildeType;
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE, getterVisibility = JsonAutoDetect.Visibility.NONE, setterVisibility = JsonAutoDetect.Visibility.NONE, isGetterVisibility = JsonAutoDetect.Visibility.NONE, creatorVisibility = JsonAutoDetect.Visibility.NONE)
 public class UtbetalingDto {
 
-    @JsonProperty(value = "arbeidsgiver", required = true)
-    @NotNull
+    /** Arbeidsgiver for utbetaling. Kan være null . */
+    @JsonProperty(value = "arbeidsgiver")
     @Valid
     private Aktør arbeidsgiver;
 
@@ -38,8 +39,12 @@ public class UtbetalingDto {
         // default ctor
     }
 
-    public UtbetalingDto(Aktør arbeidsgiver) {
-        this.arbeidsgiver = arbeidsgiver;
+    public UtbetalingDto(InntektskildeType kilde) {
+        this.kilde = Objects.requireNonNull(kilde, "kilde");
+    }
+
+    public UtbetalingDto(String kilde) {
+        this(new InntektskildeType(Objects.requireNonNull(kilde, "kilde")));
     }
 
     public Aktør getUtbetaler() {
@@ -48,20 +53,6 @@ public class UtbetalingDto {
 
     public InntektskildeType getKilde() {
         return kilde;
-    }
-
-    public void setKilde(InntektskildeType kilde) {
-        this.kilde = kilde;
-    }
-
-    public UtbetalingDto medKilde(InntektskildeType kilde) {
-        setKilde(kilde);
-        return this;
-    }
-    
-    public UtbetalingDto medKilde(String inntektsKilde) {
-        setKilde(new InntektskildeType(inntektsKilde));
-        return this;
     }
 
     public List<UtbetalingsPostDto> getPoster() {
@@ -75,5 +66,31 @@ public class UtbetalingDto {
     public UtbetalingDto medPoster(List<UtbetalingsPostDto> poster) {
         setPoster(poster);
         return this;
+    }
+
+    public void setArbeidsgiver(Aktør arbeidsgiver) {
+        this.arbeidsgiver = arbeidsgiver;
+    }
+
+    public UtbetalingDto medArbeidsgiver(Aktør arbeidgiver) {
+        setArbeidsgiver(arbeidgiver);
+        return this;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this)
+            return true;
+        if (obj == null || obj.getClass() != this.getClass())
+            return false;
+        var other = this.getClass().cast(obj);
+
+        return Objects.equals(this.kilde, other.kilde)
+            && Objects.equals(arbeidsgiver, other.arbeidsgiver);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(kilde, arbeidsgiver);
     }
 }
