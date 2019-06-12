@@ -23,10 +23,18 @@ import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.YtelseType;
 public class InnhentRegisterdataRequest {
 
     private static final String URL_PATTERN = "/^(?:(?:https?):\\/\\/)(?:\\S+(?::\\S*)?@)?(?:(?!(?:10|127)(?:\\." +
-        "\\d{1,3}){3})(?!(?:169\\.254|192\\.168)(?:\\.\\d{1,3}){2})(?!172\\.(?:1[6-9]|2\\d|3[0-1])(?:\\.\\d{1,3}){2})" +
-        "(?:[1-9]\\d?|1\\d\\d|2[01]\\d|22[0-3])(?:\\.(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}(?:\\.(?:[1-9]\\d?|1\\d\\d" +
-        "|2[0-4]\\d|25[0-4]))|(?:(?:[a-z\\u00a1-\\uffff0-9]-*)*[a-z\\u00a1-\\uffff0-9]+)(?:\\.(?:" +
-        "[a-z\\u00a1-\\uffff0-9]-*)*[a-z\\u00a1-\\uffff0-9]+)*(?:\\.(?:[a-z\\u00a1-\\uffff]{2,}))\\.?)(?::\\d{2,5})?(?:[/?#]\\S*)?$/i\n";
+            "\\d{1,3}){3})(?!(?:169\\.254|192\\.168)(?:\\.\\d{1,3}){2})(?!172\\.(?:1[6-9]|2\\d|3[0-1])(?:\\.\\d{1,3}){2})" +
+            "(?:[1-9]\\d?|1\\d\\d|2[01]\\d|22[0-3])(?:\\.(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}(?:\\.(?:[1-9]\\d?|1\\d\\d" +
+            "|2[0-4]\\d|25[0-4]))|(?:(?:[a-z\\u00a1-\\uffff0-9]-*)*[a-z\\u00a1-\\uffff0-9]+)(?:\\.(?:" +
+            "[a-z\\u00a1-\\uffff0-9]-*)*[a-z\\u00a1-\\uffff0-9]+)*(?:\\.(?:[a-z\\u00a1-\\uffff]{2,}))\\.?)(?::\\d{2,5})?(?:[/?#]\\S*)?$/i\n";
+
+    /**
+     * Saksnummer alle grunnlag og koblinger er linket til.
+     */
+    @JsonProperty(value = "saksnummer", required = true)
+    @NotNull
+    @Valid
+    private String saksnummer;
 
     @JsonProperty(value = "referanse", required = true)
     @Valid
@@ -62,10 +70,12 @@ public class InnhentRegisterdataRequest {
     private String callbackUrl;
 
     @JsonCreator
-    public InnhentRegisterdataRequest(@JsonProperty(value = "referanse", required = true) @Valid @NotNull UuidDto referanse,
-                                  @JsonProperty(value = "ytelseType", required = true) @Valid @NotNull YtelseType ytelseType,
-                                  @JsonProperty(value = "opplysningsperiode", required = true) @NotNull @Valid Periode opplysningsperiode,
-                                  @JsonProperty(value = "aktør", required = true) @NotNull @Valid PersonIdent aktør) {
+    public InnhentRegisterdataRequest(@JsonProperty(value = "saksnummer", required = true) @Valid @NotNull String saksnummer,
+                                      @JsonProperty(value = "referanse", required = true) @Valid @NotNull UuidDto referanse,
+                                      @JsonProperty(value = "ytelseType", required = true) @Valid @NotNull YtelseType ytelseType,
+                                      @JsonProperty(value = "opplysningsperiode", required = true) @NotNull @Valid Periode opplysningsperiode,
+                                      @JsonProperty(value = "aktør", required = true) @NotNull @Valid PersonIdent aktør) {
+        this.saksnummer = saksnummer;
         this.referanse = referanse;
         this.ytelseType = ytelseType;
         this.opplysningsperiode = opplysningsperiode;
@@ -112,4 +122,7 @@ public class InnhentRegisterdataRequest {
         return ytelseType;
     }
 
+    public String getSaksnummer() {
+        return saksnummer;
+    }
 }
