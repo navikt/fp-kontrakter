@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -16,18 +17,41 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/** Representeer et snapshot aggregert av alle grunnlag knyttet til samme sak. */
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.Periode;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.PersonIdent;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.YtelseType;
+
+/**
+ * Representeer et snapshot aggregert av alle grunnlag knyttet til samme sak.
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = Include.NON_ABSENT, content = Include.NON_EMPTY)
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE, getterVisibility = JsonAutoDetect.Visibility.NONE, setterVisibility = JsonAutoDetect.Visibility.NONE, isGetterVisibility = JsonAutoDetect.Visibility.NONE, creatorVisibility = JsonAutoDetect.Visibility.NONE)
 public class InntektArbeidYtelseGrunnlagSakSnapshotDto {
 
     private static final ZoneId DEFAULT_ZONE = ZoneId.systemDefault();
-    
-    /** Saksnummer alle grunnlag og koblinger er linket til. */
-    @JsonProperty(value="saksnummer", required = true)
+
+    /**
+     * Saksnummer alle grunnlag og koblinger er linket til.
+     */
+    @JsonProperty(value = "saksnummer", required = true)
+    @NotNull
     @Valid
     private String saksnummer;
+
+    @JsonProperty(value = "ytelseType", required = true)
+    @Valid
+    @NotNull
+    private YtelseType ytelseType;
+
+    @JsonProperty(value = "aktør", required = true)
+    @NotNull
+    @Valid
+    private PersonIdent aktør;
+
+    @JsonProperty(value = "annenPartAktør")
+    @Valid
+    private PersonIdent annenPartAktør;
 
     /**
      * Liste av InntektArbeidYtelseGrunnlag.
@@ -47,19 +71,29 @@ public class InntektArbeidYtelseGrunnlagSakSnapshotDto {
     @Valid
     private OffsetDateTime snapshotTidspunkt = OffsetDateTime.now(DEFAULT_ZONE);
 
-    public InntektArbeidYtelseGrunnlagSakSnapshotDto() {
-    }
-    
-    public void setSaksnummer(String saksnummer) {
+    @JsonCreator
+    public InntektArbeidYtelseGrunnlagSakSnapshotDto(@JsonProperty(value = "saksnummer", required = true) String saksnummer,
+                                                     @JsonProperty(value = "ytelseType", required = true) YtelseType ytelseType,
+                                                     @JsonProperty(value = "aktør", required = true) PersonIdent aktør) {
         this.saksnummer = saksnummer;
+        this.ytelseType = ytelseType;
+        this.aktør = aktør;
     }
 
-    public void leggTil(InntektArbeidYtelseGrunnlagDto dto, Boolean aktiv) {
-        grunnlag.add(new Konvolutt(dto, aktiv));
+    public void leggTil(InntektArbeidYtelseGrunnlagDto dto, Boolean aktiv, Periode opplysningsperiode, Periode opptjeningsperiode) {
+        grunnlag.add(new Konvolutt(dto, aktiv, opplysningsperiode, opptjeningsperiode));
     }
 
-    public void leggTil(InntektArbeidYtelseGrunnlagDto dto) {
-        leggTil(dto, null);
+    public void leggTil(InntektArbeidYtelseGrunnlagDto dto, Periode opplysningsperiode, Periode opptjeningsperiode) {
+        leggTil(dto, null, opplysningsperiode, opptjeningsperiode);
+    }
+
+    public void leggTil(InntektArbeidYtelseGrunnlagDto dto, Periode opplysningsperiode) {
+        leggTil(dto, null, opplysningsperiode, null);
+    }
+
+    public OffsetDateTime getSnapshotTidspunkt() {
+        return snapshotTidspunkt;
     }
 
     public void setSnapshotTidspunkt(OffsetDateTime tidspunkt) {
@@ -71,16 +105,40 @@ public class InntektArbeidYtelseGrunnlagSakSnapshotDto {
         this.snapshotTidspunkt = tidspunkt.atZone(DEFAULT_ZONE).toOffsetDateTime();
     }
 
-    public OffsetDateTime getSnapshotTidspunkt() {
-        return snapshotTidspunkt;
+    public YtelseType getYtelseType() {
+        return ytelseType;
+    }
+
+    public void setYtelseType(YtelseType ytelseType) {
+        this.ytelseType = ytelseType;
+    }
+
+    public PersonIdent getAktør() {
+        return aktør;
+    }
+
+    public void setAktør(PersonIdent aktør) {
+        this.aktør = aktør;
+    }
+
+    public PersonIdent getAnnenPartAktør() {
+        return annenPartAktør;
+    }
+
+    public void setAnnenPartAktør(PersonIdent annenPartAktør) {
+        this.annenPartAktør = annenPartAktør;
     }
 
     public List<Konvolutt> getGrunnlag() {
         return grunnlag;
     }
-    
+
     public String getSaksnummer() {
         return saksnummer;
+    }
+
+    public void setSaksnummer(String saksnummer) {
+        this.saksnummer = saksnummer;
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
@@ -88,7 +146,9 @@ public class InntektArbeidYtelseGrunnlagSakSnapshotDto {
     @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE, getterVisibility = JsonAutoDetect.Visibility.NONE, setterVisibility = JsonAutoDetect.Visibility.NONE, isGetterVisibility = JsonAutoDetect.Visibility.NONE, creatorVisibility = JsonAutoDetect.Visibility.NONE)
     public static class Konvolutt {
 
-        /** Unik og immutable grunnlag. Data kan dedupliseres ved å se på {@link InntektArbeidYtelseGrunnlagDto#getGrunnlagReferanse()} */
+        /**
+         * Unik og immutable grunnlag. Data kan dedupliseres ved å se på {@link InntektArbeidYtelseGrunnlagDto#getGrunnlagReferanse()}
+         */
         @JsonProperty(value = "data", required = true)
         @Valid
         private InntektArbeidYtelseGrunnlagDto data;
@@ -100,15 +160,36 @@ public class InntektArbeidYtelseGrunnlagSakSnapshotDto {
         @JsonProperty(value = "aktiv", required = false)
         private Boolean aktiv;
 
+        @JsonProperty(value = "opplysningsperiode", required = true)
+        @NotNull
+        @Valid
+        private Periode opplysningsperiode;
+
+        @JsonProperty(value = "opptjeningsperiode")
+        @Valid
+        private Periode opptjeningsperiode;
+
         @JsonCreator
         public Konvolutt(@JsonProperty(value = "data", required = true) @Valid InntektArbeidYtelseGrunnlagDto data,
-                         @JsonProperty(value = "aktiv", required = false) Boolean aktiv) {
+                         @JsonProperty(value = "aktiv", required = false) Boolean aktiv,
+                         @JsonProperty(value = "opplysningsperiode", required = true) Periode opplysningsperiode,
+                         @JsonProperty(value = "opptjeningsperiode", required = false) Periode opptjeningsperiode) {
             this.data = data;
             this.aktiv = aktiv;
+            this.opptjeningsperiode = opptjeningsperiode;
+            this.opplysningsperiode = opplysningsperiode;
         }
 
         public Boolean erAktiv() {
             return aktiv;
+        }
+
+        public Periode getOpplysningsperiode() {
+            return opplysningsperiode;
+        }
+
+        public Periode getOpptjeningsperiode() {
+            return opptjeningsperiode;
         }
 
         public InntektArbeidYtelseGrunnlagDto getData() {
