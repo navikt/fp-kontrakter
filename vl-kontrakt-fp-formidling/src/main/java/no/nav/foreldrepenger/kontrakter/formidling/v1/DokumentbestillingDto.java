@@ -31,7 +31,7 @@ public class DokumentbestillingDto {
     /**
      * Kode for hvem som har bestilt dokumentet, f.eks VL, default: VL
      */
-    @Pattern(regexp = "[A-Z]{1,100}")
+    @Pattern(regexp = "[A-ZÆØÅ0-9]{1,100}")
     private String historikkAktør;
 
     private String tittel;
@@ -46,7 +46,7 @@ public class DokumentbestillingDto {
      * Se RevurderingVarslingÅrsak.java i https://github.com/navikt/fp-formidling/
      * for verdier
      */
-    @Pattern(regexp = "[A-Z]{1,100}")
+    @Pattern(regexp = "[A-ZÆØÅ0-9]{1,100}")
     private String arsakskode;
 
     private boolean gjelderVedtak;
