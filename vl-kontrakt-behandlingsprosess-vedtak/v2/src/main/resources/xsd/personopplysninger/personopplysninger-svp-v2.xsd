@@ -27,6 +27,7 @@
 								<xsd:element name="yrkesaktivitet" type="po:Yrkesaktivitet" minOccurs="0" maxOccurs="unbounded"/>
 							</xsd:sequence>
 							<xsd:attributeGroup ref="felles:Sporing"/>
+							<xsd:anyAttribute processContents="lax"/>
 						</xsd:complexType>
 					</xsd:element>
 					<xsd:element name="inntekter" minOccurs="0">
@@ -35,6 +36,7 @@
 								<xsd:element name="inntekt" type="po:Inntekt" minOccurs="0" maxOccurs="unbounded"/>
 							</xsd:sequence>
 							<xsd:attributeGroup ref="felles:Sporing"/>
+							<xsd:anyAttribute processContents="lax"/>
 						</xsd:complexType>
 					</xsd:element>
 					<xsd:element name="inntektsmeldinger" minOccurs="0">
@@ -43,6 +45,7 @@
 								<xsd:element name="inntektsmelding" type="po:Inntektsmelding" minOccurs="0" maxOccurs="unbounded"/>
 							</xsd:sequence>
 							<xsd:attributeGroup ref="felles:Sporing"/>
+							<xsd:anyAttribute processContents="lax"/>
 						</xsd:complexType>
 					</xsd:element>
 					<xsd:element name="permisjoner" minOccurs="0">
@@ -50,6 +53,7 @@
 							<xsd:sequence>
 								<xsd:element name="permisjon" type="po:Permisjon" minOccurs="0" maxOccurs="unbounded"/>
 							</xsd:sequence>
+							<xsd:anyAttribute processContents="lax"/>
 						</xsd:complexType>
 					</xsd:element>
 					<xsd:element name="dokumentasjonsperioder" minOccurs="0">
@@ -57,6 +61,7 @@
 							<xsd:sequence>
 								<xsd:element name="dokumentasjonperiode" type="po:DokumentasjonPeriode" minOccurs="0" maxOccurs="unbounded"/>
 							</xsd:sequence>
+							<xsd:anyAttribute processContents="lax"/>
 						</xsd:complexType>
 					</xsd:element>
 					<xsd:element name="aktivitetsavtaler" minOccurs="0">
@@ -65,6 +70,7 @@
 								<xsd:element name="aktivitetsavtale" type="po:AktivitetsAvtale" minOccurs="0" maxOccurs="unbounded"/>
 							</xsd:sequence>
 							<xsd:attributeGroup ref="felles:Sporing"/>
+							<xsd:anyAttribute processContents="lax"/>
 						</xsd:complexType>
 					</xsd:element>
 					<xsd:element name="egenNaeringer" minOccurs="0">
@@ -73,6 +79,7 @@
 								<xsd:element name="egenNaering" type="po:EgenNaering" minOccurs="0" maxOccurs="unbounded"/>
 							</xsd:sequence>
 							<xsd:attributeGroup ref="felles:Sporing"/>
+							<xsd:anyAttribute processContents="lax"/>
 						</xsd:complexType>
 					</xsd:element>
 					<xsd:element name="oppgitteArbeidsforhold" minOccurs="0">
@@ -81,6 +88,7 @@
 								<xsd:element name="oppgittArbeidsforhold" type="po:OppgittArbeidsforhold" minOccurs="0" maxOccurs="unbounded"/>
 							</xsd:sequence>
 							<xsd:attributeGroup ref="felles:Sporing"/>
+							<xsd:anyAttribute processContents="lax"/>
 						</xsd:complexType>
 					</xsd:element>
 					<xsd:element name="annenAktiviter" minOccurs="0">
@@ -89,6 +97,7 @@
 								<xsd:element name="annenAktivit" type="po:AnnenAktivitet" minOccurs="0" maxOccurs="unbounded"/>
 							</xsd:sequence>
 							<xsd:attributeGroup ref="felles:Sporing"/>
+							<xsd:anyAttribute processContents="lax"/>
 						</xsd:complexType>
 					</xsd:element>
 					<xsd:element name="relaterteYtelser" minOccurs="0">
@@ -97,9 +106,11 @@
 								<xsd:element name="relatertYtelse" type="po:RelatertYtelse" minOccurs="0" maxOccurs="unbounded"/>
 							</xsd:sequence>
 							<xsd:attributeGroup ref="felles:Sporing"/>
+							<xsd:anyAttribute processContents="lax"/>
 						</xsd:complexType>
 					</xsd:element>
 				</xsd:sequence>
+				<xsd:anyAttribute processContents="lax"/>
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
@@ -123,8 +134,10 @@
 			<xsd:element name="ytelsesgrunnlag" type="po:YtelseGrunnlag" minOccurs="0"/>
 			<xsd:element name="ytelsesstorrelse" type="po:YtelseStorrelse" minOccurs="0" maxOccurs="unbounded"/>
 			<xsd:element name="ytelseanvist" type="po:YtelseAnvist" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
 		</xsd:sequence>
 		<xsd:attributeGroup ref="felles:Sporing"/>
+		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
 	<xsd:complexType name="YtelseGrunnlag">
 		<xsd:annotation>
@@ -136,6 +149,7 @@
 			<xsd:element name="graderingprosent" type="felles:DecimalOpplysning" minOccurs="0"/>
 			<xsd:element name="inntektsgrunnlagprosent" type="felles:DecimalOpplysning" minOccurs="0"/>
 		</xsd:sequence>
+		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
 	<xsd:complexType name="YtelseStorrelse">
 		<xsd:sequence>
@@ -143,6 +157,7 @@
 			<xsd:element name="beloep" type="felles:DecimalOpplysning" minOccurs="0"/>
 			<xsd:element name="hyppighet" type="felles:KodeverksOpplysning" minOccurs="0"/>
 		</xsd:sequence>
+		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
 	<xsd:complexType name="YtelseAnvist">
 		<xsd:annotation>
@@ -154,6 +169,7 @@
 			<xsd:element name="beloep" type="felles:DecimalOpplysning" minOccurs="0"/>
 			<xsd:element name="dagsats" type="felles:DecimalOpplysning" minOccurs="0"/>
 		</xsd:sequence>
+		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
 	<xsd:complexType name="Addresse">
 		<xsd:annotation>
@@ -171,6 +187,7 @@
 			<xsd:element name="land" type="felles:StringOpplysning" minOccurs="0"/>
 		</xsd:sequence>
 		<xsd:attributeGroup ref="felles:Sporing"/>
+		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
 
 	<xsd:complexType name="Medlemskap">
@@ -179,6 +196,7 @@
 			<xsd:element name="medlemskapOppgittTilknytning" type="po:MedlemskapOppgittTilknytning" minOccurs="0"/>
 		</xsd:sequence>
 		<xsd:attributeGroup ref="felles:Sporing"/>
+		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
 	<xsd:complexType name="MedlemskapOppgittTilknytning">
 		<xsd:annotation>
@@ -189,6 +207,7 @@
 			<xsd:element name="oppgittdato" type="felles:DateOpplysning" minOccurs="0"/>
 			<xsd:element name="utenlandsopphold" type="po:Utenlandsopphold" minOccurs="0" maxOccurs="unbounded"/>
 		</xsd:sequence>
+		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
 	<xsd:complexType name="Utenlandsopphold">
 		<xsd:annotation>
@@ -198,12 +217,14 @@
 			<xsd:element name="periode" type="felles:PeriodeOpplysning" minOccurs="0"/>
 			<xsd:element name="land" type="felles:KodeverksOpplysning" minOccurs="0"/>
 		</xsd:sequence>
+		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
 	<xsd:complexType name="FamilieHendelse">
 		<xsd:sequence>
 			<xsd:element name="foedsel" type="pob:Foedsel" minOccurs="0"/>
 			<xsd:element name="terminbekreftelse" type="po:Terminbekreftelse" minOccurs="0"/>
 		</xsd:sequence>
+		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
 	<xsd:complexType name="Terminbekreftelse">
 		<xsd:sequence>
@@ -231,6 +252,7 @@
 			</xsd:element>
 		</xsd:sequence>
 		<xsd:attributeGroup ref="felles:Sporing"/>
+		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
 	<xsd:complexType name="Inntekt">
 		<xsd:annotation>
@@ -242,6 +264,7 @@
 			<xsd:element name="inntektsposter" type="po:Inntektspost" minOccurs="0" maxOccurs="unbounded"/>
 		</xsd:sequence>
 		<xsd:attributeGroup ref="felles:Sporing"/>
+		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
 	<xsd:complexType name="Inntektspost">
 		<xsd:annotation>
@@ -253,6 +276,7 @@
 			<xsd:element name="ytelsetype" type="felles:StringOpplysning" minOccurs="0"/>
 		</xsd:sequence>
 		<xsd:attributeGroup ref="felles:Sporing"/>
+		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
 	<xsd:complexType name="Yrkesaktivitet">
 		<xsd:annotation>
@@ -265,6 +289,7 @@
 			<xsd:element name="aktivitetsavtale" type="po:AktivitetsAvtale" minOccurs="0" maxOccurs="unbounded"/>
 		</xsd:sequence>
 		<xsd:attributeGroup ref="felles:Sporing"/>
+		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
 	<xsd:complexType name="AktivitetsAvtale">
 		<xsd:annotation>
@@ -276,6 +301,7 @@
 			<xsd:element name="antalltimerFulltid" type="felles:StringOpplysning" minOccurs="0"/>
 			<xsd:element name="prosentsats" type="felles:StringOpplysning" minOccurs="0"/>
 		</xsd:sequence>
+		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
 	<xsd:complexType name="EgenNaering">
 		<xsd:annotation>
@@ -293,6 +319,7 @@
 			<xsd:element name="nyoppstartet" type="felles:BooleanOpplysning" minOccurs="0"/>
 			<xsd:element name="varigendring" type="felles:BooleanOpplysning" minOccurs="0"/>
 		</xsd:sequence>
+		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
 	<xsd:complexType name="AnnenAktivitet">
 		<xsd:annotation>
@@ -302,6 +329,7 @@
 			<xsd:element name="arbeidtype" type="felles:StringOpplysning" minOccurs="0"/>
 			<xsd:element name="periode" type="felles:PeriodeOpplysning" minOccurs="0"/>
 		</xsd:sequence>
+		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
 	<xsd:complexType name="Inntektsmelding">
 		<xsd:annotation>
@@ -319,6 +347,7 @@
 			<xsd:element name="naturalytelse" type="po:Naturalytelse" minOccurs="0" maxOccurs="unbounded"/>
 			<xsd:element name="utsettelse" type="po:Utsettelse" minOccurs="0" maxOccurs="unbounded"/>
 		</xsd:sequence>
+		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
 	<xsd:complexType name="Gradering">
 		<xsd:annotation>
@@ -328,6 +357,7 @@
 			<xsd:element name="arbeidstidprosent" type="felles:StringOpplysning" minOccurs="0"/>
 			<xsd:element name="periode" type="felles:PeriodeOpplysning" minOccurs="0"/>
 		</xsd:sequence>
+		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
 	<xsd:complexType name="Naturalytelse">
 		<xsd:annotation>
@@ -338,6 +368,7 @@
 			<xsd:element name="naturalytelsetype" type="felles:KodeverksOpplysning" minOccurs="0"/>
 			<xsd:element name="beloepMnd" type="felles:DecimalOpplysning" minOccurs="0"/>
 		</xsd:sequence>
+		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
 	<xsd:complexType name="Utsettelse">
 		<xsd:annotation>
@@ -347,6 +378,7 @@
 			<xsd:element name="periode" type="felles:PeriodeOpplysning" minOccurs="0"/>
 			<xsd:element name="aarsakTilUtsettelse" type="felles:KodeverksOpplysning" minOccurs="0"/>
 		</xsd:sequence>
+		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
 	<xsd:complexType name="Permisjon">
 		<xsd:annotation>
@@ -356,6 +388,7 @@
 			<xsd:element name="periode" type="felles:PeriodeOpplysning" minOccurs="0"/>
 			<xsd:element name="prosentsats" type="felles:DecimalOpplysning" minOccurs="0"/>
 		</xsd:sequence>
+		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
 	<xsd:complexType name="OppgittArbeidsforhold">
 		<xsd:annotation>
@@ -368,6 +401,7 @@
 			<xsd:element name="land" type="felles:KodeverksOpplysning" minOccurs="0"/>
 			<xsd:element name="inntekt" type="felles:StringOpplysning" minOccurs="0"/>
 		</xsd:sequence>
+		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
 	<xsd:complexType name="DokumentasjonPeriode">
 		<xsd:annotation>
@@ -381,11 +415,13 @@
 				</xsd:annotation>
 			</xsd:element>
 		</xsd:sequence>
+		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
 	<xsd:complexType name="Virksomhet">
 		<xsd:sequence>
 			<xsd:element name="orgnr" type="felles:StringOpplysning" minOccurs="0"/>
 			<xsd:element name="navn" type="felles:StringOpplysning" minOccurs="0"/>
 		</xsd:sequence>
+		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
 </xsd:schema>

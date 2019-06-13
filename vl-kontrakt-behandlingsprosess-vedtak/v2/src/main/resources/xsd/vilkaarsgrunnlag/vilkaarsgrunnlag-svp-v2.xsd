@@ -14,6 +14,7 @@
 				<xsd:sequence>
 					<xsd:element name="erMorForSykVedFodsel" type="felles:BooleanOpplysning" minOccurs="0"/>
 				</xsd:sequence>
+				<xsd:anyAttribute processContents="lax"/>
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
@@ -41,7 +42,9 @@
 					<xsd:element name="minsteAntallMånederGodkjent" type="felles:IntOpplysning" minOccurs="0"/>
 					<xsd:element name="minsteInntekt" type="felles:LongOpplysning" minOccurs="0"/>
 					<xsd:element name="periodeAntattGodkjentForBehandlingstidspunkt" type="felles:StringOpplysning" minOccurs="0"/>
+					<xsd:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
 				</xsd:sequence>
+				<xsd:anyAttribute processContents="lax"/>
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
@@ -51,6 +54,7 @@
 			<xsd:element name="aktivitet" type="vg:Aktivitet" minOccurs="0"/>
 			<xsd:element name="vurderingsStatus" type="felles:KodeverksOpplysning" minOccurs="0"/>
 		</xsd:sequence>
+		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
 	<xsd:complexType name="Aktivitet">
 		<xsd:sequence>
@@ -58,6 +62,7 @@
 			<xsd:element name="aktivitetReferanse" type="felles:StringOpplysning" minOccurs="0"/>
 			<xsd:element name="referanseType" type="felles:KodeverksOpplysning" minOccurs="0"/>
 		</xsd:sequence>
+		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
 	<xsd:complexType name="InntektPeriode">
 		<xsd:sequence>
@@ -66,6 +71,7 @@
 			<xsd:element name="inntektBeloep" type="felles:LongOpplysning" minOccurs="0"/>
 			<xsd:element name="inntektValuta" type="felles:KodeverksOpplysning" minOccurs="0"/>
 		</xsd:sequence>
+		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
 	<xsd:complexType name="VilkaarsgrunnlagSoeknadsfrist">
 		<xsd:complexContent>
@@ -80,6 +86,7 @@
 					<xsd:element name="skjaeringstidspunkt" type="felles:DateOpplysning" minOccurs="0"/>
 					<xsd:element name="soeknadMottatDato" type="felles:DateOpplysning" minOccurs="0"/>
 				</xsd:sequence>
+				<xsd:anyAttribute processContents="lax"/>
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>

@@ -22,6 +22,7 @@
 					<xsd:element name="aktivitetstatuser" type="bg:AktivitetStatus" minOccurs="0" maxOccurs="unbounded"/>
 					<xsd:element name="beregningsgrunnlagPeriode" type="bg:BeregningsgrunnlagPeriode" minOccurs="0" maxOccurs="unbounded"/>
 				</xsd:sequence>
+				<xsd:anyAttribute processContents="lax"/>
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
@@ -42,6 +43,7 @@
 			<xsd:element name="dagsats" type="felles:LongOpplysning" minOccurs="0"/>
 			<xsd:element name="beregningsgrunnlagPrStatusOgAndel" type="bg:BeregningsgrunnlagPrStatusOgAndel" minOccurs="0" maxOccurs="unbounded"/>
 		</xsd:sequence>
+		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
 	<xsd:complexType name="BeregningsgrunnlagPrStatusOgAndel">
 		<xsd:sequence>
@@ -80,7 +82,7 @@
 			</xsd:element>
 			<xsd:element name="inntektskategori" type="felles:KodeverksOpplysning" minOccurs="0">
 				<xsd:annotation>
-					<xsd:documentation xml:lang="no">Beskrivelse mangler</xsd:documentation>
+					<xsd:documentation xml:lang="no">Internt kodeverk INNTEKTSKATEGORI som angir inntektskategori for andelen</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
 			<xsd:element name="refusjonTilArbeidsgiver" type="bg:RefusjonTilArbeidsgiver" minOccurs="0"/>
@@ -120,7 +122,9 @@
 					<xsd:documentation>Dagsats til arbeidsgiver</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
+			<xsd:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
 		</xsd:sequence>
+		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
 	<xsd:complexType name="RefusjonTilArbeidsgiver">
 		<xsd:sequence>
@@ -145,6 +149,7 @@
 				</xsd:annotation>
 			</xsd:element>
 		</xsd:sequence>
+		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
 	<xsd:complexType name="GjennomsnittligPensjonsgivendeInntekt">
 		<xsd:sequence>
@@ -169,12 +174,14 @@
 				</xsd:annotation>
 			</xsd:element>
 		</xsd:sequence>
+		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
 	<xsd:complexType name="AktivitetStatus">
 		<xsd:sequence>
 			<xsd:element name="aktivitetStatus" type="felles:KodeverksOpplysning" minOccurs="0"/>
 			<xsd:element name="hjemmel" type="felles:KodeverksOpplysning" minOccurs="0"/>
 		</xsd:sequence>
+		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
 	<xsd:element name="beregningsgrunnlag" type="bg:BeregningsgrunnlagSvangerskapspenger"/>
 </xsd:schema>

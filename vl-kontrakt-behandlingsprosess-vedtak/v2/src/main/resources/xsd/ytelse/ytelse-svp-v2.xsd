@@ -17,6 +17,7 @@
 				<xsd:sequence>
 					<xsd:element name="beregningsresultat" type="ytfp:Beregningsresultat" minOccurs="0" maxOccurs="unbounded"/>
 				</xsd:sequence>
+				<xsd:anyAttribute processContents="lax"/>
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
@@ -59,6 +60,7 @@
 				</xsd:annotation>
 			</xsd:element>
 		</xsd:sequence>
+		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
 	<xsd:complexType name="Virksomhet">
 		<xsd:sequence>
@@ -66,5 +68,6 @@
 			<xsd:element name="navn" type="felles:StringOpplysning" minOccurs="0"/>
 			<xsd:element name="arbeidsforholdid" type="felles:StringOpplysning" minOccurs="0"/>
 		</xsd:sequence>
+		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
 </xsd:schema>

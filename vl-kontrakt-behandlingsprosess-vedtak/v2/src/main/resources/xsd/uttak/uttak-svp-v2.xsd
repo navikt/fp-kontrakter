@@ -15,6 +15,7 @@
 					<xsd:element name="uttaksResultatArbeidsforhold" type="ut:UttaksResultatArbeidsforhold" minOccurs="0" maxOccurs="unbounded"/>
 					<xsd:element name="tilrettelegging" type="ut:Tilrettelegging" minOccurs="0" maxOccurs="unbounded"/>
 				</xsd:sequence>
+				<xsd:anyAttribute processContents="lax"/>
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
@@ -50,6 +51,7 @@
 			</xsd:element>
 			<xsd:element name="avslagaarsak" type="felles:KodeverksOpplysning" minOccurs="0"/>
 		</xsd:sequence>
+		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
 
 
@@ -74,6 +76,7 @@
 				</xsd:annotation>
 			</xsd:element>
 		</xsd:sequence>
+		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
 
 	<xsd:complexType name="Tilrettelegging">
@@ -125,8 +128,9 @@
 					<xsd:documentation xml:lang="no">Dokumentasjon mangler.</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
-
+			<xsd:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
 		</xsd:sequence>
+		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
 
 
