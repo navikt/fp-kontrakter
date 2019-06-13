@@ -55,7 +55,7 @@ public class DokumentbestillingV1 {
      * Kode for hvem som har bestilt dokumentet, f.eks VL, default: VL
      */
     @NotNull
-    @Pattern(regexp = "[A-Z]{1,100}")
+    @Pattern(regexp = "[A-ZÆØÅ0-9]{1,100}")
     @JsonProperty(required = true)
     private String historikkAktør;
 
@@ -70,7 +70,7 @@ public class DokumentbestillingV1 {
      * Se RevurderingVarslingÅrsak.java i https://github.com/navikt/fp-formidling/
      * for verdier
      */
-    @Pattern(regexp = "[A-Z]{1,100}")
+    @Pattern(regexp = "[A-ZÆØÅ0-9]{1,100}")
     @JsonProperty
     private String arsakskode;
 
