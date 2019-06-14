@@ -62,7 +62,6 @@ public class ParseSoeknadTest {
         assertThat(søknad.getOmYtelse().getAny()).isNotEmpty();
         assertThat(søknad.getOmYtelse().getAny().get(0)).isInstanceOf(JAXBElement.class);
         assertThat(søknad.getOmYtelse().getAny().get(0)).isInstanceOf(JAXBElement.class);
-        assertThat(textBuilder).isNotNull();
     }
 
     @Test
