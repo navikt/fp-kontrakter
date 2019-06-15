@@ -29,8 +29,8 @@ public class PermisjonDto {
     @Valid
     private Periode periode;
     
+    /** Permisjon type, hvis oppgitt. Kan være null. */
     @JsonProperty(value="type", required = true)
-    @NotNull
     @Valid
     private PermisjonsbeskrivelseType type;
     
@@ -46,7 +46,6 @@ public class PermisjonDto {
 
     public PermisjonDto(@NotNull @Valid Periode periode, @NotNull @Valid PermisjonsbeskrivelseType type) {
         Objects.requireNonNull(periode, "periode");
-        Objects.requireNonNull(type, "type");
         this.periode = periode;
         this.type = type;
     }

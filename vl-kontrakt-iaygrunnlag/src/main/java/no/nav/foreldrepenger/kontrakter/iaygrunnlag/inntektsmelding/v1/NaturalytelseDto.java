@@ -5,7 +5,6 @@ import java.math.RoundingMode;
 import java.util.Objects;
 
 import javax.validation.Valid;
-import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 
@@ -33,9 +32,9 @@ public class NaturalytelseDto {
     @NotNull
     private NaturalytelseType type;
 
+    /** Tillater kun positive verdier.  Max verdi håndteres av mottager. */
     @JsonProperty(value = "beløpPerMnd", index = 3)
     @DecimalMin(value = "0.00", message = "beløp må være >= 0.00")
-    @DecimalMax(value = "1000000.00", message = "beløp må være < 1000000.00") // TODO: sane verdier
     private BigDecimal beløpPerMnd;
 
     protected NaturalytelseDto() {

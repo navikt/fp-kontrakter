@@ -21,9 +21,12 @@ public class ArbeidsforholdHandlingType extends Kodeverk {
     /** Eksempel konstant - ikke bruk dette. */
     public static final ArbeidsforholdHandlingType IKKE_BRUK = new ArbeidsforholdHandlingType("IKKE_BRUK"); //$NON-NLS-1$
 
+    /** Eksempel konstant - bruk dette. */
+    public static final ArbeidsforholdHandlingType BRUK = new ArbeidsforholdHandlingType("BRUK"); //$NON-NLS-1$
+    
     @JsonProperty(value = "kode", required = true, index = 1)
     @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$")
-    @Size(min = 5, max = 50)
+    @Size(min = 4, max = 50)
     @NotNull
     private String kode;
 

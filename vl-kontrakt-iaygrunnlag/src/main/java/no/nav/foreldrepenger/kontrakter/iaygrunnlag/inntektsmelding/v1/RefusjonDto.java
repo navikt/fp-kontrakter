@@ -6,7 +6,6 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 import javax.validation.Valid;
-import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 
@@ -26,9 +25,9 @@ public class RefusjonDto {
     @NotNull
     private LocalDate fom;
 
+    /** Tillater kun positive verdier.  Max verdi håndteres av mottager. */
     @JsonProperty(value = "refusjonBeløpPerMnd", index = 1)
     @DecimalMin(value = "0.00", message = "beløp må være >= 0.00")
-    @DecimalMax(value = "10000000.00", message = "beløp må være < 10000000.00") // TODO: sane verdier
     private BigDecimal refusjonBeløpPerMnd;
 
     protected RefusjonDto() {

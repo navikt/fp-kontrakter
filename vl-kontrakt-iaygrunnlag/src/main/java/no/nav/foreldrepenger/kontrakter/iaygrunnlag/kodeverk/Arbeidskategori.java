@@ -9,21 +9,27 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Type arbeid oppgitt for ytelse.
+ * 
+ *  <h3>Bruk av konstanter</h3>
+ *  Noen kjente eksempler på konstanter er oppgitt under.  Nye kan benyttes dersom avsender/mottager kjenner til de (listen er ikke utfyllende). 
+ */
 public class Arbeidskategori extends Kodeverk {
     static final String KODEVERK = "ARBEIDSKATEGORI";
 
-    /** Eksempel konstant - ARBEIDSTAKER. */
-    public static final Arbeidskategori ARBEIDSTAKER = new Arbeidskategori("ARBEIDSTAKER");
-    /** Eksempel konstant - FRILANSER. */
-    public static final Arbeidskategori FRILANSER = new Arbeidskategori("FRILANSER");
-    /** Eksempel konstant - DAGPENGER. */
-    public static final Arbeidskategori DAGPENGER = new Arbeidskategori("DAGPENGER");
-    /** Eksempel konstant - JORDBRUKER. */
-    public static final Arbeidskategori JORDBRUKER = new Arbeidskategori("JORDBRUKER");
+    public static final Arbeidskategori FISKER = new Arbeidskategori("FISKER"); //$NON-NLS-1$
+    public static final Arbeidskategori ARBEIDSTAKER = new Arbeidskategori("ARBEIDSTAKER"); //$NON-NLS-1$
+    public static final Arbeidskategori SJØMANN = new Arbeidskategori("SJØMANN"); //$NON-NLS-1$
+    public static final Arbeidskategori JORDBRUKER = new Arbeidskategori("JORDBRUKER"); //$NON-NLS-1$
+    public static final Arbeidskategori DAGPENGER = new Arbeidskategori("DAGPENGER"); //$NON-NLS-1$
+    public static final Arbeidskategori INAKTIV = new Arbeidskategori("INAKTIV"); //$NON-NLS-1$
+    public static final Arbeidskategori FRILANSER = new Arbeidskategori("FRILANSER"); //$NON-NLS-1$
+    public static final Arbeidskategori UGYLDIG = new Arbeidskategori("UGYLDIG"); //$NON-NLS-1$
 
     @JsonProperty(value = "kode", required = true, index = 1)
     @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$")
-    @Size(min = 4, max = 50)
+    @Size(min = 3, max = 100)
     @NotNull
     private String kode;
 

@@ -4,6 +4,7 @@ import java.util.Objects;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -14,6 +15,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.Periode;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.ArbeidType;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.Landkode;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = Include.NON_ABSENT, content = Include.ALWAYS)
@@ -33,9 +35,16 @@ public class OppgittArbeidsforholdDto {
     @JsonProperty(value = "erUtenlandskInntekt")
     private Boolean erUtenlandskInntekt;
 
-    @JsonProperty(value = "utenlandskVirksomhet")
+    @JsonProperty(value = "landkode", required = true)
     @Valid
-    private OppgittUtenlandskVirksomhetDto utenlandskVirksomhet;
+    @NotNull
+    private Landkode landkode = Landkode.NORGE;
+
+    /** Oppgis normalt dersom ikke orgnr kan gis. F.eks for utlandske virsomheter, eller noen tilfeller Fiskere med Lott. */
+    @JsonProperty(value = "virksomhetNavn", required = false)
+    @NotNull
+    @Pattern(regexp = "^[\\p{L}\\p{N}\\.\\- ]+$")
+    private String virksomhetNavn;
 
     @JsonCreator
     public OppgittArbeidsforholdDto(@JsonProperty(value = "periode", required = true) Periode periode,
@@ -71,16 +80,34 @@ public class OppgittArbeidsforholdDto {
         return arbeidTypeDto;
     }
 
-    public OppgittUtenlandskVirksomhetDto getUtenlandskVirksomhet() {
-        return utenlandskVirksomhet;
+    public Boolean getErUtenlandskInntekt() {
+        return erUtenlandskInntekt;
     }
 
-    public void setUtenlandskVirksomhet(OppgittUtenlandskVirksomhetDto utenlandskVirksomhet) {
-        this.utenlandskVirksomhet = utenlandskVirksomhet;
+    public void setErUtenlandskInntekt(Boolean erUtenlandskInntekt) {
+        this.erUtenlandskInntekt = erUtenlandskInntekt;
     }
 
-    public OppgittArbeidsforholdDto medUtenlandskVirksomhet(OppgittUtenlandskVirksomhetDto utenlandskVirksomhet) {
-        this.utenlandskVirksomhet = utenlandskVirksomhet;
+    public Landkode getLandkode() {
+        return landkode;
+    }
+
+    public void setLandkode(Landkode landkode) {
+        this.landkode = landkode;
+    }
+
+    public String getVirksomhetNavn() {
+        return virksomhetNavn;
+    }
+
+    public void setVirksomhetNavn(String virksomhetNavn) {
+        this.virksomhetNavn = virksomhetNavn;
+    }
+    
+    public OppgittArbeidsforholdDto medOppgittVirksomhetNavn(String virksomhetNavn, Landkode landkode) {
+        setLandkode(landkode);
+        setVirksomhetNavn(virksomhetNavn);
         return this;
     }
+
 }

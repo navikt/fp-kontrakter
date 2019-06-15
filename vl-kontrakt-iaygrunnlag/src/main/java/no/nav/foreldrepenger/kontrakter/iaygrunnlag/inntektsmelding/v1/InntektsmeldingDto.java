@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Objects;
 
 import javax.validation.Valid;
-import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 
@@ -73,14 +72,14 @@ public class InntektsmeldingDto {
     @JsonProperty(value = "erNærRelasjon")
     private Boolean erNærRelasjon;
 
+    /** Tillater kun positive verdier.  Max verdi håndteres av mottager. */
     @JsonProperty("inntektBeløp")
     @DecimalMin(value = "0.00", message = "beløp må være >= 0.00")
-    @DecimalMax(value = "100000000.00", message = "beløp må være < 100000000.00") // TODO: sane verdier
     private BigDecimal inntektBeløp;
 
+    /** Tillater kun positive verdier.  Max verdi håndteres av mottager. */
     @JsonProperty("refusjonsBeløpPerMnd")
     @DecimalMin(value = "0.00", message = "beløp må være >= 0.00")
-    @DecimalMax(value = "100000000.00", message = "beløp må være < 100000000.00") // TODO: sane verdier
     private BigDecimal refusjonsBeløpPerMnd;
 
     @JsonProperty(value = "kanalreferanse")

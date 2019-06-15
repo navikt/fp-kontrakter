@@ -20,7 +20,7 @@ public class Organisasjon extends Aktør {
     private String ident;
 
     @JsonCreator
-    public Organisasjon(@JsonProperty("kode") String kode) {
+    public Organisasjon(@JsonProperty(value = "ident", required=true, index=1) String kode) {
         this.ident = kode;
     }
 

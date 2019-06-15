@@ -5,8 +5,6 @@ import java.math.RoundingMode;
 import java.util.Objects;
 
 import javax.validation.Valid;
-import javax.validation.constraints.DecimalMax;
-import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
@@ -39,10 +37,10 @@ public class UtbetalingsPostDto {
     @Valid
     private SkatteOgAvgiftsregelType skattAvgiftType;
 
+    /** Tillater her både positive og negative beløp (korreksjoner). Min/max verdi håndteres av mottager og avsender. */
     @JsonProperty("beløp")
     @Valid
-    @DecimalMin(value = "0.00", message = "beløp må være >= 0.00")
-    @DecimalMax(value = "1000000.00", message = "beløp må være < 1000000.00")
+    @NotNull
     private BigDecimal beløp;
 
     /** Satt dersom dette gjelder en ytelse, ellers ikke (henger sammen med {@link UtbetalingDto#getKilde()}) */
