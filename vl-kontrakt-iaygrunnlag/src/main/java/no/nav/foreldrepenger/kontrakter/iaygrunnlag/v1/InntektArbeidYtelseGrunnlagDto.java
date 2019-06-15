@@ -10,6 +10,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -83,18 +84,11 @@ public class InntektArbeidYtelseGrunnlagDto {
     @Valid
     private ArbeidsforholdInformasjon arbeidsforholdInformasjon;
 
-    public InntektArbeidYtelseGrunnlagDto(PersonIdent person, LocalDateTime grunnlagTidspunkt, UuidDto grunnlagReferanse, UuidDto koblingReferanse) {
-        Objects.requireNonNull(person, "person");
-        Objects.requireNonNull(grunnlagTidspunkt, "grunnlagTidspunkt");
-        Objects.requireNonNull(grunnlagReferanse, "grunnlagReferanse");
-        Objects.requireNonNull(koblingReferanse, "koblingReferanse");
-        this.koblingReferanse = koblingReferanse;
-        this.person = person;
-        this.grunnlagReferanse = grunnlagReferanse;
-        this.grunnlagTidspunkt = grunnlagTidspunkt.atZone(DEFAULT_ZONE).toOffsetDateTime();
-    }
-
-    public InntektArbeidYtelseGrunnlagDto(PersonIdent person, OffsetDateTime grunnlagTidspunkt, UUID grunnlagReferanse, UUID koblingReferanse) {
+    @JsonCreator
+    public InntektArbeidYtelseGrunnlagDto(@JsonProperty(value = "person", required = true) @Valid @NotNull PersonIdent person,
+                                          @JsonProperty(value = "grunnlagTidspunkt", required = true) @Valid @NotNull OffsetDateTime grunnlagTidspunkt,
+                                          @JsonProperty(value = "grunnlagReferanse", required = true) @Valid @NotNull UUID grunnlagReferanse,
+                                          @JsonProperty(value = "koblingReferanse", required = true) @Valid @NotNull UUID koblingReferanse) {
         Objects.requireNonNull(person, "person");
         Objects.requireNonNull(grunnlagTidspunkt, "grunnlagTidspunkt");
         Objects.requireNonNull(grunnlagReferanse, "grunnlagReferanse");
@@ -103,6 +97,20 @@ public class InntektArbeidYtelseGrunnlagDto {
         this.grunnlagReferanse = new UuidDto(grunnlagReferanse);
         this.koblingReferanse = new UuidDto(koblingReferanse);
         this.grunnlagTidspunkt = grunnlagTidspunkt;
+    }
+
+    public InntektArbeidYtelseGrunnlagDto(@JsonProperty(value = "person", required = true) @Valid @NotNull PersonIdent person,
+                                          @JsonProperty(value = "grunnlagTidspunkt", required = true) @Valid @NotNull LocalDateTime grunnlagTidspunkt,
+                                          @JsonProperty(value = "grunnlagReferanse", required = true) @Valid @NotNull UuidDto grunnlagReferanse,
+                                          @JsonProperty(value = "koblingReferanse", required = true) @Valid @NotNull UuidDto koblingReferanse) {
+        Objects.requireNonNull(person, "person");
+        Objects.requireNonNull(grunnlagTidspunkt, "grunnlagTidspunkt");
+        Objects.requireNonNull(grunnlagReferanse, "grunnlagReferanse");
+        Objects.requireNonNull(koblingReferanse, "koblingReferanse");
+        this.koblingReferanse = koblingReferanse;
+        this.person = person;
+        this.grunnlagReferanse = grunnlagReferanse;
+        this.grunnlagTidspunkt = grunnlagTidspunkt.atZone(DEFAULT_ZONE).toOffsetDateTime();
     }
 
     protected InntektArbeidYtelseGrunnlagDto() {
@@ -137,7 +145,7 @@ public class InntektArbeidYtelseGrunnlagDto {
     public InntektsmeldingerDto getInntektsmeldinger() {
         return inntektsmeldinger;
     }
-    
+
     public String getKoblingReferanse() {
         return koblingReferanse == null ? null : koblingReferanse.getReferanse();
     }

@@ -6,7 +6,6 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 import javax.validation.Valid;
-import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -56,13 +55,9 @@ public class OppgittEgenNæringDto {
     @JsonProperty(value = "endringBegrunnelse")
     private String endringBegrunnelse;
 
-    @JsonProperty(value = "utenlandskVirksomhet")
-    @Valid
-    private OppgittUtenlandskVirksomhetDto oppgittUtenlandskVirksomhet;
-
+    /** Tillater kun positive verdier.  Max verdi håndteres av mottager. */
     @JsonProperty("bruttoInntekt")
     @DecimalMin(value = "0.00", message = "beløp må være >= 0.00")
-    @DecimalMax(value = "100000000.00", message = "beløp må være < 100000000.00") // TODO: sane verdier
     private BigDecimal bruttoInntekt;
 
     @JsonProperty(value = "erNyoppstartet")
@@ -73,6 +68,17 @@ public class OppgittEgenNæringDto {
 
     @JsonProperty(value = "erNyIArbeidslivet")
     private Boolean nyIArbeidslivet;
+
+    @JsonProperty(value = "landkode", required = true)
+    @Valid
+    @NotNull
+    private Landkode landkode = Landkode.NORGE;
+
+    /** Oppgis normalt dersom ikke orgnr kan gis. F.eks for utlandske virsomheter, eller noen tilfeller Fiskere med Lott. */
+    @JsonProperty(value = "virksomhetNavn", required = false)
+    @NotNull
+    @Pattern(regexp = "^[\\p{L}\\p{N}\\.\\- ]+$")
+    private String virksomhetNavn;
 
     protected OppgittEgenNæringDto() {
     }
@@ -241,22 +247,25 @@ public class OppgittEgenNæringDto {
         return this;
     }
 
-    public OppgittUtenlandskVirksomhetDto getOppgittUtenlandskVirksomhet() {
-        return oppgittUtenlandskVirksomhet;
+    public Landkode getLandkode() {
+        return landkode;
     }
 
-    public void setOppgittUtenlandskVirksomhet(OppgittUtenlandskVirksomhetDto dto) {
-        if (dto == null
-            || (/* ignorer datakvalitet tull */ Landkode.NORGE.equals(dto.getLandkode()) && dto.getVirksomhetNavn() == null)) {
-            // skip
-            this.oppgittUtenlandskVirksomhet = null;
-        } else {
-            this.oppgittUtenlandskVirksomhet = dto;
-        }
+    public void setLandkode(Landkode landkode) {
+        this.landkode = landkode;
     }
 
-    public OppgittEgenNæringDto medOppgittUtenlandskVirksomhet(OppgittUtenlandskVirksomhetDto oppgittUtenlandskVirksomhet) {
-        setOppgittUtenlandskVirksomhet(oppgittUtenlandskVirksomhet);
+    public String getVirksomhetNavn() {
+        return virksomhetNavn;
+    }
+
+    public void setVirksomhetNavn(String virksomhetNavn) {
+        this.virksomhetNavn = virksomhetNavn;
+    }
+    
+    public OppgittEgenNæringDto medOppgittVirksomhetNavn(String virksomhetNavn, Landkode landkode) {
+        setLandkode(landkode);
+        setVirksomhetNavn(virksomhetNavn);
         return this;
     }
 

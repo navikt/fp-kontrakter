@@ -53,9 +53,13 @@ public class ArbeidsforholdOverstyringDto {
     @Pattern(regexp = "^[\\p{L}\\p{N}\\.\\- ]+$")
     private String arbeidsgiverNavn;
 
+    /**
+     * Stillingsprosent utregnet. Burde ikke vært lov med mer enn 100% men noen havner over fordi av historiske årsaker oppgir noen antall timer i
+     * måneden der antall timer i uken skulle vært gitt. Tiden leger alle sår.
+     */
     @JsonProperty(value = "stillingsprosent")
     @DecimalMin(value = "0.00", message = "må være >= 0.00")
-    @DecimalMax(value = "500.00", message = "må være < 500.00") // TODO: mer sane verdier
+    @DecimalMax(value = "500.00", message = "må være < 500.00")
     private BigDecimal stillingsprosent;
 
     @JsonProperty(value = "overstyrtePerioder")
@@ -173,7 +177,7 @@ public class ArbeidsforholdOverstyringDto {
     }
 
     public ArbeidsforholdOverstyringDto medBekreftetPermisjon(LocalDate fom, LocalDate tom, BekreftetPermisjonStatus status) {
-        if (fom == null && tom==null) {
+        if (fom == null && tom == null) {
             return this;
         } else {
             return medBekreftetPermisjon(new BekreftetPermisjon(new Periode(fom, tom), status));

@@ -15,7 +15,7 @@ public class AktørIdPersonident extends PersonIdent {
     private String ident;
 
     @JsonCreator
-    public AktørIdPersonident(@JsonProperty("kode") String kode) {
+    public AktørIdPersonident(@JsonProperty(value = "ident", required=true, index=1) String kode) {
         this.ident = kode;
     }
 

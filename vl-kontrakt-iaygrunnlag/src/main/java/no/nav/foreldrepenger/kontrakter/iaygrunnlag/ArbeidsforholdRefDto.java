@@ -36,17 +36,15 @@ public class ArbeidsforholdRefDto {
     public ArbeidsforholdRefDto(@JsonProperty(value = "abakusReferanse", required = true, index = 0) String internReferanse,
                                 @JsonProperty(value = "eksternReferanse", index = 1) String eksternReferanse,
                                 @JsonProperty(value = "eksternReferanseSystem", index = 1) Fagsystem eksternReferanseSystem) {
-        this.abakusReferanse = internReferanse;
-        this.eksternReferanse = eksternReferanse;
-        this.eksternReferanseSystem = eksternReferanseSystem;
+        this.abakusReferanse = Objects.requireNonNull(internReferanse, "internReferanse");
+        this.eksternReferanse = Objects.requireNonNull(eksternReferanse, "eksternReferanse");
+        this.eksternReferanseSystem = Objects.requireNonNull(eksternReferanseSystem, "eksternReferanseSystem");
     }
 
     /** Hjelpe ctor -default ekstern system er AAREGISTERET inntil videre. */
     public ArbeidsforholdRefDto(@JsonProperty(value = "abakusReferanse", required = true, index = 0) String internReferanse,
                                 @JsonProperty(value = "eksternReferanse", index = 1) String eksternReferanse) {
-        this.abakusReferanse = internReferanse;
-        this.eksternReferanse = eksternReferanse;
-        this.eksternReferanseSystem = Fagsystem.AAREGISTERET;
+        this(internReferanse, eksternReferanse, Fagsystem.AAREGISTERET);
     }
 
     public String getAbakusReferanse() {
@@ -75,8 +73,8 @@ public class ArbeidsforholdRefDto {
             return false;
         var other = getClass().cast(obj);
         return Objects.equals(this.abakusReferanse, other.abakusReferanse)
-                && Objects.equals(this.eksternReferanse, other.eksternReferanse)
-                && Objects.equals(this.eksternReferanseSystem, other.eksternReferanseSystem);
+            && Objects.equals(this.eksternReferanse, other.eksternReferanse)
+            && Objects.equals(this.eksternReferanseSystem, other.eksternReferanseSystem);
     }
 
     @Override

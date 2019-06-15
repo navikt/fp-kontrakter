@@ -20,7 +20,7 @@ public class FnrPersonident extends PersonIdent {
     private String ident;
 
     @JsonCreator
-    public FnrPersonident(@JsonProperty("kode") String kode) {
+    public FnrPersonident(@JsonProperty(value = "ident", required=true, index=1) String kode) {
         this.ident = kode;
     }
 

@@ -62,7 +62,6 @@ import no.nav.foreldrepenger.kontrakter.iaygrunnlag.oppgittopptjening.v1.Oppgitt
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.oppgittopptjening.v1.OppgittFrilansDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.oppgittopptjening.v1.OppgittFrilansoppdragDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.oppgittopptjening.v1.OppgittOpptjeningDto;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.oppgittopptjening.v1.OppgittUtenlandskVirksomhetDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.InntektArbeidYtelseAggregatOverstyrtDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.InntektArbeidYtelseAggregatRegisterDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.v1.InntektArbeidYtelseGrunnlagDto;
@@ -98,8 +97,10 @@ public class IayGrunnlagTest {
         String json = WRITER.writeValueAsString(grunnlag);
         System.out.println(json);
 
-        var roundTripped = READER.forType(InntektArbeidYtelseGrunnlagDto.class).readValue(json);
+        InntektArbeidYtelseGrunnlagDto roundTripped = READER.forType(InntektArbeidYtelseGrunnlagDto.class).readValue(json);
 
+        assertThat(roundTripped).isNotNull();
+        assertThat(roundTripped.getPerson()).isNotNull();
         validateResult(roundTripped);
 
     }
@@ -115,7 +116,7 @@ public class IayGrunnlagTest {
         String json = WRITER.writeValueAsString(snapshot);
         System.out.println(json);
 
-        var roundTripped = READER.forType(InntektArbeidYtelseGrunnlagSakSnapshotDto.class).readValue(json);
+        InntektArbeidYtelseGrunnlagSakSnapshotDto roundTripped = READER.forType(InntektArbeidYtelseGrunnlagSakSnapshotDto.class).readValue(json);
 
         validateResult(roundTripped);
 
@@ -218,7 +219,7 @@ public class IayGrunnlagTest {
                         .medArbeidsforhold(List.of(
                                 new OppgittArbeidsforholdDto(periode, ArbeidType.ORDINÆRT_ARBEIDSFORHOLD)
                                         .medErUtenlandskInntekt(true)
-                                        .medUtenlandskVirksomhet(new OppgittUtenlandskVirksomhetDto(Landkode.DANMARK, "GammelDansk"))))
+                                        .medOppgittVirksomhetNavn("GammelDansk", Landkode.DANMARK)))
                         .medEgenNæring(List.of(
                                 new OppgittEgenNæringDto(periode)
                                         .medBegrunnelse("MinBegrunnelse")
@@ -227,7 +228,7 @@ public class IayGrunnlagTest {
                                         .medNyIArbeidslivet(false)
                                         .medNyoppstartet(false)
                                         .medNærRelasjon(false)
-                                        .medOppgittUtenlandskVirksomhet(new OppgittUtenlandskVirksomhetDto(Landkode.SVERIGE, "DuGamleDuFria"))
+                                        .medOppgittVirksomhetNavn("DuGamleDuFria", Landkode.SVERIGE)
                                         .medRegnskapsførerNavn("Regnskapsfører")
                                         .medRegnskapsførerTlf("+47902348732")
                                         .medVarigEndring(true)
