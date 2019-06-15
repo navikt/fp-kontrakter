@@ -16,6 +16,7 @@ import org.junit.Test;
 import com.fasterxml.jackson.databind.ObjectReader;
 import com.fasterxml.jackson.databind.ObjectWriter;
 
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.AktørIdPersonident;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.ArbeidsforholdRefDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.FnrPersonident;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.IayGrunnlagJsonMapper;
@@ -81,6 +82,7 @@ public class IayGrunnlagTest {
     private final LocalDate fom = LocalDate.now();
     private final LocalDate tom = LocalDate.now();
     private final FnrPersonident fnr = new FnrPersonident("12341234123");
+    private final AktørIdPersonident aktørId = new AktørIdPersonident("9912341234123");
     private final Organisasjon org = new Organisasjon("022090422");
     private final ArbeidType arbeidType = ArbeidType.ORDINÆRT_ARBEIDSFORHOLD;
     private final Periode periode = new Periode(fom, tom);
@@ -125,7 +127,7 @@ public class IayGrunnlagTest {
     private InntektArbeidYtelseGrunnlagDto byggInntektArbeidYtelseGrunnlag() {
         OffsetDateTime offTidspunkt = tidspunkt.atZone(ZoneOffset.systemDefault()).toOffsetDateTime();
 
-        var grunnlag = new InntektArbeidYtelseGrunnlagDto(fnr, offTidspunkt, uuid, uuid);
+        var grunnlag = new InntektArbeidYtelseGrunnlagDto(aktørId, offTidspunkt, uuid, uuid);
 
         var arbeidsforholdId = new ArbeidsforholdRefDto(UUID.randomUUID().toString(), "aaregRef");
 
