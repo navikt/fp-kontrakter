@@ -76,7 +76,6 @@ public class OppgittEgenNæringDto {
 
     /** Oppgis normalt dersom ikke orgnr kan gis. F.eks for utlandske virsomheter, eller noen tilfeller Fiskere med Lott. */
     @JsonProperty(value = "virksomhetNavn", required = false)
-    @NotNull
     @Pattern(regexp = "^[\\p{L}\\p{N}\\.\\- ]+$")
     private String virksomhetNavn;
 

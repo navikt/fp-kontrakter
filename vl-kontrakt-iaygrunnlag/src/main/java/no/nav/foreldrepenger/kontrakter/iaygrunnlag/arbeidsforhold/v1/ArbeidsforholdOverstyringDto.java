@@ -23,6 +23,9 @@ import no.nav.foreldrepenger.kontrakter.iaygrunnlag.Periode;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.ArbeidsforholdHandlingType;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.BekreftetPermisjonStatus;
 
+/**
+ * Angir overstyringer satt av saksbehandler for arbeidsforhold (eks. arbeidsgiver navn, permisjon, ny arbeidsforhold referanse, etc.)
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = Include.NON_ABSENT, content = Include.NON_EMPTY)
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE, getterVisibility = JsonAutoDetect.Visibility.NONE, setterVisibility = JsonAutoDetect.Visibility.NONE, isGetterVisibility = JsonAutoDetect.Visibility.NONE, creatorVisibility = JsonAutoDetect.Visibility.NONE)
@@ -33,22 +36,25 @@ public class ArbeidsforholdOverstyringDto {
     @NotNull
     private Aktør arbeidsgiver;
 
+    /** Hvis overstyring er relatert til et bestemt arbeidsforhold, null hvis gjelder alle (for samme arbeidsgiver). */
     @JsonProperty(value = "arbeidsforholdReferanse")
     @Valid
-    @NotNull
     private ArbeidsforholdRefDto arbeidsforholdRef;
 
+    /** Hvorvidt arbeidsforhold er tildelt en ny referanse. Null ellers. */
     @JsonProperty(value = "nyArbeidsforholdReferanse")
     @Valid
     private ArbeidsforholdRefDto nyArbeidsforholdRef;
 
     @JsonProperty(value = "arbeidsforholdHandlingType", required = true)
     @Valid
+    @NotNull
     private ArbeidsforholdHandlingType handling;
 
     @JsonProperty(value = "overstyringBegrunnelse")
     private String begrunnelse;
 
+    /** Angitt overstyrt navn på arbeidsgiver (tildelt av saksbehandler). */
     @JsonProperty(value = "arbeidsgiverNavn")
     @Pattern(regexp = "^[\\p{L}\\p{N}\\.\\- ]+$")
     private String arbeidsgiverNavn;
@@ -66,6 +72,7 @@ public class ArbeidsforholdOverstyringDto {
     @Valid
     private List<Periode> arbeidsforholdOverstyrtePerioder;
 
+    /** Saksbehandler har angitt permisjon. */
     @JsonProperty(value = "bekreftetPermisjon")
     @Valid
     private BekreftetPermisjon bekreftetPermisjon;
