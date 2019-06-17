@@ -59,7 +59,7 @@ public abstract class Kodeverk {
 
     @AssertTrue
     private boolean isOk() {
-        return kodeValidator.valider(getKodeverk(), getKode()) == null;
+        return kodeValidator == null || kodeValidator.valider(getKodeverk(), getKode()) == null;
     }
     @Override
     public String toString() {
