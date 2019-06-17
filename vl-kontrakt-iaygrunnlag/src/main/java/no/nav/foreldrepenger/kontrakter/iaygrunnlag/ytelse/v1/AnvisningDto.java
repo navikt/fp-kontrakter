@@ -39,7 +39,7 @@ public class AnvisningDto {
     @JsonProperty(value = "utbetalingsgrad")
     @Valid
     @DecimalMin(value = "0.00", message = "prosentsats >= 0.00")
-    @DecimalMax(value = "100.00", message = "prosentsats < 100.00")
+    @DecimalMax(value = "300.00", message = "prosentsats < 300.00")
     private BigDecimal utbetalingsgrad;
 
     protected AnvisningDto() {
