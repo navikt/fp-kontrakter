@@ -1,7 +1,6 @@
 package no.nav.vedtak.ytelse.v1.anvisning;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -14,11 +13,9 @@ public class Anvisning {
     @JsonProperty("periode")
     private Periode periode;
 
-    @NotNull
     @JsonProperty("beløp")
     private Desimaltall beløp;
 
-    @NotNull
     @JsonProperty("dagsats")
     private Desimaltall dagsats;
 
