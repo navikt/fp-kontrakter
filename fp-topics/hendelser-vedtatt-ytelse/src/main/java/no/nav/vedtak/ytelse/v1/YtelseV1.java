@@ -1,6 +1,7 @@
 package no.nav.vedtak.ytelse.v1;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -58,7 +59,7 @@ public class YtelseV1 extends Ytelse {
     @NotNull
     @Valid
     @JsonProperty("anvist")
-    private List<Anvisning> anvist;
+    private List<Anvisning> anvist = new ArrayList<>();
 
     public YtelseV1() {
     }
