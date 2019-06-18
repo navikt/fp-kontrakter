@@ -1,5 +1,8 @@
 package no.nav.vedtak.ytelse.v1;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import no.nav.vedtak.ytelse.Kodeverk;
 
 public class YtelseStatus extends Kodeverk {
@@ -10,7 +13,8 @@ public class YtelseStatus extends Kodeverk {
     public static final YtelseStatus AVSLUTTET = new YtelseStatus("AVSLU");
     private static final String DISCRIMINATOR = "YTELSE_STATUS";
 
-    public YtelseStatus(String kode) {
+    @JsonCreator
+    public YtelseStatus(@JsonProperty(value = "kode", required = true) String kode) {
         super(DISCRIMINATOR, kode);
     }
 
