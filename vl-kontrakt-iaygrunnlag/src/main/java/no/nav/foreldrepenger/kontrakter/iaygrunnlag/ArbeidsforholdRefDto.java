@@ -17,33 +17,33 @@ import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.Fagsystem;
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE, getterVisibility = JsonAutoDetect.Visibility.NONE, setterVisibility = JsonAutoDetect.Visibility.NONE, isGetterVisibility = JsonAutoDetect.Visibility.NONE, creatorVisibility = JsonAutoDetect.Visibility.NONE)
 public class ArbeidsforholdRefDto {
 
-    @JsonProperty(value = "abakusReferanse", required = true, index = 0)
-    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$")
-    @NotNull
-    private String abakusReferanse;
 
-    @JsonProperty(value = "eksternReferanse", index = 1)
-    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$")
+    @JsonProperty(value = "eksternReferanse", required = true, index = 0)
+    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$", message = "Eksternreferanse ${validatedValue} matcher ikke tillatt pattern")
     @NotNull
     private String eksternReferanse;
 
-    @JsonProperty(value = "eksternReferanseSystem", index = 2)
+    @JsonProperty(value = "eksternReferanseSystem", index = 1)
     @NotNull
     @Valid
     private Fagsystem eksternReferanseSystem;
+    
+    @JsonProperty(value = "abakusReferanse", index = 2)
+    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$", message = "Abakusreferanse ${validatedValue} matcher ikke tillatt pattern")
+    private String abakusReferanse;
 
     @JsonCreator
-    public ArbeidsforholdRefDto(@JsonProperty(value = "abakusReferanse", required = true, index = 0) String internReferanse,
-                                @JsonProperty(value = "eksternReferanse", index = 1) String eksternReferanse,
+    public ArbeidsforholdRefDto(@JsonProperty(value = "abakusReferanse", index = 1) String internReferanse,
+                                @JsonProperty(value = "eksternReferanse", required = true, index = 0) String eksternReferanse,
                                 @JsonProperty(value = "eksternReferanseSystem", index = 1) Fagsystem eksternReferanseSystem) {
-        this.abakusReferanse = Objects.requireNonNull(internReferanse, "internReferanse");
+        this.abakusReferanse = internReferanse; // kan sende null, abakus må da generere.
         this.eksternReferanse = Objects.requireNonNull(eksternReferanse, "eksternReferanse");
         this.eksternReferanseSystem = Objects.requireNonNull(eksternReferanseSystem, "eksternReferanseSystem");
     }
 
     /** Hjelpe ctor -default ekstern system er AAREGISTERET inntil videre. */
-    public ArbeidsforholdRefDto(@JsonProperty(value = "abakusReferanse", required = true, index = 0) String internReferanse,
-                                @JsonProperty(value = "eksternReferanse", index = 1) String eksternReferanse) {
+    public ArbeidsforholdRefDto(@JsonProperty(value = "abakusReferanse", index = 1) String internReferanse,
+                                @JsonProperty(value = "eksternReferanse", required = true, index = 0) String eksternReferanse) {
         this(internReferanse, eksternReferanse, Fagsystem.AAREGISTERET);
     }
 

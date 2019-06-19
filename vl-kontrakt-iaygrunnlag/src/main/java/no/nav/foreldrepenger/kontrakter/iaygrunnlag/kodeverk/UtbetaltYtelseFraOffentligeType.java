@@ -18,7 +18,7 @@ public class UtbetaltYtelseFraOffentligeType extends Kodeverk implements Utbetal
     public static final UtbetaltYtelseFraOffentligeType FORELDREPENGER = new UtbetaltYtelseFraOffentligeType("FORELDREPENGER");
 
     @JsonProperty(value = "kode", required = true, index = 1)
-    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$")
+    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$", message="Kode UtbetaltYtelseFraOffentligeType '${validatedValue}' matcher ikke tillatt pattern")
     @Size(min = 3, max = 50)
     @NotNull
     private String kode;

@@ -18,7 +18,7 @@ public class InntektsmeldingInnsendingsårsakType extends Kodeverk {
     public static final InntektsmeldingInnsendingsårsakType ENDRING = new InntektsmeldingInnsendingsårsakType("ENDRING");
     
     @JsonProperty(value = "kode", required = true, index = 1)
-    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$")
+    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$", message="Kode InntektsmeldingInnsendingsårsakType '${validatedValue}' matcher ikke tillatt pattern")
     @Size(min = 2, max = 50)
     @NotNull
     private String kode;

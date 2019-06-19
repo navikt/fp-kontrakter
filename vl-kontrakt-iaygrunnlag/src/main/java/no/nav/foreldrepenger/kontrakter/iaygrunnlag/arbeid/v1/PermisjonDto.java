@@ -18,27 +18,30 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.Periode;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.PermisjonsbeskrivelseType;
 
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = Include.ALWAYS, content = Include.NON_EMPTY)
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE, getterVisibility = JsonAutoDetect.Visibility.NONE, setterVisibility = JsonAutoDetect.Visibility.NONE, isGetterVisibility = JsonAutoDetect.Visibility.NONE, creatorVisibility = JsonAutoDetect.Visibility.NONE)
 public class PermisjonDto {
 
-    @JsonProperty(value="periode", required=true)
+    @JsonProperty(value = "periode", required = true)
     @NotNull
     @Valid
     private Periode periode;
-    
+
     /** Permisjon type, hvis oppgitt. Kan være null. */
-    @JsonProperty(value="type", required = true)
+    @JsonProperty(value = "type", required = true)
     @Valid
     private PermisjonsbeskrivelseType type;
-    
-    /** Prosent sats med to desimaler - min 0.00 - 100.00. */
+
+    /**
+     * Prosent sats med to desimaler - min 0.00 - 100.00.
+     * Pga inntastingfeil og manglende validering i LPS systemer og Altinn har man historisk akseptert mottatt permisjonsprosenter langt over
+     * 100%. C'est la vie.
+     */
     @JsonProperty("prosentsats")
     @Valid
-    @DecimalMin(value="0.00", message = "prosentsats >= 0.00")
-    @DecimalMax(value="500.00", message="prosentsats < 500.00") // insane maks verdi, men Aa-reg sier så
+    @DecimalMin(value = "0.00", message = "prosentsats >= 0.00")
+    @DecimalMax(value = "500.00", message = "prosentsats < 500.00") // insane maks verdi, men Aa-reg sier så
     private BigDecimal prosentsats;
 
     protected PermisjonDto() {
@@ -63,18 +66,17 @@ public class PermisjonDto {
     }
 
     public void setProsentsats(BigDecimal prosentsats) {
-        this.prosentsats = prosentsats==null?null:prosentsats.setScale(2, RoundingMode.HALF_UP);
+        this.prosentsats = prosentsats == null ? null : prosentsats.setScale(2, RoundingMode.HALF_UP);
     }
-    
+
     public PermisjonDto medProsentsats(BigDecimal prosentsats) {
         setProsentsats(prosentsats);
         return this;
     }
-    
+
     public PermisjonDto medProsentsats(int prosentsats) {
         setProsentsats(BigDecimal.valueOf(prosentsats));
         return this;
     }
-    
-    
+
 }

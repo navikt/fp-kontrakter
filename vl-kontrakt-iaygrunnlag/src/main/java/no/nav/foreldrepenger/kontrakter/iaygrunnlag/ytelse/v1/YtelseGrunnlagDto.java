@@ -30,20 +30,20 @@ public class YtelseGrunnlagDto {
 
     @JsonProperty(value = "dekningsgradProsent")
     @Valid
-    @DecimalMin(value = "0.00", message = "må være >= 0.00")
-    @DecimalMax(value = "500.00", message = "må være < 500.00")
+    @DecimalMin(value = "0.00", message = "dekningsgradprosent ${validatedValue} må være >= {value}")
+    @DecimalMax(value = "100.00", message = "dekningsgradprosent ${validatedValue} må være <= {value}")
     private BigDecimal dekningsgradProsent;
 
     @JsonProperty(value = "graderingProsent")
     @Valid
-    @DecimalMin(value = "0.00", message = "må være >= 0.00")
-    @DecimalMax(value = "500.00", message = "må være < 500.00")
+    @DecimalMin(value = "0.00", message = "graderingprosent ${validatedValue} må være >= {value}")
+    @DecimalMax(value = "100.00", message = "graderingprosent ${validatedValue} må være <= {value}")
     private BigDecimal graderingProsent;
 
     @JsonProperty(value = "inntektsgrunnlagProsent")
     @Valid
-    @DecimalMin(value = "0.00", message = "må være >= 0.00")
-    @DecimalMax(value = "500.00", message = "må være < 500.00") 
+    @DecimalMin(value = "0.00", message = "inntektsgrunnlagProsent ${validatedValue} må være >= {value}")
+    @DecimalMax(value = "100.00", message = "inntektsgrunnlagProsent ${validatedValue} må være <= {value}") 
     private BigDecimal inntektsgrunnlagProsent;
 
     @JsonProperty(value = "fordeling")

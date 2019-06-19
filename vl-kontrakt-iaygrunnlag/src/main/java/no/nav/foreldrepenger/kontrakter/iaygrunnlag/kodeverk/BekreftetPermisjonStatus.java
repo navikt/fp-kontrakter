@@ -19,7 +19,7 @@ public class BekreftetPermisjonStatus extends Kodeverk {
     public static final BekreftetPermisjonStatus UGYLDIGE_PERIODER = new BekreftetPermisjonStatus("UGYLDIGE_PERIODER");
 
     @JsonProperty(value = "kode", required = true, index = 1)
-    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$")
+    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$", message="Kode BekreftetPermisjonStatus '${validatedValue}' matcher ikke tillatt pattern")
     @Size(min=5, max=20)
     @NotNull
     private String kode;

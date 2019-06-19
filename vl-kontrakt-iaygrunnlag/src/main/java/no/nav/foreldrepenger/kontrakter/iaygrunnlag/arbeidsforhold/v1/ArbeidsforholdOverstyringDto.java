@@ -56,16 +56,15 @@ public class ArbeidsforholdOverstyringDto {
 
     /** Angitt overstyrt navn på arbeidsgiver (tildelt av saksbehandler). */
     @JsonProperty(value = "arbeidsgiverNavn")
-    @Pattern(regexp = "^[\\p{L}\\p{N}\\.\\- ]+$")
+    @Pattern(regexp = "^[\\p{L}\\p{N}\\.\\-(), ]+$", message = "Arbeidsgivernavn '${validatedValue}' matcher ikke tillatt pattern")
     private String arbeidsgiverNavn;
 
     /**
-     * Stillingsprosent utregnet. Burde ikke vært lov med mer enn 100% men noen havner over fordi av historiske årsaker oppgir noen antall timer i
-     * måneden der antall timer i uken skulle vært gitt. Tiden leger alle sår.
+     * Stillingsprosent, maks 100%
      */
     @JsonProperty(value = "stillingsprosent")
-    @DecimalMin(value = "0.00", message = "må være >= 0.00")
-    @DecimalMax(value = "500.00", message = "må være < 500.00")
+    @DecimalMin(value = "0.00", message = "stillingsprosent ${validatedValue} må være >= {value}")
+    @DecimalMax(value = "100.00", message = "stillingsprosent ${validatedValue} må være <= {value}")
     private BigDecimal stillingsprosent;
 
     @JsonProperty(value = "overstyrtePerioder")

@@ -40,10 +40,11 @@ public class OppgittEgenNæringDto {
     private VirksomhetType virksomhetTypeDto;
 
     @JsonProperty(value = "regnskapsførerNavn")
-    @Pattern(regexp = "^[\\p{L}\\p{N}\\.\\- ]+$")
+    @Pattern(regexp = "^[\\p{L}\\p{N}\\.\\-(), ]+$", message="Oppgitt Egen Næring - Regnskapsfører navn '${validatedValue}' matcher ikke tillatt pattern")
     private String regnskapsførerNavn;
 
     @JsonProperty(value = "regnskapsførerTlf")
+    @Pattern(regexp = "^[\\+\\p{L}\\p{N}\\.\\-(), ]+$", message="Regnskapsfører telefon ${validatedValue} matcher ikke oppgitt pattern") // har caser som har sluppet gjennom selvbetjening med alfa
     private String regnskapsførerTlf;
 
     @JsonProperty(value = "endringDato")
@@ -76,7 +77,7 @@ public class OppgittEgenNæringDto {
 
     /** Oppgis normalt dersom ikke orgnr kan gis. F.eks for utlandske virsomheter, eller noen tilfeller Fiskere med Lott. */
     @JsonProperty(value = "virksomhetNavn", required = false)
-    @Pattern(regexp = "^[\\p{L}\\p{N}\\.\\- ]+$")
+    @Pattern(regexp = "^[\\p{L}\\p{N}\\.\\-(), ]+$", message="Oppgitt Egen Næring - Virksomhet navn '${validatedValue}' matcher ikke tillatt pattern")
     private String virksomhetNavn;
 
     protected OppgittEgenNæringDto() {

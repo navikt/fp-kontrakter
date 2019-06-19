@@ -3,6 +3,7 @@ package no.nav.foreldrepenger.kontrakter.iaygrunnlag;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;

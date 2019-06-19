@@ -22,7 +22,7 @@ public class ArbeidType extends Kodeverk {
     public static ArbeidType UTENLANDSK_ARBEIDSFORHOLD = new ArbeidType("UTENLANDSK_ARBEIDSFORHOLD");
 
     @JsonProperty(value = "kode", required = true, index = 1)
-    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$")
+    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$", message="Kode ArbeidType '${validatedValue}' matcher ikke tillatt pattern")
     @Size(min = 5, max = 50)
     @NotNull
     private String kode;

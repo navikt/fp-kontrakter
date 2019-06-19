@@ -22,7 +22,7 @@ public class InntektPeriodeType extends Kodeverk {
     public static final InntektPeriodeType FASTSATT_ETTER_AVVIKHÅNDTERING = new InntektPeriodeType("INNFS");
 
     @JsonProperty(value = "kode", required = true, index = 1)
-    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$")
+    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$", message="Kode InntektPeriodeType '${validatedValue}' matcher ikke tillatt pattern")
     @Size(min=4, max=10)
     @NotNull
     private String kode;
