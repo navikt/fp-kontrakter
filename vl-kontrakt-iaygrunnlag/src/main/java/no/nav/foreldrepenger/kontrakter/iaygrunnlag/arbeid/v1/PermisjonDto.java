@@ -40,8 +40,8 @@ public class PermisjonDto {
      */
     @JsonProperty("prosentsats")
     @Valid
-    @DecimalMin(value = "0.00", message = "prosentsats >= 0.00")
-    @DecimalMax(value = "500.00", message = "prosentsats < 500.00") // insane maks verdi, men Aa-reg sier så
+    @DecimalMin(value = "0.00", message = "permisjon prosentsats ${validatedValue} må være >= {value}")
+    @DecimalMax(value = "500.00", message = "permisjon prosentsats ${validatedValue} må være <= {value}") // insane maks verdi, men Aa-reg sier så
     private BigDecimal prosentsats;
 
     protected PermisjonDto() {
