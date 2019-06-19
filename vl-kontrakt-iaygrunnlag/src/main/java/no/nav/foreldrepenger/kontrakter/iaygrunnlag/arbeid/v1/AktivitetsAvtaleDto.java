@@ -17,7 +17,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.Periode;
 
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = Include.NON_ABSENT, content = Include.NON_EMPTY)
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE, getterVisibility = JsonAutoDetect.Visibility.NONE, setterVisibility = JsonAutoDetect.Visibility.NONE, isGetterVisibility = JsonAutoDetect.Visibility.NONE, creatorVisibility = JsonAutoDetect.Visibility.NONE)
@@ -28,11 +27,15 @@ public class AktivitetsAvtaleDto {
     @NotNull
     private Periode periode;
 
+    /**
+     * Det går an å ha stillingprosent mer enn 100%, men innsendingsfeil hos LPS leverandører og manglende Altinn validering
+     * gjør at i noen historiske tilfeller har man akseptert innsending opp til 500% (typisk skjedd når man har tastet inn ett ukesverks antall
+     * timer i dag-felt i de systemene).
+     */
     @JsonProperty("stillingsprosent")
     @Valid
-    @DecimalMin(value = "0.00", message = "stillingsprosent må være >= 0.00")
-    @DecimalMax(value = "500.00", message = "stillingsprosent må være < 500.00")
-    // suspekt å jobbe en måned i løpet av en uke, men så sier Aa-reg.
+    @DecimalMin(value = "0.00", message = "stillingsprosent ${validatedValue} må være >= {value}")
+    @DecimalMax(value = "1000.00", message = "stillingsprosent ${validatedValue} må være <= {value}")
     private BigDecimal stillingsprosent;
 
     @JsonProperty("sistLønnsendring")

@@ -46,7 +46,7 @@ public class YtelseDto {
     
     @JsonProperty(value = "saksnummer")
     @Valid
-    @Pattern(regexp = "^[A-Za-z0-9_\\.\\-]+$")
+    @Pattern(regexp = "^[A-Za-z0-9_\\.\\-]+$", message="Saksnummer '${validatedValue}' matcher ikke tillatt pattern '{value}'")
     private String saksnummer;
 
     @JsonProperty(value = "temaUnderkategori")

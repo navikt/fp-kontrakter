@@ -16,7 +16,7 @@ public class SkatteOgAvgiftsregelType extends Kodeverk {
     public static final SkatteOgAvgiftsregelType NETTOLØNN = new SkatteOgAvgiftsregelType("NETTOLØNN");
 
     @JsonProperty(value = "kode", required = true, index = 1)
-    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$")
+    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$", message="Kode SkatteOgAvgiftsregelType '${validatedValue}' matcher ikke tillatt pattern")
     @Size(min = 5, max = 100)
     @NotNull
     private String kode;

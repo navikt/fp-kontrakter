@@ -14,7 +14,7 @@ public class InntektspostType extends Kodeverk {
     static final String KODEVERK = "INNTEKTSPOST_TYPE";
 
     @JsonProperty(value = "kode", required = true, index = 1)
-    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$")
+    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$", message="Kode InntektspostType '${validatedValue}' matcher ikke tillatt pattern")
     @Size(min = 3, max = 50)
     @NotNull
     private String kode;

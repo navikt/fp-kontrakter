@@ -32,7 +32,7 @@ public class Fagsystem extends Kodeverk {
     public static final Fagsystem AAREGISTERET= new Fagsystem("AAREGISTERET");
 
     @JsonProperty(value = "kode", required = true, index = 1)
-    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$")
+    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$", message="Kode Fagsystem '${validatedValue}' matcher ikke tillatt pattern")
     @Size(min=4, max=50)
     @NotNull
     private String kode;

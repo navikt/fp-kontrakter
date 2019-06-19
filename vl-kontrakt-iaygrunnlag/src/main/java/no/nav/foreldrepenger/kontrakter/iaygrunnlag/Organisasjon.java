@@ -18,7 +18,7 @@ public class Organisasjon extends Aktør {
     
     @JsonProperty(value = "ident", required = true, index = 1)
     @NotNull
-    @Pattern(regexp = "^\\d{9}+$", message = "orgnr har ikke gyldig verdi (9 siffer)")
+    @Pattern(regexp = "^\\d{9}+$", message = "orgnr ${validatedValue} har ikke gyldig verdi (9 siffer)")
     private String ident;
 
     @JsonCreator

@@ -20,7 +20,7 @@ public class PermisjonsbeskrivelseType extends Kodeverk {
     public static final PermisjonsbeskrivelseType VANLIG = new PermisjonsbeskrivelseType("VANLIG");
 
     @JsonProperty(value = "kode", required = true, index = 1)
-    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$")
+    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$", message="Kode PermisjonsbeskrivelseType '${validatedValue}' matcher ikke tillatt pattern")
     @NotNull
     private String kode;
 

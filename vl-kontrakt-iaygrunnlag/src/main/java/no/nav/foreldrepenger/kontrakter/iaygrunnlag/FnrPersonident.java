@@ -18,7 +18,7 @@ public class FnrPersonident extends PersonIdent {
     
     @JsonProperty(value = "ident", required = true, index = 1)
     @NotNull
-    @Pattern(regexp = "^\\d{11}+$", message = "fnr ha ikke gyldig verdi (11 siffer)")
+    @Pattern(regexp = "^\\d{11}+$", message = "fnr ${validatedValue} har ikke gyldig verdi (11 siffer)")
     private String ident;
 
     @JsonCreator

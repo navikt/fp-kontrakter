@@ -26,7 +26,7 @@ public class SjekkStatusRequest {
 
     @JsonProperty(value = "taskReferanse", required = true)
     @NotNull
-    @Pattern(regexp = "\\d+")
+    @Pattern(regexp = "\\d+", message="Task referanse '${validatedValue}' matcher ikke tillatt pattern '{value}'")
     private String taskReferanse;
 
     @JsonCreator

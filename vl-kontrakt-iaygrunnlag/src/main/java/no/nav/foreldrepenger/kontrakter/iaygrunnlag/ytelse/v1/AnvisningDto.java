@@ -36,10 +36,13 @@ public class AnvisningDto {
     @DecimalMin(value = "0.00", message = "beløp må være >= 0.00")
     private BigDecimal dagsats;
 
+    /**
+     * Maks utbetalingsgrad er 200% (forekommer i meldekort fra Arena).
+     */
     @JsonProperty(value = "utbetalingsgrad")
     @Valid
-    @DecimalMin(value = "0.00", message = "prosentsats >= 0.00")
-    @DecimalMax(value = "300.00", message = "prosentsats < 300.00")
+    @DecimalMin(value = "0.00", message = "prosentsats ${validatedValue} må være >= {value}")
+    @DecimalMax(value = "200.00", message = "prosentsats ${validatedValue} må være <= {value}")
     private BigDecimal utbetalingsgrad;
 
     protected AnvisningDto() {

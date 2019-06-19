@@ -66,7 +66,7 @@ public class InnhentRegisterdataRequest {
 
     @JsonProperty(value = "callbackUrl")
     @Valid
-    @Pattern(regexp = URL_PATTERN)
+    @Pattern(regexp = URL_PATTERN, message="callbackUrl '${validatedValue}' matcher ikke tillatt url pattern '{regexp}'")
     private String callbackUrl;
 
     @JsonCreator
