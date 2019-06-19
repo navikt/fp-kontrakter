@@ -56,7 +56,7 @@ public class ArbeidsforholdOverstyringDto {
 
     /** Angitt overstyrt navn på arbeidsgiver (tildelt av saksbehandler). */
     @JsonProperty(value = "arbeidsgiverNavn")
-    @Pattern(regexp = "^[\\p{L}\\p{N}\\.\\-()/, ]+$", message = "Arbeidsgivernavn '${validatedValue}' matcher ikke tillatt pattern")
+    @Pattern(regexp = "^[\\p{L}\\p{N}\\.\\-()/#&, ]+$", message = "Arbeidsgivernavn '${validatedValue}' matcher ikke tillatt pattern")
     private String arbeidsgiverNavn;
 
     /**
