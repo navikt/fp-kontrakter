@@ -43,7 +43,7 @@ public class OppgittArbeidsforholdDto {
     /** Oppgis normalt dersom ikke orgnr kan gis. F.eks for utlandske virsomheter, eller noen tilfeller Fiskere med Lott. */
     @JsonProperty(value = "virksomhetNavn", required = false)
     @NotNull
-    @Pattern(regexp = "^[\\p{L}\\p{N}\\.\\-()/#&, ]+$", message="Oppgitt Arbeidsforhold - Virksomhet navn '${validatedValue}' matcher ikke tillatt pattern")
+    @Pattern(regexp = "^[\\p{L}\\p{N}\\.\\-()/$=\\?%#&\\\\,\\+:/;\\[\\]@\\s]+$", message="Oppgitt Arbeidsforhold - Virksomhet navn '${validatedValue}' matcher ikke tillatt pattern")
     private String virksomhetNavn;
 
     @JsonCreator
