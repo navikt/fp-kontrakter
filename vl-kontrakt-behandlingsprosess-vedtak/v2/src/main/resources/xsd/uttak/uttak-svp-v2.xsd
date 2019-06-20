@@ -14,6 +14,7 @@
 					<xsd:element name="sisteUttaksdato" type="felles:DateOpplysning" minOccurs="0"/>
 					<xsd:element name="uttaksResultatArbeidsforhold" type="ut:UttaksResultatArbeidsforhold" minOccurs="0" maxOccurs="unbounded"/>
 					<xsd:element name="tilrettelegging" type="ut:Tilrettelegging" minOccurs="0" maxOccurs="unbounded"/>
+					<!--xsd:any namespace="##targetNamespace" processContents="lax" minOccurs="0" maxOccurs="unbounded" /-->
 				</xsd:sequence>
 				<xsd:anyAttribute processContents="lax"/>
 			</xsd:extension>
@@ -50,6 +51,7 @@
 				</xsd:annotation>
 			</xsd:element>
 			<xsd:element name="avslagaarsak" type="felles:KodeverksOpplysning" minOccurs="0"/>
+			<!--xsd:any namespace="##targetNamespace" processContents="lax" minOccurs="0" maxOccurs="unbounded" /-->
 		</xsd:sequence>
 		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
@@ -75,6 +77,7 @@
 					<xsd:documentation xml:lang="no">Årsak til resultat uttaksperioden har fått</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
+			<!--xsd:any namespace="##targetNamespace" processContents="lax" minOccurs="0" maxOccurs="unbounded" /-->
 		</xsd:sequence>
 		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
@@ -123,11 +126,11 @@
 			<xsd:element name="arbeidsforholdid" type="felles:StringOpplysning" minOccurs="0"/>
 			<xsd:element name="erVirksomhet" type="felles:BooleanOpplysning"/>
 			<xsd:element name="mottattTidspunkt" type="felles:DateOpplysning" minOccurs="0">
-
 				<xsd:annotation>
 					<xsd:documentation xml:lang="no">Dokumentasjon mangler.</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
+			<!--xsd:any namespace="##targetNamespace" processContents="lax" minOccurs="0" maxOccurs="unbounded" /-->
 			<xsd:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
 		</xsd:sequence>
 		<xsd:anyAttribute processContents="lax"/>

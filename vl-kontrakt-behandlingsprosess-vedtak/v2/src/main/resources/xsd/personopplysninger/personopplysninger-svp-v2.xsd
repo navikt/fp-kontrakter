@@ -134,7 +134,6 @@
 			<xsd:element name="ytelsesgrunnlag" type="po:YtelseGrunnlag" minOccurs="0"/>
 			<xsd:element name="ytelsesstorrelse" type="po:YtelseStorrelse" minOccurs="0" maxOccurs="unbounded"/>
 			<xsd:element name="ytelseanvist" type="po:YtelseAnvist" minOccurs="0" maxOccurs="unbounded"/>
-			<xsd:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
 		</xsd:sequence>
 		<xsd:attributeGroup ref="felles:Sporing"/>
 		<xsd:anyAttribute processContents="lax"/>

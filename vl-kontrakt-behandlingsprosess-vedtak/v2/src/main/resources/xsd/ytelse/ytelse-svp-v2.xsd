@@ -59,6 +59,7 @@
 					<xsd:documentation xml:lang="no">Dokumentasjon mangler</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
+			<!--xsd:any namespace="##targetNamespace" processContents="lax" minOccurs="0" maxOccurs="unbounded" /-->
 		</xsd:sequence>
 		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
@@ -67,6 +68,7 @@
 			<xsd:element name="orgnr" type="felles:StringOpplysning" minOccurs="0"/>
 			<xsd:element name="navn" type="felles:StringOpplysning" minOccurs="0"/>
 			<xsd:element name="arbeidsforholdid" type="felles:StringOpplysning" minOccurs="0"/>
+			<!--xsd:any namespace="##targetNamespace" processContents="lax" minOccurs="0" maxOccurs="unbounded" /-->
 		</xsd:sequence>
 		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>

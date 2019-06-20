@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns22:vedtak xmlns:ns2="urn:no:nav:vedtak:felles:xml:vedtak:oppdrag:dvh:fp:v2" xmlns:ns4="urn:no:nav:vedtak:felles:xml:vedtak:oppdrag:dvh:es:v2" xmlns:ns3="urn:no:nav:vedtak:felles:xml:vedtak:oppdrag:v2" xmlns:ns6="urn:no:nav:vedtak:felles:xml:vedtak:vilkaarsgrunnlag:es:v2" xmlns:ns20="urn:no:nav:vedtak:felles:xml:vedtak:beregningsgrunnlag:fp:v2" xmlns:ns5="urn:no:nav:vedtak:felles:xml:vedtak:vilkaarsgrunnlag:svp:v2" xmlns:ns8="urn:no:nav:vedtak:felles:xml:felles:v2" xmlns:ns7="urn:no:nav:vedtak:felles:xml:vedtak:personopplysninger:es:v2" xmlns:ns13="urn:no:nav:vedtak:felles:xml:vedtak:ytelse:svp:v2" xmlns:ns9="urn:no:nav:vedtak:felles:xml:vedtak:vilkaarsgrunnlag:fp:v2" xmlns:ns12="urn:no:nav:vedtak:felles:xml:vedtak:ytelse:es:v2" xmlns:ns23="urn:no:nav:vedtak:felles:xml:vedtak:uttak:fp:v2" xmlns:ns11="urn:no:nav:vedtak:felles:xml:vedtak:ytelse:fp:v2" xmlns:ns22="urn:no:nav:vedtak:felles:xml:vedtak:v2" xmlns:ns10="urn:no:nav:vedtak:felles:xml:vedtak:vilkaarsgrunnlag:v2" xmlns:ns21="urn:no:nav:vedtak:felles:xml:vedtak:beregningsgrunnlag:svp:v2" xmlns:ns17="urn:no:nav:vedtak:felles:xml:vedtak:personopplysninger:fp:v2" xmlns:ns16="urn:no:nav:vedtak:felles:xml:vedtak:personopplysninger:dvh:fp:v2" xmlns:ns15="urn:no:nav:vedtak:felles:xml:vedtak:personopplysninger:dvh:es:v2" xmlns:ns14="urn:no:nav:vedtak:felles:xml:vedtak:personopplysninger:v2" xmlns:ns19="urn:no:nav:vedtak:felles:xml:vedtak:beregningsgrunnlag:es:v2" xmlns:ns18="urn:no:nav:vedtak:felles:xml:vedtak:uttak:svp:v2">
+    <ns22:fagsakId>1000611</ns22:fagsakId>
+    <ns22:fagsakType/>
+    <ns22:tema kode="FOR_SVA" kodeverk="TEMA">Foreldre- og svangerskapspenger</ns22:tema>
+    <ns22:behandlingsTema kode="SVP" kodeverk="BEHANDLING_TEMA">Svangerskapspenger</ns22:behandlingsTema>
+    <ns22:ansvarligSaksbehandlerIdent>Z990073</ns22:ansvarligSaksbehandlerIdent>
+    <ns22:ansvarligBeslutterIdent>Z992564</ns22:ansvarligBeslutterIdent>
+    <ns22:behandlendeEnhet>4833</ns22:behandlendeEnhet>
+    <ns22:soeknadsdato>2019-06-03</ns22:soeknadsdato>
+    <ns22:vedtaksdato>2019-06-03</ns22:vedtaksdato>
+    <ns22:vedtaksresultat kode="INNVILGET" kodeverk="VEDTAK_RESULTAT_TYPE">Innvilget</ns22:vedtaksresultat>
+    <ns22:personOpplysninger>
+        <ns17:PersonopplysningerSvangerskapspenger>
+            <ns17:bruker>
+                <ns14:kjoenn>Kvinne</ns14:kjoenn>
+                <ns14:statsborgerskap kode="NOR">NORGE</ns14:statsborgerskap>
+                <ns14:personstatus kode="BOSA">Bosatt</ns14:personstatus>
+                <ns14:region>Nordisk</ns14:region>
+                <ns14:sivilstand kode="UGIF">Ugift</ns14:sivilstand>
+                <ns14:foedselsdato>1937-01-25</ns14:foedselsdato>
+                <ns14:navn>MASKIN GUL</ns14:navn>
+                <ns14:norskIdent>25013722237</ns14:norskIdent>
+            </ns17:bruker>
+            <ns17:adresse>
+                <ns17:adressetype kode="BOSTEDSADRESSE">Bostedsadresse</ns17:adressetype>
+                <ns17:mottakersNavn>MASKIN GUL</ns17:mottakersNavn>
+                <ns17:addresselinje1>SANNERGATA 2</ns17:addresselinje1>
+                <ns17:postnummer>0557</ns17:postnummer>
+                <ns17:land>NOR</ns17:land>
+            </ns17:adresse>
+            <ns17:familiehendelse>
+                <ns17:foedsel>
+                    <ns14:antallBarn>0</ns14:antallBarn>
+                </ns17:foedsel>
+                <ns17:terminbekreftelse>
+                    <ns17:termindato>2019-06-01</ns17:termindato>
+                    <ns17:antallBarn>0</ns17:antallBarn>
+                </ns17:terminbekreftelse>
+            </ns17:familiehendelse>
+            <ns17:medlemskap/>
+            <ns17:inntekter>
+                <ns17:inntekt>
+                    <ns17:mottaker>1828396257321</ns17:mottaker>
+                    <ns17:arbeidsgiver>973861778</ns17:arbeidsgiver>
+                    <ns17:inntektsposter>
+                        <ns17:periode>
+                            <ns8:fom>2019-01-01</ns8:fom>
+                            <ns8:tom>2019-01-31</ns8:tom>
+                        </ns17:periode>
+                        <ns17:beloep>40000.0</ns17:beloep>
+                        <ns17:ytelsetype>LØNN</ns17:ytelsetype>
+                    </ns17:inntektsposter>
+                    <ns17:inntektsposter>
+                        <ns17:periode>
+                            <ns8:fom>2018-11-01</ns8:fom>
+                            <ns8:tom>2018-11-30</ns8:tom>
+                        </ns17:periode>
+                        <ns17:beloep>40000.0</ns17:beloep>
+                        <ns17:ytelsetype>LØNN</ns17:ytelsetype>
+                    </ns17:inntektsposter>
+                    <ns17:inntektsposter>
+                        <ns17:periode>
+                            <ns8:fom>2018-10-01</ns8:fom>
+                            <ns8:tom>2018-10-31</ns8:tom>
+                        </ns17:periode>
+                        <ns17:beloep>40000.0</ns17:beloep>
+                        <ns17:ytelsetype>LØNN</ns17:ytelsetype>
+                    </ns17:inntektsposter>
+                    <ns17:inntektsposter>
+                        <ns17:periode>
+                            <ns8:fom>2018-12-01</ns8:fom>
+                            <ns8:tom>2018-12-31</ns8:tom>
+                        </ns17:periode>
+                        <ns17:beloep>40000.0</ns17:beloep>
+                        <ns17:ytelsetype>LØNN</ns17:ytelsetype>
+                    </ns17:inntektsposter>
+                    <ns17:inntektsposter>
+                        <ns17:periode>
+                            <ns8:fom>2018-09-01</ns8:fom>
+                            <ns8:tom>2018-09-30</ns8:tom>
+                        </ns17:periode>
+                        <ns17:beloep>40000.0</ns17:beloep>
+                        <ns17:ytelsetype>LØNN</ns17:ytelsetype>
+                    </ns17:inntektsposter>
+                    <ns17:inntektsposter>
+                        <ns17:periode>
+                            <ns8:fom>2017-12-01</ns8:fom>
+                            <ns8:tom>2017-12-31</ns8:tom>
+                        </ns17:periode>
+                        <ns17:beloep>40000.0</ns17:beloep>
+                        <ns17:ytelsetype>LØNN</ns17:ytelsetype>
+                    </ns17:inntektsposter>
+                    <ns17:inntektsposter>
+                        <ns17:periode>
+                            <ns8:fom>2019-04-01</ns8:fom>
+                            <ns8:tom>2019-04-30</ns8:tom>
+                        </ns17:periode>
+                        <ns17:beloep>40000.0</ns17:beloep>
+                        <ns17:ytelsetype>LØNN</ns17:ytelsetype>
+                    </ns17:inntektsposter>
+                    <ns17:inntektsposter>
+                        <ns17:periode>
+                            <ns8:fom>2019-03-01</ns8:fom>
+                            <ns8:tom>2019-03-31</ns8:tom>
+                        </ns17:periode>
+                        <ns17:beloep>40000.0</ns17:beloep>
+                        <ns17:ytelsetype>LØNN</ns17:ytelsetype>
+                    </ns17:inntektsposter>
+                    <ns17:inntektsposter>
+                        <ns17:periode>
+                            <ns8:fom>2018-04-01</ns8:fom>
+                            <ns8:tom>2018-04-30</ns8:tom>
+                        </ns17:periode>
+                        <ns17:beloep>40000.0</ns17:beloep>
+                        <ns17:ytelsetype>LØNN</ns17:ytelsetype>
+                    </ns17:inntektsposter>
+                    <ns17:inntektsposter>
+                        <ns17:periode>
+                            <ns8:fom>2018-01-01</ns8:fom>
+                            <ns8:tom>2018-01-31</ns8:tom>
+                        </ns17:periode>
+                        <ns17:beloep>40000.0</ns17:beloep>
+                        <ns17:ytelsetype>LØNN</ns17:ytelsetype>
+                    </ns17:inntektsposter>
+                    <ns17:inntektsposter>
+                        <ns17:periode>
+                            <ns8:fom>2019-05-01</ns8:fom>
+                            <ns8:tom>2019-05-31</ns8:tom>
+                        </ns17:periode>
+                        <ns17:beloep>40000.0</ns17:beloep>
+                        <ns17:ytelsetype>LØNN</ns17:ytelsetype>
+                    </ns17:inntektsposter>
+                    <ns17:inntektsposter>
+                        <ns17:periode>
+                            <ns8:fom>2018-03-01</ns8:fom>
+                            <ns8:tom>2018-03-31</ns8:tom>
+                        </ns17:periode>
+                        <ns17:beloep>40000.0</ns17:beloep>
+                        <ns17:ytelsetype>LØNN</ns17:ytelsetype>
+                    </ns17:inntektsposter>
+                    <ns17:inntektsposter>
+                        <ns17:periode>
+                            <ns8:fom>2019-02-01</ns8:fom>
+                            <ns8:tom>2019-02-28</ns8:tom>
+                        </ns17:periode>
+                        <ns17:beloep>40000.0</ns17:beloep>
+                        <ns17:ytelsetype>LØNN</ns17:ytelsetype>
+                    </ns17:inntektsposter>
+                    <ns17:inntektsposter>
+                        <ns17:periode>
+                            <ns8:fom>2018-02-01</ns8:fom>
+                            <ns8:tom>2018-02-28</ns8:tom>
+                        </ns17:periode>
+                        <ns17:beloep>40000.0</ns17:beloep>
+                        <ns17:ytelsetype>LØNN</ns17:ytelsetype>
+                    </ns17:inntektsposter>
+                    <ns17:inntektsposter>
+                        <ns17:periode>
+                            <ns8:fom>2018-05-01</ns8:fom>
+                            <ns8:tom>2018-05-31</ns8:tom>
+                        </ns17:periode>
+                        <ns17:beloep>40000.0</ns17:beloep>
+                        <ns17:ytelsetype>LØNN</ns17:ytelsetype>
+                    </ns17:inntektsposter>
+                    <ns17:inntektsposter>
+                        <ns17:periode>
+                            <ns8:fom>2018-08-01</ns8:fom>
+                            <ns8:tom>2018-08-31</ns8:tom>
+                        </ns17:periode>
+                        <ns17:beloep>40000.0</ns17:beloep>
+                        <ns17:ytelsetype>LØNN</ns17:ytelsetype>
+                    </ns17:inntektsposter>
+                    <ns17:inntektsposter>
+                        <ns17:periode>
+                            <ns8:fom>2018-07-01</ns8:fom>
+                            <ns8:tom>2018-07-31</ns8:tom>
+                        </ns17:periode>
+                        <ns17:beloep>40000.0</ns17:beloep>
+                        <ns17:ytelsetype>LØNN</ns17:ytelsetype>
+                    </ns17:inntektsposter>
+                    <ns17:inntektsposter>
+                        <ns17:periode>
+                            <ns8:fom>2018-06-01</ns8:fom>
+                            <ns8:tom>2018-06-30</ns8:tom>
+                        </ns17:periode>
+                        <ns17:beloep>40000.0</ns17:beloep>
+                        <ns17:ytelsetype>LØNN</ns17:ytelsetype>
+                    </ns17:inntektsposter>
+                </ns17:inntekt>
+            </ns17:inntekter>
+        </ns17:PersonopplysningerSvangerskapspenger>
+    </ns22:personOpplysninger>
+    <ns22:behandlingsresultat>
+        <ns22:behandlingsresultat kode="INNVILGET">Innvilget</ns22:behandlingsresultat>
+        <ns22:behandlingstype>FOERSTEGANGSSOEKNAD</ns22:behandlingstype>
+        <ns22:behandlingsId>1000611</ns22:behandlingsId>
+        <ns22:vurderteVilkaar>
+            <ns22:vilkaar vurdert="AUTOMATISK">
+                <ns22:type kode="FP_VK_41" kodeverk="VILKAR_TYPE">Beregning</ns22:type>
+                <ns22:utfall>OPPFYLT</ns22:utfall>
+            </ns22:vilkaar>
+            <ns22:vilkaar vurdert="AUTOMATISK">
+                <ns22:type kode="FP_VK_34" kodeverk="VILKAR_TYPE">Søkers opplysningsplikt</ns22:type>
+                <ns22:vilkaarsgrunnlag>
+                    <ns10:vilkaarsgrunnlag xsi:type="ns5:VilkaarsgrunnlagSoekersopplysningsplikt" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                        <ns5:elektroniskSoeknad>true</ns5:elektroniskSoeknad>
+                        <ns5:skjaeringstidspunkt>2019-05-01</ns5:skjaeringstidspunkt>
+                        <ns5:soeknadMottatDato>2019-06-03</ns5:soeknadMottatDato>
+                    </ns10:vilkaarsgrunnlag>
+                </ns22:vilkaarsgrunnlag>
+                <ns22:utfall>OPPFYLT</ns22:utfall>
+            </ns22:vilkaar>
+            <ns22:vilkaar vurdert="AUTOMATISK">
+                <ns22:type kode="FP_VK_23" kodeverk="VILKAR_TYPE">Opptjeningsvilkåret</ns22:type>
+                <ns22:vilkaarsgrunnlag>
+                    <ns10:vilkaarsgrunnlag xsi:type="ns5:VilkaarsgrunnlagOpptjening" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                        <ns5:behandlingsDato>2019-06-03</ns5:behandlingsDato>
+                        <ns5:opptjeningperiode>
+                            <ns8:fom>2019-04-02</ns8:fom>
+                            <ns8:tom>2019-04-30</ns8:tom>
+                        </ns5:opptjeningperiode>
+                        <ns5:maksMellomliggendePeriodeForArbeidsforhold>P14D</ns5:maksMellomliggendePeriodeForArbeidsforhold>
+                        <ns5:minForegaaendeForMellomliggendePeriodeForArbeidsforhold>P28D</ns5:minForegaaendeForMellomliggendePeriodeForArbeidsforhold>
+                        <ns5:minsteAntallDagerForVent>0</ns5:minsteAntallDagerForVent>
+                        <ns5:minsteAntallDagerGodkjent>26</ns5:minsteAntallDagerGodkjent>
+                        <ns5:minsteAntallMånederGodkjent>5</ns5:minsteAntallMånederGodkjent>
+                        <ns5:minsteInntekt>1</ns5:minsteInntekt>
+                        <ns5:periodeAntattGodkjentForBehandlingstidspunkt>P2M</ns5:periodeAntattGodkjentForBehandlingstidspunkt>
+                    </ns10:vilkaarsgrunnlag>
+                </ns22:vilkaarsgrunnlag>
+                <ns22:utfall>OPPFYLT</ns22:utfall>
+            </ns22:vilkaar>
+            <ns22:vilkaar vurdert="AUTOMATISK">
+                <ns22:type kode="FP_VK_21" kodeverk="VILKAR_TYPE">Opptjeningsperiode</ns22:type>
+                <ns22:utfall>OPPFYLT</ns22:utfall>
+            </ns22:vilkaar>
+            <ns22:vilkaar vurdert="AUTOMATISK">
+                <ns22:type kode="FP_VK_2" kodeverk="VILKAR_TYPE">Medlemskapsvilkåret</ns22:type>
+                <ns22:vilkaarsgrunnlag>
+                    <ns10:vilkaarsgrunnlag xsi:type="ns5:VilkaarsgrunnlagMedlemskap" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                        <ns10:personstatus>Bosatt</ns10:personstatus>
+                        <ns10:erBrukerMedlem>true</ns10:erBrukerMedlem>
+                        <ns10:erBrukerBosatt>true</ns10:erBrukerBosatt>
+                        <ns10:harBrukerOppholdsrett>true</ns10:harBrukerOppholdsrett>
+                        <ns10:harBrukerLovligOppholdINorge>true</ns10:harBrukerLovligOppholdINorge>
+                        <ns10:erBrukerNordiskstatsborger>true</ns10:erBrukerNordiskstatsborger>
+                        <ns10:erBrukerBorgerAvEUEOS>false</ns10:erBrukerBorgerAvEUEOS>
+                        <ns10:erBrukerPliktigEllerFrivilligMedlem>false</ns10:erBrukerPliktigEllerFrivilligMedlem>
+                    </ns10:vilkaarsgrunnlag>
+                </ns22:vilkaarsgrunnlag>
+                <ns22:utfall>OPPFYLT</ns22:utfall>
+            </ns22:vilkaar>
+            <ns22:vilkaar vurdert="MANUELT">
+                <ns22:type kode="SVP_VK_1" kodeverk="VILKAR_TYPE">Svangerskapspengervilkåret</ns22:type>
+                <ns22:utfall>OPPFYLT</ns22:utfall>
+            </ns22:vilkaar>
+        </ns22:vurderteVilkaar>
+        <ns22:beregningsresultat>
+            <ns22:beregningsgrunnlag>
+                <ns21:beregningsgrunnlag>
+                    <ns21:dekningsgrad>100</ns21:dekningsgrad>
+                    <ns21:skjaeringstidspunkt>2019-05-01</ns21:skjaeringstidspunkt>
+                    <ns21:aktivitetstatuser>
+                        <ns21:aktivitetStatus kode="AT">Arbeidstaker</ns21:aktivitetStatus>
+                        <ns21:hjemmel kode="F_14_7_8_30">folketrygdloven §§ 14-7 og 8-30</ns21:hjemmel>
+                    </ns21:aktivitetstatuser>
+                    <ns21:beregningsgrunnlagPeriode>
+                        <ns21:periode>
+                            <ns8:fom>2019-05-01</ns8:fom>
+                        </ns21:periode>
+                        <ns21:brutto>480000.0</ns21:brutto>
+                        <ns21:avkortet>480000.0</ns21:avkortet>
+                        <ns21:redusert>480000.0</ns21:redusert>
+                        <ns21:dagsats>1846</ns21:dagsats>
+                        <ns21:beregningsgrunnlagPrStatusOgAndel>
+                            <ns21:periode>
+                                <ns8:fom>2019-02-01</ns8:fom>
+                                <ns8:tom>2019-04-30</ns8:tom>
+                            </ns21:periode>
+                            <ns21:aktivitetstatus kode="AT">Arbeidstaker</ns21:aktivitetstatus>
+                            <ns21:virksomhetsnummer>973861778</ns21:virksomhetsnummer>
+                            <ns21:brutto>480000.0</ns21:brutto>
+                            <ns21:avkortet>480000.0</ns21:avkortet>
+                            <ns21:redusert>480000.0</ns21:redusert>
+                            <ns21:beregnet>480000.0</ns21:beregnet>
+                            <ns21:inntektskategori kode="ARBEIDSTAKER">Arbeidstaker</ns21:inntektskategori>
+                            <ns21:refusjonTilArbeidsgiver>
+                                <ns21:refusjonskrav>0.0</ns21:refusjonskrav>
+                                <ns21:maksimal>0.0</ns21:maksimal>
+                                <ns21:avkortet>0.0</ns21:avkortet>
+                                <ns21:redusert>0.0</ns21:redusert>
+                            </ns21:refusjonTilArbeidsgiver>
+                            <ns21:gjennomsnittligPensjonsgivendeInntekt/>
+                            <ns21:tilstoetendeYtelseType kode="-">Ikke definert</ns21:tilstoetendeYtelseType>
+                            <ns21:tilstoetendeYtelse>0.0</ns21:tilstoetendeYtelse>
+                            <ns21:avkortetBrukersAndel>480000.0</ns21:avkortetBrukersAndel>
+                            <ns21:redusertBrukersAndel>480000.0</ns21:redusertBrukersAndel>
+                            <ns21:dagsatsBruker>1846</ns21:dagsatsBruker>
+                            <ns21:dagsatsArbeidsgiver>0</ns21:dagsatsArbeidsgiver>
+                        </ns21:beregningsgrunnlagPrStatusOgAndel>
+                    </ns21:beregningsgrunnlagPeriode>
+                </ns21:beregningsgrunnlag>
+            </ns22:beregningsgrunnlag>
+            <ns22:uttak>
+                <ns18:uttak>
+                    <ns18:foersteUttaksdato>2019-05-01</ns18:foersteUttaksdato>
+                    <ns18:sisteUttaksdato>2019-05-10</ns18:sisteUttaksdato>
+                    <ns18:uttaksResultatArbeidsforhold>
+                        <ns18:uttaksresultatPerioder>
+                            <ns18:periode>
+                                <ns8:fom>2019-05-01</ns8:fom>
+                                <ns8:tom>2019-05-10</ns8:tom>
+                            </ns18:periode>
+                            <ns18:periodeResultatType kode="INNVILGET">Innvilget</ns18:periodeResultatType>
+                            <ns18:perioderesultataarsak kode="-">Ikke definert</ns18:perioderesultataarsak>
+                        </ns18:uttaksresultatPerioder>
+                        <ns18:virksomhet>973861778</ns18:virksomhet>
+                        <ns18:arbeidsforholdid>452</ns18:arbeidsforholdid>
+                    </ns18:uttaksResultatArbeidsforhold>
+                    <ns18:tilrettelegging>
+                        <ns18:behovForTilretteleggingFom>2019-05-01</ns18:behovForTilretteleggingFom>
+                        <ns18:delvisTilretteleggingFom>2019-05-01</ns18:delvisTilretteleggingFom>
+                        <ns18:stillingsprosent>65</ns18:stillingsprosent>
+                        <ns18:arbeidtype kode="ORDINÆRT_ARBEIDSFORHOLD">Ordinært arbeidsforhold</ns18:arbeidtype>
+                        <ns18:kopiertFraTidligereBehandling>false</ns18:kopiertFraTidligereBehandling>
+                        <ns18:virksomhet>973861778</ns18:virksomhet>
+                        <ns18:arbeidsforholdid>973861778</ns18:arbeidsforholdid>
+                        <ns18:erVirksomhet>true</ns18:erVirksomhet>
+                        <ns18:mottattTidspunkt>2019-06-03</ns18:mottattTidspunkt>
+                    </ns18:tilrettelegging>
+                </ns18:uttak>
+            </ns22:uttak>
+            <ns22:tilkjentYtelse>
+                <ns13:YtelseSvangerskapspenger>
+                    <ns13:beregningsresultat>
+                        <ns13:periode>
+                            <ns8:fom>2019-05-01</ns8:fom>
+                            <ns8:tom>2019-05-10</ns8:tom>
+                        </ns13:periode>
+                        <ns13:brukerErMottaker>true</ns13:brukerErMottaker>
+                        <ns13:aktivitetstatus kode="AT">Arbeidstaker</ns13:aktivitetstatus>
+                        <ns13:inntektskategori kode="ARBEIDSTAKER">Arbeidstaker</ns13:inntektskategori>
+                        <ns13:dagsats>646</ns13:dagsats>
+                        <ns13:stillingsprosent>100</ns13:stillingsprosent>
+                        <ns13:utbetalingsgrad>35</ns13:utbetalingsgrad>
+                    </ns13:beregningsresultat>
+                </ns13:YtelseSvangerskapspenger>
+            </ns22:tilkjentYtelse>
+        </ns22:beregningsresultat>
+        <ns22:manuelleVurderinger>
+            <ns22:manuellVurdering>
+                <ns22:aksjonspunkt kode="5091" kodeverk="AKSJONSPUNKT_DEF">Vurder tilrettelegging svangerskapspenger</ns22:aksjonspunkt>
+                <ns22:saksbehandlersBegrunnelse>sdfg</ns22:saksbehandlersBegrunnelse>
+            </ns22:manuellVurdering>
+            <ns22:manuellVurdering>
+                <ns22:aksjonspunkt kode="5080" kodeverk="AKSJONSPUNKT_DEF">Avklar arbeidsforhold</ns22:aksjonspunkt>
+            </ns22:manuellVurdering>
+            <ns22:manuellVurdering>
+                <ns22:aksjonspunkt kode="5092" kodeverk="AKSJONSPUNKT_DEF">Avklar svangerskapspengervilkåret</ns22:aksjonspunkt>
+                <ns22:gjelderVilkaar kode="SVP_VK_1" kodeverk="VILKAR_TYPE">Svangerskapspengervilkåret</ns22:gjelderVilkaar>
+            </ns22:manuellVurdering>
+            <ns22:manuellVurdering>
+                <ns22:aksjonspunkt kode="5015" kodeverk="AKSJONSPUNKT_DEF">Vurder om ytelse allerede er innvilget</ns22:aksjonspunkt>
+            </ns22:manuellVurdering>
+            <ns22:manuellVurdering>
+                <ns22:aksjonspunkt kode="5016" kodeverk="AKSJONSPUNKT_DEF">Fatter vedtak</ns22:aksjonspunkt>
+            </ns22:manuellVurdering>
+            <ns22:manuellVurdering>
+                <ns22:aksjonspunkt kode="5058" kodeverk="AKSJONSPUNKT_DEF">Vurder fakta for arbeidstaker, frilans og selvstendig næringsdrivende</ns22:aksjonspunkt>
+                <ns22:saksbehandlersBegrunnelse>fdfg</ns22:saksbehandlersBegrunnelse>
+            </ns22:manuellVurdering>
+        </ns22:manuelleVurderinger>
+    </ns22:behandlingsresultat>
+</ns22:vedtak>

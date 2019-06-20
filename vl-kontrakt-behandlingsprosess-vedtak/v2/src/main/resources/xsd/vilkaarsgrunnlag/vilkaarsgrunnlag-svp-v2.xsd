@@ -43,6 +43,7 @@
 					<xsd:element name="minsteInntekt" type="felles:LongOpplysning" minOccurs="0"/>
 					<xsd:element name="periodeAntattGodkjentForBehandlingstidspunkt" type="felles:StringOpplysning" minOccurs="0"/>
 					<xsd:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+					<!--xsd:any namespace="##targetNamespace" processContents="lax" minOccurs="0" maxOccurs="unbounded" /-->
 				</xsd:sequence>
 				<xsd:anyAttribute processContents="lax"/>
 			</xsd:extension>
@@ -70,6 +71,7 @@
 			<xsd:element name="aktivitet" type="vg:Aktivitet" minOccurs="0"/>
 			<xsd:element name="inntektBeloep" type="felles:LongOpplysning" minOccurs="0"/>
 			<xsd:element name="inntektValuta" type="felles:KodeverksOpplysning" minOccurs="0"/>
+			<!--xsd:any namespace="##targetNamespace" processContents="lax" minOccurs="0" maxOccurs="unbounded" /-->
 		</xsd:sequence>
 		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
@@ -85,6 +87,7 @@
 					<xsd:element name="elektroniskSoeknad" type="felles:BooleanOpplysning" minOccurs="0"/>
 					<xsd:element name="skjaeringstidspunkt" type="felles:DateOpplysning" minOccurs="0"/>
 					<xsd:element name="soeknadMottatDato" type="felles:DateOpplysning" minOccurs="0"/>
+					<!--xsd:any namespace="##targetNamespace" processContents="lax" minOccurs="0" maxOccurs="unbounded" /-->
 				</xsd:sequence>
 				<xsd:anyAttribute processContents="lax"/>
 			</xsd:extension>

@@ -21,6 +21,7 @@
 					<xsd:element name="skjaeringstidspunkt" type="felles:DateOpplysning" minOccurs="0"/>
 					<xsd:element name="aktivitetstatuser" type="bg:AktivitetStatus" minOccurs="0" maxOccurs="unbounded"/>
 					<xsd:element name="beregningsgrunnlagPeriode" type="bg:BeregningsgrunnlagPeriode" minOccurs="0" maxOccurs="unbounded"/>
+					<!--xsd:any namespace="##targetNamespace" processContents="lax" minOccurs="0" maxOccurs="unbounded" /-->
 				</xsd:sequence>
 				<xsd:anyAttribute processContents="lax"/>
 			</xsd:extension>
@@ -42,6 +43,7 @@
 			</xsd:element>
 			<xsd:element name="dagsats" type="felles:LongOpplysning" minOccurs="0"/>
 			<xsd:element name="beregningsgrunnlagPrStatusOgAndel" type="bg:BeregningsgrunnlagPrStatusOgAndel" minOccurs="0" maxOccurs="unbounded"/>
+			<!--xsd:any namespace="##targetNamespace" processContents="lax" minOccurs="0" maxOccurs="unbounded" /-->
 		</xsd:sequence>
 		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
@@ -122,7 +124,7 @@
 					<xsd:documentation>Dagsats til arbeidsgiver</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
-			<xsd:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+			<!--xsd:any namespace="##targetNamespace" processContents="lax" minOccurs="0" maxOccurs="unbounded" /-->
 		</xsd:sequence>
 		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
@@ -148,6 +150,7 @@
 					<xsd:documentation>Redusert refusjon til arbeidsgiver</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
+			<!--xsd:any namespace="##targetNamespace" processContents="lax" minOccurs="0" maxOccurs="unbounded" /-->
 		</xsd:sequence>
 		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
@@ -173,6 +176,7 @@
 					<xsd:documentation>Pensjonsgivende inntekt i år 3</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
+			<!--xsd:any namespace="##targetNamespace" processContents="lax" minOccurs="0" maxOccurs="unbounded" /-->
 		</xsd:sequence>
 		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
