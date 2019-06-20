@@ -203,7 +203,7 @@ public class IayGrunnlagTest {
         grunnlag.medInntektsmeldinger(
             new InntektsmeldingerDto().medInntektsmeldinger(List.of(
                 new InntektsmeldingDto(org, journalpostId, tidspunkt, fom)
-                    .medArbeidsforholdRef(new ArbeidsforholdRefDto(UUID.randomUUID().toString(), "eksternRef"))
+                    .medArbeidsforholdRef(new ArbeidsforholdRefDto(UUID.randomUUID().toString(), "ID 1"))
                     .medInnsendingsårsak(InntektsmeldingInnsendingsårsakType.NY)
                     .medInntektBeløp(99999)
                     .medKanalreferanse("BBC")
@@ -231,9 +231,9 @@ public class IayGrunnlagTest {
                         .medNyIArbeidslivet(false)
                         .medNyoppstartet(false)
                         .medNærRelasjon(false)
-                        .medOppgittVirksomhetNavn("DuGamleDuFria", Landkode.SVERIGE)
+                        .medOppgittVirksomhetNavn("Argonne National Laboratory (9700 S. Cass Avenue, Lemont, IL 60439, USA [https://www.anl.gov/])", Landkode.SVERIGE)
                         .medRegnskapsførerNavn("Regnskapsfører")
-                        .medRegnskapsførerTlf("+47902348732")
+                        .medRegnskapsførerTlf("Sentralbord:      71 44 33 00  Direktenummer:  468 41 333  Mail: adf@ladf.no")
                         .medVarigEndring(true)
                         .medVirksomhet(org)
                         .medVirksomhetType(VirksomhetType.ANNEN)))

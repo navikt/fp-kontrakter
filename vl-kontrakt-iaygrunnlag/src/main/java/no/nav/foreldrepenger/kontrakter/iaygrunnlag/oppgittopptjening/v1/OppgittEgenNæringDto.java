@@ -40,12 +40,22 @@ public class OppgittEgenNæringDto {
     private VirksomhetType virksomhetTypeDto;
 
     @JsonProperty(value = "regnskapsførerNavn")
-    @Pattern(regexp = "^[\\p{L}\\p{N}\\.\\-()/#&, ]+$", message="Oppgitt Egen Næring - Regnskapsfører navn '${validatedValue}' matcher ikke tillatt pattern")
+    @Pattern(regexp = "^[\\p{L}\\p{N}\\.\\-()/$=\\?%#&\\\\,\\+:/;\\[\\]@\\s]+$", message="Oppgitt Egen Næring - Regnskapsfører navn '${validatedValue}' matcher ikke tillatt pattern '{regexp}'")
     private String regnskapsførerNavn;
 
     @JsonProperty(value = "regnskapsførerTlf")
-    @Pattern(regexp = "^[\\+\\p{L}\\p{N}\\.\\-()/#&, ]+$", message="Regnskapsfører telefon ${validatedValue} matcher ikke oppgitt pattern") // har caser som har sluppet gjennom selvbetjening med alfa
+    @Pattern(regexp = "^[\\+\\p{L}\\p{N}\\.\\-()/#&\\\\,:/;\\[\\]@\\s]+$", message="Regnskapsfører telefon '${validatedValue}' matcher ikke oppgitt pattern '{regexp}'") // har caser som har sluppet gjennom selvbetjening med alfa
     private String regnskapsførerTlf;
+
+    /** Oppgis normalt dersom ikke orgnr kan gis. F.eks for utlandske virsomheter, eller noen tilfeller Fiskere med Lott. */
+    @JsonProperty(value = "virksomhetNavn", required = false)
+    @Pattern(regexp = "^[\\p{L}\\p{N}\\.\\-()/$=\\?%#&\\\\,\\+:/;\\[\\]@\\s]+$", message="Oppgitt Egen Næring - Virksomhet navn '${validatedValue}' matcher ikke tillatt pattern '{regexp}'")
+    private String virksomhetNavn;
+    
+    @JsonProperty(value = "landkode", required = true)
+    @Valid
+    @NotNull
+    private Landkode landkode = Landkode.NORGE;
 
     @JsonProperty(value = "endringDato")
     private LocalDate endringDato;
@@ -69,16 +79,6 @@ public class OppgittEgenNæringDto {
 
     @JsonProperty(value = "erNyIArbeidslivet")
     private Boolean nyIArbeidslivet;
-
-    @JsonProperty(value = "landkode", required = true)
-    @Valid
-    @NotNull
-    private Landkode landkode = Landkode.NORGE;
-
-    /** Oppgis normalt dersom ikke orgnr kan gis. F.eks for utlandske virsomheter, eller noen tilfeller Fiskere med Lott. */
-    @JsonProperty(value = "virksomhetNavn", required = false)
-    @Pattern(regexp = "^[\\p{L}\\p{N}\\.\\-()/#&, ]+$", message="Oppgitt Egen Næring - Virksomhet navn '${validatedValue}' matcher ikke tillatt pattern")
-    private String virksomhetNavn;
 
     protected OppgittEgenNæringDto() {
     }
