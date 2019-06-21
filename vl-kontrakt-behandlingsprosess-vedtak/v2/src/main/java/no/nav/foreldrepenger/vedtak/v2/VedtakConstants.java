@@ -2,9 +2,12 @@ package no.nav.foreldrepenger.vedtak.v2;
 
 import no.nav.vedtak.felles.xml.vedtak.beregningsgrunnlag.es.v2.BeregningsgrunnlagEngangsstoenad;
 import no.nav.vedtak.felles.xml.vedtak.beregningsgrunnlag.fp.v2.BeregningsgrunnlagForeldrepenger;
+import no.nav.vedtak.felles.xml.vedtak.beregningsgrunnlag.svp.v2.BeregningsgrunnlagSvangerskapspenger;
 import no.nav.vedtak.felles.xml.vedtak.personopplysninger.es.v2.PersonopplysningerEngangsstoenad;
 import no.nav.vedtak.felles.xml.vedtak.personopplysninger.fp.v2.PersonopplysningerForeldrepenger;
 import no.nav.vedtak.felles.xml.vedtak.uttak.fp.v2.UttakForeldrepenger;
+import no.nav.vedtak.felles.xml.vedtak.uttak.svp.v2.UttakSvangerskapspenger;
+import no.nav.vedtak.felles.xml.vedtak.uttak.svp.v2.UttaksResultatArbeidsforhold;
 import no.nav.vedtak.felles.xml.vedtak.v2.Vedtak;
 import no.nav.vedtak.felles.xml.vedtak.vilkaarsgrunnlag.es.v2.VilkaarsgrunnlagAdopsjon;
 import no.nav.vedtak.felles.xml.vedtak.vilkaarsgrunnlag.es.v2.VilkaarsgrunnlagFoedsel;
@@ -38,6 +41,7 @@ public final class VedtakConstants {
             BeregningsgrunnlagForeldrepenger.class,
             YtelseForeldrepenger.class,
             UttakForeldrepenger.class,
+            UttaksResultatArbeidsforhold.class,
             PersonopplysningerForeldrepenger.class,
             no.nav.vedtak.felles.xml.vedtak.beregningsgrunnlag.fp.v2.ObjectFactory.class,
             no.nav.vedtak.felles.xml.vedtak.beregningsgrunnlag.es.v2.ObjectFactory.class,
@@ -50,17 +54,28 @@ public final class VedtakConstants {
             no.nav.vedtak.felles.xml.vedtak.uttak.fp.v2.ObjectFactory.class,
             no.nav.vedtak.felles.xml.vedtak.ytelse.es.v2.ObjectFactory.class,
             no.nav.vedtak.felles.xml.vedtak.ytelse.fp.v2.ObjectFactory.class,
-            no.nav.vedtak.felles.xml.vedtak.vilkaarsgrunnlag.v2.ObjectFactory.class
+            no.nav.vedtak.felles.xml.vedtak.vilkaarsgrunnlag.v2.ObjectFactory.class,
+            // SVP klasser
+            no.nav.vedtak.felles.xml.vedtak.vilkaarsgrunnlag.svp.v2.VilkaarsgrunnlagFoedsel.class,
+            no.nav.vedtak.felles.xml.vedtak.vilkaarsgrunnlag.svp.v2.VilkaarsgrunnlagMedlemskap.class,
+            no.nav.vedtak.felles.xml.vedtak.vilkaarsgrunnlag.svp.v2.VilkaarsgrunnlagOpptjening.class,
+            no.nav.vedtak.felles.xml.vedtak.vilkaarsgrunnlag.svp.v2.VilkaarsgrunnlagSoeknadsfrist.class,
+            no.nav.vedtak.felles.xml.vedtak.vilkaarsgrunnlag.svp.v2.VilkaarsgrunnlagSoekersopplysningsplikt.class,
+            no.nav.vedtak.felles.xml.vedtak.beregningsgrunnlag.svp.v2.ObjectFactory.class,
+            no.nav.vedtak.felles.xml.vedtak.ytelse.svp.v2.ObjectFactory.class,
+            BeregningsgrunnlagSvangerskapspenger.class,
+            UttakSvangerskapspenger.class
 
     };
     public static final String[] ADDITIONAL_XSD_LOCATIONS = new String[] {
-            "xsd/ytelse/ytelse-fp-v2.xsd", "xsd/ytelse/ytelse-es-v2.xsd",
-            "xsd/vilkaarsgrunnlag/vilkaarsgrunnlag-fp-v2.xsd", "xsd/vilkaarsgrunnlag/vilkaarsgrunnlag-es-v2.xsd",
+            "xsd/ytelse/ytelse-fp-v2.xsd", "xsd/ytelse/ytelse-es-v2.xsd", "xsd/ytelse/ytelse-svp-v2.xsd",
+            "xsd/vilkaarsgrunnlag/vilkaarsgrunnlag-fp-v2.xsd", "xsd/vilkaarsgrunnlag/vilkaarsgrunnlag-es-v2.xsd","xsd/vilkaarsgrunnlag/vilkaarsgrunnlag-svp-v2.xsd",
             "xsd/uttak/uttak-fp-v2.xsd",
+            "xsd/uttak/uttak-svp-v2.xsd",
             "xsd/personopplysninger/personopplysninger-fp-v2.xsd", "xsd/personopplysninger/personopplysninger-es-v2.xsd",
             "xsd/personopplysninger/personopplysninger-dvh-fp-v2.xsd", "xsd/personopplysninger/personopplysninger-dvh-es-v2.xsd",
             "xsd/oppdrag/oppdrag-dvh-fp-v2.xsd", "xsd/oppdrag/oppdrag-dvh-es-v2.xsd",
-            "xsd/beregningsgrunnlag/beregningsgrunnlag-fp-v2.xsd", "xsd/beregningsgrunnlag/beregningsgrunnlag-es-v2.xsd"
+            "xsd/beregningsgrunnlag/beregningsgrunnlag-fp-v2.xsd", "xsd/beregningsgrunnlag/beregningsgrunnlag-es-v2.xsd", "xsd/beregningsgrunnlag/beregningsgrunnlag-svp-v2.xsd"
     };
 
     private VedtakConstants() {
