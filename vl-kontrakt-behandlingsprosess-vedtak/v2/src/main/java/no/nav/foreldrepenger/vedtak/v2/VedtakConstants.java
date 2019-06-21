@@ -2,6 +2,7 @@ package no.nav.foreldrepenger.vedtak.v2;
 
 import no.nav.vedtak.felles.xml.vedtak.beregningsgrunnlag.es.v2.BeregningsgrunnlagEngangsstoenad;
 import no.nav.vedtak.felles.xml.vedtak.beregningsgrunnlag.fp.v2.BeregningsgrunnlagForeldrepenger;
+import no.nav.vedtak.felles.xml.vedtak.beregningsgrunnlag.svp.v2.BeregningsgrunnlagSvangerskapspenger;
 import no.nav.vedtak.felles.xml.vedtak.personopplysninger.es.v2.PersonopplysningerEngangsstoenad;
 import no.nav.vedtak.felles.xml.vedtak.personopplysninger.fp.v2.PersonopplysningerForeldrepenger;
 import no.nav.vedtak.felles.xml.vedtak.uttak.fp.v2.UttakForeldrepenger;
@@ -62,6 +63,7 @@ public final class VedtakConstants {
             no.nav.vedtak.felles.xml.vedtak.vilkaarsgrunnlag.svp.v2.VilkaarsgrunnlagSoekersopplysningsplikt.class,
             no.nav.vedtak.felles.xml.vedtak.beregningsgrunnlag.svp.v2.ObjectFactory.class,
             no.nav.vedtak.felles.xml.vedtak.ytelse.svp.v2.ObjectFactory.class,
+            BeregningsgrunnlagSvangerskapspenger.class,
             UttakSvangerskapspenger.class
 
     };

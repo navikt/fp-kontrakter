@@ -9,24 +9,7 @@
 	<xsd:import namespace="urn:no:nav:vedtak:felles:xml:felles:v2" schemaLocation="../felles-v2.xsd"/>
 	<xsd:import namespace="urn:no:nav:vedtak:felles:xml:vedtak:beregningsgrunnlag:v2" schemaLocation="beregningsgrunnlag-v2.xsd"/>
 
-	<xsd:complexType name="BeregningsgrunnlagSvangerskapspenger">
-		<xsd:complexContent>
-			<xsd:extension base="be:Beregningsgrunnlag">
-				<xsd:sequence>
-					<xsd:element name="dekningsgrad" type="felles:LongOpplysning" minOccurs="0">
-						<xsd:annotation>
-							<xsd:documentation>Dekningsgrad (80% eller 100%) for denne foreldrepengesaken</xsd:documentation>
-						</xsd:annotation>
-					</xsd:element>
-					<xsd:element name="skjaeringstidspunkt" type="felles:DateOpplysning" minOccurs="0"/>
-					<xsd:element name="aktivitetstatuser" type="bg:AktivitetStatus" minOccurs="0" maxOccurs="unbounded"/>
-					<xsd:element name="beregningsgrunnlagPeriode" type="bg:BeregningsgrunnlagPeriode" minOccurs="0" maxOccurs="unbounded"/>
-					<!--xsd:any namespace="##targetNamespace" processContents="lax" minOccurs="0" maxOccurs="unbounded" /-->
-				</xsd:sequence>
-				<xsd:anyAttribute processContents="lax"/>
-			</xsd:extension>
-		</xsd:complexContent>
-	</xsd:complexType>
+
 	<xsd:complexType name="BeregningsgrunnlagPeriode">
 		<xsd:sequence>
 			<xsd:element name="periode" type="felles:PeriodeOpplysning" minOccurs="0"/>
@@ -187,5 +170,24 @@
 		</xsd:sequence>
 		<xsd:anyAttribute processContents="lax"/>
 	</xsd:complexType>
-	<xsd:element name="beregningsgrunnlag" type="bg:BeregningsgrunnlagSvangerskapspenger"/>
+	<xsd:element name="beregningsgrunnlagSvangerskapspenger">
+	<xsd:complexType >
+		<xsd:complexContent>
+			<xsd:extension base="be:Beregningsgrunnlag">
+				<xsd:sequence>
+					<xsd:element name="dekningsgrad" type="felles:LongOpplysning" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>Dekningsgrad (80% eller 100%) for denne foreldrepengesaken</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="skjaeringstidspunkt" type="felles:DateOpplysning" minOccurs="0"/>
+					<xsd:element name="aktivitetstatuser" type="bg:AktivitetStatus" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element name="beregningsgrunnlagPeriode" type="bg:BeregningsgrunnlagPeriode" minOccurs="0" maxOccurs="unbounded"/>
+					<!--xsd:any namespace="##targetNamespace" processContents="lax" minOccurs="0" maxOccurs="unbounded" /-->
+				</xsd:sequence>
+				<xsd:anyAttribute processContents="lax"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	</xsd:element>
 </xsd:schema>
