@@ -34,6 +34,7 @@ public class Topic {
 
     /**
      * Genererer clientId basert på standard definert på https://confluence.adeo.no/display/AURA/Kafka#Kafka-TopicogSikkerhetskonfigurasjon
+     *
      * @return clientId
      */
     public String getProducerClientId() {
@@ -42,9 +43,19 @@ public class Topic {
 
     /**
      * Genererer clientId basert på standard definert på https://confluence.adeo.no/display/AURA/Kafka#Kafka-TopicogSikkerhetskonfigurasjon
+     *
      * @return clientId
      */
     public String getConsumerClientId() {
         return "KC-" + topic;
+    }
+
+    @Override
+    public String toString() {
+        return "Topic{" +
+                "topic='" + topic + '\'' +
+                ", serdeKey=" + serdeKey +
+                ", serdeValue=" + serdeValue +
+                '}';
     }
 }
