@@ -9,27 +9,18 @@ import java.io.Reader;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
-import java.util.Optional;
-
-import org.junit.Ignore;
 import org.junit.Test;
 
 import no.nav.vedtak.felles.xml.felles.v2.DateOpplysning;
-import no.nav.vedtak.felles.xml.felles.v2.IntOpplysning;
 import no.nav.vedtak.felles.xml.felles.v2.KodeverksOpplysning;
 import no.nav.vedtak.felles.xml.felles.v2.LongOpplysning;
-import no.nav.vedtak.felles.xml.vedtak.beregningsgrunnlag.fp.v2.BeregningsgrunnlagForeldrepenger;
-import no.nav.vedtak.felles.xml.vedtak.beregningsgrunnlag.fp.v2.ObjectFactory;
 import no.nav.vedtak.felles.xml.vedtak.beregningsgrunnlag.svp.v2.BeregningsgrunnlagSvangerskapspenger;
-import no.nav.vedtak.felles.xml.vedtak.personopplysninger.svp.v2.PersonopplysningerSvangerskapspenger;
-import no.nav.vedtak.felles.xml.vedtak.personopplysninger.v2.Personopplysninger;
 import no.nav.vedtak.felles.xml.vedtak.v2.Behandlingsresultat;
 import no.nav.vedtak.felles.xml.vedtak.v2.Behandlingstype;
 import no.nav.vedtak.felles.xml.vedtak.v2.Beregningsgrunnlag;
 import no.nav.vedtak.felles.xml.vedtak.v2.Beregningsresultat;
 import no.nav.vedtak.felles.xml.vedtak.v2.TilkjentYtelse;
 import no.nav.vedtak.felles.xml.vedtak.v2.Vedtak;
-import no.nav.vedtak.felles.xml.vedtak.beregningsgrunnlag.svp.v2.BeregningsgrunnlagSvangerskapspenger;
 
 
 public class ParseVedtakTest {
