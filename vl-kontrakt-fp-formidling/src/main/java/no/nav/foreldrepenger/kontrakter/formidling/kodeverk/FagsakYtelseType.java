@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class FagsakYtelseType extends Kodeverk {
 
-    public static final String DISCRIMINATOR = "FAGSAK_YTELSE"; //$NON-NLS-1$
+    private static final String DISCRIMINATOR = "FAGSAK_YTELSE"; //$NON-NLS-1$
 
     public static final FagsakYtelseType ENGANGSTØNAD = new FagsakYtelseType("ES"); //$NON-NLS-1$
     public static final FagsakYtelseType FORELDREPENGER = new FagsakYtelseType("FP"); //$NON-NLS-1$
