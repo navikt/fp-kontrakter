@@ -79,6 +79,7 @@
 		<xsd:restriction base="xsd:string">
 			<xsd:enumeration value="FOERSTEGANGSSOEKNAD"/>
 			<xsd:enumeration value="KLAGE"/>
+            <xsd:enumeration value="ANKE"/>
 			<xsd:enumeration value="REVURDERING"/>
 		</xsd:restriction>
 	</xsd:simpleType>
@@ -114,7 +115,7 @@
 		<xsd:sequence>
 			<!-- Aksjonspunktnavn og kode -->
 			<xsd:element name="aksjonspunkt" type="felles:KodeverksOpplysning"/>
-			<!-- Hvis knyttet til en vilkaarsvurdering, hvilket vilkaar (kodeverdi + 
+			<!-- Hvis knyttet til en vilkaarsvurdering, hvilket vilkaar (kodeverdi +
 				term) -->
 			<xsd:element name="gjelderVilkaar" type="felles:KodeverksOpplysning" minOccurs="0"/>
 			<!-- Begrunnelse -->
@@ -195,4 +196,39 @@
 			<xsd:enumeration value="PROSESSUELL_FEIL"/>
 		</xsd:restriction>
 	</xsd:simpleType>
+    <xsd:complexType name="Ankevurderingresultat">
+        <xsd:complexContent>
+            <xsd:extension base="vedtak:Behandlingsresultat">
+                <xsd:sequence>
+                    <xsd:element name="ankeVurdering" type="vedtak:Ankevurdering"/>
+                    <xsd:element name="ankeAvvistAarsak" type="vedtak:AnkeAvvistAarsak" minOccurs="0"/>
+                    <xsd:element name="ankeOmgjoerAarsak" type="vedtak:AnkeOmgjoerAarsak" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:simpleType name="Ankevurdering">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="ANKE_STADFESTE_YTELSESVEDTAK"/>
+            <xsd:enumeration value="ANKE_OPPHEVE_OG_HJEMSENDE"/>
+            <xsd:enumeration value="ANKE_OMGJOER" />
+            <xsd:enumeration value="ANKE_AVVIS" />
+            <xsd:enumeration value="ANKE_DELVIS_OMGJOERING_TIL_GUNST" />
+            <xsd:enumeration value="ANKE_TIL_UGUNST" />
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="AnkeAvvistAarsak">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="ANKE_FOR_SENT"/>
+            <xsd:enumeration value="ANKE_UGYLDIG"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="AnkeOmgjoerAarsak">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="NYE_OPPLYSNINGER"/>
+            <xsd:enumeration value="ULIK_REGELVERKSTOLKNING"/>
+            <xsd:enumeration value="ULIK_VURDERING"/>
+            <xsd:enumeration value="PROSESSUELL_FEIL"/>
+        </xsd:restriction>
+    </xsd:simpleType>
 </xsd:schema>
