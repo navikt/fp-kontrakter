@@ -124,7 +124,7 @@
 			<xsd:element name="kopiertFraTidligereBehandling" type="felles:BooleanOpplysning"/>
 			<xsd:element name="virksomhet" type="felles:StringOpplysning" minOccurs="0"/>
 			<xsd:element name="arbeidsforholdid" type="felles:StringOpplysning" minOccurs="0"/>
-			<xsd:element name="erVirksomhet" type="felles:BooleanOpplysning" minOccurs="0"/>
+			<xsd:element name="erVirksomhet" type="felles:BooleanOpplysning"/>
 			<xsd:element name="mottattTidspunkt" type="felles:DateOpplysning" minOccurs="0">
 				<xsd:annotation>
 					<xsd:documentation xml:lang="no">Dokumentasjon mangler.</xsd:documentation>
