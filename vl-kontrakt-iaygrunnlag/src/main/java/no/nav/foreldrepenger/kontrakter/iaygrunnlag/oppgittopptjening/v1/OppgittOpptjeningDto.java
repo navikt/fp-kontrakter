@@ -72,10 +72,10 @@ public class OppgittOpptjeningDto {
 
     @AssertTrue(message = "Må oppgi minst en av arbeidsforhold, egenNæring, annenAktivitet eller frilans")
     private boolean isOk() {
-        return arbeidsforhold != null && !arbeidsforhold.isEmpty()
-            || egenNæring != null && !egenNæring.isEmpty()
-            || annenAktivitet != null && !annenAktivitet.isEmpty()
-            || frilans != null;
+        return (arbeidsforhold != null && !arbeidsforhold.isEmpty())
+            || (egenNæring != null && !egenNæring.isEmpty())
+            || (annenAktivitet != null && !annenAktivitet.isEmpty())
+            || (frilans != null);
     }
 
     public List<OppgittArbeidsforholdDto> getArbeidsforhold() {
