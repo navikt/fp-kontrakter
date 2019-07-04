@@ -38,6 +38,27 @@ public class AktivitetsAvtaleDto {
     @DecimalMax(value = "1000.00", message = "stillingsprosent ${validatedValue} må være <= {value}")
     private BigDecimal stillingsprosent;
 
+    /**
+     * For timelønnede så vil antallet timer i arbeidsavtalen være satt her.
+     * Merk her er registrert mye søppel i Aareg, så brukes først og fremst til kontroll når det er en verdi. Eks.kan være registrert antall
+     * timer per år (men skal være per uke)
+     */
+    @JsonProperty("antallTimer")
+    @DecimalMin(value = "0.00", message = "antallTimer ${validatedValue} må være >= {value}")
+    @DecimalMax(value = "2000.00", message = "antallTimer ${validatedValue} må være <= {value}")
+    private BigDecimal antallTimer;
+
+    /**
+     * Antall timer som tilsvarer fulltid (f.eks 40 timer). Merk her er registrert mye søppel ved input fra Aareg. Bruker derfor først og fremst
+     * til kontroll når det er satt en verdi.
+     * Eks. kan være registrert antall timer full tid per år (når det skal være per uke), eller antall timer per uke totalt (eks. 168 timers
+     * arbeidsuker).
+     */
+    @JsonProperty("antallTimerFulltid")
+    @DecimalMin(value = "0.00", message = "antallTimerFulltid ${validatedValue} må være >= {value}")
+    @DecimalMax(value = "2000.00", message = "antallTimerFulltid ${validatedValue} må være <= {value}")
+    private BigDecimal antallTimerFulltid;
+
     @JsonProperty("sistLønnsendring")
     @Valid
     private LocalDate sistLønnsendring;
@@ -82,6 +103,30 @@ public class AktivitetsAvtaleDto {
         return stillingsprosent;
     }
 
+    public BigDecimal getAntallTimer() {
+        return antallTimer;
+    }
+
+    public BigDecimal getAntallTimerFulltid() {
+        return antallTimerFulltid;
+    }
+
+    public void setAntallTimer(BigDecimal antallTimer) {
+        this.antallTimer = antallTimer == null ? null : antallTimer.setScale(2, RoundingMode.HALF_UP);
+    }
+
+    public void setAntallTimerFulltid(BigDecimal antallTimerFulltid) {
+        this.antallTimerFulltid = antallTimerFulltid == null ? null : antallTimerFulltid.setScale(2, RoundingMode.HALF_UP);
+    }
+
+    public void setAntallTimerFulltid(int timer) {
+        this.setAntallTimerFulltid(BigDecimal.valueOf(timer));
+    }
+
+    public void setAntallTimer(int timer) {
+        this.setAntallTimer(BigDecimal.valueOf(timer));
+    }
+
     public void setStillingsprosent(BigDecimal stillingsprosent) {
         this.stillingsprosent = stillingsprosent == null ? null : stillingsprosent.setScale(2, RoundingMode.HALF_UP);
     }
@@ -93,6 +138,26 @@ public class AktivitetsAvtaleDto {
 
     public AktivitetsAvtaleDto medStillingsprosent(int prosentHeltall) {
         setStillingsprosent(BigDecimal.valueOf(prosentHeltall));
+        return this;
+    }
+
+    public AktivitetsAvtaleDto medAntallTimer(BigDecimal timer) {
+        setAntallTimer(timer);
+        return this;
+    }
+
+    public AktivitetsAvtaleDto medAntallTimer(int timer) {
+        setAntallTimer(timer);
+        return this;
+    }
+
+    public AktivitetsAvtaleDto medAntallTimerFulltid(BigDecimal timer) {
+        setAntallTimerFulltid(timer);
+        return this;
+    }
+
+    public AktivitetsAvtaleDto medAntallTimerFulltid(int timer) {
+        setAntallTimerFulltid(timer);
         return this;
     }
 
