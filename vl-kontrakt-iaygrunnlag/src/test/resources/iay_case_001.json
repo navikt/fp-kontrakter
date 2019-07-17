@@ -2319,6 +2319,7 @@
           },
           "opprinneligIdentDato" : "2017-09-01",
           "dekningsgradProsent" : 100.00,
+          "dagsats" : 255.00,
           "fordeling" : [ {
             "beløp" : 69300.00,
             "inntektPeriodeType" : {
@@ -2382,6 +2383,7 @@
           },
           "opprinneligIdentDato" : "2017-09-01",
           "dekningsgradProsent" : 100.00,
+          "dagsats" : 255.00,
           "fordeling" : [ {
             "beløp" : 69300.00,
             "inntektPeriodeType" : {

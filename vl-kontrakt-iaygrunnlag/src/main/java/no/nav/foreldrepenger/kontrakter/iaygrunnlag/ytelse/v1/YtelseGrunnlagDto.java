@@ -1,6 +1,7 @@
 package no.nav.foreldrepenger.kontrakter.iaygrunnlag.ytelse.v1;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.util.List;
@@ -49,6 +50,12 @@ public class YtelseGrunnlagDto {
     @JsonProperty(value = "fordeling")
     @Valid
     private List<FordelingDto> fordeling;
+
+    /** Beløp i hele kroner (currency major unit). Tillater kun positive verdier.  Max verdi håndteres av mottager. */
+    @JsonProperty(value = "dagsats")
+    @Valid
+    @DecimalMin(value = "0.00", message = "vedtaksDagsats må være >= 0.00")
+    private BigDecimal vedtaksDagsats;
 
     public YtelseGrunnlagDto() {
     }
@@ -143,6 +150,22 @@ public class YtelseGrunnlagDto {
 
     public YtelseGrunnlagDto medFordeling(List<FordelingDto> fordeling) {
         setFordeling(fordeling);
+        return this;
+    }
+
+    public BigDecimal getVedtaksDagsats() { return vedtaksDagsats; }
+
+    public void setVedtaksDagsats(BigDecimal vedtaksDagsats) {
+        this.vedtaksDagsats = vedtaksDagsats == null ? null : vedtaksDagsats.setScale(2, RoundingMode.HALF_UP);
+    }
+
+    public YtelseGrunnlagDto medVedtaksDagsats(BigDecimal vedtaksDagsats) {
+        setVedtaksDagsats(vedtaksDagsats);
+        return this;
+    }
+
+    public YtelseGrunnlagDto medVedtaksDagsats(int vedtaksDagsats) {
+        setVedtaksDagsats(BigDecimal.valueOf(vedtaksDagsats));
         return this;
     }
 }
