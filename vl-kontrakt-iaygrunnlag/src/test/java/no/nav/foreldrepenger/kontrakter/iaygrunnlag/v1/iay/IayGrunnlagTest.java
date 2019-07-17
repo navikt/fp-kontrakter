@@ -169,6 +169,7 @@ public class IayGrunnlagTest {
                                         .medDekningsgradProsent(100)
                                         .medInntektsgrunnlagProsent(100)
                                         .medGraderingProsent(100)
+                                        .medVedtaksDagsats(255)
                                         .medFordeling(List.of(new FordelingDto(org, InntektPeriodeType.PER_DAG, 100))))
                                 .medAnvisninger(List.of(
                                     new AnvisningDto(periode)
