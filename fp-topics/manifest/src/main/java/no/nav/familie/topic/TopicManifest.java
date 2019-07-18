@@ -13,7 +13,7 @@ public final class TopicManifest {
     /**
      * Publiserer hendelser ved endringer i aksjonspunkt. Benyttes for oppgavestyring
      */
-    public static final Topic AKSJONSPUNKT_HENDELSE = new Topic("privat-foreldrepenger-aksjonspunkthendelse-fpsak", Serdes.String(), Serdes.String());
+    public static final Topic AKSJONSPUNKT_HENDELSE = new Topic("privat-foreldrepenger-aksjonspunkthendelse", Serdes.String(), Serdes.String());
     /**
      * Publiserer hendelser ved bestilling av dokument
      */
@@ -26,6 +26,11 @@ public final class TopicManifest {
      * Publiserer kontrollresultat av en behandling
      */
     public static final Topic KONTROLL_RESULTAT = new Topic("privat-foreldrepenger-kontroll-resultat", Serdes.String(), Serdes.String());
+
+    /**
+     * Publiserer risikoklassifiseringstopic
+     */
+    public static final Topic RISIKOKLASSIFISERING = new Topic("privat-foreldrepenger-fprisk-utfor", Serdes.String(), Serdes.String());
 
     private TopicManifest() {
     }

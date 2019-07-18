@@ -24,6 +24,11 @@ public class Topic {
         return topic;
     }
 
+    public String getTopicWithEnv(String env) {
+        Environment environment = Environment.valueOf(env);
+        return topic + "-" + environment.name();
+    }
+
     public Serde getSerdeKey() {
         return serdeKey;
     }
