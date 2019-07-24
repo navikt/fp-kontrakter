@@ -1,43 +1,40 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>no.nav.foreldrepenger.kontrakter</groupId>
-		<artifactId>foreldrepenger-kontrakter-root</artifactId>
-		<version>${revision}${sha1}${changelist}</version>
-	</parent>
-	<artifactId>inntektsmelding-v1</artifactId>
-	<name>(FPSAK) Kontrakter - inntektsmelding</name>
-	<packaging>jar</packaging>
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>no.nav.foreldrepenger.kontrakter</groupId>
+        <artifactId>foreldrepenger-kontrakter-root</artifactId>
+        <version>${revision}${sha1}${changelist}</version>
+    </parent>
+    <artifactId>inntektsmelding-v1</artifactId>
+    <name>(FPSAK) Kontrakter - inntektsmelding</name>
+    <packaging>jar</packaging>
 
-	<properties>
-		<xsd.packagename></xsd.packagename>
-	</properties>
-	<dependencies>
+    <properties>
+        <xsd.packagename></xsd.packagename>
+    </properties>
 
-		<dependency>
-			<groupId>org.glassfish.jaxb</groupId>
-			<artifactId>jaxb-runtime</artifactId>
-			<scope>provided</scope>
-		</dependency>
-	</dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.jvnet.jaxb2.maven2</groupId>
-				<artifactId>maven-jaxb2-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<configuration>
-					<classifier combine.self="override">jaxb</classifier>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jvnet.jaxb2.maven2</groupId>
+                <artifactId>maven-jaxb2-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

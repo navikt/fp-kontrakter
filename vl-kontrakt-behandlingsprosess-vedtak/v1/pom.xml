@@ -18,7 +18,6 @@
 	</properties>
 
 	<dependencies>
-
 		<dependency>
 			<groupId>org.glassfish.jaxb</groupId>
 			<artifactId>jaxb-runtime</artifactId>
@@ -27,7 +26,6 @@
 	</dependencies>
 
 	<build>
-
 		<plugins>
 			<plugin>
 				<groupId>org.jvnet.jaxb2.maven2</groupId>
@@ -36,12 +34,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
-				<configuration>
-					<classifier combine.self="override">jaxb</classifier>
-				</configuration>
 			</plugin>
 		</plugins>
-
 	</build>
-
 </project>
