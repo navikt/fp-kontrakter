@@ -32,9 +32,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
-				<configuration>
-					<classifier combine.self="override">jaxb</classifier>
-				</configuration>
 			</plugin>
 		</plugins>
 
