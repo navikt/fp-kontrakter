@@ -74,6 +74,13 @@ public class DokumentbestillingV1 {
     @JsonProperty
     private String arsakskode;
 
+    /**
+     * Navnet på enheten som skal stå som avsender av dokumentet.
+     */
+    @Pattern(regexp = "[A-ZÆØÅ0-9]{1,100}")
+    @JsonProperty
+    private String behandlendeEnhetNavn;
+
     public UUID getBehandlingUuid() {
         return behandlingUuid;
     }
@@ -128,5 +135,13 @@ public class DokumentbestillingV1 {
 
     public void setHistorikkAktør(String historikkAktør) {
         this.historikkAktør = historikkAktør;
+    }
+
+    public String getBehandlendeEnhetNavn() {
+        return behandlendeEnhetNavn;
+    }
+
+    public void setBehandlendeEnhetNavn(String behandlendeEnhetNavn) {
+        this.behandlendeEnhetNavn = behandlendeEnhetNavn;
     }
 }
