@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -20,6 +21,7 @@ import no.nav.foreldrepenger.kontrakter.iaygrunnlag.inntektsmelding.v1.Inntektsm
 public class InntektsmeldingerMottattRequest {
     @JsonProperty(value = "saksnummer", required = true)
     @NotNull
+    @Pattern(regexp = "^[A-Za-z0-9_\\.\\-]+$", message = "'${validatedValue}' matcher ikke tillatt pattern '{value}'")
     @Valid
     private String saksnummer;
 

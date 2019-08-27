@@ -20,7 +20,7 @@ public class UtsettelseÅrsakType extends Kodeverk {
     public static final UtsettelseÅrsakType LOVBESTEMT_FERIE = new UtsettelseÅrsakType("LOVBESTEMT_FERIE");
     
     @JsonProperty(value = "kode", required = true, index = 1)
-    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$", message="Kode UtsetelseÅrsakType '${validatedValue}' matcher ikke tillatt pattern")
+    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$", message="Kode '${validatedValue}' matcher ikke tillatt pattern '{regexp}'")
     @Size(min = 5, max = 50)
     @NotNull
     private String kode;

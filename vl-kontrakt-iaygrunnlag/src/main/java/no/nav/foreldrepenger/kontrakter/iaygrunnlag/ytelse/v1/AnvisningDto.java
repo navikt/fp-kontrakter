@@ -27,13 +27,13 @@ public class AnvisningDto {
     /** Beløp i hele kroner (currency major unit). Tillater kun positive verdier.  Max verdi håndteres av mottager. */
     @JsonProperty(value = "beløp")
     @Valid
-    @DecimalMin(value = "0.00", message = "beløp må være >= 0.00")
+    @DecimalMin(value = "0.00", message = "beløp '${validatedValue}' må være >= {value}")
     private BigDecimal beløp;
 
     /** Beløp i hele kroner (currency major unit). Tillater kun positive verdier.  Max verdi håndteres av mottager. */
     @JsonProperty(value = "dagsats")
     @Valid
-    @DecimalMin(value = "0.00", message = "beløp må være >= 0.00")
+    @DecimalMin(value = "0.00", message = "beløp '${validatedValue}' må være >= {value}")
     private BigDecimal dagsats;
 
     /**

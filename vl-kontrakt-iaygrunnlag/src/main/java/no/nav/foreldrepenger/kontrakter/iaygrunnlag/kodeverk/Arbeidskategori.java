@@ -28,7 +28,7 @@ public class Arbeidskategori extends Kodeverk {
     public static final Arbeidskategori UGYLDIG = new Arbeidskategori("UGYLDIG"); //$NON-NLS-1$
 
     @JsonProperty(value = "kode", required = true, index = 1)
-    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$", message="Kode Arbeidskategori '${validatedValue}' matcher ikke tillatt pattern")
+    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$", message="Kode '${validatedValue}' matcher ikke tillatt pattern '{regexp}'")
     @Size(min = 3, max = 100)
     @NotNull
     private String kode;

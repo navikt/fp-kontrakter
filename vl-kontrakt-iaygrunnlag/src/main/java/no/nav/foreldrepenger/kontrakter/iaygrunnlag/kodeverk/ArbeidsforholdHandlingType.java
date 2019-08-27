@@ -25,7 +25,7 @@ public class ArbeidsforholdHandlingType extends Kodeverk {
     public static final ArbeidsforholdHandlingType BRUK = new ArbeidsforholdHandlingType("BRUK"); //$NON-NLS-1$
     
     @JsonProperty(value = "kode", required = true, index = 1)
-    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$", message="Kode ArbeidsforholdHandlingType '${validatedValue}' matcher ikke tillatt pattern")
+    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$", message="Kode '${validatedValue}' matcher ikke tillatt pattern '{regexp}'")
     @Size(min = 4, max = 50)
     @NotNull
     private String kode;

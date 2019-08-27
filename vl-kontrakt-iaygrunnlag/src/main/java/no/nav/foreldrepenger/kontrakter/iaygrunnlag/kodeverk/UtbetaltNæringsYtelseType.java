@@ -18,7 +18,7 @@ public class UtbetaltNæringsYtelseType extends Kodeverk implements UtbetaltYtel
     public static final String KODEVERK = "NÆRINGSINNTEKT_TYPE";
 
     @JsonProperty(value = "kode", required = true, index = 1)
-    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$", message="Kode UtbetaltNæringsYtelseType '${validatedValue}' matcher ikke tillatt pattern")
+    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$", message="Kode '${validatedValue}' matcher ikke tillatt pattern '{regexp}'")
     @Size(min = 3, max = 50)
     @NotNull
     private String kode;

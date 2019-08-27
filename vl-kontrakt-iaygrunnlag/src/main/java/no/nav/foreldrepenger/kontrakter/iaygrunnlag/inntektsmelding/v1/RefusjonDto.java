@@ -27,7 +27,7 @@ public class RefusjonDto {
 
     /** Tillater kun positive verdier.  Max verdi håndteres av mottager. */
     @JsonProperty(value = "refusjonBeløpPerMnd", index = 1)
-    @DecimalMin(value = "0.00", message = "beløp må være >= 0.00")
+    @DecimalMin(value = "0.00", message = "beløp '${validatedValue}' må være >= {value}")
     private BigDecimal refusjonBeløpPerMnd;
 
     protected RefusjonDto() {

@@ -29,7 +29,7 @@ public class YtelseType extends Kodeverk {
     public static final YtelseType ENSLIG_FORSØRGER = new YtelseType("EF");//$NON-NLS-1$
 
     @JsonProperty(value = "kode", required = true, index = 1)
-    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]{2,5}$", message="Kode YtelseType '${validatedValue}' matcher ikke tillatt pattern")
+    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]{2,5}$", message="Kode '${validatedValue}' matcher ikke tillatt pattern '{regexp}'")
     @Size(min = 2, max = 5)
     @NotNull
     private String kode;

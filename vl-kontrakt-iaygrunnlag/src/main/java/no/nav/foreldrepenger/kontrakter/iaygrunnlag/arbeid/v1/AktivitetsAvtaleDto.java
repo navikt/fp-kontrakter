@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -64,6 +65,7 @@ public class AktivitetsAvtaleDto {
     private LocalDate sistLønnsendring;
 
     @JsonProperty("beskrivelse")
+    @Pattern(regexp = "^[\\p{L}\\p{N}\\.\\-()/$=\\?%#&\\\\,\\+:/;\\[\\]@\\s\\n\\t\\r|]+$", message="Aktivitetsavtale beskrivelse '${validatedValue}' matcher ikke tillatt pattern '{regexp}'")
     @Valid
     private String beskrivelse;
 

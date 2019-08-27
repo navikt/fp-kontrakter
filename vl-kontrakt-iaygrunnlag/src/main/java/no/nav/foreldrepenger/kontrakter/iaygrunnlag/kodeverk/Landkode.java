@@ -20,7 +20,7 @@ public class Landkode extends Kodeverk {
 
     /** ISO 3-letter country codes. */
     @JsonProperty(value = "kode", required = true, index = 1)
-    @Pattern(regexp = "^[A-Z]{3}$", message="Kode Landkode '${validatedValue}' matcher ikke tillatt pattern (ISO 3-letter country code)")
+    @Pattern(regexp = "^[A-Z]{3}$", message="Kode '${validatedValue}' matcher ikke tillatt pattern '{regexp}' (ISO 3-letter country code)")
     @Size(min = 3, max = 3)
     @NotNull
     private String kode;
