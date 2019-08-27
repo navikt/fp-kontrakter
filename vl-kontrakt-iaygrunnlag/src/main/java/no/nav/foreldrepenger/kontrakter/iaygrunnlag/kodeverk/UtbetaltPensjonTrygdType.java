@@ -18,7 +18,7 @@ public class UtbetaltPensjonTrygdType extends Kodeverk implements UtbetaltYtelse
     public static final UtbetaltPensjonTrygdType BIL = new UtbetaltPensjonTrygdType("BIL");
 
     @JsonProperty(value = "kode", required = true, index = 1)
-    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$", message="Kode UtbetaltPensjonTrygdType '${validatedValue}' matcher ikke tillatt pattern")
+    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$", message="Kode '${validatedValue}' matcher ikke tillatt pattern '{regexp}'")
     @Size(min = 2, max = 50)
     @NotNull
     private String kode;

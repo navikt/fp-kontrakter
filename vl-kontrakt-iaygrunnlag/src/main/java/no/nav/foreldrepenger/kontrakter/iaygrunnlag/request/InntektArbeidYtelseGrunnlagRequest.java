@@ -65,7 +65,7 @@ public class InntektArbeidYtelseGrunnlagRequest {
     /** Angi evt. hvilken sak det gjelder. */
     @JsonProperty(value = "saksnummer")
     @Valid
-    @Pattern(regexp = "^[A-Za-z0-9_\\.\\-]+$", message = "Saksnummer '${validatedValue}' matcher ikke tillatt pattern '{value}'")
+    @Pattern(regexp = "^[A-Za-z0-9_\\.\\-]+$", message = "'${validatedValue}' matcher ikke tillatt pattern '{value}'")
     private String saksnummer;
 
     @JsonProperty("dataset")

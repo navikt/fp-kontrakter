@@ -19,7 +19,7 @@ public class OrganisasjonType extends Kodeverk {
     public static final OrganisasjonType KUNSTIG = new OrganisasjonType("KUNSTIG");
     
     @JsonProperty(value = "kode", required = true, index = 1)
-    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$", message="Kode OrganisasjonType '${validatedValue}' matcher ikke tillatt pattern")
+    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$", message="Kode '${validatedValue}' matcher ikke tillatt pattern '{regexp}'")
     @Size(min = 5, max = 50)
     @NotNull
     private String kode;

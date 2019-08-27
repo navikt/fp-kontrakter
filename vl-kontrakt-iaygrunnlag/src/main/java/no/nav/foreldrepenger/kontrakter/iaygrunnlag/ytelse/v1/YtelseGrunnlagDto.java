@@ -1,7 +1,6 @@
 package no.nav.foreldrepenger.kontrakter.iaygrunnlag.ytelse.v1;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.util.List;
@@ -54,7 +53,7 @@ public class YtelseGrunnlagDto {
     /** Beløp i hele kroner (currency major unit). Tillater kun positive verdier.  Max verdi håndteres av mottager. */
     @JsonProperty(value = "dagsats")
     @Valid
-    @DecimalMin(value = "0.00", message = "vedtaksDagsats må være >= 0.00")
+    @DecimalMin(value = "0.00", message = "'${validatedValue}' må være >= {value}")
     private BigDecimal vedtaksDagsats;
 
     public YtelseGrunnlagDto() {

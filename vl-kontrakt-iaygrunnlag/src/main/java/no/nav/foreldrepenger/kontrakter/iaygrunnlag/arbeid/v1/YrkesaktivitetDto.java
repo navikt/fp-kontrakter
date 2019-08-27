@@ -7,6 +7,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -45,6 +46,7 @@ public class YrkesaktivitetDto {
     private List<PermisjonDto> permisjoner;
 
     @JsonProperty("navnArbeidsgiverUtland")
+    @Pattern(regexp = "^[\\p{L}\\p{N}\\.\\-()/$=\\?%#&\\\\,\\+:/;\\[\\]@\\s\\n\\t\\r|]+$", message="Yrkesaktivitet#navnArbeidsgiverUtland '${validatedValue}' matcher ikke tillatt pattern '{regexp}'")
     @Valid
     private String navnArbeidsgiverUtland;
 

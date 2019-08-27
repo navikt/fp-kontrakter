@@ -25,7 +25,7 @@ public class YtelseStatus extends Kodeverk {
 
     /** Status koder. Tolererer ikke unicode her (sikrer at ingen overfører gamle koder på grensesnittet). */
     @JsonProperty(value = "kode", required = true, index = 1)
-    @Pattern(regexp = "^[A-Z0-9\\.\\-]+$", message="Kode YtelseStatus '${validatedValue}' matcher ikke tillatt pattern")
+    @Pattern(regexp = "^[A-Z0-9\\.\\-]+$", message="Kode '${validatedValue}' matcher ikke tillatt pattern '{regexp}'")
     @Size(min=3, max=5)
     @NotNull
     private String kode;

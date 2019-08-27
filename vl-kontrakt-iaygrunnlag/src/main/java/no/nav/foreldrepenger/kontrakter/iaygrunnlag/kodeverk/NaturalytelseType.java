@@ -25,7 +25,7 @@ public class NaturalytelseType extends Kodeverk {
     
     
     @JsonProperty(value = "kode", required = true, index = 1)
-    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$", message="Kode NaturalytelseType '${validatedValue}' matcher ikke tillatt pattern")
+    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$", message="Kode '${validatedValue}' matcher ikke tillatt pattern '{regexp}' '{regexp}'")
     @Size(min = 2, max = 50)
     @NotNull
     private String kode;

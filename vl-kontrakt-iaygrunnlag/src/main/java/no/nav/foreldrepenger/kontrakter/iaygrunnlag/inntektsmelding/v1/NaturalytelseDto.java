@@ -34,7 +34,7 @@ public class NaturalytelseDto {
 
     /** Tillater kun positive verdier.  Max verdi håndteres av mottager. */
     @JsonProperty(value = "beløpPerMnd", index = 3)
-    @DecimalMin(value = "0.00", message = "beløp må være >= 0.00")
+    @DecimalMin(value = "0.00", message = "beløp '${validatedValue}' må være >= {value}")
     private BigDecimal beløpPerMnd;
 
     protected NaturalytelseDto() {

@@ -13,6 +13,7 @@ import java.util.Objects;
 import javax.validation.Valid;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -74,19 +75,21 @@ public class InntektsmeldingDto {
 
     /** Tillater kun positive verdier.  Max verdi håndteres av mottager. */
     @JsonProperty("inntektBeløp")
-    @DecimalMin(value = "0.00", message = "beløp må være >= 0.00")
+    @DecimalMin(value = "0.00", message = "beløp '${validatedValue}' må være >= {value}")
     private BigDecimal inntektBeløp;
 
     /** Tillater kun positive verdier.  Max verdi håndteres av mottager. */
     @JsonProperty("refusjonsBeløpPerMnd")
-    @DecimalMin(value = "0.00", message = "beløp må være >= 0.00")
+    @DecimalMin(value = "0.00", message = "beløp '${validatedValue}' må være >= {value}")
     private BigDecimal refusjonsBeløpPerMnd;
 
     @JsonProperty(value = "kanalreferanse")
+    @Pattern(regexp = "^[\\p{L}\\p{N}\\.\\-()/$=#\\\\,\\+:/\\[\\]@\\s]+$", message="Inntektsmelding kanalreferanse '${validatedValue}' matcher ikke tillatt pattern '{regexp}'")
     private String kanalreferanse;
 
     /** NB: tilsvarer avsendersystem i Inntektsmelding skjema. */
     @JsonProperty(value = "kildesystem")
+    @Pattern(regexp = "^[\\p{L}\\p{N}\\.\\-()/$=#\\\\,\\+:/\\[\\]@\\s]+$", message="Inntektsmelding kildeSystem '${validatedValue}' matcher ikke tillatt pattern '{regexp}'")
     private String kildesystem;
 
     @JsonProperty(value = "refusjonOpphører")
