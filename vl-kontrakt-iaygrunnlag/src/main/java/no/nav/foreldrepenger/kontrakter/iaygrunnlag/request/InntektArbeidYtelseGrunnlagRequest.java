@@ -72,6 +72,12 @@ public class InntektArbeidYtelseGrunnlagRequest {
     @Valid
     public Set<Dataset> dataset = EnumSet.of(Dataset.REGISTER, Dataset.OVERSTYRT);
 
+    /**
+     * Hvis satt til true hentes første opprettete versjon av grunnlaget, hvis false eller ikke satt hentes den siste aktive grunnlaget.
+     */
+    @JsonProperty(value = "foersteVersion")
+    private Boolean førsteVersjon;
+
     protected InntektArbeidYtelseGrunnlagRequest() {
         // default ctor.
     }
@@ -116,6 +122,11 @@ public class InntektArbeidYtelseGrunnlagRequest {
         return this;
     }
 
+    public InntektArbeidYtelseGrunnlagRequest hentFørsteVersjon(boolean hentFørsteVersjon) {
+        this.førsteVersjon = hentFørsteVersjon;
+        return this;
+    }
+
     public Set<Dataset> getDataset() {
         return dataset;
     }
@@ -139,4 +150,6 @@ public class InntektArbeidYtelseGrunnlagRequest {
     public YtelseType getYtelseType() {
         return ytelseType;
     }
+
+    public boolean erFørsteVersjon() { return førsteVersjon; }
 }
