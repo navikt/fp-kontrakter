@@ -39,6 +39,13 @@ public class InntektArbeidYtelseGrunnlagRequest {
         OPPGITT_OPPTJENING
     }
 
+    public enum GrunnlagVersjon {
+        ALLE,
+        SISTE,
+        FØRSTE_OG_SISTE,
+        FØRSTE
+    }
+
     /** Angi hvem grunnlaget hentes for. */
     @JsonProperty(value = "personIdent", required = true)
     @Valid
@@ -75,8 +82,9 @@ public class InntektArbeidYtelseGrunnlagRequest {
     /**
      * Hvis satt til true hentes første opprettete versjon av grunnlaget, hvis false eller ikke satt hentes den siste aktive grunnlaget.
      */
-    @JsonProperty(value = "foersteVersion")
-    private Boolean førsteVersjon;
+    @JsonProperty(value = "grunnlagVersjon")
+    @Valid
+    private GrunnlagVersjon grunnlagVersjon = GrunnlagVersjon.ALLE;
 
     protected InntektArbeidYtelseGrunnlagRequest() {
         // default ctor.
@@ -122,8 +130,8 @@ public class InntektArbeidYtelseGrunnlagRequest {
         return this;
     }
 
-    public InntektArbeidYtelseGrunnlagRequest hentFørsteVersjon(boolean hentFørsteVersjon) {
-        this.førsteVersjon = hentFørsteVersjon;
+    public InntektArbeidYtelseGrunnlagRequest hentGrunnlagVersjon(GrunnlagVersjon grunnlagVersjon) {
+        this.grunnlagVersjon = grunnlagVersjon;
         return this;
     }
 
@@ -143,13 +151,11 @@ public class InntektArbeidYtelseGrunnlagRequest {
         return person;
     }
 
-    public String getSaksnummer() {
-        return saksnummer;
-    }
+    public String getSaksnummer() { return saksnummer; }
 
     public YtelseType getYtelseType() {
         return ytelseType;
     }
 
-    public boolean erFørsteVersjon() { return førsteVersjon; }
+    public GrunnlagVersjon getGrunnlagVersjon() { return grunnlagVersjon; }
 }
