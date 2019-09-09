@@ -5,3 +5,4 @@ Bygger klient biblioteker for angitte kontrakter
 
 # For NAV-ansatte
 Interne henvendelser kan sendes via Slack i kanalen #p2-konstruksjon
+
