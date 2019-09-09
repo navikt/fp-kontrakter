@@ -48,7 +48,10 @@ jobs:
       - run:
           name: Deploy to Maven Central
           command: "export GPG_TTY=$(tty) && mvn --settings .circleci/maven-settings.xml deploy -Prelease -DskipTests=true"
-
+      - run: 
+          name: Sonar 
+          command: mvn -Dsonar.projectKey=navikt_$CIRCLE_PROJECT_REPONAME -Dsonar.organization=navit -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR sonar:sonar
+          
   deploy-snapshot:
     docker:
       - image: circleci/openjdk:latest
