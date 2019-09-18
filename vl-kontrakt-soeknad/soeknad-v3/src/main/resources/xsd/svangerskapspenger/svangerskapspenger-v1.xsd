@@ -39,7 +39,7 @@
             <xsd:element name="ingenTilrettelegging" type="sv:IngenTilrettelegging" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="arbeidsforhold" type="sv:Arbeidsforhold" minOccurs="0"/>
             <xsd:element name="behovForTilretteleggingFom" type="xsd:date"/>
-            <xsd:element name="vedlegg" type="xsd:IDREF" maxOccurs="unbounded"/>
+            <xsd:element name="vedlegg" type="xsd:IDREF" minOccurs="0" maxOccurs="unbounded"/>
         </xsd:sequence>
         <xsd:anyAttribute processContents="lax"/>
     </xsd:complexType>
