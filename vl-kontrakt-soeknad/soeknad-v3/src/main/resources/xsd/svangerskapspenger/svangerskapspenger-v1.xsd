@@ -34,9 +34,9 @@
     </xsd:complexType>
     <xsd:complexType name="Tilrettelegging">
         <xsd:sequence>
-            <xsd:element name="helTilrettelegging" type="sv:HelTilrettelegging" minOccurs="0"/>
-            <xsd:element name="delvisTilrettelegging" type="sv:DelvisTilrettelegging" minOccurs="0"/>
-            <xsd:element name="ingenTilrettelegging" type="sv:IngenTilrettelegging" minOccurs="0"/>
+            <xsd:element name="helTilrettelegging" type="sv:HelTilrettelegging" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="delvisTilrettelegging" type="sv:DelvisTilrettelegging" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="ingenTilrettelegging" type="sv:IngenTilrettelegging" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="arbeidsforhold" type="sv:Arbeidsforhold" minOccurs="0"/>
             <xsd:element name="behovForTilretteleggingFom" type="xsd:date"/>
             <xsd:element name="vedlegg" type="xsd:IDREF" maxOccurs="unbounded"/>
