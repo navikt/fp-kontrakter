@@ -52,7 +52,7 @@ public class VurderFagsystemDto {
     @Digits(integer = 19, fraction = 0)
     private String arbeidsgiverAktørId;
 
-    @Pattern(regexp = "^[" + BASIS_TEGN + " .'" + ALFABET_SAMISK + AKSENTER_NORSKE + AKSENTER_ANDRE_AKTUELLE + "]*$")
+    @Pattern(regexp = "^[" + BASIS_TEGN + " .'," + ALFABET_SAMISK + AKSENTER_NORSKE + AKSENTER_ANDRE_AKTUELLE + "]*$")
     private String arbeidsforholdsid;
     // TODO PFP-57 Opprydding - Fjerne denne fra kontrakten
     private LocalDate forsendelseMottatt;
