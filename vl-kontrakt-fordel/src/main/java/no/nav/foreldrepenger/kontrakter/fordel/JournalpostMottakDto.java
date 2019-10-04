@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class JournalpostMottakDto {
 
-    private static final int PAYLOAD_MAX_CHARS = 96000;
+    private static final int PAYLOAD_MAX_CHARS = 196000;
 
     @NotNull
     @Digits(integer = 18, fraction = 0)
