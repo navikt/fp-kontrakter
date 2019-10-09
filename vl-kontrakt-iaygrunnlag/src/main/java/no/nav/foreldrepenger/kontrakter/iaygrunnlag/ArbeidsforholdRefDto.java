@@ -19,7 +19,7 @@ public class ArbeidsforholdRefDto {
 
 
     @JsonProperty(value = "eksternReferanse", required = true, index = 0)
-    @Pattern(regexp = "^[\\p{L}\\p{N}_()\\[\\]\\\\/£$%=#@\\+,\\.\\-:\\s]+$", message = "Eksternreferanse ${validatedValue} matcher ikke tillatt pattern '{regexp}'")
+    @Pattern(regexp = "^[\\p{L}\\p{M}\\p{N}_()\\[\\]\\\\/£$%=#@\\+,\\.\\-:\\s&|]+$", message = "Eksternreferanse ${validatedValue} matcher ikke tillatt pattern '{regexp}'")
     @NotNull
     private String eksternReferanse;
 

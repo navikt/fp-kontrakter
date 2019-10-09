@@ -65,7 +65,7 @@ public class AktivitetsAvtaleDto {
     private LocalDate sistLønnsendring;
 
     @JsonProperty("beskrivelse")
-    @Pattern(regexp = "^[\\p{L}\\p{N}\\.\\-()/$=\\?%#&\\\\,\\+:/;\\[\\]@\\s\\n\\t\\r|]+$", message="Aktivitetsavtale beskrivelse '${validatedValue}' matcher ikke tillatt pattern '{regexp}'")
+    @Pattern(regexp = "^[\\p{L}\\p{M}\\p{N}\\.\\-()/$=\\?%#&\\\\,\\+:/;\\[\\]@\\s\\n\\t\\r|]+$", message="Aktivitetsavtale beskrivelse '${validatedValue}' matcher ikke tillatt pattern '{regexp}'")
     @Valid
     private String beskrivelse;
 

@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 public class JournalpostId {
 
     @JsonValue
-    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$", message = "JournalpostId ${validatedValue} matcher ikke tillatt pattern")
+    @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-:|]+$", message = "JournalpostId ${validatedValue} matcher ikke tillatt pattern")
     @NotNull
     private String journalpostId;
 
