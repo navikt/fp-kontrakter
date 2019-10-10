@@ -46,7 +46,7 @@ public class YrkesaktivitetDto {
     private List<PermisjonDto> permisjoner;
 
     @JsonProperty("navnArbeidsgiverUtland")
-    @Pattern(regexp = "^[\\p{L}\\p{N}\\.\\-()/$=\\?%#&\\\\,\\+:/;\\[\\]@\\s\\n\\t\\r|]+$", message="Yrkesaktivitet#navnArbeidsgiverUtland '${validatedValue}' matcher ikke tillatt pattern '{regexp}'")
+    @Pattern(regexp = "^[\\p{L}\\p{M}\\p{N}\\.\\-()/$=\\?%#&\\\\,\\+:/;\\[\\]@\\s\\n\\t\\r|]+$", message="Yrkesaktivitet#navnArbeidsgiverUtland '${validatedValue}' matcher ikke tillatt pattern '{regexp}'")
     @Valid
     private String navnArbeidsgiverUtland;
 

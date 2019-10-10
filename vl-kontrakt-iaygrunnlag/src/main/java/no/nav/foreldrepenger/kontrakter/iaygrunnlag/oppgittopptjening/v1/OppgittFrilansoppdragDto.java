@@ -25,7 +25,7 @@ public class OppgittFrilansoppdragDto {
     private Periode periode;
     
     @JsonProperty(value="oppdragsgiver", required = true)
-    @Pattern(regexp = "^[\\p{L}\\p{N}\\.\\-()/$=\\?%#&\\\\,\\+:/;\\[\\]@\\s]+$", message="'${validatedValue}' matcher ikke tillatt pattern '{regexp}'")
+    @Pattern(regexp = "^[\\p{L}\\p{M}\\p{N}\\.\\-()/$=\\?%#&\\\\,\\+:/;\\[\\]@\\s|]+$", message="'${validatedValue}' matcher ikke tillatt pattern '{regexp}'")
     @NotNull
     private String oppdragsgiver;
 

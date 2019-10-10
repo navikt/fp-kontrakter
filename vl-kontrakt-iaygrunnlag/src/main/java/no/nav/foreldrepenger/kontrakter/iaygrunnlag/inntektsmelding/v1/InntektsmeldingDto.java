@@ -84,12 +84,12 @@ public class InntektsmeldingDto {
     private BigDecimal refusjonsBeløpPerMnd;
 
     @JsonProperty(value = "kanalreferanse")
-    @Pattern(regexp = "^[\\p{L}\\p{N}\\.\\-()/$=#\\\\,\\+:/\\[\\]@\\s]+$", message="Inntektsmelding kanalreferanse '${validatedValue}' matcher ikke tillatt pattern '{regexp}'")
+    @Pattern(regexp = "^[\\p{L}\\p{M}\\p{N}\\.\\-()/$=#\\\\,\\+:/\\[\\]@\\s&|]+$", message="Inntektsmelding kanalreferanse '${validatedValue}' matcher ikke tillatt pattern '{regexp}'")
     private String kanalreferanse;
 
     /** NB: tilsvarer avsendersystem i Inntektsmelding skjema. */
     @JsonProperty(value = "kildesystem")
-    @Pattern(regexp = "^[\\p{L}\\p{N}\\.\\-()/$=#\\\\,\\+:/\\[\\]@\\s]+$", message="Inntektsmelding kildeSystem '${validatedValue}' matcher ikke tillatt pattern '{regexp}'")
+    @Pattern(regexp = "^[\\p{L}\\p{M}\\p{N}\\.\\-()/$=#\\\\,\\+:/\\[\\]@\\s&|]+$", message="Inntektsmelding kildeSystem '${validatedValue}' matcher ikke tillatt pattern '{regexp}'")
     private String kildesystem;
 
     @JsonProperty(value = "refusjonOpphører")

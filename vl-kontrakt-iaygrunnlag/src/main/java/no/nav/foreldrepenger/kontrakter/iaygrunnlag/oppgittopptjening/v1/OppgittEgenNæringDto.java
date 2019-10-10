@@ -40,16 +40,16 @@ public class OppgittEgenNæringDto {
     private VirksomhetType virksomhetTypeDto;
 
     @JsonProperty(value = "regnskapsførerNavn")
-    @Pattern(regexp = "^[\\p{L}\\p{N}\\.\\-()/$=\\?%#&\\\\,\\+:/;\\[\\]@\\s|]+$", message="'${validatedValue}' matcher ikke tillatt pattern '{regexp}'")
+    @Pattern(regexp = "^[\\p{L}\\p{M}\\p{N}\\.\\-()/$=\\?%#&\\\\,\\+:/;\\[\\]@\\s|]+$", message="'${validatedValue}' matcher ikke tillatt pattern '{regexp}'")
     private String regnskapsførerNavn;
 
     @JsonProperty(value = "regnskapsførerTlf")
-    @Pattern(regexp = "^[\\+\\p{L}\\p{N}\\.\\-()/#&\\\\,:/;\\[\\]@\\s|]+$", message="'${validatedValue}' matcher ikke oppgitt pattern '{regexp}'") // har caser som har sluppet gjennom selvbetjening med alfa
+    @Pattern(regexp = "^[\\+\\p{L}\\p{M}\\p{N}\\.\\-()/#&\\\\,:/;\\[\\]@\\s|]+$", message="'${validatedValue}' matcher ikke oppgitt pattern '{regexp}'") // har caser som har sluppet gjennom selvbetjening med alfa
     private String regnskapsførerTlf;
 
     /** Oppgis normalt dersom ikke orgnr kan gis. F.eks for utlandske virsomheter, eller noen tilfeller Fiskere med Lott. */
     @JsonProperty(value = "virksomhetNavn", required = false)
-    @Pattern(regexp = "^[\\p{L}\\p{N}\\.\\-()/$=\\?%#&\\\\,\\+:/;\\[\\]@\\s|]+$", message="'${validatedValue}' matcher ikke tillatt pattern '{regexp}'")
+    @Pattern(regexp = "^[\\p{L}\\p{M}\\p{N}\\.\\-()/$=\\?%#&\\\\,\\+:/;\\[\\]@\\s|]+$", message="'${validatedValue}' matcher ikke tillatt pattern '{regexp}'")
     private String virksomhetNavn;
     
     @JsonProperty(value = "landkode", required = true)
@@ -64,7 +64,7 @@ public class OppgittEgenNæringDto {
     private Boolean erVarigEndring;
 
     @JsonProperty(value = "endringBegrunnelse")
-    @Pattern(regexp = "^[\\p{L}\\p{N}\\.\\-()/$=#\\\\,\\+:/\\[\\]@\\s\\t\\n]+$", message="'${validatedValue}' matcher ikke tillatt pattern '{regexp}'")
+    @Pattern(regexp = "^[\\p{L}\\p{M}\\p{N}\\.\\-()/$=#&|\\\\,\\+:/\\[\\]@\\s\\t\\n]+$", message="'${validatedValue}' matcher ikke tillatt pattern '{regexp}'")
     private String endringBegrunnelse;
 
     /** Tillater kun positive verdier.  Max verdi håndteres av mottager. */
