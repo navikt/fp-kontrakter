@@ -1,5 +1,7 @@
 package no.nav.foreldrepenger.kontrakter.iaygrunnlag.request;
 
+import java.util.Set;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -15,6 +17,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.Periode;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.PersonIdent;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.UuidDto;
+import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.RegisterdataType;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.YtelseType;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -65,9 +68,13 @@ public class InnhentRegisterdataRequest {
     @Valid
     private Periode opptjeningsperiode;
 
+    @JsonProperty(value = "elementer")
+    @Valid
+    private Set<RegisterdataType> elementer = Set.of(RegisterdataType.ARBEIDSFORHOLD, RegisterdataType.INNTEKT_PENSJONSGIVENDE, RegisterdataType.YTELSE);
+
     @JsonProperty(value = "callbackUrl")
     @Valid
-    @Pattern(regexp = URL_PATTERN, message="callbackUrl '${validatedValue}' matcher ikke tillatt url pattern '{regexp}'")
+    @Pattern(regexp = URL_PATTERN, message = "callbackUrl '${validatedValue}' matcher ikke tillatt url pattern '{regexp}'")
     private String callbackUrl;
 
     @JsonCreator
@@ -81,6 +88,17 @@ public class InnhentRegisterdataRequest {
         this.ytelseType = ytelseType;
         this.opplysningsperiode = opplysningsperiode;
         this.aktør = aktør;
+    }
+
+    @JsonCreator
+    public InnhentRegisterdataRequest(@JsonProperty(value = "saksnummer", required = true) @Valid @NotNull String saksnummer,
+                                      @JsonProperty(value = "referanse", required = true) @Valid @NotNull UuidDto referanse,
+                                      @JsonProperty(value = "ytelseType", required = true) @Valid @NotNull YtelseType ytelseType,
+                                      @JsonProperty(value = "opplysningsperiode", required = true) @NotNull @Valid Periode opplysningsperiode,
+                                      @JsonProperty(value = "aktør", required = true) @NotNull @Valid PersonIdent aktør,
+                                      @JsonProperty(value = "elementer", required = true) @NotNull @Valid Set<RegisterdataType> elementer) {
+        this(saksnummer, referanse, ytelseType, opplysningsperiode, aktør);
+        this.elementer = elementer;
     }
 
     public String getReferanse() {
@@ -117,6 +135,14 @@ public class InnhentRegisterdataRequest {
 
     public void setCallbackUrl(String callbackUrl) {
         this.callbackUrl = callbackUrl;
+    }
+
+    public Set<RegisterdataType> getElementer() {
+        return elementer;
+    }
+
+    public void setElementer(Set<RegisterdataType> elementer) {
+        this.elementer = elementer;
     }
 
     public YtelseType getYtelseType() {
