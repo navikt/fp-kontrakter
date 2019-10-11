@@ -1,0 +1,33 @@
+{
+  "version" : "1",
+  "uuid" : "idsfuk-dsfkjlfds-dsfkjlfds",
+  "hendelseTid" : "2019-10-10T16:42:29",
+  "aktører" : [ {
+    "aktørId" : "12345",
+    "rolle" : "SØKER"
+  } ],
+  "fagsystem" : "TILBAKEKREVING",
+  "saksnummer" : "SAKSNUMMER",
+  "ytelsetype" : "FORELDREPENGER",
+  "behandlendeEnhet" : "9834",
+  "url" : "https://app.adeo.no/fplos/4932934",
+  "attributter" : [ {
+    "type" : "heltall",
+    "felt" : "Utestående beløp",
+    "verdi" : 8437
+  }, {
+    "type" : "boolean",
+    "felt" : "Til beslutter",
+    "verdi" : true
+  }, {
+    "type" : "heltall",
+    "felt" : "Foreldet beløp",
+    "verdi" : 12848
+  }, {
+    "type" : "timestamp",
+    "felt" : "Foreldelsesdato",
+    "verdi" : "2019-10-10"
+  } ],
+  "behandlingType" : "TILBAKEKREVING",
+  "aktiv" : true
+}
