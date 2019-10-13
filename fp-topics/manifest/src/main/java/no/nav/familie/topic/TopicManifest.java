@@ -32,6 +32,11 @@ public final class TopicManifest {
      */
     public static final Topic RISIKOKLASSIFISERING = new Topic("privat-foreldrepenger-fprisk-utfor", Serdes.String(), Serdes.String());
 
+    /**
+     * Publiser dokumenthendelser for inntektsmelding (og potensielt andre dokument sendt inn av andre enn bruker)
+     */
+    public static final Topic BRUKERDIALOG_INNTEKTSMELDING = new Topic("privat-foreldrepenger-brukerdialog-inntektsmelding", Serdes.String(), Serdes.String());
+
     private TopicManifest() {
     }
 }
