@@ -1,6 +1,7 @@
 package no.nav.foreldrepenger.kontrakter.iaygrunnlag.request;
 
 import java.util.Set;
+import java.util.UUID;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -43,7 +44,7 @@ public class InnhentRegisterdataRequest {
     @JsonProperty(value = "referanse", required = true)
     @Valid
     @NotNull
-    private UuidDto referanse;
+    private UUID referanse;
 
     @JsonProperty(value = "ytelseType", required = true)
     @Valid
@@ -79,7 +80,7 @@ public class InnhentRegisterdataRequest {
 
     @JsonCreator
     public InnhentRegisterdataRequest(@JsonProperty(value = "saksnummer", required = true) @Valid @NotNull String saksnummer,
-                                      @JsonProperty(value = "referanse", required = true) @Valid @NotNull UuidDto referanse,
+                                      @JsonProperty(value = "referanse", required = true) @Valid @NotNull UUID referanse,
                                       @JsonProperty(value = "ytelseType", required = true) @Valid @NotNull YtelseType ytelseType,
                                       @JsonProperty(value = "opplysningsperiode", required = true) @NotNull @Valid Periode opplysningsperiode,
                                       @JsonProperty(value = "aktør", required = true) @NotNull @Valid PersonIdent aktør) {
@@ -92,7 +93,7 @@ public class InnhentRegisterdataRequest {
 
     @JsonCreator
     public InnhentRegisterdataRequest(@JsonProperty(value = "saksnummer", required = true) @Valid @NotNull String saksnummer,
-                                      @JsonProperty(value = "referanse", required = true) @Valid @NotNull UuidDto referanse,
+                                      @JsonProperty(value = "referanse", required = true) @Valid @NotNull UUID referanse,
                                       @JsonProperty(value = "ytelseType", required = true) @Valid @NotNull YtelseType ytelseType,
                                       @JsonProperty(value = "opplysningsperiode", required = true) @NotNull @Valid Periode opplysningsperiode,
                                       @JsonProperty(value = "aktør", required = true) @NotNull @Valid PersonIdent aktør,
@@ -101,8 +102,8 @@ public class InnhentRegisterdataRequest {
         this.elementer = elementer;
     }
 
-    public String getReferanse() {
-        return referanse.getReferanse();
+    public UUID getReferanse() {
+        return referanse;
     }
 
     public PersonIdent getAktør() {
