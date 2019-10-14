@@ -16,6 +16,7 @@ public class RegisterdataType extends Kodeverk {
     public static RegisterdataType ARBEIDSFORHOLD = new RegisterdataType("ARBEIDSFORHOLD");
 
     /** Eksempel konstant- FRILANSER arbeid. */
+    public static RegisterdataType LIGNET_NÆRING = new RegisterdataType("LIGNET_NÆRING");
     public static RegisterdataType INNTEKT_PENSJONSGIVENDE = new RegisterdataType("INNTEKT_PENSJONSGIVENDE");
     public static RegisterdataType INNTEKT_BEREGNINGSGRUNNLAG = new RegisterdataType("INNTEKT_BEREGNINGSGRUNNLAG");
     public static RegisterdataType INNTEKT_SAMMENLIGNINGSGRUNNLAG = new RegisterdataType("INNTEKT_SAMMENLIGNINGSGRUNNLAG");
