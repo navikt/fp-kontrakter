@@ -1,5 +1,7 @@
 package no.nav.foreldrepenger.kontrakter.iaygrunnlag.request;
 
+import java.util.UUID;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -14,7 +16,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.Periode;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.PersonIdent;
-import no.nav.foreldrepenger.kontrakter.iaygrunnlag.UuidDto;
 import no.nav.foreldrepenger.kontrakter.iaygrunnlag.kodeverk.YtelseType;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -34,15 +35,14 @@ public class KopierGrunnlagRequest {
     @JsonProperty(value = "nyReferanse", required = true)
     @Valid
     @NotNull
-    private UuidDto nyReferanse;
+    private UUID nyReferanse;
 
     @JsonProperty(value = "ytelseType", required = true)
     @Valid
     @NotNull
     private YtelseType ytelseType;
 
-    @JsonProperty(value = "opplysningsperiode", required = true)
-    @NotNull
+    @JsonProperty(value = "opplysningsperiode")
     @Valid
     private Periode opplysningsperiode;
 
@@ -62,25 +62,23 @@ public class KopierGrunnlagRequest {
     @JsonProperty(value = "gammelReferanse", required = true)
     @Valid
     @NotNull
-    private UuidDto gammelReferanse;
+    private UUID gammelReferanse;
 
     @JsonCreator
     public KopierGrunnlagRequest(@JsonProperty(value = "saksnummer", required = true) @Valid @NotNull String saksnummer,
-                                 @JsonProperty(value = "nyReferanse", required = true) @Valid @NotNull UuidDto nyReferanse,
-                                 @JsonProperty(value = "gammelReferanse", required = true) @Valid @NotNull UuidDto gammelReferanse,
+                                 @JsonProperty(value = "nyReferanse", required = true) @Valid @NotNull UUID nyReferanse,
+                                 @JsonProperty(value = "gammelReferanse", required = true) @Valid @NotNull UUID gammelReferanse,
                                  @JsonProperty(value = "ytelseType", required = true) @Valid @NotNull YtelseType ytelseType,
-                                 @JsonProperty(value = "opplysningsperiode", required = true) @NotNull @Valid Periode opplysningsperiode,
                                  @JsonProperty(value = "aktør", required = true) @NotNull @Valid PersonIdent aktør) {
         this.saksnummer = saksnummer;
         this.nyReferanse = nyReferanse;
         this.gammelReferanse = gammelReferanse;
         this.ytelseType = ytelseType;
-        this.opplysningsperiode = opplysningsperiode;
         this.aktør = aktør;
     }
 
-    public String getNyReferanse() {
-        return nyReferanse.getReferanse();
+    public UUID getNyReferanse() {
+        return nyReferanse;
     }
 
     public PersonIdent getAktør() {
@@ -99,6 +97,10 @@ public class KopierGrunnlagRequest {
         return opplysningsperiode;
     }
 
+    public void setOpplysningsperiode(Periode opplysningsperiode) {
+        this.opplysningsperiode = opplysningsperiode;
+    }
+
     public Periode getOpptjeningsperiode() {
         return opptjeningsperiode;
     }
@@ -107,7 +109,7 @@ public class KopierGrunnlagRequest {
         this.opptjeningsperiode = opptjeningsperiode;
     }
 
-    public UuidDto getGammelReferanse() {
+    public UUID getGammelReferanse() {
         return gammelReferanse;
     }
 
