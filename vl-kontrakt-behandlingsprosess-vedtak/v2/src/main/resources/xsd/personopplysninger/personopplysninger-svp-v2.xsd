@@ -18,6 +18,7 @@
 			<xsd:extension base="pob:Personopplysninger">
 				<xsd:sequence>
 					<xsd:element name="bruker" type="pob:PersonIdentifiserbar"/>
+					<xsd:element name="verge" type="po:Verge" minOccurs="0"/>
 					<xsd:element name="adresse" type="po:Addresse" minOccurs="0" maxOccurs="unbounded"/>
 					<xsd:element name="familiehendelse" type="po:FamilieHendelse" minOccurs="0"/>
 					<xsd:element name="medlemskap" type="po:Medlemskap" minOccurs="0"/>
@@ -114,7 +115,54 @@
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
-
+	<xsd:complexType name="Verge">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="no">Informasjon om verge</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="navn" type="felles:StringOpplysning" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="no"/>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="organisasjonsnummer" type="felles:StringOpplysning" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="no"/>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="vergetype" type="felles:KodeverksOpplysning" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="no"/>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="mandattekst" type="felles:StringOpplysning" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="no">Beskrivelse for tilpasset mandat</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="vedtaksdato" type="felles:DateOpplysning" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="no">Hvis fullmakt er begrenset i periode, dato for når fullmakten er gyldig fra-til</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="gyldighetsperiode" type="felles:PeriodeOpplysning" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="no">Dato for vedtak</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="brevmottaker" type="felles:KodeverksOpplysning" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="no">Brev mottaker type</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="stoenadmottaker" type="felles:BooleanOpplysning" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="no">J hvis verge skal motta stønad</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="felles:Sporing"/>
+	</xsd:complexType>
 
 	<xsd:complexType name="RelatertYtelse">
 		<xsd:annotation>
