@@ -122,6 +122,11 @@
 					<xsd:documentation xml:lang="no"/>
 				</xsd:annotation>
 			</xsd:element>
+			<xsd:element name="organisasjonsnummer" type="felles:StringOpplysning" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="no"/>
+				</xsd:annotation>
+			</xsd:element>
 			<xsd:element name="vergetype" type="felles:KodeverksOpplysning" minOccurs="0">
 				<xsd:annotation>
 					<xsd:documentation xml:lang="no"/>

@@ -117,11 +117,6 @@
             <xsd:documentation xml:lang="no">Informasjon om verge</xsd:documentation>
         </xsd:annotation>
         <xsd:sequence>
-            <xsd:element name="navn" type="felles:StringOpplysning" minOccurs="0">
-                <xsd:annotation>
-                    <xsd:documentation xml:lang="no"/>
-                </xsd:annotation>
-            </xsd:element>
             <xsd:element name="vergetype" type="felles:KodeverksOpplysning" minOccurs="0">
                 <xsd:annotation>
                     <xsd:documentation xml:lang="no"/>
