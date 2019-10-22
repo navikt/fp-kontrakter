@@ -21,14 +21,17 @@ import no.nav.vedtak.brukerdialog.DokumentHendelse;
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE, getterVisibility = JsonAutoDetect.Visibility.NONE, setterVisibility = JsonAutoDetect.Visibility.NONE, isGetterVisibility = JsonAutoDetect.Visibility.NONE, creatorVisibility = JsonAutoDetect.Visibility.NONE)
 public class InntektsmeldingV1 extends DokumentHendelse {
 
-    public static final String HENDELSE_INNTEKTSMELDING = "INNTEKTSMELDING";
+    public static final String HENDELSE_INNTEKTSMELDING = "INNTEKTSMELDING_";
+    private static final String INNTEKTSMELDING_NY = "NY";
+    private static final String INNTEKTSMELDING_ENDRING = "ENDRING";
 
     /**
-     * Hendelsetype til brul for mottatte inntektsmdeldinger
+     * Hendelsetype til bruk for mottatte inntektsmdeldinger. Venter "..._NY" eller "_ENDRING"
      */
     @NotNull
-    @Valid
-    @JsonProperty(value = "hendelse", required = true, defaultValue = HENDELSE_INNTEKTSMELDING)
+    @Size(max = 50)
+    @Pattern(regexp = "INNTEKTSMELDING_NY|INNTEKTSMELDING_ENDRING")
+    @JsonProperty(value = "hendelse", required = true, defaultValue = HENDELSE_INNTEKTSMELDING + INNTEKTSMELDING_NY)
     private String hendelse;
 
     /**
@@ -71,8 +74,8 @@ public class InntektsmeldingV1 extends DokumentHendelse {
      */
     @NotNull
     @Valid
-    @JsonProperty(value = "arbeidsgiver", required = true)
-    private Aktør arbeidsgiver;
+    @JsonProperty(value = "arbeidsgiverId", required = true)
+    private Aktør arbeidsgiverId;
 
     /**
      * Innsendinstidspunkt fra inntektsmelding
@@ -90,13 +93,12 @@ public class InntektsmeldingV1 extends DokumentHendelse {
     private LocalDate startDato;
 
     /**
-     * Type NY/ENDRING/-
+     * Ytelsetype - framgår av saken
      */
-    @NotNull
-    @Size(max = 30)
-    @Pattern(regexp = "^[a-zA-Z0-9_\\-]*$")
-    @JsonProperty(value = "innsendingAarsak", required = true)
-    private String innsendingAarsak;
+    @Valid
+    @Size(max = 20)
+    @JsonProperty(value = "ytelse", required = true)
+    private String ytelse;
 
     @Override
     public String getJournalpostId () {
@@ -123,8 +125,8 @@ public class InntektsmeldingV1 extends DokumentHendelse {
         return innsendingsTidspunkt;
     }
 
-    public Aktør getArbeidsgiver() {
-        return arbeidsgiver;
+    public Aktør getArbeidsgiverId() {
+        return arbeidsgiverId;
     }
 
     public String getReferanseId() { return referanseId; }
@@ -133,8 +135,8 @@ public class InntektsmeldingV1 extends DokumentHendelse {
         return startDato;
     }
 
-    public String getInnsendingAarsak() {
-        return innsendingAarsak;
+    public String getYtelse() {
+        return ytelse;
     }
 
     public static class Builder {
@@ -159,13 +161,13 @@ public class InntektsmeldingV1 extends DokumentHendelse {
             return this;
         }
 
-        public Builder medAktørId(String aktør) {
-            inntektsmelding.aktørId = new Aktør(aktør);
+        public Builder medAktørId(String aktørId) {
+            inntektsmelding.aktørId = new Aktør(aktørId);
             return this;
         }
 
-        public Builder medArbeidsgiver(String aktør) {
-            inntektsmelding.arbeidsgiver = new Aktør(aktør);
+        public Builder medArbeidsgiverId(String aktørId) {
+            inntektsmelding.arbeidsgiverId = new Aktør(aktørId);
             return this;
         }
 
@@ -179,13 +181,17 @@ public class InntektsmeldingV1 extends DokumentHendelse {
             return this;
         }
 
-        public Builder medInnsendingAarsak(String innsendingAarsak) {
-            inntektsmelding.innsendingAarsak = innsendingAarsak;
+        public Builder medInnsendingsÅrsak(String innsendingsÅrsak) {
+            inntektsmelding.hendelse = HENDELSE_INNTEKTSMELDING + innsendingsÅrsak;
+            return this;
+        }
+
+        public Builder medYtelse(String ytelse) {
+            inntektsmelding.ytelse = ytelse;
             return this;
         }
 
         public InntektsmeldingV1 build() {
-            inntektsmelding.hendelse = HENDELSE_INNTEKTSMELDING;
             return inntektsmelding;
         }
     }
