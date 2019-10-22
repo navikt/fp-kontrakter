@@ -4,27 +4,28 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonValue;
 
 public class Aktør {
 
     @NotNull
-    @JsonProperty("verdi")
+    @JsonValue
     @Pattern(regexp = "\\d{9}|\\d{11}|\\d{13}") // Orgnr / Fnr / aktørid
-    private String verdi;
+    private String id;
 
     public Aktør() {
     }
 
-    public Aktør(String verdi) {
-        this.verdi = verdi;
+    public Aktør(String id) {
+        this.id = id;
     }
 
 
-    public String getVerdi() {
-        return verdi;
+    public String getId() {
+        return id;
     }
 
-    public void setVerdi(String verdi) {
-        this.verdi = verdi;
+    public void setId(@JsonProperty("id") String id) {
+        this.id = id;
     }
 }
