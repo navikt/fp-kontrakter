@@ -62,6 +62,7 @@
 	<xsd:complexType name="Verge">
 		<xsd:sequence>
 			<xsd:element name="navn" type="felles:StringOpplysning" minOccurs="0" />
+			<xsd:element name="organisasjonsnummer" type="felles:StringOpplysning" minOccurs="0" />
 			<xsd:element name="vergetype" type="felles:KodeverksOpplysning" minOccurs="0" />
 			<xsd:element name="tvungenForvaltning" type="felles:BooleanOpplysning" minOccurs="0" />
 			<xsd:element name="mandattekst" type="felles:StringOpplysning" minOccurs="0" />
