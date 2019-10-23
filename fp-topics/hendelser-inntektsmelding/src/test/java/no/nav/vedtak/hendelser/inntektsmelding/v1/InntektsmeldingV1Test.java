@@ -1,4 +1,4 @@
-package no.nav.vedtak.brukerdialog.v1;
+package no.nav.vedtak.hendelser.inntektsmelding.v1;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -42,7 +42,6 @@ public class InntektsmeldingV1Test {
         assertThat(roundTripped.getReferanseId()).isEqualTo(arRef);
         assertThat(roundTripped.getHendelse()).isEqualTo(InntektsmeldingV1.HENDELSE_INNTEKTSMELDING + "ENDRING");
         assertThat(roundTripped.getInnsendingsTidspunkt()).isEqualToIgnoringNanos(innsending);
-        assertThat(roundTripped.getYtelse()).isNull();
         assertThat(roundTripped.getStartDato()).isEqualTo(startDato);
         validateResult(roundTripped);
     }
@@ -58,7 +57,6 @@ public class InntektsmeldingV1Test {
                 .medSaksnummer("99977755")
                 .medJournalpostId("11224466")
                 .medInnsendingsÅrsak("NY")
-                .medYtelse("SVP")
                 .build();
 
         String json = WRITER.writeValueAsString(inntektsmelding);
@@ -69,7 +67,6 @@ public class InntektsmeldingV1Test {
         assertThat(roundTripped).isNotNull();
         assertThat(roundTripped.getReferanseId()).isNotNull();
         assertThat(roundTripped.getHendelse()).isEqualTo(InntektsmeldingV1.HENDELSE_INNTEKTSMELDING + "NY");
-        assertThat(roundTripped.getYtelse()).isEqualTo("SVP");
         assertThat(roundTripped.getStartDato()).isNull();
         validateResult(roundTripped);
     }

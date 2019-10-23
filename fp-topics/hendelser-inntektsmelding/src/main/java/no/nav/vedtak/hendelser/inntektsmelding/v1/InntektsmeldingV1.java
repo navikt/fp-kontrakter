@@ -1,4 +1,4 @@
-package no.nav.vedtak.brukerdialog.v1;
+package no.nav.vedtak.hendelser.inntektsmelding.v1;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -13,8 +13,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import no.nav.vedtak.brukerdialog.Aktør;
-import no.nav.vedtak.brukerdialog.DokumentHendelse;
+import no.nav.vedtak.hendelser.inntektsmelding.Aktør;
+import no.nav.vedtak.hendelser.inntektsmelding.DokumentHendelse;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_ABSENT, content = JsonInclude.Include.NON_EMPTY)
@@ -92,14 +92,6 @@ public class InntektsmeldingV1 extends DokumentHendelse {
     @JsonProperty(value = "startDato", required = true)
     private LocalDate startDato;
 
-    /**
-     * Ytelsetype - framgår av saken
-     */
-    @Valid
-    @Size(max = 20)
-    @JsonProperty(value = "ytelse", required = true)
-    private String ytelse;
-
     @Override
     public String getJournalpostId () {
         return journalpostId;
@@ -133,10 +125,6 @@ public class InntektsmeldingV1 extends DokumentHendelse {
 
     public LocalDate getStartDato() {
         return startDato;
-    }
-
-    public String getYtelse() {
-        return ytelse;
     }
 
     public static class Builder {
@@ -183,11 +171,6 @@ public class InntektsmeldingV1 extends DokumentHendelse {
 
         public Builder medInnsendingsÅrsak(String innsendingsÅrsak) {
             inntektsmelding.hendelse = HENDELSE_INNTEKTSMELDING + innsendingsÅrsak;
-            return this;
-        }
-
-        public Builder medYtelse(String ytelse) {
-            inntektsmelding.ytelse = ytelse;
             return this;
         }
 

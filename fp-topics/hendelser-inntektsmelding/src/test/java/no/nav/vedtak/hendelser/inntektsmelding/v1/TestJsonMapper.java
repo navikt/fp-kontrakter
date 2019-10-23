@@ -1,4 +1,4 @@
-package no.nav.vedtak.brukerdialog.v1;
+package no.nav.vedtak.hendelser.inntektsmelding.v1;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
