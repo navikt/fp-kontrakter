@@ -1,4 +1,4 @@
-package no.nav.vedtak.brukerdialog;
+package no.nav.vedtak.hendelser.inntektsmelding;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;

@@ -9,9 +9,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <name>FP-TOPICS :: Brukerdialog Inntektsmelding</name>
-    <description>Kontrakt for å sende informasjon om ankomne inntektsmeldinger til selvbetjening</description>
-    <artifactId>hendelser-brukerdialog-inntektsmelding</artifactId>
+    <name>FP-TOPICS :: Inntektsmelding Mottatt</name>
+    <description>Kontrakt for å sende informasjon om lagrete inntektsmeldinger </description>
+    <artifactId>hendelser-inntektsmelding</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>

@@ -1,11 +1,11 @@
-package no.nav.vedtak.brukerdialog;
+package no.nav.vedtak.hendelser.inntektsmelding;
 
 import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
-import no.nav.vedtak.brukerdialog.v1.InntektsmeldingV1;
+import no.nav.vedtak.hendelser.inntektsmelding.v1.InntektsmeldingV1;
 
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,
