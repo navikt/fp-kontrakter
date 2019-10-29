@@ -7,44 +7,53 @@ import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 
 import java.time.LocalDateTime;
 import java.util.Map;
+import java.util.Objects;
 
 public class AksjonspunktEvent extends Event {
 
     /**
-     * Ekstern behandlingsId for fagsystemet. Send samme id for alle oppdateringer innenfor samme behandling.
-     *
-     * Id brukes for å lage URL for oppslag i fagsystem.
-     *
-     * Kafka-topic er partisjonert på id. Producer må sende inn id som en key til Kafka.
-     *
+     * BehandlingsId for fagsystemet. Id brukes ved oppslag i fagsystem.
+     * Benytt samme id for alle aksjonspunktoppdateringer innenfor samme behandling.
      */
-    private String id; // husk å sette denne som key
+    private String id;
 
     /**
-     * Representerer tidspunktet hendelsen ble opprettet lokalt for fagsystemet
+     * Tidspunkt for hendelse lokalt for fagsystem.
      */
     @JsonSerialize(using = ToStringSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    private LocalDateTime lokalEventTid;
+    private LocalDateTime eventTid;
 
+    /**
+     * Tidspunkt behandling ble opprettet
+     */
     @JsonSerialize(using = ToStringSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    private LocalDateTime behandlingOpprettetTid;
+    private LocalDateTime behandlingOpprettet;
 
+    /**
+     * Map av aksjonspunktkode og statuskode.
+     * Eksempel: Map.of("7001", "OPPR")
+     */
     private Map<String, String> aksjonspunktOgStatusListe;
 
     public String getId() {
         return id;
     }
 
-    public LocalDateTime getBehandlingOpprettetTid() {
-        return behandlingOpprettetTid;
+    public LocalDateTime getBehandlingOpprettet() {
+        return behandlingOpprettet;
     }
 
     public Map<String, String> getAksjonspunktOgStatusListe() {
         return aksjonspunktOgStatusListe;
     }
 
+    public LocalDateTime getEventTid() {
+        return eventTid;
+    }
+
+    public static Builder builder() { return new Builder(); }
 
     public static class Builder {
         private AksjonspunktEvent aksjonspunktEvent;
@@ -88,13 +97,13 @@ public class AksjonspunktEvent extends Event {
             return this;
         }
 
-        public Builder withLocalEventTime(LocalDateTime localEventTime) {
-            aksjonspunktEvent.lokalEventTid = localEventTime;
+        public Builder withEventTid(LocalDateTime eventTid) {
+            aksjonspunktEvent.eventTid = eventTid;
             return this;
         }
 
         public Builder withBehandlingOpprettetTid(LocalDateTime behandlingOpprettetTid) {
-            aksjonspunktEvent.behandlingOpprettetTid = behandlingOpprettetTid;
+            aksjonspunktEvent.behandlingOpprettet = behandlingOpprettetTid;
             return this;
         }
 
@@ -106,5 +115,22 @@ public class AksjonspunktEvent extends Event {
         public AksjonspunktEvent build() {
             return aksjonspunktEvent;
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        AksjonspunktEvent that = (AksjonspunktEvent) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(eventTid, that.eventTid) &&
+                Objects.equals(behandlingOpprettet, that.behandlingOpprettet) &&
+                Objects.equals(aksjonspunktOgStatusListe, that.aksjonspunktOgStatusListe);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), id, eventTid, behandlingOpprettet, aksjonspunktOgStatusListe);
     }
 }
