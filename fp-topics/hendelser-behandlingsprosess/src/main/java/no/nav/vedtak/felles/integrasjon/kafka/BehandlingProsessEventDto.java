@@ -7,6 +7,7 @@ import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 
 import java.time.LocalDateTime;
 import java.util.Map;
+import java.util.Objects;
 
 public class BehandlingProsessEventDto {
 
@@ -19,23 +20,51 @@ public class BehandlingProsessEventDto {
         BEHANDLINGSKONTROLL_EVENT
     }
 
-    private String fagsystem; // // Identifikasjon av systemet eventet opstod i : FPSAK
-    private Long behandlingId;
+    /**
+     * Ekstern id for behandlingen. Id benyttes til oppslag i fagsystem.
+     * Benytt samme id for alle aksjonspunktoppdateringer innenfor samme behandling.
+     */
+    private String id;
+    private String fagsystem;
+    private Long behandlingId; // fjernes etter overgang til id
     private String saksnummer;
     private String aktørId;
 
-    private EventHendelse eventHendelse;
-
-    private String behandlinStatus; //Status for behandlingen på tidspunktet ??Er kanskje ikke stabil??
-    private String behandlingSteg; //Steget behandlingen er i når eventet intreffer
-    private String behandlendeEnhet;  // Enheten som har ansvar for behandlingen for eksempel: 4066
-    private String ytelseTypeKode;  // koden til ytelsetype for eksempel : PF
-    private String behandlingTypeKode; // koden til behandlingstype feks : BT-002
+    /**
+     * Tidspunkt for hendelse lokalt for fagsystem.
+     */
     @JsonSerialize(using = ToStringSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    private LocalDateTime opprettetBehandling;// Dato for opprettet behandling.
+    private LocalDateTime eventTid;
 
-    private Map<String, String> aksjonspunktKoderMedStatusListe; // Liste over alle aksjonspunktdefinisjonskoder som hører til behandlingen, trolig Liste objekter istedet for Map ({4001,'UTFO'},{4025,'OPPR'},{4035,status})
+    private EventHendelse eventHendelse;
+
+    private String behandlinStatus;
+    private String behandlingSteg;
+    private String behandlendeEnhet;
+
+    /**
+     * Ytelsestype i kodeform. Eksempel: FP
+     */
+    private String ytelseTypeKode;
+
+    /**
+     * Behandlingstype i kodeform. Eksempel: BT-002
+     */
+    private String behandlingTypeKode;
+
+    /**
+     * Tidspunkt behandling ble opprettet
+     */
+    @JsonSerialize(using = ToStringSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    private LocalDateTime opprettetBehandling;
+
+    /**
+     * Map av aksjonspunktkode og statuskode.
+     * Eksempel: Map.of("7001", "OPPR")
+     */
+    private Map<String, String> aksjonspunktKoderMedStatusListe;
 
     public String getFagsystem() {
         return fagsystem;
@@ -47,6 +76,14 @@ public class BehandlingProsessEventDto {
 
     public String getSaksnummer() {
         return saksnummer;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public LocalDateTime getEventTid() {
+        return eventTid;
     }
 
     public String getAktørId() {
@@ -95,6 +132,16 @@ public class BehandlingProsessEventDto {
 
         private Builder() {
             behandlingProsessEventDto = new BehandlingProsessEventDto();
+        }
+
+        public Builder medId(String id) {
+            behandlingProsessEventDto.id = id;
+            return this;
+        }
+
+        public Builder medEventTid(LocalDateTime eventTid) {
+            behandlingProsessEventDto.eventTid = eventTid;
+            return this;
         }
 
         public Builder medFagsystem(String fagsystem) {
@@ -160,5 +207,31 @@ public class BehandlingProsessEventDto {
         public BehandlingProsessEventDto build() {
             return behandlingProsessEventDto;
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BehandlingProsessEventDto that = (BehandlingProsessEventDto) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(fagsystem, that.fagsystem) &&
+                Objects.equals(behandlingId, that.behandlingId) &&
+                Objects.equals(saksnummer, that.saksnummer) &&
+                Objects.equals(aktørId, that.aktørId) &&
+                Objects.equals(eventTid, that.eventTid) &&
+                eventHendelse == that.eventHendelse &&
+                Objects.equals(behandlinStatus, that.behandlinStatus) &&
+                Objects.equals(behandlingSteg, that.behandlingSteg) &&
+                Objects.equals(behandlendeEnhet, that.behandlendeEnhet) &&
+                Objects.equals(ytelseTypeKode, that.ytelseTypeKode) &&
+                Objects.equals(behandlingTypeKode, that.behandlingTypeKode) &&
+                Objects.equals(opprettetBehandling, that.opprettetBehandling) &&
+                Objects.equals(aksjonspunktKoderMedStatusListe, that.aksjonspunktKoderMedStatusListe);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, fagsystem, behandlingId, saksnummer, aktørId, eventTid, eventHendelse, behandlinStatus, behandlingSteg, behandlendeEnhet, ytelseTypeKode, behandlingTypeKode, opprettetBehandling, aksjonspunktKoderMedStatusListe);
     }
 }
