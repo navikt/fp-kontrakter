@@ -8,7 +8,7 @@ import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import java.time.LocalDateTime;
 import java.util.Map;
 
-public class BehandlingProsessEventDto extends Event {
+public class BehandlingProsessEventDto {
 
     public enum EventHendelse {
         AKSJONSPUNKT_OPPRETTET,
@@ -19,13 +19,39 @@ public class BehandlingProsessEventDto extends Event {
         BEHANDLINGSKONTROLL_EVENT
     }
 
+    private String fagsystem; // // Identifikasjon av systemet eventet opstod i : FPSAK
     private Long behandlingId;
-    private EventHendelse eventHendelse; // eventhendelse
-    private String behandlinStatus; //Status for behandlingen på tidspunktet ??Er kanskje ikke stabil?? //FJERN
-    private String behandlingSteg; //Steget behandlingen er i når eventet intreffer //FJERN
-    private LocalDateTime opprettetBehandling;
+    private String saksnummer;
+    private String aktørId;
+
+    private EventHendelse eventHendelse;
+
+    private String behandlinStatus; //Status for behandlingen på tidspunktet ??Er kanskje ikke stabil??
+    private String behandlingSteg; //Steget behandlingen er i når eventet intreffer
+    private String behandlendeEnhet;  // Enheten som har ansvar for behandlingen for eksempel: 4066
+    private String ytelseTypeKode;  // koden til ytelsetype for eksempel : PF
+    private String behandlingTypeKode; // koden til behandlingstype feks : BT-002
+    @JsonSerialize(using = ToStringSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    private LocalDateTime opprettetBehandling;// Dato for opprettet behandling.
+
     private Map<String, String> aksjonspunktKoderMedStatusListe; // Liste over alle aksjonspunktdefinisjonskoder som hører til behandlingen, trolig Liste objekter istedet for Map ({4001,'UTFO'},{4025,'OPPR'},{4035,status})
 
+    public String getFagsystem() {
+        return fagsystem;
+    }
+
+    public Long getBehandlingId() {
+        return behandlingId;
+    }
+
+    public String getSaksnummer() {
+        return saksnummer;
+    }
+
+    public String getAktørId() {
+        return aktørId;
+    }
 
     public EventHendelse getEventHendelse() {
         return eventHendelse;
@@ -37,6 +63,26 @@ public class BehandlingProsessEventDto extends Event {
 
     public String getBehandlingSteg() {
         return behandlingSteg;
+    }
+
+    public String getBehandlendeEnhet() {
+        return behandlendeEnhet;
+    }
+
+    public String getYtelseTypeKode() {
+        return ytelseTypeKode;
+    }
+
+    public String getBehandlingTypeKode() {
+        return behandlingTypeKode;
+    }
+
+    public LocalDateTime getOpprettetBehandling() {
+        return opprettetBehandling;
+    }
+
+    public Map<String, String> getAksjonspunktKoderMedStatusListe() {
+        return aksjonspunktKoderMedStatusListe;
     }
 
     public static Builder builder() {

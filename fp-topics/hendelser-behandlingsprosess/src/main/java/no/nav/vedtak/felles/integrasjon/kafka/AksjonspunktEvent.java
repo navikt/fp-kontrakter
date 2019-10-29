@@ -9,13 +9,17 @@ import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.Objects;
 
-public class AksjonspunktEvent extends Event {
+public class AksjonspunktEvent {
 
     /**
      * BehandlingsId for fagsystemet. Id brukes ved oppslag i fagsystem.
      * Benytt samme id for alle aksjonspunktoppdateringer innenfor samme behandling.
      */
     private String id;
+    private String fagsystem;
+    private String saksnummer;
+    private String aktørId;
+    private String behandlendeEnhet;
 
     /**
      * Tidspunkt for hendelse lokalt for fagsystem.
@@ -23,6 +27,15 @@ public class AksjonspunktEvent extends Event {
     @JsonSerialize(using = ToStringSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime eventTid;
+
+    /**
+     * Ytelsestype i kodeform. Eksempel: FP
+     */
+    private String ytelseTypeKode;
+    /**
+     * Behandlingstype i kodeform. Eksempel: BT-002
+     */
+    private String behandlingTypeKode;
 
     /**
      * Tidspunkt behandling ble opprettet
@@ -39,6 +52,30 @@ public class AksjonspunktEvent extends Event {
 
     public String getId() {
         return id;
+    }
+
+    public String getFagsystem() {
+        return fagsystem;
+    }
+
+    public String getSaksnummer() {
+        return saksnummer;
+    }
+
+    public String getAktørId() {
+        return aktørId;
+    }
+
+    public String getBehandlendeEnhet() {
+        return behandlendeEnhet;
+    }
+
+    public String getYtelseTypeKode() {
+        return ytelseTypeKode;
+    }
+
+    public String getBehandlingTypeKode() {
+        return behandlingTypeKode;
     }
 
     public LocalDateTime getBehandlingOpprettet() {
@@ -121,16 +158,21 @@ public class AksjonspunktEvent extends Event {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
         AksjonspunktEvent that = (AksjonspunktEvent) o;
         return Objects.equals(id, that.id) &&
+                Objects.equals(fagsystem, that.fagsystem) &&
+                Objects.equals(saksnummer, that.saksnummer) &&
+                Objects.equals(aktørId, that.aktørId) &&
+                Objects.equals(behandlendeEnhet, that.behandlendeEnhet) &&
                 Objects.equals(eventTid, that.eventTid) &&
+                Objects.equals(ytelseTypeKode, that.ytelseTypeKode) &&
+                Objects.equals(behandlingTypeKode, that.behandlingTypeKode) &&
                 Objects.equals(behandlingOpprettet, that.behandlingOpprettet) &&
                 Objects.equals(aksjonspunktOgStatusListe, that.aksjonspunktOgStatusListe);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), id, eventTid, behandlingOpprettet, aksjonspunktOgStatusListe);
+        return Objects.hash(id, fagsystem, saksnummer, aktørId, behandlendeEnhet, eventTid, ytelseTypeKode, behandlingTypeKode, behandlingOpprettet, aksjonspunktOgStatusListe);
     }
 }
