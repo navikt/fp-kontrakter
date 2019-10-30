@@ -6,6 +6,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import no.nav.foreldrepenger.kontrakter.formidling.kodeverk.FagsakYtelseType;
+import no.nav.foreldrepenger.kontrakter.formidling.kodeverk.Vedtaksbrev;
 
 public class DokumentbestillingDto {
 
@@ -52,6 +53,13 @@ public class DokumentbestillingDto {
     private boolean gjelderVedtak;
 
     private boolean erOpphevetKlage;
+
+    /**
+     * Kode som kan brukes til å angi hvilken type vedtaksbrev som skal bestilles/forhåndsvises,
+     * typisk AUTOMATISK eller FRITEKST.
+     * @see Vedtaksbrev
+     */
+    private Vedtaksbrev vedtaksbrev;
 
     public UUID getBehandlingUuid() {
         return behandlingUuid;
@@ -123,5 +131,13 @@ public class DokumentbestillingDto {
 
     public void setErOpphevetKlage(boolean erOpphevetKlage) {
         this.erOpphevetKlage = erOpphevetKlage;
+    }
+
+    public Vedtaksbrev getVedtaksbrev() {
+        return vedtaksbrev;
+    }
+
+    public void setVedtaksbrev(Vedtaksbrev vedtaksbrev) {
+        this.vedtaksbrev = vedtaksbrev;
     }
 }
