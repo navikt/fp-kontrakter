@@ -64,7 +64,7 @@ public class OppgittEgenNæringDto {
     private Boolean erVarigEndring;
 
     @JsonProperty(value = "endringBegrunnelse")
-    @Pattern(regexp = "^[\\p{L}\\p{M}\\p{N}\\.\\-()/$%\"=#&|\\\\,\\+:/\\[\\]@\\s\\t\\n]+$", message="'${validatedValue}' matcher ikke tillatt pattern '{regexp}'")
+    @Pattern(regexp = "^[\\p{L}\\p{M}\\p{N}\\.\\-()/$%\"=!#&|\\\\,\\+:/\\[\\]@\\s\\t\\n]+$", message="'${validatedValue}' matcher ikke tillatt pattern '{regexp}'")
     private String endringBegrunnelse;
 
     /** Tillater kun positive verdier.  Max verdi håndteres av mottager. */
