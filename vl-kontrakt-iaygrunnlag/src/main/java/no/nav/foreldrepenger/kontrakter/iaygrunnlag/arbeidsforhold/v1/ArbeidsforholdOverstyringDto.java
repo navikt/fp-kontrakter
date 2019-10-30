@@ -52,7 +52,7 @@ public class ArbeidsforholdOverstyringDto {
     private ArbeidsforholdHandlingType handling;
 
     @JsonProperty(value = "overstyringBegrunnelse")
-    @Pattern(regexp = "^[\\p{L}\\p{M}\\p{N}\\.\\-()/$=\\?%\"§#&\\\\,\\+:/;\\[\\]@\\s\\n\\t\\r|]+$", message="Overstyring begrunnelse '${validatedValue}' matcher ikke tillatt pattern '{regexp}'")
+    @Pattern(regexp = "^[\\p{L}\\p{M}\\p{N}\\.\\-()/$=!\\?%\"§#&\\\\,\\+:/;\\[\\]@\\s\\n\\t\\r|]+$", message="Overstyring begrunnelse '${validatedValue}' matcher ikke tillatt pattern '{regexp}'")
     private String begrunnelse;
 
     /** Angitt overstyrt navn på arbeidsgiver (tildelt av saksbehandler). */
