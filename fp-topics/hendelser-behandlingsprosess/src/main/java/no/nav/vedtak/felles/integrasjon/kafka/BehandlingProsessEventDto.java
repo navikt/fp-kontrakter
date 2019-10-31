@@ -62,7 +62,6 @@ public class BehandlingProsessEventDto {
 
     /**
      * Map av aksjonspunktkode og statuskode.
-     * Eksempel: Map.of("7001", "OPPR")
      */
     private Map<String, String> aksjonspunktKoderMedStatusListe;
 
