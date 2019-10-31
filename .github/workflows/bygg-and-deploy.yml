@@ -1,0 +1,27 @@
+name: Bygg & deploy
+
+on:
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '11.x'
+      - name: create version number
+        run: |
+          echo $(echo $GITHUB_SHA | cut -c1-7) > .version
+      - name: Build and deploy
+        shell: bash
+        run: |
+          echo "Building & deploying ${GITHUB_SHA}"
+          mvn deploy --batch-mode -s ./.mvn/settings.xml -Dmaven.wagon.http.pool=false --file pom.xml -Dchangelist= -Dsha1=-"$(cat .version)"
+          echo "Deployed artifacts"
+        env:
+          GITHUB_USERNAME: x-access-token
+          GITHUB_PASSWORD: ${{ secrets.GITHUB_TOKEN }}

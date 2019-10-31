@@ -7,7 +7,7 @@
 		<artifactId>foreldrepenger-kontrakter-root</artifactId>
 		<version>${revision}${sha1}${changelist}</version>
 	</parent>
-	
+
     <artifactId>soeknad-pom</artifactId>
     <packaging>pom</packaging>
     <name>(FPSAK) Kontrakter - soeknad</name>
@@ -25,5 +25,4 @@
 			<scope>provided</scope>
         </dependency>
     </dependencies>
-
 </project>

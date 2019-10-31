@@ -1,0 +1,23 @@
+name: Bygg pull-request
+
+on: pull_request
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '11.x'
+      - name: create version number
+        run: |
+          echo $(echo $GITHUB_SHA | cut -c1-7) > .version
+      - name: Build
+        shell: bash
+        run: |
+          echo "Building PR ${GITHUB_SHA}"
+          mvn install --batch-mode -s ./.mvn/settings.xml -Dmaven.wagon.http.pool=false --file pom.xml -Dchangelist= -Dsha1=-"$(cat .version)"
+        env:
+          GITHUB_USERNAME: x-access-token
+          GITHUB_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
