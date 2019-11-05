@@ -56,10 +56,8 @@
 		<module>vl-kontrakt-fp-feed</module>
 		<module>vl-kontrakt-fp-tilkjent-ytelse</module>
 		<module>vl-kontrakt-abonnent</module>
-		<module>vl-kontrakt-registerdata-callback</module>
 		<module>vl-kontrakt-behandlingsprosess-vedtak</module>
 		<module>fp-topics</module>
-		<module>vl-kontrakt-iaygrunnlag</module>
         <module>vl-kontrakt-fp-formidling</module>
     </modules>
 
@@ -169,16 +167,6 @@
 			<dependency>
 				<groupId>no.nav.foreldrepenger.kontrakter</groupId>
 				<artifactId>abonnent-v1</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>no.nav.foreldrepenger.kontrakter</groupId>
-				<artifactId>iaygrunnlag-v1</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>no.nav.foreldrepenger.kontrakter</groupId>
-				<artifactId>registerdata-callback-v1</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 		</dependencies>
