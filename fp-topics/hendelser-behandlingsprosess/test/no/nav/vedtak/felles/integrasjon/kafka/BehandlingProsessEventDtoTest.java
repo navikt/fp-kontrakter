@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -17,22 +18,25 @@ public class BehandlingProsessEventDtoTest {
 
     @Test
     public void testAksjonspunktEventRoundtrip() throws Exception {
+        Map<String, String> aksjonspunkter = new HashMap<>();
+        aksjonspunkter.put("5080", "AVBR");
+
         BehandlingProsessEventDto event = BehandlingProsessEventDto.builder()
-                .medAktørId("23498098290344")
-                .medSaksnummer("3498934903")
+                .medAktørId("123457890123")
+                .medSaksnummer("9876543210")
                 .medYtelseTypeKode("FP")
                 .medFagsystem("FPSAK")
                 .medBehandlingTypeKode("BT-004")
                 .medEventTid(LocalDateTime.now())
-                .medOpprettetBehandling(LocalDateTime.now().minusHours(58))
+                .medOpprettetBehandling(LocalDateTime.now().minusHours(10))
                 .medId("47854a89-2f72-451e-95a1-54901133fc1b")
-                .medAksjonspunktKoderMedStatusListe(Map.of("5080", "AVBR"))
+                .medAksjonspunktKoderMedStatusListe(aksjonspunkter)
                 .medBehandlendeEnhet("4803")
                 .build();
 
         String json = serialiserToJson(event);
-        System.out.println(json);
         BehandlingProsessEventDto roundtrippedEvent = deserialiser(json, BehandlingProsessEventDto.class);
+
         assertThat(event).isEqualTo(roundtrippedEvent);
     }
 
