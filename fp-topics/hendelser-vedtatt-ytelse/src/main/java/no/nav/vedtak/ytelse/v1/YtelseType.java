@@ -7,15 +7,29 @@ import no.nav.vedtak.ytelse.Kodeverk;
 
 public class YtelseType extends Kodeverk {
 
-    public static final YtelseType ENSLIG_FORSØRGER = new YtelseType("EF");
-    public static final YtelseType SYKEPENGER = new YtelseType("SP");
-    public static final YtelseType SVANGERSKAPSPENGER = new YtelseType("SVP");
-    public static final YtelseType FORELDREPENGER = new YtelseType("FP");
-    public static final YtelseType ENGANGSSTØNAD = new YtelseType("ES");
-    public static final YtelseType PÅRØRENDESYKDOM = new YtelseType("PS");
-    public static final YtelseType ARBEIDSAVKLARINGSPENGER = new YtelseType("AAP");
-    public static final YtelseType DAGPENGER = new YtelseType("DAG");
-    public static final YtelseType UDEFINERT = new YtelseType("-");
+    /** Folketrygdloven K4 ytelser. */
+    public static final YtelseType DAGPENGER = new YtelseType("DAG");//$NON-NLS-1$
+
+    /** Folketrygdloven K8 ytelser. */
+    public static final YtelseType SYKEPENGER = new YtelseType("SP");//$NON-NLS-1$
+
+    /** Folketrygdloven K9 ytelser. */
+    public static final YtelseType PLEIEPENGER_SYKT_BARN = new YtelseType("PSB");
+    public static final YtelseType PLEIEPENGER_NÆRSTÅENDE = new YtelseType("PPN");
+    public static final YtelseType OMSORGSPENGER = new YtelseType("OMP");
+    public static final YtelseType OPPLÆRINGSPENGER = new YtelseType("OLP");
+
+    /** Folketrygdloven K11 ytelser. */
+    public static final YtelseType ARBEIDSAVKLARINGSPENGER = new YtelseType("AAP");//$NON-NLS-1$
+
+    /** Folketrygdloven K14 ytelser. */
+    public static final YtelseType ENGANGSTØNAD = new YtelseType("ES"); //$NON-NLS-1$
+    public static final YtelseType FORELDREPENGER = new YtelseType("FP"); //$NON-NLS-1$
+    public static final YtelseType SVANGERSKAPSPENGER = new YtelseType("SVP"); //$NON-NLS-1$
+
+    /** Folketrygdloven K15 ytelser. */
+    public static final YtelseType ENSLIG_FORSØRGER = new YtelseType("EF");//$NON-NLS-1$
+
     private static final String DISCRIMINATOR = "FAGSAK_YTELSE_TYPE";
 
     @JsonCreator
