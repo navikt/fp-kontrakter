@@ -84,6 +84,10 @@ public class TilkjentYtelseV1 implements TilkjentYtelse {
         }
     }
 
+    /**
+     * @deprecated bytt til FagsakYtelseType kodeverk
+     */
+    @Deprecated
     public enum YtelseType {
         FORELDREPENGER, SVANGERSKAPSPENGER, ENGANGSTØNAD;
     }
