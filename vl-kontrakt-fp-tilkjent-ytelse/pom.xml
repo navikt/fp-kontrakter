@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>no.nav.foreldrepenger.kontrakter</groupId>
-        <artifactId>foreldrepenger-kontrakter-root</artifactId>
+        <artifactId>fp-kontrakter-root</artifactId>
         <version>${revision}${sha1}${changelist}</version>
     </parent>
 

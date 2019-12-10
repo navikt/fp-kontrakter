@@ -6,7 +6,7 @@
 
     <parent>
         <groupId>no.nav.foreldrepenger.kontrakter</groupId>
-        <artifactId>foreldrepenger-kontrakter-root</artifactId>
+        <artifactId>fp-kontrakter-root</artifactId>
         <version>${revision}${sha1}${changelist}</version>
     </parent>
 
@@ -18,7 +18,6 @@
 
 	<modules>
 		<module>hendelser-behandlingsprosess</module>
-        <module>hendelser-vedtatt-ytelse</module>
         <module>hendelser-historikk-innslag</module>
 		<module>manifest</module>
         <module>hendelser-dokumentbestilling</module>
@@ -33,11 +32,6 @@
 				<artifactId>fp-topics-behandlingsprosess</artifactId>
 				<version>${project.version}</version>
 			</dependency>
-            <dependency>
-                <groupId>no.nav.foreldrepenger.kontrakter.topics</groupId>
-                <artifactId>hendelse-vedtatt-ytelse</artifactId>
-                <version>${project.version}</version>
-            </dependency>
 		</dependencies>
 	</dependencyManagement>
 
