@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Map;
@@ -14,15 +15,15 @@ import java.util.UUID;
 public class TilbakebetalingBehandlingProsessEventDto extends BehandlingProsessEventDto {
     @JsonSerialize(using = ToStringSerializer.class)
     @JsonDeserialize(using = LocalDateDeserializer.class)
-    private LocalDate førsteFeilutbetalingsdato;
-    private Integer feilutbetaltBeløp;
+    private LocalDate førsteFeilutbetaling;
+    private BigDecimal feilutbetaltBeløp;
 
 
-    public LocalDate getFørsteFeilutbetalingsdato() {
-        return førsteFeilutbetalingsdato;
+    public LocalDate getFørsteFeilutbetaling() {
+        return førsteFeilutbetaling;
     }
 
-    public Integer getFeilutbetaltBeløp() {
+    public BigDecimal getFeilutbetaltBeløp() {
         return feilutbetaltBeløp;
     }
 
@@ -39,12 +40,12 @@ public class TilbakebetalingBehandlingProsessEventDto extends BehandlingProsessE
             tmpDto.fagsystem = Fagsystem.FPTILBAKE;
         }
 
-        public Builder medFørsteFeilutbetalingdato(LocalDate førsteFeilutbetalingsdato) {
-            tmpDto.førsteFeilutbetalingsdato = førsteFeilutbetalingsdato;
+        public Builder medFørsteFeilutbetaling(LocalDate førsteFeilutbetaling) {
+            tmpDto.førsteFeilutbetaling = førsteFeilutbetaling;
             return this;
         }
 
-        public Builder medFeilutbetaltBeløp(Integer feilutbetaltBeløp) {
+        public Builder medFeilutbetaltBeløp(BigDecimal feilutbetaltBeløp) {
             tmpDto.feilutbetaltBeløp = feilutbetaltBeløp;
             return this;
         }
@@ -120,12 +121,12 @@ public class TilbakebetalingBehandlingProsessEventDto extends BehandlingProsessE
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         TilbakebetalingBehandlingProsessEventDto that = (TilbakebetalingBehandlingProsessEventDto) o;
-        return Objects.equals(førsteFeilutbetalingsdato, that.førsteFeilutbetalingsdato) &&
+        return Objects.equals(førsteFeilutbetaling, that.førsteFeilutbetaling) &&
                 Objects.equals(feilutbetaltBeløp, that.feilutbetaltBeløp);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), førsteFeilutbetalingsdato, feilutbetaltBeløp);
+        return Objects.hash(super.hashCode(), førsteFeilutbetaling, feilutbetaltBeløp);
     }
 }
