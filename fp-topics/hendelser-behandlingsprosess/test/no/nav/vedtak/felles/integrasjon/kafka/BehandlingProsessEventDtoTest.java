@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -15,7 +16,7 @@ import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class BehandlingProsessEventDtoTest<T> {
+public class BehandlingProsessEventDtoTest {
 
     @Test
     public void testAksjonspunktEventRoundtrip() throws Exception {
@@ -35,8 +36,8 @@ public class BehandlingProsessEventDtoTest<T> {
                 .build();
 
         TilbakebetalingBehandlingProsessEventDto tilbakebetalingDto = TilbakebetalingBehandlingProsessEventDto.tilbakebetalingBuilder()
-                .medFeilutbetaltBeløp(200)
-                .medFørsteFeilutbetalingdato(LocalDate.now().minusMonths(4))
+                .medFeilutbetaltBeløp(BigDecimal.valueOf(20000L))
+                .medFørsteFeilutbetaling(LocalDate.now().minusMonths(4))
                 .medAktørId("123457890123")
                 .medSaksnummer("9876543210")
                 .medYtelseTypeKode("FP")
@@ -53,8 +54,7 @@ public class BehandlingProsessEventDtoTest<T> {
     }
 
     private static <T> T testRoundtrip(BehandlingProsessEventDto dto, Class<T> cls) throws Exception {
-        String json = serialiserToJson(dto);
-        System.out.println(json);
+        var json = serialiserToJson(dto);
         var roundtrippedDto = deserialiser(json, BehandlingProsessEventDto.class);
 
         assertThat(roundtrippedDto).isInstanceOf(cls);
