@@ -40,6 +40,7 @@ public abstract class BehandlingProsessEventDto {
     protected LocalDateTime eventTid;
 
     protected EventHendelse eventHendelse;
+    protected String behandlinStatus; // fjernes etter overgang til behandlingStatus
     protected String behandlingStatus;
     protected String behandlingSteg;
     protected String behandlendeEnhet;
@@ -88,6 +89,10 @@ public abstract class BehandlingProsessEventDto {
 
     public EventHendelse getEventHendelse() {
         return eventHendelse;
+    }
+
+    public String getBehandlinStatus() {
+        return behandlinStatus;
     }
 
     public String getBehandlingStatus() {
