@@ -29,7 +29,6 @@ public abstract class BehandlingProsessEventDto {
      */
     protected UUID eksternId;
     protected Fagsystem fagsystem;
-    protected Long behandlingId; // fjernes etter overgang til id
     protected String saksnummer;
     protected String aktørId;
 
@@ -41,7 +40,6 @@ public abstract class BehandlingProsessEventDto {
     protected LocalDateTime eventTid;
 
     protected EventHendelse eventHendelse;
-    protected String behandlinStatus; // fjernes etter overgang til behandlingStatus
     protected String behandlingStatus;
     protected String behandlingSteg;
     protected String behandlendeEnhet;
@@ -76,10 +74,6 @@ public abstract class BehandlingProsessEventDto {
         return fagsystem;
     }
 
-    public Long getBehandlingId() {
-        return behandlingId;
-    }
-
     public String getSaksnummer() {
         return saksnummer;
     }
@@ -94,10 +88,6 @@ public abstract class BehandlingProsessEventDto {
 
     public EventHendelse getEventHendelse() {
         return eventHendelse;
-    }
-
-    public String getBehandlinStatus() {
-        return behandlinStatus;
     }
 
     public String getBehandlingStatus() {
@@ -135,12 +125,10 @@ public abstract class BehandlingProsessEventDto {
         BehandlingProsessEventDto that = (BehandlingProsessEventDto) o;
         return Objects.equals(eksternId, that.eksternId) &&
                 fagsystem == that.fagsystem &&
-                Objects.equals(behandlingId, that.behandlingId) &&
                 Objects.equals(saksnummer, that.saksnummer) &&
                 Objects.equals(aktørId, that.aktørId) &&
                 Objects.equals(eventTid, that.eventTid) &&
                 eventHendelse == that.eventHendelse &&
-                Objects.equals(behandlinStatus, that.behandlinStatus) &&
                 Objects.equals(behandlingStatus, that.behandlingStatus) &&
                 Objects.equals(behandlingSteg, that.behandlingSteg) &&
                 Objects.equals(behandlendeEnhet, that.behandlendeEnhet) &&
@@ -152,8 +140,8 @@ public abstract class BehandlingProsessEventDto {
 
     @Override
     public int hashCode() {
-        return Objects.hash(eksternId, fagsystem, behandlingId, saksnummer, aktørId, eventTid, eventHendelse,
-                behandlinStatus, behandlingStatus, behandlingSteg, behandlendeEnhet, ytelseTypeKode,
+        return Objects.hash(eksternId, fagsystem, saksnummer, aktørId, eventTid, eventHendelse,
+                behandlingStatus, behandlingSteg, behandlendeEnhet, ytelseTypeKode,
                 behandlingTypeKode, opprettetBehandling, aksjonspunktKoderMedStatusListe);
     }
 }
