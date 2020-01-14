@@ -2,9 +2,16 @@ package no.nav.vedtak.felles.integrasjon.kafka;
 
 import java.time.LocalDateTime;
 import java.util.Map;
+import java.util.Objects;
 import java.util.UUID;
 
 public class FpsakBehandlingProsessEventDto extends BehandlingProsessEventDto {
+
+    private Long behandlingId; // fjernes etter overgang til eksternId
+
+    public Long getBehandlingId() {
+        return behandlingId;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -21,6 +28,11 @@ public class FpsakBehandlingProsessEventDto extends BehandlingProsessEventDto {
 
         public Builder medEksternId(UUID eksternId) {
             tmpDto.eksternId = eksternId;
+            return this;
+        }
+
+        public Builder medBehandlingId(Long behandlingId) {
+            tmpDto.behandlingId = behandlingId;
             return this;
         }
 
@@ -82,5 +94,19 @@ public class FpsakBehandlingProsessEventDto extends BehandlingProsessEventDto {
         public FpsakBehandlingProsessEventDto build() {
             return tmpDto;
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        FpsakBehandlingProsessEventDto that = (FpsakBehandlingProsessEventDto) o;
+        return Objects.equals(behandlingId, that.behandlingId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), behandlingId);
     }
 }
