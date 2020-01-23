@@ -18,6 +18,7 @@
                 <sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
                 <sonar.host.url>https://sonarcloud.io</sonar.host.url>
 		<revision>5.1</revision>
+		<changelist/>
 		<sha1>-SNAPSHOT</sha1>
 		<maven.javadoc.skip>true</maven.javadoc.skip>
 		<java.version>11</java.version>
