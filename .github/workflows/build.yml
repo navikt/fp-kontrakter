@@ -31,7 +31,9 @@ jobs:
         shell: bash
         run: |
            mvn versions:set -DnewVersion=${MVN_VERSION}
-           mvn -Dmaven.wagon.http.pool=false --quiet jacoco:prepare-agent deploy jacoco:report sonar:sonar  -e --batch-mode --settings ./.github/.m2/settings.xml -Dsonar.login=${SONAR_TOKEN} -Djacoco.destFile=$(pwd)/target/jacoco.exec
+           mvn jacoco:prepare-agent deploy -e --batch-mode --settings ./.github/.m2/settings.xml -Dmaven.wagon.http.pool=false -Djacoco.destFile=$(pwd)/target/jacoco.exec 
+           mvn jacoco:report sonar:sonar -e --batch-mode  --settings ./.github/.m2/settings.xml -Djacoco.dataFile=$(pwd)/target/jacoco.exec --Dsonar.login=${SONAR_TOKEN}
+#           mvn -Dmaven.wagon.http.pool=false --quiet jacoco:prepare-agent deploy jacoco:report sonar:sonar  -e --batch-mode --settings ./.github/.m2/settings.xml -Dsonar.login=${SONAR_TOKEN} -Djacoco.destFile=$(pwd)/target/jacoco.exec
         env:
           GITHUB_USERNAME: x-access-token
           GITHUB_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
