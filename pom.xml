@@ -15,6 +15,7 @@
 	<properties>
                 <sonar.projectKey>navikt_fp-kontrakter</sonar.projectKey>
                 <sonar.organization>navit</sonar.organization>
+                <sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
                 <sonar.host.url>https://sonarcloud.io</sonar.host.url>
 		<revision>5.1</revision>
 		<sha1></sha1>
