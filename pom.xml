@@ -17,8 +17,8 @@
                 <sonar.organization>navit</sonar.organization>
                 <sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
                 <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-		<revision>5.1</revision>
-		<changelist>-SNAPSHOT</changelist>
+		<revision>5.1-</revision>
+		<changelist>SNAPSHOT</changelist>
 		<sha1>_</sha1>
 		<maven.javadoc.skip>true</maven.javadoc.skip>
 		<java.version>11</java.version>
