@@ -6,7 +6,7 @@
 
 	<groupId>no.nav.foreldrepenger.kontrakter</groupId>
 	<artifactId>fp-kontrakter-root</artifactId>
-	<version>${revision}${sha1}${changelist}</version>
+	<version>${revision}${sha1}</version>
 	<packaging>pom</packaging>
 	<name>(FPSAK) Kontrakter - Root</name>
 	<description>Contracts related to the family area at NAV.</description>
@@ -17,9 +17,8 @@
                 <sonar.organization>navit</sonar.organization>
                 <sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
                 <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-		<revision>5.1-</revision>
-		<sha1></sha1>
-		<changelist>-SNAPSHOT</changelist>
+		<revision>5.1</revision>
+		<sha1>-SNAPSHOT</sha1>
 		<maven.javadoc.skip>true</maven.javadoc.skip>
 		<java.version>11</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
