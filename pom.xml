@@ -6,7 +6,7 @@
 
 	<groupId>no.nav.foreldrepenger.kontrakter</groupId>
 	<artifactId>fp-kontrakter-root</artifactId>
-	<version>${revision}${sha1}</version>
+	<version>${revision}${sha1}${changelist}</version>
 	<packaging>pom</packaging>
 	<name>(FPSAK) Kontrakter - Root</name>
 	<description>Contracts related to the family area at NAV.</description>
