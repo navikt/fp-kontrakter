@@ -13,20 +13,19 @@
     <description>Contracts related to the family area at NAV.</description>
     <url>https://github.com/navikt/fp-kontrakter</url>
 
-    <properties>
-        <sonar.projectKey>navikt_fp-kontrakter</sonar.projectKey>
-        <sonar.organization>navit</sonar.organization>
-        <sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
-        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-        <revision>5.1</revision>
-        <changelist>-SNAPSHOT</changelist>
-        <sha1>_</sha1>
-        <maven.javadoc.skip>true</maven.javadoc.skip>
-        <java.version>11</java.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.javadoc.skip>true</maven.javadoc.skip>
-    </properties>
-
+	<properties>
+                <sonar.projectKey>navikt_fp-kontrakter</sonar.projectKey>
+                <sonar.organization>navit</sonar.organization>
+                <sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
+                <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+		<revision>5.1-</revision>
+		<changelist>SNAPSHOT</changelist>
+		<sha1>_</sha1>
+		<maven.javadoc.skip>true</maven.javadoc.skip>
+		<java.version>11</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.javadoc.skip>true</maven.javadoc.skip>
+	</properties>
     <organization>
         <name>no.nav</name>
         <url>https://github.com/navikt</url>
