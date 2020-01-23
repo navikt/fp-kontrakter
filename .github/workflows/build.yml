@@ -32,9 +32,6 @@ jobs:
         run: |
            mvn versions:set -DnewVersion=${MVN_VERSION}
            mvn --quiet jacoco:prepare-agent deploy jacoco:report sonar:sonar  -e --batch-mode --settings ./.github/.m2/settings.xml -Dsha1=${TAG}  -Dsonar.login=${SONAR_TOKEN} -Djacoco.destFile=$(pwd)/target/jacoco.exec
-    
- #         mvn --quiet jacoco:prepare-agent deploy  -e --batch-mode --settings ./.github/.m2/settings.xml -Dsha1=${TAG}  -Dsonar.login=${SONAR_TOKEN} -Djacoco.destFile=$(pwd)/target/jacoco.exec
- #         mvn jacoco:report sonar:sonar -e --batch-mode --settings .github/.m2/settings.xml -Dsha1=${TAG} -Djacoco.dataFile=$(pwd)/target/jacoco.exec  -Dsonar.login=${SONAR_TOKEN}
         env:
           GITHUB_USERNAME: x-access-token
           GITHUB_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
