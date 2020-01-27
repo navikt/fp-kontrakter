@@ -1,8 +1,5 @@
 package no.nav.vedtak.felles.integrasjon.kafka;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
@@ -10,65 +7,63 @@ import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 
 import java.time.LocalDateTime;
 import java.util.Map;
-import java.util.Objects;
 import java.util.UUID;
 
-import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.EXISTING_PROPERTY;
-import static com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME;
-
-@JsonTypeInfo(use = NAME, include = EXISTING_PROPERTY, property = "fagsystem", visible = true)
-@JsonSubTypes({
-        @JsonSubTypes.Type(value = TilbakebetalingBehandlingProsessEventDto.class, name = "FPTILBAKE"),
-        @JsonSubTypes.Type(value = FpsakBehandlingProsessEventDto.class, name = "FPSAK")
-})
-@JsonInclude(value = JsonInclude.Include.NON_ABSENT)
-public abstract class BehandlingProsessEventDto {
+public class BehandlingProsessEventDto {
     /**
      * Ekstern id for behandlingen. Id benyttes til oppslag i fagsystem.
      * Benytt samme id for alle oppdateringer av aksjonspunkt/prosess innenfor samme behandling.
      */
-    protected UUID eksternId;
-    protected Fagsystem fagsystem;
-    protected String saksnummer;
-    protected String aktørId;
+    private UUID eksternId;
+    private Fagsystem fagsystem;
+    private String saksnummer;
+    private String aktørId;
+
+    private Long behandlingId; // fjernes etter overgang til eksternId
 
     /**
      * Tidspunkt for hendelse lokalt for fagsystem.
      */
     @JsonSerialize(using = ToStringSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    protected LocalDateTime eventTid;
-
-    protected EventHendelse eventHendelse;
-    protected String behandlinStatus; // fjernes etter overgang til behandlingStatus
-    protected String behandlingStatus;
-    protected String behandlingSteg;
-    protected String behandlendeEnhet;
+    private LocalDateTime eventTid;
+    private EventHendelse eventHendelse;
+    private String behandlinStatus; // fjernes etter overgang til behandlingStatus
+    private String behandlingStatus;
+    private String behandlingSteg;
+    private String behandlendeEnhet;
 
     /**
      * Ytelsestype i kodeform. Eksempel: FP
      */
-    protected String ytelseTypeKode;
+    private String ytelseTypeKode;
 
     /**
      * Behandlingstype i kodeform. Eksempel: BT-002
      */
-    protected String behandlingTypeKode;
+    private String behandlingTypeKode;
 
     /**
      * Tidspunkt behandling ble opprettet
      */
     @JsonSerialize(using = ToStringSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    protected LocalDateTime opprettetBehandling;
+    private LocalDateTime opprettetBehandling;
 
     /**
      * Map av aksjonspunktkode og statuskode.
      */
-    protected Map<String, String> aksjonspunktKoderMedStatusListe;
+    private Map<String, String> aksjonspunktKoderMedStatusListe;
+
+    public BehandlingProsessEventDto() {
+    }
 
     public UUID getEksternId() {
         return eksternId;
+    }
+
+    public Long getBehandlingId() {
+        return behandlingId;
     }
 
     public Fagsystem getFagsystem() {
@@ -123,30 +118,131 @@ public abstract class BehandlingProsessEventDto {
         return aksjonspunktKoderMedStatusListe;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        BehandlingProsessEventDto that = (BehandlingProsessEventDto) o;
-        return Objects.equals(eksternId, that.eksternId) &&
-                fagsystem == that.fagsystem &&
-                Objects.equals(saksnummer, that.saksnummer) &&
-                Objects.equals(aktørId, that.aktørId) &&
-                Objects.equals(eventTid, that.eventTid) &&
-                eventHendelse == that.eventHendelse &&
-                Objects.equals(behandlingStatus, that.behandlingStatus) &&
-                Objects.equals(behandlingSteg, that.behandlingSteg) &&
-                Objects.equals(behandlendeEnhet, that.behandlendeEnhet) &&
-                Objects.equals(ytelseTypeKode, that.ytelseTypeKode) &&
-                Objects.equals(behandlingTypeKode, that.behandlingTypeKode) &&
-                Objects.equals(opprettetBehandling, that.opprettetBehandling) &&
-                Objects.equals(aksjonspunktKoderMedStatusListe, that.aksjonspunktKoderMedStatusListe);
+    protected BehandlingProsessEventDto(Builder<?> builder) {
+        this.eksternId = builder.eksternId;
+        this.fagsystem = builder.fagsystem;
+        this.saksnummer = builder.saksnummer;
+        this.aktørId = builder.aktørId;
+        this.behandlingId = builder.behandlingId;
+        this.eventTid = builder.eventTid;
+        this.eventHendelse = builder.eventHendelse;
+        this.behandlinStatus = builder.behandlinStatus;
+        this.behandlingStatus = builder.behandlingStatus;
+        this.behandlingSteg = builder.behandlingSteg;
+        this.behandlendeEnhet = builder.behandlendeEnhet;
+        this.ytelseTypeKode = builder.ytelseTypeKode;
+        this.behandlingTypeKode = builder.behandlingTypeKode;
+        this.opprettetBehandling = builder.opprettetBehandling;
+        this.aksjonspunktKoderMedStatusListe = builder.aksjonspunktKoderMedStatusListe;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(eksternId, fagsystem, saksnummer, aktørId, eventTid, eventHendelse,
-                behandlingStatus, behandlingSteg, behandlendeEnhet, ytelseTypeKode,
-                behandlingTypeKode, opprettetBehandling, aksjonspunktKoderMedStatusListe);
+    public static abstract class Builder<T extends Builder<T>> {
+        private UUID eksternId;
+        private Fagsystem fagsystem;
+        private String saksnummer;
+        private String aktørId;
+        private Long behandlingId;
+        private LocalDateTime eventTid;
+        private EventHendelse eventHendelse;
+        private String behandlinStatus;
+        private String behandlingStatus;
+        private String behandlingSteg;
+        private String behandlendeEnhet;
+        private String ytelseTypeKode;
+        private String behandlingTypeKode;
+        private LocalDateTime opprettetBehandling;
+        private Map<String, String> aksjonspunktKoderMedStatusListe;
+
+        protected abstract T self();
+
+        public T medEksternId(UUID eksternId) {
+            this.eksternId = eksternId;
+            return self();
+        }
+
+        public T medFagsystem(Fagsystem fagsystem) {
+            this.fagsystem = fagsystem;
+            return self();
+        }
+
+        public T medSaksnummer(String saksnummer) {
+            this.saksnummer = saksnummer;
+            return self();
+        }
+
+        public T medAktørId(String aktørId) {
+            this.aktørId = aktørId;
+            return self();
+        }
+
+        public T medBehandlingId(Long behandlingId) {
+            this.behandlingId = behandlingId;
+            return self();
+        }
+
+        public T medEventTid(LocalDateTime eventTid) {
+            this.eventTid = eventTid;
+            return self();
+        }
+
+        public T medEventHendelse(EventHendelse eventHendelse) {
+            this.eventHendelse = eventHendelse;
+            return self();
+        }
+
+        public T medBehandlinStatus(String behandlinStatus) {
+            this.behandlinStatus = behandlinStatus;
+            return self();
+        }
+
+        public T medBehandlingStatus(String behandlingStatus) {
+            this.behandlingStatus = behandlingStatus;
+            return self();
+        }
+
+        public T medBehandlingSteg(String behandlingSteg) {
+            this.behandlingSteg = behandlingSteg;
+            return self();
+        }
+
+        public T medBehandlendeEnhet(String behandlendeEnhet) {
+            this.behandlendeEnhet = behandlendeEnhet;
+            return self();
+        }
+
+        public T medYtelseTypeKode(String ytelseTypeKode) {
+            this.ytelseTypeKode = ytelseTypeKode;
+            return self();
+        }
+
+        public T medBehandlingTypeKode(String behandlingTypeKode) {
+            this.behandlingTypeKode = behandlingTypeKode;
+            return self();
+        }
+
+        public T medOpprettetBehandling(LocalDateTime opprettetBehandling) {
+            this.opprettetBehandling = opprettetBehandling;
+            return self();
+        }
+
+        public T medAksjonspunktKoderMedStatusListe(Map<String, String> aksjonspunktKoderMedStatusListe) {
+            this.aksjonspunktKoderMedStatusListe = aksjonspunktKoderMedStatusListe;
+            return self();
+        }
+
+        public BehandlingProsessEventDto build() {
+            return new BehandlingProsessEventDto(this);
+        }
+    }
+
+    private static class BuilderImpl extends Builder<BuilderImpl> {
+        @Override
+        protected BuilderImpl self() {
+            return this;
+        }
+    }
+
+    public static Builder<?> builder() {
+        return new BuilderImpl();
     }
 }
