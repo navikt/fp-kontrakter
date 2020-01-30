@@ -7,10 +7,6 @@ import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Map;
-import java.util.Objects;
-import java.util.UUID;
 
 public class TilbakebetalingBehandlingProsessEventDto extends BehandlingProsessEventDto {
     @JsonSerialize(using = ToStringSerializer.class)
@@ -18,6 +14,8 @@ public class TilbakebetalingBehandlingProsessEventDto extends BehandlingProsessE
     private LocalDate førsteFeilutbetaling;
     private BigDecimal feilutbetaltBeløp;
 
+    public TilbakebetalingBehandlingProsessEventDto() {
+    }
 
     public LocalDate getFørsteFeilutbetaling() {
         return førsteFeilutbetaling;
@@ -27,106 +25,39 @@ public class TilbakebetalingBehandlingProsessEventDto extends BehandlingProsessE
         return feilutbetaltBeløp;
     }
 
-    public static TilbakebetalingBehandlingProsessEventDto.Builder tilbakebetalingBuilder() {
-        return new TilbakebetalingBehandlingProsessEventDto.Builder();
+    protected TilbakebetalingBehandlingProsessEventDto(Builder<?> builder) {
+        super(builder);
+        this.førsteFeilutbetaling = builder.førsteFeilutbetaling;
+        this.feilutbetaltBeløp = builder.feilutbetaltBeløp;
     }
 
-    public static class Builder {
+    public static abstract class Builder<T extends Builder<T>> extends BehandlingProsessEventDto.Builder<T> {
+        private LocalDate førsteFeilutbetaling;
+        private BigDecimal feilutbetaltBeløp;
 
-        private TilbakebetalingBehandlingProsessEventDto tmpDto;
-
-        private Builder() {
-            tmpDto = new TilbakebetalingBehandlingProsessEventDto();
-            tmpDto.fagsystem = Fagsystem.FPTILBAKE;
+        public T medFørsteFeilutbetaling(LocalDate førsteFeilutbetaling) {
+            this.førsteFeilutbetaling = førsteFeilutbetaling;
+            return self();
         }
 
-        public Builder medFørsteFeilutbetaling(LocalDate førsteFeilutbetaling) {
-            tmpDto.førsteFeilutbetaling = førsteFeilutbetaling;
-            return this;
-        }
-
-        public Builder medFeilutbetaltBeløp(BigDecimal feilutbetaltBeløp) {
-            tmpDto.feilutbetaltBeløp = feilutbetaltBeløp;
-            return this;
-        }
-
-        public Builder medEksternId(UUID eksternId) {
-            tmpDto.eksternId = eksternId;
-            return this;
-        }
-
-        public Builder medEventTid(LocalDateTime eventTid) {
-            tmpDto.eventTid = eventTid;
-            return this;
-        }
-
-        public Builder medSaksnummer(String saksnummer) {
-            tmpDto.saksnummer = saksnummer;
-            return this;
-        }
-
-        public Builder medAktørId(String aktørId) {
-            tmpDto.aktørId = aktørId;
-            return this;
-        }
-
-        public Builder medEventHendelse(EventHendelse eventHendelse) {
-            tmpDto.eventHendelse = eventHendelse;
-            return this;
-        }
-
-        public Builder medBehandlingStatus(String behandlingStatus) {
-            tmpDto.behandlingStatus = behandlingStatus;
-            return this;
-        }
-
-        public Builder medBehandlingSteg(String behandlingSteg) {
-            tmpDto.behandlingSteg = behandlingSteg;
-            return this;
-        }
-
-        public Builder medBehandlendeEnhet(String behandlendeEnhet) {
-            tmpDto.behandlendeEnhet = behandlendeEnhet;
-            return this;
-        }
-
-        public Builder medYtelseTypeKode(String ytelseTypeKode) {
-            tmpDto.ytelseTypeKode = ytelseTypeKode;
-            return this;
-        }
-
-        public Builder medBehandlingTypeKode(String behandlingTypeKode) {
-            tmpDto.behandlingTypeKode = behandlingTypeKode;
-            return this;
-        }
-
-        public Builder medOpprettetBehandling(LocalDateTime opprettetBehandling) {
-            tmpDto.opprettetBehandling = opprettetBehandling;
-            return this;
-        }
-
-        public Builder medAksjonspunktKoderMedStatusListe(Map<String, String> aksjonspunktKoderMedStatusListe) {
-            tmpDto.aksjonspunktKoderMedStatusListe = aksjonspunktKoderMedStatusListe;
-            return this;
+        public T medFeilutbetaltBeløp(BigDecimal feilutbetaltBeløp) {
+            this.feilutbetaltBeløp = feilutbetaltBeløp;
+            return self();
         }
 
         public TilbakebetalingBehandlingProsessEventDto build() {
-            return tmpDto;
+            return new TilbakebetalingBehandlingProsessEventDto(this);
         }
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        TilbakebetalingBehandlingProsessEventDto that = (TilbakebetalingBehandlingProsessEventDto) o;
-        return Objects.equals(førsteFeilutbetaling, that.førsteFeilutbetaling) &&
-                Objects.equals(feilutbetaltBeløp, that.feilutbetaltBeløp);
+    private static class BuilderImpl extends Builder<BuilderImpl> {
+        @Override
+        protected BuilderImpl self() {
+            return this;
+        }
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), førsteFeilutbetaling, feilutbetaltBeløp);
+    public static Builder<?> builder() {
+        return new BuilderImpl();
     }
 }

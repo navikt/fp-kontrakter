@@ -12,13 +12,19 @@
 
     <name>FP-TOPICS :: Hendelser Behandlingsprosess</name>
     <description>Skjema for hendelser på behandlingsprosess</description>
-	<artifactId>fp-topics-behandlingsprosess</artifactId>
+    <artifactId>fp-topics-behandlingsprosess</artifactId>
     <packaging>jar</packaging>
 
-	<dependencies>
-		<dependency>
+    <dependencies>
+        <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-jsr310</artifactId>
         </dependency>
-	</dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
 </project>
