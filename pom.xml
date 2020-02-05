@@ -108,7 +108,7 @@
                 <!-- for Bean validation -->
                 <groupId>org.hibernate.validator</groupId>
                 <artifactId>hibernate-validator</artifactId>
-                <version>6.1.1.Final</version>
+                <version>6.1.2.Final</version>
             </dependency>
 
 
