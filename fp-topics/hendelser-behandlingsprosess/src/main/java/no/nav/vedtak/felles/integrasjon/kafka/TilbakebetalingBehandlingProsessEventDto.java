@@ -13,6 +13,7 @@ public class TilbakebetalingBehandlingProsessEventDto extends BehandlingProsessE
     @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDate førsteFeilutbetaling;
     private BigDecimal feilutbetaltBeløp;
+    private String ansvarligSaksbehandlerIdent;
 
     public TilbakebetalingBehandlingProsessEventDto() {
     }
@@ -25,15 +26,21 @@ public class TilbakebetalingBehandlingProsessEventDto extends BehandlingProsessE
         return feilutbetaltBeløp;
     }
 
+    public String getAnsvarligSaksbehandlerIdent() {
+        return ansvarligSaksbehandlerIdent;
+    }
+
     protected TilbakebetalingBehandlingProsessEventDto(Builder<?> builder) {
         super(builder);
         this.førsteFeilutbetaling = builder.førsteFeilutbetaling;
         this.feilutbetaltBeløp = builder.feilutbetaltBeløp;
+        this.ansvarligSaksbehandlerIdent = builder.ansvarligSaksbehandlerIdent;
     }
 
     public static abstract class Builder<T extends Builder<T>> extends BehandlingProsessEventDto.Builder<T> {
         private LocalDate førsteFeilutbetaling;
         private BigDecimal feilutbetaltBeløp;
+        private String ansvarligSaksbehandlerIdent;
 
         public T medFørsteFeilutbetaling(LocalDate førsteFeilutbetaling) {
             this.førsteFeilutbetaling = førsteFeilutbetaling;
@@ -42,6 +49,11 @@ public class TilbakebetalingBehandlingProsessEventDto extends BehandlingProsessE
 
         public T medFeilutbetaltBeløp(BigDecimal feilutbetaltBeløp) {
             this.feilutbetaltBeløp = feilutbetaltBeløp;
+            return self();
+        }
+
+        public T medAnsvarligSaksbehandlerIdent(String saksbehandlerIdent) {
+            this.ansvarligSaksbehandlerIdent = saksbehandlerIdent;
             return self();
         }
 
