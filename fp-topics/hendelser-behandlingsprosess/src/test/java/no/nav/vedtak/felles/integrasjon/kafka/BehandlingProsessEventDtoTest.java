@@ -40,6 +40,7 @@ public class BehandlingProsessEventDtoTest {
                 .medFagsystem(Fagsystem.FPTILBAKE)
                 .medFeilutbetaltBeløp(BigDecimal.valueOf(20000L))
                 .medFørsteFeilutbetaling(LocalDate.now().minusMonths(4))
+                .medAnsvarligSaksbehandlerIdent("T12345")
                 .medAktørId("123457890123")
                 .medSaksnummer("9876543210")
                 .medYtelseTypeKode("FP")
