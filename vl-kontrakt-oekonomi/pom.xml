@@ -14,6 +14,7 @@
     
 	<modules>
 		<module>grensesnittavstemming-v1</module>
+		<module>oppdragskjema-v1</module>
 	</modules>
 
 </project>
