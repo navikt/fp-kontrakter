@@ -1,7 +1,5 @@
 package no.nav.foreldrepenger.integrasjon.økonomistøtte.oppdrag;
 
-import no.nav.foreldrepenger.integrasjon.økonomistøtte.oppdrag.Oppdrag;
-
 public final class OppdragSkjemaConstants {
     public static final String NAMESPACE = "http://www.trygdeetaten.no/skjema/oppdrag";
     public static final String XSD_LOCATION = "xsd/oppdragskjema-v1.xsd";
