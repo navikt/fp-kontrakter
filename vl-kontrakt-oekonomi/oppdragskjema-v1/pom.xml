@@ -1,0 +1,39 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>no.nav.foreldrepenger.kontrakter</groupId>
+        <artifactId>oekonomi-pom</artifactId>
+        <version>${revision}${sha1}${changelist}</version>
+    </parent>
+
+    <properties>
+        <xsd.packagename>no.nav.foreldrepenger.integrasjon.økonomistøtte.oppdrag</xsd.packagename>
+    </properties>
+
+    <artifactId>oppdragskjema-v1</artifactId>
+    <packaging>jar</packaging>
+    <name>(FPSAK) Kontrakter - oppdragskjema v1</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxb2-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
