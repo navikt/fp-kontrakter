@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 
 import java.math.BigDecimal;
+import java.net.URL;
 import java.time.LocalDate;
 
 public class TilbakebetalingBehandlingProsessEventDto extends BehandlingProsessEventDto {
@@ -41,6 +42,7 @@ public class TilbakebetalingBehandlingProsessEventDto extends BehandlingProsessE
         private LocalDate førsteFeilutbetaling;
         private BigDecimal feilutbetaltBeløp;
         private String ansvarligSaksbehandlerIdent;
+        private URL href;
 
         public T medFørsteFeilutbetaling(LocalDate førsteFeilutbetaling) {
             this.førsteFeilutbetaling = førsteFeilutbetaling;

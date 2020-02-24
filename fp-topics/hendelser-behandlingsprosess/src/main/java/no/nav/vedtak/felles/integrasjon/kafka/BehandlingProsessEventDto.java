@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 
+import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.UUID;
@@ -54,6 +55,11 @@ public class BehandlingProsessEventDto {
      * Map av aksjonspunktkode og statuskode.
      */
     private Map<String, String> aksjonspunktKoderMedStatusListe;
+
+    /**
+     * Leke til forekomst i eksternt system
+     */
+    private URL href;
 
     public BehandlingProsessEventDto() {
     }
@@ -118,6 +124,10 @@ public class BehandlingProsessEventDto {
         return aksjonspunktKoderMedStatusListe;
     }
 
+    public URL getHref() {
+        return href;
+    }
+
     protected BehandlingProsessEventDto(Builder<?> builder) {
         this.eksternId = builder.eksternId;
         this.fagsystem = builder.fagsystem;
@@ -134,6 +144,7 @@ public class BehandlingProsessEventDto {
         this.behandlingTypeKode = builder.behandlingTypeKode;
         this.opprettetBehandling = builder.opprettetBehandling;
         this.aksjonspunktKoderMedStatusListe = builder.aksjonspunktKoderMedStatusListe;
+        this.href = builder.href;
     }
 
     public static abstract class Builder<T extends Builder<T>> {
@@ -152,6 +163,7 @@ public class BehandlingProsessEventDto {
         private String behandlingTypeKode;
         private LocalDateTime opprettetBehandling;
         private Map<String, String> aksjonspunktKoderMedStatusListe;
+        private URL href;
 
         protected abstract T self();
 
@@ -227,6 +239,11 @@ public class BehandlingProsessEventDto {
 
         public T medAksjonspunktKoderMedStatusListe(Map<String, String> aksjonspunktKoderMedStatusListe) {
             this.aksjonspunktKoderMedStatusListe = aksjonspunktKoderMedStatusListe;
+            return self();
+        }
+
+        public T medHref(URL href) {
+            this.href = href;
             return self();
         }
 
