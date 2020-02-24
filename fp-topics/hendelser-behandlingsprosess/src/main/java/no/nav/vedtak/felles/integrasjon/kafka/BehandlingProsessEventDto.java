@@ -92,6 +92,11 @@ public class BehandlingProsessEventDto {
         return eventHendelse;
     }
 
+    /**
+     * @Deprecated Bruk {@link #getBehandlingStatus()}
+     * @return
+     */
+    @Deprecated
     public String getBehandlinStatus() {
         return behandlinStatus;
     }
