@@ -42,7 +42,7 @@ public class BehandlingProsessEventDtoTest {
                 .medFeilutbetaltBeløp(BigDecimal.valueOf(20000L))
                 .medFørsteFeilutbetaling(LocalDate.now().minusMonths(4))
                 .medAnsvarligSaksbehandlerIdent("T12345")
-                .medHref(new URL("http://tilbakekreving/"))
+                .medHref("http://tilbakekreving/")
                 .medAktørId("123457890123")
                 .medSaksnummer("9876543210")
                 .medYtelseTypeKode("FP")

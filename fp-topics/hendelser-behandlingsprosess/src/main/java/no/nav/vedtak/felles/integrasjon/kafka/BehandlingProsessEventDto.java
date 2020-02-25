@@ -1,14 +1,13 @@
 package no.nav.vedtak.felles.integrasjon.kafka;
 
+import java.time.LocalDateTime;
+import java.util.Map;
+import java.util.UUID;
+
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
-
-import java.net.URL;
-import java.time.LocalDateTime;
-import java.util.Map;
-import java.util.UUID;
 
 public class BehandlingProsessEventDto {
     /**
@@ -59,7 +58,7 @@ public class BehandlingProsessEventDto {
     /**
      * Leke til forekomst i eksternt system
      */
-    private URL href;
+    private String href;
 
     public BehandlingProsessEventDto() {
     }
@@ -129,7 +128,7 @@ public class BehandlingProsessEventDto {
         return aksjonspunktKoderMedStatusListe;
     }
 
-    public URL getHref() {
+    public String getHref() {
         return href;
     }
 
@@ -168,7 +167,7 @@ public class BehandlingProsessEventDto {
         private String behandlingTypeKode;
         private LocalDateTime opprettetBehandling;
         private Map<String, String> aksjonspunktKoderMedStatusListe;
-        private URL href;
+        private String href;
 
         protected abstract T self();
 
@@ -247,7 +246,7 @@ public class BehandlingProsessEventDto {
             return self();
         }
 
-        public T medHref(URL href) {
+        public T medHref(String href) {
             this.href = href;
             return self();
         }
