@@ -38,7 +38,6 @@ public class HistorikkInnslagV1 extends HistorikkInnslag {
     @JsonProperty(required = true)
     private UUID historikkUuid;
 
-    @NotNull
     @Valid
     @JsonProperty(value = "saksnummer", required = true)
     private Saksnummer saksnummer;
