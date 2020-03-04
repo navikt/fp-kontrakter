@@ -57,7 +57,7 @@ public class HistorikkInnslagV1 extends HistorikkInnslag {
     @JsonProperty(value = "historikkInnslagType", required = true)
     private String historikkInnslagType;
 
-    @NotNull
+  
     @Valid
     @JsonProperty(value = "brukerKjønn", required = true)
     private BrukerKjønnEnum brukerKjønn;
