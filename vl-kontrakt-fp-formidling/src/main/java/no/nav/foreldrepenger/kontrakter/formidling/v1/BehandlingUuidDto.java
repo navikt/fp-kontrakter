@@ -7,6 +7,9 @@ import javax.validation.constraints.NotNull;
 
 public class BehandlingUuidDto {
 
+    public static final String NAME = "uuid";
+    public static final String DESC = "behandlingUUID";
+
     @NotNull
     @Valid
     private UUID behandlingUuid;
@@ -16,6 +19,10 @@ public class BehandlingUuidDto {
 
     public BehandlingUuidDto(UUID behandlingUuid) {
         this.behandlingUuid = behandlingUuid;
+    }
+
+    public BehandlingUuidDto(String behandlingUuid) {
+        this(UUID.fromString(behandlingUuid));
     }
 
     public UUID getBehandlingUuid() {
