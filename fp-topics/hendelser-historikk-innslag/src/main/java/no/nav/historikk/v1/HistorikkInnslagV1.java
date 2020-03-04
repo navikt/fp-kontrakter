@@ -30,7 +30,6 @@ public class HistorikkInnslagV1 extends HistorikkInnslag {
     @JsonProperty(value = "behandlingUuid", required = true)
     private UUID behandlingUuid;
 
-
     /**
      * Unik ID for dokumentbestilling for å håndtere duplikater
      */
@@ -50,10 +49,8 @@ public class HistorikkInnslagV1 extends HistorikkInnslag {
     private HistorikkAktørEnum historikkAktørType;
 
     /**
-     * Kode for hvilket innslagtype som skal benyttes
-     * Obligatorisk
-     * Se i HistorikkInnslagType.java i fpsak
-     * For gyldige verdier
+     * Kode for hvilket innslagtype som skal benyttes Obligatorisk Se i
+     * HistorikkInnslagType.java i fpsak For gyldige verdier
      */
     @NotNull
     @Pattern(regexp = "[A-Z]{1,100}")
@@ -74,7 +71,6 @@ public class HistorikkInnslagV1 extends HistorikkInnslag {
     @Valid
     @JsonProperty(value = "historikkInnslagDeler", required = true)
     private List<HistorikkInnslagDel> historikkInnslagDeler = new ArrayList<>();
-
 
     @NotNull
     @Valid
@@ -199,5 +195,15 @@ public class HistorikkInnslagV1 extends HistorikkInnslag {
         public HistorikkInnslagV1 build() {
             return historikkinnslag;
         }
+
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "[behandlingUuid=" + behandlingUuid + ", historikkUuid=" + historikkUuid
+                + ", saksnummer=" + saksnummer + ", historikkAktørType=" + historikkAktørType
+                + ", historikkInnslagType=" + historikkInnslagType + ", brukerKjønn=" + brukerKjønn
+                + ", dokumentLinker=" + dokumentLinker + ", historikkInnslagDeler=" + historikkInnslagDeler
+                + ", avsender=" + avsender + ", opprettetTidspunkt=" + opprettetTidspunkt + "]";
     }
 }
