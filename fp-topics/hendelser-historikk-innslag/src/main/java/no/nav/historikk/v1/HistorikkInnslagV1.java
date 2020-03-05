@@ -52,7 +52,7 @@ public class HistorikkInnslagV1 extends HistorikkInnslag {
      * HistorikkInnslagType.java i fpsak For gyldige verdier
      */
     @NotNull
-    @Pattern(regexp = "[A-Z]{1,100}")
+    @Size(max = 100)
     @JsonProperty(value = "historikkInnslagType", required = true)
     private String historikkInnslagType;
 
