@@ -80,6 +80,8 @@
 					<xsd:enumeration value="ARBEID"/>
 					<xsd:enumeration value="INSTITUSJONSOPPHOLD_SØKER"/>
 					<xsd:enumeration value="SYKDOM"/>
+					<xsd:enumeration value="HV_OVELSE"/>
+					<xsd:enumeration value="NAV_TILTAK"/>
 					<xsd:enumeration value="-"/>
 				</xsd:restriction>
 			</xsd:simpleType>
