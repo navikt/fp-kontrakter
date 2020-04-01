@@ -30,6 +30,9 @@ public class JournalpostMottakDto {
 
     private UUID forsendelseId;
 
+    @Pattern(regexp = "^[\\p{L}\\p{N}\\p{P}]+$")
+    private String eksternReferanseId;
+
     @NotNull
     @Size(max = 8)
     @Pattern(regexp = "^[a-zA-ZæøåÆØÅ_\\-0-9]*")
@@ -81,14 +84,6 @@ public class JournalpostMottakDto {
         }
     }
 
-    public void setForsendelseId(UUID forsendelseId) {
-        this.forsendelseId = forsendelseId;
-    }
-
-    public Optional<UUID> getForsendelseId() {
-        return Optional.ofNullable(this.forsendelseId);
-    }
-
     protected JournalpostMottakDto() {
         // For Jackson
     }
@@ -133,4 +128,19 @@ public class JournalpostMottakDto {
         this.journalForendeEnhet = journalForendeEnhet;
     }
 
+    public void setForsendelseId(UUID forsendelseId) {
+        this.forsendelseId = forsendelseId;
+    }
+
+    public Optional<UUID> getForsendelseId() {
+        return Optional.ofNullable(this.forsendelseId);
+    }
+
+    public Optional<String> getEksternReferanseId() {
+        return Optional.ofNullable(eksternReferanseId);
+    }
+
+    public void setEksternReferanseId(String eksternReferanseId) {
+        this.eksternReferanseId = eksternReferanseId;
+    }
 }
