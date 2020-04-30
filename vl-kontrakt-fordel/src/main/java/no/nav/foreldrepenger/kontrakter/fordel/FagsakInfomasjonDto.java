@@ -15,12 +15,9 @@ public class FagsakInfomasjonDto {
     @Pattern(regexp = "^[a-zA-Z0-9_-æøåÆØÅ]*$")
     private String behandlingstemaOffisiellKode;
 
-    private Boolean harÅpenSvpBehandlingMedSøknad;
-
-    public FagsakInfomasjonDto(String aktørId, String behandlingstemaOffisiellKode, Boolean harÅpenSvpBehandlingMedSøknad) {
+    public FagsakInfomasjonDto(String aktørId, String behandlingstemaOffisiellKode) {
         this.aktørId = aktørId;
         this.behandlingstemaOffisiellKode = behandlingstemaOffisiellKode;
-        this.harÅpenSvpBehandlingMedSøknad = harÅpenSvpBehandlingMedSøknad;
     }
 
     public FagsakInfomasjonDto() { // For Jackson
@@ -34,7 +31,4 @@ public class FagsakInfomasjonDto {
         return behandlingstemaOffisiellKode;
     }
 
-    public Boolean getHarÅpenSvpBehandlingMedSøknad() {
-        return harÅpenSvpBehandlingMedSøknad;
-    }
 }
