@@ -1,5 +1,7 @@
 package no.nav.foreldrepenger.kontrakter.abonnent;
 
+import java.util.List;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -41,5 +43,7 @@ public abstract class HendelseDto {
     public abstract String getAvsenderSystem();
 
     public abstract String getHendelsetype();
+
+    public abstract List<String> getAlleAktørId();
 
 }
