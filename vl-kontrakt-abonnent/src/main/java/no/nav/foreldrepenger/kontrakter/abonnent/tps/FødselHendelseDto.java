@@ -1,6 +1,7 @@
 package no.nav.foreldrepenger.kontrakter.abonnent.tps;
 
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
 
 import javax.validation.constraints.NotNull;
@@ -44,5 +45,10 @@ public class FødselHendelseDto extends HendelseDto {
     @Override
     public String getAvsenderSystem() {
         return AVSENDER;
+    }
+
+    @Override
+    public List<String> getAlleAktørId() {
+        return Collections.unmodifiableList(aktørIdForeldre);
     }
 }
