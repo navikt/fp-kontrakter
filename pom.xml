@@ -58,6 +58,7 @@
         <module>vl-kontrakt-soeknad</module>
         <module>vl-kontrakt-fordel</module>
         <module>vl-kontrakt-inntektsmelding</module>
+        <module>vl-kontrakt-fp-abonnent</module>
         <module>vl-kontrakt-fp-feed</module>
         <module>vl-kontrakt-fp-tilkjent-ytelse</module>
         <module>vl-kontrakt-abonnent</module>
