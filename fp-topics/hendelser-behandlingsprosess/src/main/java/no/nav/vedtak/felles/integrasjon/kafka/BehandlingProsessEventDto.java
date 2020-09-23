@@ -15,7 +15,7 @@ public class BehandlingProsessEventDto {
      * Benytt samme id for alle oppdateringer av aksjonspunkt/prosess innenfor samme behandling.
      */
     private UUID eksternId;
-    private Fagsystem fagsystem;
+    private String fagsystem;
     private String saksnummer;
     private String aktørId;
 
@@ -71,7 +71,7 @@ public class BehandlingProsessEventDto {
         return behandlingId;
     }
 
-    public Fagsystem getFagsystem() {
+    public String getFagsystem() {
         return fagsystem;
     }
 
@@ -153,7 +153,7 @@ public class BehandlingProsessEventDto {
 
     public static abstract class Builder<T extends Builder<T>> {
         private UUID eksternId;
-        private Fagsystem fagsystem;
+        private String fagsystem;
         private String saksnummer;
         private String aktørId;
         private Long behandlingId;
@@ -176,7 +176,7 @@ public class BehandlingProsessEventDto {
             return self();
         }
 
-        public T medFagsystem(Fagsystem fagsystem) {
+        public T medFagsystem(String fagsystem) {
             this.fagsystem = fagsystem;
             return self();
         }

@@ -25,7 +25,7 @@ public class BehandlingProsessEventDtoTest {
         aksjonspunkter.put("5080", "OPPR");
 
         BehandlingProsessEventDto baseDto = BehandlingProsessEventDto.builder()
-                .medFagsystem(Fagsystem.FPSAK)
+                .medFagsystem("FPSAK")
                 .medAktørId("123457890123")
                 .medSaksnummer("9876543210")
                 .medYtelseTypeKode("FP")
@@ -38,7 +38,7 @@ public class BehandlingProsessEventDtoTest {
                 .build();
 
         TilbakebetalingBehandlingProsessEventDto tilbakebetalingDto = TilbakebetalingBehandlingProsessEventDto.builder()
-                .medFagsystem(Fagsystem.FPTILBAKE)
+                .medFagsystem("FPTILBAKE")
                 .medFeilutbetaltBeløp(BigDecimal.valueOf(20000L))
                 .medFørsteFeilutbetaling(LocalDate.now().minusMonths(4))
                 .medAnsvarligSaksbehandlerIdent("T12345")
