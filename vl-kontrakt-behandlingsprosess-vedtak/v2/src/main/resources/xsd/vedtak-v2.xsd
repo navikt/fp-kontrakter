@@ -203,6 +203,8 @@
                     <xsd:element name="ankeVurdering" type="vedtak:Ankevurdering"/>
                     <xsd:element name="ankeAvvistAarsak" type="vedtak:AnkeAvvistAarsak" minOccurs="0"/>
                     <xsd:element name="ankeOmgjoerAarsak" type="vedtak:AnkeOmgjoerAarsak" minOccurs="0"/>
+					<xsd:element name="trygdrettVurdering" type="vedtak:Ankevurdering"  minOccurs="0"/>
+					<xsd:element name="trygdrettOmgjoerAarsak" type="vedtak:AnkeOmgjoerAarsak" minOccurs="0"/>
                 </xsd:sequence>
             </xsd:extension>
         </xsd:complexContent>
@@ -211,6 +213,7 @@
         <xsd:restriction base="xsd:string">
             <xsd:enumeration value="ANKE_STADFESTE_YTELSESVEDTAK"/>
             <xsd:enumeration value="ANKE_OPPHEVE_OG_HJEMSENDE"/>
+			<xsd:enumeration value="ANKE_HJEMSENDE_UTEN_OPPHEV"/>
             <xsd:enumeration value="ANKE_OMGJOER" />
             <xsd:enumeration value="ANKE_AVVIS" />
             <xsd:enumeration value="ANKE_DELVIS_OMGJOERING_TIL_GUNST" />
