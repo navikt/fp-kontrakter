@@ -75,11 +75,6 @@
                 <artifactId>assertj-core</artifactId>
                 <version>3.19.0</version>
             </dependency>
-            <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>4.13.1</version>
-            </dependency>
 
             <!-- eksterne avhengigheter -->
             <dependency>
