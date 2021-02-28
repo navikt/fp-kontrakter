@@ -30,6 +30,7 @@
             <xsd:extension base="vg:Vilkaarsgrunnlag">
                 <xsd:sequence>
                     <xsd:element name="personstatus" type="felles:StringOpplysning" minOccurs="0"/>
+                    <xsd:element name="oppholdstillatelse" type="felles:StringOpplysning" minOccurs="0"/>
                     <xsd:element name="erBrukerMedlem" type="felles:BooleanOpplysning" minOccurs="0"/>
                     <xsd:element name="erBrukerBosatt" type="felles:BooleanOpplysning" minOccurs="0"/>
                     <xsd:element name="harBrukerOppholdsrett" type="felles:BooleanOpplysning" minOccurs="0"/>

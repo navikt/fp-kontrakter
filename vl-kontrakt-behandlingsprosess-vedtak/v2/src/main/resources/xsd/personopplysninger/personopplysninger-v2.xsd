@@ -14,6 +14,7 @@
             <xsd:element name="kjoenn" type="felles:StringOpplysning" minOccurs="0"/>
             <xsd:element name="statsborgerskap" type="felles:KodeverksOpplysning" minOccurs="0"/>
             <xsd:element name="personstatus" type="felles:KodeverksOpplysning" minOccurs="0"/>
+            <xsd:element name="oppholdstillatelse" type="felles:StringOpplysning" minOccurs="0"/>
             <xsd:element name="region" type="felles:StringOpplysning" minOccurs="0"/>
             <!-- Kodeverk: Sivilstander (Felles Kodeverk) -->
             <xsd:element name="sivilstand" type="felles:KodeverksOpplysning" minOccurs="0">
