@@ -47,13 +47,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
+      - name: Release Drafter
+        uses: release-drafter/release-drafter@v5
+        if: success()
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ env.MVN_VERSION }}
-          release_name: Release ${{ env.MVN_VERSION }}
-          draft: false
-          prerelease: false
