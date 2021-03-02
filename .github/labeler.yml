@@ -1,0 +1,8 @@
+kontrakt:
+  - '**/*'
+  - '!pom.xml'
+  - '!**/*/pom.xml'
+  
+pom:
+  - '**/*/pom.xml'
+  - pom.xml
