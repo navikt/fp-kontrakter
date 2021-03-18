@@ -15,7 +15,7 @@ import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import no.nav.foreldrepenger.søknad.util.JaxbHelper;
 import no.nav.vedtak.felles.xml.soeknad.felles.v1.Bruker;

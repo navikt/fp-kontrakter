@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import javax.xml.transform.stream.StreamSource;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import no.nav.foreldrepenger.søknad.util.XmlUtils;
 

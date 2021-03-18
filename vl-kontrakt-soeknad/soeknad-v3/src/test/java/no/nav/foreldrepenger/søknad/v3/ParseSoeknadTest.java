@@ -11,7 +11,7 @@ import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 
 import javax.xml.bind.JAXBElement;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import no.nav.foreldrepenger.søknad.util.JaxbHelper;
 import no.nav.vedtak.felles.xml.soeknad.felles.v3.Bruker;

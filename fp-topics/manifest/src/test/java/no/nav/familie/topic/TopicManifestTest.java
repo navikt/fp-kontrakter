@@ -1,12 +1,13 @@
 package no.nav.familie.topic;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 public class TopicManifestTest {
@@ -19,9 +20,9 @@ public class TopicManifestTest {
         assertThat(topicWithEnv).endsWith("p");
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void test_that_illegal_environments_throws_exeption() {
-        TopicManifest.AKSJONSPUNKT_HENDELSE.getTopicWithEnv("k");
+        assertThrows(IllegalArgumentException.class, () -> TopicManifest.AKSJONSPUNKT_HENDELSE.getTopicWithEnv("k"));
     }
 
     @Test
