@@ -4,6 +4,7 @@ import static no.nav.foreldrepenger.kontrakter.tilkjentytelse.v1.TilkjentYtelseV
 import static no.nav.foreldrepenger.kontrakter.tilkjentytelse.v1.TilkjentYtelseV1.Inntektskategori.FRILANSER;
 import static no.nav.foreldrepenger.kontrakter.tilkjentytelse.v1.TilkjentYtelseV1.SatsType.DAGSATS;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -132,9 +133,9 @@ public class TilkjentYtelseV1Test {
         assertThat(andel2.getArbeidsgiverAktørId()).isNull();
     }
 
-    @Test(expected = InvalidTypeIdException.class)
-    public void skal_ikke_deserialisere_ukjent_versjon() throws IOException {
-        mapper.readValue("{\"version\":\"1000.0\",\"behandingsinfo\":{\"aktoerId\":90000123,\"saksnummer\":\"2525253\",\"behandlingId\":100000123,\"ytelseType\":\"FORELDREPENGER\",\"gjelderAdopsjon\":false,\"vedtaksdato\":\"2019-03-10\",\"ansvarligSaksbehandler\":\"Z000001\",\"ansvarligBeslutter\":\"Z222222\"},\"perioder\":[{\"fom\":\"2018-12-24\",\"tom\":\"2019-02-28\",\"andeler\":[{\"inntektskategori\":\"FRILANSER\",\"satsBeløp\":100,\"satsType\":\"DAGSATS\"},{\"arbeidsgiverOrgNr\":\"123123123\",\"inntektskategori\":\"ARBEIDSTAKER\",\"satsBeløp\":1000,\"satsType\":\"DAGSATS\"}]},{\"fom\":\"2019-03-01\",\"tom\":\"2019-03-31\",\"andeler\":[{\"inntektskategori\":\"FRILANSER\",\"satsBeløp\":135,\"satsType\":\"DAGSATS\"},{\"arbeidsgiverOrgNr\":\"123123123\",\"inntektskategori\":\"ARBEIDSTAKER\",\"satsBeløp\":1586,\"satsType\":\"DAGSATS\"}]}]}", TilkjentYtelse.class);
+    @Test
+    public void skal_ikke_deserialisere_ukjent_versjon() {
+        assertThrows(InvalidTypeIdException.class, () -> mapper.readValue("{\"version\":\"1000.0\",\"behandingsinfo\":{\"aktoerId\":90000123,\"saksnummer\":\"2525253\",\"behandlingId\":100000123,\"ytelseType\":\"FORELDREPENGER\",\"gjelderAdopsjon\":false,\"vedtaksdato\":\"2019-03-10\",\"ansvarligSaksbehandler\":\"Z000001\",\"ansvarligBeslutter\":\"Z222222\"},\"perioder\":[{\"fom\":\"2018-12-24\",\"tom\":\"2019-02-28\",\"andeler\":[{\"inntektskategori\":\"FRILANSER\",\"satsBeløp\":100,\"satsType\":\"DAGSATS\"},{\"arbeidsgiverOrgNr\":\"123123123\",\"inntektskategori\":\"ARBEIDSTAKER\",\"satsBeløp\":1000,\"satsType\":\"DAGSATS\"}]},{\"fom\":\"2019-03-01\",\"tom\":\"2019-03-31\",\"andeler\":[{\"inntektskategori\":\"FRILANSER\",\"satsBeløp\":135,\"satsType\":\"DAGSATS\"},{\"arbeidsgiverOrgNr\":\"123123123\",\"inntektskategori\":\"ARBEIDSTAKER\",\"satsBeløp\":1586,\"satsType\":\"DAGSATS\"}]}]}", TilkjentYtelse.class));
     }
 
     private static ObjectMapper getObjectMapper() {

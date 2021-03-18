@@ -9,7 +9,7 @@ import java.io.Reader;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import no.nav.vedtak.felles.xml.felles.v2.DateOpplysning;
 import no.nav.vedtak.felles.xml.felles.v2.KodeverksOpplysning;

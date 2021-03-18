@@ -1,6 +1,5 @@
 package no.nav.foreldrepenger.kontrakter.fordel;
 
-import java.time.LocalDateTime;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -12,9 +11,6 @@ public class BehandlendeFagsystemDto {
     private boolean behandlesIVedtaksløsningen;
     private boolean sjekkMotInfotrygd;
     private boolean manuellVurdering;
-    private boolean prøvIgjen;
-
-    private LocalDateTime prøvIgjenTidspunkt;
 
 
     @Valid
@@ -54,22 +50,6 @@ public class BehandlendeFagsystemDto {
 
     public void setManuellVurdering(boolean manuellVurdering) {
         this.manuellVurdering = manuellVurdering;
-    }
-
-    public boolean isPrøvIgjen() {
-        return prøvIgjen;
-    }
-
-    public void setPrøvIgjen(boolean prøvIgjen) {
-        this.prøvIgjen = prøvIgjen;
-    }
-
-    public Optional<LocalDateTime> getPrøvIgjenTidspunkt() {
-        return Optional.ofNullable(prøvIgjenTidspunkt);
-    }
-
-    public void setPrøvIgjenTidspunkt(LocalDateTime prøvIgjenTidspunkt) {
-        this.prøvIgjenTidspunkt = prøvIgjenTidspunkt;
     }
 
     @JsonIgnore
