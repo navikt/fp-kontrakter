@@ -34,7 +34,7 @@ public class TilkjentYtelseV1Test {
     @Test
     public void skal_serialisere_riktig() throws JsonProcessingException {
         TilkjentYtelseBehandlingInfoV1 info = new TilkjentYtelseBehandlingInfoV1()
-                .setAktørId("90000123")
+                .setAktørId("9000012345678")
                 .setSaksnummer("2525253")
                 .setBehandlingId(100000123)
                 .setVedtaksdato(LocalDate.of(2019, 3, 10))
@@ -58,7 +58,7 @@ public class TilkjentYtelseV1Test {
         String resultat = mapper.writeValueAsString(tilkjentYtelseV1);
 
         //hvis du endrer noe slik at denne testen feiler, har du gjort noe galt! Endringene du ønsker krever at du oppretter en ny versjon av TilkjentYtelse
-        assertThat(resultat).isEqualTo("{\"version\":\"1.0\",\"behandingsinfo\":{\"aktoerId\":\"90000123\",\"saksnummer\":\"2525253\",\"behandlingId\":100000123,\"ytelseType\":\"FORELDREPENGER\",\"gjelderAdopsjon\":false,\"vedtaksdato\":\"2019-03-10\",\"ansvarligSaksbehandler\":\"Z000001\"},\"perioder\":[{\"fom\":\"2018-12-24\",\"tom\":\"2019-02-28\",\"andeler\":[{\"utbetalesTilBruker\":true,\"inntektskategori\":\"FRILANSER\",\"satsType\":\"DAGSATS\",\"satsBeloep\":100},{\"utbetalesTilBruker\":false,\"arbeidsgiverOrgNr\":\"123123123\",\"inntektskategori\":\"ARBEIDSTAKER\",\"satsType\":\"DAGSATS\",\"satsBeloep\":1000}]},{\"fom\":\"2019-03-01\",\"tom\":\"2019-03-31\",\"andeler\":[{\"utbetalesTilBruker\":true,\"inntektskategori\":\"FRILANSER\",\"satsType\":\"DAGSATS\",\"satsBeloep\":135},{\"utbetalesTilBruker\":false,\"arbeidsgiverOrgNr\":\"123123123\",\"inntektskategori\":\"ARBEIDSTAKER\",\"satsType\":\"DAGSATS\",\"feriepenger\":[{\"opptjeningsaar\":2018,\"beloep\":187}],\"satsBeloep\":1586}]}],\"erOpphoer\":true,\"erOpphoerEtterSkjaeringTidspunkt\":false}");
+        assertThat(resultat).isEqualTo("{\"version\":\"1.0\",\"behandingsinfo\":{\"aktoerId\":\"9000012345678\",\"saksnummer\":\"2525253\",\"behandlingId\":100000123,\"ytelseType\":\"FORELDREPENGER\",\"gjelderAdopsjon\":false,\"vedtaksdato\":\"2019-03-10\",\"ansvarligSaksbehandler\":\"Z000001\"},\"perioder\":[{\"fom\":\"2018-12-24\",\"tom\":\"2019-02-28\",\"andeler\":[{\"utbetalesTilBruker\":true,\"inntektskategori\":\"FRILANSER\",\"satsType\":\"DAGSATS\",\"satsBeloep\":100},{\"utbetalesTilBruker\":false,\"arbeidsgiverOrgNr\":\"123123123\",\"inntektskategori\":\"ARBEIDSTAKER\",\"satsType\":\"DAGSATS\",\"satsBeloep\":1000}]},{\"fom\":\"2019-03-01\",\"tom\":\"2019-03-31\",\"andeler\":[{\"utbetalesTilBruker\":true,\"inntektskategori\":\"FRILANSER\",\"satsType\":\"DAGSATS\",\"satsBeloep\":135},{\"utbetalesTilBruker\":false,\"arbeidsgiverOrgNr\":\"123123123\",\"inntektskategori\":\"ARBEIDSTAKER\",\"satsType\":\"DAGSATS\",\"feriepenger\":[{\"opptjeningsaar\":2018,\"beloep\":187}],\"satsBeloep\":1586}]}],\"erOpphoer\":true,\"erOpphoerEtterSkjaeringTidspunkt\":false}");
     }
 
     @Test
