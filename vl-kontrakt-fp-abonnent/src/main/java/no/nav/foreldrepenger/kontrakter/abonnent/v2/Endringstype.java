@@ -4,5 +4,5 @@ public enum Endringstype {
     OPPRETTET,
     KORRIGERT,
     ANNULLERT,
-    OPPHOERT;
+    OPPHOERT
 }

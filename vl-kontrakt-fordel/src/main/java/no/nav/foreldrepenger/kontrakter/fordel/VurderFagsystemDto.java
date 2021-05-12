@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import javax.validation.constraints.Digits;
@@ -95,10 +96,7 @@ public class VurderFagsystemDto {
     }
 
     public List<LocalDate> getAdopsjonsBarnFodselsdatoer() {
-        if (adopsjonsBarnFodselsdatoer == null) {
-            return Collections.emptyList();
-        }
-        return adopsjonsBarnFodselsdatoer;
+        return Objects.requireNonNullElse(adopsjonsBarnFodselsdatoer, Collections.emptyList());
     }
 
     public void setAdopsjonsBarnFodselsdatoer(List<LocalDate> adopsjonsBarnFodselsdatoer) {
