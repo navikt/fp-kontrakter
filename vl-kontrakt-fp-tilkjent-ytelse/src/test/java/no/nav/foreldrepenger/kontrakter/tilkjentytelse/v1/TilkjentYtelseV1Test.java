@@ -34,7 +34,7 @@ public class TilkjentYtelseV1Test {
     @Test
     public void skal_serialisere_riktig() throws JsonProcessingException {
         TilkjentYtelseBehandlingInfoV1 info = new TilkjentYtelseBehandlingInfoV1()
-                .setAktørId("90000123")
+                .setAktørId("9000012345678")
                 .setSaksnummer("2525253")
                 .setBehandlingId(100000123)
                 .setVedtaksdato(LocalDate.of(2019, 3, 10))

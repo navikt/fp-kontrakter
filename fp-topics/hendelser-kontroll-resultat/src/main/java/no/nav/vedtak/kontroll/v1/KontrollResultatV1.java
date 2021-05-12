@@ -1,15 +1,18 @@
 package no.nav.vedtak.kontroll.v1;
 
+import java.util.UUID;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import no.nav.vedtak.kontroll.KontrollResultat;
-import no.nav.vedtak.kontroll.kodeverk.KontrollResultatkode;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import java.util.UUID;
+import no.nav.vedtak.kontroll.KontrollResultat;
+import no.nav.vedtak.kontroll.kodeverk.KontrollResultatType;
+import no.nav.vedtak.kontroll.kodeverk.KontrollResultatkode;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_ABSENT, content = JsonInclude.Include.NON_EMPTY)
@@ -25,6 +28,8 @@ public class KontrollResultatV1 extends KontrollResultat {
     @Valid
     @JsonProperty(value = "kontrollResultatkode", required = true)
     private KontrollResultatkode kontrollResultatkode;
+
+    private KontrollResultatType kontrollResultatType;
 
     public UUID getBehandlingUuid() {
         return behandlingUuid;
@@ -48,6 +53,11 @@ public class KontrollResultatV1 extends KontrollResultat {
 
         public Builder medResultatkode(KontrollResultatkode kontrollResultatkode) {
             kontrollResultat.kontrollResultatkode = kontrollResultatkode;
+            return this;
+        }
+
+        public Builder medResultatType(KontrollResultatType kontrollResultatType) {
+            kontrollResultat.kontrollResultatType = kontrollResultatType;
             return this;
         }
 
