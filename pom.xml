@@ -22,11 +22,11 @@
 		<changelist>SNAPSHOT</changelist>
 		<sha1>_</sha1>
 		<maven.javadoc.skip>true</maven.javadoc.skip>
-		<java.version>11</java.version>
+		<java.version>16</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.javadoc.skip>true</maven.javadoc.skip>
         <junit5.version>5.7.1</junit5.version>
-        <mockito.version>3.8.0</mockito.version>
+        <mockito.version>3.9.0</mockito.version>
 	</properties>
 
     <organization>
@@ -85,20 +85,20 @@
                 <version>2.4.0-b180830.0438</version>
             </dependency>
             <dependency>
-                <groupId>javax.validation</groupId>
-                <artifactId>validation-api</artifactId>
-                <version>2.0.1.Final</version>
+                <groupId>jakarta.validation</groupId>
+                <artifactId>jakarta.validation-api</artifactId>
+                <version>2.0.2</version>
             </dependency>
             <dependency>
                 <groupId>org.glassfish</groupId>
-                <artifactId>javax.el</artifactId>
-                <version>3.0.1-b12</version>
+                <artifactId>jakarta.el</artifactId>
+                <version>3.0.3</version>
             </dependency>
 
             <dependency>
                 <groupId>com.fasterxml.jackson</groupId>
                 <artifactId>jackson-bom</artifactId>
-                <version>2.12.2</version>
+                <version>2.12.3</version>
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
@@ -353,7 +353,7 @@
                 <plugin>
                     <groupId>org.sonarsource.scanner.maven</groupId>
                     <artifactId>sonar-maven-plugin</artifactId>
-                    <version>3.8.0.2131</version>
+                    <version>3.9.0.2155</version>
                 </plugin>
                 <!-- Plugin required to build java classes from XSD using XJC -->
                 <plugin>
@@ -386,7 +386,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.6</version>
+                <version>0.8.7</version>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>

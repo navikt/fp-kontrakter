@@ -3,7 +3,7 @@ package no.nav.foreldrepenger.kontrakter.fordel;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.util.Base64;
 import java.util.Optional;
@@ -60,7 +60,7 @@ public class JournalpostMottakDtoTest {
     }
 
     private String base64(String unencoded) {
-        byte[] bytes = unencoded.getBytes(Charset.forName("UTF-8"));
+        byte[] bytes = unencoded.getBytes(StandardCharsets.UTF_8);
         return Base64.getUrlEncoder().encodeToString(bytes);
     }
 
@@ -88,7 +88,7 @@ public class JournalpostMottakDtoTest {
                 throw new IllegalArgumentException("Input-validering-feil: Avsender sendte payload, men oppgav ikke lengde på innhold");
             }
             byte[] bytes = Base64.getUrlDecoder().decode(base64EncodedPayload);
-            String streng = new String(bytes, Charset.forName("UTF-8"));
+            String streng = new String(bytes, StandardCharsets.UTF_8);
             if (streng.length() != deklarertLengde) {
                 throw new IllegalArgumentException(String.format("Input-validering-feil: Avsender oppgav at lengde på innhold var %s, men lengden var egentlig %s",
                         deklarertLengde, streng.length()));

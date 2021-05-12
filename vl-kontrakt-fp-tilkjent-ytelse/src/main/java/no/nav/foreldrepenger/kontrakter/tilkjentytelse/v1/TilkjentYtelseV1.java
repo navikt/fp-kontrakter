@@ -89,7 +89,7 @@ public class TilkjentYtelseV1 implements TilkjentYtelse {
      */
     @Deprecated
     public enum YtelseType {
-        FORELDREPENGER, SVANGERSKAPSPENGER, ENGANGSTØNAD;
+        FORELDREPENGER, SVANGERSKAPSPENGER, ENGANGSTØNAD
     }
 
     public enum Inntektskategori {
@@ -104,10 +104,10 @@ public class TilkjentYtelseV1 implements TilkjentYtelse {
         SELVSTENDIG_NÆRINGSDRIVENDE,
         SJØMANN,
         IKKE_RELEVANT //brukes for engangstønad
-        ;
+
     }
 
     public enum SatsType {
-        DAGSATS, ENGANGSUTBETALING;
+        DAGSATS, ENGANGSUTBETALING
     }
 }

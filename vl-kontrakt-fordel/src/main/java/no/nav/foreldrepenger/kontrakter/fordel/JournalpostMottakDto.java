@@ -1,6 +1,6 @@
 package no.nav.foreldrepenger.kontrakter.fordel;
 
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Base64;
@@ -78,7 +78,7 @@ public class JournalpostMottakDto {
         this.forsendelseMottattTidspunkt = forsendelseMottattTidspunkt;
         String payload = null;
         if (payloadXml != null && !(payload = payloadXml.trim()).isEmpty()) {
-            byte[] bytes = payload.getBytes(Charset.forName("UTF-8"));
+            byte[] bytes = payload.getBytes(StandardCharsets.UTF_8);
             this.payloadLength = payload.length();
             this.base64EncodedPayloadXml = Base64.getUrlEncoder().encodeToString(bytes);
         }
