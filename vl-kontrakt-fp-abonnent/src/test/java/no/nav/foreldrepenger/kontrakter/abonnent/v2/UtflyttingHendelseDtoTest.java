@@ -12,9 +12,9 @@ import org.junit.jupiter.api.Test;
 import com.fasterxml.jackson.databind.ObjectReader;
 import com.fasterxml.jackson.databind.ObjectWriter;
 
-import no.nav.foreldrepenger.kontrakter.abonnent.v2.pdl.FødselHendelseDto;
+import no.nav.foreldrepenger.kontrakter.abonnent.v2.pdl.UtflyttingHendelseDto;
 
-public class FødselHendelseDtoTest {
+public class UtflyttingHendelseDtoTest {
 
     private static final ObjectWriter WRITER = TestJsonMapper.getMapper().writerWithDefaultPrettyPrinter();
     private static final ObjectReader READER = TestJsonMapper.getMapper().reader();
@@ -23,27 +23,27 @@ public class FødselHendelseDtoTest {
     private static final LocalDate NÅ = LocalDate.now();
 
     @Test
-    public void skal_serialisere_og_deserialisere_fødselshendelse() throws Exception {
+    public void skal_serialisere_og_deserialisere_utflyttinghendelse() throws Exception {
         // Arrange
-        var hendelse = new FødselHendelseDto();
+        var hendelse = new UtflyttingHendelseDto();
         hendelse.setId("id_1");
         hendelse.setEndringstype(Endringstype.OPPRETTET);
-        hendelse.setAktørIdForeldre(Collections.singletonList(AKTØR_ID));
-        hendelse.setFødselsdato(NÅ);
+        hendelse.setAktørId(Collections.singletonList(AKTØR_ID));
+        hendelse.setUtflyttingsdato(NÅ);
 
         // Act
         var json = WRITER.writeValueAsString(hendelse);
         //System.out.println(json);
-        var roundTrippedUncast = (HendelseDto)READER.forType(HendelseDto.class).readValue(json);
-        var roundTripped = (FødselHendelseDto) roundTrippedUncast;
+        var roundTripped = (HendelseDto) READER.forType(HendelseDto.class).readValue(json);
+        var roundTrippedCast = (UtflyttingHendelseDto) roundTripped;
 
         // Assert
         assertThat(roundTripped).isNotNull();
-        assertThat(roundTrippedUncast).isInstanceOf(FødselHendelseDto.class);
-        assertThat(roundTripped.getId()).isEqualTo("id_1");
-        assertThat(roundTripped.getAktørIdForeldre().get(0)).isEqualTo(AKTØR_ID);
-        assertThat(roundTripped.getFødselsdato()).isEqualTo(NÅ);
-        assertThat(roundTripped.getHendelsetype()).isEqualTo(FødselHendelseDto.HENDELSE_TYPE);
+        assertThat(roundTripped).isInstanceOf(UtflyttingHendelseDto.class);
+        assertThat((roundTripped).getHendelsetype()).isEqualTo(UtflyttingHendelseDto.HENDELSE_TYPE);
+        assertThat(roundTrippedCast.getId()).isEqualTo("id_1");
+        assertThat(roundTrippedCast.getAktørId().get(0)).isEqualTo(AKTØR_ID);
+        assertThat(roundTrippedCast.getUtflyttingsdato()).isEqualTo(NÅ);
         validateResult(roundTripped);
     }
 
