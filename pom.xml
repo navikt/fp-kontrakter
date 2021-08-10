@@ -62,6 +62,7 @@
         <module>vl-kontrakt-inntektsmelding</module>
         <module>vl-kontrakt-fp-abonnent</module>
         <module>vl-kontrakt-fp-feed</module>
+        <module>vl-kontrakt-fp-risk</module>
         <module>vl-kontrakt-fp-tilkjent-ytelse</module>
         <module>vl-kontrakt-behandlingsprosess-vedtak</module>
         <module>fp-topics</module>
