@@ -54,7 +54,7 @@
 				<xsd:sequence>
 					<xsd:element name="aarsak" type="kv:Utsettelsesaarsaker" />
 					<xsd:element minOccurs="0" name="utsettelseAv" type="kv:Uttaksperiodetyper" />
-					<xsd:element name="erArbeidstaker" type="xsd:boolean" />
+					<xsd:element minOccurs="0" name="erArbeidstaker" type="xsd:boolean" />
 					<xsd:element minOccurs="0" name="morsAktivitetIPerioden" type="kv:MorsAktivitetsTyper" />
 				</xsd:sequence>
 				<xsd:anyAttribute processContents="lax" />
