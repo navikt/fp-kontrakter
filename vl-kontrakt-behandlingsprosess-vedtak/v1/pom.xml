@@ -13,10 +13,6 @@
 	<packaging>jar</packaging>
 	<name>(FPSAK) Kontrakter - behandlingsprosess-vedtak-v1</name>
 
-	<properties>
-		<xsd.packagename>no.nav.vedtak.felles.xml.vedtak.v1</xsd.packagename>
-	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.glassfish.jaxb</groupId>
@@ -28,8 +24,8 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.jvnet.jaxb2.maven2</groupId>
-				<artifactId>maven-jaxb2-plugin</artifactId>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxb2-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -37,4 +33,5 @@
 			</plugin>
 		</plugins>
 	</build>
+
 </project>

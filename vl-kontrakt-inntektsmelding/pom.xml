@@ -12,10 +12,6 @@
     <name>(FPSAK) Kontrakter - inntektsmelding</name>
     <packaging>jar</packaging>
 
-    <properties>
-        <xsd.packagename></xsd.packagename>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.glassfish.jaxb</groupId>
@@ -27,8 +23,8 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.jvnet.jaxb2.maven2</groupId>
-                <artifactId>maven-jaxb2-plugin</artifactId>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxb2-maven-plugin</artifactId>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
