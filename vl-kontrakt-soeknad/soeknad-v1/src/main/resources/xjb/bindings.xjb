@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jaxb:bindings version="2.0"
+               xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+               xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+               xmlns:xs="http://www.w3.org/2001/XMLSchema"
+               jaxb:extensionBindingPrefixes="xjc">
+
+    <jaxb:bindings schemaLocation="../xsd/soeknad-v1.xsd" node="/xs:schema">
+        <jaxb:bindings node="//xs:complexType[@name='Soeknad']">
+        </jaxb:bindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="../xsd/endringssoeknad/endringssoeknad-v1.xsd" node="/xs:schema">
+        <jaxb:bindings node="//xs:complexType[@name='Endringssoeknad']">
+        </jaxb:bindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="../xsd/engangsstoenad/engangsstoenad-v1.xsd" node="/xs:schema">
+        <jaxb:bindings node="//xs:complexType[@name='Engangsstønad']">
+        </jaxb:bindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="../xsd/foreldrepenger/foreldrepenger-v1.xsd" node="/xs:schema">
+        <jaxb:bindings node="//xs:complexType[@name='Foreldrepenger']">
+        </jaxb:bindings>
+    </jaxb:bindings>
+</jaxb:bindings>

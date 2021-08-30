@@ -27,6 +27,7 @@
 		<maven.javadoc.skip>true</maven.javadoc.skip>
         <junit5.version>5.7.2</junit5.version>
         <mockito.version>3.12.1</mockito.version>
+        <xsd.packagename/>
 	</properties>
 
     <organization>
@@ -303,55 +304,6 @@
                 </plugin>
 
                 <plugin>
-                    <groupId>org.jvnet.jaxb2.maven2</groupId>
-                    <artifactId>maven-jaxb2-plugin</artifactId>
-                    <version>0.14.0</version>
-                    <dependencies>
-                        <dependency>
-                            <groupId>org.glassfish.jaxb</groupId>
-                            <artifactId>jaxb-runtime</artifactId>
-                            <version>2.4.0-b180830.0438</version>
-                        </dependency>
-                    </dependencies>
-                    <executions>
-                        <execution>
-                            <goals>
-                                <goal>generate</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                    <configuration>
-                        <extension>true</extension>
-                        <args>
-                            <arg>-no-header</arg>
-                            <arg>-npa</arg>
-                            <arg>-Xinheritance</arg>
-                            <arg>-Xannotate</arg>
-                        </args>
-                        <schemaDirectory>src/main/resources</schemaDirectory>
-                        <schemaIncludes>
-                            <include>**/*.xsd</include>
-                        </schemaIncludes>
-                        <bindingIncludes>
-                            <include>**/*.xjb</include>
-                        </bindingIncludes>
-                        <generatePackage>${xsd.packagename}</generatePackage>
-                        <encoding>${project.build.sourceEncoding}</encoding>
-                        <plugins>
-                            <plugin>
-                                <groupId>org.jvnet.jaxb2_commons</groupId>
-                                <artifactId>jaxb2-basics</artifactId>
-                                <version>1.11.1</version>
-                            </plugin>
-                            <plugin>
-                                <groupId>org.jvnet.jaxb2_commons</groupId>
-                                <artifactId>jaxb2-basics-annotate</artifactId>
-                                <version>1.1.0</version>
-                            </plugin>
-                        </plugins>
-                    </configuration>
-                </plugin>
-                <plugin>
                     <groupId>org.sonarsource.scanner.maven</groupId>
                     <artifactId>sonar-maven-plugin</artifactId>
                     <version>3.9.0.2155</version>
@@ -364,7 +316,6 @@
                     <executions>
                         <execution>
                             <configuration>
-                                <schemaDirectory>src/main/resources</schemaDirectory>
                                 <sources>
                                     <source>src/main/resources/xsd/</source>
                                 </sources>

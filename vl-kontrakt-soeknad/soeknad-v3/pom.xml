@@ -8,7 +8,7 @@
         <artifactId>soeknad-pom</artifactId>
         <version>${revision}${sha1}${changelist}</version>
     </parent>
-	
+
     <artifactId>soeknad-v3</artifactId>
     <packaging>jar</packaging>
     <name>(FPSAK) Kontrakter - soeknad v3</name>
@@ -16,8 +16,8 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.jvnet.jaxb2.maven2</groupId>
-                <artifactId>maven-jaxb2-plugin</artifactId>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxb2-maven-plugin</artifactId>
             </plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

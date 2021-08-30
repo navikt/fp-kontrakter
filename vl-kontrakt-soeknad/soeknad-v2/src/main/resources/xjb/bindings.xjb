@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jaxb:bindings version="2.0"
+               xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+               xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+               xmlns:xs="http://www.w3.org/2001/XMLSchema"
+               jaxb:extensionBindingPrefixes="xjc">
+
+    <jaxb:globalBindings>
+        <xjc:javaType name="java.time.LocalDate" xmlType="xs:date" adapter="no.nav.foreldrepenger.søknad.v2.DateAdapter" />
+        <xjc:javaType name="java.time.LocalDateTime" xmlType="xs:dateTime" adapter="no.nav.foreldrepenger.søknad.v2.DateTimeAdapter" />
+    </jaxb:globalBindings>
+    
+    <jaxb:bindings schemaLocation="../xsd/soeknad-v2.xsd" node="/xs:schema">
+        <jaxb:bindings node="//xs:complexType[@name='Soeknad']">
+        </jaxb:bindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="../xsd/endringssoeknad/endringssoeknad-v2.xsd" node="/xs:schema">
+        <jaxb:bindings node="//xs:complexType[@name='Endringssoeknad']">
+        </jaxb:bindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="../xsd/engangsstoenad/engangsstoenad-v2.xsd" node="/xs:schema">
+        <jaxb:bindings node="//xs:complexType[@name='Engangsstønad']">
+        </jaxb:bindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="../xsd/foreldrepenger/foreldrepenger-v2.xsd" node="/xs:schema">
+        <jaxb:bindings node="//xs:complexType[@name='Foreldrepenger']">
+        </jaxb:bindings>
+    </jaxb:bindings>
+</jaxb:bindings>

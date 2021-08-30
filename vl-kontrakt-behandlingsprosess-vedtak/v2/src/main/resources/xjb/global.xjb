@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jaxb:bindings version="2.0"
+               xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+               xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+               xmlns:xs="http://www.w3.org/2001/XMLSchema"
+               jaxb:extensionBindingPrefixes="xjc">
+
+    <jaxb:globalBindings optionalProperty="wrapper">
+        <xjc:javaType name="java.time.LocalDate" xmlType="xs:date" adapter="no.nav.foreldrepenger.vedtak.v2.adapter.DateAdapter" />
+        <xjc:javaType name="java.time.LocalDateTime" xmlType="xs:dateTime" adapter="no.nav.foreldrepenger.vedtak.v2.adapter.DateTimeAdapter" />
+    </jaxb:globalBindings>
+
+    <jaxb:bindings schemaLocation="../xsd/vedtak-v2.xsd" node="/xs:schema">
+        <jaxb:bindings node="//xs:element[@name='vedtak']">
+        </jaxb:bindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="../xsd/beregningsgrunnlag/beregningsgrunnlag-es-v2.xsd" node="/xs:schema">
+        <jaxb:bindings node="//xs:complexType[@name='BeregningsgrunnlagEngangsstoenad']">
+        </jaxb:bindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="../xsd/beregningsgrunnlag/beregningsgrunnlag-fp-v2.xsd" node="/xs:schema">
+        <jaxb:bindings node="//xs:complexType[@name='BeregningsgrunnlagForeldrepenger']">
+        </jaxb:bindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="../xsd/vilkaarsgrunnlag/vilkaarsgrunnlag-es-v2.xsd" node="/xs:schema">
+        <jaxb:bindings node="//xs:complexType[@name='VilkaarsgrunnlagFoedsel']">
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:complexType[@name='VilkaarsgrunnlagAdopsjon']">
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:complexType[@name='VilkaarsgrunnlagMedlemskap']">
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:complexType[@name='VilkaarsgrunnlagSoeknadsfrist']">
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:complexType[@name='VilkaarsgrunnlagSoekersopplysningsplikt']">
+        </jaxb:bindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="../xsd/vilkaarsgrunnlag/vilkaarsgrunnlag-fp-v2.xsd" node="/xs:schema">
+        <jaxb:bindings node="//xs:complexType[@name='VilkaarsgrunnlagFoedsel']">
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:complexType[@name='VilkaarsgrunnlagAdopsjon']">
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:complexType[@name='VilkaarsgrunnlagMedlemskap']">
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:complexType[@name='VilkaarsgrunnlagOpptjening']">
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:complexType[@name='VilkaarsgrunnlagSoeknadsfrist']">
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:complexType[@name='VilkaarsgrunnlagSoekersopplysningsplikt']">
+        </jaxb:bindings>
+    </jaxb:bindings>
+
+
+    <jaxb:bindings schemaLocation="../xsd/ytelse/ytelse-es-v2.xsd" node="/xs:schema">
+        <jaxb:bindings node="//xs:complexType[@name='YtelseEngangsstoenad']">
+        </jaxb:bindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="../xsd/ytelse/ytelse-fp-v2.xsd" node="/xs:schema">
+        <jaxb:bindings node="//xs:complexType[@name='YtelseForeldrepenger']">
+        </jaxb:bindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="../xsd/uttak/uttak-fp-v2.xsd" node="/xs:schema">
+        <jaxb:bindings node="//xs:complexType[@name='UttakForeldrepenger']">
+        </jaxb:bindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="../xsd/uttak/uttak-svp-v2.xsd" node="/xs:schema">
+        <jaxb:bindings node="//xs:complexType[@name='UttakSvangerskapspenger']">
+        </jaxb:bindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="../xsd/personopplysninger/personopplysninger-dvh-es-v2.xsd" node="/xs:schema">
+        <jaxb:bindings node="//xs:complexType[@name='PersonopplysningerDvhEngangsstoenad']">
+        </jaxb:bindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="../xsd/personopplysninger/personopplysninger-dvh-fp-v2.xsd" node="/xs:schema">
+        <jaxb:bindings node="//xs:complexType[@name='PersonopplysningerDvhForeldrepenger']">
+        </jaxb:bindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="../xsd/personopplysninger/personopplysninger-es-v2.xsd" node="/xs:schema">
+        <jaxb:bindings node="//xs:complexType[@name='PersonopplysningerEngangsstoenad']">
+        </jaxb:bindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="../xsd/personopplysninger/personopplysninger-fp-v2.xsd" node="/xs:schema">
+        <jaxb:bindings node="//xs:complexType[@name='PersonopplysningerForeldrepenger']">
+        </jaxb:bindings>
+    </jaxb:bindings>
+
+</jaxb:bindings>
