@@ -5,8 +5,6 @@ import java.util.UUID;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import no.nav.foreldrepenger.kontrakter.formidling.kodeverk.FagsakYtelseType;
 import no.nav.foreldrepenger.kontrakter.formidling.kodeverk.Vedtaksbrev;
 
@@ -68,7 +66,6 @@ public class DokumentbestillingDto {
      * Navnet på enheten som skal stå som avsender av dokumentet.
      */
     @Pattern(regexp = "[A-ZÆØÅ0-9]{1,100}")
-    @JsonProperty
     private String behandlendeEnhetNavn;
 
     public UUID getBehandlingUuid() {
