@@ -5,6 +5,8 @@ import java.util.UUID;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import no.nav.foreldrepenger.kontrakter.formidling.kodeverk.FagsakYtelseType;
 import no.nav.foreldrepenger.kontrakter.formidling.kodeverk.Vedtaksbrev;
 
@@ -17,6 +19,11 @@ public class DokumentbestillingDto {
     @NotNull
     private UUID behandlingUuid;
     /**
+     * Unik ID for dokumentbestilling for å håndtere duplikater
+     * Vurder å innføre @NotNull når frontend sender med en uuid ved forhåndsvisning
+     */
+    private UUID dokumentbestillingUuid;
+    /**
      * Kode for ytelsetypeES
      */
     @NotNull
@@ -28,15 +35,11 @@ public class DokumentbestillingDto {
      */
     @Pattern(regexp = "[A-Z]{6}")
     private String dokumentMal;
-
     /**
      * Kode for hvem som har bestilt dokumentet, f.eks VL, default: VL
      */
     @Pattern(regexp = "[A-ZÆØÅ0-9]{1,100}")
     private String historikkAktør;
-
-    private String tittel;
-
     /**
      * Fritekstfelt
      */
@@ -50,16 +53,23 @@ public class DokumentbestillingDto {
     @Pattern(regexp = "[A-ZÆØÅ0-9]{1,100}")
     private String arsakskode;
 
+    /**
+     * Disse brukes kun ved forhåndsvisning, ikke ved dokumentbestilling
+     * @see Vedtaksbrev kan brukes til å angi hvilken type vedtaksbrev som skal forhåndsvises, typisk AUTOMATISK eller FRITEKST.
+     *
+     */
+    private Vedtaksbrev vedtaksbrev;
+    private String tittel;
     private boolean gjelderVedtak;
-
     private boolean erOpphevetKlage;
 
     /**
-     * Kode som kan brukes til å angi hvilken type vedtaksbrev som skal bestilles/forhåndsvises,
-     * typisk AUTOMATISK eller FRITEKST.
-     * @see Vedtaksbrev
+     * Brukes ved dokumentbestilling, ikke forhåndsvisning
+     * Navnet på enheten som skal stå som avsender av dokumentet.
      */
-    private Vedtaksbrev vedtaksbrev;
+    @Pattern(regexp = "[A-ZÆØÅ0-9]{1,100}")
+    @JsonProperty
+    private String behandlendeEnhetNavn;
 
     public UUID getBehandlingUuid() {
         return behandlingUuid;
@@ -67,6 +77,14 @@ public class DokumentbestillingDto {
 
     public void setBehandlingUuid(UUID behandlingUuid) {
         this.behandlingUuid = behandlingUuid;
+    }
+
+    public UUID getDokumentbestillingUuid() {
+        return dokumentbestillingUuid;
+    }
+
+    public void setDokumentbestillingUuid(UUID dokumentbestillingUuid) {
+        this.dokumentbestillingUuid = dokumentbestillingUuid;
     }
 
     public FagsakYtelseType getYtelseType() {
@@ -93,14 +111,6 @@ public class DokumentbestillingDto {
         this.historikkAktør = historikkAktør;
     }
 
-    public String getTittel() {
-        return tittel;
-    }
-
-    public void setTittel(String tittel) {
-        this.tittel = tittel;
-    }
-
     public String getFritekst() {
         return fritekst;
     }
@@ -115,6 +125,14 @@ public class DokumentbestillingDto {
 
     public void setArsakskode(String arsakskode) {
         this.arsakskode = arsakskode;
+    }
+
+    public String getTittel() {
+        return tittel;
+    }
+
+    public void setTittel(String tittel) {
+        this.tittel = tittel;
     }
 
     public boolean isGjelderVedtak() {
@@ -139,5 +157,13 @@ public class DokumentbestillingDto {
 
     public void setVedtaksbrev(Vedtaksbrev vedtaksbrev) {
         this.vedtaksbrev = vedtaksbrev;
+    }
+
+    public String getBehandlendeEnhetNavn() {
+        return behandlendeEnhetNavn;
+    }
+
+    public void setBehandlendeEnhetNavn(String behandlendeEnhetNavn) {
+        this.behandlendeEnhetNavn = behandlendeEnhetNavn;
     }
 }
