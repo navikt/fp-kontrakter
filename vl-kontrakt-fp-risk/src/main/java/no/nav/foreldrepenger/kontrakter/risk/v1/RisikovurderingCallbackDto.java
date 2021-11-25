@@ -7,5 +7,5 @@ import javax.validation.constraints.NotNull;
 
 import no.nav.foreldrepenger.kontrakter.risk.kodeverk.RisikoklasseType;
 
-public record RisikovurderingCallbackDto(@NotNull @Valid UUID behandlingUuid, @NotNull RisikoklasseType risikoklasse) {
+public record RisikovurderingCallbackDto(@NotNull UUID behandlingUuid, @NotNull RisikoklasseType risikoklasse) {
 }

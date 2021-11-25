@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test;
 import com.fasterxml.jackson.databind.ObjectReader;
 import com.fasterxml.jackson.databind.ObjectWriter;
 
+import no.nav.foreldrepenger.kontrakter.risk.kodeverk.AktørId;
 import no.nav.foreldrepenger.kontrakter.risk.kodeverk.YtelseType;
 
 
@@ -22,7 +23,7 @@ public class RisikovurderingRequestTest {
     private static final ObjectWriter WRITER = TestJsonMapper.getMapper().writerWithDefaultPrettyPrinter();
     private static final ObjectReader READER = TestJsonMapper.getMapper().reader();
 
-    private static final String AKTØR_ID = "1000000000001";
+    private static final AktørId AKTØR_ID = new AktørId("1000000000001");
     private static final LocalDate IDAG = LocalDate.now();
     private static final UUID REF = UUID.randomUUID();
 
