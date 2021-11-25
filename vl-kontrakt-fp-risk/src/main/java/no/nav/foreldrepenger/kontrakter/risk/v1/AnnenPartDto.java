@@ -2,16 +2,18 @@ package no.nav.foreldrepenger.kontrakter.risk.v1;
 
 import java.util.Optional;
 
-import javax.validation.constraints.Pattern;
+import javax.validation.Valid;
 
-public record AnnenPartDto(@Pattern(regexp = "^\\d{13}$") String annenpartAktørId, String utenlandskFnr) {
+import no.nav.foreldrepenger.kontrakter.risk.kodeverk.AktørId;
 
-    public Optional<String> getAnnenPartAktørId() {
+public record AnnenPartDto(@Valid AktørId annenpartAktørId, String utlandskFnr) {
+
+    public Optional<AktørId> getAnnenPartAktørId() {
         return Optional.ofNullable(annenpartAktørId);
     }
 
-    public Optional<String> getUtenlandskFnr() {
-        return Optional.ofNullable(utenlandskFnr);
+    public Optional<String> getUtlandskFnr() {
+        return Optional.ofNullable(utlandskFnr);
     }
 
 }
