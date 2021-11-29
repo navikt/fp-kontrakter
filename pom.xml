@@ -14,17 +14,17 @@
     <url>https://github.com/navikt/fp-kontrakter</url>
 
 	<properties>
-        <sonar.projectKey>navikt_fp-kontrakter</sonar.projectKey>
-        <sonar.organization>navit</sonar.organization>
-        <sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
-        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
 		<revision>5.1-</revision>
 		<changelist>SNAPSHOT</changelist>
 		<sha1>_</sha1>
+        <java.version>16</java.version>
 		<maven.javadoc.skip>true</maven.javadoc.skip>
-		<java.version>16</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.javadoc.skip>true</maven.javadoc.skip>
+        <sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
+        <sonar.projectKey>navikt_fp-kontrakter</sonar.projectKey>
+        <sonar.organization>navit</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <junit5.version>5.8.1</junit5.version>
         <mockito.version>4.1.0</mockito.version>
         <xsd.packagename/>
@@ -292,6 +292,11 @@
                     <version>3.2.0</version>
                 </plugin>
                 <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>0.8.7</version>
+                </plugin>
+                <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>flatten-maven-plugin</artifactId>
                     <version>1.2.7</version>
@@ -332,7 +337,20 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.7</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>report-aggregate</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
