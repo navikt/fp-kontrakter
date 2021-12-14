@@ -5,14 +5,16 @@ import java.util.List;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import no.nav.foreldrepenger.kontrakter.risk.kodeverk.FaresignalVurdering;
 import no.nav.foreldrepenger.kontrakter.risk.kodeverk.RisikoklasseType;
 
 public record RisikovurderingResultatDto(@NotNull RisikoklasseType risikoklasse,
                                          @Valid RisikogruppeDto medlemskapFaresignaler,
-                                         @Valid RisikogruppeDto opptjeningFaresignaler) {
+                                         @Valid RisikogruppeDto opptjeningFaresignaler,
+                                         @Valid FaresignalVurdering faresignalvurdering) {
 
     public static RisikovurderingResultatDto ikkeKlassifisert() {
-        return new RisikovurderingResultatDto(RisikoklasseType.IKKE_KLASSIFISERT, null, null);
+        return new RisikovurderingResultatDto(RisikoklasseType.IKKE_KLASSIFISERT, null, null, null);
     }
 
     public List<String> medlemskapFaresignalerNonNull() {
