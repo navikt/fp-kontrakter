@@ -109,6 +109,7 @@ public class ParseSoeknadTest {
         rettigheter.setHarAleneomsorgForBarnet(false);
         rettigheter.setHarAnnenForelderRett(true);
         rettigheter.setHarOmsorgForBarnetIPeriodene(true);
+        rettigheter.setHarMorUforetrygd(false);
         foreldrepenger.setRettigheter(rettigheter);
 
         Foedsel relasjonTilBarnet = new Foedsel();
