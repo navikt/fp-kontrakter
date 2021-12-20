@@ -17,6 +17,10 @@ public record RisikovurderingResultatDto(@NotNull RisikoklasseType risikoklasse,
         return new RisikovurderingResultatDto(RisikoklasseType.IKKE_KLASSIFISERT, null, null, null);
     }
 
+    public static RisikovurderingResultatDto tomtResultat() {
+        return new RisikovurderingResultatDto(RisikoklasseType.TOMT_RESULTAT, null, null, null);
+    }
+
     public List<String> medlemskapFaresignalerNonNull() {
         return medlemskapFaresignaler != null ? medlemskapFaresignaler.faresignalerNonNull() : List.of();
     }
