@@ -488,7 +488,7 @@
                     <dependency>
                         <groupId>no.nav.k9.dev</groupId>
                         <artifactId>dev-jakarta-transform</artifactId>
-                        <version>0.4.5</version>
+                        <version>0.6.0</version>
                     </dependency>
                     <dependency>
                         <groupId>ant-contrib</groupId>
