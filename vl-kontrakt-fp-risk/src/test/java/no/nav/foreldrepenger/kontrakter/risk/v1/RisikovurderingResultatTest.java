@@ -7,6 +7,7 @@ import java.util.UUID;
 
 import javax.validation.Validation;
 
+import no.nav.foreldrepenger.kontrakter.risk.kodeverk.FaresignalVurdering;
 import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.databind.ObjectReader;
@@ -43,7 +44,7 @@ public class RisikovurderingResultatTest {
     public void skal_serialisere_og_deserialisere_respons() throws Exception {
         // Arrange
         var opptjening = new RisikogruppeDto(List.of("Tekst1", "Tekst2", "Tekst3"));
-        var response = new RisikovurderingResultatDto(RisikoklasseType.HØY, null, opptjening);
+        var response = new RisikovurderingResultatDto(RisikoklasseType.HØY, null, opptjening, FaresignalVurdering.AVSLAG_ANNET);
 
         // Act
         var json = WRITER.writeValueAsString(response);
@@ -53,6 +54,7 @@ public class RisikovurderingResultatTest {
         // Assert
         assertThat(roundTripped).isNotNull();
         assertThat(roundTripped.risikoklasse()).isEqualTo(RisikoklasseType.HØY);
+        assertThat(roundTripped.faresignalvurdering()).isEqualTo(FaresignalVurdering.AVSLAG_ANNET);
         assertThat(roundTripped.medlemskapFaresignalerNonNull()).isEmpty();
         assertThat(roundTripped.opptjeningFaresignalerNonNull()).hasSize(3);
 

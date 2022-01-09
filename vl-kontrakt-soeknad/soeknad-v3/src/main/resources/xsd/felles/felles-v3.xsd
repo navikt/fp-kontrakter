@@ -65,6 +65,7 @@
             <xsd:element name="harAnnenForelderRett" type="xsd:boolean" minOccurs="0"/>
             <xsd:element name="harOmsorgForBarnetIPeriodene" type="xsd:boolean" minOccurs="0"/>
             <xsd:element name="harAleneomsorgForBarnet" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="harMorUforetrygd" type="xsd:boolean" minOccurs="0"/>
         </xsd:sequence>
         <xsd:anyAttribute processContents="lax"/>
     </xsd:complexType>
