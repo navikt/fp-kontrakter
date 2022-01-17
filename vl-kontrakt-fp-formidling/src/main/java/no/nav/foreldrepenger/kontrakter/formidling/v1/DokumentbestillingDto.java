@@ -62,8 +62,7 @@ public class DokumentbestillingDto {
     private boolean erOpphevetKlage;
 
     /**
-     * Brukes ved dokumentbestilling, ikke forhåndsvisning
-     * Navnet på enheten som skal stå som avsender av dokumentet.
+     * Brukes ved dokumentbestilling, ikke forhåndsvisning, for å skille mellom NAV Klageinstans og NFP
      */
     @Pattern(regexp = "[A-ZÆØÅ0-9]{1,100}")
     private String behandlendeEnhetNavn;
