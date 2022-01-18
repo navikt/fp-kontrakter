@@ -17,7 +17,7 @@
 		<revision>5.1-</revision>
 		<changelist>SNAPSHOT</changelist>
 		<sha1>_</sha1>
-        <java.version>16</java.version>
+        <java.version>17</java.version>
 		<maven.javadoc.skip>true</maven.javadoc.skip>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.deploy.skip>false</maven.deploy.skip>
