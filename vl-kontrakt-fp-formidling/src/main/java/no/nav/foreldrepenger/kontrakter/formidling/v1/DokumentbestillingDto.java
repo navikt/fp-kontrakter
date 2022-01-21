@@ -7,6 +7,7 @@ import javax.validation.constraints.Pattern;
 
 import no.nav.foreldrepenger.kontrakter.formidling.kodeverk.FagsakYtelseType;
 import no.nav.foreldrepenger.kontrakter.formidling.kodeverk.Vedtaksbrev;
+import no.nav.foreldrepenger.kontrakter.formidling.kodeverk.YtelseType;
 
 public class DokumentbestillingDto {
 
@@ -26,6 +27,7 @@ public class DokumentbestillingDto {
      */
     @NotNull
     private FagsakYtelseType ytelseType;
+    private YtelseType fagsakYtelseType;
     /**
      * Kode for hvilket dokument som er bestilt
      * Se i DokumentMalType.java her  https://github.com/navikt/fp-formidling/
@@ -57,6 +59,7 @@ public class DokumentbestillingDto {
      *
      */
     private Vedtaksbrev vedtaksbrev;
+    private Boolean automatiskVedtaksbrev;
     private String tittel;
     private boolean gjelderVedtak;
     private boolean erOpphevetKlage;
@@ -161,5 +164,21 @@ public class DokumentbestillingDto {
 
     public void setBehandlendeEnhetNavn(String behandlendeEnhetNavn) {
         this.behandlendeEnhetNavn = behandlendeEnhetNavn;
+    }
+
+    public YtelseType getFagsakYtelseType() {
+        return fagsakYtelseType;
+    }
+
+    public void setFagsakYtelseType(YtelseType fagsakYtelseType) {
+        this.fagsakYtelseType = fagsakYtelseType;
+    }
+
+    public Boolean getAutomatiskVedtaksbrev() {
+        return automatiskVedtaksbrev;
+    }
+
+    public void setAutomatiskVedtaksbrev(Boolean automatiskVedtaksbrev) {
+        this.automatiskVedtaksbrev = automatiskVedtaksbrev;
     }
 }
