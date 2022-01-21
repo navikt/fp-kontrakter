@@ -11,6 +11,7 @@ public record BehandlingUuidDto(@NotNull @Valid UUID behandlingUuid) {
         this(UUID.fromString(behandlingUuid));
     }
 
+    @Deprecated // Bruk behandlingUuid()
     public UUID getBehandlingUuid() {
         return behandlingUuid;
     }
