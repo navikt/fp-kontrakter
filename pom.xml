@@ -26,7 +26,7 @@
         <sonar.organization>navit</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <junit5.version>5.8.2</junit5.version>
-        <mockito.version>4.2.0</mockito.version>
+        <mockito.version>4.3.1</mockito.version>
         <xsd.packagename/>
 	</properties>
 
