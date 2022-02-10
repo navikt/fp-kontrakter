@@ -23,6 +23,7 @@
         <module>hendelser-dokumentbestilling</module>
         <module>hendelser-kontroll-resultat</module>
         <module>hendelser-inntektsmelding</module>
+        <module>vtp-not-avro</module>
     </modules>
 
 	<dependencyManagement>
