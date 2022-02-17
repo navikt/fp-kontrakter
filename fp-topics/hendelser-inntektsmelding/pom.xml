@@ -5,7 +5,7 @@
     <parent>
         <groupId>no.nav.foreldrepenger.kontrakter.topics</groupId>
         <artifactId>fp-topics</artifactId>
-        <version>${revision}${sha1}${changelist}</version>
+        <version>${revision}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
