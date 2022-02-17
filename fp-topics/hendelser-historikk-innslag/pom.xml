@@ -7,7 +7,7 @@
     <parent>
         <groupId>no.nav.foreldrepenger.kontrakter.topics</groupId>
         <artifactId>fp-topics</artifactId>
-        <version>${revision}${sha1}${changelist}</version>
+        <version>${revision}</version>
     </parent>
 
     <name>FP-TOPICS :: Historikk Innslag</name>

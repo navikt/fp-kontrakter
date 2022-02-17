@@ -17,7 +17,7 @@ jobs:
           java-version: '17'
           cache: 'maven'
       - name: Hent tag
-        run: echo "TAG=$(git log -1 --pretty='%ad' --date=format:'%Y%m%d%H%M%S')-$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_ENV
+        run: echo "TAG=$(date +%Y.%m.%d.%H%M%S)-$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_ENV
       - name: Build
         shell: bash
         env:
@@ -26,4 +26,4 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           echo "Building $TAG"
-          mvn jacoco:prepare-agent package jacoco:report sonar:sonar -e --batch-mode --settings .github/.m2/settings.xml -Dsha1=$TAG -Dsonar.login=${SONAR_TOKEN}
+          mvn jacoco:prepare-agent package jacoco:report sonar:sonar -e --batch-mode --settings .github/.m2/settings.xml -Drevision=$TAG -Dsonar.login=${SONAR_TOKEN}

@@ -7,16 +7,14 @@
 
     <groupId>no.nav.foreldrepenger.kontrakter</groupId>
     <artifactId>fp-kontrakter-root</artifactId>
-    <version>${revision}${sha1}${changelist}</version>
+    <version>${revision}</version>
     <packaging>pom</packaging>
     <name>(FPSAK) Kontrakter - Root</name>
     <description>Contracts related to the family area at NAV.</description>
     <url>https://github.com/navikt/fp-kontrakter</url>
 
 	<properties>
-		<revision>5.1-</revision>
-		<changelist>SNAPSHOT</changelist>
-		<sha1>_</sha1>
+		<revision>5.1-SNAPSHOT</revision>
         <java.version>17</java.version>
 		<maven.javadoc.skip>true</maven.javadoc.skip>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -302,12 +300,6 @@
                     <version>0.8.7</version>
                 </plugin>
                 <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>flatten-maven-plugin</artifactId>
-                    <version>1.2.7</version>
-                </plugin>
-
-                <plugin>
                     <groupId>org.sonarsource.scanner.maven</groupId>
                     <artifactId>sonar-maven-plugin</artifactId>
                     <version>3.9.1.2184</version>
@@ -353,30 +345,6 @@
                         <phase>verify</phase>
                         <goals>
                             <goal>report-aggregate</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>flatten-maven-plugin</artifactId>
-                <configuration>
-                    <flattenMode>bom</flattenMode>
-                    <flattenedPomFilename>.flattened</flattenedPomFilename>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>flatten</id>
-                        <phase>process-resources</phase>
-                        <goals>
-                            <goal>flatten</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>flatten.clean</id>
-                        <phase>clean</phase>
-                        <goals>
-                            <goal>clean</goal>
                         </goals>
                     </execution>
                 </executions>

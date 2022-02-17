@@ -21,21 +21,10 @@ jobs:
           java-version: '17'
           cache: 'maven'
 
-      - name: Set cache key
-        run: |
-          echo "CACHE_KEY=$(expr $(date +%V) - 1 + 1)" >> $GITHUB_ENV
-          echo "PREVIOUS_CACHE_KEY=$(expr $(date +%V) - 1 + 1)" >> $GITHUB_ENV
-      - uses: actions/cache@v2
-        with:
-          path: ~/.m2
-          key: ${{ runner.os }}-maven-${{ env.CACHE_KEY }}
-          restore-keys: |
-            ${{ runner.os }}-maven-${{ env.PREVIOUS_CACHE_KEY }}
-            
       - name: Publish artifacts
         shell: bash
         run: |
-           mvn deploy -e --batch-mode --file pom.xml  --settings ./.github/.m2/settings.xml -DtrimStackTrace=false -Dchangelist= -Dsha1= -Drevision=$NEW_VERSION -Dfile.encoding=UTF-8
+           mvn deploy -e --batch-mode --settings ./.github/.m2/settings.xml -DtrimStackTrace=false -Drevision=$NEW_VERSION -Dfile.encoding=UTF-8
         env:
           GH_ACCESS_TOKEN : ${{ secrets.GH_ACCESS_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}

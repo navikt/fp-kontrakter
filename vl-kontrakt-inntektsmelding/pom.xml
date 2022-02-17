@@ -6,7 +6,7 @@
     <parent>
         <groupId>no.nav.foreldrepenger.kontrakter</groupId>
         <artifactId>fp-kontrakter-root</artifactId>
-        <version>${revision}${sha1}${changelist}</version>
+        <version>${revision}</version>
     </parent>
     <artifactId>inntektsmelding-v1</artifactId>
     <name>(FPSAK) Kontrakter - inntektsmelding</name>

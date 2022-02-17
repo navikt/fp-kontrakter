@@ -4,7 +4,7 @@
     <parent>
         <groupId>no.nav.foreldrepenger.kontrakter</groupId>
         <artifactId>oekonomi-pom</artifactId>
-        <version>${revision}${sha1}${changelist}</version>
+        <version>${revision}</version>
     </parent>
 
     <properties>

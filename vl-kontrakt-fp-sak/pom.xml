@@ -7,9 +7,9 @@
 		<version>${revision}</version>
 	</parent>
     
-    <artifactId>risk-v1</artifactId>
+    <artifactId>fpsak-v1</artifactId>
     <packaging>jar</packaging>
-    <name>(FPSAK) Kontrakter - risk</name>
+    <name>(FPSAK) Kontrakter - fpsak</name>
 
     <dependencies>
         <dependency>
