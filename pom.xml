@@ -64,6 +64,7 @@
         <module>vl-kontrakt-fp-abonnent</module>
         <module>vl-kontrakt-fp-feed</module>
         <module>vl-kontrakt-fp-risk</module>
+        <module>vl-kontrakt-fp-sak</module>
         <module>vl-kontrakt-behandlingsprosess-vedtak</module>
         <module>fp-topics</module>
         <module>vl-kontrakt-fp-formidling</module>
@@ -179,6 +180,11 @@
             <dependency>
                 <groupId>no.nav.foreldrepenger.kontrakter</groupId>
                 <artifactId>fordel-v1</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>no.nav.foreldrepenger.kontrakter</groupId>
+                <artifactId>fpsak-v1</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
