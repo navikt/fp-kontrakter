@@ -299,6 +299,11 @@
                     <artifactId>jacoco-maven-plugin</artifactId>
                     <version>0.8.7</version>
                 </plugin>
+	    	<plugin>
+		    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>flatten-maven-plugin</artifactId>
+                    <version>1.2.7</version>
+                </plugin>
                 <plugin>
                     <groupId>org.sonarsource.scanner.maven</groupId>
                     <artifactId>sonar-maven-plugin</artifactId>
@@ -349,6 +354,30 @@
                     </execution>
                 </executions>
             </plugin>
+	    <plugin>
+                 <groupId>org.codehaus.mojo</groupId>
+                 <artifactId>flatten-maven-plugin</artifactId>
+                 <configuration>
+                     <flattenMode>bom</flattenMode>
+                     <flattenedPomFilename>.flattened</flattenedPomFilename>
+                 </configuration>
+                 <executions>
+                     <execution>
+                         <id>flatten</id>
+                         <phase>process-resources</phase>
+                         <goals>
+                             <goal>flatten</goal>
+                         </goals>
+                     </execution>
+                     <execution>
+                         <id>flatten.clean</id>
+                         <phase>clean</phase>
+                         <goals>
+                             <goal>clean</goal>
+                         </goals>
+                     </execution>
+                 </executions>
+             </plugin>
             <plugin>
                 <groupId>org.jboss.jandex</groupId>
                 <artifactId>jandex-maven-plugin</artifactId>
