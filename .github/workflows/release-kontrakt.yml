@@ -24,7 +24,8 @@ jobs:
       - name: Publish artifacts
         shell: bash
         run: |
-           mvn deploy -e --batch-mode --settings ./.github/.m2/settings.xml -DtrimStackTrace=false -Drevision=$NEW_VERSION -Dfile.encoding=UTF-8
+           mvn -B versions:set -DnewVersion="$NEW_VERSION"
+           mvn deploy -e --batch-mode --settings ./.github/.m2/settings.xml -DtrimStackTrace=false -Drevision="$NEW_VERSION" -Dfile.encoding=UTF-8
         env:
           GH_ACCESS_TOKEN : ${{ secrets.GH_ACCESS_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
