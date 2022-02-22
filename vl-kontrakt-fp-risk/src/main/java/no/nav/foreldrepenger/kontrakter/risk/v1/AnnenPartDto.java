@@ -7,7 +7,7 @@ import javax.validation.constraints.Pattern;
 
 import no.nav.foreldrepenger.kontrakter.risk.kodeverk.AktørId;
 
-public record AnnenPartDto(@Valid AktørId annenpartAktørId, @Pattern(regexp = "[a-zA-ZæøåÆØÅ0-9]{0,200}") String utlandskFnr) {
+public record AnnenPartDto(@Valid AktørId annenpartAktørId, @Pattern(regexp = "^[\\p{Graph}\\p{Space}\\p{Sc}\\p{L}\\p{M}\\p{N}]+$") String utlandskFnr) {
 
     @Deprecated // Bruk annenpartAktørId()
     public Optional<AktørId> getAnnenPartAktørId() {
