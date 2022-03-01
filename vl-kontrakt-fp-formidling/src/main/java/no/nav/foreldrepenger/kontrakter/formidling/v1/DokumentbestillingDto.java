@@ -5,8 +5,6 @@ import java.util.UUID;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
-import no.nav.foreldrepenger.kontrakter.formidling.kodeverk.FagsakYtelseType;
-import no.nav.foreldrepenger.kontrakter.formidling.kodeverk.Vedtaksbrev;
 import no.nav.foreldrepenger.kontrakter.formidling.kodeverk.YtelseType;
 
 public class DokumentbestillingDto {
@@ -26,7 +24,6 @@ public class DokumentbestillingDto {
      * Kode for ytelsetypeES
      */
     @NotNull
-    private FagsakYtelseType ytelseType;
     private YtelseType fagsakYtelseType;
     /**
      * Kode for hvilket dokument som er bestilt
@@ -53,12 +50,6 @@ public class DokumentbestillingDto {
     @Pattern(regexp = "[A-ZÆØÅ0-9]{1,100}")
     private String arsakskode;
 
-    /**
-     * Disse brukes kun ved forhåndsvisning, ikke ved dokumentbestilling
-     * @see Vedtaksbrev kan brukes til å angi hvilken type vedtaksbrev som skal forhåndsvises, typisk AUTOMATISK eller FRITEKST.
-     *
-     */
-    private Vedtaksbrev vedtaksbrev;
     private Boolean automatiskVedtaksbrev;
     private String tittel;
     private boolean gjelderVedtak;
@@ -84,14 +75,6 @@ public class DokumentbestillingDto {
 
     public void setDokumentbestillingUuid(UUID dokumentbestillingUuid) {
         this.dokumentbestillingUuid = dokumentbestillingUuid;
-    }
-
-    public FagsakYtelseType getYtelseType() {
-        return ytelseType;
-    }
-
-    public void setYtelseType(FagsakYtelseType ytelseType) {
-        this.ytelseType = ytelseType;
     }
 
     public String getDokumentMal() {
@@ -148,14 +131,6 @@ public class DokumentbestillingDto {
 
     public void setErOpphevetKlage(boolean erOpphevetKlage) {
         this.erOpphevetKlage = erOpphevetKlage;
-    }
-
-    public Vedtaksbrev getVedtaksbrev() {
-        return vedtaksbrev;
-    }
-
-    public void setVedtaksbrev(Vedtaksbrev vedtaksbrev) {
-        this.vedtaksbrev = vedtaksbrev;
     }
 
     public String getBehandlendeEnhetNavn() {
