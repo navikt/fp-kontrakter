@@ -106,7 +106,7 @@
                 <!-- for Bean validation -->
                 <groupId>org.hibernate.validator</groupId>
                 <artifactId>hibernate-validator</artifactId>
-                <version>6.2.1.Final</version>
+                <version>6.2.2.Final</version>
             </dependency>
 
             <dependency>
@@ -243,7 +243,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.8.1</version>
+                    <version>3.10.0</version>
                     <configuration>
                         <source>${java.version}</source>
                         <target>${java.version}</target>
