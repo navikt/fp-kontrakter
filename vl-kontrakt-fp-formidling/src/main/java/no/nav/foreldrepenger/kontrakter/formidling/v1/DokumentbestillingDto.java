@@ -58,7 +58,7 @@ public class DokumentbestillingDto {
     /**
      * Brukes ved dokumentbestilling, ikke forhåndsvisning, for å skille mellom NAV Klageinstans og NFP
      */
-    @Pattern(regexp = "[A-ZÆØÅ0-9]{1,100}")
+    @Pattern(regexp = "[a-zA-ZæøåÆØÅ :,.\\-0-9]{1,100}")
     private String behandlendeEnhetNavn;
 
     public UUID getBehandlingUuid() {
