@@ -6,7 +6,6 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
-import no.nav.foreldrepenger.kontrakter.formidling.kodeverk.HistorikkAktør;
 import no.nav.foreldrepenger.kontrakter.formidling.kodeverk.YtelseType;
 
 /*
@@ -21,7 +20,6 @@ import no.nav.foreldrepenger.kontrakter.formidling.kodeverk.YtelseType;
 public record DokumentbestillingV2Dto(@NotNull UUID behandlingUuid,
                                       @NotNull UUID dokumentbestillingUuid,
                                       @NotNull @Valid YtelseType ytelseType,
-                                      @NotNull @Valid HistorikkAktør historikkAktør,
                                       @NotNull @Pattern(regexp = "[A-Z]{6}") String dokumentMal,
                                       String fritekst,
                                       @Pattern(regexp = "[a-zA-ZæøåÆØÅ :,.\\-0-9]{1,100}") String behandlendeEnhetNavn,

@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test;
 import com.fasterxml.jackson.databind.ObjectReader;
 import com.fasterxml.jackson.databind.ObjectWriter;
 
-import no.nav.foreldrepenger.kontrakter.formidling.kodeverk.HistorikkAktør;
 import no.nav.foreldrepenger.kontrakter.formidling.kodeverk.YtelseType;
 
 public class DokumentbestillingV2Test {
@@ -27,7 +26,7 @@ public class DokumentbestillingV2Test {
     public void skal_serialisere_og_deserialisere_request() throws Exception {
         // Arrange
         var request = new DokumentbestillingV2Dto(REF1, REF2,
-            YtelseType.FP, HistorikkAktør.VEDTAKSLØSNINGEN,
+            YtelseType.FP,
             "INNLYS", "Fri tekst ...",
             ENHET, null);
 
@@ -41,7 +40,6 @@ public class DokumentbestillingV2Test {
         assertThat(roundTripped.dokumentbestillingUuid()).isEqualTo(REF2);
         assertThat(roundTripped.behandlendeEnhetNavn()).isEqualTo(ENHET);
         assertThat(roundTripped.arsakskode()).isNull();
-        assertThat(roundTripped.historikkAktør()).isEqualTo(HistorikkAktør.VEDTAKSLØSNINGEN);
         assertThat(roundTripped.ytelseType()).isEqualTo(YtelseType.FP);
 
         validateResult(roundTripped);
