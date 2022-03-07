@@ -248,7 +248,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.10.0</version>
+                    <version>3.8.1</version>
                     <configuration>
                         <parameters>true</parameters>
                         <source>${java.version}</source>
@@ -439,8 +439,8 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-				<!-- FOR Å LEGGE VED JAKARTA EE9 KOMPATIBLE ARTEFAKTER I TILLEGG -->
+            <!--<plugin>
+				&lt;!&ndash; FOR Å LEGGE VED JAKARTA EE9 KOMPATIBLE ARTEFAKTER I TILLEGG &ndash;&gt;
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
                 <executions>
@@ -505,13 +505,13 @@
                         </exclusions>
                     </dependency>
                 </dependencies>
-            </plugin>
+            </plugin>-->
         </plugins>
     </build>
 
-<profiles>
-		<!-- FOR Å LEGGE VED JAKARTA EE9 KOMPATIBLE ARTEFAKTER I TILLEGG -->
-		<!-- (bruker ikke attach-jar da den ikke støtter alterntiv artefakt navn) -->
+<!--<profiles>
+		&lt;!&ndash; FOR Å LEGGE VED JAKARTA EE9 KOMPATIBLE ARTEFAKTER I TILLEGG &ndash;&gt;
+		&lt;!&ndash; (bruker ikke attach-jar da den ikke støtter alterntiv artefakt navn) &ndash;&gt;
         <profile>
             <id>jar-module</id>
             <activation>
@@ -545,7 +545,7 @@
                                 <phase>package</phase>
                                 <configuration>
                                     <target>
-                                        <!-- ompakker jar fil uten pom.xml -->
+                                        &lt;!&ndash; ompakker jar fil uten pom.xml &ndash;&gt;
                                         <jar destfile="${project.build.directory}/${project.artifactId}-jakarta-${project.version}-TOBEDEPLOYED.jar">
                                             <zipfileset src="${project.build.directory}/${project.artifactId}-jakarta-${project.version}.jar" excludes="META-INF/maven/**"/>
                                         </jar>
@@ -589,7 +589,7 @@
                                 </goals>
                                 <configuration>
                                     <repositoryId>github</repositoryId>
-                                    <!-- må matche unpacked pom.xml fra over (disse endrer ikke path ved transform p.t.) -->
+                                    &lt;!&ndash; må matche unpacked pom.xml fra over (disse endrer ikke path ved transform p.t.) &ndash;&gt;
                                     <pomFile>${project.build.directory}/jakarta/META-INF/maven/${project.groupId}/${project.artifactId}/pom.xml</pomFile>
                                     <url>${project.distributionManagement.repository.url}</url>
                                     <file>${project.build.directory}/${project.artifactId}-jakarta-${project.version}-TOBEDEPLOYED.jar</file>
@@ -601,7 +601,7 @@
                 </plugins>
             </build>
         </profile>
-    </profiles>
+    </profiles>-->
 
     <repositories>
 		<repository>
