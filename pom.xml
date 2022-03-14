@@ -65,7 +65,6 @@
         <module>vl-kontrakt-behandlingsprosess-vedtak</module>
         <module>fp-topics</module>
         <module>vl-kontrakt-fp-formidling</module>
-        <module>vl-kontrakt-fp-sak</module>
         <module>vl-kontrakt-oekonomi</module>
     </modules>
 
@@ -198,11 +197,6 @@
             <dependency>
                 <groupId>no.nav.foreldrepenger.kontrakter</groupId>
                 <artifactId>fp-formidling-v1</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>no.nav.foreldrepenger.kontrakter</groupId>
-                <artifactId>fp-sak-v1</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>
