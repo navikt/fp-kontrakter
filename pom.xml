@@ -63,9 +63,10 @@
         <module>vl-kontrakt-fp-feed</module>
         <module>vl-kontrakt-fp-risk</module>
         <module>vl-kontrakt-behandlingsprosess-vedtak</module>
-        <module>fp-topics</module>
         <module>vl-kontrakt-fp-formidling</module>
+        <module>vl-kontrakt-fp-sak</module>
         <module>vl-kontrakt-oekonomi</module>
+        <module>fp-topics</module>
     </modules>
 
     <dependencyManagement>
@@ -248,7 +249,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.10.0</version>
+                    <version>3.10.1</version>
                     <configuration>
                         <parameters>true</parameters>
                         <source>${java.version}</source>
