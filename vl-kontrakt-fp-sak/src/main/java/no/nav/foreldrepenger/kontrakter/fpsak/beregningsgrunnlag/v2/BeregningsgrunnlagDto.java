@@ -1,11 +1,7 @@
-package no.nav.foreldrepenger.web.app.tjenester.formidling.beregningsgrunnlag.dto;
+package no.nav.foreldrepenger.kontrakter.fpsak.beregningsgrunnlag.v2;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import no.nav.foreldrepenger.fpformidling.beregningsgrunnlag.v2.kodeverk.AktivitetStatus;
-import no.nav.foreldrepenger.fpformidling.beregningsgrunnlag.v2.kodeverk.Hjemmel;
+import java.math.BigDecimal;
+import java.util.List;
 
 import javax.validation.Valid;
 import javax.validation.constraints.DecimalMax;
@@ -13,8 +9,9 @@ import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.math.BigDecimal;
-import java.util.List;
+
+import no.nav.foreldrepenger.kontrakter.fpsak.beregningsgrunnlag.v2.kodeverk.AktivitetStatus;
+import no.nav.foreldrepenger.kontrakter.fpsak.beregningsgrunnlag.v2.kodeverk.Hjemmel;
 
 
 public record BeregningsgrunnlagDto(@NotNull @Valid @Size(min = 1) List<AktivitetStatus> aktivitetstatusListe,

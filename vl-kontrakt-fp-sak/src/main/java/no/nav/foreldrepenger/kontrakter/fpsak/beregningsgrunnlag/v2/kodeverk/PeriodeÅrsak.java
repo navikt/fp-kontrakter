@@ -1,8 +1,6 @@
-package no.nav.foreldrepenger.fpformidling.beregningsgrunnlag.v2.kodeverk;
+package no.nav.foreldrepenger.kontrakter.fpsak.beregningsgrunnlag.v2.kodeverk;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonValue;
 
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum PeriodeÅrsak {
