@@ -1,4 +1,4 @@
-package no.nav.foreldrepenger.kontrakter.formidling.v1;
+package no.nav.foreldrepenger.kontrakter.fpsak.dokument.kvittering.v1;
 
 import java.util.UUID;
 
