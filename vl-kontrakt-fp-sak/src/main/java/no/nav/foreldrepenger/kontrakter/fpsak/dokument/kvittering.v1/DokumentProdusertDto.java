@@ -12,6 +12,4 @@ public record DokumentProdusertDto(@NotNull UUID behandlingUuid,
                                    @NotNull @Pattern(regexp = "^[\\p{L}\\p{N}_\\.\\-]+$") String journalpostId,
                                    @NotNull @Digits(integer = 12, fraction = 0) String dokumentId) {
 
-
-
 }
