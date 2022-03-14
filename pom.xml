@@ -63,10 +63,10 @@
         <module>vl-kontrakt-fp-feed</module>
         <module>vl-kontrakt-fp-risk</module>
         <module>vl-kontrakt-behandlingsprosess-vedtak</module>
+        <module>fp-topics</module>
         <module>vl-kontrakt-fp-formidling</module>
         <module>vl-kontrakt-fp-sak</module>
         <module>vl-kontrakt-oekonomi</module>
-        <module>fp-topics</module>
     </modules>
 
     <dependencyManagement>
