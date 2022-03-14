@@ -67,7 +67,6 @@
         <module>vl-kontrakt-fp-sak</module>
         <module>vl-kontrakt-oekonomi</module>
         <module>fp-topics</module>
-        <module>vl-kontrakter-fp-sak</module>
     </modules>
 
     <dependencyManagement>
