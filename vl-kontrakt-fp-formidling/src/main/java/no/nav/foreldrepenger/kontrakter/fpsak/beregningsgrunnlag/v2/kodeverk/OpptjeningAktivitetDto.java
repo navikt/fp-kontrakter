@@ -1,11 +1,6 @@
 package no.nav.foreldrepenger.kontrakter.fpsak.beregningsgrunnlag.v2.kodeverk;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonFormat.Shape;
-
-@JsonFormat(shape = Shape.OBJECT)
-public enum OpptjeningAktivitetType {
-
+public enum OpptjeningAktivitetDto {
     ARBEIDSAVKLARING,
     ARBEID,
     DAGPENGER,
