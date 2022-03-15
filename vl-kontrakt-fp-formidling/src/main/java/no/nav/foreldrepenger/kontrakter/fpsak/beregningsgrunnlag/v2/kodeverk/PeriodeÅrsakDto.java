@@ -1,9 +1,6 @@
 package no.nav.foreldrepenger.kontrakter.fpsak.beregningsgrunnlag.v2.kodeverk;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
-@JsonFormat(shape = JsonFormat.Shape.OBJECT)
-public enum PeriodeÅrsak {
+public enum PeriodeÅrsakDto {
 
     NATURALYTELSE_BORTFALT,
     ARBEIDSFORHOLD_AVSLUTTET,
