@@ -616,7 +616,7 @@
     </repositories>
 	<pluginRepositories>
         <pluginRepository>
-            <id>github1</id>
+            <id>github</id>
             <url>https://maven.pkg.github.com/navikt/dev-jakarta-transform/</url>
         </pluginRepository>
     </pluginRepositories>
