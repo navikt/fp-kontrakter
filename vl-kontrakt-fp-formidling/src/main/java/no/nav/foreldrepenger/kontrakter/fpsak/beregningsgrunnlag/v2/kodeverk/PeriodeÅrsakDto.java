@@ -10,7 +10,6 @@ public enum PeriodeÅrsakDto {
     GRADERING,
     GRADERING_OPPHØRER,
     ENDRING_I_AKTIVITETER_SØKT_FOR,
-    REFUSJON_AVSLÅTT,
-    ;
+    REFUSJON_AVSLÅTT
 
 }

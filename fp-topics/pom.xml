@@ -18,10 +18,7 @@
 
 	<modules>
 		<module>hendelser-behandlingsprosess</module>
-        <module>hendelser-historikk-innslag</module>
 		<module>manifest</module>
-        <module>hendelser-dokumentbestilling</module>
-        <module>hendelser-kontroll-resultat</module>
         <module>hendelser-inntektsmelding</module>
     </modules>
 
