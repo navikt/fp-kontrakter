@@ -14,6 +14,6 @@ public enum AktivitetStatusDto {
     BRUKERS_ANDEL,
     KUN_YTELSE,
     TTLSTØTENDE_YTELSE,
-    VENTELØNN_VARTPENGER;
+    VENTELØNN_VARTPENGER
 
 }
