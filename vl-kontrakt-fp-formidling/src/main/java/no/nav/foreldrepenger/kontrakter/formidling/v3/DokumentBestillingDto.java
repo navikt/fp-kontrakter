@@ -19,8 +19,8 @@ import no.nav.foreldrepenger.kontrakter.formidling.kodeverk.YtelseType;
  * - frontend bør generere uuid for bestilling
  * - frontend bruker modernisert bestilling - 4 felt fom automatiskVedtaksbrev
  */
-public record DokumentBestillingDto(@NotNull UUID behandlingUuid,
-                                    @NotNull UUID dokumentbestillingUuid,
+public record DokumentBestillingDto(@NotNull @Valid UUID behandlingUuid,
+                                    @NotNull @Valid UUID dokumentbestillingUuid,
                                     @NotNull @Valid YtelseType ytelseType,
                                     @NotNull @Valid DokumentMal dokumentMal,
                                     String fritekst,
