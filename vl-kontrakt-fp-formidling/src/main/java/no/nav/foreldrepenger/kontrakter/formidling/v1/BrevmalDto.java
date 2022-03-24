@@ -6,5 +6,4 @@ import javax.validation.constraints.Pattern;
 public record BrevmalDto(@NotNull @Pattern(regexp = "[A-Z]{6}") String kode,
                          @NotNull String navn,
                          boolean tilgjengelig) {
-
 }
