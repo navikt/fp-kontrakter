@@ -63,7 +63,6 @@
 					<xsd:enumeration value="ARBEID_OG_UTDANNING"/>
 					<xsd:enumeration value="SAMTIDIGUTTAK"/>
 					<xsd:enumeration value="UFØRE"/>
-					<xsd:enumeration value="UTEN_AKTIVITETSKRAV"/>
 					<xsd:enumeration value="-"/>
 				</xsd:restriction>
 			</xsd:simpleType>
