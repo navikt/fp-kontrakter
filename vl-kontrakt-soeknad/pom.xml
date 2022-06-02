@@ -7,23 +7,14 @@
 		<artifactId>fp-kontrakter-root</artifactId>
 		<version>${revision}</version>
 	</parent>
-	
+
     <artifactId>soeknad-pom</artifactId>
     <packaging>pom</packaging>
     <name>(FPSAK) Kontrakter - soeknad</name>
-    
+
 	<modules>
 		<module>soeknad-v1</module>
 		<module>soeknad-v2</module>
 		<module>soeknad-v3</module>
 	</modules>
-	
-    <dependencies>	
-		<dependency>
-            <groupId>org.glassfish.jaxb</groupId>
-            <artifactId>jaxb-runtime</artifactId>
-			<scope>provided</scope>
-        </dependency>
-    </dependencies>
-
 </project>

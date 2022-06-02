@@ -6,7 +6,7 @@
 		<artifactId>fp-kontrakter-root</artifactId>
 		<version>${revision}</version>
 	</parent>
-    
+
 	<artifactId>behandlingsprosess-vedtak-pom</artifactId>
     <packaging>pom</packaging>
     <name>(FPSAK) Kontrakter - behandlingsprosess-vedtak-pom</name>

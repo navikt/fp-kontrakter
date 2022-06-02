@@ -14,7 +14,6 @@
 	<name>(FPSAK) Kontrakter - behandlingsprosess-vedtak-v2</name>
 
 	<dependencies>
-
 		<dependency>
 			<groupId>org.glassfish.jaxb</groupId>
 			<artifactId>jaxb-runtime</artifactId>
@@ -34,5 +33,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>

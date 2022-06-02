@@ -7,11 +7,11 @@
 		<artifactId>fp-kontrakter-root</artifactId>
 		<version>${revision}</version>
 	</parent>
-	
+
     <artifactId>oekonomi-pom</artifactId>
     <packaging>pom</packaging>
     <name>(FPSAK) Kontrakter - oekonomi</name>
-    
+
 	<modules>
 		<module>grensesnittavstemming-v1</module>
 		<module>oppdragskjema-v1</module>
