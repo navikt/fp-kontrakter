@@ -75,6 +75,7 @@
 	<xsd:complexType name="Fordeling">
 		<xsd:sequence>
 			<xsd:element name="annenForelderErInformert" type="xsd:boolean" />
+			<xsd:element name="oenskerJustertVedFoedsel" minOccurs="0" type="xsd:boolean" />
 			<xsd:element maxOccurs="unbounded" minOccurs="0" name="perioder" type="ut:LukketPeriodeMedVedlegg" />
 			<xsd:element minOccurs="0" name="oenskerKvoteOverfoert" type="kv:Overfoeringsaarsaker" />
 		</xsd:sequence>
