@@ -10,11 +10,13 @@ import java.net.URL;
 import java.time.LocalDate;
 
 public class TilbakebetalingBehandlingProsessEventDto extends BehandlingProsessEventDto {
+
     @JsonSerialize(using = ToStringSerializer.class)
     @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDate førsteFeilutbetaling;
     private BigDecimal feilutbetaltBeløp;
     private String ansvarligSaksbehandlerIdent;
+    private String ansvarligBeslutterIdent;
 
     public TilbakebetalingBehandlingProsessEventDto() {
     }
@@ -31,11 +33,16 @@ public class TilbakebetalingBehandlingProsessEventDto extends BehandlingProsessE
         return ansvarligSaksbehandlerIdent;
     }
 
+    public String getAnsvarligBeslutterIdent() {
+        return ansvarligBeslutterIdent;
+    }
+
     protected TilbakebetalingBehandlingProsessEventDto(Builder<?> builder) {
         super(builder);
         this.førsteFeilutbetaling = builder.førsteFeilutbetaling;
         this.feilutbetaltBeløp = builder.feilutbetaltBeløp;
         this.ansvarligSaksbehandlerIdent = builder.ansvarligSaksbehandlerIdent;
+        this.ansvarligBeslutterIdent = builder.ansvarligBeslutterIdent;
     }
 
     public static abstract class Builder<T extends Builder<T>> extends BehandlingProsessEventDto.Builder<T> {
@@ -43,6 +50,7 @@ public class TilbakebetalingBehandlingProsessEventDto extends BehandlingProsessE
         private BigDecimal feilutbetaltBeløp;
         private String ansvarligSaksbehandlerIdent;
         private URL href;
+        public String ansvarligBeslutterIdent;
 
         public T medFørsteFeilutbetaling(LocalDate førsteFeilutbetaling) {
             this.førsteFeilutbetaling = førsteFeilutbetaling;
@@ -56,6 +64,11 @@ public class TilbakebetalingBehandlingProsessEventDto extends BehandlingProsessE
 
         public T medAnsvarligSaksbehandlerIdent(String saksbehandlerIdent) {
             this.ansvarligSaksbehandlerIdent = saksbehandlerIdent;
+            return self();
+        }
+
+        public T medAnsvarligBeslutterIdent(String ident) {
+            this.ansvarligBeslutterIdent = ident;
             return self();
         }
 
