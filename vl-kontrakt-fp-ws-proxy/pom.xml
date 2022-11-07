@@ -1,0 +1,31 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>no.nav.foreldrepenger.kontrakter</groupId>
+        <artifactId>fp-kontrakter-root</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <artifactId>vl-kontrakt-fp-ws-proxy</artifactId>
+    <packaging>jar</packaging>
+    <name>(FPSAK) Kontrakter - fp-ws-proxy</name>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>no.nav.foreldrepenger.felles</groupId>
+            <artifactId>felles-util</artifactId>
+            <version>4.2.8</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+        </dependency>
+    </dependencies>
+</project>

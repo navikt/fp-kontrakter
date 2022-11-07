@@ -69,6 +69,7 @@
         <module>fp-topics</module>
         <module>vl-kontrakt-fp-formidling</module>
         <module>vl-kontrakt-oekonomi</module>
+        <module>vl-kontrakt-fp-ws-proxy</module>
     </modules>
 
     <dependencyManagement>
