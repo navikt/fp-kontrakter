@@ -11,6 +11,10 @@ public record BeregningDto(String gjelderId,
                            BigDecimal belop,
                            List<BeregningsPeriodeDto> beregningsPeriode) {
 
+    public BeregningDto {
+        beregningsPeriode = Optional.ofNullable(beregningsPeriode).orElse(List.of());
+    }
+
     private BeregningDto(Builder builder) {
         this(builder.gjelderId,
         builder.gjelderNavn,

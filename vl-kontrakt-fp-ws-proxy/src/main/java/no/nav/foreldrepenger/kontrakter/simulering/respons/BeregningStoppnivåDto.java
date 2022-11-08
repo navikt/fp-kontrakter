@@ -2,6 +2,7 @@ package no.nav.foreldrepenger.kontrakter.simulering.respons;
 
 import java.math.BigInteger;
 import java.util.List;
+import java.util.Optional;
 
 public record BeregningStoppnivåDto(String kodeFagomraade,
                                     BigInteger stoppNivaaId,
@@ -15,6 +16,10 @@ public record BeregningStoppnivåDto(String kodeFagomraade,
                                     String forfall,
                                     boolean feilkonto,
                                     List<BeregningStoppnivåDetaljerDto> beregningStoppnivaaDetaljer) {
+
+    public BeregningStoppnivåDto {
+        beregningStoppnivaaDetaljer = Optional.ofNullable(beregningStoppnivaaDetaljer).orElse(List.of());
+    }
 
     private BeregningStoppnivåDto(Builder builder) {
         this(builder.kodeFagomraade,

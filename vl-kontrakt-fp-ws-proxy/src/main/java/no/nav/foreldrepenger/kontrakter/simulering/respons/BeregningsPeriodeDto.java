@@ -7,4 +7,7 @@ public record BeregningsPeriodeDto(String periodeFom,
                                    String periodeTom,
                                    List<BeregningStoppnivåDto> beregningStoppnivaa) {
 
+    public BeregningsPeriodeDto {
+        beregningStoppnivaa = Optional.ofNullable(beregningStoppnivaa).orElse(List.of());
+    }
 }
