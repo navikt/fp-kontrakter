@@ -4,13 +4,10 @@ on: [pull_request_target]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
       - name: Sjekk ut kode
         uses: actions/checkout@v3
-
       - name: Setup maven
         uses: whelk-io/maven-settings-xml-action@v20
         with:
