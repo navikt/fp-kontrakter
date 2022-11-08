@@ -1,4 +1,4 @@
-package no.nav.foreldrepenger.kontrakter.simulering;
+package no.nav.foreldrepenger.kontrakter.simulering.request;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 

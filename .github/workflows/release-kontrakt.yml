@@ -34,6 +34,4 @@ jobs:
            mvn -B -s settings.xml versions:set -DnewVersion=${NEW_VERSION} -DgenerateBackupPoms=false
            mvn deploy -e -B -s settings.xml -Dfile.encoding=UTF-8
         env:
-          GH_ACCESS_TOKEN : ${{ secrets.GH_ACCESS_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
           NEW_VERSION: ${{ github.event.release.tag_name }}

@@ -1,4 +1,4 @@
-package no.nav.foreldrepenger.kontrakter.simulering;
+package no.nav.foreldrepenger.kontrakter.simulering.request;
 
 import java.time.LocalDate;
 
@@ -10,10 +10,8 @@ import javax.validation.constraints.Pattern;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import no.nav.vedtak.util.InputValideringRegex;
-
 public record Oppdragslinje150Dto(@Valid @NotNull KodeEndringLinje kodeEndringLinje,
-                                  @NotNull @Pattern(regexp = InputValideringRegex.FRITEKST) String vedtakId,
+                                  @NotNull @Pattern(regexp = "^[\\p{L}\\p{Blank}.'\\-\\–0-9/\\p{Space}%§\\!?@_()+:;,=\"&\\p{Sc}]*$") String vedtakId,
                                   @NotNull @Min(0) @Max(Long.MAX_VALUE) Long delytelseId,
                                   @Valid @NotNull KodeKlassifik kodeKlassifik,
                                   @Valid @NotNull LukketPeriode vedtakPeriode,
@@ -22,7 +20,7 @@ public record Oppdragslinje150Dto(@Valid @NotNull KodeEndringLinje kodeEndringLi
                                   @Valid UtbetalingsgradDto utbetalingsgrad,
                                   @Valid KodeStatusLinje kodeStatusLinje,
                                   LocalDate datoStatusFom,
-                                  @Pattern(regexp = InputValideringRegex.FRITEKST) String utbetalesTilId,
+                                  @Pattern(regexp = "^[\\p{L}\\p{Blank}.'\\-\\–0-9/\\p{Space}%§\\!?@_()+:;,=\"&\\p{Sc}]*$") String utbetalesTilId,
                                   @Min(0) @Max(Long.MAX_VALUE) Long refDelytelseId,
                                   @Min(0) @Max(Long.MAX_VALUE) Long refFagsystemId,
                                   @Valid Refusjonsinfo156Dto refusjonsinfo156) {

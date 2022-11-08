@@ -1,4 +1,4 @@
-package no.nav.foreldrepenger.kontrakter.simulering;
+package no.nav.foreldrepenger.kontrakter.simulering.respons;
 
 import java.util.List;
 import java.util.Optional;
