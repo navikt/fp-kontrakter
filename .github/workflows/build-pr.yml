@@ -16,6 +16,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - name: Setup maven
         uses: whelk-io/maven-settings-xml-action@v20
         with:
@@ -32,9 +34,15 @@ jobs:
 
       - name: Hent tag
         run: echo "TAG=$(date +%Y.%m.%d.%H%M%S)-$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_ENV
+
       - name: Build
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           echo "Building $TAG"
-          mvn jacoco:prepare-agent package jacoco:report sonar:sonar -e -B -s settings.xml -Drevision=$TAG
+          mvn package -e -B -s settings.xml -Drevision=$TAG
+
+      - name: Sonar analyse
+        if: github.actor != 'dependabot[bot]'
+        run: |
+          mvn jacoco:report org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -e -B -s settings.xml -Drevision=$TAG
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
