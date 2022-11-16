@@ -6,24 +6,24 @@ import java.util.List;
 import java.util.Optional;
 
 
-public record MeldekortUtbetalingsgrunnlagSak(Fagsystem kilde,
-                                              LocalDate kravMottattDato,
-                                              List<MeldekortUtbetalingsgrunnlagMeldekort> meldekortene,
-                                              String sakStatus,
-                                              String saksnummer,
-                                              YtelseStatus tilstand,
-                                              YtelseType type,
-                                              String vedtakStatus,
-                                              Beløp vedtaksDagsats,
-                                              LocalDate vedtaksPeriodeFom,
-                                              LocalDate vedtaksPeriodeTom,
-                                              LocalDate vedtattDato) {
+public record MeldekortUtbetalingsgrunnlagSakDto(FagsystemDto kilde,
+                                                 LocalDate kravMottattDato,
+                                                 List<MeldekortUtbetalingsgrunnlagMeldekortDto> meldekortene,
+                                                 String sakStatus,
+                                                 String saksnummer,
+                                                 YtelseStatusDto tilstand,
+                                                 YtelseTypeDto type,
+                                                 String vedtakStatus,
+                                                 BeløpDto vedtaksDagsats,
+                                                 LocalDate vedtaksPeriodeFom,
+                                                 LocalDate vedtaksPeriodeTom,
+                                                 LocalDate vedtattDato) {
 
-    public MeldekortUtbetalingsgrunnlagSak {
+    public MeldekortUtbetalingsgrunnlagSakDto {
         meldekortene = Optional.ofNullable(meldekortene).orElse(Collections.emptyList());
     }
 
-    public MeldekortUtbetalingsgrunnlagSak(Builder builder) {
+    public MeldekortUtbetalingsgrunnlagSakDto(Builder builder) {
         this(builder.kilde,
             builder.kravMottattDato,
             builder.meldekortene,
@@ -39,15 +39,15 @@ public record MeldekortUtbetalingsgrunnlagSak(Fagsystem kilde,
     }
 
     public static class Builder {
-        private Fagsystem kilde;
+        private FagsystemDto kilde;
         private LocalDate kravMottattDato;
-        private List<MeldekortUtbetalingsgrunnlagMeldekort> meldekortene;
+        private List<MeldekortUtbetalingsgrunnlagMeldekortDto> meldekortene;
         private String sakStatus;
         private String saksnummer;
-        private YtelseStatus tilstand;
-        private YtelseType type;
+        private YtelseStatusDto tilstand;
+        private YtelseTypeDto type;
         private String vedtakStatus;
-        private Beløp vedtaksDagsats;
+        private BeløpDto vedtaksDagsats;
         private LocalDate vedtaksPeriodeFom;
         private LocalDate vedtaksPeriodeTom;
         private LocalDate vedtattDato;
@@ -55,7 +55,7 @@ public record MeldekortUtbetalingsgrunnlagSak(Fagsystem kilde,
         public Builder() {
         }
 
-        public Builder kilde(Fagsystem kilde) {
+        public Builder kilde(FagsystemDto kilde) {
             this.kilde = kilde;
             return this;
         }
@@ -65,7 +65,7 @@ public record MeldekortUtbetalingsgrunnlagSak(Fagsystem kilde,
             return this;
         }
 
-        public Builder meldekortene(List<MeldekortUtbetalingsgrunnlagMeldekort> meldekortene) {
+        public Builder meldekortene(List<MeldekortUtbetalingsgrunnlagMeldekortDto> meldekortene) {
             this.meldekortene = meldekortene;
             return this;
         }
@@ -80,12 +80,12 @@ public record MeldekortUtbetalingsgrunnlagSak(Fagsystem kilde,
             return this;
         }
 
-        public Builder tilstand(YtelseStatus tilstand) {
+        public Builder tilstand(YtelseStatusDto tilstand) {
             this.tilstand = tilstand;
             return this;
         }
 
-        public Builder type(YtelseType type) {
+        public Builder type(YtelseTypeDto type) {
             this.type = type;
             return this;
         }
@@ -95,7 +95,7 @@ public record MeldekortUtbetalingsgrunnlagSak(Fagsystem kilde,
             return this;
         }
 
-        public Builder vedtaksDagsats(Beløp vedtaksDagsats) {
+        public Builder vedtaksDagsats(BeløpDto vedtaksDagsats) {
             this.vedtaksDagsats = vedtaksDagsats;
             return this;
         }
@@ -115,8 +115,8 @@ public record MeldekortUtbetalingsgrunnlagSak(Fagsystem kilde,
             return this;
         }
 
-        public MeldekortUtbetalingsgrunnlagSak build() throws IllegalStateException {
-            return new MeldekortUtbetalingsgrunnlagSak(this);
+        public MeldekortUtbetalingsgrunnlagSakDto build() throws IllegalStateException {
+            return new MeldekortUtbetalingsgrunnlagSakDto(this);
         }
     }
 }
