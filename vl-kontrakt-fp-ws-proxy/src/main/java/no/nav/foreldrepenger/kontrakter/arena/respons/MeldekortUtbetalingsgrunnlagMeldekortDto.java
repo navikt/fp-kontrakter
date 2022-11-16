@@ -4,13 +4,13 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 
-public record MeldekortUtbetalingsgrunnlagMeldekort(BigDecimal beløp,
-                                                    BigDecimal dagsats,
-                                                    LocalDate meldekortFom,
-                                                    LocalDate meldekortTom,
-                                                    BigDecimal utbetalingsgrad) {
+public record MeldekortUtbetalingsgrunnlagMeldekortDto(BigDecimal beløp,
+                                                       BigDecimal dagsats,
+                                                       LocalDate meldekortFom,
+                                                       LocalDate meldekortTom,
+                                                       BigDecimal utbetalingsgrad) {
 
-    public MeldekortUtbetalingsgrunnlagMeldekort(Builder builder) {
+    public MeldekortUtbetalingsgrunnlagMeldekortDto(Builder builder) {
         this(builder.beløp, builder.dagsats, builder.meldekortFom, builder.meldekortTom, builder.utbetalingsgrad);
     }
 
@@ -49,8 +49,8 @@ public record MeldekortUtbetalingsgrunnlagMeldekort(BigDecimal beløp,
             return this;
         }
 
-        public MeldekortUtbetalingsgrunnlagMeldekort build() throws IllegalStateException {
-            return new MeldekortUtbetalingsgrunnlagMeldekort(this);
+        public MeldekortUtbetalingsgrunnlagMeldekortDto build() throws IllegalStateException {
+            return new MeldekortUtbetalingsgrunnlagMeldekortDto(this);
         }
     }
 

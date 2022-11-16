@@ -1,6 +1,6 @@
 package no.nav.foreldrepenger.kontrakter.arena.respons;
 
-public enum Fagsystem {
+public enum FagsystemDto {
 
     BISYS,
     BIDRAGINNKREVING,

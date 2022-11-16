@@ -1,6 +1,6 @@
 package no.nav.foreldrepenger.kontrakter.arena.respons;
 
-public enum YtelseStatus {
+public enum YtelseStatusDto {
     OPPR,
     UBEH,
     LOP,
