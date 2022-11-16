@@ -1,7 +1,9 @@
 package no.nav.foreldrepenger.kontrakter.arena.respons;
 
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 
 public record MeldekortUtbetalingsgrunnlagSak(Fagsystem kilde,
@@ -16,6 +18,10 @@ public record MeldekortUtbetalingsgrunnlagSak(Fagsystem kilde,
                                               LocalDate vedtaksPeriodeFom,
                                               LocalDate vedtaksPeriodeTom,
                                               LocalDate vedtattDato) {
+
+    public MeldekortUtbetalingsgrunnlagSak {
+        meldekortene = Optional.ofNullable(meldekortene).orElse(Collections.emptyList());
+    }
 
     public MeldekortUtbetalingsgrunnlagSak(Builder builder) {
         this(builder.kilde,
