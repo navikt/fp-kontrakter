@@ -39,7 +39,7 @@ public record MeldekortUtbetalingsgrunnlagMeldekort(BigDecimal beløp,
             return this;
         }
 
-        public Builder smeldekortTom(LocalDate meldekortTom) {
+        public Builder meldekortTom(LocalDate meldekortTom) {
             this.meldekortTom = meldekortTom;
             return this;
         }
