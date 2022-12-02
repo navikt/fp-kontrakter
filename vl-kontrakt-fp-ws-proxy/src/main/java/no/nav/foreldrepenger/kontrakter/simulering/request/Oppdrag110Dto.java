@@ -17,7 +17,6 @@ public record Oppdrag110Dto(@Valid @NotNull KodeEndring kodeEndring,
                             @NotNull @Min(0) @Max(Long.MAX_VALUE) Long fagsystemId,
                             @NotNull @Pattern(regexp = "^[\\p{L}\\p{Blank}.'\\-\\–0-9/\\p{Space}%§\\!?@_()+:;,=\"&\\p{Sc}]*$") String oppdragGjelderId,
                             @NotNull @Pattern(regexp = "^[\\p{L}\\p{Blank}.'\\-\\–0-9/\\p{Space}%§\\!?@_()+:;,=\"&\\p{Sc}]*$") String saksbehId,
-                            @NotNull @Pattern(regexp = "^[\\p{L}\\p{Blank}.'\\-\\–0-9/\\p{Space}%§\\!?@_()+:;,=\"&\\p{Sc}]*$") String nøkkelAvstemming,
                             @Valid Ompostering116Dto ompostering116,
                             @Valid @NotNull @Size(min = 1) List<@Valid @NotNull Oppdragslinje150Dto> oppdragslinje150Liste) {
 

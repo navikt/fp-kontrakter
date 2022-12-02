@@ -18,7 +18,7 @@ import no.nav.foreldrepenger.kontrakter.simulering.util.TestJsonMapper;
 
 class BeregningDtoSeraliseringDeseraliseringTest {
     private static final Logger LOG = LoggerFactory.getLogger(BeregningDtoSeraliseringDeseraliseringTest.class);
-    private static ObjectMapper mapper = TestJsonMapper.getMapper();
+    private static final ObjectMapper mapper = TestJsonMapper.getMapper();
 
     @Test
     void beregningDtoSeraliseringDeseraliseringRoundTripTest() {
