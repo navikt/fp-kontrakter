@@ -24,7 +24,6 @@ class HentKravgrunnlagDetaljDtoSeraliseringDeseraliseringTest {
     @Test
     void hentKravgrunnlagDetaljDtoSeraliseringDeseraliseringTest() {
         var hentKravgrunnlagDetaljDto = new HentKravgrunnlagDetaljDto.Builder()
-                .behandlingsId(1234L)
                 .kravgrunnlagId(BigInteger.TEN)
                 .kodeAksjon(KodeAksjon.FATTE_VEDTAK)
                 .saksbehId("Z123456")
@@ -36,7 +35,6 @@ class HentKravgrunnlagDetaljDtoSeraliseringDeseraliseringTest {
     @Test
     void hentKravgrunnlagDetaljDtoDeseraliseringKonsistensTest() throws JsonProcessingException {
         var hentKravgrunnlagDetaljDto = new HentKravgrunnlagDetaljDto.Builder()
-                .behandlingsId(1234L)
                 .kravgrunnlagId(BigInteger.TEN)
                 .kodeAksjon(KodeAksjon.FATTE_VEDTAK)
                 .saksbehId("Z123456")
@@ -44,7 +42,6 @@ class HentKravgrunnlagDetaljDtoSeraliseringDeseraliseringTest {
                 .build();
         var seralisertHentKravgrunnlagDetaljDto = """
                 {
-                  "behandlingsId" : 1234,
                   "kodeAksjon" : "8",
                   "kravgrunnlagId" : 10,
                   "saksbehId" : "Z123456",
