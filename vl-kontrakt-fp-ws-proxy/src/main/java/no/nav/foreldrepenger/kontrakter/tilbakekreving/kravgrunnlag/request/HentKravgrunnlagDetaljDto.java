@@ -6,18 +6,18 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 
-public record HentKravgrunnlagDetaljDto(@NotNull Long behandlingsId,
+public record HentKravgrunnlagDetaljDto(Long behandlingsId,
                                         @NotNull KodeAksjon kodeAksjon,
                                         @NotNull BigInteger kravgrunnlagId,
                                         @NotNull @Pattern(regexp = "^[a-zA-Z0-9_\\-]*$") String saksbehId,
                                         @NotNull @Pattern(regexp = "^[a-zA-Z0-9_\\-]*$") String enhetAnsvarlig) {
 
     public HentKravgrunnlagDetaljDto(Builder builder) {
-        this(   builder.behandlingsId,
-                builder.kodeAksjon,
-                builder.kravgrunnlagId,
-                builder.saksbehId,
-                builder.enhetAnsvarlig);
+        this(builder.behandlingsId,
+             builder.kodeAksjon,
+             builder.kravgrunnlagId,
+             builder.saksbehId,
+             builder.enhetAnsvarlig);
     }
 
     public static class Builder {
