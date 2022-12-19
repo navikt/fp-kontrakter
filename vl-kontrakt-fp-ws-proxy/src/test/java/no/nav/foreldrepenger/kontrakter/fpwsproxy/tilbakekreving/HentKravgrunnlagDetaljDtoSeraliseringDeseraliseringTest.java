@@ -1,4 +1,4 @@
-package no.nav.foreldrepenger.kontrakter.fpwsproxy.tilbakekreving.kravgrunnlag;
+package no.nav.foreldrepenger.kontrakter.fpwsproxy.tilbakekreving;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
