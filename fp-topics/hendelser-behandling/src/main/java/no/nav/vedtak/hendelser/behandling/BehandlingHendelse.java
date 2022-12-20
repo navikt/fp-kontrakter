@@ -15,6 +15,8 @@ import no.nav.vedtak.hendelser.behandling.v1.BehandlingHendelseV1;
 })
 public abstract class BehandlingHendelse {
 
+    public abstract UUID getHendelseUuid();
+
     public abstract UUID getBehandlingUuid();
 
     public abstract Kildesystem getKildesystem();

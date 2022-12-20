@@ -21,11 +21,34 @@ public class BehandlingHendelseV1Test {
     private static final ObjectReader READER = TestJsonMapper.getMapper().reader();
 
     @Test
-    public void test_innteksmelding_fp() throws Exception {
+    public void test_minimal_fp() throws Exception {
+        var uuid = UUID.randomUUID();
+        var inntektsmelding = new BehandlingHendelseV1.Builder()
+            .medHendelseUuid(UUID.randomUUID())
+            .medBehandlingUuid(uuid)
+            .medHendelse(Hendelse.AKSJONSPUNKT)
+            .medKildesystem(Kildesystem.FPSAK)
+            .build();
+
+        String json = WRITER.writeValueAsString(inntektsmelding);
+        System.out.println(json);
+
+        BehandlingHendelseV1 roundTripped = READER.forType(BehandlingHendelseV1.class).readValue(json);
+
+        assertThat(roundTripped).isNotNull();
+        assertThat(roundTripped.getBehandlingUuid()).isEqualTo(uuid);
+        assertThat(roundTripped.getHendelse()).isEqualTo(Hendelse.AKSJONSPUNKT);
+        assertThat(roundTripped.getKildesystem()).isEqualTo(Kildesystem.FPSAK);
+        validateResult(roundTripped);
+    }
+
+    @Test
+    public void test_maksimal_fp() throws Exception {
         var uuid = UUID.randomUUID();
         LocalDate startDato = LocalDate.now().plusWeeks(3);
         LocalDateTime innsending = LocalDateTime.now().minusMinutes(3);
         var inntektsmelding = new BehandlingHendelseV1.Builder()
+            .medHendelseUuid(UUID.randomUUID())
             .medAktørId("1234567891234")
             .medBehandlingUuid(uuid)
             .medHendelse(Hendelse.OPPRETTET)

@@ -4,7 +4,6 @@ import java.util.UUID;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -13,10 +12,17 @@ import no.nav.vedtak.hendelser.behandling.BehandlingHendelse;
 import no.nav.vedtak.hendelser.behandling.Behandlingstype;
 import no.nav.vedtak.hendelser.behandling.Hendelse;
 import no.nav.vedtak.hendelser.behandling.Kildesystem;
-import no.nav.vedtak.hendelser.behandling.Ventekategori;
 import no.nav.vedtak.hendelser.behandling.Ytelse;
 
 public class BehandlingHendelseV1 extends BehandlingHendelse {
+
+    /**
+     * Behandling som er endret
+     */
+    @NotNull
+    @Valid
+    @JsonProperty("hendelseUuid")
+    private UUID hendelseUuid;
 
     /**
      * Behandling som er endret
@@ -45,7 +51,6 @@ public class BehandlingHendelseV1 extends BehandlingHendelse {
     /**
      * Behandlingen gjelder bruker
      */
-    @NotNull
     @Valid
     @JsonProperty("aktørId")
     private AktørId aktørId;
@@ -53,30 +58,25 @@ public class BehandlingHendelseV1 extends BehandlingHendelse {
     /**
      * Behandlingen gjelder saksnummer
      */
-    @NotNull
-    @Pattern(regexp = "^(-?[1-9]|[a-z0])[a-z0-9_:-]*$", flags = { Pattern.Flag.CASE_INSENSITIVE })
     @JsonProperty("saksnummer")
     private String saksnummer;
 
     /**
      * Saken gjelder ytelse
      */
-    @NotNull
     @JsonProperty("ytelse")
     private Ytelse ytelse;
 
     /**
      * Behandling av type
      */
-    @NotNull
     @JsonProperty("behandlingstype")
     private Behandlingstype behandlingstype;
 
-    /**
-     * Eventuell kategori av ventetilstand
-     */
-    @JsonProperty("ventekategori")
-    private Ventekategori ventekategori;
+    @Override
+    public UUID getHendelseUuid() {
+        return hendelseUuid;
+    }
 
     @Override
     public UUID getBehandlingUuid() {
@@ -109,15 +109,16 @@ public class BehandlingHendelseV1 extends BehandlingHendelse {
         return behandlingstype;
     }
 
-    public Ventekategori getVentekategori() {
-        return ventekategori;
-    }
-
     public static class Builder {
         private BehandlingHendelseV1 behandlingHendelse;
 
         public Builder() {
             behandlingHendelse = new BehandlingHendelseV1();
+        }
+
+        public Builder medHendelseUuid(UUID hendelseUuid) {
+            behandlingHendelse.hendelseUuid = hendelseUuid;
+            return this;
         }
 
         public Builder medBehandlingUuid(UUID behandlingUuid) {
@@ -152,11 +153,6 @@ public class BehandlingHendelseV1 extends BehandlingHendelse {
 
         public Builder medBehandlingstype(Behandlingstype behandlingstype) {
             behandlingHendelse.behandlingstype = behandlingstype;
-            return this;
-        }
-
-        public Builder medVentekategori(Ventekategori ventekategori) {
-            behandlingHendelse.ventekategori = ventekategori;
             return this;
         }
 
