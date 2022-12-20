@@ -20,6 +20,7 @@
 		<module>hendelser-behandlingsprosess</module>
 		<module>manifest</module>
         <module>hendelser-inntektsmelding</module>
+        <module>hendelser-behandling</module>
     </modules>
 
 	<dependencyManagement>
