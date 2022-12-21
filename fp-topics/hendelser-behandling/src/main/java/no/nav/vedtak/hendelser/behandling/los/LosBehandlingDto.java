@@ -30,16 +30,18 @@ public record LosBehandlingDto(@NotNull UUID behandlingUuid,
                                List<LosAksjonspunktDto> aksjonspunkt,
                                List<Behandlingsårsak> behandlingsårsaker,
                                boolean faresignaler,
-                               BigDecimal feilutbetaltBeløp,
-                               LocalDate førsteFeilutbetalingDato,
                                boolean refusjonskrav,
-                               LosForeldrepengerDto foreldrepengerDto) {
+                               LosForeldrepengerDto foreldrepengerDto,
+                               LosTilbakeDto tilbakeDto) {
 
 
     public record LosAksjonspunktDto(String definisjon, Aksjonspunktstatus status, String begrunnelse, LocalDateTime fristTid) {
     }
 
-    public record LosForeldrepengerDto(boolean annenForelderRettEØS, boolean sykdomsvurdering, boolean gradering) {
+    public record LosForeldrepengerDto(LocalDate førsteUttakDato, boolean annenForelderRettEØS, boolean sykdomsvurdering, boolean gradering) {
+    }
+
+    public record LosTilbakeDto(BigDecimal feilutbetaltBeløp, LocalDate førsteFeilutbetalingDato) {
     }
 
 }
