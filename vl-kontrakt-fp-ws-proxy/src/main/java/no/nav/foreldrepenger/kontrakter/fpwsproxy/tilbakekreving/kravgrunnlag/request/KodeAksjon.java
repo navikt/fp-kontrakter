@@ -14,8 +14,13 @@ public enum KodeAksjon {
 
     private static final Map<String, KodeAksjon> KODER = new LinkedHashMap<>();
 
-    @JsonValue
-    private final String kode;
+    static {
+        for (var v : values()) {
+            if (KODER.putIfAbsent(v.kode, v) != null) {
+                throw new IllegalArgumentException("Duplikat : " + v.kode);
+            }
+        }
+    }
 
     public static KodeAksjon fraKode(String kode) {
         if (kode == null) {
@@ -23,10 +28,13 @@ public enum KodeAksjon {
         }
         var ad = KODER.get(kode);
         if (ad == null) {
-            throw new IllegalArgumentException("Ukjent InntektPeriodeType: " + kode);
+            throw new IllegalArgumentException("Ukjent KodeAksjon: " + kode);
         }
         return ad;
     }
+
+    @JsonValue
+    private final String kode;
 
     KodeAksjon(String kode) {
         this.kode = kode;
