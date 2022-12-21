@@ -1,5 +1,8 @@
 package no.nav.foreldrepenger.kontrakter.fpwsproxy.tilbakekreving.kravgrunnlag.request;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum KodeAksjon {
@@ -9,8 +12,21 @@ public enum KodeAksjon {
     FATTE_VEDTAK("8"),
     ANNULERE_GRUNNLAG("A");
 
+    private static final Map<String, KodeAksjon> KODER = new LinkedHashMap<>();
+
     @JsonValue
     private final String kode;
+
+    public static KodeAksjon fraKode(String kode) {
+        if (kode == null) {
+            return null;
+        }
+        var ad = KODER.get(kode);
+        if (ad == null) {
+            throw new IllegalArgumentException("Ukjent InntektPeriodeType: " + kode);
+        }
+        return ad;
+    }
 
     KodeAksjon(String kode) {
         this.kode = kode;
