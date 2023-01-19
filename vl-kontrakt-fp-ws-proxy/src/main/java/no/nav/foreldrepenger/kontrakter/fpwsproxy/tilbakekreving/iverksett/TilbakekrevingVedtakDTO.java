@@ -13,9 +13,9 @@ public record TilbakekrevingVedtakDTO(@NotNull @Pattern(regexp = "^[A-Z0-9]{1}$"
                                       LocalDate datoVedtakFagsystem,
                                       @NotNull @Pattern(regexp = "^[\\p{L}_\\-\\–0-9]*$") String kodeHjemmel, // fast 22-15
                                       @Pattern(regexp = "^[\\p{L}\\p{Blank}.'\\-\\–0-9/\\p{Space}%§\\!?@_()+:;,=\"&\\p{Sc}]*$") String renterBeregnes,
-                                      @NotNull @Pattern(regexp = "^[0-9]{4}$") String enhetAnsvarlig,
-                                      @NotNull @Pattern(regexp = "^[\\p{L}\\p{Blank}.'\\-\\–0-9/\\p{Space}%§\\!?@_()+:;,=\"&\\p{Sc}]*$") String kontrollfelt,
-                                      @NotNull @Pattern(regexp = "^[\\p{L}0-9]{7}$") String saksbehId,
+                                      @NotNull @Pattern(regexp = "^[0-9]{4}$") String enhetAnsvarlig, // Eks: 8020
+                                      @NotNull @Pattern(regexp = "^[0-9.-]*$") String kontrollfelt, // Eks: 2020-01-16-22.50.59.293946
+                                      @NotNull @Pattern(regexp = "^[\\p{L}0-9\\-]*$") String saksbehId, // Eks: srvfptilbake og srvk9-tilbake
                                       List<@Valid TilbakekrevingsperiodeDTO> tilbakekrevingsperiode) {
 
     public TilbakekrevingVedtakDTO(Builder builder) {

@@ -6,15 +6,15 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
-public record TilbakekrevingsbelopDTO(@NotNull @Pattern(regexp = "^[\\p{L}\\p{Blank}.'\\-\\–0-9/\\p{Space}%§\\!?@_()+:;,=\"&\\p{Sc}]*$") String kodeKlasse,
+public record TilbakekrevingsbelopDTO(@NotNull @Pattern(regexp = "^[\\p{L}0-9_-]*$") String kodeKlasse, // Eks: FPADATORD, KL_KODE_FEIL_KORTTID, FPSND-OP, SPSND100D1DAGPFI
                                       @NotNull @Digits(integer = 8, fraction = 2) BigDecimal belopOpprUtbet,
                                       @NotNull @Digits(integer = 8, fraction = 2) BigDecimal belopNy,
                                       @Digits(integer = 8, fraction = 2) BigDecimal belopTilbakekreves,
                                       @Digits(integer = 8, fraction = 2) BigDecimal belopUinnkrevd,
                                       @Digits(integer = 8, fraction = 2) BigDecimal belopSkatt,
-                                      @NotNull @Pattern(regexp = "^[\\p{L}\\p{Blank}.'\\-\\–0-9/\\p{Space}%§\\!?@_()+:;,=\"&\\p{Sc}]*$") String kodeResultat,
-                                      @NotNull @Pattern(regexp = "^[\\p{L}\\p{Blank}.'\\-\\–0-9/\\p{Space}%§\\!?@_()+:;,=\"&\\p{Sc}]*$") String kodeAarsak,
-                                      @Pattern(regexp = "^[\\p{L}\\p{Blank}.'\\-\\–0-9/\\p{Space}%§\\!?@_()+:;,=\"&\\p{Sc}]*$") String kodeSkyld) {
+                                      @Pattern(regexp = "^[\\p{L}_]*$") String kodeResultat,// Bare satt ved YTLE => Eks: INGEN_TILBAKEKREV
+                                      @Pattern(regexp = "^[\\p{L}]*$") String kodeAarsak,   // Bare satt når YTLE => ANNET
+                                      @Pattern(regexp = "^[\\p{L}_]*$") String kodeSkyld) { // Bare satt når YTLE => IKKE_FORDELT
 
     public TilbakekrevingsbelopDTO(Builder builder) {
         this(builder.kodeKlasse,
