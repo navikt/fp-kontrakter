@@ -12,9 +12,9 @@ public record TilbakekrevingsbelopDTO(@NotNull @Pattern(regexp = "^[\\p{L}0-9_-]
                                       @Digits(integer = 8, fraction = 2) BigDecimal belopTilbakekreves,
                                       @Digits(integer = 8, fraction = 2) BigDecimal belopUinnkrevd,
                                       @Digits(integer = 8, fraction = 2) BigDecimal belopSkatt,
-                                      @Pattern(regexp = "^[\\p{L}_]*$") String kodeResultat,// Bare satt ved YTLE => Eks: INGEN_TILBAKEKREV
-                                      @Pattern(regexp = "^[\\p{L}]*$") String kodeAarsak,   // Bare satt når YTLE => ANNET
-                                      @Pattern(regexp = "^[\\p{L}_]*$") String kodeSkyld) { // Bare satt når YTLE => IKKE_FORDELT
+                                      @Pattern(regexp = "^[\\p{L}_]*$") KodeResultat kodeResultat,
+                                      @Pattern(regexp = "^[\\p{L}]*$") KodeÅrsak kodeAarsak,
+                                      @Pattern(regexp = "^[\\p{L}_]*$") KodeSkyld kodeSkyld) {
 
     public TilbakekrevingsbelopDTO(Builder builder) {
         this(builder.kodeKlasse,
@@ -35,9 +35,9 @@ public record TilbakekrevingsbelopDTO(@NotNull @Pattern(regexp = "^[\\p{L}0-9_-]
         private BigDecimal belopTilbakekreves;
         private BigDecimal belopUinnkrevd;
         private BigDecimal belopSkatt;
-        private String kodeResultat;
-        private String kodeAarsak;
-        private String kodeSkyld;
+        private KodeResultat kodeResultat;
+        private KodeÅrsak kodeAarsak;
+        private KodeSkyld kodeSkyld;
 
         public Builder() {
         }
@@ -72,17 +72,17 @@ public record TilbakekrevingsbelopDTO(@NotNull @Pattern(regexp = "^[\\p{L}0-9_-]
             return this;
         }
 
-        public Builder kodeResultat(String kodeResultat) {
+        public Builder kodeResultat(KodeResultat kodeResultat) {
             this.kodeResultat = kodeResultat;
             return this;
         }
 
-        public Builder kodeAarsak(String kodeAarsak) {
+        public Builder kodeAarsak(KodeÅrsak kodeAarsak) {
             this.kodeAarsak = kodeAarsak;
             return this;
         }
 
-        public Builder kodeSkyld(String kodeSkyld) {
+        public Builder kodeSkyld(KodeSkyld kodeSkyld) {
             this.kodeSkyld = kodeSkyld;
             return this;
         }
