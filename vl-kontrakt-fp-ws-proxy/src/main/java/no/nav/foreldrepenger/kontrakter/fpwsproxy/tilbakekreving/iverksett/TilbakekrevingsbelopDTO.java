@@ -12,9 +12,9 @@ public record TilbakekrevingsbelopDTO(@NotNull @Pattern(regexp = "^[\\p{L}0-9_-]
                                       @Digits(integer = 8, fraction = 2) BigDecimal belopTilbakekreves,
                                       @Digits(integer = 8, fraction = 2) BigDecimal belopUinnkrevd,
                                       @Digits(integer = 8, fraction = 2) BigDecimal belopSkatt,
-                                      @Pattern(regexp = "^[\\p{L}_]*$") KodeResultat kodeResultat,
-                                      @Pattern(regexp = "^[\\p{L}]*$") KodeÅrsak kodeAarsak,
-                                      @Pattern(regexp = "^[\\p{L}_]*$") KodeSkyld kodeSkyld) {
+                                      KodeResultat kodeResultat,
+                                      KodeÅrsak kodeAarsak,
+                                      KodeSkyld kodeSkyld) {
 
     public TilbakekrevingsbelopDTO(Builder builder) {
         this(builder.kodeKlasse,
