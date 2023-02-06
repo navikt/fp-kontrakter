@@ -4,5 +4,6 @@ public enum Behandlingsårsak {
     SØKNAD,
     PLEIEPENGER,
     BERØRT,
+    KLAGE_TILBAKEBETALING,
     ANNET
 }
