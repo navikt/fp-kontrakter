@@ -7,7 +7,7 @@
     <parent>
         <groupId>no.nav.foreldrepenger.felles</groupId>
         <artifactId>fp-bom</artifactId>
-        <version>0.3.10</version>
+        <version>0.4.3</version>
     </parent>
 
     <groupId>no.nav.foreldrepenger.kontrakter</groupId>
@@ -75,6 +75,13 @@
     <dependencyManagement>
         <dependencies>
             <!-- eksterne avhengigheter -->
+            <dependency>
+                <groupId>no.nav.foreldrepenger.felles</groupId>
+                <artifactId>fp-bom</artifactId>
+                <version>0.4.3</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
             <dependency>
                 <groupId>org.glassfish.jaxb</groupId>
                 <artifactId>jaxb-runtime</artifactId>
@@ -226,7 +233,11 @@
                          </goals>
                      </execution>
                  </executions>
-             </plugin>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-deploy-plugin</artifactId>
@@ -306,7 +317,7 @@
                     <dependency>
                         <groupId>no.nav.k9.dev</groupId>
                         <artifactId>dev-jakarta-transform</artifactId>
-                        <version>0.6.5</version>
+                        <version>0.6.6</version>
                     </dependency>
                     <dependency>
                         <groupId>ant-contrib</groupId>
