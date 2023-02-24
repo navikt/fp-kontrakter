@@ -67,6 +67,7 @@
             <xsd:element name="harAleneomsorgForBarnet" type="xsd:boolean" minOccurs="0"/>
             <xsd:element name="harMorUforetrygd" type="xsd:boolean" minOccurs="0"/>
             <xsd:element name="harMorForeldrepengerEOS" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="harAnnenForelderOppholdtSegIEOS" type="xsd:boolean" minOccurs="0"/>
             <xsd:element name="harAnnenForelderTilsvarendeRettEOS" type="xsd:boolean" minOccurs="0"/>
         </xsd:sequence>
         <xsd:anyAttribute processContents="lax"/>
