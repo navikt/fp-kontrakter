@@ -31,6 +31,7 @@ public record LosBehandlingDto(@NotNull UUID behandlingUuid,
                                List<Behandlingsårsak> behandlingsårsaker,
                                boolean faresignaler,
                                boolean refusjonskrav,
+                               LosFagsakEgenskaperDto fagsakEgenskaper,
                                LosForeldrepengerDto foreldrepengerDto,
                                LosTilbakeDto tilbakeDto) {
 
