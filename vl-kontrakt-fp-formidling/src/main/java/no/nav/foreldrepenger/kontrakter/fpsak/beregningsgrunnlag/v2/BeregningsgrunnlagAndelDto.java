@@ -18,7 +18,7 @@ public record BeregningsgrunnlagAndelDto(
         @Valid @Digits(integer = 8, fraction = 2) @DecimalMin("0.00") @DecimalMax("10000000.00") BigDecimal bruttoPrÅr,
         @Valid @Digits(integer = 8, fraction = 2) @DecimalMin("0.00") @DecimalMax("10000000.00") BigDecimal avkortetPrÅr,
         @Valid Boolean erNyIArbeidslivet,
-        @Valid @NotNull OpptjeningAktivitetDto arbeidsforholdType,
+        @Valid OpptjeningAktivitetDto arbeidsforholdType,
         @Valid LocalDate beregningsperiodeFom,
         @Valid LocalDate beregningsperiodeTom,
         @Valid BgAndelArbeidsforholdDto arbeidsforhold,
