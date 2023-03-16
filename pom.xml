@@ -7,7 +7,7 @@
     <parent>
         <groupId>no.nav.foreldrepenger.felles</groupId>
         <artifactId>fp-bom</artifactId>
-        <version>0.4.3</version>
+        <version>0.4.6</version>
     </parent>
 
     <groupId>no.nav.foreldrepenger.kontrakter</groupId>
@@ -26,6 +26,7 @@
 		<maven.deploy.skip>false</maven.deploy.skip>
 
         <sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
+        <sonar.projectName>fp-kontrakter</sonar.projectName>
         <sonar.projectKey>navikt_fp-kontrakter</sonar.projectKey>
 
         <xsd.packagename/>
@@ -78,7 +79,7 @@
             <dependency>
                 <groupId>no.nav.foreldrepenger.felles</groupId>
                 <artifactId>fp-bom</artifactId>
-                <version>0.4.3</version>
+                <version>0.4.6</version>
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
@@ -225,6 +226,13 @@
                      <flattenedPomFilename>.flattened</flattenedPomFilename>
                  </configuration>
                  <executions>
+                     <execution>
+                         <id>flatten</id>
+                         <phase>process-resources</phase>
+                         <goals>
+                             <goal>flatten</goal>
+                         </goals>
+                     </execution>
                      <execution>
                          <id>flatten.clean</id>
                          <phase>clean</phase>
