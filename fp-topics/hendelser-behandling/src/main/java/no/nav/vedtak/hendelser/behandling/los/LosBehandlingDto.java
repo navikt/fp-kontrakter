@@ -36,10 +36,10 @@ public record LosBehandlingDto(@NotNull UUID behandlingUuid,
                                LosTilbakeDto tilbakeDto) {
 
 
-    public record LosAksjonspunktDto(String definisjon, Aksjonspunktstatus status, String begrunnelse, LocalDateTime fristTid) {
+    public record LosAksjonspunktDto(String definisjon, Aksjonspunktstatus status, LocalDateTime fristTid) {
     }
 
-    public record LosForeldrepengerDto(LocalDate førsteUttakDato, boolean annenForelderRettEØS, boolean sykdomsvurdering, boolean gradering) {
+    public record LosForeldrepengerDto(LocalDate førsteUttakDato, boolean sykdomsvurdering, boolean gradering) {
     }
 
     public record LosTilbakeDto(BigDecimal feilutbetaltBeløp, LocalDate førsteFeilutbetalingDato) {
