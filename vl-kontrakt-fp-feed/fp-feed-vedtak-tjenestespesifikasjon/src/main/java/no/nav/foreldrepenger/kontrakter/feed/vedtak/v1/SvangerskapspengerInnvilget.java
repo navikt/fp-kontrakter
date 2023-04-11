@@ -34,17 +34,17 @@ public class SvangerskapspengerInnvilget extends Innhold {
             return this;
         }
 
-        public SvangerskapspengerInnvilget.Builder medFoersteStoenadsdag(LocalDate foersteStoenadsdag) {
+        public Builder medFoersteStoenadsdag(LocalDate foersteStoenadsdag) {
             this.foersteStoenadsdag = foersteStoenadsdag;
             return this;
         }
 
-        public SvangerskapspengerInnvilget.Builder medSisteStoenadsdag(LocalDate sisteStoenadsdag) {
+        public Builder medSisteStoenadsdag(LocalDate sisteStoenadsdag) {
             this.sisteStoenadsdag = sisteStoenadsdag;
             return this;
         }
 
-        public SvangerskapspengerInnvilget.Builder medGsakId(String gsakId) {
+        public Builder medGsakId(String gsakId) {
             this.gsakId = gsakId;
             return this;
         }
