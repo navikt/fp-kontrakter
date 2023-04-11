@@ -9,6 +9,8 @@ public abstract class Innhold {
 
 	private String aktoerId;
 
+	private String fnr;
+
     private LocalDate foersteStoenadsdag;
 
     private LocalDate sisteStoenadsdag;
@@ -21,6 +23,14 @@ public abstract class Innhold {
 
 	public void setAktoerId(String aktoerId) {
 		this.aktoerId = aktoerId;
+	}
+
+	public String getFnr() {
+		return fnr;
+	}
+
+	public void setFnr(String fnr) {
+		this.fnr = fnr;
 	}
 
 	public LocalDate getFoersteStoenadsdag() {

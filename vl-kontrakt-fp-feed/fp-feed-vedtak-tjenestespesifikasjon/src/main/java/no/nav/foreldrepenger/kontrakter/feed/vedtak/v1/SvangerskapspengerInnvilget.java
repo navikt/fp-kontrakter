@@ -11,6 +11,7 @@ public class SvangerskapspengerInnvilget extends Innhold {
 
     private SvangerskapspengerInnvilget(SvangerskapspengerInnvilget.Builder builder) {
         this.setAktoerId(builder.aktoerId);
+        this.setFnr(builder.fnr);
         this.setFoersteStoenadsdag(builder.foersteStoenadsdag);
         this.setSisteStoenadsdag(builder.sisteStoenadsdag);
         this.setGsakId(builder.gsakId);
@@ -18,29 +19,32 @@ public class SvangerskapspengerInnvilget extends Innhold {
 
     public static class Builder {
         private String aktoerId;
-
+        private String fnr;
         private LocalDate foersteStoenadsdag;
-
         private LocalDate sisteStoenadsdag;
-
         private String gsakId;
 
-        public SvangerskapspengerInnvilget.Builder medAktoerId(String val) {
+        public Builder medAktoerId(String val) {
             aktoerId = val;
             return this;
         }
 
-        public SvangerskapspengerInnvilget.Builder medFoersteStoenadsdag(LocalDate foersteStoenadsdag) {
+        public Builder medFnr(String val) {
+            fnr = val;
+            return this;
+        }
+
+        public Builder medFoersteStoenadsdag(LocalDate foersteStoenadsdag) {
             this.foersteStoenadsdag = foersteStoenadsdag;
             return this;
         }
 
-        public SvangerskapspengerInnvilget.Builder medSisteStoenadsdag(LocalDate sisteStoenadsdag) {
+        public Builder medSisteStoenadsdag(LocalDate sisteStoenadsdag) {
             this.sisteStoenadsdag = sisteStoenadsdag;
             return this;
         }
 
-        public SvangerskapspengerInnvilget.Builder medGsakId(String gsakId) {
+        public Builder medGsakId(String gsakId) {
             this.gsakId = gsakId;
             return this;
         }
