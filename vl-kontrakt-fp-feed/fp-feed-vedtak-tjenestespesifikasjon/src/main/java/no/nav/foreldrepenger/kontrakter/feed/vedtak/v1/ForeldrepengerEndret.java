@@ -11,6 +11,7 @@ public class ForeldrepengerEndret extends Innhold {
 	
 	private ForeldrepengerEndret(Builder builder) {
         this.setAktoerId(builder.aktoerId);
+        this.setFnr(builder.fnr);
         this.setFoersteStoenadsdag(builder.foersteStoenadsdag);
         this.setSisteStoenadsdag(builder.sisteStoenadsdag);
         this.setGsakId(builder.gsakId);
@@ -18,15 +19,18 @@ public class ForeldrepengerEndret extends Innhold {
 
 	public static class Builder {
         private String aktoerId;
-
+        private String fnr;
         private LocalDate foersteStoenadsdag;
-
         private LocalDate sisteStoenadsdag;
-
         private String gsakId;
 
         public Builder medAktoerId(String val) {
             aktoerId = val;
+            return this;
+        }
+
+        public Builder medFnr(String val) {
+            fnr = val;
             return this;
         }
 

@@ -11,6 +11,7 @@ public class SvangerskapspengerInnvilget extends Innhold {
 
     private SvangerskapspengerInnvilget(SvangerskapspengerInnvilget.Builder builder) {
         this.setAktoerId(builder.aktoerId);
+        this.setFnr(builder.fnr);
         this.setFoersteStoenadsdag(builder.foersteStoenadsdag);
         this.setSisteStoenadsdag(builder.sisteStoenadsdag);
         this.setGsakId(builder.gsakId);
@@ -18,15 +19,18 @@ public class SvangerskapspengerInnvilget extends Innhold {
 
     public static class Builder {
         private String aktoerId;
-
+        private String fnr;
         private LocalDate foersteStoenadsdag;
-
         private LocalDate sisteStoenadsdag;
-
         private String gsakId;
 
-        public SvangerskapspengerInnvilget.Builder medAktoerId(String val) {
+        public Builder medAktoerId(String val) {
             aktoerId = val;
+            return this;
+        }
+
+        public Builder medFnr(String val) {
+            fnr = val;
             return this;
         }
 

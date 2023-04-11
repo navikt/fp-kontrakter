@@ -55,6 +55,11 @@
                 "type": "string",
                 "title": "AkterId for hendelsen "
               },
+              "fnr": {
+                "$id": "/properties/elementer/items/properties/innhold/properties/fnr",
+                "type": "string",
+                "title": "FNR for hendelsen "
+              },
               "foersteStoenadsdag": {
                 "$id": "/properties/elementer/items/properties/innhold/properties/foersteStoenadsdag",
                 "type": "string",
