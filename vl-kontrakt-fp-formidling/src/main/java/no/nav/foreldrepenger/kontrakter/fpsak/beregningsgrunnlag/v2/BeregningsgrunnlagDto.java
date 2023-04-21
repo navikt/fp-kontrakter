@@ -18,5 +18,6 @@ public record BeregningsgrunnlagDto(@NotNull @Valid @Size(min = 1) List<Aktivite
                                     @NotNull @Valid HjemmelDto hjemmel,
                                     @Valid @Digits(integer = 8, fraction = 2) @DecimalMin("0.00") @DecimalMax("10000000.00") BigDecimal grunnbeløp,
                                     @Valid @NotNull @Size(min = 1) List<BeregningsgrunnlagPeriodeDto> beregningsgrunnlagperioder,
-                                    @Valid boolean erBesteberegnet) {
+                                    @Valid boolean erBesteberegnet,
+                                    @NotNull @Valid boolean seksAvDeTiBeste) {
 }
