@@ -57,6 +57,7 @@ class BeregningsgrunnlagDtoTest {
                                 new BgAndelArbeidsforholdDto(testIdent, testRef, BigDecimal.ZERO, BigDecimal.ZERO),
                                 false))
                         )),
+                false,
                 false);
 
         // Act
