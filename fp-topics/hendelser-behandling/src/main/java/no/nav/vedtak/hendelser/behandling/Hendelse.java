@@ -8,5 +8,6 @@ public enum Hendelse {
     AKSJONSPUNKT,
     VENTETILSTAND,
     BRUKEROPPGAVE,
-    ENHET
+    ENHET,
+    MIGRERING // For massemigrering av data
 }
