@@ -1,50 +1,31 @@
-name: Bygg og deploy
+name: Bygg
 
 on:
   push:
     branches:
-      - master
+      - '**'
     paths-ignore:
       - '**.md'
       - '**.MD'
+      - '.editorconfig'
       - '.gitignore'
-      - 'LICENCE'
+      - '.java-version'
+      - 'LICENSE'
       - 'CODEOWNERS'
-      - 'dev/**'
+      - 'docs/**'
+      - '.github/*.yml'
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: Setup maven
-        uses: whelk-io/maven-settings-xml-action@v21
-        with:
-          repositories: '[{ "id": "github", "name": "github", "url": "https://maven.pkg.github.com/${{ github.repository }}", "releases": { "enabled": "true" }, "snapshots": { "enabled": "false" } }]'
-          servers: '[{ "id": "github", "username": "${{ github.actor }}", "password": "${{ secrets.GITHUB_TOKEN }}" }]'
-          output_file: settings.xml
+  build-feature:
+    name: Build
+    uses: navikt/fp-gha-workflows/.github/workflows/build-feature.yml@main
+    with:
+      sonar-scan: true
+    secrets: inherit
 
-      - name: Set up JDK 17
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'temurin'
-          java-version: '17'
-          cache: 'maven'
-
-      - name: Hent tag
-        run: echo "TAG=$(date +%Y.%m.%d.%H%M%S)-$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_ENV
-
-      - name: Build artifacts & deploy
-        shell: bash
-        run: |
-           mvn jacoco:prepare-agent verify jacoco:report sonar:sonar -e -B -s settings.xml -Drevision=$TAG
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
-      - name: Release Drafter
-        uses: release-drafter/release-drafter@v5
-        if: success()
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  release-drafter:
+    name: Update
+    if: github.ref_name == 'master'
+    needs: build-feature
+    uses: navikt/fp-gha-workflows/.github/workflows/release-drafter.yml@main
+    secrets: inherit

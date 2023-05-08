@@ -57,7 +57,8 @@ class BeregningsgrunnlagDtoTest {
                                 new BgAndelArbeidsforholdDto(testIdent, testRef, BigDecimal.ZERO, BigDecimal.ZERO),
                                 false))
                         )),
-                false);
+                false,
+                false); //denne vil alltid være false så lenge erBesteberegnet er false
 
         // Act
         var json = WRITER.writeValueAsString(request);
