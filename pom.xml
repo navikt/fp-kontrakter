@@ -7,7 +7,7 @@
     <parent>
         <groupId>no.nav.foreldrepenger.felles</groupId>
         <artifactId>fp-bom</artifactId>
-        <version>0.5.2</version>
+        <version>0.5.4</version>
     </parent>
 
     <groupId>no.nav.foreldrepenger.kontrakter</groupId>
@@ -79,7 +79,7 @@
             <dependency>
                 <groupId>no.nav.foreldrepenger.felles</groupId>
                 <artifactId>fp-bom</artifactId>
-                <version>0.5.2</version>
+                <version>0.5.4</version>
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
@@ -171,7 +171,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-assembly-plugin</artifactId>
-                    <version>3.5.0</version>
+                    <version>3.6.0</version>
                 </plugin>
                 <!-- Plugin required to build java classes from XSD using XJC -->
                 <plugin>
