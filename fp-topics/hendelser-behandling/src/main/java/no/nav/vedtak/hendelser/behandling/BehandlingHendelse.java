@@ -1,5 +1,6 @@
 package no.nav.vedtak.hendelser.behandling;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -22,5 +23,6 @@ public abstract class BehandlingHendelse {
     public abstract Kildesystem getKildesystem();
 
     public abstract Hendelse getHendelse();
+    public abstract LocalDateTime getTidspunkt();
 
 }

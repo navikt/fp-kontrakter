@@ -1,5 +1,6 @@
 package no.nav.vedtak.hendelser.behandling.v1;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 import javax.validation.Valid;
@@ -49,6 +50,12 @@ public class BehandlingHendelseV1 extends BehandlingHendelse {
     private Hendelse hendelse;
 
     /**
+     * Tidspunkt for hendelse
+     */
+    @JsonProperty("tidspunkt")
+    private LocalDateTime tidspunkt;
+
+    /**
      * Behandlingen gjelder bruker
      */
     @Valid
@@ -93,6 +100,11 @@ public class BehandlingHendelseV1 extends BehandlingHendelse {
         return hendelse;
     }
 
+    @Override
+    public LocalDateTime getTidspunkt() {
+        return tidspunkt;
+    }
+
     public AktørId getAktørId() {
         return aktørId;
     }
@@ -133,6 +145,11 @@ public class BehandlingHendelseV1 extends BehandlingHendelse {
 
         public Builder medHendelse(Hendelse hendelse) {
             behandlingHendelse.hendelse = hendelse;
+            return this;
+        }
+
+        public Builder medTidspunkt(LocalDateTime tidspunkt) {
+            behandlingHendelse.tidspunkt = tidspunkt;
             return this;
         }
 
