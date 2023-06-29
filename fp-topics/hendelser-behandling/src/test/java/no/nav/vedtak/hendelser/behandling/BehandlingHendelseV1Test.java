@@ -23,12 +23,14 @@ public class BehandlingHendelseV1Test {
     @Test
     public void test_minimal_fp() throws Exception {
         var uuid = UUID.randomUUID();
+        var tidspunkt = LocalDateTime.now();
         var inntektsmelding = new BehandlingHendelseV1.Builder()
-            .medHendelseUuid(UUID.randomUUID())
-            .medBehandlingUuid(uuid)
-            .medHendelse(Hendelse.AKSJONSPUNKT)
-            .medKildesystem(Kildesystem.FPSAK)
-            .build();
+                .medHendelseUuid(UUID.randomUUID())
+                .medBehandlingUuid(uuid)
+                .medHendelse(Hendelse.AKSJONSPUNKT)
+                .medKildesystem(Kildesystem.FPSAK)
+                .medTidspunkt(tidspunkt)
+                .build();
 
         String json = WRITER.writeValueAsString(inntektsmelding);
         System.out.println(json);
@@ -39,6 +41,7 @@ public class BehandlingHendelseV1Test {
         assertThat(roundTripped.getBehandlingUuid()).isEqualTo(uuid);
         assertThat(roundTripped.getHendelse()).isEqualTo(Hendelse.AKSJONSPUNKT);
         assertThat(roundTripped.getKildesystem()).isEqualTo(Kildesystem.FPSAK);
+        assertThat(roundTripped.getTidspunkt()).isEqualTo(tidspunkt);
         validateResult(roundTripped);
     }
 
