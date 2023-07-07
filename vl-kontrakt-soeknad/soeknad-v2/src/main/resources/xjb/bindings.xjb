@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<jaxb:bindings version="2.0"
-               xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+<jaxb:bindings jaxb:version="3.0"
+               xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb"
                xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
                xmlns:xs="http://www.w3.org/2001/XMLSchema"
                jaxb:extensionBindingPrefixes="xjc">
@@ -9,7 +9,7 @@
         <xjc:javaType name="java.time.LocalDate" xmlType="xs:date" adapter="no.nav.foreldrepenger.søknad.v2.DateAdapter" />
         <xjc:javaType name="java.time.LocalDateTime" xmlType="xs:dateTime" adapter="no.nav.foreldrepenger.søknad.v2.DateTimeAdapter" />
     </jaxb:globalBindings>
-    
+
     <jaxb:bindings schemaLocation="../xsd/soeknad-v2.xsd" node="/xs:schema">
         <jaxb:bindings node="//xs:complexType[@name='Soeknad']">
         </jaxb:bindings>

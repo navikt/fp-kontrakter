@@ -10,7 +10,7 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 
-import javax.xml.bind.JAXBElement;
+import jakarta.xml.bind.JAXBElement;
 import org.junit.jupiter.api.Test;
 
 import no.nav.foreldrepenger.søknad.util.JaxbHelper;

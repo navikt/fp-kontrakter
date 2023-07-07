@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.UUID;
 
-import javax.validation.Validation;
+import jakarta.validation.Validation;
 
 import org.junit.jupiter.api.Test;
 

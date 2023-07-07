@@ -2,8 +2,8 @@ package no.nav.foreldrepenger.kontrakter.risk.v1;
 
 import java.util.Optional;
 
-import javax.validation.Valid;
-import javax.validation.constraints.Pattern;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Pattern;
 
 import no.nav.foreldrepenger.kontrakter.risk.kodeverk.AktørId;
 
