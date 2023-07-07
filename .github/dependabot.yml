@@ -19,16 +19,3 @@ updates:
     schedule:
       interval: daily
     open-pull-requests-limit: 20
-    ignore:
-      - dependency-name: "no.nav.vedtak.prosesstask:*"
-        versions: ["x", "x.x"]
-      - dependency-name: "no.nav.foreldrepenger.felles:*"
-        versions: ["x", "x.x"]
-      - dependency-name: "no.nav.foreldrepenger.kontrakter:*"
-        versions: ["x", "x.x"]
-      - dependency-name: com.fasterxml.jackson:jackson-bom
-        versions:
-        - "> 2.10.2, < 2.11"
-      - dependency-name: org.jvnet.jaxb2_commons:jaxb2-basics
-        versions:
-        - "> 1.11.1, < 1.12"
