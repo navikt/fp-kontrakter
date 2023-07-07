@@ -1,6 +1,6 @@
 package no.nav.foreldrepenger.kontrakter.fordel;
 
-import javax.validation.constraints.Digits;
+import jakarta.validation.constraints.Digits;
 
 public class JournalpostIdDto {
 
