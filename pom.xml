@@ -21,7 +21,9 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <argLine>-Xms256m -Dlog.level.no.nav=WARN -Dfile.encoding=${project.build.sourceEncoding}</argLine>
         <maven.compiler.source>${java.version}</maven.compiler.source>
-        <maven.compiler.target>${java.version}</maven.compiler.target><maven.javadoc.skip>true</maven.javadoc.skip>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+
+        <maven.javadoc.skip>true</maven.javadoc.skip>
         <maven.deploy.skip>false</maven.deploy.skip>
 
         <!-- SonarCloud options -->
