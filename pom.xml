@@ -14,14 +14,16 @@
     <url>https://github.com/navikt/fp-kontrakter</url>
 
 	<properties>
-		<revision>1.0-SNAPSHOT</revision>
+		<revision>1.0_EE9-SNAPSHOT</revision>
         <java.version>17</java.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <argLine>-Xms256m -Dlog.level.no.nav=WARN -Dfile.encoding=${project.build.sourceEncoding}</argLine>
         <maven.compiler.source>${java.version}</maven.compiler.source>
-        <maven.compiler.target>${java.version}</maven.compiler.target><maven.javadoc.skip>true</maven.javadoc.skip>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+
+        <maven.javadoc.skip>true</maven.javadoc.skip>
         <maven.deploy.skip>false</maven.deploy.skip>
 
         <!-- SonarCloud options -->
@@ -31,16 +33,16 @@
         <sonar.projectName>fp-kontrakter</sonar.projectName>
         <sonar.projectKey>navikt_fp-kontrakter</sonar.projectKey>
 
-        <jakarta.jakartaee-bom.version>8.0.0</jakarta.jakartaee-bom.version>
+        <jakarta.jakartaee-bom.version>9.1.0</jakarta.jakartaee-bom.version>
 
-        <hibernate-validator.version>6.2.2.Final</hibernate-validator.version>
+        <hibernate-validator.version>7.0.5.Final</hibernate-validator.version>
 
-        <jaxb-bom.version>2.3.6</jaxb-bom.version>
+        <jaxb-bom.version>3.0.1</jaxb-bom.version>
 
-        <jakarta.el.version>3.0.4</jakarta.el.version>
+        <jakarta.el.version>4.0.0</jakarta.el.version>
 
         <!-- maven jakarta kompatible plugins -->
-        <jaxb2-maven-plugin.version>2.5.0</jaxb2-maven-plugin.version>
+        <jaxb2-maven-plugin.version>3.1.0</jaxb2-maven-plugin.version>
 
         <junit.version>5.9.3</junit.version>
         <mockito.version>5.4.0</mockito.version>
