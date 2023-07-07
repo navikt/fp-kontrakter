@@ -3,8 +3,8 @@ package no.nav.vedtak.hendelser.behandling.v1;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

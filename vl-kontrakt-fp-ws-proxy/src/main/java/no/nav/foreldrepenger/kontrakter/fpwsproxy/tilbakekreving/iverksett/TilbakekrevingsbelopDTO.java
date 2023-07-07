@@ -2,9 +2,9 @@ package no.nav.foreldrepenger.kontrakter.fpwsproxy.tilbakekreving.iverksett;
 
 import java.math.BigDecimal;
 
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
+import jakarta.validation.constraints.Digits;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 
 public record TilbakekrevingsbelopDTO(@NotNull @Pattern(regexp = "^[\\p{L}0-9_-]*$") String kodeKlasse, // Eks: FPADATORD, KL_KODE_FEIL_KORTTID, FPSND-OP, SPSND100D1DAGPFI
                                       @NotNull @Digits(integer = 8, fraction = 2) BigDecimal belopOpprUtbet,

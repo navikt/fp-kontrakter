@@ -3,10 +3,10 @@ package no.nav.foreldrepenger.kontrakter.fpwsproxy.tilbakekreving.iverksett;
 import java.time.LocalDate;
 import java.util.List;
 
-import javax.validation.Valid;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Digits;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 
 public record TilbakekrevingVedtakDTO(@NotNull @Digits(integer = 20, fraction = 0) Long vedtakId,
                                       LocalDate datoVedtakFagsystem,

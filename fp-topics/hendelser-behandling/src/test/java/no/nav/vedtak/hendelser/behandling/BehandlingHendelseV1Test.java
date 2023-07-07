@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-import javax.validation.Validation;
+import jakarta.validation.Validation;
 
 import org.junit.jupiter.api.Test;
 

@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.List;
 import java.util.UUID;
 
-import javax.validation.Validation;
+import jakarta.validation.Validation;
 
 import no.nav.foreldrepenger.kontrakter.risk.kodeverk.FaresignalVurdering;
 import org.junit.jupiter.api.Test;
