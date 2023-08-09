@@ -43,7 +43,7 @@ public class RisikovurderingRequestTest {
         assertThat(roundTripped.søkerAktørId()).isEqualTo(AKTØR_ID);
         assertThat(roundTripped.skjæringstidspunkt()).isEqualTo(IDAG);
         assertThat(roundTripped.konsumentId()).isEqualTo(REF);
-        assertThat(roundTripped.annenPart().getAnnenPartAktørId()).isEmpty();
+        assertThat(roundTripped.annenPart().annenpartAktørId()).isNull();
 
         validateResult(roundTripped);
     }
