@@ -14,7 +14,7 @@
     <url>https://github.com/navikt/fp-kontrakter</url>
 
 	<properties>
-		<revision>1.0_EE9-SNAPSHOT</revision>
+		<revision>1.0_EE10-SNAPSHOT</revision>
         <java.version>17</java.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
