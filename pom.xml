@@ -33,13 +33,13 @@
         <sonar.projectName>fp-kontrakter</sonar.projectName>
         <sonar.projectKey>navikt_fp-kontrakter</sonar.projectKey>
 
-        <jakarta.jakartaee-bom.version>9.1.0</jakarta.jakartaee-bom.version>
+        <jakarta.jakartaee-bom.version>10.0.0</jakarta.jakartaee-bom.version>
 
-        <hibernate-validator.version>7.0.5.Final</hibernate-validator.version>
+        <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
 
-        <jaxb-bom.version>3.0.1</jaxb-bom.version>
+        <jaxb-bom.version>4.0.3</jaxb-bom.version>
 
-        <jakarta.el.version>4.0.0</jakarta.el.version>
+        <jakarta.el.version>4.0.2</jakarta.el.version>
 
         <!-- maven jakarta kompatible plugins -->
         <jaxb2-maven-plugin.version>3.1.0</jaxb2-maven-plugin.version>
