@@ -33,7 +33,7 @@
         <sonar.projectName>fp-kontrakter</sonar.projectName>
         <sonar.projectKey>navikt_fp-kontrakter</sonar.projectKey>
 
-        <jakarta.jakartaee-bom.version>9.1.0</jakarta.jakartaee-bom.version>
+        <jakarta.jakartaee-bom.version>10.0.0</jakarta.jakartaee-bom.version>
 
         <hibernate-validator.version>7.0.5.Final</hibernate-validator.version>
 
