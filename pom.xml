@@ -39,13 +39,13 @@
 
         <jaxb-bom.version>3.0.1</jaxb-bom.version>
 
-        <jakarta.el.version>4.0.0</jakarta.el.version>
+        <jakarta.el.version>4.0.2</jakarta.el.version>
 
         <!-- maven jakarta kompatible plugins -->
         <jaxb2-maven-plugin.version>3.1.0</jaxb2-maven-plugin.version>
 
         <junit.version>5.10.0</junit.version>
-        <mockito.version>5.4.0</mockito.version>
+        <mockito.version>5.5.0</mockito.version>
         <assertj.version>3.24.2</assertj.version>
         <slf4j.version>2.0.7</slf4j.version>
         <logback.version>1.4.11</logback.version>
