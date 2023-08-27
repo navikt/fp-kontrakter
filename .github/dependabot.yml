@@ -19,3 +19,5 @@ updates:
     schedule:
       interval: daily
     open-pull-requests-limit: 20
+    allow:
+      - dependency-type: "all"
