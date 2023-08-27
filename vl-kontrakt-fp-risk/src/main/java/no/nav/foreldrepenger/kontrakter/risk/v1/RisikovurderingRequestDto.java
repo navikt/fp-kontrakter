@@ -4,8 +4,8 @@ import java.time.LocalDate;
 import java.util.Optional;
 import java.util.UUID;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 import no.nav.foreldrepenger.kontrakter.risk.kodeverk.AktørId;
 import no.nav.foreldrepenger.kontrakter.risk.kodeverk.YtelseType;
