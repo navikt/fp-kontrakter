@@ -35,7 +35,7 @@
 
         <jakarta.jakartaee-bom.version>9.1.0</jakarta.jakartaee-bom.version>
 
-        <hibernate-validator.version>7.0.5.Final</hibernate-validator.version>
+        <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
 
         <jaxb-bom.version>3.0.1</jaxb-bom.version>
 
