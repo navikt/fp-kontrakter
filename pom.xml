@@ -37,7 +37,7 @@
 
         <hibernate-validator.version>7.0.5.Final</hibernate-validator.version>
 
-        <jaxb-bom.version>3.0.1</jaxb-bom.version>
+        <jaxb-bom.version>4.0.3</jaxb-bom.version>
 
         <jakarta.el.version>4.0.2</jakarta.el.version>
 
