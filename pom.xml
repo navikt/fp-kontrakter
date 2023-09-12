@@ -92,6 +92,7 @@
         <module>vl-kontrakt-fp-formidling</module>
         <module>vl-kontrakt-oekonomi</module>
         <module>vl-kontrakt-fp-ws-proxy</module>
+        <module>vl-kontrakt-simulering-resultat</module>
     </modules>
 
     <dependencyManagement>
@@ -210,6 +211,11 @@
             <dependency>
                 <groupId>no.nav.foreldrepenger.kontrakter</groupId>
                 <artifactId>risk-v1</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>no.nav.foreldrepenger.kontrakter</groupId>
+                <artifactId>simulering-resultat-v1</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
