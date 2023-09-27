@@ -18,7 +18,6 @@
 
 	<modules>
 		<module>hendelser-behandlingsprosess</module>
-        <module>hendelser-inntektsmelding</module>
         <module>hendelser-behandling</module>
     </modules>
 
