@@ -6,8 +6,9 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
-public record OppdragskontrollDto(@NotNull @Min(0) @Max(Long.MAX_VALUE) Long behandlingId,
+public record OppdragskontrollDto(@NotNull @Pattern(regexp = "^[A-Za-z0-9+/-]*$") String behandlingId,
                                   @Valid @Size(min = 1) List<@Valid @NotNull Oppdrag110Dto> oppdrag) {
 }

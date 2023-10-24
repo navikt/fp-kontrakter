@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public record Oppdragslinje150Dto(@Valid @NotNull KodeEndringLinje kodeEndringLinje,
                                   @NotNull @Pattern(regexp = "^[\\p{L}\\p{Blank}.'\\-\\–0-9/\\p{Space}%§\\!?@_()+:;,=\"&\\p{Sc}]*$") String vedtakId,
-                                  @NotNull @Min(0) @Max(Long.MAX_VALUE) Long delytelseId,
+                                  @NotNull @Pattern(regexp = "^[a-zA-Z0-9-]+$") String delytelseId,
                                   @Valid @NotNull KodeKlassifik kodeKlassifik,
                                   @Valid @NotNull LukketPeriode vedtakPeriode,
                                   @Valid @NotNull SatsDto sats,
@@ -21,8 +21,8 @@ public record Oppdragslinje150Dto(@Valid @NotNull KodeEndringLinje kodeEndringLi
                                   @Valid KodeStatusLinje kodeStatusLinje,
                                   LocalDate datoStatusFom,
                                   @Pattern(regexp = "^[\\p{L}\\p{Blank}.'\\-\\–0-9/\\p{Space}%§\\!?@_()+:;,=\"&\\p{Sc}]*$") String utbetalesTilId,
-                                  @Min(0) @Max(Long.MAX_VALUE) Long refDelytelseId,
-                                  @Min(0) @Max(Long.MAX_VALUE) Long refFagsystemId,
+                                  @Pattern(regexp = "^[a-zA-Z0-9-]+$") String refDelytelseId,
+                                  @Pattern(regexp = "^[a-zA-Z0-9-]+$") String refFagsystemId,
                                   @Valid Refusjonsinfo156Dto refusjonsinfo156) {
 
     @JsonIgnore

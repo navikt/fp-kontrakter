@@ -14,7 +14,7 @@ import jakarta.validation.constraints.Size;
  */
 public record Oppdrag110Dto(@Valid @NotNull KodeEndring kodeEndring,
                             @Valid @NotNull KodeFagområde kodeFagomrade,
-                            @NotNull @Min(0) @Max(Long.MAX_VALUE) Long fagsystemId,
+                            @NotNull @Pattern(regexp = "^[a-zA-Z0-9-]+$") String fagsystemId,
                             @NotNull @Pattern(regexp = "^[\\p{L}\\p{Blank}.'\\-\\–0-9/\\p{Space}%§\\!?@_()+:;,=\"&\\p{Sc}]*$") String oppdragGjelderId,
                             @NotNull @Pattern(regexp = "^[\\p{L}\\p{Blank}.'\\-\\–0-9/\\p{Space}%§\\!?@_()+:;,=\"&\\p{Sc}]*$") String saksbehId,
                             @Valid Ompostering116Dto ompostering116,
