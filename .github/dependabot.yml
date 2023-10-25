@@ -14,7 +14,7 @@ updates:
     open-pull-requests-limit: 10
     groups:
       actions:
-        dependency-type: "all"
+        dependency-type: "production"
   - package-ecosystem: maven
     directory: "/"
     registries:
