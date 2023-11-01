@@ -21,7 +21,7 @@ class TilkjentYtelseDagytelseDtoTest {
     void testRoundtrip() throws JsonProcessingException {
         var andelRequest = new TilkjentYtelseDagytelseDto.TilkjentYtelseAndelDto("999999999",
                 200000, 100000, TilkjentYtelseDagytelseDto.Aktivitetstatus.ARBEIDSTAKER,
-                "arb001", BigDecimal.valueOf(100));
+                "arb001", BigDecimal.valueOf(100), BigDecimal.valueOf(100));
         var periodeRequest = new TilkjentYtelseDagytelseDto.TilkjentYtelsePeriodeDto(LocalDate.now(), LocalDate.now().plusDays(10), 0,
                 Collections.singletonList(
                         andelRequest));
@@ -47,5 +47,6 @@ class TilkjentYtelseDagytelseDtoTest {
         assertThat(andelResponse.refusjon()).isEqualTo(andelRequest.refusjon());
         assertThat(andelResponse.tilSoker()).isEqualTo(andelRequest.tilSoker());
         assertThat(andelResponse.stillingsprosent()).isEqualByComparingTo(andelRequest.stillingsprosent());
+        assertThat(andelResponse.utbetalingsgrad()).isEqualByComparingTo(andelRequest.utbetalingsgrad());
     }
 }

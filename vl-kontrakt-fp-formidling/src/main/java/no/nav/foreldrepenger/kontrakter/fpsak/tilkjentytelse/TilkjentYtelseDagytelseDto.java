@@ -25,7 +25,8 @@ public record TilkjentYtelseDagytelseDto(List<@Valid @NotNull TilkjentYtelsePeri
                                          @Min(0) @Max(Integer.MAX_VALUE) Integer tilSoker,
                                          @NotNull @Valid Aktivitetstatus aktivitetstatus,
                                          @Pattern(regexp = "^[\\p{Graph}\\p{Space}\\p{Sc}\\p{L}\\p{M}\\p{N}]+$") String arbeidsforholdId,
-                                         @Valid @Digits(integer = 8, fraction = 2) @DecimalMin("0.00") @DecimalMax("10000000.00") BigDecimal stillingsprosent) {}
+                                         @Valid @Digits(integer = 8, fraction = 2) @DecimalMin("0.00") @DecimalMax("10000000.00") BigDecimal stillingsprosent,
+                                         @Valid @Digits(integer = 8, fraction = 2) @DecimalMin("0.00") @DecimalMax("10000000.00") BigDecimal utbetalingsgrad) {}
 
     public enum Aktivitetstatus {
         ARBEIDSAVKLARINGSPENGER,
