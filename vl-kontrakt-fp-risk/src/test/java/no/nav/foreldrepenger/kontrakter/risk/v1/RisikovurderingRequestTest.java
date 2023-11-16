@@ -24,12 +24,13 @@ public class RisikovurderingRequestTest {
     private static final AktørId AKTØR_ID = new AktørId("1000000000001");
     private static final LocalDate IDAG = LocalDate.now();
     private static final UUID REF = UUID.randomUUID();
+    private static final String SAKSNUMMER = "999999999";
 
     @Test
     public void skal_serialisere_og_deserialisere_request() throws Exception {
         // Arrange
         var annenpart = new AnnenPartDto(null, "UtlandskId");
-        var request = new RisikovurderingRequestDto(AKTØR_ID, IDAG, IDAG.minusMonths(17), IDAG.plusYears(3), REF, YtelseType.FORELDREPENGER, annenpart);
+        var request = new RisikovurderingRequestDto(AKTØR_ID, IDAG, IDAG.minusMonths(17), IDAG.plusYears(3), REF, SAKSNUMMER, YtelseType.FORELDREPENGER, annenpart);
 
         // Act
         var json = WRITER.writeValueAsString(request);
@@ -42,6 +43,7 @@ public class RisikovurderingRequestTest {
         assertThat(roundTripped.skjæringstidspunkt()).isEqualTo(IDAG);
         assertThat(roundTripped.konsumentId()).isEqualTo(REF);
         assertThat(roundTripped.annenPart().annenpartAktørId()).isNull();
+        assertThat(roundTripped.saksnummer()).isEqualTo(SAKSNUMMER);
 
         validateResult(roundTripped); // Generer ny versjon
     }
