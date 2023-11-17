@@ -7,7 +7,7 @@
     <parent>
         <groupId>no.nav.foreldrepenger.kontrakter.topics</groupId>
         <artifactId>fp-topics</artifactId>
-        <version>${revision}</version>
+        <version>1.0-SNAPSHOT</version>
     </parent>
 
     <name>FP-TOPICS :: Hendelser Behandlingsprosess</name>

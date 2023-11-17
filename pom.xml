@@ -6,7 +6,7 @@
 
     <groupId>no.nav.foreldrepenger.kontrakter</groupId>
     <artifactId>fp-kontrakter-root</artifactId>
-    <version>${revision}</version>
+    <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>(FPSAK) Kontrakter - Root</name>
@@ -14,8 +14,7 @@
     <url>https://github.com/navikt/fp-kontrakter</url>
 
 	<properties>
-		<revision>8.1-SNAPSHOT</revision>
-        <java.version>17</java.version>
+        <java.version>21</java.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -44,10 +43,8 @@
         <!-- maven jakarta kompatible plugins -->
         <jaxb2-maven-plugin.version>3.1.0</jaxb2-maven-plugin.version>
 
-        <junit.version>5.10.0</junit.version>
-        <mockito.version>5.5.0</mockito.version>
+        <junit.version>5.10.1</junit.version>
         <assertj.version>3.24.2</assertj.version>
-        <slf4j.version>2.0.7</slf4j.version>
         <logback.version>1.4.11</logback.version>
 
         <xsd.packagename/>
@@ -436,9 +433,9 @@
                 </plugin>
 
                 <plugin>
-                    <groupId>org.jboss.jandex</groupId>
+                    <groupId>io.smallrye</groupId>
                     <artifactId>jandex-maven-plugin</artifactId>
-                    <version>1.2.3</version>
+                    <version>3.1.5</version>
                     <executions>
                         <execution>
                             <id>make-index</id>
@@ -447,6 +444,9 @@
                             </goals>
                         </execution>
                     </executions>
+                    <configuration>
+                        <indexVersion>10</indexVersion>
+                    </configuration>
                 </plugin>
 
                 <plugin>
@@ -459,7 +459,7 @@
 
         <plugins>
             <plugin>
-                <groupId>org.jboss.jandex</groupId>
+                <groupId>io.smallrye</groupId>
                 <artifactId>jandex-maven-plugin</artifactId>
             </plugin>
             <plugin>
