@@ -15,6 +15,9 @@
 	<modules>
 		<module>grensesnittavstemming-v1</module>
 		<module>oppdragskjema-v1</module>
+		<module>meldekortutbetalingsgrunnlag-v1</module>
+		<module>simulering-v1</module>
+		<module>tilbakekreving-v1</module>
 	</modules>
 
 </project>

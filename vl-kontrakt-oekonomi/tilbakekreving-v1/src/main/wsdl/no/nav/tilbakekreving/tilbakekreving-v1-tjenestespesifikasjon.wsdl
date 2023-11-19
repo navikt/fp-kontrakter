@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="tilbakekrevingService" targetNamespace="http://okonomi.nav.no/tilbakekrevingService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tbk="http://okonomi.nav.no/tilbakekrevingService/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://okonomi.nav.no/tilbakekrevingService/" xmlns:annuller="urn:no:nav:tilbakekreving:kravgrunnlag:annuller:v1" xmlns:detalj="urn:no:nav:tilbakekreving:kravgrunnlag:detalj:v1" xmlns:liste="urn:no:nav:tilbakekreving:kravgrunnlag:hentliste:v1" xmlns:typer="urn:no:nav:tilbakekreving:typer:v1" xmlns:vedtak="urn:no:nav:tilbakekreving:tilbakekrevingsvedtak:vedtak:v1">
+
+            <xsd:import namespace="urn:no:nav:tilbakekreving:typer:v1" schemaLocation="xsd/typer/typer.xsd"/>
+            <xsd:import namespace="urn:no:nav:tilbakekreving:tilbakekrevingsvedtak:vedtak:v1" schemaLocation="xsd/tilbakekrevingsvedtak.xsd"/>
+            <xsd:import namespace="urn:no:nav:tilbakekreving:kravgrunnlag:hentliste:v1" schemaLocation="xsd/kravgrunnlag_liste.xsd"/>
+            <xsd:import namespace="urn:no:nav:tilbakekreving:kravgrunnlag:detalj:v1" schemaLocation="xsd/kravgrunnlag_detalj.xsd"/>
+            <xsd:import namespace="urn:no:nav:tilbakekreving:kravgrunnlag:annuller:v1" schemaLocation="xsd/kravgrunnlag_annuller.xsd"/>
+
+            <xsd:element name="tilbakekrevingsvedtakRequest">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="tilbakekrevingsvedtak" type="vedtak:TilbakekrevingsvedtakDto"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="tilbakekrevingsvedtakResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="mmel" type="typer:MmelDto"/>
+                        <xsd:element name="tilbakekrevingsvedtak" type="vedtak:TilbakekrevingsvedtakDto"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="kravgrunnlagHentListeRequest">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="hentKravgrunnlagListe" type="liste:HentKravgrunnlagListeDto"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="kravgrunnlagHentListeResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="mmel" type="typer:MmelDto"/>
+                        <xsd:element maxOccurs="unbounded" minOccurs="0" name="kravgrunnlagListe" type="liste:ReturnertKravgrunnlagDto"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="kravgrunnlagHentDetaljRequest">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="hentkravgrunnlag" type="detalj:HentKravgrunnlagDetaljDto"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="kravgrunnlagHentDetaljResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="mmel" type="typer:MmelDto"/>
+                        <xsd:element minOccurs="0" name="detaljertkravgrunnlag" type="detalj:DetaljertKravgrunnlagDto"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="kravgrunnlagAnnulerRequest">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="annullerkravgrunnlag" type="annuller:AnnullerKravgrunnlagDto"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="kravgrunnlagAnnulerResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="mmel" type="typer:MmelDto"/>
+                        <xsd:element name="annullerkravgrunnlag" type="annuller:AnnullerKravgrunnlagDto"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+        </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="kravgrunnlagHentDetaljRequest">
+    <wsdl:part name="request" element="tbk:kravgrunnlagHentDetaljRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="tilbakekrevingsvedtakRequest">
+    <wsdl:part name="request" element="tbk:tilbakekrevingsvedtakRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="kravgrunnlagHentListeResponse">
+    <wsdl:part name="response" element="tbk:kravgrunnlagHentListeResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="kravgrunnlagAnnulerResponse">
+    <wsdl:part name="response" element="tbk:kravgrunnlagAnnulerResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="kravgrunnlagHentDetaljResponse">
+    <wsdl:part name="response" element="tbk:kravgrunnlagHentDetaljResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="kravgrunnlagAnnulerRequest">
+    <wsdl:part name="request" element="tbk:kravgrunnlagAnnulerRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="tilbakekrevingsvedtakResponse">
+    <wsdl:part name="response" element="tbk:tilbakekrevingsvedtakResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="kravgrunnlagHentListeRequest">
+    <wsdl:part name="request" element="tbk:kravgrunnlagHentListeRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="TilbakekrevingPortType">
+    <wsdl:operation name="tilbakekrevingsvedtak">
+      <wsdl:input message="tbk:tilbakekrevingsvedtakRequest">
+    </wsdl:input>
+      <wsdl:output message="tbk:tilbakekrevingsvedtakResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="kravgrunnlagHentListe">
+      <wsdl:input message="tbk:kravgrunnlagHentListeRequest">
+    </wsdl:input>
+      <wsdl:output message="tbk:kravgrunnlagHentListeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="kravgrunnlagHentDetalj">
+      <wsdl:input message="tbk:kravgrunnlagHentDetaljRequest">
+    </wsdl:input>
+      <wsdl:output message="tbk:kravgrunnlagHentDetaljResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="kravgrunnlagAnnuler">
+      <wsdl:input message="tbk:kravgrunnlagAnnulerRequest">
+    </wsdl:input>
+      <wsdl:output message="tbk:kravgrunnlagAnnulerResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TilbakekrevingServiceBinding" type="tbk:TilbakekrevingPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsaw:UsingAddressing/>
+    <wsdl:operation name="tilbakekrevingsvedtak">
+      <soap:operation soapAction="http://okonomi.nav.no/tilbakekrevingService/TilbakekrevingPortType/tilbakekrevingsvedtakRequest"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="kravgrunnlagHentListe">
+      <soap:operation soapAction="http://okonomi.nav.no/tilbakekrevingService/TilbakekrevingPortType/kravgrunnlagHentListeRequest"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="kravgrunnlagHentDetalj">
+      <soap:operation soapAction="http://okonomi.nav.no/tilbakekrevingService/TilbakekrevingPortType/kravgrunnlagHentDetaljRequest"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="kravgrunnlagAnnuler">
+      <soap:operation soapAction="http://okonomi.nav.no/tilbakekrevingService/TilbakekrevingPortType/kravgrunnlagAnnulerRequest"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TilbakekrevingService">
+    <wsdl:port name="TilbakekrevingServicePort" binding="tbk:TilbakekrevingServiceBinding">
+      <soap:address location="http://www.example.org/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
