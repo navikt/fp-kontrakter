@@ -7,9 +7,9 @@ import java.time.LocalDate;
 
 public record SakInfoV2Dto(@NotNull @Valid SaksnummerDto saksnummer,
                            @NotNull @Valid YtelseTypeDto ytelseType,
-                           @NotNull LocalDate opprettetDato,
                            @NotNull @Valid FagsakStatusDto status,
                            @Valid FamiliehendelseInfoDto familiehendelseInfoDto,
+                           @NotNull LocalDate opprettetDato,
                            LocalDate førsteUttaksdato) {
     public record FamiliehendelseInfoDto(LocalDate familiehendelseDato,
                                          @Valid FamilieHendelseTypeDto familihendelseType) {
