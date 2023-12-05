@@ -43,7 +43,7 @@ public class RisikovurderingRequestTest {
         assertThat(roundTripped.konsumentId()).isEqualTo(REF);
         assertThat(roundTripped.annenPart().annenpartAktørId()).isNull();
 
-        validateResult(roundTripped);
+        validateResult(roundTripped); // Generer ny versjon
     }
 
     private void validateResult(Object roundTripped) {
