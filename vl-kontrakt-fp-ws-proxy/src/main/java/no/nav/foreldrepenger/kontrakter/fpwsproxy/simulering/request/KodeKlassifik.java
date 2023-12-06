@@ -10,7 +10,9 @@ public enum KodeKlassifik {
     ES_ADOPSJON("FPENAD-OP"),
 
     //Feriepenger både FP adopsjon, fødsel og SVP
-    FERIEPENGER_BRUKER("FPATFER"), // Bruker - Feriepenger - fp/svp.
+    FERIEPENGER_BRUKER("FPATFER"), // både FP adopsjon, fødsel og SVP for opptjening tom 2022 / utbetaling 2023. Fødsel fom opptjeningsår 2023
+    FPA_FERIEPENGER_BRUKER("FPADATFER"), // Bruker - Feriepenger. Adopsjon fom opptjeningsår 2023
+    SVP_FERIEPENGER_BRUKER("FPSVATFER"), // Bruker - Feriepenger. Adopsjon fom opptjeningsår 2023
     //Feriepenger til bruker for PSB, PPN, OMP, OLP
     FERIEPENGER_BRUKER_SP("SPATFER"), // Bruker - Feriepenger - k9.
     // Feriepenger til arbeidsgiver for PSB, PPN, OMP, OLP
