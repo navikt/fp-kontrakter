@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>no.nav.foreldrepenger.kontrakter</groupId>
 		<artifactId>fp-kontrakter-root</artifactId>
-		<version>${revision}</version>
+		<version>1.0-SNAPSHOT</version>
 	</parent>
 	
     <artifactId>abonnent-v2</artifactId>

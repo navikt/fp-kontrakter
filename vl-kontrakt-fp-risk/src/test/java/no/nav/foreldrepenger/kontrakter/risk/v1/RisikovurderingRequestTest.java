@@ -45,7 +45,7 @@ public class RisikovurderingRequestTest {
         assertThat(roundTripped.annenPart().annenpartAktørId()).isNull();
         assertThat(roundTripped.saksnummer()).isEqualTo(SAKSNUMMER);
 
-        validateResult(roundTripped);
+        validateResult(roundTripped); // Generer ny versjon
     }
 
     private void validateResult(Object roundTripped) {
