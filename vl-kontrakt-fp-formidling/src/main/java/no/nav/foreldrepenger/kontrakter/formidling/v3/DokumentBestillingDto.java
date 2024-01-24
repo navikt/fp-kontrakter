@@ -1,31 +1,29 @@
 package no.nav.foreldrepenger.kontrakter.formidling.v3;
 
-import java.util.UUID;
-
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
-
 import no.nav.foreldrepenger.kontrakter.formidling.kodeverk.DokumentMal;
 import no.nav.foreldrepenger.kontrakter.formidling.kodeverk.RevurderingÅrsak;
-import no.nav.foreldrepenger.kontrakter.formidling.kodeverk.YtelseType;
 
-/*
- * Til bruk for bestilling fra backend.
- * Vurder å fjerne behandlendeenhetnavn når vi ikke lenger sender brev for Klageinstansen. Evt hent fra Behandling ...
- *
- * Det er mulig å utvide denne med flere elementer slik at den kan brukes ifm forhåndsvisning fra frontend
- * - legg på ekstra Ctor for format som brukes ved normal bestilling fra fpsak
- * - frontend bør generere uuid for bestilling
- * - frontend bruker modernisert bestilling - 4 felt fom automatiskVedtaksbrev
+import java.util.UUID;
+
+/**
+ * Til bruk for bestilling av brev.
+ * @param behandlingUuid referanse til behandling det skal sendes brev for.
+ * @param dokumentbestillingUuid en unik bestillings id.
+ * @param dokumentMal dokument mal som skal brukes til å produsere brev.
+ * @param arsakskode brukes kun om VARSEL_OM_REVURDERING er valgt.
+ * @param fritekst kun brev som ikke er vedtak og har fritekst, dvs INNHENTE_OPPLYSNINGER og VARSEL_OM_REVURDERING om årsak ANNET er valgt
+ * @param dokumentType kun om dokumentMal FRITEKSTBREV sendes - forklarer hva det opprinnelige automatiske brevet burde være.
+ *                     Dette brukes i journalføring til å utlede riktig brev tittel som vises til bruker og saksbehandlere
+ *                     f.eks i innsyn og gosys.
  */
 public record DokumentBestillingDto(@NotNull @Valid UUID behandlingUuid,
                                     @NotNull @Valid UUID dokumentbestillingUuid,
-                                    @NotNull @Valid YtelseType ytelseType,
                                     @NotNull @Valid DokumentMal dokumentMal,
+                                    @Valid RevurderingÅrsak arsakskode,
                                     String fritekst,
-                                    @Pattern(regexp = "[a-zA-ZæøåÆØÅ :,.\\-0-9]{1,100}") String behandlendeEnhetNavn,
-                                    @Valid RevurderingÅrsak arsakskode) {
+                                    @Valid DokumentMal dokumentType) {
 }
 
 
