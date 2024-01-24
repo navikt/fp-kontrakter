@@ -1,8 +1,12 @@
 kontrakt:
-  - '**/*'
-  - '!pom.xml'
-  - '!**/*/pom.xml'
-  
+  - any:
+    - changed-files:
+      - any-glob-to-any-file: "**/*"
+      - any-glob-to-any-file: "!**/*/pom.xml"
+      - any-glob-to-any-file: "!pom.xml"
+
 pom:
-  - '**/*/pom.xml'
-  - pom.xml
+  - any:
+    - changed-files:
+      - any-glob-to-any-file: "**/*/pom.xml"
+      - any-glob-to-any-file: "pom.xml"
