@@ -2,6 +2,7 @@ package no.nav.foreldrepenger.kontrakter.formidling.v1;
 
 import java.util.UUID;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
@@ -23,7 +24,7 @@ public class DokumentbestillingDto {
     /**
      * Kode for ytelsetypeES
      */
-    @NotNull
+    @NotNull @Valid
     private YtelseType fagsakYtelseType;
     /**
      * Kode for hvilket dokument som er bestilt
