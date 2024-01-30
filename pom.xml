@@ -44,7 +44,7 @@
         <jaxb2-maven-plugin.version>3.1.0</jaxb2-maven-plugin.version>
 
         <junit.version>5.10.1</junit.version>
-        <assertj.version>3.25.1</assertj.version>
+        <assertj.version>3.25.2</assertj.version>
         <logback.version>1.4.14</logback.version>
 
         <xsd.packagename/>
