@@ -26,7 +26,8 @@ public class RisikovurderingResultatTest {
     @Test
     public void skal_serialisere_og_deserialisere_request() throws Exception {
         // Arrange
-        var request = new HentRisikovurderingDto(REF);
+        var saksnummer = "999999999";
+        var request = new HentRisikovurderingDto(REF, saksnummer);
 
         // Act
         var json = WRITER.writeValueAsString(request);
@@ -36,6 +37,7 @@ public class RisikovurderingResultatTest {
         // Assert
         assertThat(roundTripped).isNotNull();
         assertThat(roundTripped.konsumentId()).isEqualTo(REF);
+        assertThat(roundTripped.saksnummer()).isEqualTo(saksnummer);
 
         validateResult(roundTripped);
     }
