@@ -76,6 +76,10 @@ public enum KodeKlassifik {
     PPN_FISKER("PPNPSNDFI"),
     PPN_REFUSJON_AG("PPNPREFAG-IOP"), //PPNP (pleiepenger i livets sluttfase), REFAG - arbeidsgiver
 
+    //Pleiepenger feriepenger (gjelder både pleiepenger sykt barn og pleiepenger i livets sluttfase)
+    PP_FERIEPENGER_REFUSJON_AG("PPREFAGFER-IOP"),
+    PP_FERIEPENGER_BRUKER("PPATFER"),
+
     //Omsorgspenger
     OMP_ARBEDISTAKER("OMATORD"), // OM (omsorgspenger), AT - arbeidstaker, ORD - ordinær
     OMP_FRILANSER("OMATFRI"),
@@ -86,6 +90,8 @@ public enum KodeKlassifik {
     OMP_JORDBRUKER("OMSNDJB-OP"),
     OMP_FISKER("OMSNDFI"),
     OMP_REFUSJON_AG("OMREFAG-IOP"), //OM (omsorgspenger), REFAG - arbeidsgiver
+    OMP_FERIEPENGER_REFUSJON_AG("OMREFAGFER-IOP"),
+    OMP_FERIEPENGER_BRUKER("OMATFER"),
 
     //Opplæringspenger
     OLP_ARBEDISTAKER("OPPATORD"), // OPP (opplæringspenger), AT - arbeidstaker, ORD - ordinær
@@ -97,6 +103,8 @@ public enum KodeKlassifik {
     OLP_JORDBRUKER("OPPSNDJB-OP"),
     OLP_FISKER("OPPSNDFI"),
     OLP_REFUSJON_AG("OPPREFAG-IOP"), //OPP (opplæringspenger), REFAG - arbeidsgiver
+    OLP_FERIEPENGER_REFUSJON_AG("OPPREFAGFER-IOP"),
+    OLP_FERIEPENGER_BRUKER("OPPATFER"),
 
     //kompenasasjon for koronatiltak for Selvstendig næringsdrivende og Frilansere (Anmodning 10)
     FRISINN_FRILANS("FRISINN-FRILANS"),
