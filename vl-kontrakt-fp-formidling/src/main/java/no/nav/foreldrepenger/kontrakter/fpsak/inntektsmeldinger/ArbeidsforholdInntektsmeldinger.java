@@ -13,6 +13,6 @@ import java.util.List;
 public record ArbeidsforholdInntektsmeldinger(@NotNull List<@Valid @NotNull ArbeidsforholdInntektsmelding> arbeidsforholdInntektsmelding) {
 
     public record ArbeidsforholdInntektsmelding(@NotNull @Pattern(regexp = "\\d{9}|\\d{13}") String arbeidsgiverIdent,
-                                                @NotNull @Digits(integer = 5, fraction = 2) @DecimalMin("0.00") @DecimalMax("100.00") BigDecimal stillingsprosent,
+                                                @NotNull @Digits(integer = 5, fraction = 2) @DecimalMin("0.00") @DecimalMax("500.00") BigDecimal stillingsprosent,
                                                 @NotNull Boolean erInntektsmeldingMottatt) {}
 }
