@@ -45,7 +45,7 @@
 
         <junit.version>5.10.2</junit.version>
         <assertj.version>3.25.3</assertj.version>
-        <logback.version>1.5.0</logback.version>
+        <logback.version>1.5.3</logback.version>
 
         <xsd.packagename/>
 	</properties>
