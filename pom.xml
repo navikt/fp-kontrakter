@@ -36,7 +36,7 @@
 
         <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
 
-        <jaxb-bom.version>4.0.4</jaxb-bom.version>
+        <jaxb-bom.version>4.0.5</jaxb-bom.version>
 
         <jakarta.el.version>4.0.2</jakarta.el.version>
 
