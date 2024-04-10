@@ -16,8 +16,8 @@
     <artifactId>fp-topics</artifactId>
     <packaging>pom</packaging>
 
-	<modules>
-		<module>hendelser-behandlingsprosess</module>
+    <modules>
+	<module>hendelser-behandlingsprosess</module>
         <module>hendelser-behandling</module>
     </modules>
 
