@@ -32,21 +32,6 @@
         <sonar.projectName>fp-kontrakter</sonar.projectName>
         <sonar.projectKey>navikt_fp-kontrakter</sonar.projectKey>
 
-        <jakarta.jakartaee-bom.version>10.0.0</jakarta.jakartaee-bom.version>
-
-        <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
-
-        <jaxb-bom.version>4.0.4</jaxb-bom.version>
-
-        <jakarta.el.version>4.0.2</jakarta.el.version>
-
-        <!-- maven jakarta kompatible plugins -->
-        <jaxb2-maven-plugin.version>3.1.0</jaxb2-maven-plugin.version>
-
-        <junit.version>5.10.2</junit.version>
-        <assertj.version>3.25.3</assertj.version>
-        <logback.version>1.5.3</logback.version>
-
         <xsd.packagename/>
 	</properties>
 
@@ -98,7 +83,7 @@
             <dependency>
                 <groupId>jakarta.platform</groupId>
                 <artifactId>jakarta.jakartaee-bom</artifactId>
-                <version>${jakarta.jakartaee-bom.version}</version>
+                <version>10.0.0</version>
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
@@ -116,7 +101,7 @@
             <dependency>
                 <groupId>org.glassfish.jaxb</groupId>
                 <artifactId>jaxb-bom</artifactId>
-                <version>${jaxb-bom.version}</version>
+                <version>4.0.5</version>
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
@@ -125,13 +110,13 @@
             <dependency>
                 <groupId>org.hibernate.validator</groupId>
                 <artifactId>hibernate-validator</artifactId>
-                <version>${hibernate-validator.version}</version>
+                <version>8.0.1.Final</version>
             </dependency>
 
             <dependency>
-                <groupId>org.glassfish</groupId>
-                <artifactId>jakarta.el</artifactId>
-                <version>${jakarta.el.version}</version>
+                <groupId>org.glassfish.expressly</groupId>
+                <artifactId>expressly</artifactId>
+                <version>5.0.0</version>
             </dependency>
 
             <!-- Interne modul avhengigheter -->
@@ -221,7 +206,7 @@
             <dependency>
                 <groupId>org.junit</groupId>
                 <artifactId>junit-bom</artifactId>
-                <version>${junit.version}</version>
+                <version>5.10.2</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -229,13 +214,13 @@
             <dependency>
                 <groupId>org.assertj</groupId>
                 <artifactId>assertj-core</artifactId>
-                <version>${assertj.version}</version>
+                <version>3.25.3</version>
             </dependency>
 
             <dependency>
                 <groupId>ch.qos.logback</groupId>
                 <artifactId>logback-classic</artifactId>
-                <version>${logback.version}</version>
+                <version>1.5.4</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -277,13 +262,13 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-assembly-plugin</artifactId>
-                    <version>3.6.0</version>
+                    <version>3.7.1</version>
                 </plugin>
                 <!-- Plugin required to build java classes from XSD using XJC -->
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>jaxb2-maven-plugin</artifactId>
-                    <version>${jaxb2-maven-plugin.version}</version>
+                    <version>3.1.0</version>
                     <executions>
                         <execution>
                             <configuration>
@@ -311,7 +296,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.12.1</version>
+                    <version>3.13.0</version>
                     <configuration>
                         <source>${java.version}</source>
                         <target>${java.version}</target>
@@ -373,7 +358,7 @@
                 <plugin>
                     <groupId>org.jacoco</groupId>
                     <artifactId>jacoco-maven-plugin</artifactId>
-                    <version>0.8.11</version>
+                    <version>0.8.12</version>
                     <executions>
                         <execution>
                             <id>prepare-agent</id>
@@ -401,7 +386,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-source-plugin</artifactId>
-                    <version>3.3.0</version>
+                    <version>3.3.1</version>
                     <executions>
                         <execution>
                             <id>attach-sources</id>
@@ -435,7 +420,7 @@
                 <plugin>
                     <groupId>io.smallrye</groupId>
                     <artifactId>jandex-maven-plugin</artifactId>
-                    <version>3.1.6</version>
+                    <version>3.1.7</version>
                     <executions>
                         <execution>
                             <id>make-index</id>
@@ -449,7 +434,7 @@
                 <plugin>
                     <groupId>org.sonarsource.scanner.maven</groupId>
                     <artifactId>sonar-maven-plugin</artifactId>
-                    <version>3.10.0.2594</version>
+                    <version>3.11.0.3922</version>
                 </plugin>
             </plugins>
         </pluginManagement>
