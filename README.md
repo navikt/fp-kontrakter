@@ -1,5 +1,5 @@
 # fp-kontrakter
-Samling av kontrakter brukt i Familie området (Foreldrepenger/Engangsstønad/Svangerskapspenger)
+Samling av kontrakter brukt i Foreldrepenger-området (Foreldrepenger/Engangsstønad/Svangerskapspenger) og delvis av Pleiepenger (k9)
 
 Bygger klient biblioteker for angitte kontrakter
 
