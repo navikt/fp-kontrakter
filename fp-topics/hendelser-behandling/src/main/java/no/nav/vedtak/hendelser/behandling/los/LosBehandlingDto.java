@@ -45,7 +45,7 @@ public record LosBehandlingDto(@NotNull UUID behandlingUuid,
     public record LosAksjonspunktDto(String definisjon, Aksjonspunktstatus status, LocalDateTime fristTid) {
     }
 
-    public record LosForeldrepengerDto(LocalDate førsteUttakDato, boolean sykdomsvurdering, boolean gradering) {
+    public record LosForeldrepengerDto(LocalDate førsteUttakDato) {
     }
 
     public record LosTilbakeDto(BigDecimal feilutbetaltBeløp, LocalDate førsteFeilutbetalingDato) {
