@@ -80,6 +80,10 @@ public enum KodeKlassifik {
     PP_FERIEPENGER_REFUSJON_AG("PPREFAGFER-IOP"),
     PP_FERIEPENGER_BRUKER("PPATFER"),
 
+    //Pleiepenger ferietillegg (gjelder både pleiepenger sykt barn og pleiepenger i livets sluttfase)
+    PP_FERIETILLEGG_BRUKER("PPALFERTILL"),
+    PP_FERIETILLEGG_REFUSJON_AG("PPALFERTILL-IOP"),
+
     //Omsorgspenger
     OMP_ARBEDISTAKER("OMATORD"), // OM (omsorgspenger), AT - arbeidstaker, ORD - ordinær
     OMP_FRILANSER("OMATFRI"),
@@ -105,6 +109,8 @@ public enum KodeKlassifik {
     OLP_REFUSJON_AG("OPPREFAG-IOP"), //OPP (opplæringspenger), REFAG - arbeidsgiver
     OLP_FERIEPENGER_REFUSJON_AG("OPPREFAGFER-IOP"),
     OLP_FERIEPENGER_BRUKER("OPPATFER"),
+    OLP_FERIETILLEGG_BRUKER("OPALFERTILL"),
+    OLP_FERIETILLEGG_REFUSJON_AG("OPALFERTILL-IOP"),
 
     //kompenasasjon for koronatiltak for Selvstendig næringsdrivende og Frilansere (Anmodning 10)
     FRISINN_FRILANS("FRISINN-FRILANS"),
