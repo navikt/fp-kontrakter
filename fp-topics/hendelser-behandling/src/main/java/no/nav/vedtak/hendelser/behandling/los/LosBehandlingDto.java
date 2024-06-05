@@ -32,7 +32,7 @@ public record LosBehandlingDto(@NotNull UUID behandlingUuid,
                                boolean refusjonskrav,
                                // Inntil fagsak-merkingen er stabil - konverter til kontrakt-enum senere
                                // Foreløpig: NASJONAL, EØS_BOSATT_NORGE, BOSATT_UTLAND, SAMMENSATT_KONTROLL, DØD, NÆRING, PRAKSIS_UTSETTELSE
-                               // Muligens: BARE_FAR_RETT, GRUPPE2
+                               // Potensielle nye merker: BARE_FAR_RETT, GRUPPE2
                                List<String> saksegenskaper,
                                LosFagsakEgenskaperDto fagsakEgenskaper,
                                LosForeldrepengerDto foreldrepengerDto,
