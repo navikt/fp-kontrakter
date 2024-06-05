@@ -30,13 +30,13 @@ public record LosBehandlingDto(@NotNull UUID behandlingUuid,
                                List<Behandlingsårsak> behandlingsårsaker,
                                boolean faresignaler,
                                boolean refusjonskrav,
-                               // Inntil fagsak-merkingen er stabil - enum senere
+                               // Inntil fagsak-merkingen er stabil - konverter til kontrakt-enum senere
                                // Foreløpig: NASJONAL, EØS_BOSATT_NORGE, BOSATT_UTLAND, SAMMENSATT_KONTROLL, DØD, NÆRING, PRAKSIS_UTSETTELSE
                                // Muligens: BARE_FAR_RETT, GRUPPE2
                                List<String> saksegenskaper,
                                LosFagsakEgenskaperDto fagsakEgenskaper,
                                LosForeldrepengerDto foreldrepengerDto,
-                               // Inntil kriteriene er stabil - enum senere
+                               // Inntil kriteriene er stabil - konverter til kontrakt-enum senere
                                // Foreløpig: SYKDOMSVURDERING, GRADERING, BARE_FAR_RETT, FARESIGNALER, DIREKTE_UTBETALING, REFUSJONSKRAV
                                List<String> behandlingsegenskaper,
                                LosTilbakeDto tilbakeDto) {
