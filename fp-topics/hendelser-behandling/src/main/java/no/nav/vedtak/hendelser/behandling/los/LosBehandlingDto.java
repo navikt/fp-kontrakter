@@ -34,10 +34,9 @@ public record LosBehandlingDto(@NotNull UUID behandlingUuid,
                                // Foreløpig: NASJONAL, EØS_BOSATT_NORGE, BOSATT_UTLAND, SAMMENSATT_KONTROLL, DØD, NÆRING, PRAKSIS_UTSETTELSE
                                // Potensielle nye merker: BARE_FAR_RETT, GRUPPE2
                                List<String> saksegenskaper,
-                               LosFagsakEgenskaperDto fagsakEgenskaper,
                                LosForeldrepengerDto foreldrepengerDto,
                                // Inntil kriteriene er stabil - konverter til kontrakt-enum senere
-                               // Foreløpig: SYKDOMSVURDERING, GRADERING, BARE_FAR_RETT, FARESIGNALER, DIREKTE_UTBETALING, REFUSJONSKRAV
+                               // Foreløpig: SYKDOMSVURDERING, BARE_FAR_RETT, FARESIGNALER, DIREKTE_UTBETALING, REFUSJONSKRAV
                                List<String> behandlingsegenskaper,
                                LosTilbakeDto tilbakeDto) {
 
