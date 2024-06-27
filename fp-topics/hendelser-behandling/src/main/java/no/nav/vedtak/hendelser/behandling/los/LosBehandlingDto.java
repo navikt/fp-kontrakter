@@ -36,18 +36,16 @@ public record LosBehandlingDto(@NotNull UUID behandlingUuid,
                                List<String> saksegenskaper,
                                LosForeldrepengerDto foreldrepengerDto,
                                // Inntil kriteriene er stabil - konverter til kontrakt-enum senere
-                               // Foreløpig: SYKDOMSVURDERING, BARE_FAR_RETT, FARESIGNALER, DIREKTE_UTBETALING, REFUSJONSKRAV
+                               // Foreløpig: SYKDOMSVURDERING, FARESIGNALER, DIREKTE_UTBETALING, REFUSJONSKRAV
+                               // Flyttes til saksegenskap: BARE_FAR_RETT
                                List<String> behandlingsegenskaper,
                                LosTilbakeDto tilbakeDto) {
 
 
-    public record LosAksjonspunktDto(String definisjon, Aksjonspunktstatus status, LocalDateTime fristTid) {
-    }
+    public record LosAksjonspunktDto(String definisjon, Aksjonspunktstatus status, LocalDateTime fristTid) { }
 
-    public record LosForeldrepengerDto(LocalDate førsteUttakDato) {
-    }
+    public record LosForeldrepengerDto(LocalDate førsteUttakDato) { }
 
-    public record LosTilbakeDto(BigDecimal feilutbetaltBeløp, LocalDate førsteFeilutbetalingDato) {
-    }
+    public record LosTilbakeDto(BigDecimal feilutbetaltBeløp, LocalDate førsteFeilutbetalingDato) { }
 
 }
