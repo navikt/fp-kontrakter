@@ -26,6 +26,18 @@
             </xsd:extension>
         </xsd:complexContent>
     </xsd:complexType>
+    <xsd:complexType name="AvtaltFerieListe">
+        <xsd:sequence>
+            <xsd:element name="avtaltFerie" type="sv:AvtaltFerie" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:anyAttribute processContents="lax"/>
+    </xsd:complexType>
+    <xsd:complexType name="AvtaltFerie">
+        <xsd:sequence>
+            <xsd:element name="avtaltFerieFom" type="xsd:date"/>
+            <xsd:element name="avtaltFerieTom" type="xsd:date"/>
+        </xsd:sequence>
+    </xsd:complexType>
     <xsd:complexType name="TilretteleggingListe">
         <xsd:sequence>
             <xsd:element name="tilrettelegging" type="sv:Tilrettelegging" maxOccurs="unbounded"/>
