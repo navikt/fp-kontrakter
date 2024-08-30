@@ -21,10 +21,25 @@
                     <xsd:element name="medlemskap" type="felles:Medlemskap"/>
                     <xsd:element name="opptjening" type="fp:Opptjening" minOccurs="0"/>
                     <xsd:element name="tilretteleggingListe" type="sv:TilretteleggingListe"/>
+                    <xsd:element name="avtaltFerieListe" type="sv:AvtaltFerieListe" minOccurs="0"/>
                 </xsd:sequence>
                 <xsd:anyAttribute processContents="lax"/>
             </xsd:extension>
         </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="AvtaltFerieListe">
+        <xsd:sequence>
+            <xsd:element name="avtaltFerie" type="sv:AvtaltFerie" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:anyAttribute processContents="lax"/>
+    </xsd:complexType>
+    <xsd:complexType name="AvtaltFerie">
+        <xsd:sequence>
+            <xsd:element name="arbeidsgiver" type="sv:Arbeidsgiver"/>
+            <xsd:element name="avtaltFerieFom" type="xsd:date"/>
+            <xsd:element name="avtaltFerieTom" type="xsd:date"/>
+        </xsd:sequence>
+        <xsd:anyAttribute processContents="lax"/>
     </xsd:complexType>
     <xsd:complexType name="TilretteleggingListe">
         <xsd:sequence>

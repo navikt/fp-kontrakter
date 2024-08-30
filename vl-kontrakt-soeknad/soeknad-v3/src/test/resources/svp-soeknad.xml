@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns7:soeknad xmlns="urn:no:nav:vedtak:felles:xml:soeknad:svangerskapspenger:v1" xmlns:ns6="urn:no:nav:vedtak:felles:xml:soeknad:engangsstoenad:v3" xmlns:ns5="urn:no:nav:vedtak:felles:xml:soeknad:uttak:v3" xmlns:ns7="urn:no:nav:vedtak:felles:xml:soeknad:v3" xmlns:ns2="urn:no:nav:vedtak:felles:xml:soeknad:felles:v3" xmlns:ns4="urn:no:nav:vedtak:felles:xml:soeknad:endringssoeknad:v3" xmlns:ns3="urn:no:nav:vedtak:felles:xml:soeknad:foreldrepenger:v3">
+    <ns7:mottattDato>2024-08-30</ns7:mottattDato>
+    <ns7:paakrevdeVedlegg>
+        <ns2:id>Vbfc43b14-1303-4e40-ad7d-a8f8510f8aaa</ns2:id>
+        <ns2:innsendingstype kodeverk="INNSENDINGSVALG" kode="LASTET_OPP"/>
+        <ns2:skjemanummer>I000109</ns2:skjemanummer>
+        <ns2:tilleggsinformasjon>Skjema for tilrettelegging og omplassering ved graviditet</ns2:tilleggsinformasjon>
+    </ns7:paakrevdeVedlegg>
+    <ns7:sprakvalg kode="NB"/>
+    <ns7:omYtelse>
+        <svangerskapspenger>
+            <termindato>2024-12-01</termindato>
+            <medlemskap>
+                <ns2:iNorgeVedFoedselstidspunkt>true</ns2:iNorgeVedFoedselstidspunkt>
+                <ns2:boddINorgeSiste12Mnd>false</ns2:boddINorgeSiste12Mnd>
+                <ns2:borINorgeNeste12Mnd>false</ns2:borINorgeNeste12Mnd>
+            </medlemskap>
+            <opptjening/>
+            <tilretteleggingListe>
+                <tilrettelegging>
+                    <ingenTilrettelegging>
+                        <slutteArbeidFom>2024-09-01</slutteArbeidFom>
+                    </ingenTilrettelegging>
+                    <arbeidsforhold xsi:type="Virksomhet" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                        <identifikator>980000001</identifikator>
+                    </arbeidsforhold>
+                    <behovForTilretteleggingFom>2024-07-31</behovForTilretteleggingFom>
+                    <vedlegg>Vbfc43b14-1303-4e40-ad7d-a8f8510f8aaa</vedlegg>
+                </tilrettelegging>
+            </tilretteleggingListe>
+        </svangerskapspenger>
+    </ns7:omYtelse>
+    <ns7:soeker>
+        <ns2:aktoerId>1000000000000</ns2:aktoerId>
+        <ns2:soeknadsrolle kodeverk="FORELDRE_TYPE" kode="MOR"/>
+    </ns7:soeker>
+</ns7:soeknad>
