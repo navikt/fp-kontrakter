@@ -2,15 +2,13 @@ package no.nav.foreldrepenger.søknad.v3;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 
 import jakarta.xml.bind.JAXBElement;
+import no.nav.vedtak.felles.xml.soeknad.svangerskapspenger.v1.Svangerskapspenger;
 import org.junit.jupiter.api.Test;
 
 import no.nav.foreldrepenger.søknad.util.JaxbHelper;
@@ -37,17 +35,9 @@ public class ParseSoeknadTest {
 
     @Test
     public void skal_parse_soeknad_xml() throws Exception {
-        final InputStream resourceAsStream = getClass().getResourceAsStream("/soeknad-v3.xml");
-        StringBuilder textBuilder = new StringBuilder();
-        try (Reader reader = new BufferedReader(new InputStreamReader
-                (resourceAsStream, Charset.forName(StandardCharsets.UTF_8.name())))) {
-            int c = 0;
-            while ((c = reader.read()) != -1) {
-                textBuilder.append((char) c);
-            }
-        }
+        var xml = lesResource("/soeknad-v3.xml");
         Soeknad søknad = JaxbHelper.unmarshalAndValidateXMLWithStAX(Soeknad.class,
-                textBuilder.toString(),
+                xml,
                 "xsd/soeknad-v3.xsd", new String[]{
                         "xsd/engangsstoenad/engangsstoenad-v3.xsd",
                         "xsd/foreldrepenger/foreldrepenger-v3.xsd",
@@ -153,5 +143,32 @@ public class ParseSoeknadTest {
                 SøknadConstants.ADDITIONAL_CLASSES);
 
         assertThat(søknad).isEqualToComparingFieldByFieldRecursively(søknad2);
+    }
+
+    @Test
+    void svp_utvidet_med_ferieliste_skal_være_bakoverkompatibel() throws Exception {
+        var xml = lesResource("/svp-soeknad.xml");
+        var søknad = JaxbHelper.unmarshalAndValidateXMLWithStAX(Soeknad.class,
+                xml, "xsd/soeknad-v3.xsd", SøknadConstants.ADDITIONAL_XSD_LOCATION, SøknadConstants.ADDITIONAL_CLASSES);
+
+        assertThat(søknad).isNotNull();
+        var svangerskapspenger = søknad.getOmYtelse().getAny().stream()
+                         .filter(o -> o instanceof JAXBElement<?>)
+                         .findFirst()
+                         .map(e -> (Svangerskapspenger) ((JAXBElement<?>) e).getValue());
+
+        assertThat(svangerskapspenger)
+                .isNotEmpty()
+                .get()
+                .matches(svp -> svp.getAvtaltFerieListe() == null)
+                .matches(svp -> LocalDate.of(2024,12,1).equals(svp.getTermindato()));
+    }
+
+    private String lesResource(String resourceFile) throws IOException {
+        final InputStream resourceAsStream = getClass().getResourceAsStream(resourceFile);
+        try (resourceAsStream) {
+            assert resourceAsStream != null;
+            return new String(resourceAsStream.readAllBytes(), StandardCharsets.UTF_8);
+        }
     }
 }
