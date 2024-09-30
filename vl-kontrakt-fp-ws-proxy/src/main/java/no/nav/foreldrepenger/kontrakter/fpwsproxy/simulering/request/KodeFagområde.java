@@ -21,6 +21,8 @@ public enum KodeFagområde {
 
     FRISINN, //Koronakompensasjon Frilansere og Selvstendig næringsdrivende;
 
+    UNG, //ungdomsytelse
+
     ;
 
     public boolean gjelderEngangsstønad() {
