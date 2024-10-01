@@ -12,7 +12,6 @@ public enum OpptjeningAktivitetDto {
     OPPLÆRINGSPENGER,
     PLEIEPENGER,
     FRISINN,
-    UNG,
     FRILOPP,
     ETTERLØNN_SLUTTPAKKE,
     SVANGERSKAPSPENGER,
