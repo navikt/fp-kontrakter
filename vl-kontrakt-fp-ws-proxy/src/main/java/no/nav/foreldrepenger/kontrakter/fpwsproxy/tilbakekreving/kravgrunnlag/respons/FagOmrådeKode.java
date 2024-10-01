@@ -20,5 +20,6 @@ public enum FagOmrådeKode {
     OPP,
     OPPREF,
     FRISINN,
+    UNG,
     ;
 }

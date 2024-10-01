@@ -115,6 +115,9 @@ public enum KodeKlassifik {
     //kompenasasjon for koronatiltak for Selvstendig næringsdrivende og Frilansere (Anmodning 10)
     FRISINN_FRILANS("FRISINN-FRILANS"),
     FRISINN_SN("FRISINN-SELVST-OP"),
+
+    //ungdomsytelse
+    UNG("UNG"),
     ;
 
     @JsonValue
