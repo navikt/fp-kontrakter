@@ -1,19 +1,17 @@
 package no.nav.foreldrepenger.kontrakter.risk.v1;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import com.fasterxml.jackson.databind.ObjectReader;
+import com.fasterxml.jackson.databind.ObjectWriter;
+import jakarta.validation.Validation;
+import no.nav.foreldrepenger.kontrakter.risk.kodeverk.AktørId;
+import no.nav.foreldrepenger.kontrakter.risk.kodeverk.Saksnummer;
+import no.nav.foreldrepenger.kontrakter.risk.kodeverk.YtelseType;
+import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 import java.util.UUID;
 
-import jakarta.validation.Validation;
-
-import org.junit.jupiter.api.Test;
-
-import com.fasterxml.jackson.databind.ObjectReader;
-import com.fasterxml.jackson.databind.ObjectWriter;
-
-import no.nav.foreldrepenger.kontrakter.risk.kodeverk.AktørId;
-import no.nav.foreldrepenger.kontrakter.risk.kodeverk.YtelseType;
+import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class RisikovurderingRequestTest {
@@ -24,12 +22,13 @@ public class RisikovurderingRequestTest {
     private static final AktørId AKTØR_ID = new AktørId("1000000000001");
     private static final LocalDate IDAG = LocalDate.now();
     private static final UUID REF = UUID.randomUUID();
+    private static final Saksnummer SAKSNUMMER = new Saksnummer("123456789");
 
     @Test
     public void skal_serialisere_og_deserialisere_request() throws Exception {
         // Arrange
         var annenpart = new AnnenPartDto(null, "UtlandskId");
-        var request = new RisikovurderingRequestDto(AKTØR_ID, IDAG, IDAG.minusMonths(17), IDAG.plusYears(3), REF, YtelseType.FORELDREPENGER, annenpart);
+        var request = new RisikovurderingRequestDto(AKTØR_ID, IDAG, IDAG.minusMonths(17), IDAG.plusYears(3), REF, YtelseType.FORELDREPENGER, annenpart, SAKSNUMMER);
 
         // Act
         var json = WRITER.writeValueAsString(request);
@@ -41,6 +40,7 @@ public class RisikovurderingRequestTest {
         assertThat(roundTripped.søkerAktørId()).isEqualTo(AKTØR_ID);
         assertThat(roundTripped.skjæringstidspunkt()).isEqualTo(IDAG);
         assertThat(roundTripped.konsumentId()).isEqualTo(REF);
+        assertThat(roundTripped.saksnummer()).isEqualTo(SAKSNUMMER);
         assertThat(roundTripped.annenPart().annenpartAktørId()).isNull();
 
         validateResult(roundTripped); // Generer ny versjon

@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import no.nav.foreldrepenger.kontrakter.formidling.kodeverk.DokumentMal;
 import no.nav.foreldrepenger.kontrakter.formidling.kodeverk.RevurderingÅrsak;
+import no.nav.foreldrepenger.kontrakter.formidling.kodeverk.Saksnummer;
 
 import java.util.UUID;
 
@@ -19,6 +20,7 @@ import java.util.UUID;
  *                     f.eks i innsyn og gosys.
  */
 public record DokumentBestillingDto(@NotNull @Valid UUID behandlingUuid,
+                                    @Valid Saksnummer saksnummer,
                                     @NotNull @Valid UUID dokumentbestillingUuid,
                                     @NotNull @Valid DokumentMal dokumentMal,
                                     @Valid RevurderingÅrsak revurderingÅrsak,

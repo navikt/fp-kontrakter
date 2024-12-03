@@ -1,19 +1,17 @@
 package no.nav.foreldrepenger.kontrakter.risk.v1;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import com.fasterxml.jackson.databind.ObjectReader;
+import com.fasterxml.jackson.databind.ObjectWriter;
+import jakarta.validation.Validation;
+import no.nav.foreldrepenger.kontrakter.risk.kodeverk.FaresignalVurdering;
+import no.nav.foreldrepenger.kontrakter.risk.kodeverk.RisikoklasseType;
+import no.nav.foreldrepenger.kontrakter.risk.kodeverk.Saksnummer;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.UUID;
 
-import jakarta.validation.Validation;
-
-import no.nav.foreldrepenger.kontrakter.risk.kodeverk.FaresignalVurdering;
-import org.junit.jupiter.api.Test;
-
-import com.fasterxml.jackson.databind.ObjectReader;
-import com.fasterxml.jackson.databind.ObjectWriter;
-
-import no.nav.foreldrepenger.kontrakter.risk.kodeverk.RisikoklasseType;
+import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class RisikovurderingResultatTest {
@@ -23,10 +21,12 @@ public class RisikovurderingResultatTest {
 
     private static final UUID REF = UUID.randomUUID();
 
+    private static final Saksnummer SAKSNUMMER = new Saksnummer("123456789");
+
     @Test
     public void skal_serialisere_og_deserialisere_request() throws Exception {
         // Arrange
-        var request = new HentRisikovurderingDto(REF);
+        var request = new HentRisikovurderingDto(REF, SAKSNUMMER);
 
         // Act
         var json = WRITER.writeValueAsString(request);
@@ -36,6 +36,7 @@ public class RisikovurderingResultatTest {
         // Assert
         assertThat(roundTripped).isNotNull();
         assertThat(roundTripped.konsumentId()).isEqualTo(REF);
+        assertThat(roundTripped.saksnummer()).isEqualTo(SAKSNUMMER);
 
         validateResult(roundTripped);
     }
