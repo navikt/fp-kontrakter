@@ -1,4 +1,4 @@
-package no.nav.foreldrepenger.kontrakter.formidling.v1;
+package no.nav.foreldrepenger.kontrakter.formidling.v3;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;

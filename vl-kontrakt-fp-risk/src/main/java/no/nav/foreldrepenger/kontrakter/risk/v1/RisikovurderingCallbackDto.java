@@ -1,10 +1,13 @@
 package no.nav.foreldrepenger.kontrakter.risk.v1;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import no.nav.foreldrepenger.kontrakter.risk.kodeverk.RisikoklasseType;
+import no.nav.foreldrepenger.kontrakter.risk.kodeverk.Saksnummer;
+
 import java.util.UUID;
 
-import jakarta.validation.constraints.NotNull;
-
-import no.nav.foreldrepenger.kontrakter.risk.kodeverk.RisikoklasseType;
-
-public record RisikovurderingCallbackDto(@NotNull UUID behandlingUuid, @NotNull RisikoklasseType risikoklasse) {
+public record RisikovurderingCallbackDto(@NotNull UUID behandlingUuid,
+                                         @Valid Saksnummer saksnummer,
+                                         @NotNull RisikoklasseType risikoklasse) {
 }

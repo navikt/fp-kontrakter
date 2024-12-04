@@ -1,14 +1,14 @@
 package no.nav.foreldrepenger.kontrakter.risk.v1;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import no.nav.foreldrepenger.kontrakter.risk.kodeverk.AktørId;
+import no.nav.foreldrepenger.kontrakter.risk.kodeverk.Saksnummer;
+import no.nav.foreldrepenger.kontrakter.risk.kodeverk.YtelseType;
+
 import java.time.LocalDate;
 import java.util.Optional;
 import java.util.UUID;
-
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-
-import no.nav.foreldrepenger.kontrakter.risk.kodeverk.AktørId;
-import no.nav.foreldrepenger.kontrakter.risk.kodeverk.YtelseType;
 
 public record RisikovurderingRequestDto(@NotNull @Valid AktørId søkerAktørId,
                                         @NotNull LocalDate skjæringstidspunkt,
@@ -16,7 +16,8 @@ public record RisikovurderingRequestDto(@NotNull @Valid AktørId søkerAktørId,
                                         LocalDate opplysningsperiodeTom,
                                         @NotNull UUID konsumentId,
                                         @NotNull YtelseType ytelseType,
-                                        @Valid AnnenPartDto annenPart) {
+                                        @Valid AnnenPartDto annenPart,
+                                        @Valid Saksnummer saksnummer) {
 
     public Optional<LocalDate> opplysningsperiodeTomOpt() {
         return Optional.ofNullable(opplysningsperiodeTom);
