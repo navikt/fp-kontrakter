@@ -25,7 +25,7 @@ public class DokumentbestillingV3Test {
     public void skal_serialisere_og_deserialisere_request() throws Exception {
         // Arrange
         var request = new DokumentBestillingDto(REF1, SAKSNUMMER, REF2,
-                DokumentMal.ETTERLYS_INNTEKTSMELDING, null, "Fri tekst ...",null);
+                DokumentMal.ETTERLYS_INNTEKTSMELDING, null, "Fri tekst ...", null,null);
 //@NotNull @Valid UUID behandlingUuid,
 //                                    @Valid Saksnummer saksnummer,
 //                                    @NotNull @Valid UUID dokumentbestillingUuid,
