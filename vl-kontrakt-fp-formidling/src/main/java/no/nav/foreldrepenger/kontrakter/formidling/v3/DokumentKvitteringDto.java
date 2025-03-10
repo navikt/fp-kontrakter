@@ -16,7 +16,6 @@ import java.util.UUID;
  * @param dokumentId - dokument id som identifiserer dokumentet i journalposten.
  */
 public record DokumentKvitteringDto(@NotNull @Valid UUID behandlingUuid,
-
                                     @Valid Saksnummer saksnummer,
                                     @NotNull @Valid UUID dokumentbestillingUuid,
                                     @NotNull @Pattern(regexp = "^[\\p{L}\\p{N}_.\\-]+$") String journalpostId,

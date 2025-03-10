@@ -15,8 +15,8 @@ import java.util.UUID;
  * @param tittel Tittel/overskrift i brevet, gjelder fritekst
  * @param fritekst Fritekst innhold i brevet, gjelder fritekst
  * @param revurderingÅrsak brukes kun om VARSEL_OM_REVURDERING er valgt.
- * @param fritekst kun brev som har eller er fritekst, dvs INNHENTE_OPPLYSNINGER og VARSEL_OM_REVURDERING om årsak ANNET er valgt, brødtekst i FRITEKSTBREV.
- * @param tittel tittel i FRITEKSTBREV dokumentet. Kun om FRITEKSTBREV mal brukes.
+ * @param fritekst kun brev som har eller er fritekst, dvs INNHENTE_OPPLYSNINGER og VARSEL_OM_REVURDERING om årsak ANNET er valgt, brødtekst i FRITEKSTBREV eller html i FRITEKSTBREV_HTML
+ * @param tittel tittel i FRITEKSTBREV eller FRITEKSTBREV_HTML dokumentet. Kun om FRITEKSTBREV eller FRITEKSTBREV_HTML mal brukes.
  */
 public record DokumentForhåndsvisDto(@NotNull @Valid UUID behandlingUuid,
                                      @Valid Saksnummer saksnummer,
