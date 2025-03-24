@@ -5,6 +5,7 @@ public enum Hendelse {
     AVSLUTTET,
     MANGLERSØKNAD,
     PAPIRSØKNAD,
+    LAGRET_SØKNAD,
     AKSJONSPUNKT,
     VENTETILSTAND,
     BRUKEROPPGAVE,
