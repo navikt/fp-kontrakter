@@ -20,7 +20,7 @@ import java.util.UUID;
  *                     f.eks i innsyn og gosys.
  */
 public record DokumentBestillingDto(@NotNull @Valid UUID behandlingUuid,
-                                    @Valid Saksnummer saksnummer,
+                                    @NotNull @Valid Saksnummer saksnummer,
                                     @NotNull @Valid UUID dokumentbestillingUuid,
                                     @NotNull @Valid DokumentMal dokumentMal,
                                     @Valid RevurderingÅrsak revurderingÅrsak,

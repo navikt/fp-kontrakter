@@ -4,21 +4,12 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
-public class SaksnummerDto {
-    @NotNull
-    @Size(max = 30)
-    @Pattern(regexp = "^[a-zA-Z0-9_\\-]*$")
-    private String saksnummer;
+import java.util.Objects;
 
-    public SaksnummerDto(String saksnummer) {
-        this.saksnummer = saksnummer;
-    }
+public record SaksnummerDto(@NotNull @Size(max = 30) @Pattern(regexp = "^[a-zA-Z0-9_\\-]*$") String saksnummer) {
 
-    public SaksnummerDto() { //For Jackson
-    }
-
-    public String getSaksnummer() {
-        return saksnummer;
+    public SaksnummerDto {
+        Objects.requireNonNull(saksnummer, "saksnummer");
     }
 
 }

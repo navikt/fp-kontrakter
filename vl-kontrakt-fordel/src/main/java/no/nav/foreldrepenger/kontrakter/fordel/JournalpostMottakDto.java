@@ -1,20 +1,15 @@
 package no.nav.foreldrepenger.kontrakter.fordel;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.constraints.*;
+
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Base64;
 import java.util.Optional;
 import java.util.UUID;
-
-import jakarta.validation.constraints.Digits;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class JournalpostMottakDto {
 
@@ -143,4 +138,27 @@ public class JournalpostMottakDto {
     public void setEksternReferanseId(String eksternReferanseId) {
         this.eksternReferanseId = eksternReferanseId;
     }
+
+    @JsonIgnore
+    public Optional<String> getPayloadXml() {
+        return getPayloadValiderLengde(base64EncodedPayloadXml, payloadLength);
+    }
+
+    static Optional<String> getPayloadValiderLengde(String base64EncodedPayload, Integer deklarertLengde) {
+        if (base64EncodedPayload == null) {
+            return Optional.empty();
+        }
+        if (deklarertLengde == null) {
+            throw new IllegalArgumentException("Input-validering-feil: Avsender sendte payload, men oppgav ikke lengde på innhold");
+        }
+        var bytes = Base64.getUrlDecoder().decode(base64EncodedPayload);
+        var streng = new String(bytes, StandardCharsets.UTF_8);
+        if (streng.length() != deklarertLengde) {
+            var melding = String.format("Input-validering-feil: Avsender oppgav at lengde på innhold var %s, men lengden var egentlig %s",
+                    deklarertLengde, streng.length());
+            throw new IllegalArgumentException(melding);
+        }
+        return Optional.of(streng);
+    }
+
 }

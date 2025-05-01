@@ -17,7 +17,7 @@ public record RisikovurderingRequestDto(@NotNull @Valid AktørId søkerAktørId,
                                         @NotNull UUID konsumentId,
                                         @NotNull YtelseType ytelseType,
                                         @Valid AnnenPartDto annenPart,
-                                        @Valid Saksnummer saksnummer) {
+                                        @NotNull @Valid Saksnummer saksnummer) {
 
     public Optional<LocalDate> opplysningsperiodeTomOpt() {
         return Optional.ofNullable(opplysningsperiodeTom);

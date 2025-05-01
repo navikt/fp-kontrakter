@@ -1,38 +1,20 @@
 package no.nav.foreldrepenger.kontrakter.fordel;
 
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.Objects;
 
-public class JournalpostKnyttningDto {
-    @Valid
-    @JsonProperty
-    private SaksnummerDto saksnummerDto;
-    @Valid
-    @JsonProperty
-    private JournalpostIdDto journalpostIdDto;
+public record JournalpostKnyttningDto(@Valid @NotNull SaksnummerDto saksnummer,
+                                      @Valid @NotNull JournalpostIdDto journalpostId) {
 
     public JournalpostKnyttningDto(String saksnummer, String journalpostId) {
         this(new SaksnummerDto(saksnummer), new JournalpostIdDto(journalpostId));
     }
 
-    public JournalpostKnyttningDto(SaksnummerDto saksnummerDto, JournalpostIdDto journalpostIdDto) {
-        this.saksnummerDto = saksnummerDto;
-        this.journalpostIdDto = journalpostIdDto;
-    }
-
-    public JournalpostKnyttningDto() {  // For Jackson
-    }
-
-    @JsonIgnore
-    public String getSaksnummer() {
-        return saksnummerDto.getSaksnummer();
-    }
-
-    @JsonIgnore
-    public String getJournalpostId() {
-        return journalpostIdDto.getJournalpostId();
+    public JournalpostKnyttningDto {
+        Objects.requireNonNull(saksnummer, "saksnummer");
+        Objects.requireNonNull(journalpostId, "journalpostId");
     }
 
 }

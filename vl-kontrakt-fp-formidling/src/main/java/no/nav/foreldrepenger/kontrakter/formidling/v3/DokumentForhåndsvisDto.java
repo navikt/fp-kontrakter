@@ -19,7 +19,7 @@ import java.util.UUID;
  * @param tittel tittel i FRITEKSTBREV eller FRITEKSTBREV_HTML dokumentet. Kun om FRITEKSTBREV eller FRITEKSTBREV_HTML mal brukes.
  */
 public record DokumentForhåndsvisDto(@NotNull @Valid UUID behandlingUuid,
-                                     @Valid Saksnummer saksnummer,
+                                     @NotNull @Valid Saksnummer saksnummer,
                                      @NotNull @Valid DokumentMal dokumentMal,
                                      @Valid RevurderingÅrsak revurderingÅrsak,
                                      String tittel,

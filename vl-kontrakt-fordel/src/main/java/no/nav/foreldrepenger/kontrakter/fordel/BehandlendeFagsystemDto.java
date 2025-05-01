@@ -1,11 +1,10 @@
 package no.nav.foreldrepenger.kontrakter.fordel;
 
-import java.util.Optional;
-
-import jakarta.validation.Valid;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.Valid;
+
+import java.util.Optional;
 
 public class BehandlendeFagsystemDto {
     private boolean behandlesIVedtaksløsningen;
@@ -54,10 +53,7 @@ public class BehandlendeFagsystemDto {
 
     @JsonIgnore
     public Optional<String> getSaksnummer() {
-        if(saksnummerDto != null){
-            return Optional.of(saksnummerDto.getSaksnummer());
-        }
-        return Optional.empty();
+        return Optional.ofNullable(saksnummerDto).map(SaksnummerDto::saksnummer);
     }
 
 }

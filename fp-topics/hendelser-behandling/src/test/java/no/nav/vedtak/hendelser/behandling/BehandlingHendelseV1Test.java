@@ -1,39 +1,36 @@
 package no.nav.vedtak.hendelser.behandling;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import com.fasterxml.jackson.databind.ObjectReader;
+import com.fasterxml.jackson.databind.ObjectWriter;
+import jakarta.validation.Validation;
+import no.nav.vedtak.hendelser.behandling.v1.BehandlingHendelseV1;
+import org.junit.jupiter.api.Test;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-import jakarta.validation.Validation;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.jupiter.api.Test;
-
-import com.fasterxml.jackson.databind.ObjectReader;
-import com.fasterxml.jackson.databind.ObjectWriter;
-
-import no.nav.vedtak.hendelser.behandling.v1.BehandlingHendelseV1;
-
-public class BehandlingHendelseV1Test {
+class BehandlingHendelseV1Test {
 
     private static final ObjectWriter WRITER = TestJsonMapper.getMapper().writerWithDefaultPrettyPrinter();
     private static final ObjectReader READER = TestJsonMapper.getMapper().reader();
 
     @Test
-    public void test_minimal_fp() throws Exception {
+    void test_minimal_fp() throws Exception {
         var uuid = UUID.randomUUID();
         var tidspunkt = LocalDateTime.now();
         var inntektsmelding = new BehandlingHendelseV1.Builder()
                 .medHendelseUuid(UUID.randomUUID())
                 .medBehandlingUuid(uuid)
+                .medSaksnummer("123456789")
                 .medHendelse(Hendelse.AKSJONSPUNKT)
                 .medKildesystem(Kildesystem.FPSAK)
                 .medTidspunkt(tidspunkt)
                 .build();
 
         String json = WRITER.writeValueAsString(inntektsmelding);
-        System.out.println(json);
+        //System.out.println(json);
 
         BehandlingHendelseV1 roundTripped = READER.forType(BehandlingHendelseV1.class).readValue(json);
 
@@ -46,10 +43,8 @@ public class BehandlingHendelseV1Test {
     }
 
     @Test
-    public void test_maksimal_fp() throws Exception {
+    void test_maksimal_fp() throws Exception {
         var uuid = UUID.randomUUID();
-        LocalDate startDato = LocalDate.now().plusWeeks(3);
-        LocalDateTime innsending = LocalDateTime.now().minusMinutes(3);
         var inntektsmelding = new BehandlingHendelseV1.Builder()
             .medHendelseUuid(UUID.randomUUID())
             .medAktørId("1234567891234")
@@ -62,7 +57,7 @@ public class BehandlingHendelseV1Test {
             .build();
 
         String json = WRITER.writeValueAsString(inntektsmelding);
-        System.out.println(json);
+        //System.out.println(json);
 
         BehandlingHendelseV1 roundTripped = READER.forType(BehandlingHendelseV1.class).readValue(json);
 
