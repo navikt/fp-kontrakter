@@ -87,8 +87,8 @@ class FordelDtoTest {
         var json = TestJsonMapper.getMapper().writeValueAsString(dto);
         var roundtrip = TestJsonMapper.getMapper().readValue(json, JournalpostKnyttningDto.class);
 
-        assertThat(roundtrip.journalpostId().journalpostId()).contains(JOURNALPOST);
-        assertThat(roundtrip.saksnummer().saksnummer()).isEqualTo(SAK);
+        assertThat(roundtrip.journalpostIdDto().journalpostId()).contains(JOURNALPOST);
+        assertThat(roundtrip.saksnummerDto().saksnummer()).isEqualTo(SAK);
 
         validateResult(dto);
         validateResult(roundtrip);

@@ -5,16 +5,16 @@ import jakarta.validation.constraints.NotNull;
 
 import java.util.Objects;
 
-public record JournalpostKnyttningDto(@Valid @NotNull SaksnummerDto saksnummer,
-                                      @Valid @NotNull JournalpostIdDto journalpostId) {
+public record JournalpostKnyttningDto(@Valid @NotNull SaksnummerDto saksnummerDto,
+                                      @Valid @NotNull JournalpostIdDto journalpostIdDto) {
 
     public JournalpostKnyttningDto(String saksnummer, String journalpostId) {
         this(new SaksnummerDto(saksnummer), new JournalpostIdDto(journalpostId));
     }
 
     public JournalpostKnyttningDto {
-        Objects.requireNonNull(saksnummer, "saksnummer");
-        Objects.requireNonNull(journalpostId, "journalpostId");
+        Objects.requireNonNull(saksnummerDto, "saksnummer");
+        Objects.requireNonNull(journalpostIdDto, "journalpostId");
     }
 
 }
