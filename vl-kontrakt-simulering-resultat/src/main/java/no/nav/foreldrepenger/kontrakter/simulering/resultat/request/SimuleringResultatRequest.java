@@ -1,4 +1,4 @@
-package no.nav.foreldrepenger.kontrakter.simulering.resultat.v1;
+package no.nav.foreldrepenger.kontrakter.simulering.resultat.request;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Digits;
