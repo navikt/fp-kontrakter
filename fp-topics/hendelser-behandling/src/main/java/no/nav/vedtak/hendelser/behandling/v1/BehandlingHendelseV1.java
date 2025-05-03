@@ -1,19 +1,12 @@
 package no.nav.vedtak.hendelser.behandling.v1;
 
-import java.time.LocalDateTime;
-import java.util.UUID;
-
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
+import no.nav.vedtak.hendelser.behandling.*;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import no.nav.vedtak.hendelser.behandling.AktørId;
-import no.nav.vedtak.hendelser.behandling.BehandlingHendelse;
-import no.nav.vedtak.hendelser.behandling.Behandlingstype;
-import no.nav.vedtak.hendelser.behandling.Hendelse;
-import no.nav.vedtak.hendelser.behandling.Kildesystem;
-import no.nav.vedtak.hendelser.behandling.Ytelse;
+import java.time.LocalDateTime;
+import java.util.UUID;
 
 public class BehandlingHendelseV1 extends BehandlingHendelse {
 
@@ -65,6 +58,7 @@ public class BehandlingHendelseV1 extends BehandlingHendelse {
     /**
      * Behandlingen gjelder saksnummer
      */
+    @NotNull
     @JsonProperty("saksnummer")
     private String saksnummer;
 
@@ -109,6 +103,7 @@ public class BehandlingHendelseV1 extends BehandlingHendelse {
         return aktørId;
     }
 
+    @Override
     public String getSaksnummer() {
         return saksnummer;
     }

@@ -79,7 +79,7 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- Jakarta EE API BOM -->
+            <!-- Jakarta EE API BOM - trenger bare validation-api -->
             <dependency>
                 <groupId>jakarta.platform</groupId>
                 <artifactId>jakarta.jakartaee-bom</artifactId>
@@ -106,7 +106,7 @@
                 <type>pom</type>
             </dependency>
 
-            <!-- Validation -->
+            <!-- Validation - begge trengs -->
             <dependency>
                 <groupId>org.hibernate.validator</groupId>
                 <artifactId>hibernate-validator</artifactId>
@@ -217,20 +217,10 @@
                 <version>3.27.3</version>
             </dependency>
 
-            <dependency>
-                <groupId>ch.qos.logback</groupId>
-                <artifactId>logback-classic</artifactId>
-                <version>1.5.18</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 
     <dependencies>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>

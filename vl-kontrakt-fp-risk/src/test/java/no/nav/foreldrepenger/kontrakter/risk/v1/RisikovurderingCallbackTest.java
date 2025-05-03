@@ -1,21 +1,18 @@
 package no.nav.foreldrepenger.kontrakter.risk.v1;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.util.UUID;
-
+import com.fasterxml.jackson.databind.ObjectReader;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import jakarta.validation.Validation;
-
+import no.nav.foreldrepenger.kontrakter.risk.kodeverk.RisikoklasseType;
 import no.nav.foreldrepenger.kontrakter.risk.kodeverk.Saksnummer;
 import org.junit.jupiter.api.Test;
 
-import com.fasterxml.jackson.databind.ObjectReader;
-import com.fasterxml.jackson.databind.ObjectWriter;
+import java.util.UUID;
 
-import no.nav.foreldrepenger.kontrakter.risk.kodeverk.RisikoklasseType;
+import static org.assertj.core.api.Assertions.assertThat;
 
 
-public class RisikovurderingCallbackTest {
+class RisikovurderingCallbackTest {
 
     private static final ObjectWriter WRITER = TestJsonMapper.getMapper().writerWithDefaultPrettyPrinter();
     private static final ObjectReader READER = TestJsonMapper.getMapper().reader();
@@ -24,7 +21,7 @@ public class RisikovurderingCallbackTest {
     private static final Saksnummer SAKSNUMMER = new Saksnummer("123456789");
 
     @Test
-    public void skal_serialisere_og_deserialisere_respons() throws Exception {
+    void skal_serialisere_og_deserialisere_respons() throws Exception {
         // Arrange
         var response = new RisikovurderingCallbackDto(REF, SAKSNUMMER, RisikoklasseType.IKKE_HØY);
 

@@ -7,5 +7,5 @@ import no.nav.foreldrepenger.kontrakter.risk.kodeverk.Saksnummer;
 import java.util.UUID;
 
 public record HentRisikovurderingDto(@NotNull UUID konsumentId,
-                                     @Valid Saksnummer saksnummer) {
+                                     @NotNull @Valid Saksnummer saksnummer) {
 }

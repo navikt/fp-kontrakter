@@ -1,23 +1,19 @@
 package no.nav.foreldrepenger.kontrakter.fpwsproxy.simulering.respons;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import no.nav.foreldrepenger.kontrakter.fpwsproxy.simulering.util.TestJsonMapper;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.List;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import no.nav.foreldrepenger.kontrakter.fpwsproxy.simulering.util.TestJsonMapper;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class BeregningDtoSeraliseringDeseraliseringTest {
-    private static final Logger LOG = LoggerFactory.getLogger(BeregningDtoSeraliseringDeseraliseringTest.class);
+
     private static final ObjectMapper mapper = TestJsonMapper.getMapper();
 
     @Test
@@ -138,28 +134,13 @@ class BeregningDtoSeraliseringDeseraliseringTest {
 
 
     protected static void test(Object obj) {
-        test(obj, true);
-    }
-
-    protected static void test(Object obj, boolean log) {
         try {
-            if (log) {
-                LOG.info("{}", obj);
-            }
-
             String serialized = serialize(obj);
-            if (log) {
-                LOG.info("Serialized as {}", serialized);
-            }
 
             Object deserialized = mapper.readValue(serialized, obj.getClass());
-            if (log) {
-                LOG.info("{}", deserialized);
-            }
 
             Assertions.assertEquals(obj, deserialized);
         } catch (Exception var4) {
-            LOG.error("Oops", var4);
             Assertions.fail(obj.getClass().getSimpleName() + " failed");
         }
 

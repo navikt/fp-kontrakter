@@ -1,34 +1,30 @@
 package no.nav.foreldrepenger.kontrakter.simulering.resultat.v1;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.time.LocalDate;
-import java.util.List;
-import java.util.UUID;
-
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.Test;
-
 import com.fasterxml.jackson.databind.ObjectReader;
 import com.fasterxml.jackson.databind.ObjectWriter;
-
 import jakarta.validation.Validation;
 import no.nav.foreldrepenger.kontrakter.simulering.resultat.kodeverk.Fagområde;
 import no.nav.foreldrepenger.kontrakter.simulering.resultat.kodeverk.MottakerType;
 import no.nav.foreldrepenger.kontrakter.simulering.resultat.kodeverk.RadId;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import java.time.LocalDate;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 
-public class SimuleringDtoTest {
+class SimuleringDtoTest {
 
     private static final ObjectWriter WRITER = TestJsonMapper.getMapper().writerWithDefaultPrettyPrinter();
     private static final ObjectReader READER = TestJsonMapper.getMapper().reader();
 
     private static final LocalDate IDAG = LocalDate.now();
     private static final LocalDate ENMND = LocalDate.now().plusMonths(1);
-    private static final UUID REF = UUID.randomUUID();
 
     @Test
-    public void skal_serialisere_og_deserialisere_request() throws Exception {
+    void skal_serialisere_og_deserialisere_request() throws Exception {
         // Arrange
         var prMåned1 = new SimuleringDto.SimuleringResultatPerMånedDto(new PeriodeDto(IDAG, IDAG), 1000L);
         var rad1 = new SimuleringDto.SimuleringResultatRadDto(RadId.RESULTAT, List.of(prMåned1));

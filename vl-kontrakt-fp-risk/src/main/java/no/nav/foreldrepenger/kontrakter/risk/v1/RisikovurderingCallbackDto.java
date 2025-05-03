@@ -8,6 +8,6 @@ import no.nav.foreldrepenger.kontrakter.risk.kodeverk.Saksnummer;
 import java.util.UUID;
 
 public record RisikovurderingCallbackDto(@NotNull UUID behandlingUuid,
-                                         @Valid Saksnummer saksnummer,
+                                         @NotNull @Valid Saksnummer saksnummer,
                                          @NotNull RisikoklasseType risikoklasse) {
 }

@@ -14,7 +14,7 @@ import java.util.UUID;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-public class RisikovurderingResultatTest {
+class RisikovurderingResultatTest {
 
     private static final ObjectWriter WRITER = TestJsonMapper.getMapper().writerWithDefaultPrettyPrinter();
     private static final ObjectReader READER = TestJsonMapper.getMapper().reader();
@@ -24,7 +24,7 @@ public class RisikovurderingResultatTest {
     private static final Saksnummer SAKSNUMMER = new Saksnummer("123456789");
 
     @Test
-    public void skal_serialisere_og_deserialisere_request() throws Exception {
+    void skal_serialisere_og_deserialisere_request() throws Exception {
         // Arrange
         var request = new HentRisikovurderingDto(REF, SAKSNUMMER);
 
@@ -42,7 +42,7 @@ public class RisikovurderingResultatTest {
     }
 
     @Test
-    public void skal_serialisere_og_deserialisere_respons() throws Exception {
+    void skal_serialisere_og_deserialisere_respons() throws Exception {
         // Arrange
         var opptjening = new RisikogruppeDto(List.of("Tekst1", "Tekst2", "Tekst3"));
         var response = new RisikovurderingResultatDto(RisikoklasseType.HØY, null, opptjening, FaresignalVurdering.AVSLAG_ANNET);

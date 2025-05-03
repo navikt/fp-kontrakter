@@ -1,20 +1,14 @@
 package no.nav.foreldrepenger.kontrakter.fordel;
 
 import jakarta.validation.constraints.Digits;
+import jakarta.validation.constraints.NotNull;
 
-public class JournalpostIdDto {
+import java.util.Objects;
 
-    @Digits(integer = 18, fraction = 0)
-    private String journalpostId;
+public record JournalpostIdDto(@NotNull @Digits(integer = 18, fraction = 0) String journalpostId) {
 
-    public JournalpostIdDto(String journalpostId) {
-        this.journalpostId = journalpostId;
+    public JournalpostIdDto {
+        Objects.requireNonNull(journalpostId, "journalpostId");
     }
 
-    public JournalpostIdDto() {  // For Jackson
-    }
-
-    public String getJournalpostId() {
-        return journalpostId;
-    }
 }
