@@ -68,6 +68,8 @@ public class VurderFagsystemDto {
     @Pattern(regexp = "^[" + BASIS_TEGN + "]*$")
     private String dokumentKategoriOffisiellKode;
 
+    private BrukerRolleDto brukerRolle; // Kan være null pga papirsøknader
+
 
     public VurderFagsystemDto() {  // For Jackson
     }
@@ -216,4 +218,11 @@ public class VurderFagsystemDto {
         this.startDatoForeldrepengerInntektsmelding = startDatoForeldrepengerInntektsmelding;
     }
 
+    public BrukerRolleDto getBrukerRolle() {
+        return brukerRolle;
+    }
+
+    public void setBrukerRolle(BrukerRolleDto brukerRolle) {
+        this.brukerRolle = brukerRolle;
+    }
 }
