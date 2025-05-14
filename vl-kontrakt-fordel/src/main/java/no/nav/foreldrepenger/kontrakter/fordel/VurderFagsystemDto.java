@@ -1,16 +1,17 @@
 package no.nav.foreldrepenger.kontrakter.fordel;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Digits;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-
-import jakarta.validation.constraints.Digits;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
 
 public class VurderFagsystemDto {
 
@@ -68,6 +69,7 @@ public class VurderFagsystemDto {
     @Pattern(regexp = "^[" + BASIS_TEGN + "]*$")
     private String dokumentKategoriOffisiellKode;
 
+    @Valid
     private BrukerRolleDto brukerRolle; // Kan være null pga papirsøknader
 
 
