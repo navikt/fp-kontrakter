@@ -118,6 +118,7 @@ public enum KodeKlassifik {
 
     //ungdomsytelse
     UNG("UNG"),
+    UNG_IOP("UNG-IOP")
     ;
 
     @JsonValue
