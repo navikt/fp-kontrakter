@@ -117,7 +117,6 @@ public enum KodeKlassifik {
     FRISINN_SN("FRISINN-SELVST-OP"),
 
     //ungdomsytelse
-    UNG("UNG"),
     UNG_IOP("UNG-IOP")
     ;
 
