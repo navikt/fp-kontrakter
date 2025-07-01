@@ -3,7 +3,6 @@ package no.nav.foreldrepenger.kontrakter.fpsak.beregningsgrunnlag.v2.kodeverk;
 public enum OpptjeningAktivitetDto {
     ARBEIDSAVKLARING,
     ARBEID,
-    ARBEID_UNDER_AAP,
     DAGPENGER,
     FORELDREPENGER,
     FRILANS,
