@@ -16,7 +16,6 @@ import java.util.Optional;
 public class VurderFagsystemDto {
 
     private static final String BASIS_TEGN = "a-zA-ZæøåÆØÅ_\\-0-9";
-
     private static final String ALFABET_SAMISK = "AaÁáBbCcČčDdĐđEeFfGgHhIiJjKkLlMmNnŊŋOoPpRrSsŠšTtŦŧUuVvZzŽž";
     private static final String AKSENTER_NORSKE = "éôèÉ";
     private static final String AKSENTER_ANDRE_AKTUELLE = "öüäÖÜÄ";
@@ -71,6 +70,8 @@ public class VurderFagsystemDto {
 
     @Valid
     private BrukerRolleDto brukerRolle; // Kan være null pga papirsøknader
+
+    private boolean opprettSakVedBehov;
 
 
     public VurderFagsystemDto() {  // For Jackson
@@ -226,5 +227,13 @@ public class VurderFagsystemDto {
 
     public void setBrukerRolle(BrukerRolleDto brukerRolle) {
         this.brukerRolle = brukerRolle;
+    }
+
+    public boolean isOpprettSakVedBehov() {
+        return opprettSakVedBehov;
+    }
+
+    public void setOpprettSakVedBehov(boolean opprettSakVedBehov) {
+        this.opprettSakVedBehov = opprettSakVedBehov;
     }
 }
