@@ -54,6 +54,8 @@ public class JournalpostMottakDto {
     @Size(max = PAYLOAD_MAX_CHARS * 2) // Gir plass til 50% flere byte enn characters, det bør holde
     protected String base64EncodedPayloadXml;
 
+    private boolean knyttSakOgJournalpost;
+
     /**
      * Siden XML'en encodes før overføring må lengden på XML'en lagres som en separat property for å kunne valideres.
      * Lengden er basert på at MOTTAT_DOKUMENT.XML_PAYLOAD ern en VARCHAR2(4000)
@@ -142,6 +144,14 @@ public class JournalpostMottakDto {
     @JsonIgnore
     public Optional<String> getPayloadXml() {
         return getPayloadValiderLengde(base64EncodedPayloadXml, payloadLength);
+    }
+
+    public boolean isKnyttSakOgJournalpost() {
+        return knyttSakOgJournalpost;
+    }
+
+    public void setKnyttSakOgJournalpost(boolean knyttSakOgJournalpost) {
+        this.knyttSakOgJournalpost = knyttSakOgJournalpost;
     }
 
     static Optional<String> getPayloadValiderLengde(String base64EncodedPayload, Integer deklarertLengde) {
