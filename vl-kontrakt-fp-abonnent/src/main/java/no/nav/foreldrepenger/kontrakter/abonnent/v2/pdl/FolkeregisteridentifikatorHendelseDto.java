@@ -1,25 +1,22 @@
 package no.nav.foreldrepenger.kontrakter.abonnent.v2.pdl;
 
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import no.nav.foreldrepenger.kontrakter.abonnent.v2.AktørIdDto;
 import no.nav.foreldrepenger.kontrakter.abonnent.v2.HendelseDto;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class UtflyttingHendelseDto extends HendelseDto {
+public class FolkeregisteridentifikatorHendelseDto extends HendelseDto {
 
-    public static final String HENDELSE_TYPE = "UTFLYTTING";
+    public static final String HENDELSE_TYPE = "IDENTIFIKATOR";
 
     @NotNull
     @Size(min = 1)
     private List<AktørIdDto> aktørId;
 
-    @Valid
-    private LocalDate utflyttingsdato;
+    private boolean erOpphørt;
 
     public void setAktørId(List<AktørIdDto> aktørId) {
         this.aktørId = aktørId;
@@ -29,12 +26,12 @@ public class UtflyttingHendelseDto extends HendelseDto {
         return this.aktørId;
     }
 
-    public LocalDate getUtflyttingsdato() {
-        return utflyttingsdato;
+    public boolean isErOpphørt() {
+        return erOpphørt;
     }
 
-    public void setUtflyttingsdato(LocalDate utflyttingsdato) {
-        this.utflyttingsdato = utflyttingsdato;
+    public void setErOpphørt(boolean erOpphørt) {
+        this.erOpphørt = erOpphørt;
     }
 
     @Override

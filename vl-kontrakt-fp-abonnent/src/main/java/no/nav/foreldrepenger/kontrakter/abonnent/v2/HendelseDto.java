@@ -1,17 +1,15 @@
 package no.nav.foreldrepenger.kontrakter.abonnent.v2;
 
-import java.util.List;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-
 import no.nav.foreldrepenger.kontrakter.abonnent.v2.pdl.*;
+
+import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY)
@@ -21,9 +19,12 @@ import no.nav.foreldrepenger.kontrakter.abonnent.v2.pdl.*;
         @JsonSubTypes.Type(value = DødfødselHendelseDto.class, name = DødfødselHendelseDto.HENDELSE_TYPE),
         @JsonSubTypes.Type(value = UtflyttingHendelseDto.class, name = UtflyttingHendelseDto.HENDELSE_TYPE),
         @JsonSubTypes.Type(value = FalskIdentitetHendelseDto.class, name = FalskIdentitetHendelseDto.HENDELSE_TYPE),
+        @JsonSubTypes.Type(value = FolkeregisteridentifikatorHendelseDto.class, name = FolkeregisteridentifikatorHendelseDto.HENDELSE_TYPE),
         @JsonSubTypes.Type(value = AdressebeskyttelseHendelseDto.class, name = AdressebeskyttelseHendelseDto.HENDELSE_TYPE)
 })
 public abstract class HendelseDto {
+
+    public static final String AVSENDER = "PDL";
 
     @NotNull
     @Pattern(regexp = "^[a-zA-ZæøåÆØÅ_\\-0-9]*")
@@ -54,7 +55,9 @@ public abstract class HendelseDto {
         this.endringstype = endringstype;
     }
 
-    public abstract String getAvsenderSystem();
+    public String getAvsenderSystem() {
+        return AVSENDER;
+    }
 
     public abstract String getHendelsetype();
 
