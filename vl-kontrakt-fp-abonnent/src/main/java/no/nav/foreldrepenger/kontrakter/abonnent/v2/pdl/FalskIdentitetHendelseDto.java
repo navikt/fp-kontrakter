@@ -11,7 +11,6 @@ import java.util.stream.Collectors;
 public class FalskIdentitetHendelseDto extends HendelseDto {
 
     public static final String HENDELSE_TYPE = "FALSKID";
-    public static final String AVSENDER = "PDL";
 
     @NotNull
     @Size(min = 1)
@@ -38,11 +37,6 @@ public class FalskIdentitetHendelseDto extends HendelseDto {
     @Override
     public String getHendelsetype() {
         return HENDELSE_TYPE;
-    }
-
-    @Override
-    public String getAvsenderSystem() {
-        return AVSENDER;
     }
 
     @Override

@@ -1,20 +1,18 @@
 package no.nav.foreldrepenger.kontrakter.abonnent.v2.pdl;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import no.nav.foreldrepenger.kontrakter.abonnent.v2.AktørIdDto;
+import no.nav.foreldrepenger.kontrakter.abonnent.v2.HendelseDto;
+
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
-
-import no.nav.foreldrepenger.kontrakter.abonnent.v2.AktørIdDto;
-import no.nav.foreldrepenger.kontrakter.abonnent.v2.HendelseDto;
-
 public class FødselHendelseDto extends HendelseDto {
 
     public static final String HENDELSE_TYPE = "FØDSEL";
-    public static final String AVSENDER = "PDL";
 
     @NotNull
     @Size(min = 1)
@@ -42,11 +40,6 @@ public class FødselHendelseDto extends HendelseDto {
     @Override
     public String getHendelsetype() {
         return HENDELSE_TYPE;
-    }
-
-    @Override
-    public String getAvsenderSystem() {
-        return AVSENDER;
     }
 
     @Override

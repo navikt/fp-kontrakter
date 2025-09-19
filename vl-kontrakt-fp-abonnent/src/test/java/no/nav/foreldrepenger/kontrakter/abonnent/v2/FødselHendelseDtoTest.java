@@ -14,7 +14,7 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 
 import no.nav.foreldrepenger.kontrakter.abonnent.v2.pdl.FødselHendelseDto;
 
-public class FødselHendelseDtoTest {
+class FødselHendelseDtoTest {
 
     private static final ObjectWriter WRITER = TestJsonMapper.getMapper().writerWithDefaultPrettyPrinter();
     private static final ObjectReader READER = TestJsonMapper.getMapper().reader();
@@ -23,7 +23,7 @@ public class FødselHendelseDtoTest {
     private static final LocalDate NÅ = LocalDate.now();
 
     @Test
-    public void skal_serialisere_og_deserialisere_fødselshendelse() throws Exception {
+    void skal_serialisere_og_deserialisere_fødselshendelse() throws Exception {
         // Arrange
         var hendelse = new FødselHendelseDto();
         hendelse.setId("id_1");
@@ -41,7 +41,7 @@ public class FødselHendelseDtoTest {
         assertThat(roundTripped).isNotNull();
         assertThat(roundTrippedUncast).isInstanceOf(FødselHendelseDto.class);
         assertThat(roundTripped.getId()).isEqualTo("id_1");
-        assertThat(roundTripped.getAktørIdForeldre().get(0)).isEqualTo(AKTØR_ID);
+        assertThat(roundTripped.getAktørIdForeldre().getFirst()).isEqualTo(AKTØR_ID);
         assertThat(roundTripped.getFødselsdato()).isEqualTo(NÅ);
         assertThat(roundTripped.getHendelsetype()).isEqualTo(FødselHendelseDto.HENDELSE_TYPE);
         validateResult(roundTripped);
