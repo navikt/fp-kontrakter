@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 import jakarta.validation.Validation;
 import no.nav.foreldrepenger.kontrakter.risk.kodeverk.RisikoklasseType;
 import no.nav.foreldrepenger.kontrakter.risk.kodeverk.Saksnummer;
+import no.nav.vedtak.mapper.json.DefaultJsonMapper;
 import org.junit.jupiter.api.Test;
 
 import java.util.UUID;
@@ -14,8 +15,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RisikovurderingCallbackTest {
 
-    private static final ObjectWriter WRITER = TestJsonMapper.getMapper().writerWithDefaultPrettyPrinter();
-    private static final ObjectReader READER = TestJsonMapper.getMapper().reader();
+    private static final ObjectWriter WRITER = DefaultJsonMapper.getObjectMapper().writerWithDefaultPrettyPrinter();
+    private static final ObjectReader READER = DefaultJsonMapper.getObjectMapper().reader();
 
     private static final UUID REF = UUID.randomUUID();
     private static final Saksnummer SAKSNUMMER = new Saksnummer("123456789");

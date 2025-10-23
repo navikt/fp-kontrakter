@@ -7,6 +7,7 @@ import java.util.Collections;
 
 import jakarta.validation.Validation;
 
+import no.nav.vedtak.mapper.json.DefaultJsonMapper;
 import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.databind.ObjectReader;
@@ -16,8 +17,8 @@ import no.nav.foreldrepenger.kontrakter.abonnent.v2.pdl.FødselHendelseDto;
 
 class FødselHendelseDtoTest {
 
-    private static final ObjectWriter WRITER = TestJsonMapper.getMapper().writerWithDefaultPrettyPrinter();
-    private static final ObjectReader READER = TestJsonMapper.getMapper().reader();
+    private static final ObjectWriter WRITER = DefaultJsonMapper.getObjectMapper().writerWithDefaultPrettyPrinter();
+    private static final ObjectReader READER = DefaultJsonMapper.getObjectMapper().reader();
 
     private static final AktørIdDto AKTØR_ID = new AktørIdDto("10000000001");
     private static final LocalDate NÅ = LocalDate.now();

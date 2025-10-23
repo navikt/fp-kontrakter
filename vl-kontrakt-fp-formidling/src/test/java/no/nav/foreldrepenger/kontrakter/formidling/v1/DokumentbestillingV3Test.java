@@ -6,6 +6,7 @@ import jakarta.validation.Validation;
 import no.nav.foreldrepenger.kontrakter.formidling.kodeverk.DokumentMal;
 import no.nav.foreldrepenger.kontrakter.formidling.kodeverk.Saksnummer;
 import no.nav.foreldrepenger.kontrakter.formidling.v3.DokumentBestillingDto;
+import no.nav.vedtak.mapper.json.DefaultJsonMapper;
 import org.junit.jupiter.api.Test;
 
 import java.util.UUID;
@@ -14,8 +15,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class DokumentbestillingV3Test {
 
-    private static final ObjectWriter WRITER = TestJsonMapper.getMapper().writerWithDefaultPrettyPrinter();
-    private static final ObjectReader READER = TestJsonMapper.getMapper().reader();
+    private static final ObjectWriter WRITER = DefaultJsonMapper.getObjectMapper().writerWithDefaultPrettyPrinter();
+    private static final ObjectReader READER = DefaultJsonMapper.getObjectMapper().reader();
 
     private static final Saksnummer SAKSNUMMER  = new Saksnummer("123459789");
     private static final UUID REF1 = UUID.randomUUID();

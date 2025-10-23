@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectReader;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import jakarta.validation.Validation;
 import no.nav.vedtak.hendelser.behandling.v1.BehandlingHendelseV1;
+import no.nav.vedtak.mapper.json.DefaultJsonMapper;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
@@ -13,8 +14,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class BehandlingHendelseV1Test {
 
-    private static final ObjectWriter WRITER = TestJsonMapper.getMapper().writerWithDefaultPrettyPrinter();
-    private static final ObjectReader READER = TestJsonMapper.getMapper().reader();
+    private static final ObjectWriter WRITER = DefaultJsonMapper.getObjectMapper().writerWithDefaultPrettyPrinter();
+    private static final ObjectReader READER = DefaultJsonMapper.getObjectMapper().reader();
 
     @Test
     void test_minimal_fp() throws Exception {

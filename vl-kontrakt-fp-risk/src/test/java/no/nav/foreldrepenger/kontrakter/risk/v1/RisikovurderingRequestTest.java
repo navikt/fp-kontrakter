@@ -6,6 +6,7 @@ import jakarta.validation.Validation;
 import no.nav.foreldrepenger.kontrakter.risk.kodeverk.AktørId;
 import no.nav.foreldrepenger.kontrakter.risk.kodeverk.Saksnummer;
 import no.nav.foreldrepenger.kontrakter.risk.kodeverk.YtelseType;
+import no.nav.vedtak.mapper.json.DefaultJsonMapper;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -16,8 +17,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RisikovurderingRequestTest {
 
-    private static final ObjectWriter WRITER = TestJsonMapper.getMapper().writerWithDefaultPrettyPrinter();
-    private static final ObjectReader READER = TestJsonMapper.getMapper().reader();
+    private static final ObjectWriter WRITER = DefaultJsonMapper.getObjectMapper().writerWithDefaultPrettyPrinter();
+    private static final ObjectReader READER = DefaultJsonMapper.getObjectMapper().reader();
 
     private static final AktørId AKTØR_ID = new AktørId("1000000000001");
     private static final LocalDate IDAG = LocalDate.now();

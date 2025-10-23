@@ -6,6 +6,7 @@ import jakarta.validation.Validation;
 import no.nav.foreldrepenger.kontrakter.risk.kodeverk.FaresignalVurdering;
 import no.nav.foreldrepenger.kontrakter.risk.kodeverk.RisikoklasseType;
 import no.nav.foreldrepenger.kontrakter.risk.kodeverk.Saksnummer;
+import no.nav.vedtak.mapper.json.DefaultJsonMapper;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -16,8 +17,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RisikovurderingResultatTest {
 
-    private static final ObjectWriter WRITER = TestJsonMapper.getMapper().writerWithDefaultPrettyPrinter();
-    private static final ObjectReader READER = TestJsonMapper.getMapper().reader();
+    private static final ObjectWriter WRITER = DefaultJsonMapper.getObjectMapper().writerWithDefaultPrettyPrinter();
+    private static final ObjectReader READER = DefaultJsonMapper.getObjectMapper().reader();
 
     private static final UUID REF = UUID.randomUUID();
 

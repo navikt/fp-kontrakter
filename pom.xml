@@ -25,6 +25,8 @@
         <maven.javadoc.skip>true</maven.javadoc.skip>
         <maven.deploy.skip>false</maven.deploy.skip>
 
+        <felles.version>7.6.8</felles.version>
+
         <!-- SonarCloud options -->
         <sonar.organization>navikt</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
@@ -75,10 +77,17 @@
         <module>vl-kontrakt-oekonomi</module>
         <module>vl-kontrakt-fp-ws-proxy</module>
         <module>vl-kontrakt-simulering-resultat</module>
+        <module>vl-kontrakt-fp-soknad</module>
     </modules>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>no.nav.foreldrepenger.felles</groupId>
+                <artifactId>felles-mapper</artifactId>
+                <version>${felles.version}</version>
+                <scope>test</scope>
+            </dependency>
             <!-- Jakarta EE API BOM - trenger bare validation-api -->
             <dependency>
                 <groupId>jakarta.platform</groupId>
@@ -198,6 +207,11 @@
             <dependency>
                 <groupId>no.nav.foreldrepenger.kontrakter</groupId>
                 <artifactId>simulering-resultat-v1</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>no.nav.foreldrepenger.kontrakter</groupId>
+                <artifactId>fp-soknad-v1</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
