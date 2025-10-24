@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
-public class SvangerskapspengerBuilder {
+public class SvangerskapspengerBuilder implements SøknadBuilder<EngangsstønadBuilder> {
     private LocalDateTime mottattdato;
     private SøkerDto søkerinfo;
     private Målform språkkode;

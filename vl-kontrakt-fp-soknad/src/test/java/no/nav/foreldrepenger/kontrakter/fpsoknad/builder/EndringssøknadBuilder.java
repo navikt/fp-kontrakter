@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
-public class EndringssøknadBuilder {
+public class EndringssøknadBuilder implements SøknadBuilder<EngangsstønadBuilder> {
     private LocalDateTime mottattdato;
     private Saksnummer saksnummer;
     private SøkerDto søkerinfo;

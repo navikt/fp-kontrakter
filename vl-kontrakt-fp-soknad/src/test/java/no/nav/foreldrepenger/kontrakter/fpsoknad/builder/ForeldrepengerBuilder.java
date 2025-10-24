@@ -21,7 +21,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
-public class ForeldrepengerBuilder {
+public class ForeldrepengerBuilder implements SøknadBuilder<EngangsstønadBuilder> {
     private LocalDateTime mottattdato;
     private SøkerDto søkerinfo;
     private BrukerRolle rolle;

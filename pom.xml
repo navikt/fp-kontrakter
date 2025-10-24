@@ -216,6 +216,13 @@
             </dependency>
 
             <!-- Test -->
+            <dependency>
+                <groupId>no.nav.foreldrepenger.kontrakter</groupId>
+                <artifactId>fp-soknad-v1</artifactId>
+                <version>${project.version}</version>
+                <type>test-jar</type>
+                <scope>test</scope>
+            </dependency>
             <!-- JUnit BOM -->
             <dependency>
                 <groupId>org.junit</groupId>

@@ -15,7 +15,8 @@ public final class BarnBuilder {
     }
 
     public static TerminBuilder termin(int antallBarn, LocalDate termindato) {
-        return new TerminBuilder(antallBarn).medTermindato(termindato).medTerminbekreftelseDato(termindato.minusMonths(1));
+        var terminbekreftelseDato = termindato.minusMonths(1);
+        return new TerminBuilder(antallBarn).medTermindato(termindato).medTerminbekreftelseDato(terminbekreftelseDato.isBefore(LocalDate.now()) ? terminbekreftelseDato : LocalDate.now().minusWeeks(1));
     }
 
     public static AdopsjonBuilder adopsjon(LocalDate omsorgsovertakelsesdato, boolean ektefellesBarn) {

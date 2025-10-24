@@ -13,7 +13,7 @@ import java.time.LocalTime;
 import java.util.List;
 
 
-public class EngangsstønadBuilder {
+public class EngangsstønadBuilder implements SøknadBuilder<EngangsstønadBuilder> {
     private LocalDateTime mottattdato;
     private SøkerDto søkerinfo;
     private Målform språkkode;
