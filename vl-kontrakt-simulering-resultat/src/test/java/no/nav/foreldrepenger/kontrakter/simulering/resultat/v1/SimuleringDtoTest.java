@@ -6,6 +6,7 @@ import jakarta.validation.Validation;
 import no.nav.foreldrepenger.kontrakter.simulering.resultat.kodeverk.Fagområde;
 import no.nav.foreldrepenger.kontrakter.simulering.resultat.kodeverk.MottakerType;
 import no.nav.foreldrepenger.kontrakter.simulering.resultat.kodeverk.RadId;
+import no.nav.vedtak.mapper.json.DefaultJsonMapper;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -17,8 +18,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class SimuleringDtoTest {
 
-    private static final ObjectWriter WRITER = TestJsonMapper.getMapper().writerWithDefaultPrettyPrinter();
-    private static final ObjectReader READER = TestJsonMapper.getMapper().reader();
+    private static final ObjectWriter WRITER = DefaultJsonMapper.getObjectMapper().writerWithDefaultPrettyPrinter();
+    private static final ObjectReader READER = DefaultJsonMapper.getObjectMapper().reader();
 
     private static final LocalDate IDAG = LocalDate.now();
     private static final LocalDate ENMND = LocalDate.now().plusMonths(1);

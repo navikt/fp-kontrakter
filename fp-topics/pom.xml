@@ -21,6 +21,8 @@
         <module>hendelser-behandling</module>
     </modules>
 
+
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>

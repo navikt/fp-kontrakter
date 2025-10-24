@@ -51,6 +51,12 @@
             <artifactId>expressly</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>no.nav.foreldrepenger.felles</groupId>
+            <artifactId>felles-mapper</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
 </project>

@@ -1,6 +1,7 @@
 package no.nav.foreldrepenger.kontrakter.fordel;
 
 import jakarta.validation.Validation;
+import no.nav.vedtak.mapper.json.DefaultJsonMapper;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -24,8 +25,8 @@ class FordelDtoTest {
         dto.setForsendelseMottatt(LocalDate.now());
         dto.setForsendelseMottattTidspunkt(LocalDateTime.now());
 
-        var json = TestJsonMapper.getMapper().writeValueAsString(dto);
-        var roundtrip = TestJsonMapper.getMapper().readValue(json, VurderFagsystemDto.class);
+        var json = DefaultJsonMapper.getObjectMapper().writeValueAsString(dto);
+        var roundtrip = DefaultJsonMapper.getObjectMapper().readValue(json, VurderFagsystemDto.class);
 
         assertThat(roundtrip.getJournalpostId()).contains(JOURNALPOST);
         assertThat(roundtrip.getAktørId()).contains(AKTØR);
@@ -41,8 +42,8 @@ class FordelDtoTest {
     void test_roundtrip_opprettsak() throws Exception {
         var dto = new OpprettSakDto(JOURNALPOST, BTEMA, AKTØR);
 
-        var json = TestJsonMapper.getMapper().writeValueAsString(dto);
-        var roundtrip = TestJsonMapper.getMapper().readValue(json, OpprettSakDto.class);
+        var json = DefaultJsonMapper.getObjectMapper().writeValueAsString(dto);
+        var roundtrip = DefaultJsonMapper.getObjectMapper().readValue(json, OpprettSakDto.class);
 
         assertThat(roundtrip.journalpostId()).contains(JOURNALPOST);
         assertThat(roundtrip.aktørId()).isEqualTo(AKTØR);
@@ -56,8 +57,8 @@ class FordelDtoTest {
     void test_roundtrip_opprettsakV2() throws Exception {
         var dto = new OpprettSakV2Dto(JOURNALPOST, YtelseTypeDto.FORELDREPENGER, AKTØR);
 
-        var json = TestJsonMapper.getMapper().writeValueAsString(dto);
-        var roundtrip = TestJsonMapper.getMapper().readValue(json, OpprettSakV2Dto.class);
+        var json = DefaultJsonMapper.getObjectMapper().writeValueAsString(dto);
+        var roundtrip = DefaultJsonMapper.getObjectMapper().readValue(json, OpprettSakV2Dto.class);
 
         assertThat(roundtrip.journalpostId()).isEqualTo(JOURNALPOST);
         assertThat(roundtrip.aktørId()).isEqualTo(AKTØR);
@@ -71,8 +72,8 @@ class FordelDtoTest {
     void test_roundtrip_saksnummer() throws Exception {
         var dto = new SaksnummerDto(SAK);
 
-        var json = TestJsonMapper.getMapper().writeValueAsString(dto);
-        var roundtrip = TestJsonMapper.getMapper().readValue(json, SaksnummerDto.class);
+        var json = DefaultJsonMapper.getObjectMapper().writeValueAsString(dto);
+        var roundtrip = DefaultJsonMapper.getObjectMapper().readValue(json, SaksnummerDto.class);
 
         assertThat(roundtrip.saksnummer()).isEqualTo(SAK);
 
@@ -84,8 +85,8 @@ class FordelDtoTest {
     void test_roundtrip_knytning() throws Exception {
         var dto = new JournalpostKnyttningDto(SAK, JOURNALPOST);
 
-        var json = TestJsonMapper.getMapper().writeValueAsString(dto);
-        var roundtrip = TestJsonMapper.getMapper().readValue(json, JournalpostKnyttningDto.class);
+        var json = DefaultJsonMapper.getObjectMapper().writeValueAsString(dto);
+        var roundtrip = DefaultJsonMapper.getObjectMapper().readValue(json, JournalpostKnyttningDto.class);
 
         assertThat(roundtrip.journalpostIdDto().journalpostId()).contains(JOURNALPOST);
         assertThat(roundtrip.saksnummerDto().saksnummer()).isEqualTo(SAK);

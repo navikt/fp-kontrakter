@@ -1,6 +1,7 @@
 package no.nav.foreldrepenger.kontrakter.fordel;
 
 import jakarta.validation.Validation;
+import no.nav.vedtak.mapper.json.DefaultJsonMapper;
 import org.junit.jupiter.api.Test;
 
 import java.nio.charset.StandardCharsets;
@@ -29,8 +30,8 @@ class JournalpostMottakDtoTest {
 
         assertThat(validert).isPresent().contains("<foo>ååå<foo/>");
 
-        var json = TestJsonMapper.getMapper().writeValueAsString(dto);
-        var roundtrip = TestJsonMapper.getMapper().readValue(json, JournalpostMottakDto.class);
+        var json = DefaultJsonMapper.getObjectMapper().writeValueAsString(dto);
+        var roundtrip = DefaultJsonMapper.getObjectMapper().readValue(json, JournalpostMottakDto.class);
 
         assertThat(roundtrip.getJournalpostId()).isEqualTo(JOURNALPOST);
         assertThat(roundtrip.getSaksnummer()).isEqualTo(SAK);
@@ -70,8 +71,8 @@ class JournalpostMottakDtoTest {
         Optional<String> resultat = JournalpostMottakDto.getPayloadValiderLengde(null, null);
         assertThat(resultat).isNotPresent();
 
-        var json = TestJsonMapper.getMapper().writeValueAsString(dto);
-        var roundtrip = TestJsonMapper.getMapper().readValue(json, JournalpostMottakDto.class);
+        var json = DefaultJsonMapper.getObjectMapper().writeValueAsString(dto);
+        var roundtrip = DefaultJsonMapper.getObjectMapper().readValue(json, JournalpostMottakDto.class);
 
         assertThat(roundtrip.getJournalpostId()).isEqualTo(JOURNALPOST);
         assertThat(roundtrip.getSaksnummer()).isEqualTo(SAK);
