@@ -20,7 +20,7 @@ public record EttersendelseDto(LocalDateTime mottattdato,
                                @Valid @NotNull @Size(max = 40) List<@Valid VedleggDto> vedlegg) {
 
     public boolean erInnsendingAvUttalelseOmTilbakekreving() {
-        return vedlegg().isEmpty() && brukerTekst() != null;
+        return brukerTekst() != null;
     }
 
     public EttersendelseDto {
