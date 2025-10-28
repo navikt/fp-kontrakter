@@ -49,6 +49,7 @@ public class UttakplanPeriodeBuilder {
         private MorsAktivitet morsAktivitetIPerioden;
         private Boolean ønskerSamtidigUttak;
         private Boolean ønskerFlerbarnsdager;
+        private Boolean ønskerGradering;
         private Double samtidigUttakProsent;
 
         public UttaksperiodeBuilder(KontoType konto, LocalDate fom, LocalDate tom) {
@@ -72,6 +73,11 @@ public class UttakplanPeriodeBuilder {
             return this;
         }
 
+        public UttaksperiodeBuilder medØnskerGradering(Boolean ønskerGradering) {
+            this.ønskerGradering = ønskerGradering;
+            return this;
+        }
+
         public UttaksperiodeBuilder medSamtidigUttakProsent(Double samtidigUttakProsent) {
             this.samtidigUttakProsent = samtidigUttakProsent;
             return this;
@@ -84,8 +90,9 @@ public class UttakplanPeriodeBuilder {
                 konto,
                 morsAktivitetIPerioden,
                 ønskerSamtidigUttak,
-                ønskerFlerbarnsdager,
                 samtidigUttakProsent,
+                ønskerFlerbarnsdager,
+                ønskerGradering,
                 null);
         }
     }
@@ -99,6 +106,7 @@ public class UttakplanPeriodeBuilder {
         private Boolean ønskerFlerbarnsdager;
         private Double samtidigUttakProsent;
         private final Double stillingsprosent;
+        private Boolean ønskerGradering;
         private Boolean erArbeidstaker;
         private Boolean erFrilanser;
         private Boolean erSelvstendig;
@@ -131,6 +139,11 @@ public class UttakplanPeriodeBuilder {
             return this;
         }
 
+        public GradertUttaksperiodeBuilder medØnskerGradering(Boolean ønskerGradering) {
+            this.ønskerGradering = ønskerGradering;
+            return this;
+        }
+
         public GradertUttaksperiodeBuilder medErArbeidstaker(Boolean erArbeidstaker) {
             this.erArbeidstaker = erArbeidstaker;
             return this;
@@ -157,8 +170,9 @@ public class UttakplanPeriodeBuilder {
                 konto,
                 morsAktivitetIPerioden,
                 ønskerSamtidigUttak,
-                ønskerFlerbarnsdager,
                 samtidigUttakProsent,
+                ønskerFlerbarnsdager,
+                ønskerGradering,
                 new UttaksPeriodeDto.GraderingDto(stillingsprosent, erArbeidstaker, erFrilanser, erSelvstendig, orgnumre));
         }
     }

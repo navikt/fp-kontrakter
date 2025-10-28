@@ -11,7 +11,9 @@ import static com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME;
 
 @JsonTypeInfo(use = NAME, include = PROPERTY, property = "type")
 @JsonSubTypes({
-    @JsonSubTypes.Type(value = NorskForelderDto.class, name = "norsk"), @JsonSubTypes.Type(value = UtenlandskForelderDto.class, name = "utenlandsk")})
+        @JsonSubTypes.Type(value = NorskForelderDto.class, name = "norsk"),
+        @JsonSubTypes.Type(value = UtenlandskForelderDto.class, name = "utenlandsk")
+})
 public interface AnnenForelderDto {
     Fødselsnummer fnr();
 
