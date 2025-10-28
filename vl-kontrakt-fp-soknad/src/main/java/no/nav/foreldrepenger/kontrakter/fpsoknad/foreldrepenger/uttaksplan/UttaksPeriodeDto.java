@@ -17,8 +17,9 @@ public record UttaksPeriodeDto(@NotNull LocalDate fom,
                                @NotNull KontoType konto,
                                MorsAktivitet morsAktivitetIPerioden,
                                Boolean ønskerSamtidigUttak,
-                               Boolean ønskerFlerbarnsdager,
                                @Min(0) @Max(100) Double samtidigUttakProsent,
+                               Boolean ønskerFlerbarnsdager,
+                               Boolean ønskerGradering,
                                @Valid GraderingDto gradering) implements Uttaksplanperiode {
 
     public record GraderingDto(@NotNull @Min(0) @Max(100) Double stillingsprosent,
