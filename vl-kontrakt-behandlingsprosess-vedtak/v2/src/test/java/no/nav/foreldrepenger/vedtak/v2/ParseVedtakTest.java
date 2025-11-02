@@ -23,12 +23,12 @@ import no.nav.vedtak.felles.xml.vedtak.v2.TilkjentYtelse;
 import no.nav.vedtak.felles.xml.vedtak.v2.Vedtak;
 
 
-public class ParseVedtakTest {
+class ParseVedtakTest {
 
     @Test
 
 
-    public void skal_unmarshale_og_marshale_vedtak() throws Exception {
+    void skal_unmarshale_og_marshale_vedtak() throws Exception {
        final InputStream resourceAsStream = getClass().getResourceAsStream("/vedtak_svp_innvilget-v2.xml");
         StringBuilder textBuilder = new StringBuilder();
         try (Reader reader = new BufferedReader(new InputStreamReader
@@ -70,7 +70,7 @@ public class ParseVedtakTest {
     }
 
     @Test
-    public void skal_marshalle_til_xml() throws Exception {
+    void skal_marshalle_til_xml() throws Exception {
         LocalDate dato = LocalDate.now();
 
         Vedtak vedtak = new Vedtak();

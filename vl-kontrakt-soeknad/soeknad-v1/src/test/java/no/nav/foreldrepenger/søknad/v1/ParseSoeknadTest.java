@@ -37,10 +37,10 @@ import no.nav.vedtak.felles.xml.soeknad.v1.ObjectFactory;
 import no.nav.vedtak.felles.xml.soeknad.v1.OmYtelse;
 import no.nav.vedtak.felles.xml.soeknad.v1.Soeknad;
 
-public class ParseSoeknadTest {
+class ParseSoeknadTest {
 
     @Test
-    public void skal_parse_soeknad_xml() throws Exception {
+    void skal_parse_soeknad_xml() throws Exception {
         final InputStream resourceAsStream = getClass().getResourceAsStream("/soeknad-v1.xml");
         StringBuilder textBuilder = new StringBuilder();
         try (Reader reader = new BufferedReader(new InputStreamReader
@@ -65,7 +65,7 @@ public class ParseSoeknadTest {
     }
 
     @Test
-    public void skal_marshalle_til_xml() throws Exception {
+    void skal_marshalle_til_xml() throws Exception {
         LocalDate dato = LocalDate.now();
 
         Soeknad søknad = new Soeknad();

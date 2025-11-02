@@ -33,3 +33,4 @@ bin
 .idea
 
 pom.xml.versionsBackup
+.java-version

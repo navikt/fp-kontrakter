@@ -13,7 +13,7 @@ import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class DokumentbestillingV3Test {
+class DokumentbestillingV3Test {
 
     private static final ObjectWriter WRITER = DefaultJsonMapper.getObjectMapper().writerWithDefaultPrettyPrinter();
     private static final ObjectReader READER = DefaultJsonMapper.getObjectMapper().reader();
@@ -23,7 +23,7 @@ public class DokumentbestillingV3Test {
     private static final UUID REF2 = UUID.randomUUID();
 
     @Test
-    public void skal_serialisere_og_deserialisere_request() throws Exception {
+    void skal_serialisere_og_deserialisere_request() throws Exception {
         // Arrange
         var request = new DokumentBestillingDto(REF1, SAKSNUMMER, REF2,
                 DokumentMal.ETTERLYS_INNTEKTSMELDING, null, "Fri tekst ...",null);

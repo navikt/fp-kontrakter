@@ -10,10 +10,10 @@ import org.junit.jupiter.api.Test;
 
 import no.nav.foreldrepenger.søknad.util.XmlUtils;
 
-public class SøknadConstantsTest {
+class SøknadConstantsTest {
 
     @Test
-    public void skal_finne_og_hente_ut_namespace_fra_xsd() throws Exception {
+    void skal_finne_og_hente_ut_namespace_fra_xsd() throws Exception {
         final StreamSource streamSource = new StreamSource(getClass().getClassLoader().getResourceAsStream(XSD_LOCATION));
         assertThat(XmlUtils.retrieveNameSpaceOfXSD(streamSource)).isEqualTo(NAMESPACE);
     }
