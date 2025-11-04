@@ -25,7 +25,6 @@ class UttaksPeriodeDtoInputValideringTest {
         assertThat(resultat).hasSize(1)
                 .extracting(ConstraintViolation::getMessage)
                 .contains("ønskerSamtidigUttak er satt, men ikke prosent, eller så er prosent satt og ikke ønskerSamtidigUttak");
-
     }
 
 
@@ -35,6 +34,17 @@ class UttaksPeriodeDtoInputValideringTest {
                 .uttak(KontoType.FEDREKVOTE, LocalDate.now().minusWeeks(4), LocalDate.now())
                 .medØnskerSamtidigUttak(true)
                 .medSamtidigUttakProsent(20.2)
+                .build();
+
+        var validator = hentValidator();
+        var resultat = validator.validate(uttaksperiode);
+        assertThat(resultat).isEmpty();
+    }
+
+    @Test
+    void uttaksperiode_ikke_samtidig_uttak_skal_ikke_føre_til_valideringsfeil() {
+        var uttaksperiode = UttakplanPeriodeBuilder
+                .uttak(KontoType.FEDREKVOTE, LocalDate.now().minusWeeks(4), LocalDate.now())
                 .build();
 
         var validator = hentValidator();
