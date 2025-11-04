@@ -20,7 +20,7 @@
     <dependencies>
         <dependency>
             <groupId>no.nav.foreldrepenger.kontrakter</groupId>
-            <artifactId>vl-kontrakt-felles</artifactId>
+            <artifactId>fp-kontrakt-felles</artifactId>
         </dependency>
         <dependency>
             <groupId>com.neovisionaries</groupId>

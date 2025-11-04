@@ -87,7 +87,7 @@
             <!-- Interne modul avhengigheter -->
             <dependency>
                 <groupId>no.nav.foreldrepenger.kontrakter</groupId>
-                <artifactId>vl-kontrakt-felles</artifactId>
+                <artifactId>fp-kontrakt-felles</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -175,7 +175,11 @@
                 <artifactId>fp-soknad-v1</artifactId>
                 <version>${project.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>no.nav.foreldrepenger.kontrakter</groupId>
+                <artifactId>fp-oversikt-v1</artifactId>
+                <version>${project.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

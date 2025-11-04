@@ -6,7 +6,7 @@
         <artifactId>fp-kontrakter-root</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>vl-kontrakt-felles</artifactId>
+    <artifactId>fp-kontrakt-felles</artifactId>
     <name>Archetype - vl-kontrakt-typer</name>
     <url>http://maven.apache.org</url>
 

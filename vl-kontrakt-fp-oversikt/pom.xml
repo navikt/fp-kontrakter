@@ -9,16 +9,14 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>vl-kontrakt-fp-oversikt</artifactId>
+    <artifactId>fp-oversikt-v1</artifactId>
     <packaging>jar</packaging>
     <name>(FPSAK) Kontrakter - fp-oversikt</name>
-
-
 
     <dependencies>
         <dependency>
             <groupId>no.nav.foreldrepenger.kontrakter</groupId>
-            <artifactId>vl-kontrakt-felles</artifactId>
+            <artifactId>fp-kontrakt-felles</artifactId>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
