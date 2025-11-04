@@ -31,10 +31,10 @@ import no.nav.vedtak.felles.xml.soeknad.v3.ObjectFactory;
 import no.nav.vedtak.felles.xml.soeknad.v3.OmYtelse;
 import no.nav.vedtak.felles.xml.soeknad.v3.Soeknad;
 
-public class ParseSoeknadTest {
+class ParseSoeknadTest {
 
     @Test
-    public void skal_parse_soeknad_xml() throws Exception {
+    void skal_parse_soeknad_xml() throws Exception {
         var xml = lesResource("/soeknad-v3.xml");
         Soeknad søknad = JaxbHelper.unmarshalAndValidateXMLWithStAX(Soeknad.class,
                 xml,
@@ -51,7 +51,7 @@ public class ParseSoeknadTest {
     }
 
     @Test
-    public void skal_marshalle_til_xml() throws Exception {
+    void skal_marshalle_til_xml() throws Exception {
         LocalDate dato = LocalDate.now();
 
         Soeknad søknad = new Soeknad();

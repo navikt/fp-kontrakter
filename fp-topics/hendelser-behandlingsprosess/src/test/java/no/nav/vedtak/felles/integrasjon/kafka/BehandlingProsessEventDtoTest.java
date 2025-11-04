@@ -17,10 +17,10 @@ import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
-public class BehandlingProsessEventDtoTest {
+class BehandlingProsessEventDtoTest {
 
     @Test
-    public void testAksjonspunktEventRoundtrip() throws Exception {
+    void testAksjonspunktEventRoundtrip() throws Exception {
         Map<String, String> aksjonspunkter = new HashMap<>();
         aksjonspunkter.put("5080", "OPPR");
 
