@@ -1,6 +1,7 @@
 package no.nav.foreldrepenger.kontrakter.fpsoknad.foreldrepenger.uttaksplan;
 
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.AssertTrue;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -28,4 +29,13 @@ public record UttaksPeriodeDto(@NotNull LocalDate fom,
                                Boolean erSelvstendig,
                                @Valid @Size(max = 15) List<@Pattern(regexp = FRITEKST) @NotNull String> orgnumre) {
     }
+
+    @AssertTrue(message = "ønskerSamtidigUttak er satt, men ikke prosent, eller så er prosent satt og ikke ønskerSamtidigUttak")
+    boolean isSamtidigUttakGyldig() {
+        if (!Boolean.TRUE.equals(ønskerSamtidigUttak)) {
+            return samtidigUttakProsent == null;
+        }
+        return samtidigUttakProsent != null;
+    }
+
 }
