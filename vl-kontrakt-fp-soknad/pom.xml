@@ -19,6 +19,10 @@
 
     <dependencies>
         <dependency>
+            <groupId>no.nav.foreldrepenger.kontrakter</groupId>
+            <artifactId>vl-kontrakt-felles</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.neovisionaries</groupId>
             <artifactId>nv-i18n</artifactId>
             <version>${nv.version}</version>

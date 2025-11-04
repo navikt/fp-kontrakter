@@ -6,7 +6,7 @@ import jakarta.validation.constraints.Pattern;
 
 import java.util.UUID;
 
-import static no.nav.foreldrepenger.kontrakter.fpsoknad.validering.InputValideringRegex.FRITEKST;
+import static no.nav.foreldrepenger.kontrakter.felles.validering.InputValideringRegex.FRITEKST;
 
 public record VedleggDto(UUID uuid,
                          @NotNull DokumentTypeId skjemanummer,

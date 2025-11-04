@@ -1,4 +1,4 @@
-package no.nav.foreldrepenger.kontrakter.fpsoknad;
+package no.nav.foreldrepenger.kontrakter.felles.typer;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import jakarta.validation.constraints.Digits;

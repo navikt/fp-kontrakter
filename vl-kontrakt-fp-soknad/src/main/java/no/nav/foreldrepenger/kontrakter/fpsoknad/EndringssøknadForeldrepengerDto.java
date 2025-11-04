@@ -3,6 +3,7 @@ package no.nav.foreldrepenger.kontrakter.fpsoknad;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import no.nav.foreldrepenger.kontrakter.felles.typer.Saksnummer;
 import no.nav.foreldrepenger.kontrakter.fpsoknad.barn.BarnDto;
 import no.nav.foreldrepenger.kontrakter.fpsoknad.foreldrepenger.annenpart.AnnenForelderDto;
 import no.nav.foreldrepenger.kontrakter.fpsoknad.foreldrepenger.uttaksplan.UttaksplanDto;

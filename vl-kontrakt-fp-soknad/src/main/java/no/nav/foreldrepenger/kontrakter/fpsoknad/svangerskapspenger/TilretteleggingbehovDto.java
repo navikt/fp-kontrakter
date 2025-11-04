@@ -15,7 +15,7 @@ import java.util.List;
 
 import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY;
 import static com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME;
-import static no.nav.foreldrepenger.kontrakter.fpsoknad.validering.InputValideringRegex.FRITEKST;
+import static no.nav.foreldrepenger.kontrakter.felles.validering.InputValideringRegex.FRITEKST;
 
 public record TilretteleggingbehovDto(@Valid @NotNull ArbeidsforholdDto arbeidsforhold,
                                       @NotNull LocalDate behovForTilretteleggingFom,

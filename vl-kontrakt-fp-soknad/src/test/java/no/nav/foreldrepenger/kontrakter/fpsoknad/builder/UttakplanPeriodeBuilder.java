@@ -1,11 +1,11 @@
 package no.nav.foreldrepenger.kontrakter.fpsoknad.builder;
 
-import no.nav.foreldrepenger.kontrakter.fpsoknad.foreldrepenger.uttaksplan.KontoType;
-import no.nav.foreldrepenger.kontrakter.fpsoknad.foreldrepenger.uttaksplan.MorsAktivitet;
+import no.nav.foreldrepenger.kontrakter.felles.kodeverk.KontoType;
+import no.nav.foreldrepenger.kontrakter.felles.kodeverk.MorsAktivitet;
 import no.nav.foreldrepenger.kontrakter.fpsoknad.foreldrepenger.uttaksplan.OppholdsPeriodeDto;
 import no.nav.foreldrepenger.kontrakter.fpsoknad.foreldrepenger.uttaksplan.Oppholdsårsak;
 import no.nav.foreldrepenger.kontrakter.fpsoknad.foreldrepenger.uttaksplan.OverføringsPeriodeDto;
-import no.nav.foreldrepenger.kontrakter.fpsoknad.foreldrepenger.uttaksplan.Overføringsårsak;
+import no.nav.foreldrepenger.kontrakter.felles.kodeverk.Overføringsårsak;
 import no.nav.foreldrepenger.kontrakter.fpsoknad.foreldrepenger.uttaksplan.UtsettelsesPeriodeDto;
 import no.nav.foreldrepenger.kontrakter.fpsoknad.foreldrepenger.uttaksplan.UtsettelsesÅrsak;
 import no.nav.foreldrepenger.kontrakter.fpsoknad.foreldrepenger.uttaksplan.UttaksPeriodeDto;

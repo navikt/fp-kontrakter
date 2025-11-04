@@ -1,4 +1,4 @@
-package no.nav.foreldrepenger.kontrakter.fpsoknad.validering;
+package no.nav.foreldrepenger.kontrakter.felles.validering;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;

@@ -2,6 +2,9 @@ package no.nav.foreldrepenger.kontrakter.fpsoknad;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.neovisionaries.i18n.CountryCode;
+import no.nav.foreldrepenger.kontrakter.felles.typer.Fødselsnummer;
+import no.nav.foreldrepenger.kontrakter.felles.typer.Orgnummer;
+import no.nav.foreldrepenger.kontrakter.felles.typer.Saksnummer;
 import no.nav.foreldrepenger.kontrakter.fpsoknad.barn.FødselDto;
 import no.nav.foreldrepenger.kontrakter.fpsoknad.barn.TerminDto;
 import no.nav.foreldrepenger.kontrakter.fpsoknad.builder.AnnenforelderBuilder;
@@ -27,9 +30,9 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
-import static no.nav.foreldrepenger.kontrakter.fpsoknad.foreldrepenger.uttaksplan.KontoType.FELLESPERIODE;
-import static no.nav.foreldrepenger.kontrakter.fpsoknad.foreldrepenger.uttaksplan.KontoType.FORELDREPENGER_FØR_FØDSEL;
-import static no.nav.foreldrepenger.kontrakter.fpsoknad.foreldrepenger.uttaksplan.KontoType.MØDREKVOTE;
+import static no.nav.foreldrepenger.kontrakter.felles.kodeverk.KontoType.FELLESPERIODE;
+import static no.nav.foreldrepenger.kontrakter.felles.kodeverk.KontoType.FORELDREPENGER_FØR_FØDSEL;
+import static no.nav.foreldrepenger.kontrakter.felles.kodeverk.KontoType.MØDREKVOTE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class SøknadJacksonRoundtripTest {

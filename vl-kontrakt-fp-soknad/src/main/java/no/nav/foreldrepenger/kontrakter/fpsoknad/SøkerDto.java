@@ -4,11 +4,14 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
+import no.nav.foreldrepenger.kontrakter.felles.typer.Fødselsnummer;
+import no.nav.foreldrepenger.kontrakter.felles.typer.Orgnummer;
 
 import java.time.LocalDate;
 import java.util.List;
 
-import static no.nav.foreldrepenger.kontrakter.fpsoknad.validering.InputValideringRegex.FRITEKST;
+import static no.nav.foreldrepenger.kontrakter.felles.validering.InputValideringRegex.FRITEKST;
+
 
 /**
  * Denne informasjonen hentes fra PDL, AAREG og EEREG ved inngangen til søknadsdialogen vidersendes med resten av søknaden.

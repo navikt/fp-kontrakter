@@ -1,10 +1,10 @@
-package no.nav.foreldrepenger.kontrakter.fpsoknad;
+package no.nav.foreldrepenger.kontrakter.felles.typer;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
-import static no.nav.foreldrepenger.kontrakter.fpsoknad.validering.InputValideringRegex.FRITEKST;
+import static no.nav.foreldrepenger.kontrakter.felles.validering.InputValideringRegex.FRITEKST;
 
 public record Fødselsnummer(@Pattern(regexp = FRITEKST) @NotNull @JsonValue String value) {
 

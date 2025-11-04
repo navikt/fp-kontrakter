@@ -1,6 +1,4 @@
-package no.nav.foreldrepenger.kontrakter.fpsoknad.foreldrepenger.uttaksplan;
-
-import no.nav.foreldrepenger.kontrakter.fpsoknad.Kodeverdi;
+package no.nav.foreldrepenger.kontrakter.felles.kodeverk;
 
 public enum KontoType implements Kodeverdi {
     FELLESPERIODE,

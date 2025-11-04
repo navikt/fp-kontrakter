@@ -1,4 +1,4 @@
-package no.nav.foreldrepenger.kontrakter.fpsoknad.validering;
+package no.nav.foreldrepenger.kontrakter.fpoversikt.validation;
 
 public class InputValideringRegex {
 
