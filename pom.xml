@@ -172,7 +172,7 @@
             </dependency>
             <dependency>
                 <groupId>no.nav.foreldrepenger.kontrakter</groupId>
-                <artifactId>fp-soknad-v1</artifactId>
+                <artifactId>fp-soknad</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

@@ -9,7 +9,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>fp-soknad-v1</artifactId>
+    <artifactId>fp-soknad</artifactId>
     <packaging>jar</packaging>
     <name>(FPSAK) Kontrakter - fp-soknad</name>
 
