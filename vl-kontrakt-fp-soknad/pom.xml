@@ -9,7 +9,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>fp-soknad-v1</artifactId>
+    <artifactId>fp-soknad</artifactId>
     <packaging>jar</packaging>
     <name>(FPSAK) Kontrakter - fp-soknad</name>
 
@@ -18,6 +18,10 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>no.nav.foreldrepenger.kontrakter</groupId>
+            <artifactId>fp-kontrakt-felles</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.neovisionaries</groupId>
             <artifactId>nv-i18n</artifactId>

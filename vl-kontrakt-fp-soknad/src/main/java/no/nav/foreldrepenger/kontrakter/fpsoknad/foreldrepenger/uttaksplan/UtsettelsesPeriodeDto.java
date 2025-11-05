@@ -1,6 +1,7 @@
 package no.nav.foreldrepenger.kontrakter.fpsoknad.foreldrepenger.uttaksplan;
 
 import jakarta.validation.constraints.NotNull;
+import no.nav.foreldrepenger.kontrakter.felles.kodeverk.MorsAktivitet;
 
 import java.time.LocalDate;
 

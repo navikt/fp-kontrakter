@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Pattern;
 
 import java.time.LocalDate;
 
-import static no.nav.foreldrepenger.kontrakter.fpsoknad.validering.InputValideringRegex.FRITEKST;
+import static no.nav.foreldrepenger.kontrakter.felles.validering.InputValideringRegex.FRITEKST;
 
 public record AnnenInntektDto(@NotNull AnnenOpptjeningType type,
                               @NotNull LocalDate fom,

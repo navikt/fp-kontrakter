@@ -1,0 +1,21 @@
+package no.nav.foreldrepenger.kontrakter.fpoversikt.inntektsmelding;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
+
+public record FpOversiktInntektsmeldingDto(
+        int versjon,
+        Boolean erAktiv,
+        BigDecimal stillingsprosent,
+        BigDecimal inntektPrMnd,
+        BigDecimal refusjonPrMnd,
+        String arbeidsgiverNavn,
+        String arbeidsgiverIdent,
+        String journalpostId,
+        LocalDateTime mottattTidspunkt,
+        LocalDate startDatoPermisjon,
+        List<BortfaltNaturalytelse> bortfalteNaturalytelser,
+        List<Refusjon> refusjonsperioder
+) { }

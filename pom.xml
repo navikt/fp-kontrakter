@@ -71,6 +71,8 @@
         <module>vl-kontrakt-fp-ws-proxy</module>
         <module>vl-kontrakt-simulering-resultat</module>
         <module>vl-kontrakt-fp-soknad</module>
+        <module>vl-kontrakt-fp-oversikt</module>
+        <module>vl-kontrakt-felles</module>
     </modules>
 
     <dependencyManagement>
@@ -83,6 +85,11 @@
             </dependency>
 
             <!-- Interne modul avhengigheter -->
+            <dependency>
+                <groupId>no.nav.foreldrepenger.kontrakter</groupId>
+                <artifactId>fp-kontrakt-felles</artifactId>
+                <version>${project.version}</version>
+            </dependency>
             <dependency>
                 <groupId>no.nav.foreldrepenger.kontrakter</groupId>
                 <artifactId>fp-feed-v1</artifactId>
@@ -165,10 +172,14 @@
             </dependency>
             <dependency>
                 <groupId>no.nav.foreldrepenger.kontrakter</groupId>
-                <artifactId>fp-soknad-v1</artifactId>
+                <artifactId>fp-soknad</artifactId>
                 <version>${project.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>no.nav.foreldrepenger.kontrakter</groupId>
+                <artifactId>fp-oversikt</artifactId>
+                <version>${project.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

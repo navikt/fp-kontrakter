@@ -1,4 +1,4 @@
-package no.nav.foreldrepenger.kontrakter.fpsoknad.foreldrepenger.uttaksplan;
+package no.nav.foreldrepenger.kontrakter.felles.kodeverk;
 
 public enum MorsAktivitet {
     ARBEID,
@@ -9,5 +9,6 @@ public enum MorsAktivitet {
     INNLAGT,
     ARBEID_OG_UTDANNING,
     UFØRE,
-    IKKE_OPPGITT;
+    IKKE_OPPGITT
 }
+

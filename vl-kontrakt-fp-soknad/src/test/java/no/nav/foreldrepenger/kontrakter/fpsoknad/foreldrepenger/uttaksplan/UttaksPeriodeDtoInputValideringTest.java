@@ -3,6 +3,7 @@ package no.nav.foreldrepenger.kontrakter.fpsoknad.foreldrepenger.uttaksplan;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
+import no.nav.foreldrepenger.kontrakter.felles.kodeverk.KontoType;
 import no.nav.foreldrepenger.kontrakter.fpsoknad.builder.UttakplanPeriodeBuilder;
 import org.junit.jupiter.api.Test;
 

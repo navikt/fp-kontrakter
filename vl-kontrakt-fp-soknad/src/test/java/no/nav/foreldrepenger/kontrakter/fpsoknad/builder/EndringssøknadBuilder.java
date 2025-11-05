@@ -1,9 +1,9 @@
 package no.nav.foreldrepenger.kontrakter.fpsoknad.builder;
 
+import no.nav.foreldrepenger.kontrakter.felles.typer.Saksnummer;
 import no.nav.foreldrepenger.kontrakter.fpsoknad.BrukerRolle;
 import no.nav.foreldrepenger.kontrakter.fpsoknad.EndringssøknadForeldrepengerDto;
 import no.nav.foreldrepenger.kontrakter.fpsoknad.Målform;
-import no.nav.foreldrepenger.kontrakter.fpsoknad.Saksnummer;
 import no.nav.foreldrepenger.kontrakter.fpsoknad.SøkerDto;
 import no.nav.foreldrepenger.kontrakter.fpsoknad.barn.BarnDto;
 import no.nav.foreldrepenger.kontrakter.fpsoknad.foreldrepenger.annenpart.AnnenForelderDto;

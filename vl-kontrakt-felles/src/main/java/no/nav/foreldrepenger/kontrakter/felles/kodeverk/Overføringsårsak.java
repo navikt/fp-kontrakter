@@ -1,4 +1,4 @@
-package no.nav.foreldrepenger.kontrakter.fpsoknad.foreldrepenger.uttaksplan;
+package no.nav.foreldrepenger.kontrakter.felles.kodeverk;
 
 public enum Overføringsårsak {
     INSTITUSJONSOPPHOLD_ANNEN_FORELDER,
