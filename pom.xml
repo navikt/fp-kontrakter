@@ -177,7 +177,7 @@
             </dependency>
             <dependency>
                 <groupId>no.nav.foreldrepenger.kontrakter</groupId>
-                <artifactId>fp-oversikt-v1</artifactId>
+                <artifactId>fp-oversikt</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>

@@ -1,6 +1,6 @@
 package no.nav.foreldrepenger.kontrakter.felles.kodeverk;
 
-public enum MorsAktivitet implements Kodeverdi {
+public enum MorsAktivitet {
     ARBEID,
     UTDANNING,
     KVALPROG,
@@ -9,11 +9,6 @@ public enum MorsAktivitet implements Kodeverdi {
     INNLAGT,
     ARBEID_OG_UTDANNING,
     UFØRE,
-    IKKE_OPPGITT;
-
-    @Override
-    public String getKode() {
-        return name();
-    }
+    IKKE_OPPGITT
 }
 

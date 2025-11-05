@@ -1,10 +1,8 @@
 package no.nav.foreldrepenger.kontrakter.fpsoknad.vedlegg;
 
-import no.nav.foreldrepenger.kontrakter.fpsoknad.Kodeverdi;
-
 import java.util.Set;
 
-public enum DokumentTypeId implements Kodeverdi {
+public enum DokumentTypeId {
 
     // Søknader
     I000001("Søknad om svangerskapspenger"),
@@ -65,8 +63,6 @@ public enum DokumentTypeId implements Kodeverdi {
     public String getTittel() {
         return tittel;
     }
-
-    @Override
     public String getKode() {
         return name();
     }

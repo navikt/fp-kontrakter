@@ -9,7 +9,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>fp-oversikt-v1</artifactId>
+    <artifactId>fp-oversikt</artifactId>
     <packaging>jar</packaging>
     <name>(FPSAK) Kontrakter - fp-oversikt</name>
 
