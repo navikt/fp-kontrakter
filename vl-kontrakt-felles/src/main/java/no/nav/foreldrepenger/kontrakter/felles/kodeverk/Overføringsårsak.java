@@ -1,6 +1,6 @@
 package no.nav.foreldrepenger.kontrakter.felles.kodeverk;
 
-public enum Overføringsårsak  {
+public enum Overføringsårsak {
     INSTITUSJONSOPPHOLD_ANNEN_FORELDER,
     SYKDOM_ANNEN_FORELDER,
     ALENEOMSORG,
