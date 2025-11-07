@@ -1,7 +1,5 @@
 package no.nav.foreldrepenger.kontrakter.fpoversikt.inntektsmelding;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-
 import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
