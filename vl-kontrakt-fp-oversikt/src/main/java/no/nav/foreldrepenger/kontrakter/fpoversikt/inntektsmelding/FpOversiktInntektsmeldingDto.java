@@ -1,21 +1,26 @@
 package no.nav.foreldrepenger.kontrakter.fpoversikt.inntektsmelding;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+import jakarta.validation.constraints.NotNull;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public record FpOversiktInntektsmeldingDto(
-        int versjon,
-        Boolean erAktiv,
+        @NotNull int versjon,
+        @NotNull Boolean erAktiv,
         BigDecimal stillingsprosent,
-        BigDecimal inntektPrMnd,
+        @NotNull BigDecimal inntektPrMnd,
         BigDecimal refusjonPrMnd,
-        String arbeidsgiverNavn,
-        String arbeidsgiverIdent,
-        String journalpostId,
-        LocalDateTime mottattTidspunkt,
+        @NotNull String arbeidsgiverNavn,
+        @NotNull String arbeidsgiverIdent,
+        @NotNull String journalpostId,
+        @NotNull LocalDateTime mottattTidspunkt,
         LocalDate startDatoPermisjon,
-        List<BortfaltNaturalytelse> bortfalteNaturalytelser,
-        List<Refusjon> refusjonsperioder
+        @NotNull List<BortfaltNaturalytelse> bortfalteNaturalytelser,
+        @NotNull List<Refusjon> refusjonsperioder
 ) { }

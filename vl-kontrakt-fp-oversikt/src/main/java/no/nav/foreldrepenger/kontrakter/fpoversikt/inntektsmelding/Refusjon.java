@@ -1,7 +1,9 @@
 package no.nav.foreldrepenger.kontrakter.fpoversikt.inntektsmelding;
 
+import jakarta.validation.constraints.NotNull;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public record Refusjon(BigDecimal refusjonsbeløpMnd, LocalDate fomDato) {
+public record Refusjon(@NotNull BigDecimal refusjonsbeløpMnd, @NotNull LocalDate fomDato) {
 }
