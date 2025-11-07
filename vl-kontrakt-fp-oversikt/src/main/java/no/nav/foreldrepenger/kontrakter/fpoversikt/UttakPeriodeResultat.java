@@ -1,6 +1,8 @@
 package no.nav.foreldrepenger.kontrakter.fpoversikt;
 
-public record UttakPeriodeResultat(boolean innvilget, boolean trekkerMinsterett, boolean trekkerDager, UttakPeriodeResultatÅrsak årsak) {
+import jakarta.validation.constraints.NotNull;
+
+public record UttakPeriodeResultat(@NotNull boolean innvilget, @NotNull boolean trekkerMinsterett, @NotNull boolean trekkerDager, @NotNull UttakPeriodeResultatÅrsak årsak) {
 
     public enum UttakPeriodeResultatÅrsak {
         ANNET,
