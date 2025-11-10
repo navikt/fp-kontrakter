@@ -1,7 +1,9 @@
 package no.nav.foreldrepenger.kontrakter.fpoversikt;
 
 
-public record Arbeidsgiver(String id, ArbeidsgiverType type) {
+import jakarta.validation.constraints.NotNull;
+
+public record Arbeidsgiver(@NotNull String id, ArbeidsgiverType type) {
 
     public enum ArbeidsgiverType {
         PRIVAT,
