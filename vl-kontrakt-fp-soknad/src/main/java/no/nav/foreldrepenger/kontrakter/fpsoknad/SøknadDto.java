@@ -8,6 +8,7 @@ import java.util.List;
 
 public sealed interface SøknadDto permits EndringssøknadForeldrepengerDto, ForeldrepengesøknadDto, EngangsstønadDto, SvangerskapspengesøknadDto {
     LocalDateTime mottattdato();
+    Målform språkkode();
     SøkerDto søkerinfo();
     BarnDto barn();
     List<VedleggDto> vedlegg();
