@@ -14,10 +14,10 @@ import no.nav.foreldrepenger.kontrakter.fpsak.beregningsgrunnlag.v2.kodeverk.Akt
 import no.nav.foreldrepenger.kontrakter.fpsak.beregningsgrunnlag.v2.kodeverk.HjemmelDto;
 
 
-public record BeregningsgrunnlagDto(@NotNull @Valid @Size(min = 1) List<AktivitetStatusDto> aktivitetstatusListe,
+public record BeregningsgrunnlagDto(@NotNull @Size(min = 1) List<@Valid AktivitetStatusDto> aktivitetstatusListe,
                                     @NotNull @Valid HjemmelDto hjemmel,
                                     @Valid @Digits(integer = 8, fraction = 2) @DecimalMin("0.00") @DecimalMax("10000000.00") BigDecimal grunnbeløp,
-                                    @Valid @NotNull @Size(min = 1) List<BeregningsgrunnlagPeriodeDto> beregningsgrunnlagperioder,
+                                    @NotNull @Size(min = 1) List<@Valid BeregningsgrunnlagPeriodeDto> beregningsgrunnlagperioder,
                                     @Valid boolean erBesteberegnet,
                                     @NotNull @Valid boolean seksAvDeTiBeste) {
 }

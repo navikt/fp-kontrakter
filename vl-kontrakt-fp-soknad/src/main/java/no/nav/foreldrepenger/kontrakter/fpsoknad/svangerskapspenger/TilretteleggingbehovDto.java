@@ -21,7 +21,7 @@ public record TilretteleggingbehovDto(@Valid @NotNull ArbeidsforholdDto arbeidsf
                                       @NotNull LocalDate behovForTilretteleggingFom,
                                       @Pattern(regexp = FRITEKST) String risikofaktorer,
                                       @Pattern(regexp = FRITEKST) String tilretteleggingstiltak,
-                                      @Valid @Size(min = 1, max = 20) List<@Valid @NotNull TilretteleggingDto> tilrettelegginger) {
+                                      @Size(min = 1, max = 20) List<@Valid @NotNull TilretteleggingDto> tilrettelegginger) {
 
     @AssertTrue(message = "Tilrettelegging av næring eller frilans må ha satt risikofaktorer og tilretteleggingstiltak")
     public boolean isRisikofaktorerOgTilretteleggingtiltakSattForNæringFrilans() {

@@ -23,7 +23,7 @@ public record EndringssøknadForeldrepengerDto(LocalDateTime mottattdato,
                                               @Valid @NotNull BarnDto barn,
                                               @Valid AnnenForelderDto annenForelder,
                                               @Valid @NotNull UttaksplanDto uttaksplan,
-                                              @Valid @VedlegglistestørrelseConstraint @Size(max = 100) List<@Valid @NotNull VedleggDto> vedlegg) implements SøknadDto {
+                                              @VedlegglistestørrelseConstraint @Size(max = 100) List<@Valid @NotNull VedleggDto> vedlegg) implements SøknadDto {
 
     public EndringssøknadForeldrepengerDto {
         vedlegg = Optional.ofNullable(vedlegg).map(ArrayList::new).orElse(new ArrayList<>());
