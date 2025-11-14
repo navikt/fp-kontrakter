@@ -13,7 +13,6 @@ import java.time.LocalDate;
 
 public record UttakPeriodeAnnenpartEøs(@NotNull LocalDate fom,
                                        @NotNull LocalDate tom,
-                                       @NotNull KontoType trekkonto,
                                        @NotNull KontoType kontoType,
                                        @Valid @NotNull Trekkdager trekkdager) {
 
