@@ -15,8 +15,8 @@ public record EngangsstønadDto(LocalDateTime mottattdato,
                                @Valid @NotNull SøkerDto søkerinfo,
                                @NotNull Målform språkkode,
                                @Valid @NotNull BarnDto barn,
-                               @Valid @Size(max = 40) List<@Valid @NotNull UtenlandsoppholdsperiodeDto> utenlandsopphold,
-                               @Valid @VedlegglistestørrelseConstraint @Size(max = 100) List<@Valid @NotNull VedleggDto> vedlegg) implements SøknadDto {
+                               @Size(max = 40) List<@Valid @NotNull UtenlandsoppholdsperiodeDto> utenlandsopphold,
+                               @VedlegglistestørrelseConstraint @Size(max = 100) List<@Valid @NotNull VedleggDto> vedlegg) implements SøknadDto {
 
     public EngangsstønadDto {
         utenlandsopphold = Optional.ofNullable(utenlandsopphold).orElse(List.of());

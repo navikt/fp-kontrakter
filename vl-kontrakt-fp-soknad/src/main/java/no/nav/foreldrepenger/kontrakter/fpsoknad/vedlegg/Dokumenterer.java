@@ -9,7 +9,7 @@ import java.util.List;
 
 public record Dokumenterer(@NotNull DokumentererType type,
                            @Valid ArbeidsforholdDto arbeidsforhold,
-                           @Valid @Size(max = 200) List<@Valid @NotNull ÅpenPeriodeDto> perioder) {
+                           @Size(max = 200) List<@Valid @NotNull ÅpenPeriodeDto> perioder) {
         public enum DokumentererType {
             BARN,
             OPPTJENING,

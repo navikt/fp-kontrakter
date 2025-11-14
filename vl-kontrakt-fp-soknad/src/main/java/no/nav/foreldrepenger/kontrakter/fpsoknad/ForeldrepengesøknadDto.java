@@ -24,12 +24,12 @@ public record ForeldrepengesøknadDto(LocalDateTime mottattdato,
                                      @Valid @NotNull BarnDto barn,
                                      @Valid FrilansDto frilans,
                                      @Valid NæringDto egenNæring,
-                                     @Valid @Size(max = 40) List<@Valid @NotNull AnnenInntektDto> andreInntekterSiste10Mnd,
+                                     @Size(max = 40) List<@Valid @NotNull AnnenInntektDto> andreInntekterSiste10Mnd,
                                      @Valid AnnenForelderDto annenForelder,
                                      @Valid @NotNull Dekningsgrad dekningsgrad,
                                      @Valid @NotNull UttaksplanDto uttaksplan,
-                                     @Valid @Size(max = 40) List<@Valid @NotNull UtenlandsoppholdsperiodeDto> utenlandsopphold,
-                                     @Valid @VedlegglistestørrelseConstraint @Size(max = 100)  List<@Valid @NotNull VedleggDto> vedlegg) implements SøknadDto {
+                                     @Size(max = 40) List<@Valid @NotNull UtenlandsoppholdsperiodeDto> utenlandsopphold,
+                                     @VedlegglistestørrelseConstraint @Size(max = 100)  List<@Valid @NotNull VedleggDto> vedlegg) implements SøknadDto {
     public ForeldrepengesøknadDto {
         andreInntekterSiste10Mnd = Optional.ofNullable(andreInntekterSiste10Mnd).orElse(List.of());
         utenlandsopphold = Optional.ofNullable(utenlandsopphold).orElse(List.of());
