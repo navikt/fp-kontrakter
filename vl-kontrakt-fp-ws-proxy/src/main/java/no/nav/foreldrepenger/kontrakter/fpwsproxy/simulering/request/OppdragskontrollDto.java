@@ -10,5 +10,5 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 public record OppdragskontrollDto(@NotNull @Pattern(regexp = "^[A-Za-z0-9+/-]*$") String behandlingId,
-                                  @Valid @Size(min = 1) List<@Valid @NotNull Oppdrag110Dto> oppdrag) {
+                                  @Size(min = 1) List<@Valid @NotNull Oppdrag110Dto> oppdrag) {
 }

@@ -30,7 +30,7 @@ public record UttaksPeriodeDto(@NotNull LocalDate fom,
                                Boolean erArbeidstaker,
                                Boolean erFrilanser,
                                Boolean erSelvstendig,
-                               @Valid @Size(max = 15) List<@Pattern(regexp = FRITEKST) @NotNull String> orgnumre) {
+                               @Size(max = 15) List<@Pattern(regexp = FRITEKST) @NotNull String> orgnumre) {
     }
 
     @AssertTrue(message = "ønskerSamtidigUttak er satt, men ikke prosent, eller så er prosent satt og ikke ønskerSamtidigUttak")

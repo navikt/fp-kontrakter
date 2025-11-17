@@ -16,8 +16,8 @@ public record BeregningsgrunnlagPeriodeDto(
         @Valid @Digits(integer = 8, fraction = 2) @DecimalMin("0.00") @DecimalMax("10000.00") Long dagsats,
         @Valid @Digits(integer = 8, fraction = 2) @DecimalMin("0.00") @DecimalMax("10000000.00") BigDecimal bruttoPrÅr,
         @Valid @Digits(integer = 8, fraction = 2) @DecimalMin("0.00") @DecimalMax("10000000.00") BigDecimal avkortetPrÅr,
-        @Valid List<PeriodeÅrsakDto> periodeårsaker,
+        List<@Valid PeriodeÅrsakDto> periodeårsaker,
         @Valid LocalDate beregningsgrunnlagperiodeFom,
         @Valid LocalDate beregningsgrunnlagperiodeTom,
-        @Valid @Size(min = 1) List<BeregningsgrunnlagAndelDto> beregningsgrunnlagandeler) {
+        @Size(min = 1) List<@Valid BeregningsgrunnlagAndelDto> beregningsgrunnlagandeler) {
 }

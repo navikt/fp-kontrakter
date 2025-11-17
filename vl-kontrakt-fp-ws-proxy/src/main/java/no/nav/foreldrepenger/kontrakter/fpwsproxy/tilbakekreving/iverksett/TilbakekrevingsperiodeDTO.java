@@ -12,7 +12,7 @@ import no.nav.foreldrepenger.kontrakter.fpwsproxy.tilbakekreving.kravgrunnlag.re
 
 public record TilbakekrevingsperiodeDTO(@Valid @NotNull Periode periode,
                                         @Digits(integer = 8, fraction = 2) BigDecimal belopRenter,
-                                        @Valid @NotNull @Size List<@Valid @NotNull TilbakekrevingsbelopDTO> tilbakekrevingsbelop) {
+                                        @NotNull @Size List<@Valid @NotNull TilbakekrevingsbelopDTO> tilbakekrevingsbelop) {
 
     public TilbakekrevingsperiodeDTO(Builder builder) {
         this(builder.periode, builder.belopRenter, builder.tilbakekrevingsbelop);

@@ -17,7 +17,7 @@ public record EttersendelseDto(LocalDateTime mottattdato,
                                @NotNull @Valid Fødselsnummer fnr,
                                @NotNull YtelseType type,
                                @Valid BrukerTekstDto brukerTekst,
-                               @Valid @NotNull @Size(max = 40) List<@Valid VedleggDto> vedlegg) {
+                               @NotNull @Size(max = 40) List<@Valid VedleggDto> vedlegg) {
 
     public boolean erInnsendingAvUttalelseOmTilbakekreving() {
         return brukerTekst() != null;
