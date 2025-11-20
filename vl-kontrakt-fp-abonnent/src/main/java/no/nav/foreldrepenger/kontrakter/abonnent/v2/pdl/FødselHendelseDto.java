@@ -16,7 +16,7 @@ public class FødselHendelseDto extends HendelseDto {
 
     @NotNull
     @Size(min = 1)
-    private List<AktørIdDto> aktørIdForeldre;
+    private List<@Valid AktørIdDto> aktørIdForeldre;
 
     @Valid
     private LocalDate fødselsdato;

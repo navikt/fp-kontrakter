@@ -15,7 +15,7 @@ public class DødfødselHendelseDto extends HendelseDto {
     public static final String HENDELSE_TYPE = "DØDFØDSEL";
     @NotNull
     @Size(min = 1)
-    private List<AktørIdDto> aktørId;
+    private List<@Valid AktørIdDto> aktørId;
 
     @Valid
     private LocalDate dødfødselsdato;

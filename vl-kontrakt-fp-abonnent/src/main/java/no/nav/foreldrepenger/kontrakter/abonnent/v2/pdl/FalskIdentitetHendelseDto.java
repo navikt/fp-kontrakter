@@ -1,5 +1,6 @@
 package no.nav.foreldrepenger.kontrakter.abonnent.v2.pdl;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import no.nav.foreldrepenger.kontrakter.abonnent.v2.AktørIdDto;
@@ -14,7 +15,7 @@ public class FalskIdentitetHendelseDto extends HendelseDto {
 
     @NotNull
     @Size(min = 1)
-    private List<AktørIdDto> aktørId;
+    private List<@Valid AktørIdDto> aktørId;
 
     private boolean erFalsk;
 
