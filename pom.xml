@@ -20,7 +20,7 @@
     <url>https://github.com/navikt/fp-kontrakter</url>
 
 	<properties>
-        <felles.version>7.6.9</felles.version>
+        <felles.version>7.6.10</felles.version>
 
         <!-- SonarCloud options -->
         <sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
