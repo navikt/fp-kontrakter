@@ -10,7 +10,9 @@ updates:
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
-      interval: daily
+      interval: weekly
+    cooldown:
+      default-days: 7
     open-pull-requests-limit: 10
     groups:
       actions:
@@ -20,7 +22,9 @@ updates:
     registries:
       - maven-github
     schedule:
-      interval: daily
+      interval: weekly
+    cooldown:
+      default-days: 7
     open-pull-requests-limit: 20
     allow:
       - dependency-type: "all"
