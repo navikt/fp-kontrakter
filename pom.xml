@@ -7,7 +7,7 @@
     <parent>
         <groupId>no.nav.foreldrepenger.felles</groupId>
         <artifactId>fp-parent-lib</artifactId>
-        <version>5.0.3</version>
+        <version>5.1.1</version>
     </parent>
 
     <groupId>no.nav.foreldrepenger.kontrakter</groupId>
@@ -20,7 +20,7 @@
     <url>https://github.com/navikt/fp-kontrakter</url>
 
 	<properties>
-        <felles.version>7.6.9</felles.version>
+        <felles.version>7.6.11</felles.version>
 
         <!-- SonarCloud options -->
         <sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
@@ -58,6 +58,7 @@
     </scm>
 
     <modules>
+        <module>hendelser-behandling</module>
         <module>vl-kontrakt-soeknad</module>
         <module>vl-kontrakt-fordel</module>
         <module>vl-kontrakt-inntektsmelding</module>
@@ -65,7 +66,6 @@
         <module>vl-kontrakt-fp-feed</module>
         <module>vl-kontrakt-fp-risk</module>
         <module>vl-kontrakt-behandlingsprosess-vedtak</module>
-        <module>fp-topics</module>
         <module>vl-kontrakt-fp-formidling</module>
         <module>vl-kontrakt-oekonomi</module>
         <module>vl-kontrakt-fp-ws-proxy</module>
@@ -88,6 +88,11 @@
             <dependency>
                 <groupId>no.nav.foreldrepenger.kontrakter</groupId>
                 <artifactId>fp-kontrakt-felles</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>no.nav.foreldrepenger.kontrakter.topics</groupId>
+                <artifactId>hendelser-behandling</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -202,7 +207,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-assembly-plugin</artifactId>
-                    <version>3.7.1</version>
+                    <version>3.8.0</version>
                 </plugin>
                 <!-- Plugin required to build java classes from XSD using XJC -->
                 <plugin>
