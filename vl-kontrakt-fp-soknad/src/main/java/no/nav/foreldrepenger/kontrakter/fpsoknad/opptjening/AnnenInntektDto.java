@@ -16,7 +16,7 @@ public record AnnenInntektDto(@NotNull AnnenOpptjeningType type,
                               @Pattern(regexp = FRITEKST) String arbeidsgiverNavn) {
 
     @AssertTrue(message = "Ved JOBB_I_UTLANDET så må land og arbeidsgiverNavn være satt")
-    boolean isGyldigJobbIUtlandet() {
+    public boolean isGyldigJobbIUtlandet() {
         if (AnnenOpptjeningType.JOBB_I_UTLANDET.equals(type)) {
             return land != null && arbeidsgiverNavn != null;
         }

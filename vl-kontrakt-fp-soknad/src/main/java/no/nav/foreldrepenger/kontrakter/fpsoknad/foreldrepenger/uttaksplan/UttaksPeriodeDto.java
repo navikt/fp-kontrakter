@@ -34,7 +34,7 @@ public record UttaksPeriodeDto(@NotNull LocalDate fom,
     }
 
     @AssertTrue(message = "ønskerSamtidigUttak er satt, men ikke prosent, eller så er prosent satt og ikke ønskerSamtidigUttak")
-    boolean isSamtidigUttakGyldig() {
+    public boolean isSamtidigUttakGyldig() {
         if (!Boolean.TRUE.equals(ønskerSamtidigUttak)) {
             return samtidigUttakProsent == null;
         }
