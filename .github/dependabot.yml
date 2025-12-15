@@ -13,6 +13,8 @@ updates:
       interval: weekly
     cooldown:
       default-days: 7
+      exclude:
+        - "no.nav.*"
     open-pull-requests-limit: 10
     groups:
       actions:
@@ -25,6 +27,8 @@ updates:
       interval: weekly
     cooldown:
       default-days: 7
+      exclude:
+        - "no.nav.*"
     open-pull-requests-limit: 20
     allow:
       - dependency-type: "all"
