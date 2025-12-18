@@ -33,12 +33,12 @@ public record UttaksPeriodeDto(@NotNull LocalDate fom,
                                @Size(max = 15) List<@Pattern(regexp = FRITEKST) @NotNull String> orgnumre) {
     }
 
-    @AssertTrue(message = "ønskerSamtidigUttak er satt, men ikke prosent, eller så er prosent satt og ikke ønskerSamtidigUttak")
+    @AssertTrue(message = "ønskerSamtidigUttak er satt til true, men mangler samtidigUttakProsent")
     public boolean isSamtidigUttakGyldig() {
-        if (!Boolean.TRUE.equals(ønskerSamtidigUttak)) {
-            return samtidigUttakProsent == null;
+        if (Boolean.TRUE.equals(ønskerSamtidigUttak)) {
+            return samtidigUttakProsent != null;
         }
-        return samtidigUttakProsent != null;
+        return true;
     }
 
 }

@@ -25,7 +25,7 @@ class UttaksPeriodeDtoInputValideringTest {
         var resultat = validator.validate(uttaksperiode);
         assertThat(resultat).hasSize(1)
                 .extracting(ConstraintViolation::getMessage)
-                .contains("ønskerSamtidigUttak er satt, men ikke prosent, eller så er prosent satt og ikke ønskerSamtidigUttak");
+                .contains("ønskerSamtidigUttak er satt til true, men mangler samtidigUttakProsent");
     }
 
 
