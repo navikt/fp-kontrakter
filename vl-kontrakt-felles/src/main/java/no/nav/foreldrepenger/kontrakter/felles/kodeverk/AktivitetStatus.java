@@ -13,7 +13,7 @@ public enum AktivitetStatus {
     KOMBINERT_AT_FL_SN,
     BRUKERS_ANDEL,
     KUN_YTELSE,
-    TTLSTØTENDE_YTELSE,
+    TILSTØTENDE_YTELSE,
     VENTELØNN_VARTPENGER
 
 }
