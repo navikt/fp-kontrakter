@@ -2,6 +2,7 @@ package no.nav.vedtak.hendelser.behandling.los;
 
 import jakarta.validation.constraints.NotNull;
 import no.nav.vedtak.hendelser.behandling.Aksjonspunktstatus;
+import no.nav.vedtak.hendelser.behandling.Aksjonspunkttype;
 import no.nav.vedtak.hendelser.behandling.AktørId;
 import no.nav.vedtak.hendelser.behandling.Behandlingsstatus;
 import no.nav.vedtak.hendelser.behandling.Behandlingstype;
@@ -42,7 +43,7 @@ public record LosBehandlingDto(@NotNull UUID behandlingUuid,
                                LosTilbakeDto tilbakeDto) {
 
 
-    public record LosAksjonspunktDto(String definisjon, Aksjonspunktstatus status, LocalDateTime fristTid) { }
+    public record LosAksjonspunktDto(String definisjon, Aksjonspunkttype type, Aksjonspunktstatus status, LocalDateTime fristTid) { }
 
     public record LosForeldrepengerDto(LocalDate førsteUttakDato) { }
 
