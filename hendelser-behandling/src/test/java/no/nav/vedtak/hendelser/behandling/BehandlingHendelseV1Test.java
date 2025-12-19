@@ -31,7 +31,6 @@ class BehandlingHendelseV1Test {
                 .build();
 
         String json = WRITER.writeValueAsString(inntektsmelding);
-        //System.out.println(json);
 
         BehandlingHendelseV1 roundTripped = READER.forType(BehandlingHendelseV1.class).readValue(json);
 
@@ -58,7 +57,6 @@ class BehandlingHendelseV1Test {
             .build();
 
         String json = WRITER.writeValueAsString(inntektsmelding);
-        //System.out.println(json);
 
         BehandlingHendelseV1 roundTripped = READER.forType(BehandlingHendelseV1.class).readValue(json);
 
