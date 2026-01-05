@@ -18,7 +18,7 @@ import static no.nav.foreldrepenger.kontrakter.felles.validering.InputValidering
  * Vi brukes ikke denne informasjonen i XML, men i PDF for å vise bruker navn og arbeidsforhold som ble vist på søknadstidspunktet.
  * Ved saksbehandling vil vi uansett slå opp denne informasjonen på nytt, og derfor ikke behov for å sende inn i XMLen.
  */
-public record SøkerDto(@Valid @NotNull Fødselsnummer fnr, @Valid @NotNull Navn navn, @Size(max = 150) List<@NotNull @Valid Arbeidsforhold> arbeidsforhold) {
+public record SøkerDto(@Valid @NotNull Fødselsnummer fnr, @Valid @NotNull Navn navn, @Size(max = 999) List<@NotNull @Valid Arbeidsforhold> arbeidsforhold) {
 
     public record Arbeidsforhold(String navn, Orgnummer orgnummer, Double stillingsprosent, LocalDate fom, LocalDate tom) {
     }
