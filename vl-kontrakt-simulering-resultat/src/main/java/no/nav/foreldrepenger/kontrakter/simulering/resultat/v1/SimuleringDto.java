@@ -8,7 +8,7 @@ import no.nav.foreldrepenger.kontrakter.simulering.resultat.kodeverk.MottakerTyp
 import no.nav.foreldrepenger.kontrakter.simulering.resultat.kodeverk.RadId;
 
 public record SimuleringDto(@NotNull DetaljertSimuleringResultatDto simuleringResultat,
-                            @NotNull DetaljertSimuleringResultatDto simuleringResultatUtenInntrekk,
+                            DetaljertSimuleringResultatDto simuleringResultatUtenInntrekk,
                             @NotNull boolean slåttAvInntrekk) {
 
 
