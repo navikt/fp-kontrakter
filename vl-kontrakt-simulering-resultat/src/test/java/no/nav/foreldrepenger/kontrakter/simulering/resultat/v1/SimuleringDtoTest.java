@@ -33,7 +33,7 @@ class SimuleringDtoTest {
         var rad2 = new SimuleringDto.SimuleringResultatRadDto(RadId.INNTREKK_NESTE_MÅNED, List.of(prMåned2));
         var prFagområde = new SimuleringDto.SimuleringResultatPerFagområdeDto(Fagområde.FP, List.of(rad1, rad2));
         var prMottaker = new SimuleringDto.SimuleringForMottakerDto(MottakerType.BRUKER, "12345678901",
-            "1234567890123", List.of(prFagområde), List.of(rad1), new PeriodeDto(null, null));
+            "1234567890123", List.of(prFagområde), List.of(rad1), new PeriodeDto(IDAG, IDAG));
         var detaljert = new SimuleringDto.DetaljertSimuleringResultatDto(new PeriodeDto(IDAG, IDAG),  true,
         0L, 1000L, 1000L, List.of(prMottaker));
         var request = new SimuleringDto(detaljert, null, false);

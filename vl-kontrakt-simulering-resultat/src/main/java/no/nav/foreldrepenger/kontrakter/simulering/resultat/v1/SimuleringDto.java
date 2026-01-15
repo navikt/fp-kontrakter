@@ -2,31 +2,39 @@ package no.nav.foreldrepenger.kontrakter.simulering.resultat.v1;
 
 import java.util.List;
 
+import jakarta.validation.constraints.NotNull;
 import no.nav.foreldrepenger.kontrakter.simulering.resultat.kodeverk.Fagområde;
 import no.nav.foreldrepenger.kontrakter.simulering.resultat.kodeverk.MottakerType;
 import no.nav.foreldrepenger.kontrakter.simulering.resultat.kodeverk.RadId;
 
-public record SimuleringDto(DetaljertSimuleringResultatDto simuleringResultat,
+public record SimuleringDto(@NotNull DetaljertSimuleringResultatDto simuleringResultat,
                             DetaljertSimuleringResultatDto simuleringResultatUtenInntrekk,
-                            boolean slåttAvInntrekk) {
+                            @NotNull boolean slåttAvInntrekk) {
 
 
-    public record DetaljertSimuleringResultatDto(PeriodeDto periode, boolean ingenPerioderMedAvvik,
-                                                 Long sumEtterbetaling, Long sumFeilutbetaling, Long sumInntrekk,
-                                                 List<SimuleringForMottakerDto> perioderPerMottaker) {
+    public record DetaljertSimuleringResultatDto(@NotNull PeriodeDto periode, @NotNull boolean ingenPerioderMedAvvik,
+                                                 @NotNull Long sumEtterbetaling, @NotNull Long sumFeilutbetaling,
+                                                 @NotNull Long sumInntrekk,
+                                                 @NotNull List<SimuleringForMottakerDto> perioderPerMottaker) {
     }
 
 
-    public record SimuleringForMottakerDto(MottakerType mottakerType, String mottakerNummer, String mottakerIdentifikator,
-                                           List<SimuleringResultatPerFagområdeDto> resultatPerFagområde,
-                                           List<SimuleringResultatRadDto> resultatOgMotregningRader,
-                                           PeriodeDto nesteUtbPeriode) {
+    public record SimuleringForMottakerDto(@NotNull MottakerType mottakerType, @NotNull String mottakerNummer,
+                                           @NotNull String mottakerIdentifikator,
+                                           @NotNull List<SimuleringResultatPerFagområdeDto> resultatPerFagområde,
+                                           @NotNull List<SimuleringResultatRadDto> resultatOgMotregningRader,
+                                           @NotNull PeriodeDto nesteUtbPeriode) {
     }
 
 
-    public record SimuleringResultatPerFagområdeDto(Fagområde fagOmrådeKode, List<SimuleringResultatRadDto> rader) { }
+    public record SimuleringResultatPerFagområdeDto(@NotNull Fagområde fagOmrådeKode,
+                                                    @NotNull List<SimuleringResultatRadDto> rader) {
+    }
 
-    public record SimuleringResultatRadDto(RadId feltnavn, List<SimuleringResultatPerMånedDto> resultaterPerMåned) { }
+    public record SimuleringResultatRadDto(@NotNull RadId feltnavn,
+                                           @NotNull List<SimuleringResultatPerMånedDto> resultaterPerMåned) {
+    }
 
-    public record SimuleringResultatPerMånedDto(PeriodeDto periode, Long beløp) { }
+    public record SimuleringResultatPerMånedDto(@NotNull PeriodeDto periode, @NotNull Long beløp) {
+    }
 }
