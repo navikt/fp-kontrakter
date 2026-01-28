@@ -18,9 +18,7 @@ public record Beregningsgrunnlag(@NotNull LocalDate skjæringsTidspunkt,
     public record BeregningsAndel(@NotNull AktivitetStatus aktivitetStatus,
                                   @Min(0) @Digits(integer = 10, fraction = 2) BigDecimal fastsattPrÅr,
                                   Inntektskilde inntektsKilde,
-                                  @Valid Arbeidsforhold arbeidsforhold,
-                                  @Min(0) @Digits(integer = 4, fraction = 0) BigDecimal dagsatsArbeidsgiver,
-                                  @Digits(integer = 4, fraction = 0) BigDecimal dagsatsSøker) {
+                                  @Valid Arbeidsforhold arbeidsforhold) {
     }
 
     public record Arbeidsforhold(@NotNull String arbeidsgiverIdent, @NotNull String arbeidsgiverNavn,
