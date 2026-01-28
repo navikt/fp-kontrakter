@@ -10,13 +10,24 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
-public record Beregningsgrunnlag(@NotNull LocalDate skjæringsTidspunkt, @NotNull List<@Valid BeregningsAndel> beregningsAndeler, @NotNull List<@Valid BeregningAktivitetStatus> beregningAktivitetStatuser, BigDecimal grunnbeløp) {
+public record Beregningsgrunnlag(@NotNull LocalDate skjæringsTidspunkt,
+                                 @NotNull List<@Valid BeregningsAndel> beregningsAndeler,
+                                 @NotNull List<@Valid BeregningAktivitetStatus> beregningAktivitetStatuser,
+                                 BigDecimal grunnbeløp) {
 
-    public record BeregningsAndel(@NotNull AktivitetStatus aktivitetStatus, @Min(0) @Digits(integer = 10, fraction = 2) BigDecimal fastsattPrÅr, Inntektskilde inntektsKilde,
-                                  @Valid Arbeidsforhold arbeidsforhold, @Min(0) @Digits(integer = 4, fraction = 0) BigDecimal dagsatsArbeidsgiver, @Digits(integer = 4, fraction = 0)  BigDecimal dagsatsSøker) {}
+    public record BeregningsAndel(@NotNull AktivitetStatus aktivitetStatus,
+                                  @Min(0) @Digits(integer = 10, fraction = 2) BigDecimal fastsattPrÅr,
+                                  Inntektskilde inntektsKilde,
+                                  @Valid Arbeidsforhold arbeidsforhold,
+                                  @Min(0) @Digits(integer = 4, fraction = 0) BigDecimal dagsatsArbeidsgiver,
+                                  @Digits(integer = 4, fraction = 0) BigDecimal dagsatsSøker) {
+    }
 
-    public record Arbeidsforhold(@NotNull String arbeidsgiverIdent, @NotNull String arbeidsgiverNavn, @Min(0) @Digits(integer = 10, fraction = 2) BigDecimal refusjonPrMnd) {}
+    public record Arbeidsforhold(@NotNull String arbeidsgiverIdent, @NotNull String arbeidsgiverNavn,
+                                 @Min(0) @Digits(integer = 10, fraction = 2) BigDecimal refusjonPrMnd) {
+    }
 
-    public record BeregningAktivitetStatus(@NotNull AktivitetStatus aktivitetStatus, String hjemmel) {}
+    public record BeregningAktivitetStatus(@NotNull AktivitetStatus aktivitetStatus, String hjemmel) {
+    }
 }
 
