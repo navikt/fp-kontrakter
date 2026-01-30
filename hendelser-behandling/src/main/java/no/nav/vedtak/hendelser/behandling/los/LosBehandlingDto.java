@@ -24,6 +24,7 @@ public record LosBehandlingDto(@NotNull UUID behandlingUuid,
                                @NotNull Behandlingstype behandlingstype,
                                @NotNull Behandlingsstatus behandlingsstatus,
                                @NotNull LocalDateTime opprettetTidspunkt,
+                               LocalDateTime avsluttetTidspunkt,
                                String behandlendeEnhetId,
                                LocalDate behandlingsfrist,
                                String ansvarligSaksbehandlerIdent,
@@ -32,13 +33,13 @@ public record LosBehandlingDto(@NotNull UUID behandlingUuid,
                                boolean faresignaler,
                                boolean refusjonskrav,
                                // Inntil fagsak-merkingen er stabil - konverter til kontrakt-enum senere
-                               // Foreløpig: NASJONAL, EØS_BOSATT_NORGE, BOSATT_UTLAND, SAMMENSATT_KONTROLL, DØD, NÆRING, PRAKSIS_UTSETTELSE
-                               // Potensielle nye merker: BARE_FAR_RETT, GRUPPE2
+                               // Foreløpig: EØS_BOSATT_NORGE, BOSATT_UTLAND, SAMMENSATT_KONTROLL, DØD, NÆRING, PRAKSIS_UTSETTELSE,
+                               //            BARE_FAR_RETT, GRUPPE2, HASTER
                                List<String> saksegenskaper,
                                LosForeldrepengerDto foreldrepengerDto,
                                // Inntil kriteriene er stabil - konverter til kontrakt-enum senere
-                               // Foreløpig: SYKDOMSVURDERING, FARESIGNALER, DIREKTE_UTBETALING, REFUSJONSKRAV
-                               // Flyttes til saksegenskap: BARE_FAR_RETT
+                               // Foreløpig: SYKDOMSVURDERING, FARESIGNALER, DIREKTE_UTBETALING, REFUSJONSKRAV, MOR_UKJENT_UTLAND,
+                               //            TILBAKEKREVING_SENDT_VARSEL, TILBAKEKREVING_OVER_FIRE_RETTSGEBYR
                                List<String> behandlingsegenskaper,
                                LosTilbakeDto tilbakeDto) {
 
