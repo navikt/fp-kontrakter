@@ -18,11 +18,13 @@ public record Beregningsgrunnlag(@NotNull LocalDate skjæringsTidspunkt,
     public record BeregningsAndel(@NotNull AktivitetStatus aktivitetStatus,
                                   @Min(0) @Digits(integer = 10, fraction = 2) BigDecimal fastsattPrÅr,
                                   Inntektskilde inntektsKilde,
-                                  @Valid Arbeidsforhold arbeidsforhold) {
+                                  @Valid Arbeidsforhold arbeidsforhold,
+                                  @NotNull@Min(0) @Digits(integer = 4, fraction = 0) BigDecimal dagsatsArbeidsgiver,
+                                  @NotNull@Digits(integer = 4, fraction = 0) BigDecimal dagsatsSøker) {
     }
 
     public record Arbeidsforhold(@NotNull String arbeidsgiverIdent, @NotNull String arbeidsgiverNavn,
-                                 @Min(0) @Digits(integer = 10, fraction = 2) BigDecimal refusjonPrMnd) {
+                                 @NotNull @Min(0) @Digits(integer = 10, fraction = 2) BigDecimal refusjonPrMnd) {
     }
 
     public record BeregningAktivitetStatus(@NotNull AktivitetStatus aktivitetStatus, String hjemmel) {
