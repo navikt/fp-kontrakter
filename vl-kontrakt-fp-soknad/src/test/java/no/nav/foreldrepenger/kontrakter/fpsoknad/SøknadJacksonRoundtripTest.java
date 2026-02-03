@@ -1,6 +1,6 @@
 package no.nav.foreldrepenger.kontrakter.fpsoknad;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.neovisionaries.i18n.CountryCode;
 import no.nav.foreldrepenger.kontrakter.felles.typer.Fødselsnummer;
 import no.nav.foreldrepenger.kontrakter.felles.typer.Orgnummer;
@@ -37,7 +37,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class SøknadJacksonRoundtripTest {
 
-    private static final ObjectMapper MAPPER = DefaultJsonMapper.getObjectMapper();
+    private static final JsonMapper MAPPER = DefaultJsonMapper.getJsonMapper();
 
     @Test
     void engangsstønad_utenlandsopphold_jackson_roundtrip_test() {
