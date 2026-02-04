@@ -1,7 +1,7 @@
 package no.nav.foreldrepenger.kontrakter.fpwsproxy.tilbakekreving;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import no.nav.foreldrepenger.kontrakter.fpwsproxy.tilbakekreving.kravgrunnlag.request.HentKravgrunnlagDetaljDto;
 import no.nav.foreldrepenger.kontrakter.fpwsproxy.tilbakekreving.kravgrunnlag.request.KodeAksjon;
 import no.nav.vedtak.mapper.json.DefaultJsonMapper;
@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class HentKravgrunnlagDetaljDtoSeraliseringDeseraliseringTest {
 
-    private static final ObjectMapper mapper = DefaultJsonMapper.getObjectMapper();
+    private static final JsonMapper mapper = DefaultJsonMapper.getJsonMapper();
 
     @Test
     void hentKravgrunnlagDetaljDtoSeraliseringDeseraliseringTest() {

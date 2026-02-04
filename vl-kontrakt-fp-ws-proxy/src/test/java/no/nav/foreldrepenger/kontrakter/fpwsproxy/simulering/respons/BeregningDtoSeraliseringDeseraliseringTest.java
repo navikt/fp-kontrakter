@@ -1,7 +1,7 @@
 package no.nav.foreldrepenger.kontrakter.fpwsproxy.simulering.respons;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import no.nav.vedtak.mapper.json.DefaultJsonMapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class BeregningDtoSeraliseringDeseraliseringTest {
 
-    private static final ObjectMapper mapper = DefaultJsonMapper.getObjectMapper();
+    private static final JsonMapper mapper = DefaultJsonMapper.getJsonMapper();
 
     @Test
     void beregningDtoSeraliseringDeseraliseringRoundTripTest() {
