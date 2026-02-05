@@ -3,10 +3,11 @@ package no.nav.foreldrepenger.kontrakter.fpoversikt;
 import jakarta.validation.constraints.NotNull;
 import no.nav.foreldrepenger.kontrakter.felles.kodeverk.AktivitetStatus;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
-public record TilkjentYtelse(@NotNull List<TilkjentYtelsePeriode> utbetalingsPerioder,
+public record TilkjentYtelse(@NotNull List<TilkjentYtelsePeriode> utbetalingsperioder,
                              @NotNull List<FeriepengeAndel> feriepenger) {
 
     public record TilkjentYtelsePeriode(@NotNull LocalDate fom, @NotNull LocalDate tom, @NotNull List<Andel> andeler) {
@@ -15,7 +16,7 @@ public record TilkjentYtelse(@NotNull List<TilkjentYtelsePeriode> utbetalingsPer
                             String arbeidsgivernavn,
                             @NotNull Integer dagsats,
                             @NotNull boolean tilBruker,
-                            @NotNull Double utbetalingsgrad) {
+                            @NotNull BigDecimal utbetalingsgrad) {
         }
     }
 

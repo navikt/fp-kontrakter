@@ -11,7 +11,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public record Beregningsgrunnlag(@NotNull LocalDate skjæringsTidspunkt,
-                                 @NotNull List<@Valid BeregningsAndel> beregningsAndeler,
+                                 @NotNull List<@Valid BeregningsAndel> beregningsandeler,
                                  @NotNull List<@Valid BeregningAktivitetStatus> beregningAktivitetStatuser,
                                  BigDecimal grunnbeløp) {
 
