@@ -8,5 +8,5 @@ import java.util.List;
 public record FpVedtak(@NotNull List<@NotNull @Valid UttakPeriode> perioder,
                        List<@NotNull @Valid UttakPeriodeAnnenpartEøs> perioderAnnenpartEøs,
                        @Valid Beregningsgrunnlag beregningsgrunnlag,
-                       @NotNull TilkjentYtelse tilkjentYtelse) {
+                       @NotNull @Valid TilkjentYtelse tilkjentYtelse) {
 }
