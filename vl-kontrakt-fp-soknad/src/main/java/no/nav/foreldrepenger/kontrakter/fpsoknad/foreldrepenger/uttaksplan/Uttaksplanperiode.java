@@ -3,6 +3,7 @@ package no.nav.foreldrepenger.kontrakter.fpsoknad.foreldrepenger.uttaksplan;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import jakarta.validation.constraints.AssertTrue;
 
 import java.time.LocalDate;
 
@@ -21,4 +22,9 @@ public sealed interface Uttaksplanperiode permits UttaksPeriodeDto, Overførings
     LocalDate fom();
 
     LocalDate tom();
+
+    @AssertTrue(message = "tom kan ikke være før fom")
+    default boolean isTomEtterFom() {
+        return !tom().isBefore(fom());
+    }
 }
