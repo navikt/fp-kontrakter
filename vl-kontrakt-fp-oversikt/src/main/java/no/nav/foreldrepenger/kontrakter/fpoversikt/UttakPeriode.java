@@ -18,8 +18,8 @@ public record UttakPeriode(@NotNull LocalDate fom,
                            Gradering gradering,
                            MorsAktivitet morsAktivitet,
                            SamtidigUttak samtidigUttak,
-                           boolean flerbarnsdager,
-                           BrukerRolleSak forelder) {
+                           @NotNull boolean flerbarnsdager,
+                           @NotNull BrukerRolleSak forelder) {
 
     public boolean likBortsattFraTidsperiode(UttakPeriode that) { //Brukes for å slå sammen like perioder
         return flerbarnsdager == that.flerbarnsdager && kontoType == that.kontoType && Objects.equals(gradering, that.gradering)
