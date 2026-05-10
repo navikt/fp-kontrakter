@@ -30,8 +30,8 @@ class JournalpostMottakDtoTest {
 
         assertThat(validert).isPresent().contains("<foo>ååå<foo/>");
 
-        var json = DefaultJsonMapper.getObjectMapper().writeValueAsString(dto);
-        var roundtrip = DefaultJsonMapper.getObjectMapper().readValue(json, JournalpostMottakDto.class);
+        var json = DefaultJsonMapper.getJsonMapper().writeValueAsString(dto);
+        var roundtrip = DefaultJsonMapper.getJsonMapper().readValue(json, JournalpostMottakDto.class);
 
         assertThat(roundtrip.getJournalpostId()).isEqualTo(JOURNALPOST);
         assertThat(roundtrip.getSaksnummer()).isEqualTo(SAK);
@@ -71,8 +71,8 @@ class JournalpostMottakDtoTest {
         Optional<String> resultat = JournalpostMottakDto.getPayloadValiderLengde(null, null);
         assertThat(resultat).isNotPresent();
 
-        var json = DefaultJsonMapper.getObjectMapper().writeValueAsString(dto);
-        var roundtrip = DefaultJsonMapper.getObjectMapper().readValue(json, JournalpostMottakDto.class);
+        var json = DefaultJsonMapper.getJsonMapper().writeValueAsString(dto);
+        var roundtrip = DefaultJsonMapper.getJsonMapper().readValue(json, JournalpostMottakDto.class);
 
         assertThat(roundtrip.getJournalpostId()).isEqualTo(JOURNALPOST);
         assertThat(roundtrip.getSaksnummer()).isEqualTo(SAK);

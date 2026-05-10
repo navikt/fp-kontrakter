@@ -1,24 +1,21 @@
 package no.nav.foreldrepenger.kontrakter.abonnent.v2;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import com.fasterxml.jackson.databind.ObjectReader;
+import com.fasterxml.jackson.databind.ObjectWriter;
+import jakarta.validation.Validation;
+import no.nav.foreldrepenger.kontrakter.abonnent.v2.pdl.FødselHendelseDto;
+import no.nav.vedtak.mapper.json.DefaultJsonMapper;
+import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 import java.util.Collections;
 
-import jakarta.validation.Validation;
-
-import no.nav.vedtak.mapper.json.DefaultJsonMapper;
-import org.junit.jupiter.api.Test;
-
-import com.fasterxml.jackson.databind.ObjectReader;
-import com.fasterxml.jackson.databind.ObjectWriter;
-
-import no.nav.foreldrepenger.kontrakter.abonnent.v2.pdl.FødselHendelseDto;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class FødselHendelseDtoTest {
 
-    private static final ObjectWriter WRITER = DefaultJsonMapper.getObjectMapper().writerWithDefaultPrettyPrinter();
-    private static final ObjectReader READER = DefaultJsonMapper.getObjectMapper().reader();
+    private static final ObjectWriter WRITER = DefaultJsonMapper.getJsonMapper().writerWithDefaultPrettyPrinter();
+    private static final ObjectReader READER = DefaultJsonMapper.getJsonMapper().reader();
 
     private static final AktørIdDto AKTØR_ID = new AktørIdDto("10000000001");
     private static final LocalDate NÅ = LocalDate.now();

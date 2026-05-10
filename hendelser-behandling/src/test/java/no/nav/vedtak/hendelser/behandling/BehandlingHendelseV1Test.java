@@ -14,8 +14,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class BehandlingHendelseV1Test {
 
-    private static final ObjectWriter WRITER = DefaultJsonMapper.getObjectMapper().writerWithDefaultPrettyPrinter();
-    private static final ObjectReader READER = DefaultJsonMapper.getObjectMapper().reader();
+    private static final ObjectWriter WRITER = DefaultJsonMapper.getJsonMapper().writerWithDefaultPrettyPrinter();
+    private static final ObjectReader READER = DefaultJsonMapper.getJsonMapper().reader();
 
     @Test
     void test_minimal_fp() throws Exception {
