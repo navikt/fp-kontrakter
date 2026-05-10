@@ -18,8 +18,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class SimuleringDtoTest {
 
-    private static final ObjectWriter WRITER = DefaultJsonMapper.getObjectMapper().writerWithDefaultPrettyPrinter();
-    private static final ObjectReader READER = DefaultJsonMapper.getObjectMapper().reader();
+    private static final ObjectWriter WRITER = DefaultJsonMapper.getJsonMapper().writerWithDefaultPrettyPrinter();
+    private static final ObjectReader READER = DefaultJsonMapper.getJsonMapper().reader();
 
     private static final LocalDate IDAG = LocalDate.now();
     private static final LocalDate ENMND = LocalDate.now().plusMonths(1);
