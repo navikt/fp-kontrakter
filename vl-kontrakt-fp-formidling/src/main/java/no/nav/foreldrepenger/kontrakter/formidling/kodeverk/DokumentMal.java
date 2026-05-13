@@ -1,7 +1,6 @@
 package no.nav.foreldrepenger.kontrakter.formidling.kodeverk;
 
 public enum DokumentMal {
-    FRITEKSTBREV,
     FRITEKSTBREV_HTML,
     ENGANGSSTØNAD_INNVILGELSE,
     ENGANGSSTØNAD_AVSLAG,
