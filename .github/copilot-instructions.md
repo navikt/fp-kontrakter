@@ -18,11 +18,12 @@ Central contract and DTO library for inter-service communication in the foreldre
 Use `fp-kontrakter` primarily for multi-consumer artifacts / multi-lateral contracts. 
 Other bi-lateral rest contract dtos are published by service producers: `fp-abakus`, `fp-kalkulus`, `fp-inntektsmelding`, `fp-soknad`.
 
-## Contents
+## Content (modules)
 
 - `hendelser-behandling`: DTOs for Json Kafka topic `behandling-hendelse`
 - `fp-kontrakt-felles`: value objects, enums and validation used across multiple contracts
 - `fordel-v1`, `abonnent-v2`, `fp-formidling-v1`, `fp-oversikt`, `risk-v1`, `fp-ws-proxy-v1`, `simulering-resultat`: Rest contract DTOs
+- `fp-feed-v1`: Json-feed dtos produced by `fp-sak` and consumed by fp-external systems Infotrygd and Arena
 - `soknad-pom`: Søknad XML documents archived in Joark
 - `inntektsmelding-v1`: Inntektsmelding XML documents archived in Joark
 - `behandlingsprosess-vedtak-pom`: Vedtak XML representation stored by `fp-sak`
