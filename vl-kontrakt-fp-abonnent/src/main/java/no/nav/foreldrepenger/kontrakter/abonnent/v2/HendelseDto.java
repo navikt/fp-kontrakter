@@ -18,7 +18,6 @@ import java.util.List;
         @JsonSubTypes.Type(value = DødHendelseDto.class, name = DødHendelseDto.HENDELSE_TYPE),
         @JsonSubTypes.Type(value = DødfødselHendelseDto.class, name = DødfødselHendelseDto.HENDELSE_TYPE),
         @JsonSubTypes.Type(value = UtflyttingHendelseDto.class, name = UtflyttingHendelseDto.HENDELSE_TYPE),
-        @JsonSubTypes.Type(value = FalskIdentitetHendelseDto.class, name = FalskIdentitetHendelseDto.HENDELSE_TYPE),
         @JsonSubTypes.Type(value = FolkeregisteridentifikatorHendelseDto.class, name = FolkeregisteridentifikatorHendelseDto.HENDELSE_TYPE),
         @JsonSubTypes.Type(value = AdressebeskyttelseHendelseDto.class, name = AdressebeskyttelseHendelseDto.HENDELSE_TYPE)
 })
