@@ -1,7 +1,5 @@
 package no.nav.foreldrepenger.kontrakter.risk.v1;
 
-import com.fasterxml.jackson.databind.ObjectReader;
-import com.fasterxml.jackson.databind.ObjectWriter;
 import jakarta.validation.Validation;
 import no.nav.foreldrepenger.kontrakter.risk.kodeverk.AktørId;
 import no.nav.foreldrepenger.kontrakter.risk.kodeverk.Saksnummer;
@@ -17,9 +15,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RisikovurderingRequestTest {
 
-    private static final ObjectWriter WRITER = DefaultJsonMapper.getJsonMapper().writerWithDefaultPrettyPrinter();
-    private static final ObjectReader READER = DefaultJsonMapper.getJsonMapper().reader();
-
     private static final AktørId AKTØR_ID = new AktørId("1000000000001");
     private static final LocalDate IDAG = LocalDate.now();
     private static final UUID REF = UUID.randomUUID();
@@ -32,9 +27,9 @@ class RisikovurderingRequestTest {
         var request = new RisikovurderingRequestDto(AKTØR_ID, IDAG, IDAG.minusMonths(17), IDAG.plusYears(3), REF, YtelseType.FORELDREPENGER, annenpart, SAKSNUMMER);
 
         // Act
-        var json = WRITER.writeValueAsString(request);
+        var json = DefaultJsonMapper.toPrettyJson(request);
         //System.out.println(json);
-        var roundTripped = (RisikovurderingRequestDto)READER.forType(RisikovurderingRequestDto.class).readValue(json);
+        var roundTripped = DefaultJsonMapper.fromJson(json, RisikovurderingRequestDto.class);
 
         // Assert
         assertThat(roundTripped).isNotNull();

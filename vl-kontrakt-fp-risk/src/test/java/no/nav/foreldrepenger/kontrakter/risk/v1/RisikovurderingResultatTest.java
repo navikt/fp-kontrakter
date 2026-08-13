@@ -1,7 +1,5 @@
 package no.nav.foreldrepenger.kontrakter.risk.v1;
 
-import com.fasterxml.jackson.databind.ObjectReader;
-import com.fasterxml.jackson.databind.ObjectWriter;
 import jakarta.validation.Validation;
 import no.nav.foreldrepenger.kontrakter.risk.kodeverk.FaresignalVurdering;
 import no.nav.foreldrepenger.kontrakter.risk.kodeverk.RisikoklasseType;
@@ -17,22 +15,19 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RisikovurderingResultatTest {
 
-    private static final ObjectWriter WRITER = DefaultJsonMapper.getJsonMapper().writerWithDefaultPrettyPrinter();
-    private static final ObjectReader READER = DefaultJsonMapper.getJsonMapper().reader();
-
     private static final UUID REF = UUID.randomUUID();
 
     private static final Saksnummer SAKSNUMMER = new Saksnummer("123456789");
 
     @Test
-    void skal_serialisere_og_deserialisere_request() throws Exception {
+    void skal_serialisere_og_deserialisere_request() {
         // Arrange
         var request = new HentRisikovurderingDto(REF, SAKSNUMMER);
 
         // Act
-        var json = WRITER.writeValueAsString(request);
+        var json = DefaultJsonMapper.toPrettyJson(request);
         //System.out.println(json);
-        var roundTripped = (HentRisikovurderingDto)READER.forType(HentRisikovurderingDto.class).readValue(json);
+        var roundTripped = DefaultJsonMapper.fromJson(json, HentRisikovurderingDto.class);
 
         // Assert
         assertThat(roundTripped).isNotNull();
@@ -43,15 +38,15 @@ class RisikovurderingResultatTest {
     }
 
     @Test
-    void skal_serialisere_og_deserialisere_respons() throws Exception {
+    void skal_serialisere_og_deserialisere_respons() {
         // Arrange
         var opptjening = new RisikogruppeDto(List.of("Tekst1", "Tekst2", "Tekst3"));
         var response = new RisikovurderingResultatDto(RisikoklasseType.HØY, null, opptjening, FaresignalVurdering.AVSLAG_ANNET);
 
         // Act
-        var json = WRITER.writeValueAsString(response);
+        var json = DefaultJsonMapper.toPrettyJson(response);
         //System.out.println(json);
-        var roundTripped = (RisikovurderingResultatDto)READER.forType(RisikovurderingResultatDto.class).readValue(json);
+        var roundTripped = DefaultJsonMapper.fromJson(json, RisikovurderingResultatDto.class);
 
         // Assert
         assertThat(roundTripped).isNotNull();

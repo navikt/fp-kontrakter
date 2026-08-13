@@ -1,7 +1,5 @@
 package no.nav.vedtak.hendelser.behandling;
 
-import com.fasterxml.jackson.databind.ObjectReader;
-import com.fasterxml.jackson.databind.ObjectWriter;
 import jakarta.validation.Validation;
 import no.nav.vedtak.hendelser.behandling.v1.BehandlingHendelseV1;
 import no.nav.vedtak.mapper.json.DefaultJsonMapper;
@@ -14,11 +12,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class BehandlingHendelseV1Test {
 
-    private static final ObjectWriter WRITER = DefaultJsonMapper.getJsonMapper().writerWithDefaultPrettyPrinter();
-    private static final ObjectReader READER = DefaultJsonMapper.getJsonMapper().reader();
-
     @Test
-    void test_minimal_fp() throws Exception {
+    void test_minimal_fp() {
         var uuid = UUID.randomUUID();
         var tidspunkt = LocalDateTime.now();
         var inntektsmelding = new BehandlingHendelseV1.Builder()
@@ -30,9 +25,9 @@ class BehandlingHendelseV1Test {
                 .medTidspunkt(tidspunkt)
                 .build();
 
-        String json = WRITER.writeValueAsString(inntektsmelding);
+        String json = DefaultJsonMapper.toJson(inntektsmelding);
 
-        BehandlingHendelseV1 roundTripped = READER.forType(BehandlingHendelseV1.class).readValue(json);
+        BehandlingHendelseV1 roundTripped = DefaultJsonMapper.fromJson(json, BehandlingHendelseV1.class);
 
         assertThat(roundTripped).isNotNull();
         assertThat(roundTripped.getBehandlingUuid()).isEqualTo(uuid);
@@ -43,7 +38,7 @@ class BehandlingHendelseV1Test {
     }
 
     @Test
-    void test_maksimal_fp() throws Exception {
+    void test_maksimal_fp() {
         var uuid = UUID.randomUUID();
         var inntektsmelding = new BehandlingHendelseV1.Builder()
             .medHendelseUuid(UUID.randomUUID())
@@ -56,9 +51,9 @@ class BehandlingHendelseV1Test {
             .medSaksnummer("123456789")
             .build();
 
-        String json = WRITER.writeValueAsString(inntektsmelding);
+        String json = DefaultJsonMapper.toJson(inntektsmelding);
 
-        BehandlingHendelseV1 roundTripped = READER.forType(BehandlingHendelseV1.class).readValue(json);
+        BehandlingHendelseV1 roundTripped = DefaultJsonMapper.fromJson(json, BehandlingHendelseV1.class);
 
         assertThat(roundTripped).isNotNull();
         assertThat(roundTripped.getBehandlingUuid()).isEqualTo(uuid);

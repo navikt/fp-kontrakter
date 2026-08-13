@@ -1,7 +1,5 @@
 package no.nav.foreldrepenger.kontrakter.fpwsproxy.simulering.respons;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.json.JsonMapper;
 import no.nav.vedtak.mapper.json.DefaultJsonMapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -14,15 +12,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class BeregningDtoSeraliseringDeseraliseringTest {
 
-    private static final JsonMapper mapper = DefaultJsonMapper.getJsonMapper();
-
     @Test
     void beregningDtoSeraliseringDeseraliseringRoundTripTest() {
         test(lagBeregningDto());
     }
 
     @Test
-    void beregningDtoDeseraliseringKonsistensTest() throws JsonProcessingException {
+    void beregningDtoDeseraliseringKonsistensTest() {
         var beregningDto = lagBeregningDto();
         var seralisertBeregningDto = """
                 {
@@ -89,7 +85,7 @@ class BeregningDtoSeraliseringDeseraliseringTest {
                   } ]
                 }
                 """;
-        BeregningDto beregningDto1 = mapper.readValue(seralisertBeregningDto, BeregningDto.class);
+        BeregningDto beregningDto1 = DefaultJsonMapper.fromJson(seralisertBeregningDto, BeregningDto.class);
         assertThat(beregningDto).isEqualTo(beregningDto1);
     }
 
@@ -137,16 +133,16 @@ class BeregningDtoSeraliseringDeseraliseringTest {
         try {
             String serialized = serialize(obj);
 
-            Object deserialized = mapper.readValue(serialized, obj.getClass());
+            Object deserialized = DefaultJsonMapper.fromJson(serialized, obj.getClass());
 
             Assertions.assertEquals(obj, deserialized);
-        } catch (Exception var4) {
+        } catch (Exception _) {
             Assertions.fail(obj.getClass().getSimpleName() + " failed");
         }
 
     }
 
-    private static String serialize(Object obj) throws JsonProcessingException {
-        return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(obj);
+    private static String serialize(Object obj) {
+        return DefaultJsonMapper.toJson(obj);
     }
 }

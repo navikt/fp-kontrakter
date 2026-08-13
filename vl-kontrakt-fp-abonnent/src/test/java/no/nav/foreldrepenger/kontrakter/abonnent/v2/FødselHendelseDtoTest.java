@@ -1,7 +1,5 @@
 package no.nav.foreldrepenger.kontrakter.abonnent.v2;
 
-import com.fasterxml.jackson.databind.ObjectReader;
-import com.fasterxml.jackson.databind.ObjectWriter;
 import jakarta.validation.Validation;
 import no.nav.foreldrepenger.kontrakter.abonnent.v2.pdl.FødselHendelseDto;
 import no.nav.vedtak.mapper.json.DefaultJsonMapper;
@@ -14,14 +12,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class FødselHendelseDtoTest {
 
-    private static final ObjectWriter WRITER = DefaultJsonMapper.getJsonMapper().writerWithDefaultPrettyPrinter();
-    private static final ObjectReader READER = DefaultJsonMapper.getJsonMapper().reader();
 
     private static final AktørIdDto AKTØR_ID = new AktørIdDto("10000000001");
     private static final LocalDate NÅ = LocalDate.now();
 
     @Test
-    void skal_serialisere_og_deserialisere_fødselshendelse() throws Exception {
+    void skal_serialisere_og_deserialisere_fødselshendelse() {
         // Arrange
         var hendelse = new FødselHendelseDto();
         hendelse.setId("id_1");
@@ -30,9 +26,9 @@ class FødselHendelseDtoTest {
         hendelse.setFødselsdato(NÅ);
 
         // Act
-        var json = WRITER.writeValueAsString(hendelse);
+        var json = DefaultJsonMapper.toPrettyJson(hendelse);
         //System.out.println(json);
-        var roundTrippedUncast = (HendelseDto)READER.forType(HendelseDto.class).readValue(json);
+        var roundTrippedUncast = (HendelseDto)DefaultJsonMapper.fromJson(json, HendelseDto.class);
         var roundTripped = (FødselHendelseDto) roundTrippedUncast;
 
         // Assert
