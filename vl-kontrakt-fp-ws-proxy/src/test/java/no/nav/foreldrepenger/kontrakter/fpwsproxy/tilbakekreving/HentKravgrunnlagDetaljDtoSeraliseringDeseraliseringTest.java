@@ -1,7 +1,5 @@
 package no.nav.foreldrepenger.kontrakter.fpwsproxy.tilbakekreving;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.json.JsonMapper;
 import no.nav.foreldrepenger.kontrakter.fpwsproxy.tilbakekreving.kravgrunnlag.request.HentKravgrunnlagDetaljDto;
 import no.nav.foreldrepenger.kontrakter.fpwsproxy.tilbakekreving.kravgrunnlag.request.KodeAksjon;
 import no.nav.vedtak.mapper.json.DefaultJsonMapper;
@@ -13,8 +11,6 @@ import java.math.BigInteger;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class HentKravgrunnlagDetaljDtoSeraliseringDeseraliseringTest {
-
-    private static final JsonMapper mapper = DefaultJsonMapper.getJsonMapper();
 
     @Test
     void hentKravgrunnlagDetaljDtoSeraliseringDeseraliseringTest() {
@@ -28,7 +24,7 @@ class HentKravgrunnlagDetaljDtoSeraliseringDeseraliseringTest {
     }
 
     @Test
-    void hentKravgrunnlagDetaljDtoDeseraliseringKonsistensTest() throws JsonProcessingException {
+    void hentKravgrunnlagDetaljDtoDeseraliseringKonsistensTest() {
         var hentKravgrunnlagDetaljDto = new HentKravgrunnlagDetaljDto.Builder()
                 .kravgrunnlagId(BigInteger.TEN)
                 .kodeAksjon(KodeAksjon.FATTE_VEDTAK)
@@ -44,7 +40,7 @@ class HentKravgrunnlagDetaljDtoSeraliseringDeseraliseringTest {
                 }
                 """;
 
-        var hentKravgrunnlagDetaljDtoDeseralisert = mapper.readValue(seralisertHentKravgrunnlagDetaljDto, HentKravgrunnlagDetaljDto.class);
+        var hentKravgrunnlagDetaljDtoDeseralisert = DefaultJsonMapper.fromJson(seralisertHentKravgrunnlagDetaljDto, HentKravgrunnlagDetaljDto.class);
         assertThat(hentKravgrunnlagDetaljDto).isEqualTo(hentKravgrunnlagDetaljDtoDeseralisert);
     }
 
@@ -55,7 +51,7 @@ class HentKravgrunnlagDetaljDtoSeraliseringDeseraliseringTest {
         try {
             String serialized = serialize(obj);
 
-            Object deserialized = mapper.readValue(serialized, obj.getClass());
+            Object deserialized = DefaultJsonMapper.fromJson(serialized, obj.getClass());
 
             Assertions.assertEquals(obj, deserialized);
         } catch (Exception var4) {
@@ -64,7 +60,7 @@ class HentKravgrunnlagDetaljDtoSeraliseringDeseraliseringTest {
 
     }
 
-    private static String serialize(Object obj) throws JsonProcessingException {
-        return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(obj);
+    private static String serialize(Object obj) {
+        return DefaultJsonMapper.toJson(obj);
     }
 }

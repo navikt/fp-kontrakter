@@ -1,7 +1,5 @@
 package no.nav.foreldrepenger.kontrakter.simulering.resultat.v1;
 
-import com.fasterxml.jackson.databind.ObjectReader;
-import com.fasterxml.jackson.databind.ObjectWriter;
 import jakarta.validation.Validation;
 import no.nav.foreldrepenger.kontrakter.simulering.resultat.kodeverk.Fagområde;
 import no.nav.foreldrepenger.kontrakter.simulering.resultat.kodeverk.MottakerType;
@@ -18,14 +16,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class SimuleringDtoTest {
 
-    private static final ObjectWriter WRITER = DefaultJsonMapper.getJsonMapper().writerWithDefaultPrettyPrinter();
-    private static final ObjectReader READER = DefaultJsonMapper.getJsonMapper().reader();
-
     private static final LocalDate IDAG = LocalDate.now();
     private static final LocalDate ENMND = LocalDate.now().plusMonths(1);
 
     @Test
-    void skal_serialisere_og_deserialisere_request() throws Exception {
+    void skal_serialisere_og_deserialisere_request() {
         // Arrange
         var prMåned1 = new SimuleringDto.SimuleringResultatPerMånedDto(new PeriodeDto(IDAG, IDAG), 1000L);
         var rad1 = new SimuleringDto.SimuleringResultatRadDto(RadId.RESULTAT, List.of(prMåned1));
@@ -39,9 +34,9 @@ class SimuleringDtoTest {
         var request = new SimuleringDto(detaljert, null, false);
 
         // Act
-        var json = WRITER.writeValueAsString(request);
+        var json = DefaultJsonMapper.toPrettyJson(request);
         //System.out.println(json);
-        var roundTripped = (SimuleringDto)READER.forType(SimuleringDto.class).readValue(json);
+        var roundTripped = (SimuleringDto)DefaultJsonMapper.fromJson(json, SimuleringDto.class);
 
         // Assert
         assertThat(roundTripped).isNotNull();

@@ -1,7 +1,5 @@
 package no.nav.foreldrepenger.kontrakter.risk.v1;
 
-import com.fasterxml.jackson.databind.ObjectReader;
-import com.fasterxml.jackson.databind.ObjectWriter;
 import jakarta.validation.Validation;
 import no.nav.foreldrepenger.kontrakter.risk.kodeverk.RisikoklasseType;
 import no.nav.foreldrepenger.kontrakter.risk.kodeverk.Saksnummer;
@@ -15,21 +13,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RisikovurderingCallbackTest {
 
-    private static final ObjectWriter WRITER = DefaultJsonMapper.getJsonMapper().writerWithDefaultPrettyPrinter();
-    private static final ObjectReader READER = DefaultJsonMapper.getJsonMapper().reader();
-
     private static final UUID REF = UUID.randomUUID();
     private static final Saksnummer SAKSNUMMER = new Saksnummer("123456789");
 
     @Test
-    void skal_serialisere_og_deserialisere_respons() throws Exception {
+    void skal_serialisere_og_deserialisere_respons() {
         // Arrange
         var response = new RisikovurderingCallbackDto(REF, SAKSNUMMER, RisikoklasseType.IKKE_HØY);
 
         // Act
-        var json = WRITER.writeValueAsString(response);
+        var json = DefaultJsonMapper.toPrettyJson(response);
         //System.out.println(json);
-        var roundTripped = (RisikovurderingCallbackDto)READER.forType(RisikovurderingCallbackDto.class).readValue(json);
+        var roundTripped = DefaultJsonMapper.fromJson(json, RisikovurderingCallbackDto.class);
 
         // Assert
         assertThat(roundTripped).isNotNull();

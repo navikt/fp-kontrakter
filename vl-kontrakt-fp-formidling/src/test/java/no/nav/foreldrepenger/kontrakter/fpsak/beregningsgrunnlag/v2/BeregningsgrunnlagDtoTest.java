@@ -1,8 +1,5 @@
 package no.nav.foreldrepenger.kontrakter.fpsak.beregningsgrunnlag.v2;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectReader;
-import com.fasterxml.jackson.databind.ObjectWriter;
 import no.nav.foreldrepenger.kontrakter.fpsak.beregningsgrunnlag.v2.kodeverk.AktivitetStatusDto;
 import no.nav.foreldrepenger.kontrakter.fpsak.beregningsgrunnlag.v2.kodeverk.HjemmelDto;
 import no.nav.foreldrepenger.kontrakter.fpsak.beregningsgrunnlag.v2.kodeverk.OpptjeningAktivitetDto;
@@ -18,11 +15,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class BeregningsgrunnlagDtoTest {
 
-    private static final ObjectWriter WRITER = DefaultJsonMapper.getJsonMapper().writerWithDefaultPrettyPrinter();
-    private static final ObjectReader READER = DefaultJsonMapper.getJsonMapper().reader();
-
     @Test
-    void testRoundtrip() throws JsonProcessingException {
+    void testRoundtrip() {
 
         var perÅr = BigDecimal.valueOf(600000L);
         var dagsats = 3000L;
@@ -56,9 +50,9 @@ class BeregningsgrunnlagDtoTest {
                 false); //denne vil alltid være false så lenge erBesteberegnet er false
 
         // Act
-        var json = WRITER.writeValueAsString(request);
+        var json = DefaultJsonMapper.toJson(request);
 
-        var roundTripped = (BeregningsgrunnlagDto) READER.forType(BeregningsgrunnlagDto.class).readValue(json);
+        var roundTripped = DefaultJsonMapper.fromJson(json, BeregningsgrunnlagDto.class);
 
         // Assert
         assertThat(roundTripped).isNotNull();
@@ -66,17 +60,17 @@ class BeregningsgrunnlagDtoTest {
         assertThat(roundTripped.aktivitetstatusListe()).containsExactly(AktivitetStatusDto.ARBEIDSTAKER, AktivitetStatusDto.DAGPENGER);
         assertThat(roundTripped.grunnbeløp()).isEqualTo(grunnbeløp);
         assertThat(roundTripped.beregningsgrunnlagperioder()).hasSize(1);
-        assertThat(roundTripped.beregningsgrunnlagperioder().get(0).avkortetPrÅr()).isEqualTo(perÅr);
-        assertThat(roundTripped.beregningsgrunnlagperioder().get(0).bruttoPrÅr()).isEqualTo(perÅr);
-        assertThat(roundTripped.beregningsgrunnlagperioder().get(0).dagsats()).isEqualTo(dagsats);
-        assertThat(roundTripped.beregningsgrunnlagperioder().get(0).periodeårsaker()).containsExactly(PeriodeÅrsakDto.ARBEIDSFORHOLD_AVSLUTTET);
+        assertThat(roundTripped.beregningsgrunnlagperioder().getFirst().avkortetPrÅr()).isEqualTo(perÅr);
+        assertThat(roundTripped.beregningsgrunnlagperioder().getFirst().bruttoPrÅr()).isEqualTo(perÅr);
+        assertThat(roundTripped.beregningsgrunnlagperioder().getFirst().dagsats()).isEqualTo(dagsats);
+        assertThat(roundTripped.beregningsgrunnlagperioder().getFirst().periodeårsaker()).containsExactly(PeriodeÅrsakDto.ARBEIDSFORHOLD_AVSLUTTET);
 
-        assertThat(roundTripped.beregningsgrunnlagperioder().get(0).beregningsgrunnlagandeler()).hasSize(1);
-        assertThat(roundTripped.beregningsgrunnlagperioder().get(0).beregningsgrunnlagandeler().get(0).avkortetPrÅr()).isEqualTo(perÅr);
-        assertThat(roundTripped.beregningsgrunnlagperioder().get(0).beregningsgrunnlagandeler().get(0).bruttoPrÅr()).isEqualTo(perÅr);
-        assertThat(roundTripped.beregningsgrunnlagperioder().get(0).beregningsgrunnlagandeler().get(0).aktivitetStatus()).isEqualTo(AktivitetStatusDto.ARBEIDSTAKER);
-        assertThat(roundTripped.beregningsgrunnlagperioder().get(0).beregningsgrunnlagandeler().get(0).arbeidsforholdType()).isEqualTo(OpptjeningAktivitetDto.ARBEID);
-        assertThat(roundTripped.beregningsgrunnlagperioder().get(0).beregningsgrunnlagandeler().get(0).arbeidsforhold().arbeidsgiverIdent()).isEqualTo(testIdent);
-        assertThat(roundTripped.beregningsgrunnlagperioder().get(0).beregningsgrunnlagandeler().get(0).arbeidsforhold().arbeidsforholdRef()).isEqualTo(testRef);
+        assertThat(roundTripped.beregningsgrunnlagperioder().getFirst().beregningsgrunnlagandeler()).hasSize(1);
+        assertThat(roundTripped.beregningsgrunnlagperioder().getFirst().beregningsgrunnlagandeler().getFirst().avkortetPrÅr()).isEqualTo(perÅr);
+        assertThat(roundTripped.beregningsgrunnlagperioder().getFirst().beregningsgrunnlagandeler().getFirst().bruttoPrÅr()).isEqualTo(perÅr);
+        assertThat(roundTripped.beregningsgrunnlagperioder().getFirst().beregningsgrunnlagandeler().getFirst().aktivitetStatus()).isEqualTo(AktivitetStatusDto.ARBEIDSTAKER);
+        assertThat(roundTripped.beregningsgrunnlagperioder().getFirst().beregningsgrunnlagandeler().getFirst().arbeidsforholdType()).isEqualTo(OpptjeningAktivitetDto.ARBEID);
+        assertThat(roundTripped.beregningsgrunnlagperioder().getFirst().beregningsgrunnlagandeler().getFirst().arbeidsforhold().arbeidsgiverIdent()).isEqualTo(testIdent);
+        assertThat(roundTripped.beregningsgrunnlagperioder().getFirst().beregningsgrunnlagandeler().getFirst().arbeidsforhold().arbeidsforholdRef()).isEqualTo(testRef);
     }
 }

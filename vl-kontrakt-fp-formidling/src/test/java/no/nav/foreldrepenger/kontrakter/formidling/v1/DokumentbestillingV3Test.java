@@ -1,7 +1,5 @@
 package no.nav.foreldrepenger.kontrakter.formidling.v1;
 
-import com.fasterxml.jackson.databind.ObjectReader;
-import com.fasterxml.jackson.databind.ObjectWriter;
 import jakarta.validation.Validation;
 import no.nav.foreldrepenger.kontrakter.formidling.kodeverk.DokumentMal;
 import no.nav.foreldrepenger.kontrakter.formidling.kodeverk.Saksnummer;
@@ -15,15 +13,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class DokumentbestillingV3Test {
 
-    private static final ObjectWriter WRITER = DefaultJsonMapper.getJsonMapper().writerWithDefaultPrettyPrinter();
-    private static final ObjectReader READER = DefaultJsonMapper.getJsonMapper().reader();
-
     private static final Saksnummer SAKSNUMMER  = new Saksnummer("123459789");
     private static final UUID REF1 = UUID.randomUUID();
     private static final UUID REF2 = UUID.randomUUID();
 
     @Test
-    void skal_serialisere_og_deserialisere_request() throws Exception {
+    void skal_serialisere_og_deserialisere_request() {
         // Arrange
         var request = new DokumentBestillingDto(REF1, SAKSNUMMER, REF2,
                 DokumentMal.ETTERLYS_INNTEKTSMELDING, null, "Fri tekst ...",null);
@@ -35,9 +30,9 @@ class DokumentbestillingV3Test {
 //                                    String fritekst,
 //                                    @Valid DokumentMal journalførSom
         // Act
-        var json = WRITER.writeValueAsString(request);
+        var json = DefaultJsonMapper.toPrettyJson(request);
         //System.out.println(json);
-        var roundTripped = (DokumentBestillingDto)READER.forType(DokumentBestillingDto.class).readValue(json);
+        var roundTripped = DefaultJsonMapper.fromJson(json, DokumentBestillingDto.class);
 
         // Assert
         assertThat(roundTripped).isNotNull();
