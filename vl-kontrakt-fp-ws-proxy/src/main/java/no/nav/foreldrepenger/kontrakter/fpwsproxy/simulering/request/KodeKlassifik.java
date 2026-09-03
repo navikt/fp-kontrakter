@@ -116,8 +116,11 @@ public enum KodeKlassifik {
     FRISINN_FRILANS("FRISINN-FRILANS"),
     FRISINN_SN("FRISINN-SELVST-OP"),
 
-    //ungdomsytelse
+    //Ungdomsprogramytelse
     UNG("UNG"),
+
+    //Aktivitetspenger
+    AKTIVITETPENGUNG("AKTIVITETPENGUNG")
     ;
 
     @JsonValue

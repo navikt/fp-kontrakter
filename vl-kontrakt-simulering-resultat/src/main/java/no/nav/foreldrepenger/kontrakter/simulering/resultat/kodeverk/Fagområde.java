@@ -35,9 +35,10 @@ public enum Fagområde {
     OOP,
     /** pleiepenger_v1 til arbeidsgiver **/
     OOPREF,
-
     /** ungdomsytelse **/
     UNG,
+    /** Aktivitetspenger **/
+    AKTIVUNG,
     ;
 
 }
