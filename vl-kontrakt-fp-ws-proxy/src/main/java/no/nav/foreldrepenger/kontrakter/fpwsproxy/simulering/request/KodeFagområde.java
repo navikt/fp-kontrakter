@@ -23,6 +23,7 @@ public enum KodeFagområde {
 
     UNG, //ungdomsytelse
 
+    AKTIVUNG, //Aktivitetspenger
     ;
 
     public boolean gjelderEngangsstønad() {
