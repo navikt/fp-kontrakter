@@ -21,6 +21,7 @@ public enum FagOmrådeKode {
     OPPREF,
     FRISINN,
     UNG,
+    AKTIVUNG,
     MFP, // Foreldrepenger, manuell
     MFPREF, //Foreldrepenger, manuell. AG refusjon
     MSVP, // Svangerskapspenger, manuell
