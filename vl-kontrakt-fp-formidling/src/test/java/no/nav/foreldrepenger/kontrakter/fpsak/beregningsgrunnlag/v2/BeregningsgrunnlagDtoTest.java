@@ -45,7 +45,7 @@ class BeregningsgrunnlagDtoTest {
                                 LocalDate.now(),
                                 new BgAndelArbeidsforholdDto(testIdent, testRef, BigDecimal.ZERO, BigDecimal.ZERO),
                                 false,
-                                BigDecimal.valueOf(600000L)))
+                                perÅr)))
                         )),
                 false,
                 false); //denne vil alltid være false så lenge erBesteberegnet er false
