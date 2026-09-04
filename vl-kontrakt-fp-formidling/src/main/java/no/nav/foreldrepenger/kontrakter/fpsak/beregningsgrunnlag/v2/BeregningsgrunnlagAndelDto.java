@@ -23,5 +23,5 @@ public record BeregningsgrunnlagAndelDto(
         @Valid LocalDate beregningsperiodeTom,
         @Valid BgAndelArbeidsforholdDto arbeidsforhold,
         @Valid Boolean erTilkommetAndel,
-        @Valid @Digits(integer = 8, fraction = 2) @DecimalMin("0.00") @DecimalMax("10000000.00") BigDecimal beregnetPerAar) {
+        @Valid @Digits(integer = 8, fraction = 2) @DecimalMin("0.00") @DecimalMax("10000000.00") BigDecimal beregnetPrÅr) {
 }
