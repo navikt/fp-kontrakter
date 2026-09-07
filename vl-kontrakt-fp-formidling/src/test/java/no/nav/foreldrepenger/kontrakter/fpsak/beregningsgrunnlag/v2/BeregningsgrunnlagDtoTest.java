@@ -44,7 +44,8 @@ class BeregningsgrunnlagDtoTest {
                                 LocalDate.now(),
                                 LocalDate.now(),
                                 new BgAndelArbeidsforholdDto(testIdent, testRef, BigDecimal.ZERO, BigDecimal.ZERO),
-                                false))
+                                false,
+                                perÅr))
                         )),
                 false,
                 false); //denne vil alltid være false så lenge erBesteberegnet er false
@@ -68,6 +69,7 @@ class BeregningsgrunnlagDtoTest {
         assertThat(roundTripped.beregningsgrunnlagperioder().getFirst().beregningsgrunnlagandeler()).hasSize(1);
         assertThat(roundTripped.beregningsgrunnlagperioder().getFirst().beregningsgrunnlagandeler().getFirst().avkortetPrÅr()).isEqualTo(perÅr);
         assertThat(roundTripped.beregningsgrunnlagperioder().getFirst().beregningsgrunnlagandeler().getFirst().bruttoPrÅr()).isEqualTo(perÅr);
+        assertThat(roundTripped.beregningsgrunnlagperioder().getFirst().beregningsgrunnlagandeler().getFirst().gjeldendeGrunnlagPrÅr()).isEqualTo(perÅr);
         assertThat(roundTripped.beregningsgrunnlagperioder().getFirst().beregningsgrunnlagandeler().getFirst().aktivitetStatus()).isEqualTo(AktivitetStatusDto.ARBEIDSTAKER);
         assertThat(roundTripped.beregningsgrunnlagperioder().getFirst().beregningsgrunnlagandeler().getFirst().arbeidsforholdType()).isEqualTo(OpptjeningAktivitetDto.ARBEID);
         assertThat(roundTripped.beregningsgrunnlagperioder().getFirst().beregningsgrunnlagandeler().getFirst().arbeidsforhold().arbeidsgiverIdent()).isEqualTo(testIdent);
