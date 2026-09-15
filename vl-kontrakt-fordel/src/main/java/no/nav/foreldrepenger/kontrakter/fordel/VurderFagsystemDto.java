@@ -64,10 +64,6 @@ public class VurderFagsystemDto {
     @Pattern(regexp = "^[" + BASIS_TEGN + "]*$")
     private String dokumentTypeIdOffisiellKode;
 
-    @Size(max = 25)
-    @Pattern(regexp = "^[" + BASIS_TEGN + "]*$")
-    private String dokumentKategoriOffisiellKode;
-
     @Valid
     private BrukerRolleDto brukerRolle; // Kan være null pga papirsøknader
 
@@ -142,14 +138,6 @@ public class VurderFagsystemDto {
 
     public void setDokumentTypeIdOffisiellKode(String dokumentTypeIdOffisiellKode) {
         this.dokumentTypeIdOffisiellKode = dokumentTypeIdOffisiellKode;
-    }
-
-    public String getDokumentKategoriOffisiellKode() {
-        return dokumentKategoriOffisiellKode;
-    }
-
-    public void setDokumentKategoriOffisiellKode(String dokumentKategoriOffisiellKode) {
-        this.dokumentKategoriOffisiellKode = dokumentKategoriOffisiellKode;
     }
 
     public void setÅrsakInnsendingInntektsmelding(String årsakInnsendingInntektsmelding) {
