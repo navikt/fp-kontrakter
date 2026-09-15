@@ -41,10 +41,6 @@ public class JournalpostMottakDto {
 
     private LocalDateTime forsendelseMottattTidspunkt;
 
-    @Size(max = 25)
-    @Pattern(regexp = "^[a-zA-ZæøåÆØÅ_\\-0-9]*")
-    private String dokumentKategoriOffisiellKode;
-
     @Size(max = 5)
     @Pattern(regexp = "^[a-zA-ZæøåÆØÅ_\\-0-9]*")
     private String journalForendeEnhet;
@@ -105,16 +101,8 @@ public class JournalpostMottakDto {
         return Optional.ofNullable(forsendelseMottatt);
     }
 
-    public String getDokumentKategoriOffisiellKode() {
-        return dokumentKategoriOffisiellKode;
-    }
-
     public LocalDateTime getForsendelseMottattTidspunkt() {
         return forsendelseMottattTidspunkt;
-    }
-
-    public void setDokumentKategoriOffisiellKode(String dokumentKategoriOffisiellKode) {
-        this.dokumentKategoriOffisiellKode = dokumentKategoriOffisiellKode;
     }
 
     public String getJournalForendeEnhet() {
