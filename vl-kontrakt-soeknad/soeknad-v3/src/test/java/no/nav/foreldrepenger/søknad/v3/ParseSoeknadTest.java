@@ -169,7 +169,7 @@ class ParseSoeknadTest {
         for (var fullstendig : new Boolean[]{Boolean.TRUE, Boolean.FALSE, null}) {
             var endring = new no.nav.vedtak.felles.xml.soeknad.endringssoeknad.v3.Endringssoeknad();
             endring.setSaksnummer("123");
-            endring.setFullstendigPlan(fullstendig);
+            endring.setErFullstendigPlan(fullstendig);
 
             var søknad = new Soeknad();
             søknad.setMottattDato(LocalDate.now());
@@ -190,7 +190,7 @@ class ParseSoeknadTest {
                     "xsd/soeknad-v3.xsd", SøknadConstants.ADDITIONAL_XSD_LOCATION, SøknadConstants.ADDITIONAL_CLASSES);
 
             var leståttEndring = ((no.nav.vedtak.felles.xml.soeknad.endringssoeknad.v3.Endringssoeknad) ((JAXBElement<?>) lest.getOmYtelse().getAny().get(0)).getValue());
-            assertThat(leståttEndring.isFullstendigPlan()).isEqualTo(fullstendig);
+            assertThat(leståttEndring.isErFullstendigPlan()).isEqualTo(fullstendig);
         }
     }
 
