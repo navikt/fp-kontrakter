@@ -164,6 +164,36 @@ class ParseSoeknadTest {
                 .matches(svp -> LocalDate.of(2024,12,1).equals(svp.getTermindato()));
     }
 
+    @Test
+    void endringssøknad_med_fullstendig_plan_skal_marshalles_og_leses_tilbake() throws Exception {
+        for (var fullstendig : new Boolean[]{Boolean.TRUE, Boolean.FALSE, null}) {
+            var endring = new no.nav.vedtak.felles.xml.soeknad.endringssoeknad.v3.Endringssoeknad();
+            endring.setSaksnummer("123");
+            endring.setFullstendigPlan(fullstendig);
+
+            var søknad = new Soeknad();
+            søknad.setMottattDato(LocalDate.now());
+            var bruker = new Bruker();
+            bruker.setAktoerId("12345678901");
+            var rolle = new Brukerroller();
+            rolle.setKode("MOR");
+            bruker.setSoeknadsrolle(rolle);
+            søknad.setSoeker(bruker);
+            var omYtelse = new no.nav.vedtak.felles.xml.soeknad.v3.OmYtelse();
+            omYtelse.getAny().add(new no.nav.vedtak.felles.xml.soeknad.endringssoeknad.v3.ObjectFactory().createEndringssoeknad(endring));
+            søknad.setOmYtelse(omYtelse);
+
+            var xml = JaxbHelper.marshalAndValidateJaxb(SøknadConstants.JAXB_CLASS,
+                    new no.nav.vedtak.felles.xml.soeknad.v3.ObjectFactory().createSoeknad(søknad),
+                    "xsd/soeknad-v3.xsd", SøknadConstants.ADDITIONAL_XSD_LOCATION, SøknadConstants.ADDITIONAL_CLASSES);
+            var lest = JaxbHelper.unmarshalAndValidateXMLWithStAX(Soeknad.class, xml,
+                    "xsd/soeknad-v3.xsd", SøknadConstants.ADDITIONAL_XSD_LOCATION, SøknadConstants.ADDITIONAL_CLASSES);
+
+            var leståttEndring = ((no.nav.vedtak.felles.xml.soeknad.endringssoeknad.v3.Endringssoeknad) ((JAXBElement<?>) lest.getOmYtelse().getAny().get(0)).getValue());
+            assertThat(leståttEndring.isFullstendigPlan()).isEqualTo(fullstendig);
+        }
+    }
+
     private String lesResource(String resourceFile) throws IOException {
         final InputStream resourceAsStream = getClass().getResourceAsStream(resourceFile);
         try (resourceAsStream) {
