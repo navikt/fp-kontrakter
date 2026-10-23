@@ -12,7 +12,6 @@ import java.util.List;
 
 public record Beregningsgrunnlag(@NotNull LocalDate skjæringsTidspunkt,
                                  @NotNull List<@Valid BeregningsAndel> beregningsandeler,
-                                 @NotNull List<@Valid BeregningAktivitetStatus> beregningAktivitetStatuser,
                                  BigDecimal grunnbeløp) {
 
     public record BeregningsAndel(@NotNull AktivitetStatus aktivitetStatus,
@@ -25,9 +24,6 @@ public record Beregningsgrunnlag(@NotNull LocalDate skjæringsTidspunkt,
 
     public record Arbeidsforhold(@NotNull String arbeidsgiverIdent, @NotNull String arbeidsgiverNavn,
                                  @NotNull @Min(0) @Digits(integer = 10, fraction = 2) BigDecimal refusjonPrMnd) {
-    }
-
-    public record BeregningAktivitetStatus(@NotNull AktivitetStatus aktivitetStatus, String hjemmel) {
     }
 }
 
